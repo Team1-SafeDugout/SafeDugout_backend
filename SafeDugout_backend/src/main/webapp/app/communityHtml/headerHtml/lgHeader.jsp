@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <header id="team-header">
   <div class="top-header">
     <div class="team-logo">
       <a href="./../../../../webapp/app/communityHtml/communityMainPage.html">
-        <img src="./../../../../webapp/assets/img/communityImg/ssg.png" alt="ssg 로고">
+        <img src="./../../../../webapp/assets/img/communityImg/lg.png" alt="lg 로고">
       </a>
     </div>
     <div class="team-right-link">
@@ -26,7 +27,7 @@
         <li class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색" />
-            <button type="button" onclick="location.href='./../communityTapPage/teamSearch.html'">
+            <button>
               <img src="./../../../../webapp/assets/img/communityImg/freeIconSearch.png" alt="검색" />
             </button>
           </form>

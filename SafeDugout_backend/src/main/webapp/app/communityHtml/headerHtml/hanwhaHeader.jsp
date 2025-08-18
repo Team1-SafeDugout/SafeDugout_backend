@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <header id="team-header">
   <div class="top-header">
     <div class="team-logo">
       <a href="./../../../../webapp/app/communityHtml/communityMainPage.html">
-        <img src="./../../../../webapp/assets/img/communityImg/WO.png" alt="kiwoom 로고">
+        <img src="./../../../../webapp/assets/img/communityImg/HH.png" alt="hanwha 로고">
       </a>
     </div>
     <div class="team-right-link">
@@ -25,15 +26,15 @@
         <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamNews.html">팀뉴스</a></li>
         <li class="nav-search">
           <form action="" method="get">
-            <input type="text" placeholder="검색">
+            <input type="text" placeholder="검색" />
             <button>
-              <img src="./../../../../webapp/assets/img/communityImg/freeIconSearch.png" alt="검색">
+              <img src="./../../../../webapp/assets/img/communityImg/freeIconSearch.png" alt="검색" />
             </button>
           </form>
         </li>
         <li class="mypage">
           <a href="./../../../../webapp/app/mypostlist/myPostList.html">
-            <img src="./../../../../webapp/assets/img/communityImg/icoMypage.png" alt="마이페이지">
+            <img src="./../../../../webapp/assets/img/communityImg/icoMypage.png" alt="마이페이지" />
           </a>
         </li>
       </ul>

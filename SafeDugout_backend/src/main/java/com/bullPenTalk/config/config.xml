@@ -25,8 +25,8 @@
 				<property name="driver" value="oracle.jdbc.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521/xe" />
-				<property name="username" value="kdt" />
-				<property name="password" value="1234" />
+				<property name="username" value="safeDugout" />
+				<property name="password" value="bullPen9925" />
 			</dataSource>
 		</environment>
 	</environments>
