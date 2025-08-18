@@ -1,15 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입 완료 페이지(MY팀 선택 완료)</title>
-  <link rel="stylesheet" href="./../../assets/css/register/RegisterResultMyTeamSelected.css">
+  <title>회원가입 완료 페이지(MY팀 미정)</title>
+  <link rel="stylesheet" href="./../../assets/css/register/RegisterResultMyTeamUnselected.css">
   <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
   <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
   <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/register/RegisterResultMyTeamSelected.js"></script>
+  <script defer src="./../../assets/js/register/RegisterResultMyTeamUnselected.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -30,26 +33,21 @@
         <div class="main-message-container">
           <!-- 회원가입 완료 메시지 -->
           <div class="main-result-message">회원가입이 완료되었습니다!</div>
-          <!-- 선택된 MY팀 로고 -->
-          <div class="main-selected-team-img">
-            <!-- 팀 로고 img -->
-            <img src="./../../assets/img/communityImg/SS.png" alt="">
-          </div>
           <!-- 정보 메시지 -->
           <div class="main-info-message">
-            • 선택하신 팀은 삼성 라이온즈 입니다. <br><br>
-            • 로그인 후 중고거래 상품 등록/수정, 포인트 충전, <br>
-            MY팀 커뮤니티 게시글/댓글 작성이 가능합니다.
+            • 로그인 후 중고거래 상품 등록/수정, 포인트 충전이 가능합니다. <br><br>
+            • 우측 상단 MY → 회원 정보 수정 에서 MY팀을 선택하신 후 <br>
+            MY팀 커뮤니티 게시글/댓글을 작성하실 수 있습니다.
           </div>
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
-            <!-- 메인페이지 버튼 a 태그 -->
+            <!-- 메인페이지 버튼 a태그 -->
             <a href="./../../mainLogin.html">
               <!-- 메인페이지 버튼 div 태그 -->
               <div class="main-button-next">메인페이지
               </div>
             </a>
-            <!-- 로그인 버튼 a태그 -->
+            <!-- 로그인 버튼 a태그-->
             <a href="./../login/login.html">
               <!-- 로그인 버튼 -->
               <div class="main-button-login">로그인

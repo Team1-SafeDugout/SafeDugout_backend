@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespaec = "member">
+	<select id = "login" parameterType = "MemberDTO" resultType = "MemberDTO">
+		SELECT MEMBER_NUMBER, MEMBER_ID, MEMBER_PW 
+		FROM TBL_MEMBER
+		WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw}
+	</select>
+	
+	<insert id = "join" parameterTYpe = "MemberDTO">
+		INSERT INTO TBL_MEMBER (MEMBER_NUMBER, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_AGE, MEMBER_GENDER)
+		VALUES(seq_member_number.valnext, #{memberId}, #{memberPw}, #{memberName}, #{memberAge}, #{memberGender});
+	</insert>
+</mapper>
