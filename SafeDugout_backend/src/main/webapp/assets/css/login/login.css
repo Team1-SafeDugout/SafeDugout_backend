@@ -1,0 +1,110 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 헤더 */
+/* #header {
+  background-color: #DCD6D0;
+  height: 100px;
+
+} */
+
+/* 메인 컨테이너 */
+.main-container {
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 페이지 큰 제목 */
+.main-title {
+  position: absolute;
+  top: 140px;
+  left: 100px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 폼 태그 */
+.main-container form {
+  margin: 0px auto;
+}
+
+/* 폼 박스 */
+.main-form-box {
+  background-color: #efefef;
+  width: 500px;
+  height: 470px;
+  padding: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+/* 입력 메시지 */
+.main-input-message {
+  width: 325px;
+  margin: 40px 0px 10px 0px;
+}
+
+/* 입력칸 input 태그 */
+.main-input-blank input {
+  width: 310px;
+  height: 60px;
+  padding: 0px 0px 0px 15px;
+  font-size: 17px;
+
+}
+
+/* 입력 오류 메시지 */
+.main-input-fail-message {
+  margin: 22px 0px 0px 0px;
+  font-size: 15px;
+  color: red;
+  visibility: hidden;
+}
+
+/* 메인 컨테이너 button 태그 */
+.main-container button {
+  padding: 0px 0px;
+}
+
+/* 로그인 버튼 */
+.main-login-button {
+  width: 329px;
+  height: 64px;
+  margin: 22px 0px 0px 0px;
+}
+
+/* 로그인 버튼 button 태그 */
+.main-login-button button {
+  cursor: pointer;
+  background-color: #DCD6D0;
+  width: 329px;
+  height: 64px;
+  line-height: 60px;
+  text-align: center;
+}
+
+/* 기타 버튼(아이디 찾기/비밀번호 찾기/회원가입) */
+.main-etc-button {
+  margin: 20px 0px 0px 0px;
+}
+
+/* 기타 버튼(아이디 찾기/비밀번호 찾기/회원가입) a태그 */
+.main-etc-button a {
+  font-size: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+/* 푸터 */
+/* #footer {
+  background-color: #DCD6D0;
+  height: 100px;
+  width: 100%;
+} */

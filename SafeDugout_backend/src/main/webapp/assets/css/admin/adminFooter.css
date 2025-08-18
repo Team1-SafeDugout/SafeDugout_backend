@@ -1,0 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+footer {
+	min-height: 100px;
+	width: 100%;
+	background-color: #4D5061;
+	align-content: end;
+	/* transform: translateY(20vh); */
+	position: fiexd;
+	bottom: 0px;	
+}

@@ -1,0 +1,296 @@
+/* border-box 값 적용 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 바디 공간 만들어주기 */
+body,
+html {
+  height: 100%;
+}
+
+/* 바디 */
+body {
+  background-color: #EFEFEF;
+}
+
+/* 검색 컨테이너 */
+.search-container {
+  background-color: #DCD6D0;
+  width: 100vw;
+  height: 100px;
+  /* padding: 0px 50px; */
+  display: flex;
+  justify-content: center
+}
+
+/* 검색창 */
+.search-container input {
+  width: 75vw;
+  height: 80px;
+  margin: 0 30px 0px 50px;
+  padding: 0px 0px 0px 30px;
+  font-size: 24px;
+}
+
+/* 검색 버튼 */
+.search-container button {
+  background-color: #efefef;
+  width: 15vw;
+  height: 80px;
+  margin: 0px 50px 0px 0px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* 검색 컨테이너 button 태그 호버 */
+.search-container button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
+
+/* 삭제하기 버튼 */
+.post-button-delete {
+  width: 100px;
+  height: 30px;
+  background-color: #DCD6D0;
+  color: black;
+  display: none;
+}
+
+/* 가격, 구매 버튼 컨테이너 */
+.text-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 구매 버튼 */
+.main-button-next {
+  border: 2px solid black;
+  background-color: #DCD6D0;
+  width: 181px;
+  height: 56px;
+  margin: 22px 0px 0px 0px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 56px;
+  text-align: center;
+}
+
+/* 왼쪽에 있을 사이드 메뉴와 본 페이지 메뉴를 나눠줄 flex 제공 */
+main {
+  width: 100%;
+  height: fit-content;
+  /* padding-top: 100px; */
+  /* padding-bottom: 100px; */
+  margin: 100px 0px 0px 0px;
+  transform: translateY(-100px);
+  justify-content: center;
+
+  display: flex;
+}
+
+/* 배경 */
+.section-background {
+  margin: 60px 0px 0px 0px;
+
+  min-width: 80%;
+  min-height: fit-content;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+/* 상단 요소들 */
+.section-top-menus {
+  width: 95%;
+  height: 10%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 중단 요소들 */
+.section-middle-menus {
+  width: 95%;
+  height: fit-content;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* 상품 사진이랑 카테고리 날짜 */
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상품 사진 들어갈 공간-> 슬라이드로 간다 */
+.product-image {
+  /* border: 1px solid black; */
+  position: relative;
+  width: 40vh;
+  height: 40vh;
+}
+
+/* 사진 슬라이드 버튼 */
+.product-slide-buttons {
+  position: absolute;
+  width: 40vh;
+  transform: translateY(-22vh);
+  display: none;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* 호버 할때만 보이게 */
+.product-image:hover .product-slide-buttons {
+  display: flex;
+}
+
+/* 이미지 크기조정 */
+.product-image>img {
+  object-fit: fill;
+  width: 40vh;
+  height: 40vh;
+}
+
+/* 상품 등록 날짜 작성자 카테고리 글자 서식 */
+.product-info {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.650);
+}
+
+/* 상품 디테일 */
+.product-detail-container {
+  background-color: #EFEFEF;
+  border: 1px solid black;
+  min-width: 60vh;
+  width: 100vh;
+  min-height: 60vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+}
+
+/* 상품 이름 */
+.product-name {
+  display: flex;
+  width: 100%;
+}
+
+/* 상품 이름 div 태그 */
+.product-name>div {
+  flex: 1;
+  border: 1px solid black;
+  background-color: white;
+  height: 30px;
+  margin-left: 5px;
+  padding: 0 5px;
+}
+
+/* 상품 설명 */
+.product-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* 상품 설명 박스 */
+.product-description>div {
+  border: 1px solid black;
+  background-color: white;
+
+  height: 35vh;
+  width: 100%;
+
+  padding: 0 5px;
+}
+
+/* 거래 방식 */
+.trading-info-container {
+  display: flex;
+  height: 5vh;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+/* 거래 정보 */
+.trading-info {
+  display: flex;
+  width: 100%;
+}
+
+/* 거래 정보 div 태그 */
+.trading-info>div {
+  border: 1px solid black;
+  background-color: white;
+  height: 30px;
+  width: 50%;
+  padding-left: 10px;
+  margin-left: 5px;
+}
+
+/* 상품 가격 */
+.product-price {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 0;
+}
+
+/* 상품 가격 div 태그 */
+.product-price>div {
+  font-size: 32px;
+  font-weight: bold;
+  height: 30px;
+  width: 50%;
+  margin-left: 5px;
+}
+
+/* 하단 컨테이너 */
+.section-bottom-menus {
+  width: 95%;
+  height: fit-content;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+/* 메뉴 공통 */
+.section-bottom-menus,
+.section-middle-menus,
+.section-top-menus {
+  margin: 5px 0;
+}
+
+/* 선 */
+.line {
+  border: 1px solid black;
+  width: 100%;
+  margin: 10px;
+}
+
+/* 버튼 서식 */
+.post-button {
+  width: 100px;
+  height: 30px;
+  background-color: #DCD6D0;
+  color: black;
+}

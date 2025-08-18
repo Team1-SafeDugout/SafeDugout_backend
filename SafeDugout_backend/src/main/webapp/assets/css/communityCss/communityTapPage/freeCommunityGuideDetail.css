@@ -1,0 +1,93 @@
+/* teamNoticeBoard.css (클래스명 변경본) */
+
+.free-guide-board-detail {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  border-radius: 6px;
+  color: black;
+  box-sizing: border-box;
+}
+
+.free-guide-board-detail h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  color: black;
+}
+
+.free-guide-board-header {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  margin-bottom: 25px;
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: white;
+  font-weight: bold;
+  color: black;
+}
+
+.free-guide-board-header span {
+  margin-right: 12px;
+}
+
+.free-guide-board-header p {
+  margin: 0;
+  font-weight: 600;
+  color: black;
+}
+
+.free-guide-board-btn {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.free-guide-board-btn a {
+  padding: 5px 12px;
+  font-size: 13px;
+  border: 1px solid black;
+  cursor: pointer;
+  min-width: 40px;
+  background: #DCD6D0;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+}
+
+.free-guide-board-btn a:hover {
+  text-decoration: underline;
+}
+
+.free-guide-board-content {
+  border: 1px solid #f5f5f5;
+  padding: 25px 30px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: black;
+  margin-bottom: 25px;
+  position: relative;
+  min-height: 400px;
+  background-color: #fff;
+}
+
+/* 문단 간 간격 */
+.free-guide-board-content p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* 작성일자 스타일 */
+.free-guide-date {
+  text-align: left;
+  font-size: 14px;
+  color: black;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 12px;
+}
+

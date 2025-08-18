@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 전체 영역 */
+.team-youtube-board {
+  width: 80%;
+  margin: 40px auto;
+}
+
+/* 제목 */
+.team-youtube-board h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* 팀 공식 사이트 링크 */
+.team-youtube-board a {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.team-youtube-board a:hover {
+  text-decoration: underline;
+}
+
+/* 리스트 전체 */
+#team-youtube-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+/* 헤더 */
+.team-youtube-list-header {
+  display: flex;
+  color: black;
+  font-weight: bold;
+  padding: 12px 0;
+  border: 1px solid #ccc;
+}
+
+.team-youtube-num{
+  /* flex: 1; */
+  text-align: left;
+  color: black;
+  margin-left: 20px;
+}
+.team-youtube-title {
+  flex: 1;
+  color: black;
+  text-align: center;
+}
+
+/* 각 행 */
+.team-youtube-list-row {
+  display: flex;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 12px 0;
+  
+}
+
+.team-youtube-list-row:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.team-youtube-list-row span {
+  flex: 1;
+  text-align: left;
+  color: #333;
+  margin-left: 20px;
+}

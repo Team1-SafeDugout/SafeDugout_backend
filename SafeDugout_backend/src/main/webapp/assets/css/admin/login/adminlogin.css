@@ -1,0 +1,109 @@
+/* --------------------------------------------------------기초 설정------------------------------------------------------------ */
+
+* {
+	padding: 0;
+	margin: 0;	
+	box-sizing: border-box;
+}
+
+/* 바디 공간 만들어주기 */
+body ,html{
+	height: 100%;
+}
+
+body{
+	background-color: #EFEFEF;
+}
+
+/* 왼쪽에 있을 사이드 메뉴와 본 페이지 메뉴를 나눠줄 flex 제공 */
+main {
+	min-height: 100vh;
+	height: fit-content;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	transform: translateY(-100px);
+
+	display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+li{
+	list-style-type: none;
+}
+
+/* --------------------------------------------------------본문------------------------------------------------------------ */
+/* 메인 */
+.main-container {
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-title {
+  position: absolute;
+  top: 140px;
+  left: 100px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.main-container form {
+  margin: 0px auto;
+}
+
+.main-form-box {
+  background-color: white;
+  width: 500px;
+  height: 470px;
+  padding: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.main-input-message {
+  width: 325px;
+  margin: 40px 0px 10px 0px;
+}
+
+.main-input-blank input {
+  width: 310px;
+  height: 60px;
+  padding: 0px 0px 0px 15px;
+  font-size: 17px;
+
+}
+
+.main-input-fail-message {
+  margin: 22px 0px 0px 0px;
+  font-size: 15px;
+  color: red;
+  display: none;
+}
+
+.main-container button {
+  padding: 0px 0px;
+}
+
+.main-login-button {
+  width: 329px;
+  height: 64px;
+  margin: 22px 0px 0px 0px;
+}
+
+.main-login-button button {
+  cursor: pointer;
+}
+
+.main-login-button button {
+  background-color: #4D5061;
+  width: 329px;
+  height: 64px;
+  line-height: 60px;
+  text-align: center;
+  color: white;
+}

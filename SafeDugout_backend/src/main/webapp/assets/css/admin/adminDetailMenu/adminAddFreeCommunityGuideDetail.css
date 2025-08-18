@@ -1,0 +1,155 @@
+/* --------------------------------------------------------기초 설정------------------------------------------------------------ */
+
+* {
+	padding: 0;
+	margin: 0;	
+	box-sizing: border-box;
+}
+
+/* 바디 공간 만들어주기 */
+body ,html{
+	height: 100%;
+}
+
+body{
+	background-color: #EFEFEF;
+}
+
+a{
+  text-decoration-line: none;
+  text-decoration-color: none;
+  color: inherit;
+}
+
+/* 왼쪽에 있을 사이드 메뉴와 본 페이지 메뉴를 나눠줄 flex 제공 */
+main {
+  width: 1200px;
+	min-height: 800px;
+	height: fit-content;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	/* transform: translateY(-100px); */
+  justify-content: center;
+
+	display: flex;
+  margin: 0 auto;
+}
+
+/* 배경 */
+.section-background{
+  min-width: 80%;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.section-background>form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 제목 서식 */
+.title{
+  width: 95%;
+  margin: 10px 0;
+  min-height: 3vh;
+}
+
+.title>div{
+  font-size: 15px;
+}
+
+.title>input{
+  width: 100%;
+  font-size: 15px;
+  height: 100%;
+}
+
+/* 본문 서식 */
+
+.content{
+  width: 95%;
+  height:auto;
+  margin-top: 10px;
+}
+
+.content>div:nth-child(2){
+  border: 1px solid black;
+  width: 100%;
+  min-height: 3vh;
+  padding-left: 5px;
+}
+
+.content>textarea{
+  resize: none;
+  width: 100%;
+  min-height: 60vh;
+  border-radius: 0%;
+}
+
+/* 파일 첨부 서식 */
+
+.file{
+  width: 95%;
+  min-height: 3vh;
+
+  border: 1px solid black;
+  align-items: center;
+  display: flex;
+
+  margin-top: 10px;
+  font-size: 15px;
+}
+#file-area{
+  display: none;
+}
+
+.file>label{
+  width: 10%;
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.file>div:nth-child(3){
+  width: 80%;
+  font-size: 8px;
+}
+
+.file>div:nth-child(4){
+  width: 10%;
+  text-align: center;
+  border-left: 1px solid black;
+}
+
+/* 저장 버튼 서식 */
+.buttons{
+  min-height: 3vh;
+  width: 95%;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+#save-button, #cancle-button{
+  min-width: 100px;
+  min-height: 30px;
+}
+
+#save-button{
+  background-color: #4D5061;
+}
+
+#cancle-button{
+  border: 1px solid black;
+  text-align: center;
+}
+
+.line{
+  width: 90%;
+}

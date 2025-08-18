@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 카멜 케이스 매핑 설정 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<!-- 쿼리 결과 필드가 null인 경우 누락되지 않도록 설정 -->
+		<setting name="callSettersOnNulls" value="true" />
+
+		<!-- 쿼리에 보내는 파라미터가 null인 경우 오류가 발생하는 것을 방지 설정 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<!-- DTO 별칭 설정 추후 추가 -->
+	<!-- <typeAliases>
+		<typeAlias type="com.example.app.dto.MemberDTO"
+			alias="MemberDTO"></typeAlias>
+	</typeAliases> -->
+
+	<environments default="oracle">
+		<environment id="oracle">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521/xe" />
+				<property name="username" value="kdt" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- mapper.xml 추후 추가 -->
+	<!-- <mappers>
+		<mapper resource="com/example/mapper/MemberMapper.xml" />
+	</mappers> -->
+</configuration>
+
+
+
+
+
+
+

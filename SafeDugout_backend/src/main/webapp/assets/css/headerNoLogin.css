@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	height: 100px;
+	width: 100%;
+	background-color: #DCD6D0;
+	padding: 0px;
+
+}
+
+.header-container {
+	background-color: #DCD6D0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-left {
+	height: 100px;
+}
+
+.main-logo img {
+	height: 100px;
+	width: 100px;
+}
+
+.header-right {
+	height: 100px;
+	display: flex;
+	float: right;
+	gap: 15px;
+	padding-right: 10px;
+
+}
+
+.notice {
+	display: flex;
+	line-height: 100px;
+}
+
+.login {
+	display: flex;
+	line-height: 100px;
+}
+
+.register {
+	display: flex;
+	line-height: 100px;
+}

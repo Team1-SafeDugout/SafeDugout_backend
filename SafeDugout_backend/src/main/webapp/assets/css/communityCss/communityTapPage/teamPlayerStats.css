@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 1200px;
+  min-height: 800px;
+  margin: 0 auto;
+}
+
+.team-player-stats {
+  padding: 20px 0;
+}
+
+.team-player-stats h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* 탭 버튼 */
+.team-stats-switch {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.team-stats-switch button {
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background: white;
+}
+
+.team-stats-switch button.active,
+.team-stats-switch button:hover {
+  background: #f5f5f5;
+}
+
+/* 표 컨테이너 */
+.team-stats-table {
+  background: #f5f5f5;
+  overflow-x: auto;
+}
+
+.team-stats-header,
+.team-stats-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.team-stats-header div,
+.team-stats-row div {
+  flex: 1;
+  min-width: 60px; 
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 데이터 영역 */
+.team-stats-data {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,61 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 전체 영역 */
+.team-song-list-team {
+  width: 1200px;
+  margin: 40px auto;
+  min-height: 800px;
+}
+
+/* 제목 */
+.team-song-list-team h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+
+/* 리스트 전체 */
+#team-song-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+/* 헤더 */
+.team-song-list-header {
+  display: flex;
+  color: black;
+  font-weight: bold;
+  padding: 12px 0;
+  border: 1px solid #ccc;
+}
+
+.team-song-num{
+  /* flex: 1; */
+  text-align: left;
+  color: black;
+  margin-left: 20px;
+}
+.team-song-title {
+  flex: 1;
+  color: black;
+  text-align: center;
+}
+
+/* 각 행 */
+.team-song-list-row {
+  display: flex;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 12px 0;
+}
+
+.team-song-list-row span {
+  text-align: center;
+  color: #333;
+}

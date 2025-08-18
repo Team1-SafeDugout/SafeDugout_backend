@@ -1,0 +1,132 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 메인 */
+.main-container {
+  width: 100%;
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+/* 페이지 큰 제목 */
+.main-title {
+  position: absolute;
+  top: 140px;
+  left: 100px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 페이지 작은 제목 */
+.main-small-title {
+  position: absolute;
+  top: 190px;
+  left: 580px;
+  font-size: 24px;
+}
+
+/* 폼 박스 */
+.main-form-box {
+  /* background-color: aqua; */
+  width: 900px;
+  height: 176px;
+  /* padding: 25px 0px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 폼 박스 제목 */
+.main-form-title {
+  width: 100%;
+  margin: 140px 0px 0px;
+  font-size: 15px;
+}
+
+/* 폼 제목 텍스트 */
+.main-form-title span {
+  color: #D9D9D9;
+  font-size: 15px;
+}
+
+/* input 컨테이너 */
+.main-input-container {
+  background-color: #D9D9D9;
+  width: 100%;
+  height: 380px;
+  padding: 9px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/* 입력 항목 */
+.main-input-list {
+  /* background-color: aquamarine; */
+  width: 100%;
+  height: 75px;
+  display: flex;
+}
+
+/* 입력메시지 */
+.main-input-name {
+  width: 120px;
+  height: 75px;
+  text-align: center;
+  line-height: 65px;
+  font-size: 16px;
+}
+
+/* 오른쪽 네모칸 */
+.main-input-box {
+  background-color: white;
+  width: 770px;
+  height: 67px;
+  margin: 0px 7px 0px 0px;
+  /* line-height: 65px; */
+}
+
+/* 오른쪽 네모칸 input 태그 */
+.main-input-box input {
+  width: 270px;
+  margin: 0px 0px 0px 10px;
+  font-size: 15px;
+}
+
+/* 기타 버튼 */
+.main-input-box button {
+  margin: 0px 0px 0px 10px;
+}
+
+/* 입력 오류 메시지 */
+.main-error-message {
+  height: 15px;
+  margin: 5px 0px 0px 10px;
+  color: red;
+  font-size: 10px;
+}
+
+/* 입력 오류 메시지 span 태그 */
+.main-error-message span {
+  display: none;
+}
+
+/* 버튼 컨테이너 */
+.main-button-container {
+  position: absolute;
+  bottom: 205px;
+}
+
+/* 버튼 컨테이너 button 태그 */
+.main-button-container button {
+  background-color: #DCD6D0;
+  width: 185px;
+  height: 60px;
+  margin: 0px 10px;
+  cursor: pointer;
+}

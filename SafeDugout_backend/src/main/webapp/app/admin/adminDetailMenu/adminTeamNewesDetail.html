@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminDetailMenu/adminTeamNewesDetail.css">
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminFooter.css">
+  <script async src="../../../../webapp/assets/js/admin/adminDetailMenu/adminAddTeamNewsDetail.js"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <main>
+    <seciont class="section-background">
+      <!-- 상단 버튼 -->
+      <section class = "section-bottom-buttons">
+        <form action="" method="get">
+          <button class = "post-button" type ="button" id = "fix-button"> 수정 </button>
+          <button class = "post-button" type ="button" id = "delete-button"> 삭제 </button>
+        </form>
+      </section>
+
+      <!-- 본문 공간 -->
+      <section class="section-post">
+        <div class="post-title-container">
+          <div class="title"> 제목 :  <div> 팀뉴스 제목입니다 </div> </div>
+          <div class="author"> 작성자 :  <div> 이태호 </div> </div>
+        </div>
+
+        <div class = "line"> </div>
+
+        <div class="post-content-container">
+          <div> 내용 </div>
+          <div class="post-content"> 내용입니다 </div>
+        </div>
+      </section>
+
+      <section class = "section-bottom">
+        <div class="post-date"> 0000.00.00 </div>
+        <div class="post-url"> <a href ="https://news.naver.com/"> 기사 원문 </a> </div>
+      </section>
+
+
+      <!-- 하단 버튼 -->
+      <section class = "section-bottom-buttons">
+        <form action="" method="get">
+          <button class = "post-button" type ="button" onclick = "location.href = './../adminMenu/adminManageTeamNews.html' " > 
+            목록으로 
+          </button>
+        </form>
+
+        <form action="" method="get">
+          <button class = "post-button" type ="submit"> 이전 글 </button>
+          <button class = "post-button" type ="submit"> 다음 글 </button>
+        </form>
+      </section>
+    </seciont>
+  </main>
+  <div id="footer"></div>
+  <script src="./../../../assets/js/admin/adminHeaderFooterInclude.js"></script>
+</body>
+
+</html>

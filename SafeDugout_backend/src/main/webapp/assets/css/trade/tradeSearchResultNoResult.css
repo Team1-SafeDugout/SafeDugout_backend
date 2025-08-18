@@ -1,0 +1,292 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 검색 컨테이너 */
+.search-container {
+  background-color: #DCD6D0;
+  width: 100vw;
+  height: 100px;
+  /* padding: 0px 50px; */
+  display: flex;
+  justify-content: center
+}
+
+/* 검색창 */
+.search-container input {
+  width: 75vw;
+  height: 80px;
+  margin: 0 30px 0px 50px;
+  padding: 0px 0px 0px 30px;
+  font-size: 24px;
+}
+
+/* 검색 버튼 */
+.search-container button {
+  background-color: #efefef;
+  width: 15vw;
+  height: 80px;
+  margin: 0px 50px 0px 0px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* 검색 버튼 호버 */
+.search-container button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
+
+
+/* 메인 컨테이너*/
+.main-container {
+  width: 100vw;
+  min-height: 750px;
+  padding: 30px 0px 0px 0px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* 제목 */
+.title {
+  position: absolute;
+  top: 140px;
+  left: 100px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 소제목 */
+.small-title {
+  position: absolute;
+  top: 190px;
+  left: 580px;
+  font-size: 24px;
+
+}
+
+/* aside 컨테이너 */
+.aside-container {
+  background-color: #DCD6D0;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 상품 카테고리 텍스트 */
+.aside-text {
+  margin: 7px 0px 0px 0px;
+  font-size: 15px;
+}
+
+/* 상품 카테고리 ul */
+.aside-container ul {
+  list-style-type: none;
+  padding: 0px 0px;
+  margin: 7px 0px;
+  background-color: white;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 카테고리 */
+.category {
+  border-bottom: 1px solid black;
+  width: 135px;
+  height: 21px;
+  margin: 7px 0px;
+  text-align: center;
+}
+
+/* 첫번째 li 태그 */
+.category-container>li:nth-child(1) .category {
+  background-color: #DCD6D0;
+}
+
+/* 카테고리 a 태그 */
+.category a {
+  color: black;
+  text-decoration: none;
+}
+
+/* 상품 종류 텍스트 호버 */
+.category a:hover {
+  cursor: pointer;
+}
+
+/* 오른쪽 section 컨테이너 */
+.section-container {
+  width: 1090px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 팀 로고 바 */
+.team-bar {
+  background-color: #DCD6D0;
+  border: solid 1px black;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* 팀 선택 텍스트 */
+.team-bar-text {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 15px;
+}
+
+/* 팀 로고 컨테이너 */
+.team-bar-logo-container {
+  background-color: white;
+  width: 970px;
+  height: 75px;
+  padding: 0px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 팀 로고(모든 팀 버튼 포함) */
+.team-bar-logo {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 15px;
+}
+
+/* 모든 팀 버튼 */
+.team-bar-logo:nth-child(1) {
+  border: 1px solid orangered;
+}
+
+/* 모든 팀 버튼 첫번째 요소 a 태그*/
+.team-bar-logo:nth-child(1) a {
+  color: black;
+  text-decoration: none;
+}
+
+/* 모든 팀 버튼 첫번째 요소 a 태그 호버*/
+.team-bar-logo:nth-child(1) a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* 팀 로고 img */
+.team-bar-logo img {
+  width: 70px;
+  height: 70px;
+}
+
+/* 로고 하단 컨테이너 */
+.page-bar {
+  border-bottom: 1px solid black;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 조회 결과 - 검색어 */
+.big-text {
+  font-size: 24px;
+  font-weight: 800;
+  /* display: none; */
+}
+
+/* 조회 결과 - 개수, 팀, 상품 종류 */
+.small-text {
+  margin: 0px 10px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 35px;
+}
+
+/* 페이지 버튼 컨테이너 */
+.page-container {
+  width: 205px;
+  height: 22px;
+  margin: 6px 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 페이지 버튼 */
+.page-num {
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  width: 15px;
+  height: 20px;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
+  color: black;
+}
+
+/* 페이지 버튼 첫번째 요소 */
+.page-num:nth-child(1) {
+  background-color: #DCD6D0;
+}
+
+/* 페이지 버튼 a 태그 */
+.page-num a {
+  color: black;
+  text-decoration: none;
+}
+
+/* 페이지 버튼 첫번째 요소 a 태그 */
+.page-num:nth-child(1) a {
+  color: white;
+}
+
+/* 페이지 버튼 a 태그 호버 */
+.page-num a:hover {
+  text-decoration: underline;
+}
+
+/* 오른쪽 화살표 버튼 */
+.arrow-button {
+  width: 15px;
+  height: 20px;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
+}
+
+/* 오른쪽 화살표 버튼 a 태그 */
+.arrow-button a {
+  color: #DCD6D0;
+  text-decoration: none;
+}
+
+/* 오른쪽 화살표 버튼 a 태그 호버 */
+.arrow-button a:hover {
+  text-decoration: underline;
+}
+
+/* 상품 컨테이너 */
+.product-container {
+  width: 100%;
+  height: 540px;
+  display: flex;
+  justify-content: start;
+  /* flex-wrap: wrap; */
+}
+
+/* 결과 없음 텍스트 */
+.no-result-text {
+  margin: 15px 0px 0px 10px;
+  font-size: 15px;
+}

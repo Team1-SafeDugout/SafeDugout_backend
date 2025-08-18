@@ -1,0 +1,121 @@
+/* 기본 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h4 {
+  margin-bottom: 20px;
+}
+
+/* 컨테이너 */
+.free-board-list-container {
+  width: 1200px;
+  min-height: 800px;
+  display: flex;
+  margin: 40px auto;
+  flex-direction: column; 
+}
+.free-board-container{
+  margin-bottom: 40px;
+}
+
+/* 자유 게시판 헤더 */
+.free-board-header {
+  display: flex;
+  align-items: center;
+  border: 1px solid #f5f5f5;
+  background-color: #DCD6D0;
+  font-weight: bold;
+  padding: 10px 5px;
+  border-bottom: 1px solid #DCD6D0;
+}
+
+/* 자유 게시판 리스트 항목 */
+.free-board-list {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+
+.free-board-list:hover {
+  background-color: #dcd6d03e;
+}
+
+/* 칸별 너비 및 정렬 */
+/* 글번호 */
+.free-board-header > div:nth-child(1),
+.free-board-list > div:nth-child(1) {
+  width: 80px;
+  text-align: center;
+}
+
+/* 제목 */
+.free-board-header > div:nth-child(2),
+.free-board-list > div:nth-child(2) {
+  flex: 1;
+  padding-left: 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 작성자, 작성일자 */
+.free-board-header > div:nth-child(3),
+.free-board-header > div:nth-child(4),
+.free-board-list > div:nth-child(3),
+.free-board-list > div:nth-child(4) {
+  width: 120px;
+  text-align: center;
+}
+
+
+/* 리스트 내 a 태그 스타일 */
+.free-board-list div > a {
+  color: black;
+  text-decoration: none;
+}
+
+.free-board-list div > a:hover {
+  text-decoration: underline;
+  color: #DCD6D0;
+}
+
+/* 현재 페이지 번호 */
+.list-pagenumber{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.list-pagenumber>div{
+  margin: 1px;
+}
+
+
+.list-pagenumber>ul{
+  display: flex;
+  list-style-type: none;
+}
+
+.list-pagenumber>ul>li{
+  border: 1px solid black;
+  margin: 0 10px;
+  width: 25px;
+  text-align: center;
+}
+
+.list-pagenumber>ul>li:hover{
+  background-color: #DCD6D0;
+  cursor: pointer;
+}
+
+.list-pagenumber>ul>li:nth-child(1){
+  color:black;
+  
+}
