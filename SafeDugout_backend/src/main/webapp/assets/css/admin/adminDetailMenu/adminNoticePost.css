@@ -1,0 +1,129 @@
+/* --------------------------------------------------------기초 설정------------------------------------------------------------ */
+
+* {
+	padding: 0;
+	margin: 0;	
+	box-sizing: border-box;
+}
+
+/* 바디 공간 만들어주기 */
+body ,html{
+	height: 100%;
+}
+
+body{
+	background-color: #EFEFEF;
+}
+
+a{
+  text-decoration-line: none;
+  text-decoration-color: none;
+  color: inherit;
+}
+
+/* 왼쪽에 있을 사이드 메뉴와 본 페이지 메뉴를 나눠줄 flex 제공 */
+main {
+  width: 1200px;
+	min-height: 800px;
+	height: fit-content;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	/* transform: translateY(-100px); */
+  justify-content: center;
+
+	display: flex;
+  margin: 0 auto;
+}
+
+/* 배경 */
+.section-background{
+  min-width: 80%;
+  min-height: 100vh;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid black;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-date, .section-post{
+  width: 95%;
+}
+
+/* 본문 배경 */
+
+.section-post{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 제목 서식 */
+.post-title-container{
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title{
+  font-size: 15px;
+  height: 30px;
+  border: 1px solid black;
+  padding: 3px 15px;
+}
+
+/* 본문 서식 */
+.post-content-container{
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-content{
+  font-size: 15px;
+  height: 80vh;
+  border: 1px solid black;
+  padding: 3px 15px;
+}
+
+/* 하단 버튼 */
+.section-bottom-buttons{
+  margin: 5px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 하단 버튼 */
+.section-top-buttons{
+  margin: 5px;
+  width: 95%;
+  display: flex;
+  justify-content: end;
+}
+
+.post-button{
+  width: 100px;
+  height: 30px;
+}
+
+.section-bottom-buttons>form>button:first-child , .section-top-buttons>form>button:first-child{
+  background-color: #4D5061;
+  color:white
+}
+
+.section-bottom-buttons>form>button:last-child , .section-top-buttons>form>button:last-child{
+  background-color: white;
+  color:black
+}
+
+.line{
+  border: 1px solid black;
+  width: 100%;
+  margin: 10px;
+}

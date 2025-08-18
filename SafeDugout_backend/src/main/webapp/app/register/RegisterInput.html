@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원정보 입력 페이지(회원가입)</title>
+  <link rel="stylesheet" href="./../../assets/css/register/RegisterInput.css">
+  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="./../../assets/css/footer.css">
+  <script defer src="./../../assets/js/register/RegisterInput.js"></script>
+</head>
+
+<!-- 바디 -->
+
+<body>
+  <!-- 헤더 -->
+  <div id="header"></div>
+  <!-- 메인 -->
+  <main>
+    <!-- 메인 컨테이너 -->
+    <div class="main-container">
+      <!-- 페이지 큰 제목 -->
+      <div class="main-title">
+        회원 가입
+      </div>
+      <!-- 페이지 작은 제목 -->
+      <div class="main-small-title">
+        회원 정보 입력
+      </div>
+      <!-- form 태그 -->
+      <form action="" method="post">
+        <!-- 폼 박스 -->
+        <div class="main-form-box">
+          <!-- ul 태그 -->
+          <ul>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span class="requiredValue">* 필수 입력 값입니다.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <!-- 입력 메시지 -->
+                <div class="main-input-list-text">이름</div>
+                <!-- 입력 input -->
+                <input type="text" placeholder="이름을 입력하세요" id="userName">
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span class="requiredValue">* 필수 입력 값입니다.</span><span>* 아이디가 유효하지
+                  않습니다.</span><span>* 아이디가 중복되었거나
+                  중복 확인이 되지 않았습니다.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <!-- 입력 메시지 -->
+                <div class="main-input-list-text">아이디</div>
+                <!-- 입력 input -->
+                <input type="text" placeholder="영문, 숫자 조합 6자 이상" id="id">
+                <!-- 입력 button -->
+                <button type="button">중복 확인</button>
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span class="requiredValue">* 필수 입력 값입니다.</span><span>* 비밀번호가 유효하지
+                  않습니다.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <div class="main-input-list-text">비밀번호</div>
+                <input type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" id="pw">
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span>* 비밀번호가 일치하지 않습니다.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <div class="main-input-list-text">비밀번호 확인</div>
+                <input type="password" placeholder="비밀번호를 재입력하세요" id="rePw">
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span class="requiredValue">* 필수 입력 값입니다.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <div class="main-input-list-text">핸드폰 번호</div>
+                <input type="text" placeholder="핸드폰 번호를 입력하세요" id="phoneNumber">
+                <button type="button">인증번호 발송</button>
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span>* 인증번호가 일치하지 않거나 인증번호 확인이 되지 않았습니다.
+                  인증번호 발송 후 인증 버튼을 눌러주세요.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <div class="main-input-list-text">인증 번호 입력</div>
+                <input type="text" placeholder="인증 번호 입력" id="code">
+                <button type="button">인증</button>
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 오류 메시지 -->
+              <div class="main-input-error-message"><span class="requiredValue">* 필수 입력 값입니다.</span><span>* 형식이 올바르지
+                  않습니다.</span></div>
+              <!-- 입력 컨테이너 -->
+              <div class="main-input-list">
+                <div class="main-input-list-text">이메일</div>
+                <input type="email" placeholder="이메일을 입력하세요" id="email">
+                <div class="main-input-email-at"></div>
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 컨테이너(선택값) -->
+              <div class="main-input-list-optional">
+                <!-- 입력 -->
+                <div class="main-input-list-text">주소</div>
+                <!-- 우편번호 입력되는 칸 -->
+                <input type="text" readonly style="pointer-events: none" id="postalCode">
+                <!-- 우편번호 버튼 -->
+                <button type="button">우편번호</button>
+              </div>
+              <!-- 주소 입력 컨테이너(선택값) -->
+              <div class="main-input-address">
+                <!-- 입력 메시지 div -->
+                <div class="main-input-list-text"></div>
+                <!-- 주소 입력 칸 -->
+                <input type="text" readonly style="pointer-events: none;" id="address">
+              </div>
+              <!-- 주소 입력 컨테이너(선택값) -->
+              <div class="main-input-address">
+                <!-- 입력 메시지 div -->
+                <div class="main-input-list-text"></div>
+                <!-- 주소 입력 칸 -->
+                <input type="text" readonly style="pointer-events: none;" id="detailAddress">
+              </div>
+            </li>
+            <!-- li 태그 -->
+            <li>
+              <!-- 입력 컨테이너(선택값) -->
+              <div class="main-input-list-optional">
+                <!-- 입력 메시지 -->
+                <div class="main-input-list-text">MY팀</div>
+                <!-- 드롭다운 메뉴 -->
+                <select name="" id="myTeam" placeholder="MY팀을 선택하세요">
+                  <option value="unselected">MY팀을 선택하세요(미정)</option>
+                  <option value="삼성 라이온즈">삼성 라이온즈</option>
+                  <option value="LG 트윈스">LG 트윈스</option>
+                  <option value="두산 베어스">두산 베어스</option>
+                  <option value="NC 다이노스">NC 다이노스</option>
+                  <option value="키움 히어로즈">키움 히어로즈</option>
+                  <option value="KT 위즈">KT 위즈</option>
+                  <option value="KIA 타이거즈">KIA 타이거즈</option>
+                  <option value="SSG 랜더스">SSG 랜더스</option>
+                  <option value="롯데 자이언츠">롯데 자이언츠</option>
+                  <option value="한화 이글스">한화 이글스</option>
+                </select>
+              </div>
+            </li>
+          </ul>
+          <!-- 버튼 컨테이너 -->
+          <div class="main-button-container">
+            <!-- 회원 가입 버튼 -->
+            <button type="button" id="registerBtn">
+              <!-- 회원 가입 텍스트 -->
+              <div class="main-button-next">회원 가입
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+  <!-- 푸터 -->
+  <div id="footer"></div>
+  <!-- 스크립트 -->
+  <script src="./../../assets/js/include.js"></script>
+</body>
+
+</html>

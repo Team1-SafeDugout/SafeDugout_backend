@@ -1,0 +1,180 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 검색 컨테이너 */
+.search-container {
+  background-color: #DCD6D0;
+  width: 100vw;
+  height: 100px;
+  /* padding: 0px 50px; */
+  display: flex;
+  justify-content: center
+}
+
+/* 검색어 입력칸 */
+.search-container input {
+  width: 75vw;
+  height: 80px;
+  margin: 0 30px 0px 50px;
+  padding: 0px 0px 0px 30px;
+  font-size: 24px;
+}
+
+/* 검색 버튼 */
+.search-container button {
+  background-color: #efefef;
+  width: 15vw;
+  height: 80px;
+  margin: 0px 50px 0px 0px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* 검색 버튼 호버 */
+.search-container button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
+
+/* 메인 컨테이너 */
+.main-container {
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 메시지 박스 */
+.main-message-container {
+  background-color: #efefef;
+  width: 800px;
+  height: 580px;
+  margin: 25px 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 상품 정보 항목 */
+.container-full {
+  width: 710px;
+  margin: 50px 0px 0px 0px;
+  display: flex;
+}
+
+/* 하단 컨테이너 */
+.container-full-bottom {
+  width: 710px;
+  margin: 40px 0px 0px 0px;
+  display: flex;
+}
+
+/* 왼쪽 컨테이너 */
+.container-left {
+  width: 250px;
+  margin: 40px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+/* 포인트 종류 */
+.point-name {
+  width: 130px;
+  margin: 0px 120px 0px 0px;
+  font-size: 15px;
+}
+
+/* 포인트 값 */
+.point-amount {
+  width: 180px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: end;
+}
+
+/* 상품 이미지 */
+.container-right img {
+  width: 170px;
+  height: 170px;
+}
+
+/* 상품 텍스트 */
+.product-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 상품 정보 텍스트 */
+.register-info-text {
+  margin-right: 10px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 등록 값 */
+.register-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 긴 검은선 */
+.long-line {
+  width: 790px;
+  border-bottom: 1px solid black;
+  margin: 50px 0px 0px 0px;
+}
+
+/* 짧은 검은선 */
+.short-line {
+  width: 710px;
+  border-bottom: 1px solid black;
+}
+
+/* '상품 구매' */
+.container-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 50px 0px 0px 0px;
+}
+
+/* 버튼 컨테이너 */
+.main-button-container {}
+
+/* 버튼 컨테이너 button 태그 */
+.main-button-container button {
+  background-color: #DCD6D0;
+  width: 185px;
+  height: 60px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+/* 확인 버튼 텍스트 */
+.main-button-next {
+  border: 2px solid black;
+  background-color: #DCD6D0;
+  width: 181px;
+  height: 56px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 60px;
+  text-align: center;
+}
+
+/* 버튼 컨테이너 a 태그 */
+.main-button-container a {
+  margin: 0px 10px;
+}
+
+/* 푸터 */
+/* #footer {
+  background-color: #DCD6D0;
+  height: 100px;
+  width: 100%;
+} */

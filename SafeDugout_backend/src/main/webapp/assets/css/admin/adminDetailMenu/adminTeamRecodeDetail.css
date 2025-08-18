@@ -1,0 +1,183 @@
+/* --------------------------------------------------------기초 설정------------------------------------------------------------ */
+
+* {
+	padding: 0;
+	margin: 0;	
+	box-sizing: border-box;
+}
+
+/* 바디 공간 만들어주기 */
+body ,html{
+	height: 100%;
+}
+
+body{
+	background-color: #EFEFEF;
+}
+
+a{
+  text-decoration-line: none;
+  text-decoration-color: none;
+  color: inherit;
+}
+
+/* 왼쪽에 있을 사이드 메뉴와 본 페이지 메뉴를 나눠줄 flex 제공 */
+main {
+  width: 1200px;
+	min-height: 800px;
+	height: fit-content;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	/* transform: translateY(-100px); */
+  justify-content: center;
+
+	display: flex;
+  margin: 0 auto;
+}
+
+/* 배경 */
+.section-background{
+  min-width: 80%;
+  min-height: 100vh;
+  height:max-content;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh 1%;
+}
+
+/* 상단 메뉴 */
+.top-menu, .bottom-menu{
+  width: 100%;
+}
+
+.top-menu{
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  font-size: 32;
+  font-weight: bold;
+}
+
+.team-icon-box{
+  min-width: 10vh;
+  min-height: 10vh;
+}
+
+.team-icon-box>img{
+  height: 10vh;
+  height: 10vh;
+  position:relative;
+  object-fit: cover;
+}
+
+
+/* 하단 메뉴 */
+
+.bottom-menu{
+  min-height: 90vh;
+  min-width: 100%;
+  width: fit-content;
+  display: flex;
+}
+
+/* 하단 메뉴 중 왼쪽(선수 기록들, 우승 년도) */
+
+.left-menu{
+  min-width: 60%;
+  min-height: 100vh;
+}
+
+.team-stats{
+  border: 1px solid black;
+  min-height: 80vh;
+  margin-bottom: 1.5vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.stat-background{
+  flex:1;
+  width: 95%;
+  min-height: 30vh;
+  border: 1px solid black;
+  margin: 1vh 0;
+}
+
+.stat-title{
+  min-height: 3vh;
+  border-bottom: 1px solid black;
+}
+
+.stat-container{
+  display: flex;
+  flex-direction: column;
+  font-size: 8px;
+}
+
+.stat-name{
+  display: flex;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background-color: #4D5061;
+  color: white;
+}
+.stat-name>div{
+  flex:1;
+  border-right: 1px solid black;
+}
+
+.stat-ul>li{
+  display: flex;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.stat-ul>li>div{
+  flex: 1;
+  border-right: 1px solid black;
+}
+
+
+.win-year{
+  border: 1px solid black;
+  min-height: 30vh;
+  display: flex;
+}
+
+/* 하단 메뉴 중 오른쪽(역대 순위) */
+
+.right-menu{
+  min-width: 40%;
+  height: 80vh;
+  padding: 0 1.5vh;
+}
+
+.team-year-rating{
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* 목록으로 버튼 서식 */
+.buttons{
+  min-height: 3vh;
+  width:100%;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+#to-menu{
+  min-width: 10vh;
+  min-height: 3vh;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  background-color: #4D5061;
+  color:white;
+}

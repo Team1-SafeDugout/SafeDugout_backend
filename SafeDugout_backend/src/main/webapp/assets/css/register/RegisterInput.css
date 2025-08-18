@@ -1,0 +1,168 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 헤더 */
+/* #header {
+  background-color: #DCD6D0;
+  height: 100px;
+} */
+
+/* 메인 */
+.main-container {
+  width: 100%;
+  min-height: 750px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 페이지 큰 제목 */
+.main-title {
+  position: absolute;
+  top: 140px;
+  left: 100px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* 페이지 작은 제목 */
+.main-small-title {
+  width: 740px;
+  position: absolute;
+  top: 190px;
+  /* left: 580px; */
+  font-size: 24px;
+
+}
+
+/* 폼 컨테이너 */
+.main-form-box {
+  background-color: #EFEFEF;
+  width: 740px;
+  height: 750px;
+  margin: 150px 0px 100px 0px;
+  padding: 10px 0px 0px 0px;
+  /* display: flex; */
+  /* justify-content: center; */
+  position: relative;
+}
+
+/* 폼 박스 ul 태그 */
+.main-form-box ul {
+  padding-inline-start: 0px;
+  list-style-type: none;
+}
+
+/* 입력 컨테이너 */
+.main-input-list {
+  /* background-color: aqua; */
+  height: 30px;
+  margin: 0px 120px 10px 120px;
+  display: flex;
+}
+
+/* 입력 컨테이너(선택값) */
+.main-input-list-optional {
+  /* background-color: aqua; */
+  height: 30px;
+  margin: 20px 120px 0px 120px;
+  display: flex;
+}
+
+/* 입력 컨테이너 input 태그 */
+.main-input-list input {
+  /* height: 25px; */
+  width: 200px;
+}
+
+/* 입력 컨테이너(선택값) input 태그 */
+.main-input-list-optional input {
+  width: 200px;
+}
+
+/* 드롭다운 메뉴 */
+.main-input-list-optional select {
+  width: 207px;
+}
+
+/* 주소 입력 컨테이너(선택값) */
+.main-input-address {
+  /* background-color: aqua; */
+  height: 30px;
+  margin: 5px 120px;
+  display: flex;
+}
+
+/* 주소 입력 컨테이너 input */
+.main-input-address input {
+  width: 200px;
+
+}
+
+/* 입력 메시지 div */
+.main-input-list-text {
+  width: 120px;
+  font-size: 15px;
+}
+
+/* 입력 오류 메시지 */
+.main-input-error-message {
+  height: 15px;
+  margin: 10px 0px 0px 240px;
+  color: red;
+  font-size: 10px;
+}
+
+/* 입력 오류 메시지 span 태그 */
+.main-input-error-message span {
+  display: none;
+}
+
+/* 입력칸 옆 버튼 */
+.main-input-list button {
+  background-color: #DCD6D0;
+  margin-left: 25px;
+  padding: 0px 5px;
+  text-align: center;
+  line-height: 15px;
+  cursor: pointer;
+}
+
+/* 주소 입력칸 옆 버튼 */
+.main-input-list-optional button {
+  background-color: #DCD6D0;
+  margin-left: 25px;
+  padding: 0px 5px;
+  text-align: center;
+  line-height: 15px;
+  cursor: pointer;
+}
+
+/* 버튼 컨테이너 */
+.main-button-container {
+  position: absolute;
+  bottom: 0px;
+  margin: 0px 0px 20px 485px;
+}
+
+/* 회원 가입 버튼 */
+.main-button-container button {
+  background-color: #DCD6D0;
+  width: 125px;
+  height: 45px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+/* 버튼 a 태그 */
+.main-button-container a {
+  margin: 0px 10px;
+}
+
+/* 푸터 */
+/* #footer {
+  background-color: #DCD6D0;
+  height: 100px;
+  width: 100%;
+} */

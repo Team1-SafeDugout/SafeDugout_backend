@@ -1,0 +1,148 @@
+
+* {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+/* 컨테이너 */
+.team-post-container {
+  max-width: 1200px;      
+  margin: 40px auto;
+  padding: 0 24px;        
+}
+
+.team-post-detail,
+.team-post-comment {
+  border: 1px solid white;
+  padding: 25px;
+  background: #F5F5F5;
+  margin-bottom: 30px;
+}
+
+/*게시글 헤더 */
+.team-post-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start;       
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.team-post-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.team-post-header > div {   
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.team-post-info{
+  display: flex;
+  gap: 30px;              
+  align-items: center;     
+  flex-wrap: wrap;         
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+
+.team-post-info div{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.team-post-header div button a{
+  color: black;
+  text-decoration: none;
+  font-size: 10px;
+}
+/*  내용 */
+.team-post-main {
+  padding: 22px 0;
+  background-color: white;
+  border-top: 1px solid #F5F5F5;
+  border-bottom: 1px solid #F5F5F5;
+  margin-bottom: 15px;
+  line-height: 2;
+}
+
+.team-post-detail > button {
+  margin-top: 5px;
+}
+
+/* 댓글 영역 */
+.team-comment-header h2 {
+  font-size: 20px;
+  border-bottom: 1px solid black ;
+  margin-bottom: 5px;
+}
+.team-comment-list{
+  list-style-type: none;
+}
+
+.comment-item { 
+  padding: 12px 0; 
+  border-bottom: 1px solid black; 
+}
+
+.team-comment-info{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* 수정,삭제 버튼 */
+.team-comment-button button,
+.team-btn-submit {
+  padding: 5px 10px;
+  border: 1px solid black;
+  background: none;
+  cursor: pointer;
+  line-height: 1;
+}
+.team-post-detail a button{
+  padding: 10px 15px;
+  border: 1px solid black;
+  background: none;
+  cursor: pointer;
+  line-height: 1;
+}
+.team-comment-button{
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+.team-post-header button,
+.team-comment-button button{
+  font-size: 10px;
+  padding: 5px 10px;
+}
+.team-comment-button button:hover{
+  text-decoration: underline;
+}
+/*댓글 입력 */
+.team-comment-area{
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 10px;
+  
+}
+.team-comment-area textarea{
+  max-width: 1000px;
+  min-width: 1000px;
+  user-select: none;
+}
+
+.team-comment-area input {
+  padding: 8px;
+  border: 1px solid #F5F5F5;
+  width: 1000px;
+}
+

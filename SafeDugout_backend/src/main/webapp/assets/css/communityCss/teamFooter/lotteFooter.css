@@ -1,0 +1,13 @@
+.team-footer-container{
+  display: flex;
+  flex-direction: column;
+  background-color: #13294B;
+  height: 100px;
+  width: 100%;
+}
+
+.team-footer-container a{
+  margin: 5px; 
+  color: white;
+  font-size: 14px;
+}

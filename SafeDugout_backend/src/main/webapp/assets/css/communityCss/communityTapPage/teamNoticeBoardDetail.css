@@ -1,0 +1,111 @@
+/* teamNoticeBoard.css */
+
+.team-notice-board-detail {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  border-radius: 6px;
+  color: black;
+  box-sizing: border-box;
+}
+
+.team-notice-board-detail h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  color: black;
+}
+
+.team-notice-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: white;
+  font-weight: bold;
+  color: black;
+}
+
+.team-notice-board-header p {
+  flex: 1;
+  padding-left: 12px;
+  font-weight: 600;
+  color: black;
+}
+
+.team-notice-board-btn {
+  display: flex;
+  gap: 8px;
+}
+
+.team-notice-board-btn a{
+  padding: 5px 12px;
+  font-size: 13px;
+  border: 1px solid black;
+  cursor: pointer;
+  min-width: 30px;
+  text-decoration: none;
+  color: black;
+}
+
+.team-notice-board-btn a:hover{
+  background-color: #4D5061;
+}
+
+.team-notice-board-btn button:hover {
+  background-color: #4D5061;
+  color: #fff;
+  border-color: #4D5061;
+}
+
+.team-notice-board-content {
+  border: 1px solid #f5f5f5;
+  padding: 25px 30px;
+  font-size: 14px;
+  line-height: 1;
+  color: black;
+  margin-bottom: 25px;
+  position: relative;
+  min-height: 400px;
+  background-color: #fff;
+}
+
+
+.team-notice-board-content .btn-guide {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.team-notice-board-content .btn-guide img {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
+
+.team-notice-board-content .btn-guide p {
+  font-size: 14px;
+  color: #f5f5f5;
+}
+
+/* 문단 간 간격 */
+.team-notice-board-content p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* 날짜 표시 */
+.team-notice-date {
+  text-align: left;
+  font-size: 14px;
+  color: black;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 12px;
+}
+

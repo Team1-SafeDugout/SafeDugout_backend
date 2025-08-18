@@ -1,0 +1,160 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 메인 */
+.main-container {
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 메시지 박스 */
+.main-message-container {
+  background-color: #efefef;
+  width: 900px;
+  height: 700px;
+  margin: 30px 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 입력 오류 메시지 */
+.input-error-message {
+  width: 710px;
+  color: red;
+  font-size: 15px;
+  visibility: hidden;
+}
+
+/* 컨테이너 */
+.container-full {
+  width: 710px;
+  margin: 15px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+
+/* 포인트 입력 메시지 */
+.input-message {
+  /* margin: 20px 0px 0px 0px; */
+}
+
+/* 포인트 값 */
+.point-amount {
+  margin: 0px 0px 0px 50px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 포인트 입력칸 input 태그 */
+.point-amount input {
+  background-color: transparent;
+  width: 250px;
+  border: 0px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 포인트 입력칸 input 태그 클릭시 */
+.point-amount input:focus {
+  outline: none;
+}
+
+/* 상품 이미지 */
+.container-right img {
+  width: 170px;
+  height: 170px;
+}
+
+/* 상품 텍스트 */
+.product-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 긴 검은선 */
+.long-line {
+  border-bottom: 1px solid black;
+  width: 790px;
+  margin: 30px 0px;
+}
+
+/* 짧은 검은선 */
+.short-line {
+  width: 300px;
+  margin: 0px 0px 0px 100px;
+  border-bottom: 1px solid black;
+}
+
+/* '상품 구매' */
+.container-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 50px 0px 50px 0px;
+}
+
+/* 결제 방식 입력칸 */
+.pay-select-container {
+  border: 1px solid black;
+  width: 780px;
+  height: 150px;
+}
+
+/* 버튼 컨테이너 */
+.main-button-container {
+  /* position: absolute; */
+  /* bottom: 90px; */
+}
+
+/* 버튼 컨테이너 butotn 태그 */
+.main-button-container button {
+  background-color: #DCD6D0;
+  width: 185px;
+  height: 60px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+/* 결제 버튼 텍스트 */
+.main-button-next {
+  border: 2px solid black;
+  background-color: #DCD6D0;
+  width: 181px;
+  height: 56px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 60px;
+  text-align: center;
+}
+
+/* 버튼 컨테이너 a 태그 */
+.main-button-container a {
+  margin: 0px 10px;
+}
+
+/* 버튼 컨테이너 a 태그 호버 */
+.main-button-container a:hover {
+  cursor: pointer;
+}
+
+/* 취소 버튼 텍스트 */
+.main-button-cancel {
+  border: 2px solid black;
+  background-color: #efefef;
+  width: 181px;
+  height: 56px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 60px;
+  text-align: center;
+}

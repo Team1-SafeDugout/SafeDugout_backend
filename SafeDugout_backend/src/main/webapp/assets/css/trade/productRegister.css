@@ -1,0 +1,393 @@
+* {
+  box-sizing: border-box;
+}
+
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 검색 컨테이너 */
+.search-container {
+  background-color: #DCD6D0;
+  width: 100vw;
+  height: 100px;
+  /* padding: 0px 50px; */
+  display: flex;
+  justify-content: center
+}
+
+/* 검색창 */
+.search-container input {
+  width: 75vw;
+  height: 80px;
+  margin: 0 30px 0px 50px;
+  padding: 0px 0px 0px 30px;
+  font-size: 24px;
+}
+
+/* 검색 버튼 */
+.search-container button {
+  background-color: #efefef;
+  width: 15vw;
+  height: 80px;
+  margin: 0px 50px 0px 0px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* 검색 컨테이너 */
+.search-container button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
+
+/* 메인 */
+.main-container {
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 상품 등록 전체 컨테이너 */
+.register-container {
+  width: 1315px;
+  height: 660px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 이미지 컨테이너 */
+.img-container {
+  background-color: #F5F5F5;
+  width: 110px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 이미지 박스 */
+.img-box {
+  width: 100px;
+}
+
+/* 이미지 박스 img 태그 */
+.img-box img {
+  width: 100px;
+  height: 100px;
+}
+
+/* 이미지 박스 div 태그 */
+.img-box>div {
+  display: flex;
+  align-items: center;
+}
+
+/* 사진 등록 버튼 */
+.img-container label {
+  background-color: transparent;
+  border: none;
+  margin-right: 12px;
+  font-size: 12px;
+}
+
+/* 사진 등록 버튼 호버 */
+.img-container label:hover {
+  cursor: pointer;
+}
+
+/* 사진 삭제 버튼 */
+.img-container span {
+  display: none;
+  font-size: 12px;
+  color: red;
+}
+
+/* 사진 삭제 버튼 호버 */
+.img-container span:hover {
+  cursor: pointer;
+}
+
+/* 이미지 컨테이너 input 태그 */
+.img-container input {
+  display: none;
+}
+
+/* 중간 컨테이너 */
+.middle-container {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상품명 입력 컨테이너 */
+.name-input-container {
+  background-color: #F5F5F5;
+  width: 100%;
+  height: 100px;
+  margin: 0px 0px 35px 0px;
+  padding: 15px 0px 0px 0px;
+}
+
+/* 등록 오류 메시지 */
+.register-error-message {
+  margin: 0px 0px 0px 25px;
+  font-size: 15px;
+  color: red;
+  visibility: hidden;
+}
+
+/* 에러 메시지 - 가격 */
+.register-error-message-price {
+  width: 285px;
+  font-size: 15px;
+  color: red;
+  visibility: hidden;
+}
+
+/* 상품 명 텍스트 */
+.product-name-text {
+  margin: 0px 0px 0px 25px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 상품명 이름 입력칸 */
+.product-name-text input {
+  background-color: transparent;
+  font-size: 24px;
+}
+
+/* 카테고리 입력 컨테이너 */
+.category-input-container {
+  background-color: #F5F5F5;
+  width: 100%;
+  height: 527px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 카테고리 텍스트 */
+.product-category-text {
+  border-bottom: 1px solid black;
+  width: 100%;
+  height: 65px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.product-category-text span {
+  margin-left: 25px;
+  line-height: 65px;
+}
+
+/* '팀 선택' */
+.product-team-text {
+  border-bottom: 1px solid black;
+  width: 500px;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+/* 로고 컨테이너 */
+.logo-container {
+  width: 500px;
+  margin: 10px 0px;
+  display: flex;
+  gap: 20px 45px;
+  flex-wrap: wrap;
+}
+
+/* 로고 컨테이너 input 태그 */
+.logo-container input {
+  display: none;
+}
+
+/* 로고 이미지 */
+.logo img {
+  width: 60px;
+  height: 60px;
+}
+
+/* 첫번째 로고 */
+.logo:nth-child(1) {
+  border: none;
+}
+
+/* 로고 이미지 호버 */
+.logo img:hover {
+  cursor: pointer;
+}
+
+/* 상품 종류 선택 텍스트 컨테이너 */
+.product-type-text-container {
+  border-bottom: 1px solid black;
+  width: 500px;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+/* 상품 종류 선택 텍스트 */
+.product-type-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 상품 종류 값 */
+.product-type {
+  width: 500px;
+  font-size: 15px;
+  margin: 10px 0px;
+  line-height: 17px;
+}
+
+/* 상품 종류 label 태그 */
+.product-type label {
+  display: inline-block;
+  width: 65px;
+}
+
+/* 오른쪽 컨테이너 */
+.right-container {
+  background-color: #f5f5f5;
+  width: 500px;
+  height: 660px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 상품 설명 텍스트 */
+.product-explain-text {
+  width: 440px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* 상품 설명 박스 */
+.product-explain-blank textarea {
+  border: 1px solid black;
+  width: 440px;
+  height: 340px;
+}
+
+/* 희망 지역 컨테이너 */
+.trade-location-container {
+  width: 440px;
+  margin: 20px 0px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 거래 방식 컨테이너 */
+.trade-method-container {
+  width: 440px;
+  margin: 0px 0px 20px 0px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 하단 컨테이너 */
+.bottom-container {
+  width: 440px;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+}
+
+/* 상품 가격 컨테이너 */
+.price-container {
+  border-bottom: 1px solid black;
+  width: 240px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* 상품 가격 텍스트 */
+.price-container div {
+  font-size: 15px;
+  margin-right: 10px;
+}
+
+/* 상품 가격 입력칸 */
+.price-container input {
+  background-color: transparent;
+  width: 130px;
+  height: 30px;
+  font-size: 15px;
+}
+
+/* 상품 등록, 취소 버튼 */
+
+
+/* 긴 검은선 */
+.long-line {
+  width: 790px;
+  border-bottom: 1px solid black;
+}
+
+/* 짧은 검은선 */
+.short-line {
+  width: 440px;
+  border-bottom: 1px solid black;
+}
+
+/* 버튼 컨테이너 */
+.main-button-container {
+  width: 250px;
+  margin-left: 1px;
+}
+
+/* 버튼 컨테이너 button 태그 */
+.main-button-container button {
+  background-color: #DCD6D0;
+  width: 185px;
+  height: 60px;
+  cursor: pointer;
+}
+
+/* 상품 등록 버튼 텍스트 */
+.main-button-next {
+  border: 2px solid black;
+  background-color: #DCD6D0;
+  width: 70px;
+  height: 30px;
+  margin-left: 45px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+}
+
+/* 버튼 컨테이너 a 태그 */
+.main-button-container a {}
+
+/* 버튼 컨테이너 a 태그 호버 */
+.main-button-container a:hover {
+  cursor: pointer;
+}
+
+/* 취소 버튼 텍스트 */
+.main-button-cancel {
+  border: 2px solid black;
+  background-color: #efefef;
+  width: 80px;
+  height: 30px;
+  margin-left: 10px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+}

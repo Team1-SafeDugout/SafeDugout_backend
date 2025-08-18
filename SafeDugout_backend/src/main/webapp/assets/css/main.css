@@ -1,0 +1,391 @@
+/* nav 스타일 */
+nav {
+  height: 50px;
+  width: 100%;
+  background-color: #DCD6D0;
+  padding: 0px;
+  /* margin: 0px 20px; / */
+}
+
+nav>div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav>div>a>img {
+  height: 100%;
+}
+
+.team-logo {
+  display: flex;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 메인섹션 */
+.main-section {
+  width: 1200px;
+  height: 800px;
+  /* background-color: antiquewhite; */
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 팀순위 섹션 */
+.rank-section {
+  width: 500px;
+  /* 임시 테두리 */
+  /* border-color: black;
+    border: 1px solid; 
+    border-bottom : gray; */
+}
+
+/* 팀순위 섹션 제목 */
+.rank-section-title {
+  margin-bottom: 10px;
+
+}
+
+/* 팀 순위 테이블 */
+.rank-table {
+  display: flex;
+  flex-direction: column;
+  /* 테두리 */
+  border-width: 5px;
+  border: rgb(247, 247, 247) solid;
+}
+
+/* 팀순위 테이블 제목 */
+.rank-table-title {
+  height: 40px;
+  padding-left: 12px;
+  background-color: rgb(231, 54, 107);
+  /* 폰트 */
+  color: white;
+  font-weight: bold;
+  /* 배경테두리 */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* 팀순위 테이블 컬럼 */
+.rank-table-column {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(236, 235, 235);
+  font-size: 15px;
+}
+
+/* 팀순위 테이블 컬럼 목록 리스트 */
+.rank-table-column-li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+}
+
+/* 팀 순위 1위 ~ 10위 */
+.rank-table-teamlist {
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* 팀순위 팀 데이터 리스트 */
+.rank-table-teamlist-team {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+
+}
+
+/* 팀순위 팀 데이터 리스트 목록 */
+.rank-table-teamlist-team-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 테두리 선 */
+  border-bottom: solid;
+  border-bottom-color: rgb(231, 230, 230);
+  border-bottom-width: 1px;
+}
+
+/* 팀순위 테이블 컬럼별 간격 */
+.rank-li-rank {
+  width: 8%;
+}
+
+.rank-li-team {
+  width: 17%;
+}
+
+.rank-li-G {
+  width: 15%;
+}
+
+.rank-li-win {
+  width: 15%;
+}
+
+.rank-li-draw {
+  width: 15%;
+}
+
+.rank-li-loss {
+  width: 15%;
+}
+
+.rank-li-winloss {
+  width: 15%;
+}
+
+
+/* 경기 일정 & 최신 등록 상품 섹션 */
+.schedule-product-section {
+  width: 600px;
+  /* 임시 배경색 */
+  /* background-color: rgb(230, 158, 158); */
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 경기 일정 섹션 */
+.schedule-section {
+  width: 100%;
+  height: 350px;
+
+}
+
+/* 경기 일정 섹션 제목 */
+.schedule-title {
+  margin-bottom: 10px;
+}
+
+/* 경기 일정 테이블 */
+.schedule-table {
+  display: flex;
+  flex-direction: column;
+  /* 테두리 */
+  border-width: 5px;
+  border: rgb(247, 247, 247) solid;
+}
+
+/* 경기 일정 테이블 제목 */
+.schedule-table-title {
+  height: 42px;
+  padding-left: 12px;
+  background-color: rgb(231, 54, 107);
+  /* 폰트 */
+  color: white;
+  font-weight: bold;
+  /* 배경테두리 */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* 경기 일정 빠른 5일 */
+.schedule-table-schedulelist {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 경기 일정 데이터 리스트 */
+.schedule-table-schedulelist-schedule {
+  display: flex;
+  width: 100%;
+  height: 42px;
+  background-color: white;
+  font-size: 14px;
+}
+
+/* 경기 일정 데이터 리스트 목록 */
+.schedule-table-schedulelist-schedule-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  /* 테두리 선 */
+  border-bottom: solid;
+  border-bottom-color: rgb(231, 230, 230);
+  border-bottom-width: 1px;
+  /* 임시 테두리 */
+  /* border: black solid; */
+}
+
+/* 경기일정 테이블 컬럼 간격 및 스타일 */
+.schedule-li-home {
+  width: 10%;
+  padding: 10px;
+  display: flex;
+  justify-content: right;
+
+}
+
+.schedule-li-loc {
+  width: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-li-loc-text {
+  width: 80%;
+  height: 70%;
+  color: rgb(70, 69, 69);
+  background-color: rgb(216, 215, 215);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+
+}
+
+.schedule-li-away {
+  width: 62%;
+  padding-left: 10px;
+}
+
+.schedule-li-time {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-li-info {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-li-info-link {
+  width: 80%;
+  height: 70%;
+  color: rgb(70, 69, 69);
+  background-color: rgb(216, 215, 215);
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* 최신 등록 상품 섹션 */
+.product-section {
+  width: 100%;
+  /* height: 300px; */
+  /* background-color: chocolate; */
+}
+
+/* 최신 등록 상품 섹션 제목 */
+.product-title {
+  margin-bottom: 2px;
+}
+
+/* 중고 거래 창으로 */
+.product-used {
+  display: flex;
+  justify-content: right;
+  padding-right: 5px;
+  margin-bottom: 5px;
+
+}
+
+.product-used-text {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* 중고거래 목록 묶음 */
+.product-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(233, 233, 233);
+  border-radius: 6px;
+  margin: 5px;
+  padding-bottom: 7px;
+  padding-top: 7px;
+  font-size: 13px;
+}
+
+/* 중고거래 목록 아이템 */
+.product-box-item {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 6px;
+}
+
+/* 중고 거래 이미지 */
+.product-box-item-imgdiv {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: blue; */
+}
+
+.product-box-item-img {
+  width: 90%;
+  height: 90%;
+}
+
+/* 중고 거래 상품명 */
+.product-box-item-name {
+  color: black;
+  font-weight: bold;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+/* 중고 거래 상품 판매가 */
+.product-box-item-price {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+/* 중고 거래 상품 등록날짜 */
+.product-box-item-date {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  margin-bottom: 5px;
+}

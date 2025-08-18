@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminDetailMenu/adminAddFreeCommunityGuideDetail.css">
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminFooter.css">
+  <script async src="./../../../assets/js/admin/adminDetailMenu/adminAddFreeCommunityGuideDetail.js"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <main>
+    <section class="section-background">
+      <!-- 필수 입력 정보 : 제목 -->
+       <!-- 선택 입력 정보 : 내용, 파일 -->
+      <form action="" method="post" name = "adminNoticePost">
+
+        <!-- 제목 -->
+        <section class = "title">
+          <label for ="title-text"> 제목 </label>
+          <input type="text" name = "title-text" required>
+        </section>
+
+        <!-- 중간에 선으로 구분 -->
+        <hr class = line>
+
+        <!-- 본문 내용 -->
+        <section class = "content">
+          <label for ="content-textarea"> 내용 </label>
+          <div> 서식 API </div>
+          <textarea name="content" id="content-textarea"></textarea>
+        </section>
+
+        <!-- 중간에 선으로 구분 -->
+        <hr class = line>
+
+        <!-- 첨부 파일 -->
+        <section class = "file">
+          <label for = "file-area"> 
+            <div class = "file-button-style"> 파일 첨부 </div>
+          </label>
+          <input type= "file" name = "file" id = "file-area">
+          <div> ※ 파일은 1개만 올리기 가능합니다   ※  글 수정 시 첨부된 파일이 삭제 됩니다 </div>
+          <div id = "delete-file"> 파일 삭제 </div>
+        </section>
+
+        <!-- 확인 혹은 취소 버튼 -->
+        <section class = "buttons">
+         <button id = "save-button" type = "button" onclick = "location.href = './../adminDetailMenu/adminFreeCommunityGuideDetail.html' "> 저장 </button>
+         <a id = "cancle-button"> 취소 </a>
+        </section>
+      </form>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script src="./../../../assets/js/admin/adminHeaderFooterInclude.js"></script>
+</body>
+
+</html>

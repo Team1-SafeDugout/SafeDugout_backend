@@ -1,0 +1,121 @@
+/* teamNoticeBoard.css */
+
+/* 공지사항 디테일 컨테이너 */
+.notice-board-detail {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: #f5f5f5;
+  border: 1px solid black;
+  border-radius: 6px;
+  color: black;
+  box-sizing: border-box;
+}
+
+/* 공지사항 디테일 */
+.notice-board-detail h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid black;
+  color: black;
+}
+
+/* 공지사항 제목 박스 */
+.notice-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: white;
+  font-weight: bold;
+  color: black;
+}
+
+/* 공지사항 제목 텍스트 */
+.notice-board-header p {
+  flex: 1;
+  padding-left: 12px;
+  font-weight: 600;
+  color: black;
+}
+
+/* 버튼 컨테이너 */
+.notice-board-btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 이전글, 다음글 버튼 */
+.notice-board-btn {
+  display: flex;
+  gap: 8px;
+}
+
+/* 이전글, 다음글, 목록으로 버튼 button 태그 */
+.notice-board-btn button,
+.btn-to-list button {
+  background-color: #DCD6D0;
+  padding: 5px 12px;
+  font-size: 13px;
+  border: 1px solid black;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+/* 이전글, 다음글, 목록으로 버튼 button 태그 호버 */
+.notice-board-btn button:hover,
+.btn-to-list button:hover {
+  background-color: #4D5061;
+  color: #fff;
+  border-color: #4D5061;
+}
+
+/* 공지사항 내용 */
+.notice-board-content {
+  border: 1px solid #f5f5f5;
+  padding: 25px 30px;
+  font-size: 14px;
+  line-height: 1;
+  color: black;
+  margin-bottom: 25px;
+  position: relative;
+  min-height: 400px;
+  background-color: #fff;
+}
+
+/* 공지사항 내용 버튼 가이드 */
+.notice-board-content .btn-guide {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.notice-board-content .btn-guide img {
+  width: 36px;
+  height: 36px;
+  margin-right: 12px;
+}
+
+.notice-board-content .btn-guide p {
+  font-size: 14px;
+  color: #f5f5f5;
+}
+
+/* 문단 간 간격 */
+.notice-board-content p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* 날짜 표시 */
+.notice-date {
+  text-align: left;
+  font-size: 14px;
+  color: black;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 12px;
+}

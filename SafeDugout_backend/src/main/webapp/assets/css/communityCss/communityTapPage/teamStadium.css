@@ -1,0 +1,42 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main{
+  margin: 20px;
+}
+.team-stadium-main-container{
+  margin: auto;
+  min-width: 1200px;
+  min-height: 800px;
+}
+.team-stadium-main-container h2{
+  text-align: center;
+}
+.team-stadium-section-container{
+  display: flex;
+}
+section{
+  margin: 200px 100px;
+}
+.team-stadium-img{
+  width: 40%;
+  background-color: #F5F5F5;
+}
+
+/* 경기장 정보 */
+.team-stadium-info{
+  width: 40%;
+}
+.team-stadium-info-container{
+  margin-bottom: 50px;
+  background-color: #F5F5F5;
+  
+}
+.team-stadium-info-container li{
+  list-style-type: none;
+}
+.team-stadium-food-container{
+  background-color: #F5F5F5;
+}

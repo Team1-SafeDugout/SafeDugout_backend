@@ -1,0 +1,139 @@
+/* 바디 */
+body {
+  margin: 0px 0px;
+}
+
+/* 메인 */
+.main-container {
+  min-height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 메시지 박스 */
+.main-message-container {
+  background-color: #efefef;
+  width: 900px;
+  height: 760px;
+  margin: 30px 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 넓은 컨테이너 */
+.container-full {
+  width: 710px;
+  margin: 0px 0px 150px 0px;
+  display: flex;
+  align-items: center;
+}
+
+/* 넓은 컨테이너(아래쪽) */
+.container-full-bottom {
+  width: 730px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+/* 결제 정보 텍스트 */
+.pay-info-text {
+  font-size: 15px;
+  margin-right: 20px;
+}
+
+/* 결제 정보 값 */
+.pay-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 포인트 종류 */
+.point-name {
+  width: 150px;
+  margin-right: 21px;
+  font-size: 24px;
+}
+
+/* 포인트 값 */
+.point-amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 상품 이미지 */
+.container-right img {
+  width: 170px;
+  height: 170px;
+}
+
+/* 상품 텍스트 */
+.product-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* 긴 검은선 */
+.long-line {
+  width: 790px;
+  border-bottom: 1px solid black;
+  margin-bottom: 50px;
+}
+
+/* 긴 검은선(아래쪽) */
+.long-line-bottom {
+  width: 790px;
+  border-bottom: 1px solid black;
+}
+
+/* 짧은 검은선 */
+.short-line {
+  width: 710px;
+  border-bottom: 1px solid black;
+}
+
+/* 메시지 박스 제목 */
+.container-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 50px 0px 50px 0px;
+}
+
+/* 버튼 컨테이너 */
+.main-button-container {
+  position: absolute;
+  bottom: 50px;
+}
+
+/* 버튼 컨테이너 button 태그 */
+.main-button-container button {
+  background-color: #DCD6D0;
+  width: 185px;
+  height: 60px;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+/* 확인 버튼 텍스트 */
+.main-button-next {
+  border: 2px solid black;
+  background-color: #DCD6D0;
+  width: 181px;
+  height: 56px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 60px;
+  text-align: center;
+}
+
+/* 버튼 컨테이너 a 태그 */
+.main-button-container a {
+  margin: 0px 10px;
+}
