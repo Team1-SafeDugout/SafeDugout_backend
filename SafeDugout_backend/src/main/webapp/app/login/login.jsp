@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +9,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>로그인 페이지</title>
-  <link rel="stylesheet" href="./../../assets/css/login/login.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
-  <script defer src="./../../assets/js/login/login.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login/login.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/login/login.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -26,7 +30,7 @@
         로그인
       </div>
       <!-- form 태그 -->
-      <form action="" method="post">
+      <form action="${pageContext.request.contextPath}/member/loginOk.me" method="post">
         <!-- 폼 박스 -->
         <div class="main-form-box">
           <!-- 입력 메시지 - 아이디 -->
@@ -35,7 +39,7 @@
           </div>
           <!-- 입력칸 -->
           <div class="main-input-blank">
-            <input type="text" id="id" name="register" placeholder="아이디" required>
+            <input type="text" id="id" name="memberId" placeholder="아이디" required>
           </div>
           <!-- 입력 메시지 - 비밀번호 -->
           <div class="main-input-message">
@@ -43,7 +47,7 @@
           </div>
           <!-- 입력칸 -->
           <div class="main-input-blank">
-            <input type="password" id="pw" name="register" placeholder="비밀번호" required>
+            <input type="password" id="pw" name="memberPw" placeholder="비밀번호" required>
           </div>
           <!-- 입력 오류 메시지 -->
           <div class="main-input-fail-message">
@@ -51,16 +55,16 @@
           </div>
           <!-- 로그인 버튼 -->
           <div class="main-login-button">
-            <button type="button">로그인
+            <button type="submit">로그인
             </button>
           </div>
           <!-- 기타 버튼(아이디 찾기/비밀번호 찾기/회원가입) -->
           <div class="main-etc-button">
-            <a href="./../findId/findIdInput.html">아이디 찾기</a>
+            <a href="${pageContext.request.contextPath}/findId/findIdInput.jsp">아이디 찾기</a>
             <h> | </h>
-            <a href="./../findPw/findPwInput.html">비밀번호 찾기</a>
+            <a href="${pageContext.request.contextPath}/findPw/findPwInput.jsp">비밀번호 찾기</a>
             <h> | </h>
-            <a href="./../register/terms.html">회원가입</a>
+            <a href="${pageContext.request.contextPath}/register/terms.jsp">회원가입</a>
           </div>
         </div>
       </form>

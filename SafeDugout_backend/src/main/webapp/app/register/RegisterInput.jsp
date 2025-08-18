@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +8,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원정보 입력 페이지(회원가입)</title>
-  <link rel="stylesheet" href="./../../assets/css/register/RegisterInput.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/register/RegisterInput.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/register/RegisterInput.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/register/RegisterInput.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -30,7 +33,7 @@
         회원 정보 입력
       </div>
       <!-- form 태그 -->
-      <form action="" method="post">
+      <form action="${pageContext.request.contextPath}/member/joinOk.me" method="post">
         <!-- 폼 박스 -->
         <div class="main-form-box">
           <!-- ul 태그 -->
@@ -171,7 +174,7 @@
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
             <!-- 회원 가입 버튼 -->
-            <button type="button" id="registerBtn">
+            <button type="confirm" id="registerBtn">
               <!-- 회원 가입 텍스트 -->
               <div class="main-button-next">회원 가입
               </div>
