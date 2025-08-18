@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
   <title>메인페이지</title>
 </head>
 
@@ -16,35 +16,35 @@
   <div id="header"></div>
   <nav>
     <div class="team-logo">
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/HH.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/lg.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/LT.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/ssg.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/kia.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/kt.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/nc.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/SS.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/doosan.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/WO.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png" alt="">
       </a>
     </div>
   </nav>
@@ -269,7 +269,7 @@
           <h2 class="product-title">최신 등록 상품</h2>
           <!-- 중고 거래 창으로 -->
           <div class="product-used">
-            <a href="./app/trade/tradeMain.html" class="product-used-text">중고거래 창으로</a>
+            <a href="${pageContext.request.contextPath}/app/trade/tradeMain.html" class="product-used-text">중고거래 창으로</a>
           </div>
           <!-- 중고거래 목록 묶음 -->
           <div class="product-box">
@@ -336,7 +336,7 @@
     </section>
   </main>
   <div id="footer">
-    <script src="./assets/js/includeNoLoginMain.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/includeNoLoginMain.js"></script>
 </body>
 
 </html>

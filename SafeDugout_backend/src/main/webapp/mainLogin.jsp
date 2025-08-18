@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
   <title>메인페이지</title>
 </head>
 
@@ -16,35 +16,35 @@
   <div id="header"></div>
   <nav>
     <div class="team-logo">
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/HH.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/lg.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/LT.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/ssg.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/kia.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/kt.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/nc.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/SS.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/doosan.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="">
       </a>
-      <a href="/webapp/app/communityHtml/communityMainPage.html">
-        <img src="/webapp/assets/img/communityImg/WO.png" alt="">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png" alt="">
       </a>
     </div>
   </nav>
@@ -336,7 +336,7 @@
     </section>
   </main>
   <div id="footer">
-    <script src="./assets/js/includeMain.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/includeMain.js"></script>
 </body>
 
 </html>
