@@ -16,7 +16,6 @@ public class MemberDTO {
 //			CONSTRAINT UK_MEMBER UNIQUE(MEMBER_ID)
 //			);
 	
-	private int memberNumber;
 	public int getMemberNumber() {
 		return memberNumber;
 	}
@@ -79,7 +78,7 @@ public class MemberDTO {
 	}
 	
 	
-	
+	private int memberNumber;
 	private String memberName;
 	private String memberPhone;
 	private String memberId;
@@ -92,8 +91,9 @@ public class MemberDTO {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "MemberDTO [memberNumber=" + memberNumber + ", memberName=" + memberName + ", memberPhone=" + memberPhone
+				+ ", memberId=" + memberId + ", memberPw=" + memberPw + ", memberEmail=" + memberEmail
+				+ ", memberMyTeam=" + memberMyTeam + ", memberPoint=" + memberPoint + ", memberJoinDate="
+				+ memberJoinDate + ", memberPostalCode=" + memberPostalCode + "]";
 	}
-	
 }

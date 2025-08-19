@@ -21,37 +21,43 @@ public class LoginOkController implements Execute{
 		
 		MemberDTO memberDTO = new MemberDTO();
 		MemberDAO memberDAO = new MemberDAO();
-		Result result = null;
+		int memberNumber = 0;
+		Result result = new Result();
+		String path = null;
 		
-		String memberId = request.getParameter("memberId");
+		String memberId = request.getParameter("memberId"); //아이디 저장 처리할 때 재사용
 		String memberPw = request.getParameter("memberPw");
-		memberDTO = memberDAO.login(memberId, memberPw);
+		HttpSession session = request.getSession(); //++++++세션저장
 		
-		//로그인 성공시와 실패시 조건
-		if(memberDTO != null) {
-			System.out.println("로그인 성공");
-			//로그인 성공시 세션에 사용자 정보를 저장
-			HttpSession session = request.getSession();
-			session.setAttribute("memberDTO", memberDTO);
+		memberDTO.setMemberId(memberId);
+		memberDTO.setMemberPw(memberPw);
+		
+		//쿼리문 실행 메소드 호출
+		memberNumber = memberDAO.login(memberDTO);
+		
+		if(memberNumber != -1) {
+			path = "/mainLogin.jsp";
+			session.setAttribute("memberNumber", memberNumber);
+			System.out.println("세션값 : " + memberNumber);
 			
-			//쿠키에 사용자 id 저장
-			Cookie cookie = new Cookie("memberId", memberId);
+//			if(remember != null) {
+//				Cookie cookie = new Cookie("memberId", memberId);
+//				cookie.setMaxAge(60 * 60 * 24); // 1일
+//				response.addCookie(cookie);
+//			}else {
+//				//체크 해제시 쿠키 삭제
+//				Cookie cookie = new Cookie("memberId", "");
+//				cookie.setMaxAge(0);
+////				cookie.setPath(cookiePath);
+//				response.addCookie(cookie);
+//			}
 			
-			//유효기간 1일
-			cookie.setMaxAge(60 * 60 * 24);
-			
-			System.out.println("로그인가능");
-			result = new Result();
-			
-			result.setPath(request.getContextPath() + "/mainLogin.html");
-			System.out.println(result.getPath());
-			result.setRedirect(true);		
 		}else {
-			//로그인 실패 시 로그인 페이지로 이동
-			result.setPath(request.getContextPath() + "/member/login.jsp");
-			result.setRedirect(true);
+			path = "/member/login.me?login=fail";
 		}
 		
+		result.setRedirect(true); //세션에 저장된 값은 유지
+		result.setPath(path);
 		return result;
 	}
 	

@@ -6,7 +6,7 @@ const pw = document.getElementById("pw");
 
 loginBtn.addEventListener('click', function () {
 
-  if (id.value === "" || pw.value === "") {
+ /* if (id.value === "" || pw.value === "") {
     loginErrorMessage.style.visibility = "visible";
   }
 
@@ -20,5 +20,5 @@ loginBtn.addEventListener('click', function () {
     else {
       loginErrorMessage.style.visibility = "visible";
     }
-  }
+  }*/
 });
