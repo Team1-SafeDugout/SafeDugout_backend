@@ -1,4 +1,4 @@
-const newsList = document.getElementById("list-ul");
+${pageContext.request.contextPath}const newsList = document.getElementById("list-ul");
 const addbutton = document.getElementsByClassName("list-names").item(0);
 
 const leftButton = document.getElementById("left-button");
