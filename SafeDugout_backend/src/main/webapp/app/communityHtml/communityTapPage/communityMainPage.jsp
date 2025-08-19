@@ -4,41 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communitMainPage.css">
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
-  <script defer src="./../../../assets/js/communityJs/communityMainPage.js"></script>
+  <title>ë¶íí í¬</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communitMainPage.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityMainPage.js"></script>
 </head>
 <body>
   <div id="team-header"></div>
   <main>
     <div class="main-container">
-      <!-- 메인페이지 뉴스 탭 -->
+      <!-- ë©ì¸íì´ì§ ë´ì¤ í­ -->
       <section class="team-news">
         <div class="top-section">
-          <h2>팀 뉴스</h2>
-          <a href="./communityTapPage/teamNews.html">더보기</a>
+          <h2>í ë´ì¤</h2>
+          <a href="./communityTapPage/teamNews.html">ëë³´ê¸°</a>
         </div>
         <div class="main-news">
         </div>
         <ul class="news-list">
-          <!-- 뉴스리스트 들어갈 공간 -->
+          <!-- ë´ì¤ë¦¬ì¤í¸ ë¤ì´ê° ê³µê° -->
         </ul>
       </section>
-      <!-- 메인페이지 유튜브 탭 -->
+      <!-- ë©ì¸íì´ì§ ì íë¸ í­ -->
       <section class="team-youtube">
         <div class="top-section">
-          <h2>팀 유튜브</h2>
-          <a href="./communityTapPage/teamYoutube.html">더보기</a>
+          <h2>í ì íë¸</h2>
+          <a href="./communityTapPage/teamYoutube.html">ëë³´ê¸°</a>
         </div>
         <ul class="thumb-list">
         </ul>
       </section>
-      <!-- 메인페이지 경기일정 탭 -->
+      <!-- ë©ì¸íì´ì§ ê²½ê¸°ì¼ì  í­ -->
       <section class="games">
-        <h2>경기 일정</h2>
+        <h2>ê²½ê¸° ì¼ì </h2>
         <div class="game-schedule-group">
-          <h4>주중 경기</h4>
+          <h4>ì£¼ì¤ ê²½ê¸°</h4>
           <div class="game-schedule">
             <div class="gamebox"></div>
             <div class="gamebox"></div>
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="game-schedule-group">
-          <h4>주말 경기</h4>
+          <h4>ì£¼ë§ ê²½ê¸°</h4>
           <div class="game-schedule">
             <div class="gamebox"></div>
             <div class="gamebox"></div>
@@ -54,39 +54,39 @@
           </div>
         </div>
       </section>
-      <!-- 게시판 -->
+      <!-- ê²ìí -->
       <section class="team-board">
         <div class="top-section">
-          <h2>게시판</h2>
-          <a href="./communityTapPage/teamBoard.html">더보기</a>
+          <h2>ê²ìí</h2>
+          <a href="./communityTapPage/teamBoard.html">ëë³´ê¸°</a>
         </div>
         <ul class="team-board-list">
 
         </ul>
       </section>
-      <!-- 메인페이지 경기장 정보 탭 -->
+      <!-- ë©ì¸íì´ì§ ê²½ê¸°ì¥ ì ë³´ í­ -->
       <section class="stadium">
         <div class="top-section">
-          <h2>경기장 정보</h2>
-          <a href="./communityTapPage/teamStadium.html">더보기</a>
+          <h2>ê²½ê¸°ì¥ ì ë³´</h2>
+          <a href="./communityTapPage/teamStadium.html">ëë³´ê¸°</a>
         </div>
         <div class="stadium-img">
 
         </div>
       </section>
-      <!-- 메인페이지 팀순위 탭 -->
+      <!-- ë©ì¸íì´ì§ íìì í­ -->
       <section class="team-ranking">
-        <h2>팀순위</h2>
+        <h2>íìì</h2>
         <ul class="ranking-list">
           <li class="ranking-list-header">
-            <div>순위</div>
-            <div>팀</div>
-            <div>경기수</div>
-            <div>승</div>
-            <div>무</div>
-            <div>패</div>
-            <div>승률</div>
-            <div>게임차</div>
+            <div>ìì</div>
+            <div>í</div>
+            <div>ê²½ê¸°ì</div>
+            <div>ì¹</div>
+            <div>ë¬´</div>
+            <div>í¨</div>
+            <div>ì¹ë¥ </div>
+            <div>ê²ìì°¨</div>
           </li>
           <li class="ranking-list-team">
             <div>1</div>
@@ -100,7 +100,7 @@
           </li>
           <li class="ranking-list-team">
             <div>2</div>
-            <div>삼성</div>
+            <div>ì¼ì±</div>
             <div>144</div>
             <div>78</div>
             <div>2</div>
@@ -120,7 +120,7 @@
           </li>
           <li class="ranking-list-team">
             <div>4</div>
-            <div>두산</div>
+            <div>ëì°</div>
             <div>144</div>
             <div>74</div>
             <div>2</div>
@@ -150,7 +150,7 @@
           </li>
           <li class="ranking-list-team">
             <div>7</div>
-            <div>롯데</div>
+            <div>ë¡¯ë°</div>
             <div>144</div>
             <div>66</div>
             <div>4</div>
@@ -160,7 +160,7 @@
           </li>
           <li class="ranking-list-team">
             <div>8</div>
-            <div>한화</div>
+            <div>íí</div>
             <div>144</div>
             <div>66</div>
             <div>2</div>
@@ -180,7 +180,7 @@
           </li>
           <li class="ranking-list-team">
             <div>10</div>
-            <div>키움</div>
+            <div>í¤ì</div>
             <div>144</div>
             <div>58</div>
             <div>0</div>
