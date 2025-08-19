@@ -2,14 +2,14 @@
 <header id="team-header">
   <div class="top-header">
     <div class="team-logo">
-      <a href="./../../../../webapp/app/communityHtml/communityMainPage.html">
-        <img src="./../../../../webapp/assets/img/communityImg/lg.png" alt="lg 로고">
+      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="lg 로고">
       </a>
     </div>
     <div class="team-right-link">
-      <a href="./../../../../webapp/app/mainNotice/mainNoticeList.html" class="main-notice">[메인공지]: 불펜토크 사이트 이용 안내</a>
-      <a href="./../../../../webapp/main.html" class="main-logo">
-        <img src="./../../../../webapp/assets/img/communityImg/icoBall.png" alt="메인페이지 로고">
+      <a href="${pageContext.request.contextPath}/app/mainNotice/mainNoticeList.html" class="main-notice">[메인공지]: 불펜토크 사이트 이용 안내</a>
+      <a href="${pageContext.request.contextPath}/main.html" class="main-logo">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/icoBall.png" alt="메인페이지 로고">
       </a>
     </div>
   </div>
