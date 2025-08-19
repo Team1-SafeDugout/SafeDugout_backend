@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mapper namespaec = "member">
-	<select id = "login" parameterType = "MemberDTO" resultType = "MemberDTO">
-		SELECT MEMBER_NUMBER, MEMBER_ID, MEMBER_PW 
-		FROM TBL_MEMBER
-		WHERE MEMBER_ID = #{memberId} AND MEMBER_PW = #{memberPw}
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "member">
+	<!-- 로그인 쿼리작성 -->
+	<select id="login" parameterType="MemberDTO" resultType="int">
+		select member_number from tbl_member
+		where member_id = #{memberId} and member_pw = #{memberPw}
 	</select>
 	
-	<insert id = "join" parameterTYpe = "MemberDTO">
+	<insert id = "join" parameterType = "MemberDTO">
 		INSERT INTO TBL_MEMBER (MEMBER_NUMBER, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_AGE, MEMBER_GENDER)
 		VALUES(seq_member_number.valnext, #{memberId}, #{memberPw}, #{memberName}, #{memberAge}, #{memberGender});
 	</insert>

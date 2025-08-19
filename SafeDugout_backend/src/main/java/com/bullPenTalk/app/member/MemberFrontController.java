@@ -54,6 +54,7 @@ public class MemberFrontController extends HttpServlet {
 			break;
 			
 		case "/member/joinOk.me" :
+			result = new JoinOkController().execute(request, response);
 			break;
 			
 		case "/member/login.me" : 
@@ -84,6 +85,14 @@ public class MemberFrontController extends HttpServlet {
 		case "/member/checkIdOk":
 			break;
 		}
+		
+		if (result != null && result.getPath() != null) {
+			if (result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+			} else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
+		}
 	}
-
+	
 }
