@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>불펜토크</title>
+  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamNews.css">
+  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
+  <script defer src="./../../../assets/js/communityJs/communityTapPage/teamNews.js"></script>
+</head>
+<body>
+  <div id="team-header"></div>
+  <main>
+    <div class="team-news-container">
+      <h2>팀 뉴스</h2>
+      <!-- 뉴스 박스 -->
+      <ul id="team-news-box">
+        <li class="team-news-list">
+          <a href="./teamNewsDetail.html">
+            <span><img src="./../../../assets/img/communityImg/lg.png" alt=""></span>
+            <span>타격 기계도 4번 타자도 아니다, LG 후반기 타격 1위는 '슈퍼 백업'</span>
+          </a>
+        </li>
+        <!-- 뉴스 추가 공간 -->
+      </ul>
+      <!-- 페이지 네이션 -->
+      <div class = "list-pagenumber">
+        <div id ="left-button"> ◁ </div>
+        <ul id = "numberlist-ul">
+          <li><a>1</a></li>
+          <li><a>2</a></li>
+          <li><a>3</a></li>
+          <li><a>4</a></li>
+          <li><a>5</a></li>
+        </ul>
+        <div id ="right-button"> ▷ </div>
+      </div>
+    </div>
+  </main>
+  <div id="team-footer"></div>
+</body>
+</html>

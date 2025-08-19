@@ -16,24 +16,24 @@
   <div class="bottom-header">
     <nav>
       <ul class="team-menu">
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStats.html">팀 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPlayerStats.html">선수 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamYoutube.html">팀 유튜브</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamSong.html">팀 응원가</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamBoard.html">게시판</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/trade/tradeMain.html">굿즈거래</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStadium.html">경기장</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamNews.html">팀뉴스</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamStats.html">팀 기록</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamPlayerStats.html">선수 기록</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamYoutube.html">팀 유튜브</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamSong.html">팀 응원가</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamBoard.html">게시판</a></li>
+        <li><a href="./../../../../webapp/app/trade/tradeMain.html">굿즈거래</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamStadium.html">경기장</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamNews.html">팀뉴스</a></li>
         <li class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색">
-            <button type="button" onclick="location.href='${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamSearch.html'">
-              <img src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="검색">
+            <button type="button" onclick="location.href='./../../../../webapp/app/communityHtml/communityTapPage/teamSearch.html'">
+              <img src="./../../../../webapp/assets/img/communityImg/freeIconSearch.png" alt="검색">
             </button>
           </form>
         </li>
         <li class="mypage">
-          <a href="${pageContext.request.contextPath}/app/login/login.html">로그인</a>
+          <a href="./../../../../webapp/app/login/login.html">로그인</a>
         </li>
       </ul>
     </nav>

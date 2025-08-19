@@ -1,0 +1,9 @@
+package com.bullPenTalk.app.dto;
+
+public class TeamDTO {
+//	CREATE TABLE TBL_TEAM(
+//	TEAM_NUMBER NUMBER,
+//	TEAM_NAME VARCHAR2(50) NOT NULL,
+//	CONSTRAINT PK_TEAM PRIMARY KEY(TEAM_NUMBER)
+//	);
+}

@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communitMainPage.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityMainPage.js"></script>
+  <link rel="stylesheet" href="./../../../assets/css/communityCss/communitMainPage.css">
+  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
+  <script defer src="./../../../assets/js/communityJs/communityMainPage.js"></script>
 </head>
 <body>
   <div id="team-header"></div>
@@ -17,7 +17,7 @@
       <section class="team-news">
         <div class="top-section">
           <h2>팀 뉴스</h2>
-          <a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamNews.html">더보기</a>
+          <a href="./communityTapPage/teamNews.html">더보기</a>
         </div>
         <div class="main-news">
         </div>
@@ -29,7 +29,7 @@
       <section class="team-youtube">
         <div class="top-section">
           <h2>팀 유튜브</h2>
-          <a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamYoutube.html">더보기</a>
+          <a href="./communityTapPage/teamYoutube.html">더보기</a>
         </div>
         <ul class="thumb-list">
         </ul>
@@ -58,7 +58,7 @@
       <section class="team-board">
         <div class="top-section">
           <h2>게시판</h2>
-          <a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamBoard.html">더보기</a>
+          <a href="./communityTapPage/teamBoard.html">더보기</a>
         </div>
         <ul class="team-board-list">
 
@@ -68,7 +68,7 @@
       <section class="stadium">
         <div class="top-section">
           <h2>경기장 정보</h2>
-          <a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStadium.html">더보기</a>
+          <a href="./communityTapPage/teamStadium.html">더보기</a>
         </div>
         <div class="stadium-img">
 
