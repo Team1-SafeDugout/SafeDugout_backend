@@ -1,0 +1,83 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>팀뉴스 추가</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminAddTeamNewsDetail.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminAddTeamNewsDetail.js"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <main>
+    <section class="section-background">
+      <!-- 필수 입력 정보 : 제목, URL -->
+      <!-- 선택 입력 정보 : 내용, 첨부파일 -->
+      <form action="" method="post" name="adminNewsPost">
+        <!-- 첨부 파일 -->
+        <section class="file">
+          <label for="file-area">
+            <div class="img-area">
+              <img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png">
+            </div>
+            <div class="file-button-style"> 클릭하여 파일 추가 </div>
+          </label>
+          <input type="file" name="file" id="file-area">
+        </section>
+
+
+        <!-- 제목 추가 부분 -->
+        <section class="title">
+          <label for="title-text"> 제목 </label>
+          <input type="text" name="title-text" required>
+        </section>
+
+        <!-- URL 추가 부분 -->
+        <section class="url">
+          <label for="url-text"> URL </label>
+          <input type="url" name="url-text" required>
+        </section>
+
+        <!-- 게시글 선택 -->
+        <label for = "team-categories"> 팀 선택 </label>
+        <select class="select-team" name="team-categories" id = "team-categories">
+          <option name="team-category" value="lg"> LG </option>
+          <option name="team-category" value="hh"> 한화 </option>
+          <option name="team-category" value="lotte"> 롯데 </option>
+          <option name="team-category" value="ssg"> SSG </option>
+          <option name="team-category" value="kia"> 가어 </option>
+          <option name="team-category" value="kt"> KT </option>
+          <option name="team-category" value="nc"> NC </option>
+          <option name="team-category" value="samsung"> 삼성 </option>
+          <option name="team-category" value="doosan"> 두산 </option>
+          <option name="team-category" value="kiwoom"> 키움 </option>
+        </select>
+
+        <hr class=line>
+
+        <!-- 본문 추가 부분 -->
+        <section class="content">
+          <label for="content-textarea"> 내용 </label>
+          <div> 서식 API </div>
+          <textarea name="content" id="content-textarea"> </textarea>
+        </section>
+
+        <!-- 버튼 추가 부분 -->
+        <section class="buttons">
+          <button id="save-button"> 저장 </button>
+          <a id="cancle-button"> 취소 </a>
+        </section>
+      </form>
+
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+</body>
+
+</html>

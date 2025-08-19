@@ -1,0 +1,278 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>중고거래 검색결과 페이지</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+<script defer src="${pageContext.request.contextPath}/assets/js/trade/tradeSearchResult.js"></script>
+</head>
+
+<!-- 바디 -->
+
+<body>
+	<!-- 헤더 -->
+	<div id="header"></div>
+	<!-- 폼 태그 -->
+	<form action="" method="get">
+		<!-- 검색 컨테이너 -->
+		<div class="search-container">
+			<!-- 검색어 입력칸 -->
+			<input type="text" placeholder="검색어를 입력해주세요">
+			<!-- 검색 컨테이너 button 태그 -->
+			<button type="button"
+				onclick="location.href='./tradeSearchResult.html'">검색</button>
+		</div>
+	</form>
+	<!-- 메인 -->
+	<main>
+		<!-- 메인 컨테이너 -->
+		<div class="main-container">
+			<!-- <div class="title">
+        중고거래 메인페이지
+      </div> -->
+			<div class="small-title"></div>
+			<aside>
+				<!-- 왼쪽 메뉴 컨테이너 -->
+				<div class="aside-container">
+					<!-- 상품 카테고리 텍스트 -->
+					<div class="aside-text">상품 카테고리</div>
+					<!-- ul 태그 -->
+					<ul>
+						<!-- li 태그 -->
+						<li>
+							<!-- 카테고리 -->
+							<div class="category">
+								<a href="">모든 상품 유형</a>
+							</div>
+						</li>
+						<li>
+							<div class="category">
+								<a href="">유니폼</a>
+							</div>
+						</li>
+						<li>
+							<div class="category">
+								<a href="">모자</a>
+							</div>
+						</li>
+						<li>
+							<div class="category">
+								<a href="">의류</a>
+							</div>
+						</li>
+						<li>
+							<div class="category">
+								<a href="">잡화</a>
+							</div>
+						</li>
+						<li>
+							<div class="category">
+								<a href="">응원용품</a>
+							</div>
+						</li>
+						<li>
+							<div class="category">
+								<a href="">야구용품</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</aside>
+			<!-- 오른쪽 section 컨테이너 -->
+			<section class="section-container">
+				<!-- 팀 로고 바 -->
+				<div class="team-bar">
+					<!-- 팀 선택 텍스트 -->
+					<div class="team-bar-text">팀 선택</div>
+					<!-- 팀 로고 컨테이너 -->
+					<div class="team-bar-logo-container">
+						<div class="team-bar-logo">
+							<a href="">모든 팀</a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img
+								src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"
+								alt=""></a>
+						</div>
+						<div class="team-bar-logo">
+							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"
+								alt=""></a>
+						</div>
+					</div>
+				</div>
+				<!-- 로고 하단 컨테이너 -->
+				<div class="page-bar">
+					<!-- 로고 하단 컨테이너 텍스트 -->
+					<div class="page-bar-text">
+						<!-- 조회 결과 - 검색어 -->
+						<span class="big-text">[“검색 글”] 검색 결과</span>
+						<!-- 조회 결과 - 개수, 팀, 상품 종류 -->
+						<span class="small-text">134개 모든 팀 > 모든 상품 유형</span>
+					</div>
+					<!-- 페이지 버튼 컨테이너 -->
+					<div class="page-container">
+						<!-- 페이지 버튼 -->
+						<div class="page-num">
+							<a href="">1</a>
+						</div>
+						<div class="page-num">
+							<a href="">2</a>
+						</div>
+						<div class="page-num">
+							<a href="">3</a>
+						</div>
+						<div class="page-num">
+							<a href="">4</a>
+						</div>
+						<div class="page-num">
+							<a href="">5</a>
+						</div>
+						<div class="arrow-button">
+							<a href="">▶</a>
+						</div>
+					</div>
+				</div>
+				<!-- 상품 컨테이너 -->
+				<div class="product-container">
+					<!-- 상품 항목 -->
+					<div class="product-list">
+						<!-- 상품 이미지 -->
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product1.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[KIA타이거즈] 레플리카 모자(블랙)</a>
+						</div>
+						<div class="product-price">15000 포인트</div>
+						<div class="product-time">1분 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product2.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[LG트윈스] 일반형 원정 유니폼</a>
+						</div>
+						<div class="product-price">30000 포인트</div>
+						<div class="product-time">3분 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product3.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[KBO] 2025 KBO 올스타전 공인구</a>
+						</div>
+						<div class="product-price">10000 포인트</div>
+						<div class="product-time">5분 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product4.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[TEAM KOREA] PVC 글러브</a>
+						</div>
+						<div class="product-price">15000 포인트</div>
+						<div class="product-time">하루 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product9.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[SSG랜더스] 랜디 야구공 머리띠</a>
+						</div>
+						<div class="product-price">10000 포인트</div>
+						<div class="product-time">1주 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product6.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[두산] 두산베어스X케이스티파이 TICKET
+								케이스</a>
+						</div>
+						<div class="product-price">40000 포인트</div>
+						<div class="product-time">3주 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product7.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[한화이글스] 화이트 레플리카 유니폼</a>
+						</div>
+						<div class="product-price">30000 포인트</div>
+						<div class="product-time">1달 전</div>
+					</div>
+					<div class="product-list">
+						<div class="product-img">
+							<a href="./productDetailBuyer.html"><img
+								src="${pageContext.request.contextPath}/assets/img/tradeImg/product8.jpg" alt=""></a>
+						</div>
+						<div class="product-name">
+							<a href="./productDetailBuyer.html">[삼성] 삼성라이온즈X케이스티파이 TICKET
+								케이스</a>
+						</div>
+						<div class="product-price">40000 포인트</div>
+						<div class="product-time">1년 전</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	<!-- 푸터 -->
+	<div id="footer"></div>
+	<!-- 스크립트 -->
+	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
+</body>
+
+</html>

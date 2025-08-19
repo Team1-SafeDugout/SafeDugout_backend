@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminFreeComunityUserPost.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  <script defer src = "${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminFreeComunityUserPost.js"></script>
+</head>
+<body>
+  <div id="header"></div>
+  <main>
+    <section class="section-background">
+      <section class="section-bottom-buttons">
+        <form action="" method="get">
+          <button class="post-button" type="button" id = "delete-button"> 삭제 </button>
+        </form>
+      </section>
+
+      <!-- 본문 공간 -->
+      <section class="section-post">
+        <div class="post-title-container">
+          <div class="title"> 응원할 팀 추천해주세요</div>
+          <div class="author"> th3179</div>
+        </div>
+
+        <div class="post-content-container">
+          제곧내
+        </div>
+      </section>
+<!-- 날짜 표시 -->
+      <div class="post-date"> 날짜 </div>
+<!-- 댓글 공간 -->
+      <section class="section-comments-background">
+        <section class="comments-page">
+          <div> 댓글 </div>
+          <div class="comments-page-nums">
+            <form action="" method="get">
+              <button type="button" id="left-button"> ◁ </button>
+              <ul id="numberlist-ul">
+                <li><a>1</a></li>
+                <li><a>2</a></li>
+                <li><a>3</a></li>
+                <li><a>4</a></li>
+                <li><a>5</a></li>
+              </ul>
+              <button type="button" id="right-button"> ▷ </button>
+            </form>
+        </section>
+
+        <section class="comments-container">
+          <ul class="team-comment-list">
+
+          </ul>
+
+        </section>
+      </section>
+
+      <section class="section-bottom-buttons">
+        <form action="" method="get">
+          <button class="post-button" type="button" onclick="location.href = './../adminMenu/adminManageFreeCommunity.html' ">
+            목록으로
+          </button>
+        </form>
+
+        <form action="" method="get">
+          <button class="post-button" type="button" onclick="location.href = './../adminDetailMenu/adminFreeComunityUserPost.html' "> 이전 글 </button>
+          <button class="post-button" type="button" onclick="location.href = './../adminDetailMenu/adminFreeComunityUserPost.html' "> 다음 글 </button>
+        </form>
+      </section>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+</body>
+
+</html>

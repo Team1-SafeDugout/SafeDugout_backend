@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>판매글</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageSell.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageSell.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+  <main>
+    <section class="body-sidebar">
+      <div class="sidebar-div-name">
+        관리자 메뉴
+      </div>
+
+      <div class="sidebar-div-info">
+        <div>
+          <div> 관리자 : 백정이 </div>
+          <div> 관리자 이메일 : ohohoho@naver.com</div>
+        </div>
+      </div>
+
+      <div class="sidebar-div-container">
+        <div>
+          <ul>
+            <li class="sidebar-elements"> <a href="./adminSiteStatistics.html"> 사이트 통계</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManagePosts.html"> 게시글 / 공지사항</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageFreeCommunity.html"> 전체 커뮤니티 </a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageTeamNews.html"> 팀 뉴스</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageTeamYoutube.html"> 팀 유튜브</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageTeamSong.html"> 팀 응원가</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageSell.html"> 판매글</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageTrading.html"> 거래중인 글</a> </li>
+            <li class="sidebar-elements"> <a href="./adminManageMember.html"> 회원관리</a> </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="body-container">
+      <div class="body-container-name">
+        판매 글
+      </div>      
+
+      <section class="body-container-list">
+        <div class="list-background">
+
+          <div class="list-names">
+            <div>글 번호</div>
+            <div></div>
+            <div>제목 </div>
+            <div>작성 일자</div>
+            <div></div>
+          </div>
+          <div class="list-container">
+            <ul class="list-ul" id="list-ul">
+
+            </ul>
+          </div>
+
+          <div class="page-buttons">
+            <form action="" method="get">
+              <button type="button" id="left-button"> ◁ </button>
+              <ul id="numberlist-ul">
+                <li><a>1</a></li>
+                <li><a>2</a></li>
+                <li><a>3</a></li>
+                <li><a>4</a></li>
+                <li><a>5</a></li>
+              </ul>
+              <button type="button" id="right-button"> ▷ </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+    </section>
+  </main>
+  <div id="footer"></div>
+</body>
+
+</html>
