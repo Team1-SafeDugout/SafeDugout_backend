@@ -9,13 +9,13 @@ const newsData = [
 const videoIds = ['QpIiH_18Cf4', 'sFEzzqbpmM4', 'zC7ZwHBJ3jw'];
 
 const boardData = [
-  { id: 101, title: "아싸 1등", writer: "user01", date: "2025-08-10", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
-  { id: 102, title: "우린언제 쯤 이길까?...", writer: "user002", date: "2025-08-09", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
-  { id: 103, title: "연봉 반납해라...", writer: "user003", date: "2025-08-09", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
-  { id: 104, title: "야구장 맛집 추천좀요", writer: "user001", date: "2025-08-09", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
-  { id: 105, title: "000열애설 났어요", writer: "user005", date: "2025-08-09", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
-  { id: 106, title: "우리팀 해체해라!!!", writer: "user004", date: "2025-08-09", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
-  { id: 107, title: "또 역전패 그만좀 해라", writer: "user009", date: "2025-08-09", link: "./../../../../webapp/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 101, title: "아싸 1등", writer: "user01", date: "2025-08-10", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 102, title: "우린언제 쯤 이길까?...", writer: "user002", date: "2025-08-09", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 103, title: "연봉 반납해라...", writer: "user003", date: "2025-08-09", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 104, title: "야구장 맛집 추천좀요", writer: "user001", date: "2025-08-09", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 105, title: "000열애설 났어요", writer: "user005", date: "2025-08-09", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 106, title: "우리팀 해체해라!!!", writer: "user004", date: "2025-08-09", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
+  { id: 107, title: "또 역전패 그만좀 해라", writer: "user009", date: "2025-08-09", link: "${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPostDetail.html" },
 
 ];
 

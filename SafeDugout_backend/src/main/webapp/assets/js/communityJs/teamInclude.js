@@ -1,67 +1,67 @@
 const teamHeaders = {
   loginHeader: {
-    doosan : "./../../../../webapp/app/communityHtml/headerHtml/doosanHeader.html",
-    hanwha : "./../../../../webapp/app/communityHtml/headerHtml/hanwhaHeader.html",
-    kia : "./../../../../webapp/app/communityHtml/headerHtml/kiaHeader.html",
-    kiwoom: "./../../../../webapp/app/communityHtml/headerHtml/kiwoomHeader.html",
-    kt : "./../../../../webapp/app/communityHtml/headerHtml/ktHeader.html",
-    lg: "./../../../../webapp/app/communityHtml/headerHtml/lgHeader.html",
-    lotte: "./../../../../webapp/app/communityHtml/headerHtml/lotteHeader.html",
-    nc: "./../../../../webapp/app/communityHtml/headerHtml/ncHeader.html",
-    samsung: "./../../../../webapp/app/communityHtml/headerHtml/samsungHeader.html",
-    ssg: "./../../../../webapp/app/communityHtml/headerHtml/ssgHeader.html"
+    doosan : "${pageContext.request.contextPath}/app/communityHtml/headerHtml/doosanHeader.html",
+    hanwha : "${pageContext.request.contextPath}/app/communityHtml/headerHtml/hanwhaHeader.html",
+    kia : "${pageContext.request.contextPath}/app/communityHtml/headerHtml/kiaHeader.html",
+    kiwoom: "${pageContext.request.contextPath}/app/communityHtml/headerHtml/kiwoomHeader.html",
+    kt : "${pageContext.request.contextPath}/app/communityHtml/headerHtml/ktHeader.html",
+    lg: "${pageContext.request.contextPath}/app/communityHtml/headerHtml/lgHeader.html",
+    lotte: "${pageContext.request.contextPath}/app/communityHtml/headerHtml/lotteHeader.html",
+    nc: "${pageContext.request.contextPath}/app/communityHtml/headerHtml/ncHeader.html",
+    samsung: "${pageContext.request.contextPath}/app/communityHtml/headerHtml/samsungHeader.html",
+    ssg: "${pageContext.request.contextPath}/app/communityHtml/headerHtml/ssgHeader.html"
   },
   beforeLoginHeader: {
-    doosan: "./../../../../webapp/app/communityHtml/beforeLoginHeader/doosan.html",
-    hanwha: "./../../../../webapp/app/communityHtml/beforeLoginHeader/hanwha.html",
-    kia : "./../../../../webapp/app/communityHtml/beforeLoginHeader/kia.html",
-    kiwoom: "./../../../../webapp/app/communityHtml/beforeLoginHeader/kiwoom.html",
-    kt : "./../../../../webapp/app/communityHtml/beforeLoginHeader/kt.html",
-    lg: "./../../../../webapp/app/communityHtml/beforeLoginHeader/lg.html",
-    lotte: "./../../../../webapp/app/communityHtml/beforeLoginHeader/lotte.html",
-    nc: "./../../../../webapp/app/communityHtml/beforeLoginHeader/nc.html",
-    samsung: "./../../../../webapp/app/communityHtml/beforeLoginHeader/samsung.html",
-    ssg: "./../../../../webapp/app/communityHtml/beforeLoginHeader/ssg.html"
+    doosan: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/doosan.html",
+    hanwha: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/hanwha.html",
+    kia : "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/kia.html",
+    kiwoom: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/kiwoom.html",
+    kt : "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/kt.html",
+    lg: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/lg.html",
+    lotte: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/lotte.html",
+    nc: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/nc.html",
+    samsung: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/samsung.html",
+    ssg: "${pageContext.request.contextPath}/app/communityHtml/beforeLoginHeader/ssg.html"
   }
 };
 
 const teamFooter = {
-  doosan: "./../../../../webapp/app/communityHtml/teamFooter/doosanFooter.html",
-  hanwha: "./../../../../webapp/app/communityHtml/teamFooter/hanwhaFooter.html",
-  kia: "./../../../../webapp/app/communityHtml/teamFooter/kiaFooter.html",
-  kiwoom: "./../../../../webapp/app/communityHtml/teamFooter/kiwoomFooter.html",
-  kt: "./../../../../webapp/app/communityHtml/teamFooter/ktFooter.html",
-  lg: "./../../../../webapp/app/communityHtml/teamFooter/lgFooter.html",
-  lotte: "./../../../../webapp/app/communityHtml/teamFooter/lotteFooter.html",
-  nc: "./../../../../webapp/app/communityHtml/teamFooter/ncFooter.html",
-  samsung: "./../../../../webapp/app/communityHtml/teamFooter/samsungFooter.html",
-  ssg: "./../../../../webapp/app/communityHtml/teamFooter/ssgFooter.html"
+  doosan: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/doosanFooter.html",
+  hanwha: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/hanwhaFooter.html",
+  kia: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/kiaFooter.html",
+  kiwoom: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/kiwoomFooter.html",
+  kt: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/ktFooter.html",
+  lg: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/lgFooter.html",
+  lotte: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/lotteFooter.html",
+  nc: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/ncFooter.html",
+  samsung: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/samsungFooter.html",
+  ssg: "${pageContext.request.contextPath}/app/communityHtml/teamFooter/ssgFooter.html"
 };
 
 const teamCSS = {
   loginHeader: {
-    doosan : "./../../../../webapp/assets/css/communityCss/headerCss/doosanHeader.css",
-    hanwha : "./../../../../webapp/assets/css/communityCss/headerCss/hanwhaHeader.css",
-    kia : "./../../../../webapp/assets/css/communityCss/headerCss/kiaHeader.css",
-    kiwoom: "./../../../../webapp/assets/css/communityCss/headerCss/kiwoomHeader.css",
-    kt : "./../../../../webapp/assets/css/communityCss/headerCss/ktHeader.css",
-    lg: "./../../../../webapp/assets/css/communityCss/headerCss/lgHeader.css",
-    lotte: "./../../../../webapp/assets/css/communityCss/headerCss/lotteHeader.css",
-    nc: "./../../../../webapp/assets/css/communityCss/headerCss/ncHeader.css",
-    samsung: "./../../../../webapp/assets/css/communityCss/headerCss/samsungHeader.css",
-    ssg: "./../../../../webapp/assets/css/communityCss/headerCss/ssgHeader.css"
+    doosan : "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/doosanHeader.css",
+    hanwha : "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/hanwhaHeader.css",
+    kia : "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/kiaHeader.css",
+    kiwoom: "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/kiwoomHeader.css",
+    kt : "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ktHeader.css",
+    lg: "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/lgHeader.css",
+    lotte: "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/lotteHeader.css",
+    nc: "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ncHeader.css",
+    samsung: "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/samsungHeader.css",
+    ssg: "${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ssgHeader.css"
   },
   footer: {
-    doosan: "./../../../../webapp/assets/css/communityCss/teamFooter/doosanFooter.css",
-    hanwha: "./../../../../webapp/assets/css/communityCss/teamFooter/hanwhaFooter.css",
-    kia: "./../../../../webapp/assets/css/communityCss/teamFooter/kiaFooter.css",
-    kiwoom: "./../../../../webapp/assets/css/communityCss/teamFooter/kiwoomFooter.css",
-    kt: "./../../../../webapp/assets/css/communityCss/teamFooter/ktFooter.css",
-    lg: "./../../../../webapp/assets/css/communityCss/teamFooter/lgFooter.css",
-    lotte: "./../../../../webapp/assets/css/communityCss/teamFooter/lotteFooter.css",
-    nc: "./../../../../webapp/assets/css/communityCss/teamFooter/ncFooter.css",
-    samsung: "./../../../../webapp/assets/css/communityCss/teamFooter/samsungFooter.css",
-    ssg: "./../../../../webapp/assets/css/communityCss/teamFooter/ssgFooter.css"
+    doosan: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/doosanFooter.css",
+    hanwha: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/hanwhaFooter.css",
+    kia: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/kiaFooter.css",
+    kiwoom: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/kiwoomFooter.css",
+    kt: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ktFooter.css",
+    lg: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/lgFooter.css",
+    lotte: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/lotteFooter.css",
+    nc: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ncFooter.css",
+    samsung: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/samsungFooter.css",
+    ssg: "${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ssgFooter.css"
   }
 };
 
