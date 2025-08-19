@@ -6,18 +6,35 @@ import com.bullPenTalk.app.dto.MemberDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class MemberDAO {
-public SqlSession sqlSession;
-	
+	public SqlSession sqlSession;
+
 	public MemberDAO() {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	//로그인 메소드
-	public MemberDTO login(String memberId, String memberPw) {
-		System.out.println("로그인 다오");
+	public void join(MemberDTO memberDTO) {
+		sqlSession.insert("member.join", memberDTO);
+	}
+
+	// 로그인 메소드
+	public int login(MemberDTO memberDTO) {
+		Integer memberNumber = sqlSession.selectOne("member.login", memberDTO);
+		return memberNumber == null ? -1 : memberNumber;
+	}
+	
+	public boolean checkId(String memberId) {
+		return (Integer) sqlSession.selectOne("member.findId", memberId) < 1;
+	}
+	
+	public String findId(MemberDTO memberDTO) {
+		
+		return "userId";
+	}
+	
+	public void setPw(String memberId, String memberPw) {
 		MemberDTO memberDTO = new MemberDTO();
 		memberDTO.setMemberId(memberId);
 		memberDTO.setMemberPw(memberPw);
-		return sqlSession.selectOne("member.login", memberDTO);
+		sqlSession.update("member.changePw", memberDTO);
 	}
 }
