@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<footer>
+  <div class="team-footer-container">
+    <a href="">이용약관</a>
+    <a href="https://www.giantsclub.com/html/">팀 공식 사이트 바로가기</a>
+  </div>  
+</footer>

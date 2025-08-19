@@ -15,7 +15,7 @@
 
 	<servlet>
 		<servlet-name>Main</servlet-name>
-		<servlet-class>com.example.app.main.MainFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.main.MainFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Main</servlet-name>
@@ -24,7 +24,7 @@
 	
 	<servlet>
 		<servlet-name>Member</servlet-name>
-		<servlet-class>com.example.app.member.MemberFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.member.MemberFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Member</servlet-name>
@@ -33,7 +33,7 @@
 	
 	<servlet>
 		<servlet-name>MyPage</servlet-name>
-		<servlet-class>com.example.app.mypage.MyPageFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.mypage.MyPageFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MyPage</servlet-name>
@@ -42,7 +42,7 @@
 	
 	<servlet>
 		<servlet-name>FreeCommunity</servlet-name>
-		<servlet-class>com.example.app.freeCommunity.FreeCommunityFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.freeCommunity.FreeCommunityFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>FreeCommunity</servlet-name>
@@ -51,7 +51,7 @@
 
 	<servlet>
 		<servlet-name>TeamCommunity</servlet-name>
-		<servlet-class>com.example.app.teamCommunity.TeamCommunityFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.teamCommunity.TeamCommunityFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TeamCommunity</servlet-name>
@@ -60,7 +60,7 @@
 	
 	<servlet>
 		<servlet-name>Trade</servlet-name>
-		<servlet-class>com.example.app.trade.TradeFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.trade.TradeFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Trade</servlet-name>
@@ -69,7 +69,7 @@
 	
 	<servlet>
 		<servlet-name>Admin</servlet-name>
-		<servlet-class>com.example.app.admin.AdminFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.admin.AdminFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Admin</servlet-name>

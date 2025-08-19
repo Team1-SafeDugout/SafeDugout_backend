@@ -13,10 +13,15 @@
 	</settings>
 
 	<!-- DTO 별칭 설정 추후 추가 -->
-	<!-- <typeAliases>
+	<!-- 
+	<typeAliases>
 		<typeAlias type="com.example.app.dto.MemberDTO"
 			alias="MemberDTO"></typeAlias>
-	</typeAliases> -->
+	</typeAliases> 
+	-->
+	<typeAliases>
+		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
+	</typeAliases>
 
 	<environments default="oracle">
 		<environment id="oracle">
@@ -25,16 +30,22 @@
 				<property name="driver" value="oracle.jdbc.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521/xe" />
-				<property name="username" value="kdt" />
-				<property name="password" value="1234" />
+				<property name="username" value="safeDugout" />
+				<property name="password" value="bullPen9925" />
 			</dataSource>
 		</environment>
 	</environments>
 
 	<!-- mapper.xml 추후 추가 -->
-	<!-- <mappers>
+	<!-- 
+	<mappers>
 		<mapper resource="com/example/mapper/MemberMapper.xml" />
-	</mappers> -->
+	</mappers> 
+	-->
+	<mappers>
+		<mapper resource="com/bullPenTalk/mapper/MemberMapper.xml" />
+	</mappers>
+	
 </configuration>
 
 

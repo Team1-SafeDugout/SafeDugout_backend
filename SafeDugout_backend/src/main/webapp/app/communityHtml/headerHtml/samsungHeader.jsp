@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<header id="team-header">
+  <div class="top-header">
+    <div class="team-logo">
+      <a href="./../../../../webapp/app/communityHtml/communityMainPage.html">
+        <img src="./../../../../webapp/assets/img/communityImg/SS.png" alt="삼성 로고">
+      </a>
+    </div>
+    <div class="team-right-link">
+      <a href="./../../../../webapp/app/mainNotice/mainNoticeList.html" class="main-notice">[메인공지]: 불펜토크 사이트 이용 안내</a>
+      <a href="./../../../../webapp/main.html" class="main-logo">
+        <img src="./../../../../webapp/assets/img/communityImg/icoBall.png" alt="메인페이지 로고">
+      </a>
+    </div>
+  </div>
+  <div class="bottom-header">
+    <nav>
+      <ul class="team-menu">
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamStats.html">팀 기록</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamPlayerStats.html">선수 기록</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamYoutube.html">팀 유튜브</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamSong.html">팀 응원가</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamBoard.html">게시판</a></li>
+        <li><a href="./../../../../webapp/app/trade/tradeMain.html">굿즈거래</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamStadium.html">경기장</a></li>
+        <li><a href="./../../../../webapp/app/communityHtml/communityTapPage/teamNews.html">팀뉴스</a></li>
+        <li class="nav-search">
+          <form action="" method="get">
+            <input type="text" placeholder="검색" />
+            <button>
+              <img src="./../../../../webapp/assets/img/communityImg/freeIconSearch.png" alt="검색" />
+            </button>
+          </form>
+        </li>
+        <li class="mypage">
+          <a href="./../../../../webapp/app/mypostlist/myPostList.html">
+            <img src="./../../../../webapp/assets/img/communityImg/icoMypage.png" alt="마이페이지" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
