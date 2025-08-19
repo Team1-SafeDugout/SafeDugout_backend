@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamNews.css">
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
-  <script defer src="./../../../assets/js/communityJs/communityTapPage/teamNews.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamNews.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamNews.js"></script>
 </head>
 <body>
   <div id="team-header"></div>
@@ -17,7 +18,7 @@
       <ul id="team-news-box">
         <li class="team-news-list">
           <a href="./teamNewsDetail.html">
-            <span><img src="./../../../assets/img/communityImg/lg.png" alt=""></span>
+            <span><img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt=""></span>
             <span>타격 기계도 4번 타자도 아니다, LG 후반기 타격 1위는 '슈퍼 백업'</span>
           </a>
         </li>

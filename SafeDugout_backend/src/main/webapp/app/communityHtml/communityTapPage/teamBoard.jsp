@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamBoard.css">
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
-  <script defer src="./../../../assets/js/communityJs/communityTapPage/teamBoard.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamBoard.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamBoard.js"></script>
 </head>
 <body>
   <div id="team-header"></div>
@@ -47,7 +48,7 @@
             <span>검색</span>
             <input type="text">
             <button>
-              <img class="team-board-search" src="./../../../assets/img/communityImg/freeIconSearch.png" alt="">
+              <img class="team-board-search" src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="">
             </button>
           </form>
           <!-- 글쓰기 탭 -->

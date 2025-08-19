@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamPsotWriting.css">
-  <script defer src="./../../../assets/js/communityJs/communityTapPage/teamPostWriting.js"></script>
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamPsotWriting.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamPostWriting.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
 </head>
 <body>
   <div id="team-header"></div>

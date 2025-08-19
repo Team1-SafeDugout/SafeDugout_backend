@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamNewsDetail.css">
-  <script defer src="./../../../assets/js/communityJs/communityTapPage/teamNewsDetail.js"></script>
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamNewsDetail.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamNewsDetail.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
 </head>
 <body>
   <div id="team-header"></div>
@@ -26,7 +27,7 @@
       </div>
       <!-- 뉴스 이미지 --> 
       <div class="team-news-image">
-        <img src="./../../../assets/img/communityImg/lg.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">
       </div>
       <!-- 본문 -->
       <div class="team-news-content">
@@ -39,7 +40,7 @@
         </p>
         <!-- 이미지2(필요시 삽입 없어도 됨) -->
         <div class="team-news-image">
-          <img src="./../../../assets/img/communityImg/lg.png" alt="">
+          <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">
         </div>  
         <!-- 본문2 -->
         <p>구본혁은 앞서 2회 말 2사 주자 없는 상황에서도 류현진을 상대로 안타를 뽑는 등 이날 3안타 경기를 완성했다. 1-1로 맞선 9회 말에도 선두 타자 안타를 뽑고 대주자로 교체됐으나, LG는 후속타 불발로 연장 승부에 돌입했다.    
