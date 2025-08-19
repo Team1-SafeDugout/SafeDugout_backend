@@ -36,7 +36,7 @@ public class LoginOkController implements Execute{
 		memberNumber = memberDAO.login(memberDTO);
 		
 		if(memberNumber != -1) {
-			path = "/webapp/mainLogin.jsp";
+			path = "/mainLogin.jsp";
 			session.setAttribute("memberNumber", memberNumber);
 			System.out.println("세션값 : " + memberNumber);
 			

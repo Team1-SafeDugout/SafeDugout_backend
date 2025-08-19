@@ -77,7 +77,7 @@
   <!-- 푸터 -->
   <div id="footer"></div>
   <!-- 스크립트 -->
-  <script src="./../../assets/js/includeNoLogin.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/includeNoLogin.js"></script>
 </body>
 
 </html>
