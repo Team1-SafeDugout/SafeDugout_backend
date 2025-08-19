@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>불펜토크 관리자</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/login/adminlogin.css">
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="./../../../assets/css/admin/adminFooter.css">
+  <script async src="./../../../assets/js/admin/adminlogin/adminLogin.js"></script>
+</head>
+<body>
+  <div id="header"></div>
+  <main>
+    <section class="section-background">
+      <!-- 상단 버튼 -->
+      <section class="section-top-buttons">
+        <form action="" method="get">
+          <button class="post-button" type="button"
+            onclick="location.href = './../adminDetailMenu/adminAddNoticePostDetail.html'"> 수정 </button>
+          <button class="post-button" type="button" id="delete-button"> 삭제 </button>
+        </form>
+      </section>
+
+      <!-- 본문 공간 -->
+      <section class="section-post">
+        <div class="post-title-container">
+          <div> 제목 </div>
+          <div class="title"> 사이트 이용 안내 </div>
+        </div>
+
+        <div class="line"> </div>
+
+        <div class="post-content-container">
+          <div> 내용 </div>
+          <div class="post-content">
+            <p>상품 등록 페이지로 이동합니다.</p>
+            <p>팀 로고 버튼 클릭시 팀 커뮤니티 메인페이지로 이동합니다.</p>
+            <p>마이페이지로 이동합니다.</p>
+            <p>불펜토크 메인페이지로 이동합니다.</p>
+            <p>안녕하세요 불펜토크 이용자 여러분! 원활한 사이트 이용을 위한 안내문입니다.</p>
+            <p>불펜토크 사이트 비회원 이용자께서는 MY 팀 커뮤니티와 중고거래 페이지에서 게시글 및 정보, 상품 열람만 가능하며, ...</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="post-date"> 0000.00.00 </div>
+
+      <!-- 하단 버튼 -->
+      <section class="section-bottom-buttons">
+        <form action="" method="get">
+          <button class="post-button" type="button" onclick="location.href = './../adminMenu/adminManagePosts.html' ">
+            목록으로
+          </button>
+        </form>
+
+        <form action="" method="get">
+          <button class="post-button" type="button" onclick="location.href = './../adminMenu/adminManagePosts.html' ">
+            이전 글 </button>
+          <button class="post-button" type="button" onclick="location.href = './../adminMenu/adminManagePosts.html' ">
+            다음 글 </button>
+        </form>
+      </section>
+    </section>
+  </main>
+  <div id="footer"></div>
+  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+</body>
+</html>
