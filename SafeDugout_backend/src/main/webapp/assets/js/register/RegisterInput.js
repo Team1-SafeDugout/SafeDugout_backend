@@ -295,7 +295,7 @@ authenticate.addEventListener("click", function () {
     codeMismatchMessage.style.color = "green";
     code.dataset.verified = "true";
 	code.disabled = true;
-	phoneNumber.disabled = true;
+	/*phoneNumber.disabled = true;*/
 	authenticate.style.display = "none";
 	sendCode.style.display = "none";
 	phoneCheck = true;

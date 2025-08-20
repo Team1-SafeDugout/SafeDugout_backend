@@ -23,7 +23,7 @@ public class MemberDAO {
 	}
 	
 	public boolean checkId(String memberId) {
-		return (Integer) sqlSession.selectOne("member.findId", memberId) < 1;
+		return (Integer) sqlSession.selectOne("member.checkId", memberId) < 1;
 	}
 	
 	public String findId(MemberDTO memberDTO) {
