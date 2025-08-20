@@ -23,7 +23,7 @@
 	
 	<!-- 아이디 찾기 -->
 	<select id = "findId" parameterType = "MemberDTO" resultType = "string">
-		select Count(member_number) from tbl_member
+		select member_name from tbl_member
 		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
 	</select>
 	
