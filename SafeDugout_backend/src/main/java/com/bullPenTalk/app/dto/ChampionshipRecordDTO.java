@@ -8,6 +8,7 @@ public class ChampionshipRecordDTO {
 //	CONSTRAINT PK_CHAMPIONSHIP PRIMARY KEY (TEAM_NUMBER, SEASON_YEAR),
 //	CONSTRAINT FK_CHAMPIONSHIP_TEAM FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
+
 	
 	private int teamNumber;
 	private int seasonYear;
@@ -38,4 +39,5 @@ public class ChampionshipRecordDTO {
 				+ isChampionship + "]";
 	}
 	
+
 }

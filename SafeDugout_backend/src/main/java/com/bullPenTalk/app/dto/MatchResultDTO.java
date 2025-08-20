@@ -8,7 +8,7 @@ public class MatchResultDTO {
 //	MATCH_RESULT     VARCHAR2(10),
 //	CONSTRAINT FK_MATCH_GAME FOREIGN KEY (GAME_ID) REFERENCES TBL_GAME_SCHEDULE(GAME_ID)
 //	);
-	
+
 	private int gameId; 
 	private int homeTeamScore;
 	private int awayTeamScore; 
@@ -45,4 +45,5 @@ public class MatchResultDTO {
 				+ awayTeamScore + ", matchResult=" + matchResult + "]";
 	} 
 	
+
 }

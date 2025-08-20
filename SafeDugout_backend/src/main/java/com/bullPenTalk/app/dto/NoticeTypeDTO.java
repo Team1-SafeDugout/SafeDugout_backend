@@ -6,4 +6,28 @@ public class NoticeTypeDTO {
 //	NOTICE_TYPE VARCHAR2(50) NOT NULL,
 //	CONSTRAINT PK_NOTICE_TYPE PRIMARY KEY(NOTICE_TYPE_ID)
 //	);
+
+	private int noticeTypeId;
+	private String noticeType;
+	public int getNoticeTypeId() 
+	
+	{
+		return noticeTypeId;
+	}
+	public void setNoticeTypeId(int noticeTypeId) {
+		this.noticeTypeId = noticeTypeId;
+	}
+	public String getNoticeType() {
+		return noticeType;
+	}
+	public void setNoticeType(String noticeType) {
+		this.noticeType = noticeType;
+	}
+	
+	@Override
+	public String toString() {
+		return "NoticeTypeDTO [noticeTypeId=" + noticeTypeId + ", noticeType=" + noticeType + "]";
+	}
+
+
 }

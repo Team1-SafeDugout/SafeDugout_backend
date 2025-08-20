@@ -12,6 +12,7 @@ public class CommentDTO {
 //	CONSTRAINT FK_COMMENT_MEMBER FOREIGN KEY(MEMBER_NUMBER) REFERENCES TBL_MEMBER(MEMBER_NUMBER) ON DELETE CASCADE,
 //	CONSTRAINT FK_COMMENT_POST FOREIGN KEY(POST_NUMBER) REFERENCES TBL_POST(POST_NUMBER) ON DELETE CASCADE
 //	);
+
 	
 	private int commentNumber; 
 	private int memberNumber;
@@ -64,4 +65,5 @@ public class CommentDTO {
 				+ ", commentUpdate=" + commentUpdate + "]";
 	}
 	
+
 }

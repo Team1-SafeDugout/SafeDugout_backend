@@ -8,6 +8,7 @@ public class MemberPostDTO {
 //	CONSTRAINT FK_MEMBER_POST_NUMBER FOREIGN KEY(POST_NUMBER) REFERENCES TBL_POST (POST_NUMBER)ON DELETE CASCADE,
 //	CONSTRAINT FK_POST_MEMBER_NUMBER FOREIGN KEY(MEMBER_NUMBER) REFERENCES TBL_MEMBER(MEMBER_NUMBER)ON DELETE CASCADE
 //	);
+
 	
 	int memberNumber;
 	int postNumber;
@@ -30,4 +31,5 @@ public class MemberPostDTO {
 		return "MemberPostDTO [memberNumber=" + memberNumber + ", postNumber=" + postNumber + "]";
 	}
 	
+
 }

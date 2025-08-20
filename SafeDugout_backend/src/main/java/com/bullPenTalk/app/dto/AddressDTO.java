@@ -6,6 +6,7 @@ public class AddressDTO {
 //	DETAILED_ADDRESS VARCHAR2(100),
 //	CONSTRAINT PK_ADDRESS PRIMARY KEY(POSTAL_CODE)
 //	);
+
 	
 	private int postalCode;
 	private String detailedAddress;
@@ -28,4 +29,5 @@ public class AddressDTO {
 		return "AddressDTO [postalCode=" + postalCode + ", detailedAddress=" + detailedAddress + "]";
 	} 
 	
+
 }

@@ -10,6 +10,7 @@ public class AttachmentDTO {
 //	CONSTRAINT PK_ATTACHMENT PRIMARY KEY(ATTACHMENT_NUMBER),
 //	CONSTRAINT FK_ATTACHMENT_TYPE FOREIGN KEY(ATTACHMENT_TYPE_ID) REFERENCES TBL_ATTACHMENT_TYPE(ATTACHMENT_TYPE_ID)
 //	);
+
 	
 	private int attachmentNumber;
 	private int attachmentTypeId; 
@@ -56,4 +57,5 @@ public class AttachmentDTO {
 	} 
 	
 	
+
 }

@@ -11,6 +11,7 @@ public class GameScheduleDTO {
 //	CONSTRAINT FK_AWAY_TEAM FOREIGN KEY (AWAY_TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER),
 //	CONSTRAINT FK_STADIUM FOREIGN KEY (STADIUM_NUMBER) REFERENCES TBL_STADIUM(STADIUM_NUMBER)
 //	);
+
 	
 	private int gameId;
 	private int homeTeamNumber;
@@ -56,4 +57,5 @@ public class GameScheduleDTO {
 	}
 	
 	
+
 }

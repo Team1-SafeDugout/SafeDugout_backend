@@ -8,4 +8,28 @@ public class NoticeAttachmentDTO {
 //	CONSTRAINT FK_ATTACHMENT_NOTICE_NUMBER FOREIGN KEY(NOTICE_POST_NUMBER) REFERENCES TBL_NOTICE_POST(NOTICE_POST_NUMBER)ON DELETE CASCADE,
 //	CONSTRAINT FK_NOTICE_ATTACHMENT_NUMBER FOREIGN KEY(ATTACHMENT_NUMBER) REFERENCES TBL_ATTACHMENT (ATTACHMENT_NUMBER)ON DELETE CASCADE
 //	);
+
+	private int noticePostNumber;
+	private int attachmentNumber;
+	
+	public int getNoticePostNumber() {
+		return noticePostNumber;
+	}
+	public void setNoticePostNumber(int noticePostNumber) {
+		this.noticePostNumber = noticePostNumber;
+	}
+	public int getAttachmentNumber() {
+		return attachmentNumber;
+	}
+	public void setAttachmentNumber(int attachmentNumber) {
+		this.attachmentNumber = attachmentNumber;
+	}
+	
+	@Override
+	public String toString() {
+		return "NoticeAttachmentDTO [noticePostNumber=" + noticePostNumber + ", attachmentNumber=" + attachmentNumber
+				+ "]";
+	}
+	
+
 }

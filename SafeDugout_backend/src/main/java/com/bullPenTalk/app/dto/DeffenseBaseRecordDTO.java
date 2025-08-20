@@ -15,6 +15,7 @@ public class DeffenseBaseRecordDTO {
 //	CONSTRAINT PK_DEFENSE_BASE_RECORD PRIMARY KEY (TEAM_NUMBER, SEASON_YEAR),
 //	CONSTRAINT FK_DEFENSE_BASE_RECORD FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
+
 	
 	private int teamNumber;
 	private int seasonYear;
@@ -95,4 +96,5 @@ public class DeffenseBaseRecordDTO {
 				+ "]";
 	}
 	
+
 }

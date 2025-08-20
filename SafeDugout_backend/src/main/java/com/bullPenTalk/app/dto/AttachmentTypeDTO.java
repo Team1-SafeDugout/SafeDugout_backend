@@ -6,6 +6,7 @@ public class AttachmentTypeDTO {
 //	ATTACHMENT_TYPE VARCHAR2(50),
 //	CONSTRAINT PK_ATTACHMENT_TYPE PRIMARY KEY(ATTACHMENT_TYPE_ID)
 //	);
+
 	
 	private int attachmentTypeId;
 	private String attachmentType;
@@ -30,4 +31,5 @@ public class AttachmentTypeDTO {
 	
 	
 	
+
 }

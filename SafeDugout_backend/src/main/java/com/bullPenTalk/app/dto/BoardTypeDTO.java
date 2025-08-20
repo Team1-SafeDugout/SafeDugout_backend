@@ -6,6 +6,7 @@ public class BoardTypeDTO {
 //	BOARD_TYPE_NAME VARCHAR2(50) NOT NULL,
 //	CONSTRAINT PK_BOARD_TYPE PRIMARY KEY(BOARD_TYPE_ID)
 //	);
+
 	
 	private int boardTypeId;
 	private String boardTypeName;
@@ -27,5 +28,4 @@ public class BoardTypeDTO {
 	public String toString() {
 		return "BoardTypeDTO [boardTypeId=" + boardTypeId + ", boardTypeName=" + boardTypeName + "]";
 	}
-	 
 }

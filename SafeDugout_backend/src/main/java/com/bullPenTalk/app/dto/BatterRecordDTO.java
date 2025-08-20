@@ -23,6 +23,7 @@ public class BatterRecordDTO {
 //	CONSTRAINT PK_BATTER_RECORD PRIMARY KEY (PLAYER_NUMBER, BATTER_SEASON_YEAR),
 //	CONSTRAINT FK_BATTER_PLAYER FOREIGN KEY (PLAYER_NUMBER) REFERENCES TBL_PLAYER(PLAYER_NUMBER)
 //	);
+
 	
 	int playerNumber; 
 	String batterSeasonYear;
@@ -160,4 +161,5 @@ public class BatterRecordDTO {
 				+ batterBB + ", IBB=" + IBB + ", batterHBP=" + batterHBP + ", SO=" + SO + ", GDP=" + GDP + ", SRBI="
 				+ SRBI + ", OPS=" + OPS + ", SB=" + SB + "]";
 	}
+
 }

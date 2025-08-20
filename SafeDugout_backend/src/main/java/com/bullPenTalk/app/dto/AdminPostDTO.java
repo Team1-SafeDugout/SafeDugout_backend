@@ -8,6 +8,7 @@ public class AdminPostDTO {
 //	CONSTRAINT FK_POST_ADMIN_NUMBER FOREIGN KEY (ADMIN_NUMBER) REFERENCES TBL_ADMIN (ADMIN_NUMBER),
 //	CONSTRAINT FK_ADMIN_POST_NUMBER FOREIGN KEY (POST_NUMBER) REFERENCES TBL_POST (POST_NUMBER) ON DELETE CASCADE
 //	);
+
 	
 	private int adminNumber;
 	private int postNumber;
@@ -30,4 +31,5 @@ public class AdminPostDTO {
 		return "AdminPostDTO [adminNumber=" + adminNumber + ", postNumber=" + postNumber + "]";
 	}
 	
+
 }

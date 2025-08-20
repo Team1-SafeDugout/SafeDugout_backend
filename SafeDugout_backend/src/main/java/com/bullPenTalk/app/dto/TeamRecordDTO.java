@@ -17,4 +17,106 @@ public class TeamRecordDTO {
 //	CONSTRAINT PK_TEAM_RECORD PRIMARY KEY (TEAM_NUMBER, SEASON_YEAR),
 //	CONSTRAINT FK_TEAM_RECORD FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
+
+	
+	private int teamNumber; 
+	private int seasonYear;
+	private int teamRank;
+	private int gameCount;
+	private int teamWin;
+	private int teamDraw;
+	private int teamLose;
+	private int teamWinRate;
+	private int avgBat;
+	private int era;
+	private int score;
+	private int concede;
+	
+	public int getTeamDraw() {
+		return teamDraw;
+	}
+	public void setTeamDraw(int teamDraw) {
+		this.teamDraw = teamDraw;
+	}
+	public int getTeamLose() {
+		return teamLose;
+	}
+	public void setTeamLose(int teamLose) {
+		this.teamLose = teamLose;
+	}
+	public int getTeamWinRate() {
+		return teamWinRate;
+	}
+	public void setTeamWinRate(int teamWinRate) {
+		this.teamWinRate = teamWinRate;
+	}
+	public int getAvgBat() {
+		return avgBat;
+	}
+	public void setAvgBat(int avgBat) {
+		this.avgBat = avgBat;
+	}
+	public int getEra() {
+		return era;
+	}
+	public void setEra(int era) {
+		this.era = era;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getConcede() {
+		return concede;
+	}
+	public void setConcede(int concede) {
+		this.concede = concede;
+	}
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
+	}
+	public int getSeasonYear() {
+		return seasonYear;
+	}
+	public void setSeasonYear(int seasonYear) {
+		this.seasonYear = seasonYear;
+	}
+	public int getTeamRank() {
+		return teamRank;
+	}
+	public void setTeamRank(int teamRank) {
+		this.teamRank = teamRank;
+	}
+	public int getGameCount() {
+		return gameCount;
+	}
+	public void setGameCount(int gameCount) {
+		this.gameCount = gameCount;
+	}
+	public int getTeamWin() {
+		return teamWin;
+	}
+	public void setTeamWin(int teamWin) {
+		this.teamWin = teamWin;
+	}
+	
+	@Override
+	public String toString() {
+		return "TeamRecordDTO [teamNumber=" + teamNumber + ", seasonYear=" + seasonYear + ", teamRank=" + teamRank
+				+ ", gameCount=" + gameCount + ", teamWin=" + teamWin + ", teamDraw=" + teamDraw + ", teamLose="
+				+ teamLose + ", teamWinRate=" + teamWinRate + ", avgBat=" + avgBat + ", era=" + era + ", score=" + score
+				+ ", concede=" + concede + "]";
+	}
+
+	
+	
 }
+
+
+
+
