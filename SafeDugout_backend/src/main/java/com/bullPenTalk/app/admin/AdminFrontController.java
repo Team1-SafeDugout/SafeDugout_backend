@@ -47,10 +47,12 @@ public class AdminFrontController extends HttpServlet {
 		Result result = new Result();
 		
 		switch(target) {
-		case "/admin/login/adminLogin.ad":
+		case "/admin/adminLogin.ad":
 			request.getRequestDispatcher("/app/admin/login/adminLogin.jsp").forward(request, response);
 			break;
-		case "/admin/login/adminLoginOk.ad":
+		case "/admin/adminLoginOk.ad":
+			System.out.println("로그인 진입");
+			result = new AdminLoginOkController().execute(request, response);
 			break;
 		}
 	}

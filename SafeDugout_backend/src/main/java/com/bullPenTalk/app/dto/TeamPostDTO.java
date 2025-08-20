@@ -26,8 +26,83 @@ public class TeamPostDTO {
 //			);
 	
 	private int postNumber;
+	private int memberNumber;
 	private int teamNumber;
+	private int adminNumber;
+	private int boardId = 0;
+	private String postTitle;
+	private String postContent;
+	private String postDate;
+	private String postUpdate;
+	private String postLink;
 	
-
+	public int getPostNumber() {
+		return postNumber;
+	}
+	public void setPostNumber(int postNumber) {
+		this.postNumber = postNumber;
+	}
+	public int getMemberNumber() {
+		return memberNumber;
+	}
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
+	}
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
+	}
+	public int getAdminNumber() {
+		return adminNumber;
+	}
+	public void setAdminNumber(int adminNumber) {
+		this.adminNumber = adminNumber;
+	}
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
+	public String getPostTitle() {
+		return postTitle;
+	}
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
+	public String getPostContent() {
+		return postContent;
+	}
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
+	}
+	public String getPostDate() {
+		return postDate;
+	}
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
+	}
+	public String getPostUpdate() {
+		return postUpdate;
+	}
+	public void setPostUpdate(String postUpdate) {
+		this.postUpdate = postUpdate;
+	}
+	public String getPostLink() {
+		return postLink;
+	}
+	public void setPostLink(String postLink) {
+		this.postLink = postLink;
+	}
+	
+	@Override
+	public String toString() {
+		return "TeamPostDTO [postNumber=" + postNumber + ", memberNumber=" + memberNumber + ", teamNumber=" + teamNumber
+				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postTitle=" + postTitle
+				+ ", postContent=" + postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate
+				+ ", postLink=" + postLink + "]";
+	}		
 
 }

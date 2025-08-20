@@ -34,7 +34,7 @@
 	</select>
 	
 	<!-- 비밀번호 찾기 -->
-	<select id = "findPw" parameterType = "MemberDTO" resultType = "int">
+	<select id = "findPw" parameterType = "MemberDTO" resultType = "string">
 		select Count(member_number) from tbl_member
 		where member_id = #{memberId} and member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
 	</select>

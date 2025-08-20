@@ -27,8 +27,7 @@ public class MemberDAO {
 	}
 	
 	public String findId(MemberDTO memberDTO) {
-		
-		return "userId";
+		return sqlSession.selectOne("member.findId", memberDTO);
 	}
 	
 	public void setPw(String memberId, String memberPw) {

@@ -12,13 +12,12 @@
 </head>
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
   <main>
     <div class="main-container">
       <div class="main-title">
         관리자 로그인
       </div>
-      <form action="" method="post">
+      <form action="${pageContext.request.contextPath}/admin/adminLoginOk.ad" method="post">
         <div class="main-form-box">
           <div class="main-input-message">
             아이디
@@ -36,7 +35,7 @@
             아이디 또는 비밀번호가 잘못되었습니다.
           </div>
           <div class="main-login-button">
-            <button type="button" id = "login-button"> 로그인 </button>
+            <button type="submit" id = "login-button"> 로그인 </button>
           </div>
         </div>
       </form>
