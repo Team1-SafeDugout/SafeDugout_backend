@@ -1,0 +1,18 @@
+package com.bullPenTalk.app.dto;
+
+public class DeffenseBaseRecordDTO {
+//	CREATE TABLE TBL_DEFENSE_BASE_RECORD (
+//	TEAM_NUMBER            NUMBER,
+//	SEASON_YEAR            NUMBER,
+//	GAME_COUNT             NUMBER,
+//	ERROR                  NUMBER,
+//	GIDOUT                 NUMBER,
+//	SB_ALLOW               NUMBER,
+//	SB_BLOCK               NUMBER,
+//	SB_SUCCESS             NUMBER,
+//	PICK_OFF               NUMBER,
+//	PICK_OFF_SUCCESS       NUMBER,
+//	CONSTRAINT PK_DEFENSE_BASE_RECORD PRIMARY KEY (TEAM_NUMBER, SEASON_YEAR),
+//	CONSTRAINT FK_DEFENSE_BASE_RECORD FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
+//	);
+}

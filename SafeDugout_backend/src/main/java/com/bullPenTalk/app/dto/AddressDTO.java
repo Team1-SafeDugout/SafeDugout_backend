@@ -1,0 +1,9 @@
+package com.bullPenTalk.app.dto;
+
+public class AddressDTO {
+//	CREATE TABLE TBL_ADDRESS(
+//	POSTAL_CODE NUMBER,
+//	DETAILED_ADDRESS VARCHAR2(100),
+//	CONSTRAINT PK_ADDRESS PRIMARY KEY(POSTAL_CODE)
+//	);
+}
