@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage">
 	<!-- 포인트 충전 내역 조회 쿼리문 작성 -->
+	<select id="">
 	
+	</select>
+	<!-- 포인트 충전 쿼리문 작성 -->
+	<insert>
 	
+	</insert>
 	
 </mapper>
