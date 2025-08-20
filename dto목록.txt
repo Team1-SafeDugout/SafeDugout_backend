@@ -1,0 +1,39 @@
+- 포인트 충전 내역 조회(PointChargeRecord)
+충전 금액
+충전 후 포인트 
+충전 날짜 
+
+- 포인트 충전(Member)
+충전 금액
+결제 방식 
+
+- 게시글 조회(Post)
+
+- 게시글 삭제(Post)
+
+- 댓글 조회(Comment)
+
+- 댓글 삭제(Comment)
+
+구매 목록 조회(TradePost)
+
+구매 확정(TradePost)
+
+구매 취소(TradePost, SellPost)
+
+판매 목록 조회(SellPostList)
+판매글 삭제(SellPost, SellPostList)
+정보 수정(SellPost, SellPostList)
+삭제(SellPost, SellPostList)
+메인 공지 사항  목록 조회
+회원가입 페이지 이동
+로그인 페이지 이동
+메인 페이지 이동
+상품 등록 페이지 이동
+마이페이지 이동 / 로그인
+푸터
+경기 일정 목록 조회
+중고거래 목록 조회
+중고거래 상세 조회
+입문가이드 목록 조회
+팀별 순위 조회
