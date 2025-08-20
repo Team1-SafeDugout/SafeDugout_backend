@@ -1,8 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mypage">
-	<!-- 포인트 충전 내역 조회 쿼리문 작성 -->
+		<!-- 포인트 충전 내역 조회 -->
+	<select id="selectPoint" parameterType="MemberDTO"
+		resultType="PointChargeRecordDTO">
+		select charge_point, after_charge_point, charge_date
+		from tbl_point_charge_record
+		where member_id = #{memberId};
+	</select>
+	<!-- 포인트 충전 -->
+	<update id="chargePoint" parameterType="int">
+		update tbl_member set
+		member_point = #{memberPoint}
+		where member_number = #{memberNumber}
+	</update>
+	<!-- 게시글 조회 -->
+	<select id="selectPostList" parameterType="int" resultType="PostDTO">
+		select post_number, post_title, post_date, post_update
+		from tbl_post
+		where member_number = #{memberNumber} and 
+	</select>
+	<!-- 게시글 삭제 -->
+	<delete id="deletePost" parameterType="int">
+		delete from tbl_post
+		where post_number = #{postNumber}
+	</delete>
+	<!-- 댓글 조회 -->
+	<select id="selectCommentList" parameterType="int" resultType="MyPageCommentDTO">
+		select p.post_title, m.member_id, c.comment_content, c.comment_date, c.comment_update, c.comment_number
+		from tbl_post p join tbl_member m on p.member_number = m.member_number
+		join tbl_comment c on p.post_number = c.post_number
+		where c.member_number = #{memberNumber}
+	</select>
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="int">
+		delete from tbl_comment 
+		from tbl_comment 
+		where comment_number = #{commentNumber}
+	</delete>
+	<!-- 구매 목록 조회 -->
+	<select id="selectTradeList" parameterType="int" resultType="MyPageTradeListDTO">
+		select t.trade_number, s.sell_post_title, s.dealtype_id, m.member_id, t.status_number, s.price_point, t.payment_date, t.complete_date
+		from tbl_sell_post s join tbl_trade_post t on s.sell_post_number = t.trade_number
+		join tbl_member m on s.member_number = m.member_number
+		where s.member_number = #{memberNumber}
+	</select>
 	
+	<!-- 구매 확정 -->
+	<update id="comleteTrade" parameterType="int">
+		update tbl_trade_post 
+		set status_number = 3
+		where trade_number = #{tradeNumber}
+	</update>
 	
+	<!-- 구매 취소 -->
+	<update id="cancelTradeUpdate" parameterType="int">
+		update tbl_sell_post
+		set status_id = 1
+		where sell_post_number = #{sellPostNumber}
+	</update>
+	<delete id="cancelTradeDelete" parameterType="int">
+		delete from tbl_trade_post 
+		where trade_number = #{tradeNumber}
+	</delete>
 	
+	<!-- 판매 목록 조회 -->
+	<select id="selectSellList" parameterType="int" resultType="MyPageTradeListDTO">
+		select sell_post_number, member_number, status_id, dealtype_id, price_point, sell_post_title, 
+		t.payment_date, t.complete_date
+		from tbl_sell_post s join tbl_trade_post t on s.sell_post_number = t.trade_number
+		where sell_post_number = #{sellPostNumber}
+	</select>
+	<!-- 판매글 삭제 -->
+	<delete id="deleteSell" parameterType="int" resultType="">
+		delete from tbl_sell_post
+		where sell_post_number = #{sellPostNumber}
+	</delete>
+	<!-- 회원 정보 수정 -->
+	<update id="updateMember" parameterType="MemberDTO">
+		update tbl_member
+		set m.member_pw = #{memberPw}, m.member_phone = #{memberPhone}, m.member_emain = #{memberEmail},
+		m.member_postal_code = #{memberPostalCode}, a.detailed_address = #{detailedAddress},
+		m.my_team = #{myTeam}
+		from tbl_member m join tbl_address a on m.member_postal_code = a.postal_code
+		where member_number = #{memberNumber}
+	</update>
+	<!-- 회원 탈퇴 -->
+	<delete id="quit" parameterType="int">
+		delete from tbl_member
+		where member_number = #{memberNumber}
+	</delete>
 </mapper>
