@@ -17,7 +17,7 @@ public class MyBatisConfig {
 	static {
 		try {
 			// 설정파일의 경로를 저장한다
-			String resource = "./com/mybatis/config/config.xml";
+			String resource = "./com/bullPenTalk/config/config.xml";
 
 			// Resources클래스를 이용하여 리소스를 읽어들여 Reader 객체로 만든다
 			Reader reader = Resources.getResourceAsReader(resource);

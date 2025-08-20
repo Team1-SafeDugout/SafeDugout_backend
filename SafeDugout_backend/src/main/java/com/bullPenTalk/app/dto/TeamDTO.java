@@ -6,6 +6,7 @@ public class TeamDTO {
 //	TEAM_NAME VARCHAR2(50) NOT NULL,
 //	CONSTRAINT PK_TEAM PRIMARY KEY(TEAM_NUMBER)
 //	);
+
 	
 	private int teamNumber;
 	private String teamName;
@@ -25,4 +26,5 @@ public class TeamDTO {
 	public String toString() {
 		return "TeamDTO [teamNumber=" + teamNumber + ", teamName=" + teamName + "]";
 	}
+
 }

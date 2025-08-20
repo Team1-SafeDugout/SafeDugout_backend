@@ -24,6 +24,7 @@ public class PitcherRecordDTO {
 //	CONSTRAINT PK_PITCHER_RECORD PRIMARY KEY (PLAYER_NUMBER, PITCHER_SEASON_YEAR),
 //	CONSTRAINT FK_PITCHER_PLAYER FOREIGN KEY (PLAYER_NUMBER) REFERENCES TBL_PLAYER(PLAYER_NUMBER)
 //	);
+
 	private int playerNumber;
 	private String pitcherSeasonYear;
 	private int pitcherGame;
@@ -168,11 +169,5 @@ public class PitcherRecordDTO {
 				+ pitcherBb + ", pitcherHbp=" + pitcherHbp + ", bk=" + bk + "]";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+
 }

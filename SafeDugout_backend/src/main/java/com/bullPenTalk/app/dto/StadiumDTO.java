@@ -8,6 +8,7 @@ public class StadiumDTO {
 //	TEAM_NUMBER      NUMBER NOT NULL,
 //	CONSTRAINT FK_STADIUM_TEAM FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
+
 	private int stadiumNUmber;
 	private String stadiumAddress;
 	private String stadiumName;
@@ -42,6 +43,4 @@ public class StadiumDTO {
 		return "StadiumDTO [stadiumNUmber=" + stadiumNUmber + ", stadiumAddress=" + stadiumAddress + ", stadiumName="
 				+ stadiumName + ", stadiumteamNumber=" + stadiumteamNumber + "]";
 	}
-	
-	
 }

@@ -22,6 +22,7 @@ public class TeamBatterRecordDTO {
 //	CONSTRAINT PK_TEAM_BATTER_RECORD PRIMARY KEY (TEAM_ID, SEASON_YEAR),
 //	CONSTRAINT FK_TEAM_BATTER_RECORD FOREIGN KEY (TEAM_ID) REFERENCES TBL_TEAM(TEAM_NUMBER) ON DELETE CASCADE
 //	);
+
 	
 	private int teamId;
 	private int seasonYear;
@@ -160,4 +161,6 @@ public class TeamBatterRecordDTO {
 	
 }
 
+
 }
+

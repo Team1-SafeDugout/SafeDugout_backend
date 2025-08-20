@@ -50,9 +50,12 @@
             <input type="password" id="pw" name="memberPw" placeholder="비밀번호" required>
           </div>
           <!-- 입력 오류 메시지 -->
-          <div class="main-input-fail-message">
-            아이디 또는 비밀번호가 잘못되었습니다.
-          </div>
+          
+          <c:if test="${param.login == 'fail'}">
+  			<div class="main-input-fail-message">
+            	아이디 또는 비밀번호가 잘못되었습니다.
+          	</div>
+		  </c:if>
           <!-- 로그인 버튼 -->
           <div class="main-login-button">
             <button type="submit">로그인
@@ -74,7 +77,7 @@
   <!-- 푸터 -->
   <div id="footer"></div>
   <!-- 스크립트 -->
-  <script src="./../../assets/js/includeNoLogin.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/includeNoLogin.js"></script>
 </body>
 
 </html>

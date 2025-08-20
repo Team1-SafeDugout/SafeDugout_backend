@@ -9,6 +9,7 @@ public class PlayerDTO {
 //	CONSTRAINT PK_PLAYER PRIMARY KEY(PLAYER_NUMBER),
 //	CONSTRAINT FK_PLAYER_TEAM FOREIGN KEY(TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
+
 	private int playerNumber;
 	private int teamNumber;
 	private String playerPosition;
@@ -45,4 +46,5 @@ public class PlayerDTO {
 	}
 	
 	
+
 }

@@ -15,6 +15,7 @@ public class NoticePostDTO {
 //	CONSTRAINT FK_NOTICE_POST_TYPE FOREIGN KEY(NOTICE_TYPE_ID) REFERENCES TBL_NOTICE_TYPE(NOTICE_TYPE_ID),
 //	CONSTRAINT FK_NOTICE_POST_TEAM FOREIGN KEY(TEAM_NUMBER) REFERENCES TBL_TEAM (TEAM_NUMBER)
 //	);
+
 	private int noticePostNumber;
 	private int noticeTypeId;
 	private int adminNumber;
@@ -82,5 +83,4 @@ public class NoticePostDTO {
 	}
 	
 	
-	
-}
+	}

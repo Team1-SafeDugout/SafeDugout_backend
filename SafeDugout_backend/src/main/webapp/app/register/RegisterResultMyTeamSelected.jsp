@@ -8,11 +8,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입 완료 페이지(MY팀 선택 완료)</title>
-  <link rel="stylesheet" href="./../../assets/css/register/RegisterResultMyTeamSelected.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/register/RegisterResultMyTeamSelected.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/register/RegisterResultMyTeamSelected.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/register/RegisterResultMyTeamSelected.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -47,13 +47,13 @@
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
             <!-- 메인페이지 버튼 a 태그 -->
-            <a href="./../../mainLogin.html">
+            <a href="${pageContext.request.contextPath}/mainLogin.jsp">
               <!-- 메인페이지 버튼 div 태그 -->
               <div class="main-button-next">메인페이지
               </div>
             </a>
             <!-- 로그인 버튼 a태그 -->
-            <a href="./../login/login.html">
+            <a href="${pageContext.request.contextPath}/login/login.jsp">
               <!-- 로그인 버튼 -->
               <div class="main-button-login">로그인
               </div>

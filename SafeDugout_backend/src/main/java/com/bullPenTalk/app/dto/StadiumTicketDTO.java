@@ -12,6 +12,7 @@ public class StadiumTicketDTO {
 //	CONSTRAINT FK_TICKET_STADIUM FOREIGN KEY (STADIUM_NUMBER) REFERENCES TBL_STADIUM(STADIUM_NUMBER) ON DELETE CASCADE,
 //	CONSTRAINT FK_TICKET_TEAM FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)ON DELETE CASCADE
 //	);
+
 	
 	private int ticketId;
 	private int stadiumNumber;
@@ -71,4 +72,5 @@ public class StadiumTicketDTO {
 				+ weekendPrice + ", reservationSite=" + reservationSite + "]";
 	}
 	
+
 }

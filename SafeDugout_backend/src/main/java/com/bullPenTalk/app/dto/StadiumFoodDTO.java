@@ -9,6 +9,7 @@ public class StadiumFoodDTO {
 //	STADIUM_NUMBER  NUMBER NOT NULL,
 //	CONSTRAINT FK_FOOD_STADIUM FOREIGN KEY (STADIUM_NUMBER) REFERENCES TBL_STADIUM(STADIUM_NUMBER)ON DELETE CASCADE
 //	);
+
 	
 	private int foodId;
 	private String foodName;
@@ -53,4 +54,5 @@ public class StadiumFoodDTO {
 	}
 	
 	
+
 }

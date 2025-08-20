@@ -18,6 +18,7 @@ public class PostDTO {
 //	CONSTRAINT FK_POST_ADMIN FOREIGN KEY(ADMIN_NUMBER) REFERENCES TBL_ADMIN(ADMIN_NUMBER),
 //	CONSTRAINT fk_post_board FOREIGN key(board_id) REFERENCES TBL_BOARD (BOARD_NUMBER)
 //	);
+
 	
 	private int postNUmber;
 	private int memberNUmber;
@@ -98,5 +99,5 @@ public class PostDTO {
 				+ ", postContent=" + postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate
 				+ ", postLink=" + postLink + "]";
 	}
-	
+
 }

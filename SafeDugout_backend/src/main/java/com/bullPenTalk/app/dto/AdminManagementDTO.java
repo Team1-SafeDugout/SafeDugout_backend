@@ -8,4 +8,30 @@ public class AdminManagementDTO {
 //	CONSTRAINT FK_ADMIN_MANAGEMENT_ADMIN FOREIGN KEY (ADMIN_NUMBER) REFERENCES TBL_ADMIN(ADMIN_NUMBER),
 //	CONSTRAINT FK_ADMIN_MANAGEMENT_MEMBER FOREIGN KEY (MEMBER_NUMBER) REFERENCES TBL_MEMBER(MEMBER_NUMBER)
 //	);
+
+	
+	private int adminNumber;
+	private int memberNumber;
+	
+	public int getAdminNumber() {
+		return adminNumber;
+	}
+	public void setAdminNumber(int adminNumber) {
+		this.adminNumber = adminNumber;
+	}
+	public int getMemberNumber() {
+		return memberNumber;
+	}
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
+	}
+	
+	@Override
+	public String toString() {
+		return "AdminManagementDTO [adminNumber=" + adminNumber + ", memberNumber=" + memberNumber + "]";
+	} 
+	
+	
+	
+
 }

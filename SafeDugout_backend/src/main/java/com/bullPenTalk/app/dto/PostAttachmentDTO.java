@@ -8,6 +8,7 @@ public class PostAttachmentDTO {
 //	CONSTRAINT FK_ATTACHMENT_POST_NUMBER FOREIGN KEY(POST_NUMBER) REFERENCES TBL_POST(POST_NUMBER) ON DELETE CASCADE,
 //	CONSTRAINT FK_POST_ATTACHMENT_NUMBER FOREIGN KEY(ATTACHMENT_NUMBER) REFERENCES TBL_ATTACHMENT(ATTACHMENT_NUMBER) ON DELETE CASCADE
 //	);
+
 	
 	private int postNumber;
 	private int attachmentNumber;
@@ -28,5 +29,5 @@ public class PostAttachmentDTO {
 	public String toString() {
 		return "PostAttachmentDTO [postNumber=" + postNumber + ", attachmentNumber=" + attachmentNumber + "]";
 	}
-	
+
 }

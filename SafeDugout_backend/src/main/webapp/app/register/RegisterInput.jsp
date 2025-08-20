@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script defer src="${pageContext.request.contextPath}/assets/js/register/RegisterInput.js"></script>
 </head>
 
@@ -33,7 +35,7 @@
         회원 정보 입력
       </div>
       <!-- form 태그 -->
-      <form action="${pageContext.request.contextPath}/member/joinOk.me" method="post">
+      <form action="${pageContext.request.contextPath}/member/joinOk.me" method="post" novalidate onsubmit="return validateForm()">
         <!-- 폼 박스 -->
         <div class="main-form-box">
           <!-- ul 태그 -->
@@ -47,7 +49,7 @@
                 <!-- 입력 메시지 -->
                 <div class="main-input-list-text">이름</div>
                 <!-- 입력 input -->
-                <input type="text" placeholder="이름을 입력하세요" id="userName">
+                <input type="text" placeholder="이름을 입력하세요" id="userName" name = "memberName">
               </div>
             </li>
             <!-- li 태그 -->
@@ -61,7 +63,7 @@
                 <!-- 입력 메시지 -->
                 <div class="main-input-list-text">아이디</div>
                 <!-- 입력 input -->
-                <input type="text" placeholder="영문, 숫자 조합 6자 이상" id="id">
+                <input type="text" placeholder="영문, 숫자 조합 6자 이상" id="id" name = "memberId">
                 <!-- 입력 button -->
                 <button type="button">중복 확인</button>
               </div>
@@ -74,7 +76,7 @@
               <!-- 입력 컨테이너 -->
               <div class="main-input-list">
                 <div class="main-input-list-text">비밀번호</div>
-                <input type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" id="pw">
+                <input type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" id="pw" name = "memberPw">
               </div>
             </li>
             <!-- li 태그 -->
@@ -94,7 +96,7 @@
               <!-- 입력 컨테이너 -->
               <div class="main-input-list">
                 <div class="main-input-list-text">핸드폰 번호</div>
-                <input type="text" placeholder="핸드폰 번호를 입력하세요" id="phoneNumber">
+                <input type="text" placeholder="핸드폰 번호를 입력하세요" id="phoneNumber" name = "memberPhone">
                 <button type="button">인증번호 발송</button>
               </div>
             </li>
@@ -118,7 +120,7 @@
               <!-- 입력 컨테이너 -->
               <div class="main-input-list">
                 <div class="main-input-list-text">이메일</div>
-                <input type="email" placeholder="이메일을 입력하세요" id="email">
+                <input type="email" placeholder="이메일을 입력하세요" id="email" name  = "memberEmail">
                 <div class="main-input-email-at"></div>
               </div>
             </li>
@@ -129,24 +131,27 @@
                 <!-- 입력 -->
                 <div class="main-input-list-text">주소</div>
                 <!-- 우편번호 입력되는 칸 -->
-                <input type="text" readonly style="pointer-events: none" id="postalCode">
-                <!-- 우편번호 버튼 -->
+<!--                 <input type="text" readonly style="pointer-events: none" id="postalCode" name = "memberPostalCode">
+                우편번호 버튼
                 <button type="button">우편번호</button>
+                 -->
+                <input type="text" id="postalCode" style="pointer-events: none" name="memberPostalCode" placeholder="우편번호" readonly />
+			    	<button type="button" id="searchPostcodeBtn">우편번호</button>
               </div>
               <!-- 주소 입력 컨테이너(선택값) -->
-              <div class="main-input-address">
-                <!-- 입력 메시지 div -->
+<!--               <div class="main-input-address">
+                입력 메시지 div
                 <div class="main-input-list-text"></div>
-                <!-- 주소 입력 칸 -->
-                <input type="text" readonly style="pointer-events: none;" id="address">
+                주소 입력 칸
+                <input type="text" readonly style="pointer-events: none;" id="address" name = "memberAddress">
               </div>
-              <!-- 주소 입력 컨테이너(선택값) -->
+              주소 입력 컨테이너(선택값)
               <div class="main-input-address">
-                <!-- 입력 메시지 div -->
+                입력 메시지 div
                 <div class="main-input-list-text"></div>
-                <!-- 주소 입력 칸 -->
+                주소 입력 칸
                 <input type="text" readonly style="pointer-events: none;" id="detailAddress">
-              </div>
+              </div> -->
             </li>
             <!-- li 태그 -->
             <li>
@@ -155,7 +160,7 @@
                 <!-- 입력 메시지 -->
                 <div class="main-input-list-text">MY팀</div>
                 <!-- 드롭다운 메뉴 -->
-                <select name="" id="myTeam" placeholder="MY팀을 선택하세요">
+                <select name="memberMyTeam" id="myTeam" placeholder="MY팀을 선택하세요">
                   <option value="unselected">MY팀을 선택하세요(미정)</option>
                   <option value="삼성 라이온즈">삼성 라이온즈</option>
                   <option value="LG 트윈스">LG 트윈스</option>
@@ -174,7 +179,7 @@
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
             <!-- 회원 가입 버튼 -->
-            <button type="confirm" id="registerBtn">
+            <button type="submit" id="registerBtn">
               <!-- 회원 가입 텍스트 -->
               <div class="main-button-next">회원 가입
               </div>
