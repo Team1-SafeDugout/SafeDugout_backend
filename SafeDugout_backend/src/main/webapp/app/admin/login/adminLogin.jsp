@@ -12,6 +12,7 @@
 </head>
 <body>
   <!-- 헤더 -->
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <div class="main-container">
       <div class="main-title">

@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
   }
 
-  const headerFileSelection = isLogin ? "../adminHeader.html" : "../adminHeaderBeforeLogin.html";
+  const headerFileSelection = isLogin ? "${pageContext.request.contextPath}/admin/adminHeader.jsp" : "${pageContext.request.contextPath}/admin/adminHeaderBeforeLogin.jsp";
 
   // 헤더 불러오기
   fetch(headerFileSelection)
