@@ -12,8 +12,9 @@ public class MainDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	public void (MemberDTO memberDTO) {
+	public void selectMainList(MemberDTO memberDTO) {
 		sqlSession.insert("member.join", memberDTO);
 	}
+	
 	
 }
