@@ -7,11 +7,11 @@ public class AdminDTO {
 //	ADMIN_PW VARCHAR2(15) NOT NULL,
 //	ADMIN_EMAIL VARCHAR2(50) NOT NULL,
 	
-	private int adminNumber;
-	private String adminName;
-	private String adminId;
-	private String admidPw;
-	private String adminEmail;
+	private int adminNumber; // 관리자 번호
+	private String adminName; // 관리자 이름
+	private String adminId; // 관리자 ID
+	private String admidPw; // 관리자 비밀번호
+	private String adminEmail; // 관리자 이메일주소
 	public int getAdminNumber() {
 		return adminNumber;
 	}

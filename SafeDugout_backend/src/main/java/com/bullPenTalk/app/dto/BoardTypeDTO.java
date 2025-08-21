@@ -8,8 +8,8 @@ public class BoardTypeDTO {
 //	);
 
 	
-	private int boardTypeId;
-	private String boardTypeName;
+	private int boardTypeId; // 게시판 종류 번호
+	private String boardTypeName; // 게시판 종류 이름
 	
 	public int getBoardTypeId() {
 		return boardTypeId;

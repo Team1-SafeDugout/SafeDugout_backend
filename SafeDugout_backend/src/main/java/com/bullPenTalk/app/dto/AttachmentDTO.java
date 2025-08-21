@@ -12,11 +12,11 @@ public class AttachmentDTO {
 //	);
 
 	
-	private int attachmentNumber;
-	private int attachmentTypeId; 
-	private String attachmentName;
-	private int attachmentSize; 
-	private String attachmentPath;
+	private int attachmentNumber; // 첨부파일 번호
+	private int attachmentTypeId; // 첨부파일 종류 번호 
+	private String attachmentName; // 첨부파일 이름
+	private int attachmentSize; // 첨부파일 크기 
+	private String attachmentPath; // 첨부파일 경로
 	
 	public int getAttachmentNumber() {
 		return attachmentNumber;

@@ -10,8 +10,8 @@ public class AdminPostDTO {
 //	);
 
 	
-	private int adminNumber;
-	private int postNumber;
+	private int adminNumber; // 관리자 번호
+	private int postNumber; // 게시글 번호
 	
 	public int getAdminNumber() {
 		return adminNumber;

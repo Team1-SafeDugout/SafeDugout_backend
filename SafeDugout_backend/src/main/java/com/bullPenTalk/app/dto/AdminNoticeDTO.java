@@ -11,8 +11,8 @@ public class AdminNoticeDTO {
 
 
 
-	private int adminNumber;
-	private int noticePostNumber;
+	private int adminNumber; // 관리자 번호
+	private int noticePostNumber; // 공지사항 번호
 	
 	public int getAdminNumber() {
 		return adminNumber;
