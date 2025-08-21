@@ -15,6 +15,16 @@ public class MemberDTO {
 //			CONSTRAINT PK_MEMBER PRIMARY KEY(MEMBER_NUMBER),
 //			CONSTRAINT UK_MEMBER UNIQUE(MEMBER_ID)
 //			);
+	private int memberNumber; //회원 번호
+	private String memberName; //회원 이름
+	private String memberPhone; //회원 전화번호
+	private String memberId; //회원 ID
+	private String memberPw; //회원 비밀번호
+	private String memberEmail; //회원 이메일
+	private int memberMyTeam; // 회원 마이팀
+	private int memberPoint; //회원 포인트
+	private String memberJoinDate; // 회원 가입 날짜
+	private int memberPostalCode; // 회원 우편번호
 	
 	public int getMemberNumber() {
 		return memberNumber;
@@ -78,16 +88,7 @@ public class MemberDTO {
 	}
 	
 	
-	private int memberNumber;
-	private String memberName;
-	private String memberPhone;
-	private String memberId;
-	private String memberPw;
-	private String memberEmail;
-	private int memberMyTeam;
-	private int memberPoint;
-	private String memberJoinDate;
-	private int memberPostalCode;
+	
 	
 	@Override
 	public String toString() {

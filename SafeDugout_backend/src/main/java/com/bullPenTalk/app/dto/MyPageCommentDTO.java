@@ -2,14 +2,14 @@ package com.bullPenTalk.app.dto;
 
 public class MyPageCommentDTO {
 	
-	private int sellPostNumber;
-	private int tradeNumber;
-	private String postTitle;
-	private String memberId;
-	private String commentContent;
-	private String commentDate;
-	private String commentUpdate;
-	private int commentNumber;
+	private int sellPostNumber; //판매 게시글 번호
+	private int tradeNumber; //거래 번호
+	private String postTitle; //게시글 제목
+	private String memberId; //회원 ID
+	private String commentContent; //댓글내용
+	private String commentDate; //댓글 작성 날짜
+	private String commentUpdate; //댓글 수정
+	private int commentNumber; //댓글 번호
 	
 	public int getCommentNumber() {
 		return commentNumber;

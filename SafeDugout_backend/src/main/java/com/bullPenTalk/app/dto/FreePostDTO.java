@@ -1,14 +1,14 @@
 package com.bullPenTalk.app.dto;
 
 public class FreePostDTO {
-	private int postNumber;
-	private String postTitle;
-	private String postDate;
-	private String postUpdate;
-	private int boardId;
-	private int memberNumber;
-	private String memberId;
-	private String postContent;
+	private int postNumber; //게시글 번호
+	private String postTitle; //게시글 제목
+	private String postDate; //게시글 작성 날짜
+	private String postUpdate; //게시글 수정
+	private int boardId; //게시판 ID
+	private int memberNumber; //회원 번호
+	private String memberId; //회원 ID
+	private String postContent; //게시글 내용
 	
 	public int getPostNumber() {
 		return postNumber;
