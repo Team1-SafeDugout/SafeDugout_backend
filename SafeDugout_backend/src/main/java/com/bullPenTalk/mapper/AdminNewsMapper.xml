@@ -49,7 +49,7 @@
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.CURRVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, JOURNALIST)
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK,POST_CONTENT, JOURNALIST)
 		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink} , #{journalist})
 	</insert>
 	
