@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.main.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.MainDTO;
@@ -19,27 +21,33 @@ public class MainDAO {
 //	}
 	
 	//메인 공지사항 목록 조회
-	public MainNoticePostDTO selectMainList() {
-		sqlSession.selectList("main.selectMainlist");
+	public List<MainNoticePostDTO> selectMainList() {
+		return sqlSession.selectList("main.selectMainlist");
 	}
 	
 	//메인 공지사항 상세 조회
-	public MainNoticePostDTO selectMainList(int noticePostNumber) {
-		sqlSession.selectOne("main.selectMainDetail", noticePostNumber);
+	public MainNoticePostDTO selectMainDetail(int noticePostNumber) {
+		return sqlSession.selectOne("main.selectMainDetail", noticePostNumber);
 	}
 	
 	//경기 일정 목록 조회
-	public MainDTO selectSchedule(int gameId) {
-		sqlSession.selectList("main.selectSchedule", gameId);
+	public List<MainDTO> selectSchedule(int gameId) {
+		return sqlSession.selectList("main.selectSchedule", gameId);
 	}
 	
 	//중고거래 목록 조회
-	
+	public List<MainDTO> selectSellList() {
+		return sqlSession.selectList("main.selectSellList");
+	}
 	
 	//입문가이드 목록 조회
-	
+	public List<MainDTO> selectGuideList() {
+		return sqlSession.selectList("main.selectGuideList");
+	}
 	
 	//팀별 순위 조회
-	
+	public List<MainDTO> selectTeamRank() {
+		return sqlSession.selectList("main.selectTeamRank");
+	}
 	
 }
