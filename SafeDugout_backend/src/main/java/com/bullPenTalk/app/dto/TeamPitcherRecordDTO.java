@@ -24,17 +24,18 @@ public class TeamPitcherRecordDTO {
 //	);
 
 	
-	private int teamNumber;
-	private int seasonYear;
-	private int teamPitcherEra;
-	private int teamPitcherStartEra;
-	private int teamPitcherReliefEra;
-	private int teamPitcherGameCount;
-	private int teamPitcherWin;
-	private int teamPitcherLose;
-	private int teamPitcherSave;
-	private int teamPitcherHold;
-	private int teamPitcherStrikeout;
+	private int teamNumber; // 팀 번호
+	private int seasonYear; // 시즌 년도
+	private double teamPitcherEra; // 팀 전체 투수의 평균자책점
+	private double teamPitcherStartEra; // 선발 투수진의 평균자책점
+	private double teamPitcherReliefEra; // 불펜(계투) 투수진의 평균자책점
+	private int teamPitcherGameCount; // 팀 투수가 출전한 경기 수
+	private int teamPitcherWin; // 팀 투수가 기록한 승리 횟수
+	private int teamPitcherLose; // 팀 투수가 기록한 패배 횟수
+	private int teamPitcherSave; // 구원 투수가 기록한 세이브(SV) 횟수
+	private int teamPitcherHold; // 불펜 투수가 기록한 홀드(Hold) 횟수
+	private int teamPitcherStrikeout; // 팀 투수가 기록한 탈삼진 개수
+	
 	public int getTeamNumber() {
 		return teamNumber;
 	}

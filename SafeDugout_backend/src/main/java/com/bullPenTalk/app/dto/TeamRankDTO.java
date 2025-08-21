@@ -1,14 +1,14 @@
 package com.bullPenTalk.app.dto;
 
 public class TeamRankDTO {
-	private int teamRank; 
-	private String teamName;
-	private int gameCount;
-	private int teamWin; 
-	private int teamDraw;
-	private int teamLose; 
-	private double teamWinLoss;
-	private double teamWinRate;
+	private int teamRank; // 팀 랭크 번호
+	private String teamName; // 팀 이름
+	private int gameCount; // 게임 수
+	private int teamWin;  // 이긴 횟수
+	private int teamDraw; // 비긴 횟수
+	private int teamLose;  // 진 횟수
+	private double teamWinLoss; // 팀 승차
+	private double teamWinRate; // 팀 승률
 	
 	public int getTeamRank() {
 		return teamRank;
