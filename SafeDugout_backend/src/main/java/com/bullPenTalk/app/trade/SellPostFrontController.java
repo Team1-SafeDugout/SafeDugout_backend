@@ -46,12 +46,13 @@ public class SellPostFrontController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
 		System.out.println("SellPostFrontController 현재 경로 : " + target);
 		Result result = new Result();
 
 		switch (target) {
-		case "/trade/tradeMainOk.tr":
+		case "/trade/tradeMainOk.tr" :
 			System.out.println("중고거래 메인페이지 요청");
 			result = new TradeMainOkController().execute(request, response);
 			break;
