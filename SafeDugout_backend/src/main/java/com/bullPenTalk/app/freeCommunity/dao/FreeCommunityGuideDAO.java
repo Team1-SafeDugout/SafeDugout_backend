@@ -1,11 +1,21 @@
 package com.bullPenTalk.app.freeCommunityGuide.dao;
 
-	public class FreeCommunityGuideDAO {
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-	    private final Connection conn;
+import com.bullPenTalk.app.dto.GuidePostDTO;
+import com.bullPenTalk.app.teamCommunity.dao.SqlSession;
+import com.bullPenTalk.config.MyBatisConfig;
 
-	    public FreeCommunityGuideDAO(Connection conn) {
-	        this.conn = conn;
+public class FreeCommunityGuideDAO {
+		public SqlSession sqlSession;
+	
+
+	    public FreeCommunityGuideDAO() {
+	    	sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	    }
 
 	    // 입문 가이드 목록 조회

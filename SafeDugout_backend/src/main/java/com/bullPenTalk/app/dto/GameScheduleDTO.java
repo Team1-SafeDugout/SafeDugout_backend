@@ -13,11 +13,11 @@ public class GameScheduleDTO {
 //	);
 
 	
-	private int gameId;
-	private int homeTeamNumber;
-	private int awayTeamNumber;
-	private String ScheduleDate;
-	private int StadiumNumber;
+	private int gameId; //게임 번호
+	private int homeTeamNumber; //홈팀 번호
+	private int awayTeamNumber; //어웨이팀 번호
+	private String ScheduleDate; //경기 날짜
+	private int StadiumNumber; //경기장 번호
 	
 	public int getGameId() {
 		return gameId;

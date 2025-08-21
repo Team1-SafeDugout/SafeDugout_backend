@@ -2,15 +2,15 @@ package com.bullPenTalk.app.dto;
 
 public class MyPageTradeListDTO {
 	
-	private int sellPostNumber;
-	private String sellPostTitle; 
-	private int dealtypeId;
-	private String memberId; 
-	private int statusId;
-	private int statusNumber; 
-	private int pricePoint; 
-	private String paymentDate; 
-	private String completeDate;
+	private int sellPostNumber; // 판매 게시글 번호
+	private String sellPostTitle; //판매 게시글 제목
+	private int dealtypeId; //거래 방식ID
+	private String memberId; //회원 ID
+	private int statusId; //거래 상태 ID
+	private int statusNumber; //거래 상태 번호
+	private int pricePoint; // 포인트 값 
+	private String paymentDate; //구매 날짜
+	private String completeDate; // 구매 확정 날짜
 	
 	public String getSellPostTitle() {
 		return sellPostTitle;

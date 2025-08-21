@@ -10,8 +10,8 @@ public class MemberPostDTO {
 //	);
 
 	
-	private int memberNumber;
-	private int postNumber;
+	private int memberNumber; //회원 번호
+	private int postNumber;	// 게시글 번호
 	
 	public int getMemberNumber() {
 		return memberNumber;
