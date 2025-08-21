@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class NoticePostDTO {
+public class NoticePostDTO { // 공지사항
 //	CREATE TABLE TBL_NOTICE_POST(
 //	NOTICE_POST_NUMBER NUMBER,
 //	NOTICE_TYPE_ID NUMBER,
@@ -16,15 +16,16 @@ public class NoticePostDTO {
 //	CONSTRAINT FK_NOTICE_POST_TEAM FOREIGN KEY(TEAM_NUMBER) REFERENCES TBL_TEAM (TEAM_NUMBER)
 //	);
 
-	private int noticePostNumber;
-	private int noticeTypeId;
-	private int adminNumber;
-	private int teamNumber;
-	private String noticePostTitle;
-	private String noticePostContent;
-	private String noticePostDate;
-	private String noticePostUpdate;
+	private int noticePostNumber; // 공지사항 게시글 번호
+	private int noticeTypeId; // 공지사항 id(전체, 팀, 입문)
+	private int adminNumber; // 관리자 번호
+	private int teamNumber; // 팀 번호
+	private String noticePostTitle; // 공지사항 제목
+	private String noticePostContent; // 공지사항 내용
+	private String noticePostDate; // 작성일자
+	private String noticePostUpdate; // 수정일자
 	
+	// get, set
 	public int getNoticePostNumber() {
 		return noticePostNumber;
 	}
@@ -74,6 +75,8 @@ public class NoticePostDTO {
 		this.noticePostUpdate = noticePostUpdate;
 	}
 	
+	
+	// toString
 	@Override
 	public String toString() {
 		return "NoticePostDTO [noticePostNumber=" + noticePostNumber + ", noticeTypeId=" + noticeTypeId

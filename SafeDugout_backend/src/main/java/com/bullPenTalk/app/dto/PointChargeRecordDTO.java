@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class PointChargeRecordDTO {
+public class PointChargeRecordDTO { // 충전 내역
 
 //	CREATE TABLE TBL_POINT_CHARGE_RECORD(
 //	RECORD_ID NUMBER,
@@ -12,12 +12,13 @@ public class PointChargeRecordDTO {
 //	CONSTRAINT FK_RECORD FOREIGN KEY(MEMBER_NUMBER) REFERENCES TBL_MEMBER(MEMBER_NUMBER)
 //	);
 	
-	private int recordId; 
-	private int chargePoint; 
-	private int afterChargePoint; 
-	private String chargeDate; 
-	private int memberNumber;
+	private int recordId; // 충전 id
+	private int chargePoint; // 충전 포인트
+	private int afterChargePoint; // 충전 뒤 포인트
+	private String chargeDate; // 충전 일자
+	private int memberNumber; // 회원 번호
 	
+	// get, set
 	public int getRecordId() {
 		return recordId;
 	}
@@ -49,6 +50,7 @@ public class PointChargeRecordDTO {
 		this.memberNumber = memberNumber;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
 		return "PointChargeRecordDTO [recordId=" + recordId + ", chargePoint=" + chargePoint + ", afterChargePoint="
