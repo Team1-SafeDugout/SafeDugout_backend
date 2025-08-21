@@ -71,7 +71,7 @@
 		where sell_post_number = #{sellPostNumber}
 	</select>
 	<!-- 판매글 삭제 -->
-	<delete id="deleteSell" parameterType="int" resultType="">
+	<delete id="deleteSell" parameterType="int">
 		delete from tbl_sell_post
 		where sell_post_number = #{sellPostNumber}
 	</delete>
