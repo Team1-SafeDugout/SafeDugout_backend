@@ -9,10 +9,10 @@ public class MatchResultDTO {
 //	CONSTRAINT FK_MATCH_GAME FOREIGN KEY (GAME_ID) REFERENCES TBL_GAME_SCHEDULE(GAME_ID)
 //	);
 
-	private int gameId; 
-	private int homeTeamScore;
-	private int awayTeamScore; 
-	private String matchResult;
+	private int gameId; // 게임번호
+	private int homeTeamScore; //홈팀 점수
+	private int awayTeamScore; //어웨이팀 점수
+	private String matchResult; //결과
 	
 	public int getGameId() {
 		return gameId;

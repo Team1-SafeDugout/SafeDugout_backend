@@ -10,8 +10,8 @@ public class MemberAddressDTO {
 //	);
 
 	
-	private int memberNumber;
-	private int postalCode;
+	private int memberNumber; //회원 번호
+	private int postalCode;   //우편 번호
 	
 	public int getMemberNumber() {
 		return memberNumber;
