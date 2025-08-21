@@ -25,16 +25,16 @@ public class TeamPostDTO {
 //			CONSTRAINT fk_post_board FOREIGN key(board_id) REFERENCES TBL_BOARD (BOARD_NUMBER)
 //			);
 	
-	private int postNumber;
-	private int memberNumber;
-	private int teamNumber;
-	private int adminNumber;
-	private int boardId = 0;
-	private String postTitle;
-	private String postContent;
-	private String postDate;
-	private String postUpdate;
-	private String postLink;
+	private int postNumber; // 게시글 번호
+	private int memberNumber; // 게시글 작성자 회원 번호
+	private int teamNumber; // 팀 번호
+	private int adminNumber; // 어드민 번호(null)
+	private int boardId = 0; // 게시판 종류
+	private String postTitle; // 게시글 제목
+	private String postContent; // 게시글 내용
+	private String postDate; // 작성날짜
+	private String postUpdate; // 수정 날짜
+	private String postLink; // url 링크(유튜브, 응원가 에서 사용)
 	
 	public int getPostNumber() {
 		return postNumber;

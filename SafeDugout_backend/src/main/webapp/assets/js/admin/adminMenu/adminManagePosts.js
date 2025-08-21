@@ -1,11 +1,11 @@
-const addbutton = document.getElementsByClassName("list-names").item(0);
+/*const addbutton = document.getElementsByClassName("list-names").item(0);*/
 const addUserPostButton = document.getElementsByClassName("list-names").item(1);
 
 const postList = document.getElementById('post-list');
 const userPostList = document.getElementById('user-post-list');
 
 // 테스트용 추가 버튼
-addbutton.addEventListener('click', function () {
+/*addbutton.addEventListener('click', function () {
 
 	const userListNum = document.querySelectorAll("#post-list>li");
 	if (userListNum.length >= 10) return;
@@ -53,7 +53,56 @@ addbutton.addEventListener('click', function () {
 	newPost.appendChild(deleteBtn);
 
 	postList.appendChild(newPost);
-});
+});*/
+
+function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
+	const userListNum = document.querySelectorAll("#post-list>li");
+	if (userListNum.length >= 10) return;
+
+	const newPost = document.createElement('li');
+
+	const postNum = document.createElement('div');
+	const postTitle = document.createElement('div');
+	const postDate = document.createElement('div');
+	const postType = document.createElement('div');
+	const deleteBtn = document.createElement('div');
+
+	// userIdURL.setAttribute('href', "./../adminDetailMenu/adminUserDetail.html");
+
+	postNumText = document.createTextNode(postNumberParam);
+	postTitleText = document.createTextNode(postTitleParam);
+	postDateText = document.createTextNode(postDateParam);
+	postTypeText = document.createTextNode(postTypeParam);
+	deleteBtnText = document.createTextNode("삭제하기");
+
+	postTitle.style.overflow = "hidden";
+	postTitle.style.whiteSpace = "nowrap";
+	postTitle.style.textOverflow = "eclipse";
+
+	const postTitleLink = document.createElement('a');
+	postTitleLink.setAttribute("href", "./../adminDetailMenu/adminNoticePost.html");
+	postTitleLink.appendChild(postTitleText);
+
+	postNum.appendChild(postNumText);
+	postTitle.appendChild(postTitleLink);
+	postDate.appendChild(postDateText);
+	postType.appendChild(postTypeText);
+	deleteBtn.appendChild(deleteBtnText);
+
+	deleteBtn.addEventListener('click', function () {
+		if (window.confirm("정말 삭제하시겠습니까")) {
+			newPost.remove();
+		}
+	});
+
+	newPost.appendChild(postNum);
+	newPost.appendChild(postTitle);
+	newPost.appendChild(postDate);
+	newPost.appendChild(postType);
+	newPost.appendChild(deleteBtn);
+
+	postList.appendChild(newPost);
+}
 
 // 테스트용 추가 버튼
 addUserPostButton.addEventListener('click', function () {

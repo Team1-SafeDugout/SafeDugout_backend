@@ -77,11 +77,11 @@ WHERE rnum BETWEEN #{startRow} AND #{endRow}
 
 <!-- 수정 -->
 <update id = "update" parameterType = "AdminPostDTO">
-UPDATE TBL_NOTICE_POST SET
-NOTICE_POST_TITLE = #{noticePostTitle},
-NOTICE_POST_CONTENT = '#{noticePostContent},
-NOTICE_POST_UPDATE = SYSDATE,
-WHERE NOTICE_POST_NUMBER = #{noticePostNumber}
+	UPDATE TBL_NOTICE_POST SET
+	NOTICE_POST_TITLE = #{noticePostTitle},
+	NOTICE_POST_CONTENT = '#{noticePostContent},
+	NOTICE_POST_UPDATE = SYSDATE,
+	WHERE NOTICE_POST_NUMBER = #{noticePostNumber}
 </update>
 
 <!-- 삭제 -->

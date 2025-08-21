@@ -1,4 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ page import="java.util.*, com.bullPenTalk.app.dto.MainNoticePostDTO" %>
+<%
+    List<MainNoticePostDTO> boardList = new ArrayList<>();
+	MainNoticePostDTO b1 = new MainNoticePostDTO();
+    b1.setNoticePostNumber(1);
+    b1.setNoticePostTitle("첫 번째 공지");
+    b1.setNoticePostDate("2025-08-21");
+    boardList.add(b1);
+
+    MainNoticePostDTO b2 = new MainNoticePostDTO();
+    b2.setNoticePostNumber(2);
+    b2.setNoticePostTitle("두 번째 공지");
+    b2.setNoticePostDate("2025-08-22");
+    boardList.add(b2);
+
+    request.setAttribute("boardList", boardList);
+%>
+
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -6,10 +26,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageMember.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManagePosts.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageMember.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManagePosts.js"></script>
 </head>
 
 <body>
@@ -47,35 +67,59 @@
     </section>
     <section class="body-container">
       <div class="body-container-name">
-        회원 관리
+        전체 공지사항
       </div>
 
       <section class="body-container-list">
         <div class="list-background">
 
           <div class="list-names">
-            <div>회원 번호</div>
-            <div>사용자 ID</div>
-            <div>가입 일자</div>
+            <div>글번호</div>
+            <div>제목</div>
+            <div>작성일자</div>
+            <div>글종류</div>
           </div>
-          <div class="list-container">
+          <div class="list-container">'
+          	
             <ul class="list-ul" id="list-ul">
-
+            <!-- 조건으로 리스트에 무언가 추가 postNumberParam, postTitleParam, postDateParam, postTypeParam -->
+            <c:choose>
+				<c:when test="${not empty boardList}">
+					<c:forEach var="board" items="${boardList}">
+                		addPost("${board.noticePostNumber}", "${board.noticePostTitle}",  "${board.noticePostDate}", "전체공지사항");
+            		</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<div>
+   						<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
+   					</div>
+				</c:otherwise>
+			</c:choose>				
             </ul>
           </div>
 
           <div class="page-buttons">
-            <form action="" method="get">
-              <button type="button" id="left-button"> ◁ </button>
-              <ul id="numberlist-ul">
-                <li><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-              </ul>
-              <button type="button" id="right-button"> ▷ </button>
-            </form>
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/AdminMainNoticeListOkController.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/admin/AdminMainNoticeListOkController.ad?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/AdminMainNoticeListOkController.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
           </div>
 
         </div>
@@ -84,6 +128,9 @@
   </main>
   <div id="footer"></div>
   <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <script>
+    	let memberNumber = "${sessionScope.memberNumber}";
+   </script>
 </body>
 
 </html>
