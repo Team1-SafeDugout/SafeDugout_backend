@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class SellPostAttachmentDTO {
+public class SellPostAttachmentDTO { // 판매글 첨부파일
 //	CREATE TABLE TBL_SELL_POST_ATTACHMENT(
 //	SELL_POST_NUMBER NUMBER,
 //	ATTACHMENT_NUMBER NUMBER,
@@ -10,8 +10,8 @@ public class SellPostAttachmentDTO {
 //	);
 
 	
-	private int sellPostNumber;
-	private int attachmentNumber;
+	private int sellPostNumber; // 판매글 번호
+	private int attachmentNumber; // 첨부파일 번호
 	
 	public int getSellPostNumber() {
 		return sellPostNumber;

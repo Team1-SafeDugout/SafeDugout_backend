@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class PlayerDTO {
+public class PlayerDTO { // 선수
 //	CREATE TABLE TBL_PLAYER(
 //	PLAYER_NUMBER NUMBER,
 //	TEAM_NUMBER NUMBER NOT NULL,
@@ -10,10 +10,12 @@ public class PlayerDTO {
 //	CONSTRAINT FK_PLAYER_TEAM FOREIGN KEY(TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
 
-	private int playerNumber;
-	private int teamNumber;
-	private String playerPosition;
-	private String playerName;
+	private int playerNumber; // 선수 번호
+	private int teamNumber; // 팀 번호
+	private String playerPosition; // 포지션(투수,타자)
+	private String playerName; // 선수 이름
+	
+	// get, set
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
@@ -39,6 +41,7 @@ public class PlayerDTO {
 		this.playerName = playerName;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
 		return "PlayerDTO [playerNumber=" + playerNumber + ", teamNumber=" + teamNumber + ", playerPosition="

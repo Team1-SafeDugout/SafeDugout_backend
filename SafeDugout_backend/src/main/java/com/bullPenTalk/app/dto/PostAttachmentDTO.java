@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class PostAttachmentDTO {
+public class PostAttachmentDTO { // 게시글 첨부파일 
 //	CREATE TABLE TBL_POST_ATTACHMENT(
 //	POST_NUMBER NUMBER,
 //	ATTACHMENT_NUMBER NUMBER,
@@ -10,8 +10,10 @@ public class PostAttachmentDTO {
 //	);
 
 	
-	private int postNumber;
-	private int attachmentNumber;
+	private int postNumber; // 게시글 번호
+	private int attachmentNumber; // 첨부파일 번호
+	
+	// get, set
 	public int getPostNumber() {
 		return postNumber;
 	}
@@ -25,6 +27,7 @@ public class PostAttachmentDTO {
 		this.attachmentNumber = attachmentNumber;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
 		return "PostAttachmentDTO [postNumber=" + postNumber + ", attachmentNumber=" + attachmentNumber + "]";
