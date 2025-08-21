@@ -16,7 +16,7 @@
 	           SP.PRICE_POINT,
 	           SP.TRADING_AREA,
 	           M.MEMBER_ID,
-	           AT.ATTACHMENT_PATH AS IMAGE_PATH,
+	           AT.ATTACHMENT_PATH,
 	           ROWNUM AS RN
 	    FROM (
 	        SELECT SP.SELL_POST_NUMBER,
