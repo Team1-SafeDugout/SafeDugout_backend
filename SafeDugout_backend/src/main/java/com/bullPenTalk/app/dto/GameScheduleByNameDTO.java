@@ -1,11 +1,11 @@
 package com.bullPenTalk.app.dto;
 
 public class GameScheduleByNameDTO {
-	int gameId;
-	String homeTeamName;
-	String stadiumName;
-	String awayTeamName;
-	String scheduleDate;
+	private int gameId;
+	private String homeTeamName;
+	private String stadiumName;
+	private String awayTeamName;
+	private String scheduleDate;
 	
 	public int getGameId() {
 		return gameId;
