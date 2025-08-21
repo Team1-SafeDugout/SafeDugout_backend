@@ -9,8 +9,8 @@ public class BoardDTO {
 //	);
 
 	
-	int boardNumber; 
-	int boardId;
+	private int boardNumber; 
+	private int boardId;
 	
 	public int getBoardNumber() {
 		return boardNumber;
