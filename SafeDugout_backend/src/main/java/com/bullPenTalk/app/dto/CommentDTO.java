@@ -14,12 +14,12 @@ public class CommentDTO {
 //	);
 
 	
-	private int commentNumber; 
-	private int memberNumber;
-	private int postNumber;
-	private String commentContent;
-	private String commentDate;
-	private String commentUpdate;
+	private int commentNumber; // 댓글 번호
+	private int memberNumber; // 회원 번호
+	private int postNumber; // 게시글 번호 
+	private String commentContent; // 댓글 내용 
+	private String commentDate; // 작성 일자
+	private String commentUpdate; // 수정 일자
 	
 	public int getCommentNumber() {
 		return commentNumber;

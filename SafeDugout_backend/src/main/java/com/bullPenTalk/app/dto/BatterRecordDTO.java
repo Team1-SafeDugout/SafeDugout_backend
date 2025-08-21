@@ -25,24 +25,24 @@ public class BatterRecordDTO {
 //	);
 
 	
-	private int playerNumber; 
-	private String batterSeasonYear;
-	private int batterGames; 
-	private int AB;
-	private int PA; 
-	private int RBI; 
-	private int Hits;
-	private int DoubleHit;
-	private int TripleHit; 
-	private int HomeRun; 
-	private int batterBB;
-	private int IBB; 
-	private int batterHBP;
-	private int SO; 
-	private int GDP; 
-	private int SRBI;
-	private int OPS; 
-	private int SB;
+	private int playerNumber; // 선수 번호
+	private String batterSeasonYear; // 기록 시즌(년도) 
+	private int batterGames; // 경기수
+	private int AB;	// 타수
+	private int PA; // 타석
+	private int RBI; // 타점
+	private int Hits; // 안타
+	private int DoubleHit; // 2루타
+	private int TripleHit; // 3루타
+	private int HomeRun; // 홈런
+	private int batterBB; // 볼넷
+	private int IBB; // 고의4구
+	private int batterHBP; // 사구
+	private int SO; // 삼진
+	private int GDP; // 병살타
+	private int SRBI; // 희생타점
+	private double OPS; // 장타율+출루율
+	private int SB; // 도루
 	
 	public int getPlayerNumber() {
 		return playerNumber;

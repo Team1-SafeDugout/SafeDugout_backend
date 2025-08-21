@@ -9,8 +9,8 @@ public class BoardDTO {
 //	);
 
 	
-	private int boardNumber; 
-	private int boardId;
+	private int boardNumber; // 게시판 번호
+	private int boardId; // 게시판 종류 ID
 	
 	public int getBoardNumber() {
 		return boardNumber;

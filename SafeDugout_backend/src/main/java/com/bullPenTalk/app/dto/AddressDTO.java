@@ -8,8 +8,8 @@ public class AddressDTO {
 //	);
 
 	
-	private int postalCode;
-	private String detailedAddress;
+	private int postalCode; // 우편번호 
+	private String detailedAddress; // 상세주소
 	
 	public int getPostalCode() {
 		return postalCode;

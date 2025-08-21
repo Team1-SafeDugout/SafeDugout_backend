@@ -10,9 +10,9 @@ public class ChampionshipRecordDTO {
 //	);
 
 	
-	private int teamNumber;
-	private int seasonYear;
-	private boolean isChampionship;
+	private int teamNumber; // 팀 번호
+	private int seasonYear; // 시즌(년도)
+	private boolean isChampionship; // 우승 여부  
 	
 	public int getTeamNumber() {
 		return teamNumber;

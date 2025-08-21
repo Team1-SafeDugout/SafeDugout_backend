@@ -19,18 +19,18 @@ public class TeamRecordDTO {
 //	);
 
 	
-	private int teamNumber; 
-	private int seasonYear;
-	private int teamRank;
-	private int gameCount;
-	private int teamWin;
-	private int teamDraw;
-	private int teamLose;
-	private int teamWinRate;
-	private int avgBat;
-	private int era;
-	private int score;
-	private int concede;
+	private int teamNumber; // 팀 번호
+	private int seasonYear; // 시즌(년도)
+	private int teamRank; // 팀 순위 
+	private int gameCount; // 경기 수 
+	private int teamWin; // 승 횟수
+	private int teamDraw; // 무 횟수
+	private int teamLose; // 패 횟수
+	private double teamWinRate; // 팀 승률
+	private double avgBat; // 타율
+	private double era; // 평균자책점
+	private int score; // 득점
+	private int concede; // 실점
 	
 	public int getTeamDraw() {
 		return teamDraw;

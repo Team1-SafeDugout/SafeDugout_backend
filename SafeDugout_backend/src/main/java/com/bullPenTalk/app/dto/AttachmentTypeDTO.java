@@ -8,8 +8,8 @@ public class AttachmentTypeDTO {
 //	);
 
 	
-	private int attachmentTypeId;
-	private String attachmentType;
+	private int attachmentTypeId; // 첨부파일 종류 번호
+	private String attachmentType; // 첨부파일 종류
 	
 	public int getAttachmentTypeId() {
 		return attachmentTypeId;

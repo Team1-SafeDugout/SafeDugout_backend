@@ -10,8 +10,8 @@ public class AdminManagementDTO {
 //	);
 
 	
-	private int adminNumber;
-	private int memberNumber;
+	private int adminNumber; // 관리자 번호
+	private int memberNumber; // 회원 번호
 	
 	public int getAdminNumber() {
 		return adminNumber;
