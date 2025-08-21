@@ -14,13 +14,13 @@ public class StadiumTicketDTO {
 //	);
 
 	
-	private int ticketId;
-	private int stadiumNumber;
-	private int teamNumber;
-	private String seatName;
-	private int weekdayPrice;
-	private int weekendPrice;
-	private String reservationSite;
+	private int ticketId; // 티켓 번호
+	private int stadiumNumber; // 대상 경기장 번호
+	private int teamNumber; // 팀 번호
+	private String seatName; // 좌석 이름
+	private int weekdayPrice; // 주중 가격
+	private int weekendPrice; // 주말 가격
+	private String reservationSite; // 티켓 예매 사이트 주소
 	
 	public int getTicketId() {
 		return ticketId;

@@ -2,15 +2,15 @@ package com.bullPenTalk.app.dto;
 
 public class TeamAdminPostDTO {
 
-	private int postNumber;
-	private String postTitle;
-	private String postDate;
-	private String postUpdate;
-	private int boardId;
-	private int memberNumber;
-	private String memberId;
-	private String postContent;
-	private int teamNumber;
+	private int postNumber; // 게시글 번호
+	private String postTitle; // 게시글 제목
+	private String postDate; // 작성 날짜
+	private String postUpdate; // 수정 날짜
+	private int boardId; // 어떤 게시판에 적힌 글인지
+	private int memberNumber; // 해당글을 작성자 회원 번호
+	private String memberId; // 해당글을 작성한 회원 아이디
+	private String postContent; // 작성된 글
+	private int teamNumber; // 팀 게시판이므로 어떤 팀 글 인지 팀 번호로 확인
 	public int getPostNumber() {
 		return postNumber;
 	}

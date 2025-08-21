@@ -8,8 +8,8 @@ public class TeamDTO {
 //	);
 
 	
-	private int teamNumber;
-	private String teamName;
+	private int teamNumber; // 팀번호
+	private String teamName; // // 팀이름
 	public int getTeamNumber() {
 		return teamNumber;
 	}

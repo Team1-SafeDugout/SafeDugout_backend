@@ -36,7 +36,7 @@ public class LoginOkController implements Execute{
 		memberNumber = memberDAO.login(memberDTO);
 		
 		if(memberNumber != -1) {
-			path = "/mainLogin.jsp";
+			path = "/mainLogin.ma";
 			session.setAttribute("memberNumber", memberNumber);
 			System.out.println("세션값 : " + memberNumber);
 			
@@ -53,7 +53,7 @@ public class LoginOkController implements Execute{
 //			}
 			
 		}else {
-			path = "/app/login/login.jsp?login=fail";
+			path = "/login/login.me?login=fail";
 		}
 		
 		result.setRedirect(true); //세션에 저장된 값은 유지

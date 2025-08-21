@@ -11,11 +11,11 @@ public class StadiumFoodDTO {
 //	);
 
 	
-	private int foodId;
-	private String foodName;
-	private String foodLocation;
-	private String foodTip;
-	private int stadiumNumber;
+	private int foodId; // 음식 번호
+	private String foodName; // 음식 이름
+	private String foodLocation; // 경기장 내 음식 위치
+	private String foodTip; // 음식 먹을 때 팁
+	private int stadiumNumber; // 음식이 있는 경기장 번호
 	public int getFoodId() {
 		return foodId;
 	}
