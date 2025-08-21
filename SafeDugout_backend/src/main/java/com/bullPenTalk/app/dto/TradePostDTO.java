@@ -14,12 +14,12 @@ public class TradePostDTO {
 //	CONSTRAINT FK_TRADE_POST_STATUS FOREIGN KEY(STATUS_NUMBER) REFERENCES TBL_TRADE_STATUS (STATUS_ID)
 //	);
 	
-	int tradeNumber;
-	int sellPostNumber;
-	int statusNumber; 
-	int buyMember;
-	String paymentDate;
-	String completeDate;
+	private int tradeNumber;
+	private int sellPostNumber;
+	private int statusNumber; 
+	private int buyMember;
+	private String paymentDate;
+	private String completeDate;
 	
 	public int getTradeNumber() {
 		return tradeNumber;

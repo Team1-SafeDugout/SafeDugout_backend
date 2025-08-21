@@ -10,8 +10,8 @@ public class MemberPostDTO {
 //	);
 
 	
-	int memberNumber;
-	int postNumber;
+	private int memberNumber;
+	private int postNumber;
 	
 	public int getMemberNumber() {
 		return memberNumber;

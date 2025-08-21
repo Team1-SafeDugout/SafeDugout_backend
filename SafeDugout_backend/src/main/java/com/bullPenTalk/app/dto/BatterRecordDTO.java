@@ -25,24 +25,24 @@ public class BatterRecordDTO {
 //	);
 
 	
-	int playerNumber; 
-	String batterSeasonYear;
-	int batterGames; 
-	int AB;
-	int PA; 
-	int RBI; 
-	int Hits;
-	int DoubleHit;
-	int TripleHit; 
-	int HomeRun; 
-	int batterBB;
-	int IBB; 
-	int batterHBP;
-	int SO; 
-	int GDP; 
-	int SRBI;
-	int OPS; 
-	int SB;
+	private int playerNumber; 
+	private String batterSeasonYear;
+	private int batterGames; 
+	private int AB;
+	private int PA; 
+	private int RBI; 
+	private int Hits;
+	private int DoubleHit;
+	private int TripleHit; 
+	private int HomeRun; 
+	private int batterBB;
+	private int IBB; 
+	private int batterHBP;
+	private int SO; 
+	private int GDP; 
+	private int SRBI;
+	private int OPS; 
+	private int SB;
 	
 	public int getPlayerNumber() {
 		return playerNumber;
