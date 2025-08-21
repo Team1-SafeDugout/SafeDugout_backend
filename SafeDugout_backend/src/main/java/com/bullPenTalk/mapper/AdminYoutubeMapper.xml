@@ -11,10 +11,11 @@
             SELECT p.POST_NUMBER,
                    p.POST_TITLE,
                    p.POST_DATE,
+                   p.POST_CONTENT,
                    p.POST_LINK,
                    t.TEAM_NAME,
                    t.TEAM_NUMBER,
-                   a.ADMIN_NAME
+                   a.ADMIN_id
             FROM TBL_POST p
             JOIN TBL_TEAM t ON p.TEAM_NUMBER = t.TEAM_NUMBER
             JOIN TBL_ADMIN a ON p.ADMIN_NUMBER = a.ADMIN_NUMBER
@@ -29,10 +30,10 @@
 	<!-- 유튜브 등록 -->
 	<insert id="insert">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
-			SELECT SEQ_POST.CURRVAL FROM DUAL
+			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink})
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
+		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink}, #{postContent})
 	</insert>
 	
 	

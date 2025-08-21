@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class PostDTO {
+public class PostDTO { // 게시글 번호
 //	CREATE TABLE TBL_POST(
 //	POST_NUMBER NUMBER,
 //	MEMBER_NUMBER NUMBER,
@@ -20,17 +20,17 @@ public class PostDTO {
 //	);
 
 	
-	private int postNUmber;
-	private int memberNUmber;
-	private int teamNumber;
-	private int adminNUmber;
-	private int boardId;
-	private String postTitle;
-	private String postContent;
-	private String postDate;
-	private String postUpdate;
-	private String postLink;
-	private String journalist;
+	private int postNUmber; //게시글 번호
+	private int memberNUmber; // 회원 번호(게시글 작성자)
+	private int teamNumber; // 팀번호
+	private int adminNUmber; // 관리자 번호
+	private int boardId; // 게시판 종류 id
+	private String postTitle; // 게시글 제목
+	private String postContent; // 게시글 내용
+	private String postDate; // 작성일자
+	private String postUpdate; // 수정일자
+	private String postLink; // 게시글 링크
+	private String journalist; // 기자이름
 
 	
 	public String getJournalist() {

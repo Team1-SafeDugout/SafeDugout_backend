@@ -23,4 +23,6 @@ public class SellPostDAO {
 		System.out.println("조회결과 : " + list);
 		return list;
 	}
+	
+	
 }
