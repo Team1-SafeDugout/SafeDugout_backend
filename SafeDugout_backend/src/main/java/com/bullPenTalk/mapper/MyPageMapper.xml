@@ -17,8 +17,9 @@
 	<!-- 게시글 조회 -->
 	<select id="selectPostList" parameterType="int" resultType="PostDTO">
 		select post_number, post_title, post_date, post_update
-		from tbl_post
-		where member_number = #{memberNumber} and 
+		from tbl_post p join tbl_board b on p.board_id = b.board_number
+		join tbl_board_type t on b.board_id = t.board_type_id 
+		where member_number = #{memberNumber} and board_type_id in(1, 2)
 	</select>
 	<!-- 게시글 삭제 -->
 	<delete id="deletePost" parameterType="int">
