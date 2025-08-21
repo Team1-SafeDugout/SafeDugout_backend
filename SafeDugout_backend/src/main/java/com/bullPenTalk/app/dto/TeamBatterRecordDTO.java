@@ -24,23 +24,23 @@ public class TeamBatterRecordDTO {
 //	);
 
 	
-	private int teamId;
-	private int seasonYear;
-	private int teamBatterAvgBat;
-	private int teamBatterGameCount;
-	private int teamBatterAtBat;
-	private int teamBatterRbi;
-	private int teamBatterScore;
-	private int teamBatterHits;
-	private int teamBatterDoubleHit;
-	private int teamBatterTripleHit;
-	private int teamBatterHr;
-	private int teamBatterBb;
-	private int teamBatterGidout;
-	private int teamBatterHbp;
-	private int teamBatterStrikeout;
-	private int teamBatterOps;
-	private int teamBatterStolenBase;
+	private int teamId; // 팀번호
+	private int seasonYear; // 시즌 년도
+	private double teamBatterAvgBat; // 평균 타율
+	private int teamBatterGameCount; // 경기수
+	private int teamBatterAtBat; // 타수 
+	private int teamBatterRbi; //타점(Runs Batted In) 주자를 홈으로 불러들인 횟수
+	private int teamBatterScore; // 득점 팀이 득점한 총 점수.
+	private int teamBatterHits; // 안타 개수
+	private int teamBatterDoubleHit; // 2루타(Double Hits) 개수.
+	private int teamBatterTripleHit; // 3루타(Double Hits) 개수.
+	private int teamBatterHr; // 홈헌 횟수
+	private int teamBatterBb; // 볼넷 개수
+	private int teamBatterGidout; // 병살타(Grounded Into Double Play) 개수.
+	private int teamBatterHbp; // 사구(Hit By Pitch) 개수.
+	private int teamBatterStrikeout; // 삼진(Strikeouts) 개수.
+	private double teamBatterOps; // 출루율 + 장타율
+	private int teamBatterStolenBase; // 도루(Stolen Bases) 개수.
 	
 	
 	

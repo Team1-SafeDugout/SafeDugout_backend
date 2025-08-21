@@ -1,14 +1,14 @@
 package com.bullPenTalk.app.dto;
 
 public class TeamNoticePostDTO {
-	private int noticePostNumber;
-	private int noticeTypeId = 0;
-	private int adminNumber;
-	private int teamNumber;
-	private String noticePostTitle;
-	private String noticePostContent;
-	private String noticePostDate;
-	private String noticePostUpdate;
+	private int noticePostNumber; // 공지글 번호
+	private int noticeTypeId = 0; // 팀 공지글 번호 =  2
+	private int adminNumber; // 관리자 번호
+	private int teamNumber; // 팀 번호
+	private String noticePostTitle; // 팀공지글 제목
+	private String noticePostContent; // 팀공지글 내용
+	private String noticePostDate; // 작성날짜
+	private String noticePostUpdate; // 수정 날짜
 	
 	@Override
 	public String toString() {

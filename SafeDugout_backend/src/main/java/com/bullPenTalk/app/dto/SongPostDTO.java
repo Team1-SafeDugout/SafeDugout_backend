@@ -8,12 +8,12 @@ public class SongPostDTO {
 //    BOARD_TYPE_ID,
 //    ADMIN_ID
 	
-	private int postNumber;
-	private String postTitle;
-	private String postDate;
-	private int teamNumber;
-	private int boardTypeId;
-	private int adminId;
+	private int postNumber; // 게시글 번호
+	private String postTitle; // 응원가 명
+	private String postDate; // 등록일자
+	private int teamNumber; // 대상 팀
+	private int boardTypeId; // 어느 보드에 저장될 
+	private int adminId; // 등록한 관리자 ID
 	
 	// get, set
 	public int getPostNumber() {

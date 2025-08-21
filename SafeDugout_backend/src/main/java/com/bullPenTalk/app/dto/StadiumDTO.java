@@ -9,10 +9,10 @@ public class StadiumDTO {
 //	CONSTRAINT FK_STADIUM_TEAM FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
 
-	private int stadiumNUmber;
-	private String stadiumAddress;
-	private String stadiumName;
-	private int stadiumteamNumber;
+	private int stadiumNUmber; // 경기장 번호
+	private String stadiumAddress; // 경기장 주소
+	private String stadiumName; // 경기장 이름
+	private int stadiumteamNumber; // 경기장 홈 팀
 	public int getStadiumNUmber() {
 		return stadiumNUmber;
 	}
