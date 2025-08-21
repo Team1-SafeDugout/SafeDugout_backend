@@ -20,17 +20,36 @@ public class SellPostDTO {
 //	CONSTRAINT FK_SELL_POST_DEALTYPE FOREIGN KEY(DEALTYPE_ID) REFERENCES TBL_DEALTYPE (DEALTYPE_ID)
 //	);
 	
-	int sellPostNumber; 
-	int memberNumber;
-	int statusId;
-	int categoryId;
-	int dealtypeId;
-	int pricePointNumber; 
-	String sellPostTitile; 
-	String tradingArea;
-	String sellPostCreationDate;
-	String sellPostUpdate;
+	private int sellPostNumber; 
+	private int memberNumber;
+	private int statusId;
+	private int categoryId;
+	private int dealtypeId;
+	private int pricePoint; 
+	private String sellPostTitle; 
+	private String tradingArea;
+	private String sellPostCreationDate;
+	private String sellPostUpdate;
+	private String sellPostContent;
 	
+	public int getPricePoint() {
+		return pricePoint;
+	}
+	public void setPricePoint(int pricePoint) {
+		this.pricePoint = pricePoint;
+	}
+	public String getSellPostTitle() {
+		return sellPostTitle;
+	}
+	public void setSellPostTitle(String sellPostTitle) {
+		this.sellPostTitle = sellPostTitle;
+	}
+	public String getSellPostContent() {
+		return sellPostContent;
+	}
+	public void setSellPostContent(String sellPostContent) {
+		this.sellPostContent = sellPostContent;
+	}
 	public int getSellPostNumber() {
 		return sellPostNumber;
 	}
@@ -61,18 +80,7 @@ public class SellPostDTO {
 	public void setDealtypeId(int dealtypeId) {
 		this.dealtypeId = dealtypeId;
 	}
-	public int getPricePointNumber() {
-		return pricePointNumber;
-	}
-	public void setPricePointNumber(int pricePointNumber) {
-		this.pricePointNumber = pricePointNumber;
-	}
-	public String getSellPostTitile() {
-		return sellPostTitile;
-	}
-	public void setSellPostTitile(String sellPostTitile) {
-		this.sellPostTitile = sellPostTitile;
-	}
+
 	public String getTradingArea() {
 		return tradingArea;
 	}
@@ -95,10 +103,13 @@ public class SellPostDTO {
 	@Override
 	public String toString() {
 		return "SellPostDTO [sellPostNumber=" + sellPostNumber + ", memberNumber=" + memberNumber + ", statusId="
-				+ statusId + ", categoryId=" + categoryId + ", dealtypeId=" + dealtypeId + ", pricePointNumber="
-				+ pricePointNumber + ", sellPostTitile=" + sellPostTitile + ", tradingArea=" + tradingArea
-				+ ", sellPostCreationDate=" + sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate + "]";
+				+ statusId + ", categoryId=" + categoryId + ", dealtypeId=" + dealtypeId + ", pricePoint=" + pricePoint
+				+ ", sellPostTitle=" + sellPostTitle + ", tradingArea=" + tradingArea + ", sellPostCreationDate="
+				+ sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate + ", sellPostContent=" + sellPostContent
+				+ "]";
 	}
+	
+	
 	
 	
 	

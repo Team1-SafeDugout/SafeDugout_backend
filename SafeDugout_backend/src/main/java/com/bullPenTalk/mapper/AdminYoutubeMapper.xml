@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminYoutube">
+	<!-- 유튜브 목록 조회 -->
+	<select id="listSelect" resultType="YouTubePostDTO">
+    SELECT *
+    FROM (
+        SELECT ROWNUM AS rnum, subquery.*
+        FROM (
+            SELECT p.POST_NUMBER,
+                   p.POST_TITLE,
+                   p.POST_DATE,
+                   p.POST_LINK,
+                   t.TEAM_NAME,
+                   t.TEAM_NUMBER,
+                   a.ADMIN_NAME
+            FROM TBL_POST p
+            JOIN TBL_TEAM t ON p.TEAM_NUMBER = t.TEAM_NUMBER
+            JOIN TBL_ADMIN a ON p.ADMIN_NUMBER = a.ADMIN_NUMBER
+            WHERE p.BOARD_ID = 4
+              AND p.TEAM_NUMBER = #{teamNumber}
+            ORDER BY p.POST_DATE DESC
+        ) subquery
+    )
+    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 유튜브 등록 -->
+	<insert id="insert">
+		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
+			SELECT SEQ_POST.CURRVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink})
+	</insert>
+	
+	
+	<!-- 유튜브 삭제 -->
+	<delete id="delete" parameterType="int">
+		DELETE 
+		FROM TBL_POST
+		WHERE POST_NUMBER = #{postNumber}
+  		AND TEAM_NUMBER = #{teamNumber}
+  		AND BOARD_ID = #{boardId}
+	</delete>
+	
+</mapper>

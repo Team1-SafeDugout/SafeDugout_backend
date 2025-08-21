@@ -30,7 +30,15 @@ public class PostDTO {
 	private String postDate;
 	private String postUpdate;
 	private String postLink;
+	private String journalist;
+
 	
+	public String getJournalist() {
+		return journalist;
+	}
+	public void setJournalist(String journalist) {
+		this.journalist = journalist;
+	}
 	public int getPostNUmber() {
 		return postNUmber;
 	}
@@ -97,7 +105,9 @@ public class PostDTO {
 		return "PostDTO [postNUmber=" + postNUmber + ", memberNUmber=" + memberNUmber + ", teamNumber=" + teamNumber
 				+ ", adminNUmber=" + adminNUmber + ", boardId=" + boardId + ", postTitle=" + postTitle
 				+ ", postContent=" + postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate
-				+ ", postLink=" + postLink + "]";
+				+ ", postLink=" + postLink + ", journalist=" + journalist + "]";
 	}
+	
+	
 
 }
