@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +18,7 @@
 
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
+  <jsp:include page="/headerNoLogin.jsp" />
   <!-- 메인 -->
   <main>
     <!-- 메인 컨테이너 -->

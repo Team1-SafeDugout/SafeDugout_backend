@@ -108,10 +108,5 @@ public class SellPostDTO {
 				+ sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate + ", sellPostContent=" + sellPostContent
 				+ "]";
 	}
-	
-	
-	
-	
-	
-	
+
 }
