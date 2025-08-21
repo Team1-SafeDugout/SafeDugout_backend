@@ -13,7 +13,7 @@
 	               P.POST_TITLE,
 	               P.POST_CONTENT,
 	               P.POST_DATE,
-	               M.MEMBER_ID AS POST_WRITER
+	               M.MEMBER_ID
 	        FROM TBL_POST P
 	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
 	        WHERE P.BOARD_ID = 2
