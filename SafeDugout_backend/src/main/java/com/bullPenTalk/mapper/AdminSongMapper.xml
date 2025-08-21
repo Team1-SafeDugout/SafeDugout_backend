@@ -13,7 +13,9 @@
 	                   POST_DATE,
 	                   TEAM_NUMBER,
 	                   BOARD_TYPE_ID,
-	                   ADMIN_ID
+	                   POST_LINK,
+	                   ADMIN_ID,
+	                   POST_CONTENT
 	            FROM TBL_POST
 	            WHERE BOARD_TYPE_ID IN (5, 6)
 	              AND TEAM_NUMBER = #{teamNumber}
@@ -70,8 +72,8 @@
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.CURRVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink})
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink}, #{postContent})
 	</insert>
 	
 	<!-- 선수 응원가 추가 -->

@@ -3,7 +3,7 @@
 <mapper namespace="adminNews">
 
 	<!-- 뉴스 목록 조회 -->
-	<select id="listSelect" resultType="PostDTO">
+	<select id="listSelect" resultType="NewsPostDTO">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*
@@ -24,13 +24,14 @@
 	</select>
 	
 	<!-- 뉴스 상세 조회 -->
-	<select id="detailSelect" parameterType="int" resultType="PostWithAttachmentDTO">
+	<select id="detailSelect" parameterType="int" resultType="NewsPostDTO">
 	    SELECT p.POST_NUMBER,
 	           p.POST_TITLE,
 	           p.POST_CONTENT,
 	           p.POST_DATE,
 	           p.TEAM_NUMBER,
 	           p.JOURNALIST,
+	           p.POST_LINK,
 	           a.ATTACHMENT_NUMBER,
 	           A.ATTACHMENT_NAME,
 	           A.ATTACHMENT_PATH,
