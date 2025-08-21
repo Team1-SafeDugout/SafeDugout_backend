@@ -4,15 +4,15 @@
 <mapper namespace = "attachment">
 <!-- 추가 관련 -->
 <insert id = "insertAttachment" parameterType = "AttachmentDTO">
-INSERT INTO TBL_ATTACHMENT
-(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_SIZE, ATTACHMENT_PATH)
-VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentSize}, #{attachmentPath})
+	INSERT INTO TBL_ATTACHMENT
+	(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_SIZE, ATTACHMENT_PATH)
+	VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentSize}, #{attachmentPath})
 </insert>
 
 <insert id = "insertAttachment" parameterType = "AdminNoticeDTO">
-INSERT INTO TBL_NOTICE_ATTACHMENT
-(NOTICE_POST_NUMBER, ATTACHMENT_NUMBER)
-VALUES(#{noticePostNumber}, #{attachmentNumber})
+	INSERT INTO TBL_NOTICE_ATTACHMENT
+	(NOTICE_POST_NUMBER, ATTACHMENT_NUMBER)
+	VALUES(#{noticePostNumber}, #{attachmentNumber})
 </insert>
 
 <!-- 제거 관련 -->

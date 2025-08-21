@@ -19,6 +19,7 @@ public class AdminLoginOkController implements Execute{
 			throws ServletException, IOException {
 		
 		AdminDTO adminDTO = new AdminDTO();
+		System.out.println("어드민 디티오 생성완료");
 		AdminDAO adminDAO = new AdminDAO();
 		int memberNumber = 0;
 		Result result = new Result();
@@ -29,6 +30,8 @@ public class AdminLoginOkController implements Execute{
 		
 		adminDTO.setAdminId(adminId);
 		adminDTO.setAdmidPw(adminPw);
+		
+		System.out.println("어드민 확인중");
 		
 		//쿼리문 실행 메소드 호출
 		memberNumber = adminDAO.login(adminDTO);

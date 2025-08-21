@@ -12,14 +12,14 @@ public class YoutubePostDTO {
 //	 BOARD_ID
 	
 	// 유튜브 게시글에 필요한 정보
-	private int postNumber;
-	private String postTitle;
-	private String postDate;
-	private String postContent;
-	private String postLink;	
-	private int teamNumber;
-	private int adminNumber;
-	private int boardId;
+	private int postNumber; // 게시글 번호
+	private String postTitle; // 유튜브 제목
+	private String postDate; // 작성날짜
+	private String postContent; // 유튜브 썸내일용 아이디
+	private String postLink;	 // 유튜브 링크 
+	private int teamNumber; // 팀번호
+	private int adminNumber; // 작성한 어드민 번호
+	private int boardId; // 게시글 종류
 	
 	// get, set
 	public String getPostContent() {

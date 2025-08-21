@@ -41,4 +41,8 @@ public class AdminMainNoticeDAO {
 	public List<MainNoticePostDTO> selectFilter(String postName){
 		return sqlSession.selectList("adminMainNotice.selectFilter", postName);
 	}
+	
+	public int getTotal() {
+		return sqlSession.selectOne("adminMainNotice.getTotal");
+	}
 }
