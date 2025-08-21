@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class PitcherRecordDTO {
+public class PitcherRecordDTO { // 선수 투수 기록
 //	CREATE TABLE TBL_PITCHER_RECORD (
 //	PLAYER_NUMBER         NUMBER NOT NULL,
 //	PITCHER_SEASON_YEAR   DATE NOT NULL,
@@ -25,26 +25,27 @@ public class PitcherRecordDTO {
 //	CONSTRAINT FK_PITCHER_PLAYER FOREIGN KEY (PLAYER_NUMBER) REFERENCES TBL_PLAYER(PLAYER_NUMBER)
 //	);
 
-	private int playerNumber;
-	private String pitcherSeasonYear;
-	private int pitcherGame;
-	private int cg;
-	private int sho;
-	private int gs;
-	private int wins;
-	private int losses;
-	private int saves;
-	private int hold;
-	private int ip;
-	private int ra;
-	private int er;
-	private int era;
-	private int hitallowed;
-	private int hrAllowed;
-	private int pitcherBb;
-	private int pitcherHbp;
-	private int bk;
+	private int playerNumber; // 선수번호
+	private String pitcherSeasonYear; // 시즌 연도
+	private int pitcherGame; // 경기수
+	private int cg; // 완투
+	private int sho; // 완봉
+	private int gs; // 선발 출장
+	private int wins; // 승
+	private int losses; // 패
+	private int saves; // 세이브
+	private int hold; // 홀드
+	private double ip; // 이닝
+	private int ra; // 실점
+	private int er; // 자책점
+	private double era; // 평균자책점
+	private int hitallowed; // 피안타
+	private int hrAllowed; // 피홈런
+	private int pitcherBb; // 볼넷
+	private int pitcherHbp; // 사구
+	private int bk; // 보크
 	
+	// get, set
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
@@ -105,7 +106,7 @@ public class PitcherRecordDTO {
 	public void setHold(int hold) {
 		this.hold = hold;
 	}
-	public int getIp() {
+	public double getIp() {
 		return ip;
 	}
 	public void setIp(int ip) {
@@ -123,7 +124,7 @@ public class PitcherRecordDTO {
 	public void setEr(int er) {
 		this.er = er;
 	}
-	public int getEra() {
+	public double getEra() {
 		return era;
 	}
 	public void setEra(int era) {
@@ -160,6 +161,7 @@ public class PitcherRecordDTO {
 		this.bk = bk;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
 		return "PitcherRecordDTO [playerNumber=" + playerNumber + ", pitcherSeasonYear=" + pitcherSeasonYear

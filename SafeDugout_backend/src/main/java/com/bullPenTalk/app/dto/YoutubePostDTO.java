@@ -2,15 +2,38 @@ package com.bullPenTalk.app.dto;
 
 public class YoutubePostDTO {
 	
+//   POST_NUMBER,
+//   POST_TITLE,
+//   POST_DATE,
+//   POST_CONTENT,
+//   POST_LINK,
+//   TEAM_NUMBER,
+//   ADMIN_NUMBER
+//	 BOARD_ID
+	
 	// 유튜브 게시글에 필요한 정보
 	private int postNumber;
+	private String postTitle;
+	private String postDate;
+	private String postContent;
+	private String postLink;	
 	private int teamNumber;
 	private int adminNumber;
 	private int boardId;
-	private String postTitle;
-	private String postDate;
 	
 	// get, set
+	public String getPostContent() {
+		return postContent;
+	}
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
+	}
+	public String getPostLink() {
+		return postLink;
+	}
+	public void setPostLink(String postLink) {
+		this.postLink = postLink;
+	}
 	public int getPostNumber() {
 		return postNumber;
 	}
@@ -55,12 +78,15 @@ public class YoutubePostDTO {
 	}
 	private String postlink;
 
+	// toString
 	@Override
 	public String toString() {
-		return "YoutubePostDTO [postNumber=" + postNumber + ", teamNumber=" + teamNumber + ", adminNumber="
-				+ adminNumber + ", boardId=" + boardId + ", postTitle=" + postTitle + ", postDate=" + postDate
-				+ ", postlink=" + postlink + "]";
+		return "YoutubePostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postDate=" + postDate
+				+ ", postContent=" + postContent + ", postLink=" + postLink + ", teamNumber=" + teamNumber
+				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postlink=" + postlink + "]";
 	}
+
+	
 	
 	
 }

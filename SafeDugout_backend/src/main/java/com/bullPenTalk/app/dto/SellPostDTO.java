@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.dto;
 
-public class SellPostDTO {
+public class SellPostDTO { // 판매글
 //	CREATE TABLE TBL_SELL_POST(
 //	SELL_POST_NUMBER NUMBER,
 //	MEMBER_NUMBER NUMBER NOT NULL,
@@ -20,18 +20,19 @@ public class SellPostDTO {
 //	CONSTRAINT FK_SELL_POST_DEALTYPE FOREIGN KEY(DEALTYPE_ID) REFERENCES TBL_DEALTYPE (DEALTYPE_ID)
 //	);
 	
-	private int sellPostNumber; 
-	private int memberNumber;
-	private int statusId;
-	private int categoryId;
-	private int dealtypeId;
-	private int pricePoint; 
-	private String sellPostTitle; 
-	private String tradingArea;
-	private String sellPostCreationDate;
-	private String sellPostUpdate;
-	private String sellPostContent;
+	private int sellPostNumber; // 판매글 번호
+	private int memberNumber; // 회원번호 (판매자)
+	private int statusId; // 거래상태 id(판매중, 판매완료, 구매확정)
+	private int categoryId; // 카테고리 id
+	private int dealtypeId; // 거래방식 id(직거래, 택배)
+	private int pricePoint;  // 가격
+	private String sellPostTitle; // 판매글 제목
+	private String tradingArea; // 거래지역
+	private String sellPostCreationDate; // 판매글 작성일자
+	private String sellPostUpdate; // 수정일자
+	private String sellPostContent; // 상품 설명
 	
+	// get, set
 	public int getPricePoint() {
 		return pricePoint;
 	}
@@ -100,6 +101,8 @@ public class SellPostDTO {
 		this.sellPostUpdate = sellPostUpdate;
 	}
 	
+	
+	// toSTring
 	@Override
 	public String toString() {
 		return "SellPostDTO [sellPostNumber=" + sellPostNumber + ", memberNumber=" + memberNumber + ", statusId="

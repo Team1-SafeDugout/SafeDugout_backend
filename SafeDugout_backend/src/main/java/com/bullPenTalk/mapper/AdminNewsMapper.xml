@@ -3,7 +3,7 @@
 <mapper namespace="adminNews">
 
 	<!-- 뉴스 목록 조회 -->
-	<select id="listSelect" resultType="PostDTO">
+	<select id="listSelect" resultType="NewsPostDTO">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*
@@ -24,13 +24,14 @@
 	</select>
 	
 	<!-- 뉴스 상세 조회 -->
-	<select id="detailSelect" parameterType="int" resultType="PostWithAttachmentDTO">
+	<select id="detailSelect" parameterType="int" resultType="NewsPostDTO">
 	    SELECT p.POST_NUMBER,
 	           p.POST_TITLE,
 	           p.POST_CONTENT,
 	           p.POST_DATE,
 	           p.TEAM_NUMBER,
 	           p.JOURNALIST,
+	           p.POST_LINK,
 	           a.ATTACHMENT_NUMBER,
 	           A.ATTACHMENT_NAME,
 	           A.ATTACHMENT_PATH,
@@ -47,10 +48,10 @@
 	<!-- 뉴스 추가 -->
 	<insert id="insert">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
-			SELECT SEQ_POST.CURRVAL FROM DUAL
+			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK,POST_CONTENT, JOURNALIST)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink} , #{journalist})
+		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink} , #{journalist})
 	</insert>
 	
 	<!-- 뉴스 삭제 -->

@@ -55,6 +55,14 @@
 	]]>
 	</select>
 	
+	<!-- 거래 테이블 등록 -->
+	<insert id="insert" parameterType="TreadPostDTO">
+		<selectKey>
+			SELECT SEQ_TREAD_POST FROM.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_TREAD_POST(tread_number, sell_post_number, status_number, buy_member, payment_date, complete_date)
+		values(#{treadNumber}, #{sellPostNumber}, #{statusNumber}, #{buyMember}, #{paymentDate}, #{completeDAte})
+	</insert>
 	
 	
 </mapper>

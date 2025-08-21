@@ -1,17 +1,17 @@
 package com.bullPenTalk.app.dto;
 
-public class MyPageTradeListDTO {
+public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 	
-	private int sellPostNumber;
-	private String sellPostTitle; 
-	private int dealtypeId;
-	private String memberId; 
-	private int statusId;
-	private int statusNumber; 
-	private int pricePoint; 
-	private String paymentDate; 
-	private String completeDate;
+	private int sellPostNumber; // 판매글 번호
+	private String sellPostTitle; // 판매글 제목
+	private int dealtypeId; // 판매글 거래방식 id(택배, 직거래)
+	private String memberId;  // 판매자 id
+	private int statusId; // 거래상태 id (판매전 , 판매후, 구매확정)
+	private int pricePoint; // 가격
+	private String paymentDate; // 결제일자
+	private String completeDate; // 구매 확정일자
 	
+	// get, set
 	public String getSellPostTitle() {
 		return sellPostTitle;
 	}
@@ -29,12 +29,6 @@ public class MyPageTradeListDTO {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
-	}
-	public int getStatusNumber() {
-		return statusNumber;
-	}
-	public void setStatusNumber(int statusNumber) {
-		this.statusNumber = statusNumber;
 	}
 	public int getPricePoint() {
 		return pricePoint;
@@ -55,10 +49,11 @@ public class MyPageTradeListDTO {
 		this.completeDate = completeDate;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
 		return "MyPageTradeListDTO [sellPostTitle=" + sellPostTitle + ", dealtypeId=" + dealtypeId + ", memberId="
-				+ memberId + ", statusNumber=" + statusNumber + ", pricePoint=" + pricePoint + ", paymentDate="
+				+ memberId + ", statusNumber=" + ", pricePoint=" + pricePoint + ", paymentDate="
 				+ paymentDate + ", completeDate=" + completeDate + "]";
 	} 
 	
