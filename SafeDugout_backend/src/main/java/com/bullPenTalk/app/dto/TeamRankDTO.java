@@ -1,14 +1,14 @@
 package com.bullPenTalk.app.dto;
 
 public class TeamRankDTO {
-	int teamRank; 
-	String teamName;
-	int gameCount;
-	int teamWin; 
-	int teamDraw;
-	int teamLose; 
-	double teamWinLoss;
-	double teamWinRate;
+	private int teamRank; 
+	private String teamName;
+	private int gameCount;
+	private int teamWin; 
+	private int teamDraw;
+	private int teamLose; 
+	private double teamWinLoss;
+	private double teamWinRate;
 	
 	public int getTeamRank() {
 		return teamRank;
