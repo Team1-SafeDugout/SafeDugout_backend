@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main">
-	
+	<!-- 메인 공지사항 목록 조회 -->
+	<select id="selectMainList" resultType="MainNoticePostDTO">
+		select notice_post_number, notice_post_title, notice_post_date,
+		from tbl_notice_post
+		where where notice_type_id = 1
+		order by notice_post_date desc
+	</select>
+	<!-- 메인 공지사항 상세 조회 -->
+	<select id="selectMainDetail" parameterType="int" resultType="MainNoticePostDTO">
+		select notice_post_number, notice_post_title, notice_post_date, notice_post_update,
+		notice_post_content
+		from tbl_notice_post
+		where notice_type_id = 1 and notice_post-number = #{noticePostNumber}
+	</select>
+	<!-- 경기 일정 목록 조회 -->
+	<select id="selectSchedule" parameterType="int" resultType="MainDTO">
+		select home_team_number, stadium_name, away_team_number, schedule_date
+		from tbl_game_schedule
+		where game_id = #{gameId};
+	</select>
+	<!-- 중고거래 목록 조회 -->
+	<select id="selectSellList" resultType="MainDTO">
+		select s.sell_post_number, s.sell_post_title, s.sell_post_creation_date,
+		a.attachment_path
+		from tbl_sell_post s join tbl_attachment a on s.sell_post_number = a.sell_post_number
+		join tbl_sell_post_attachment on a.attachment_number = sa.attachment_number
+	</select>
+	<!-- 입문가이드 목록 조회 -->
+	<select id="selectGuideList" resultType="MainDTO">
+		select notice_post_number, notice_post_title, notice_post_date
+		from tbl_notice_post
+		where notice_type_id = 3
+	</select>
+	<!-- 팀별 순위 조회 -->
+	<select id="selectTeamRank" resultType="MainDTO">
+		select t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate
+		from tbl_team_record r join tbl_team t on r.team_number = t.team_number
+		order by r.team_win_rate
+	</select>
 </mapper>
