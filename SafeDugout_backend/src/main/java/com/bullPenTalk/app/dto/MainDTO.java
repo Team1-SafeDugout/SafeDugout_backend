@@ -2,21 +2,22 @@ package com.bullPenTalk.app.dto;
 
 public class MainDTO {
 	
+	//경기 일정
 	private int gameId; //게임번호
 	private int homeTeamNumber; //홈팀 번호
 	private String stadiumName; //경기장 이름
 	private int awayTeamNumber; //어웨이팀 번호
 	private String scheduleDate; //경기 날짜
-	
+	//판매글 목록
 	private int sellPostNumber; //판매 게시글 번호
 	private String sellPostTitle; //판매 게시글 제목
 	private String sellPostCreationDate; //판매 게시글 작성 일자
 	private String attachmentPath; //첨부파일 경로
-	
+	//입문자 가이드 목록
 	private int noticePostNumber; //공지사항 게시글 번호
 	private String noticePostTitle; //공지사항 게시글 제목
 	private String noticePostDate; // 공지사항 게시글 날짜
-	
+	//팀별 순위 목록
 	private int teamRank; //팀순위
 	private String teamName; //팀 이름
 	private int gameCount; //경기 수 

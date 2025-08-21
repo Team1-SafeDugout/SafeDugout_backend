@@ -113,6 +113,7 @@
 		<mapper resource="com/bullPenTalk/mapper/SellMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/TeamCommentMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/TradeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TeamMainMapper.xml" />
 	</mappers>
 	
 </configuration>

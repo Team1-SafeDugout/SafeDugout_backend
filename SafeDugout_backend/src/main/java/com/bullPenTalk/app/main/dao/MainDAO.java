@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.main.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -21,8 +22,14 @@ public class MainDAO {
 //	}
 	
 	//메인 공지사항 목록 조회
-	public List<MainNoticePostDTO> selectMainList() {
+	public List<MainNoticePostDTO> selectMainList(Map<String, Integer> map) {
 		return sqlSession.selectList("main.selectMainlist");
+	}
+	
+	//공지사항 총 개수 가져오기
+	public int getTotal() {
+		System.out.println("getTotal 메소드 실행");
+		return sqlSession.selectOne("main.getTotal");
 	}
 	
 	//메인 공지사항 상세 조회
@@ -40,7 +47,7 @@ public class MainDAO {
 		return sqlSession.selectList("main.selectSellList");
 	}
 	
-	//입문가이드 목록 조회
+	//입문자 가이드 목록 조회
 	public List<MainDTO> selectGuideList() {
 		return sqlSession.selectList("main.selectGuideList");
 	}
