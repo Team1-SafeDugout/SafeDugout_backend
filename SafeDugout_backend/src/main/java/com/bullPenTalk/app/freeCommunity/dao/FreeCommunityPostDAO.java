@@ -1,13 +1,23 @@
 package com.bullPenTalk.app.freeCommunity.dao;
 
-	import java.sql.*;
-	import java.util.*;
+	import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.bullPenTalk.app.dto.AttachmentDTO;
+import com.bullPenTalk.app.dto.CommentDTO;
+import com.bullPenTalk.app.dto.FreePostDTO;
+import com.bullPenTalk.config.MyBatisConfig;
 
 	public class FreeCommunityPostDAO {
-	    private final Connection connection;
+		public SqlSession sqlSession;
 
-	    public FreeCommunityPostDAO(Connection connection) {
-	        this.connection = connection;
+	    public FreeCommunityPostDAO() {
+	    	sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	    }
 
 	    // 목록 조회
