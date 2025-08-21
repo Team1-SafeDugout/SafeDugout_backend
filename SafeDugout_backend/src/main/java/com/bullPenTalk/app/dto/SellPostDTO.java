@@ -97,10 +97,8 @@ public class SellPostDTO {
 		return "SellPostDTO [sellPostNumber=" + sellPostNumber + ", memberNumber=" + memberNumber + ", statusId="
 				+ statusId + ", categoryId=" + categoryId + ", dealtypeId=" + dealtypeId + ", pricePointNumber="
 				+ pricePointNumber + ", sellPostTitile=" + sellPostTitile + ", tradingArea=" + tradingArea
-				+ ", sellPostCreationDate=" + sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate + "]";
+				+ ", sellPostCreationDate=" + sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate
+				+ ", attachmentPath=" + "]";
 	}
-	
-	
-	
 	
 }
