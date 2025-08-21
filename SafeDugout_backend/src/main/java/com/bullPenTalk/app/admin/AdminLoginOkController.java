@@ -3,15 +3,14 @@ package com.bullPenTalk.app.admin;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.MemberDTO;
-import com.bullPenTalk.app.member.dao.MemberDAO;
+import com.bullPenTalk.app.dto.AdminDTO;
+import com.bullPenTalk.app.admin.dao.AdminDAO;
 
 public class AdminLoginOkController implements Execute{
 
@@ -19,24 +18,23 @@ public class AdminLoginOkController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		MemberDTO memberDTO = new MemberDTO();
-		MemberDAO memberDAO = new MemberDAO();
+		AdminDTO adminDTO = new AdminDTO();
+		AdminDAO adminDAO = new AdminDAO();
 		int memberNumber = 0;
 		Result result = new Result();
 		String path = null;
-		
-		String memberId = request.getParameter("memberId"); //아이디 저장 처리할 때 재사용
-		String memberPw = request.getParameter("memberPw");
+		String adminId = request.getParameter("adminId"); //아이디 저장 처리할 때 재사용
+		String adminPw = request.getParameter("adminPw");
 		HttpSession session = request.getSession(); //++++++세션저장
 		
-		memberDTO.setMemberId(memberId);
-		memberDTO.setMemberPw(memberPw);
+		adminDTO.setAdminId(adminId);
+		adminDTO.setAdmidPw(adminPw);
 		
 		//쿼리문 실행 메소드 호출
-		memberNumber = memberDAO.login(memberDTO);
+		memberNumber = adminDAO.login(adminDTO);
 		
 		if(memberNumber != -1) {
-			path = "/mainLogin.jsp";
+			path = "/adminMenu/adminSiteStatistics.jsp";
 			session.setAttribute("memberNumber", memberNumber);
 			System.out.println("세션값 : " + memberNumber);
 			
@@ -53,7 +51,7 @@ public class AdminLoginOkController implements Execute{
 //			}
 			
 		}else {
-			path = "/member/login.me?login=fail";
+			path = "/login/adminLogin.jsp?login=fail";
 		}
 		
 		result.setRedirect(true); //세션에 저장된 값은 유지

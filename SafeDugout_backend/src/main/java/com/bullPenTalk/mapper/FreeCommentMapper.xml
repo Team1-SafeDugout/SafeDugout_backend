@@ -1,2 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="freeComment">
+
+	<!-- 댓글 추가 -->
+	<insert id="insert" parameterType="CommentDTO">
+    <![CDATA[
+        INSERT INTO TBL_COMMENT (COMMENT_NUMBER, MEMBER_NUMBER, POST_NUMBER, COMMENT_CONTENT, COMMENT_DATE, COMMENT_UPDATE)
+        VALUES (COMMENT_SEQ.NEXTVAL, #{memberNumber}, #{postNumber}, #{commentContent}, SYSDATE, SYSDATE)
+    ]]>
+	</insert>
+
+	<!-- 댓글 수정 -->
+	<update id="update" parameterType="CommentDTO">
+	UPDATE TBL_COMMENT
+	SET COMMENT_CONTENT = #{commentContent},
+    COMMENT_UPDATE = SYSDATE
+	WHERE COMMENT_NUMBER = #{commentNumber};
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<!-- 번호 기준으로 삭제 -->
+	<delete id="delete" parameterType="int">
+	DELETE FROM TBL_COMMENT
+	WHERE COMMENT_NUMBER = #{commentNumber};
+	</delete>
+
+	<!-- 댓글 조회 -->
+	<select id="select" resultType="AdminPostDTO">
+	<![CDATA[
+	SELECT *
+	FROM (
+	SELECT 
+    	C.COMMENT_NUMBER,
+    	C.COMMENT_CONTENT,
+    	C.COMMENT_DATE,
+    	C.COMMENT_UPDATE,
+    	M.MEMBER_ID
+	FROM TBL_COMMENT C
+	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
+	ORDER BY C.COMMENT_DATE DESC;
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+
+</mapper>
+
+
+

@@ -48,12 +48,12 @@ public class LoginOkController implements Execute{
 //				//체크 해제시 쿠키 삭제
 //				Cookie cookie = new Cookie("memberId", "");
 //				cookie.setMaxAge(0);
-////				cookie.setPath(cookiePath);
+//				cookie.setPath(cookiePath);
 //				response.addCookie(cookie);
 //			}
 			
 		}else {
-			path = "/member/login.me?login=fail";
+			path = "/app/login/login.jsp?login=fail";
 		}
 		
 		result.setRedirect(true); //세션에 저장된 값은 유지
