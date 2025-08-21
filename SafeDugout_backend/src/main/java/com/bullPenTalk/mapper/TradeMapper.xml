@@ -55,6 +55,7 @@
 	]]>
 	</select>
 	
+	
 	<!-- 거래 테이블 등록 -->
 	<insert id="insert" parameterType="TreadPostDTO">
 		<selectKey>
