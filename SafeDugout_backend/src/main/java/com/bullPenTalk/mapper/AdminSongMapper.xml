@@ -79,10 +79,10 @@
 	<!-- 선수 응원가 추가 -->
 	<insert id="palyerInsert">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
-			SELECT SEQ_POST.CURRVAL FROM DUAL
+			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink})
+		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink})
 	</insert>
 	
 	<!-- 응원가 삭제 -->
