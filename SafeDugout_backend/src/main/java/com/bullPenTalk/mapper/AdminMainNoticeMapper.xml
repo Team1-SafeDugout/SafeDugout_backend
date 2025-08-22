@@ -3,7 +3,7 @@
 <mapper namespace = "adminMainNotice">
 
 	<!-- 추가 -->
-	<insert id = "insert" parameterType = "AdminPostDTO">
+	<insert id = "insert" parameterType = "MainNoticePostDTO">
 		INSERT INTO TBL_NOTICE_POST 
 		(NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, TEAM_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE)
 		VALUES
@@ -11,7 +11,7 @@
 	</insert>
 	
 	<!-- 상세페이지 -->
-	<select id = "selectDetail" resultType = "AdminPostDTO" parameterType = "int">
+	<select id = "selectDetail" resultType = "MainNoticePostDTO" parameterType = "int">
 	<![CDATA[
 		SELECT NP.NOTICE_POST_NUMBER,
 		       NP.NOTICE_POST_TITLE,
@@ -28,13 +28,18 @@
 		LEFT JOIN TBL_NOTICE_ATTACHMENT NA ON NP.NOTICE_POST_NUMBER = NA.NOTICE_POST_NUMBER
 		LEFT JOIN TBL_ATTACHMENT AT ON NA.ATTACHMENT_NUMBER = AT.ATTACHMENT_NUMBER
 		WHERE NP.NOTICE_POST_NUMBER = #{noticePostNumber}
-		AND NT.NOTICE_TYPE = 'mainnotice'
 	]]>
+	</select>
+	
+	<!-- 전체 목록 -->
+	<select id = "selectAll" resultType = "MainNoticePostDTO">
+		SELECT NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, TEAM_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE
+		FROM TBL_NOTICE_POST
 	</select>
 	
 	
 	<!-- 목록 조회 -->
-	<select id="select" resultType="AdminPostDTO">
+	<select id="select" resultType="MainNoticePostDTO">
 	<![CDATA[
 	SELECT *
 	FROM (
@@ -54,7 +59,7 @@
 	</select>
 	
 	<!-- 목록 검색 -->
-	<select id = "selectFilter" parameterType = "string" resultType = "AdminPostDTO">
+	<select id = "selectFilter" parameterType = "string" resultType = "MainNoticePostDTO">
 	<![CDATA[
 		SELECT *
 		FROM (
@@ -75,7 +80,7 @@
 	</select>
 	
 	<!-- 수정 -->
-	<update id = "update" parameterType = "AdminPostDTO">
+	<update id = "update" parameterType = "MainNoticePostDTO">
 		UPDATE TBL_NOTICE_POST SET
 		NOTICE_POST_TITLE = #{noticePostTitle},
 		NOTICE_POST_CONTENT = '#{noticePostContent},
@@ -91,7 +96,7 @@
 	
 	<!-- 총 개수 -->
 	<select id = "total" resultType = "int">
-		SELECT COUNT(NOTICE_POST_NUMBER)
+		SELECT COUNT(NOTICE_POST_TITLE)
 		FROM TBL_NOTICE_POST
 		WHERE NOTICE_TYPE_ID = 1
 	</select>

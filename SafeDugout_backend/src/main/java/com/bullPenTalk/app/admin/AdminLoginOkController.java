@@ -19,9 +19,8 @@ public class AdminLoginOkController implements Execute{
 			throws ServletException, IOException {
 		
 		AdminDTO adminDTO = new AdminDTO();
-		System.out.println("어드민 디티오 생성완료");
 		AdminDAO adminDAO = new AdminDAO();
-		int memberNumber = 0;
+		int adminNumber = 0;
 		Result result = new Result();
 		String path = null;
 		String adminId = request.getParameter("adminId"); //아이디 저장 처리할 때 재사용
@@ -31,15 +30,15 @@ public class AdminLoginOkController implements Execute{
 		adminDTO.setAdminId(adminId);
 		adminDTO.setAdmidPw(adminPw);
 		
-		System.out.println("어드민 확인중");
-		
 		//쿼리문 실행 메소드 호출
-		memberNumber = adminDAO.login(adminDTO);
+		adminNumber = adminDAO.login(adminDTO);
 		
-		if(memberNumber != -1) {
-			path = "/adminMenu/adminSiteStatistics.jsp";
-			session.setAttribute("memberNumber", memberNumber);
-			System.out.println("세션값 : " + memberNumber);
+		if(adminNumber != -1) {
+			path = "/admin/adminMainNoticeListOk.ad";
+			session.setAttribute("adminNumber", adminNumber);
+			session.setAttribute("adminInfo", adminDAO.takeInfo(adminNumber));
+			System.out.println("세션값 : " + adminNumber);
+			System.out.println("현재 어드민 : " + adminDAO.takeInfo(adminNumber));
 			
 //			if(remember != null) {
 //				Cookie cookie = new Cookie("memberId", memberId);
@@ -54,7 +53,7 @@ public class AdminLoginOkController implements Execute{
 //			}
 			
 		}else {
-			path = "/login/adminLogin.jsp?login=fail";
+			path = "/admin/adminLogin.ad?login=fail";
 		}
 		
 		result.setRedirect(true); //세션에 저장된 값은 유지

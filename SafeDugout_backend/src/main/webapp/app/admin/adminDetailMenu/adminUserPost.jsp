@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="section-background">
       <section class="section-bottom-buttons">
@@ -75,6 +75,6 @@
       </section>
     </section>
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 </html>

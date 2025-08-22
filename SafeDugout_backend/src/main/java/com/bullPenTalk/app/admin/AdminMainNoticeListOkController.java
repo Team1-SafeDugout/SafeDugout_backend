@@ -73,7 +73,7 @@ public class AdminMainNoticeListOkController implements Execute{
 		result.setPath("/app/admin/adminMenu/adminManagePosts.jsp");
 		result.setRedirect(false);
 
-		return null;
+		return result;
 	}
 
 }

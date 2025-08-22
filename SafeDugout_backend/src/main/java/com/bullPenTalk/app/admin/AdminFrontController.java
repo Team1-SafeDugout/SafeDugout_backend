@@ -43,7 +43,7 @@ public class AdminFrontController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
-		System.out.println("현재 경로");
+		System.out.println("현재 경로" + target);
 		Result result = new Result();
 		
 		switch(target) {
@@ -59,6 +59,26 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("메인공지목록");
 			result = new AdminMainNoticeListOkController().execute(request, response);
 			break;
+			
+		case "admin/adminGuideListOk.ad":
+			System.out.println("입문 가이드");
+			break;
+			
+		case "/admin/adminLogout.ad":
+			result = new AdminLogoutController().execute(request, response);
+			break;
+			
+		case "/admin/adminReadMainNoticeOk.ad":
+			result = new AdminReadMainNoticeOkController().execute(request, response);
+			break;
+		}	
+		
+		if (result != null) {
+			if (result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+			} else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
 		}
 	}
 

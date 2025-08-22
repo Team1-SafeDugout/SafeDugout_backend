@@ -5,6 +5,13 @@
 	<!-- 로그인 -->
 	<select id="login" parameterType="AdminDTO" resultType="int">
 		select admin_number from tbl_admin
-		where admin_id = #{adminID} and admin_pw = #{adminPw}
+		where admin_id = #{adminId} and admin_pw = #{adminPw}
+	</select>
+	
+	<!-- 정보 가져오기 -->
+	<select id="takeInfo" parameterType="int" resultType = "AdminDTO">
+		select admin_number, admin_id, admin_email
+		from tbl_admin
+		where admin_number = #{adminNumber}
 	</select>
 </mapper>
