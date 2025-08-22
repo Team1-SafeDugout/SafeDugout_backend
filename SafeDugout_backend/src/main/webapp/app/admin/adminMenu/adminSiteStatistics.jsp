@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-  <<jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="body-sidebar">
       <div class="sidebar-div-name">
@@ -22,8 +23,8 @@
 
       <div class="sidebar-div-info">
         <div>
-          <div> 관리자 : 백정이 </div>
-          <div> 관리자 이메일 : ohohoho@naver.com</div>
+          <div> 관리자 : ${sessionScope.adminInfo.adminId} </div>
+          <div> 관리자 이메일 : ${sessionScope.adminInfo.adminEmail}</div>
         </div>
       </div>
 

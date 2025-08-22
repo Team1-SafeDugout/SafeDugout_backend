@@ -20,12 +20,6 @@ public class AdminTeamNewsDAO {
 		sqlSession.insert("adminNews.insert", newsPostDTO);
 	}
 	
-	// 수정
-	
-	public void update(NewsPostDTO newsPostDTO) {
-		sqlSession.update("adminNews.update", newsPostDTO);
-	}
-	
 	// 조회(전부)
 	
 	public List<NewsPostDTO> select() {
@@ -35,11 +29,6 @@ public class AdminTeamNewsDAO {
 	// 삭제
 	public void delete(int newsPostNumber) {
 		sqlSession.delete("adminNews.delete", newsPostNumber);
-	}
-	
-	// 검색
-	public List<NewsPostDTO> selectFilter(String postName){
-		return sqlSession.selectList("adminNews.selectFilter", postName);
 	}
 	
 	// 조회(하나만)

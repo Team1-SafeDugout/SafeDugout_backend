@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -23,8 +24,8 @@
 
       <div class="sidebar-div-info">
         <div>
-          <div> 관리자 : 백정이 </div>
-          <div> 관리자 이메일 : ohohoho@naver.com</div>
+          <div> 관리자 : ${sessionScope.adminInfo.adminId} </div>
+          <div> 관리자 이메일 : ${sessionScope.adminInfo.adminEmail}</div>
         </div>
       </div>
 
@@ -65,19 +66,34 @@
             </ul>
           </div>
 
-          <div class="page-buttons">
-            <form action="" method="get">
-              <button type="button" id="left-button"> ◁ </button>
-              <ul id="numberlist-ul">
-                <li><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-              </ul>
-              <button type="button" id="right-button"> ▷ </button>
-            </form>
-          </div>
+	      <div class="pagination">
+	        <ul>
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul>
+	      </div>
 
         </div>
       </section>

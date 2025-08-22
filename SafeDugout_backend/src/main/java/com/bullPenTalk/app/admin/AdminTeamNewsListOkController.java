@@ -38,6 +38,7 @@ public class AdminTeamNewsListOkController implements Execute{
 		pageMap.put("endRow", endRow);
 		
 		List<NewsPostDTO> boardList = adminTeamNewsDAO.select();
+		System.out.println("test:"+adminTeamNewsDAO.select());
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정

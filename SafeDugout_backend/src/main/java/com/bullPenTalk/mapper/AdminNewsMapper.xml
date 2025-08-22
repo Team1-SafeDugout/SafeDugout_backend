@@ -55,7 +55,7 @@
 	    FROM TBL_POST p
 	    LEFT JOIN TBL_POST_ATTACHMENT pa ON p.POST_NUMBER = pa.POST_NUMBER
 	    LEFT JOIN TBL_ATTACHMENT a ON pa.ATTACHMENT_NUMBER = a.ATTACHMENT_NUMBER
-	    WHERE BOARD_ID = 2
+	    WHERE BOARD_ID = 3
 	</select>
 	
 	<select id = "total" resultType = "int">

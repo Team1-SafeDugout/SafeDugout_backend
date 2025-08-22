@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -8,8 +10,20 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageTeamNews.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTeamNews.js"></script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+    		number: "${board.postNumber}",
+            title: "${board.postTitle}",
+            date: "${board.postDate}",
+            type: "팀뉴스",
+            teamtype: "${board.teamNumber}"
+        });
+    </c:forEach>
+  </script>
 </head>
 
 <body>
@@ -22,8 +36,8 @@
 
       <div class="sidebar-div-info">
         <div>
-          <div> 관리자 : 백정이 </div>
-          <div> 관리자 이메일 : ohohoho@naver.com</div>
+          <div> 관리자 : ${sessionScope.adminInfo.adminId} </div>
+          <div> 관리자 이메일 : ${sessionScope.adminInfo.adminEmail}</div>
         </div>
       </div>
 
@@ -59,23 +73,45 @@
           </div>
           <div class="list-container">
             <ul class="list-ul" id="list-ul">
+            <c:choose>
+				<c:when test="${empty boardList}">
+					<div>
+   						<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
+   					</div>
+				</c:when>
+			</c:choose>	
 
             </ul>
           </div>
 
-          <div class="page-buttons">
-            <form action="" method="get">
-              <button type="button" id="left-button"> ◁ </button>
-              <ul id="numberlist-ul">
-                <li><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-              </ul>
-              <button type="button" id="right-button"> ▷ </button>
-            </form>
-          </div>
+	      <div class="pagination">
+	        <ul>
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul>
+	      </div>
 
         </div>
       </section>
