@@ -21,6 +21,7 @@
 	-->
 	<typeAliases>
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminDto" alias="AdminDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AddressDTO" alias="AddressDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminManagementDTO" alias="AdminManagement"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminNoticeDTO" alias="AdminNoticeDTO"></typeAlias>
