@@ -48,19 +48,19 @@ public class TeamPitcherRecordDTO {
 	public void setSeasonYear(int seasonYear) {
 		this.seasonYear = seasonYear;
 	}
-	public int getTeamPitcherEra() {
+	public double getTeamPitcherEra() {
 		return teamPitcherEra;
 	}
 	public void setTeamPitcherEra(int teamPitcherEra) {
 		this.teamPitcherEra = teamPitcherEra;
 	}
-	public int getTeamPitcherStartEra() {
+	public double getTeamPitcherStartEra() {
 		return teamPitcherStartEra;
 	}
 	public void setTeamPitcherStartEra(int teamPitcherStartEra) {
 		this.teamPitcherStartEra = teamPitcherStartEra;
 	}
-	public int getTeamPitcherReliefEra() {
+	public double getTeamPitcherReliefEra() {
 		return teamPitcherReliefEra;
 	}
 	public void setTeamPitcherReliefEra(int teamPitcherReliefEra) {

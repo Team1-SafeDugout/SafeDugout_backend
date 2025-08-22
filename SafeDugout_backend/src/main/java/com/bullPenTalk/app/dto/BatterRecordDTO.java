@@ -140,7 +140,7 @@ public class BatterRecordDTO {
 	public void setSRBI(int sRBI) {
 		SRBI = sRBI;
 	}
-	public int getOPS() {
+	public double getOPS() {
 		return OPS;
 	}
 	public void setOPS(int oPS) {

@@ -3,7 +3,7 @@
 <mapper namespace="adminSong">
 
 	<!-- 팀 선수 응원가 목록 조회 -->
-	<select id="listSelectAll" resultType="SongDTO">
+	<select id="listSelectAll" resultType="SongPostDTO">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*
@@ -26,7 +26,7 @@
 	</select>
 
 	<!-- 팀응원가 목록 조회 -->
-		<select id="listSelectTeam" resultType="SongDTO">
+		<select id="listSelectTeam" resultType="SongPostDTO">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*
@@ -47,7 +47,7 @@
 	</select>
 	
 	<!-- 선수 응원가 목록 조회 -->
-	<select id="listSelectPlayer" resultType="SongDTO">
+	<select id="listSelectPlayer" resultType="SongPostDTO">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*
