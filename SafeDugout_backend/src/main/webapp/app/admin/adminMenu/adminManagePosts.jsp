@@ -29,10 +29,23 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManagePosts.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  
+  <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+            number: "${board.noticePostNumber}",
+            title: "${board.noticePostTitle}",
+            date: "${board.noticePostDate}",
+            type: "전체공지사항"
+        });
+    </c:forEach>
+  </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManagePosts.js"></script>
 </head>
 
 <body>
+
   <div id="header"></div>
   <main>
     <section class="body-sidebar">
@@ -78,35 +91,33 @@
             <div>제목</div>
             <div>작성일자</div>
             <div>글종류</div>
+            <div></div>
           </div>
-          <div class="list-container">'
-          	
+          
+          <div class="list-container">          	
             <ul class="list-ul" id="list-ul">
             <!-- 조건으로 리스트에 무언가 추가 postNumberParam, postTitleParam, postDateParam, postTypeParam -->
             <c:choose>
-				<c:when test="${not empty boardList}">
-					<c:forEach var="board" items="${boardList}">
-                		addPost("${board.noticePostNumber}", "${board.noticePostTitle}",  "${board.noticePostDate}", "전체공지사항");
-            		</c:forEach>
-				</c:when>
-				<c:otherwise>
+				<c:when test="${empty boardList}">
 					<div>
    						<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
    					</div>
-				</c:otherwise>
+				</c:when>
 			</c:choose>				
             </ul>
           </div>
-
-          <div class="page-buttons">
+          
+	      <div class="pagination">
+	        <ul>
+	          
 	          <c:if test="${prev}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/AdminMainNoticeListOkController.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
 	          </c:if>
 	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	          	<c:choose>
 	          		<c:when test="${!(i == page) }">
-	          			<li><a href="${pageContext.request.contextPath}/admin/AdminMainNoticeListOkController.ad?page=${i}">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
 	          				<c:out value="${i}" />
 	          			</a></li>
 	          		</c:when>
@@ -117,12 +128,17 @@
 	          		</c:otherwise>
 	          	</c:choose>
 	          </c:forEach>
+	          
 	          <c:if test="${next}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/AdminMainNoticeListOkController.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
 	          </c:if>
-          </div>
+	          
+	        </ul>
+	      </div>
 
+          
         </div>
+        
       </section>
     </section>
   </main>
