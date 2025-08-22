@@ -13,7 +13,7 @@
 
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="/headerLoginMain.jsp" />
   <nav>
     <div class="team-logo">
       <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">

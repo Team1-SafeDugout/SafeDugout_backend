@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.myPage.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -19,8 +20,8 @@ public class MyPageDAO {
 	}
 
 	// 포인트 충전 내역 조회
-	public PointChargeRecordDTO selectPoint(int memberNumber) {
-		return sqlSession.selectOne("myPage.selectMainlist", memberNumber);
+	public List<PointChargeRecordDTO> selectPoint(Map<String, Integer> map) {
+		return sqlSession.selectList("myPage.selectMainlist", map);
 	}
 
 	// 포인트 충전
@@ -29,8 +30,8 @@ public class MyPageDAO {
 	}
 
 	// 게시글 조회
-	public List<PostDTO> selectPostList(int memberNumber) {
-		return sqlSession.selectList("myPage.selectPostList", memberNumber);
+	public List<PostDTO> selectPostList(Map<String, Integer> map) {
+		return sqlSession.selectList("myPage.selectPostList", map);
 	}
 
 	// 게시글 삭제
@@ -39,8 +40,8 @@ public class MyPageDAO {
 	}
 
 	// 댓글 조회
-	public List<MyPageCommentDTO> selectCommentList(int memberNumber) {
-		return sqlSession.selectList("myPage.selectCommentList", memberNumber);
+	public List<MyPageCommentDTO> selectCommentList(Map<String, Integer> map) {
+		return sqlSession.selectList("myPage.selectCommentList", map);
 	}
 
 	// 댓글 삭제
@@ -49,8 +50,8 @@ public class MyPageDAO {
 	}
 
 	// 구매 목록 조회
-	public List<MyPageTradeListDTO> selectTradeList(int memberNumber) {
-		return sqlSession.selectList("myPage.selectTradeList", memberNumber);
+	public List<MyPageTradeListDTO> selectTradeList(Map<String, Integer> map) {
+		return sqlSession.selectList("myPage.selectTradeList", map);
 	}
 
 	// 구매 확정
@@ -69,8 +70,8 @@ public class MyPageDAO {
 	}
 
 	// 판매 목록 조회
-	public List<MyPageTradeListDTO> selectSellList(int sellPostNumber) {
-		return sqlSession.selectList("myPage.completeTrade", sellPostNumber);
+	public List<MyPageTradeListDTO> selectSellList(Map<String, Integer> map) {
+		return sqlSession.selectList("myPage.completeTrade", map);
 	}
 
 	// 판매글 삭제

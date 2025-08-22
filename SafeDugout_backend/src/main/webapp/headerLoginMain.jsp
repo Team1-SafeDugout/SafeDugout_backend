@@ -8,7 +8,7 @@
     </div>
 
     <div class="header-right">
-      <div class="notice"><a href=".">[메인공지] : 불펜토크 사이트 이용 안내</a></div>
+      <div class="notice"><a href="/main/selectMainListOk.ma">[메인공지] : 불펜토크 사이트 이용 안내</a></div>
       <div class="trade-logo">
         <a href="${pageContext.request.contextPath}/app/trade/productRegister.jsp"><img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt=""></a>
       </div>
