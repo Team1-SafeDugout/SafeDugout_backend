@@ -12,7 +12,7 @@
 </head>
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <!-- ë©ì¸ -->
   <main>
     <!-- ë©ì¸ ì»¨íì´ë -->
@@ -44,7 +44,6 @@
       </form>
     </div>
   </main>
-  <div id="footer"></div>
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 </html>

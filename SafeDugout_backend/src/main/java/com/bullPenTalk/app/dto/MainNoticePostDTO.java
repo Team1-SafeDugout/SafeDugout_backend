@@ -2,7 +2,7 @@ package com.bullPenTalk.app.dto;
 
 public class MainNoticePostDTO {
 	private int noticePostNumber; //공지사항 게시글 번호
-	private int noticeTypeId = 0; //공지사항 종류 번호
+	private int noticeTypeId = 1; //공지사항 종류 번호
 	private int adminNumber; //관리자 번호
 	private String noticePostTitle; //공지사항 게시글 제목
 	private String noticePostContent; //공지사항 게시글 내용

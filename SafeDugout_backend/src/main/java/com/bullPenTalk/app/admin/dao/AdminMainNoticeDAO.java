@@ -26,10 +26,10 @@ public class AdminMainNoticeDAO {
 		sqlSession.update("adminMainNotice.update", mainPostDTO);
 	}
 	
-	// 조회
+	// 조회(전부)
 	
 	public List<MainNoticePostDTO> select() {
-		return sqlSession.selectList("adminMainNotice.select");
+		return sqlSession.selectList("adminMainNotice.selectAll");
 	}
 	
 	// 삭제
@@ -42,7 +42,12 @@ public class AdminMainNoticeDAO {
 		return sqlSession.selectList("adminMainNotice.selectFilter", postName);
 	}
 	
+	// 조회(하나만)
+	public MainNoticePostDTO selectDetail(int noticePostNumber) {
+		return sqlSession.selectOne("adminMainNotice.selectDetail",noticePostNumber);
+	}
+	
 	public int getTotal() {
-		return sqlSession.selectOne("adminMainNotice.getTotal");
+		return sqlSession.selectOne("adminMainNotice.total");
 	}
 }
