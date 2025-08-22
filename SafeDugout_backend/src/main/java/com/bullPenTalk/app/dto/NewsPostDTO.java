@@ -22,11 +22,76 @@ public class NewsPostDTO { // 뉴스글
 	private int attachmentNumber; // 첨부파일 번호
 	private String attachmentName; // 첨부파일 이름
 	private String attachmentPath; // 첨부파일 경로
-	
+	public int getPostNumber() {
+		return postNumber;
+	}
 	// get, set
+	public void setPostNumber(int postNumber) {
+		this.postNumber = postNumber;
+	}
+	public String getPostTitle() {
+		return postTitle;
+	}
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
+	public String getPostContent() {
+		return postContent;
+	}
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
+	}
+	public String getPostDate() {
+		return postDate;
+	}
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
+	}
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
+	}
+	public String getJournalist() {
+		return journalist;
+	}
+	public void setJournalist(String journalist) {
+		this.journalist = journalist;
+	}
+	public String getPostLink() {
+		return postLink;
+	}
+	public void setPostLink(String postLink) {
+		this.postLink = postLink;
+	}
+	public int getAttachmentNumber() {
+		return attachmentNumber;
+	}
+	public void setAttachmentNumber(int attachmentNumber) {
+		this.attachmentNumber = attachmentNumber;
+	}
+	public String getAttachmentName() {
+		return attachmentName;
+	}
+	public void setAttachmentName(String attachmentName) {
+		this.attachmentName = attachmentName;
+	}
+	public String getAttachmentPath() {
+		return attachmentPath;
+	}
+	public void setAttachmentPath(String attachmentPath) {
+		this.attachmentPath = attachmentPath;
+	}
 	
 	
 	// toString
-
+	@Override
+	public String toString() {
+		return "NewsPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
+				+ ", postDate=" + postDate + ", teamNumber=" + teamNumber + ", journalist=" + journalist + ", postLink="
+				+ postLink + ", attachmentNumber=" + attachmentNumber + ", attachmentName=" + attachmentName
+				+ ", attachmentPath=" + attachmentPath + "]";
+	}
 
 }
