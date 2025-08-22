@@ -93,7 +93,7 @@
 	<select id = "total" resultType = "int">
 		SELECT COUNT(NOTICE_POST_NUMBER)
 		FROM TBL_NOTICE_POST
-		WHERE NOTICE_TYPE_ID = 1;
+		WHERE NOTICE_TYPE_ID = 1
 	</select>
 	
 </mapper>
