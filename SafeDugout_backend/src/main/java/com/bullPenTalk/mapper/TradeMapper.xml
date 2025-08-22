@@ -57,7 +57,7 @@
 	
 	
 	<!-- 거래 테이블 등록 -->
-	<insert id="insert" parameterType="TreadPostDTO">
+	<insert id="insert" parameterType="TradePostDTO">
 		<selectKey>
 			SELECT SEQ_TREAD_POST FROM.NEXTVAL FROM DUAL
 		</selectKey>
