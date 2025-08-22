@@ -46,4 +46,115 @@
 		SET MEMBER_PW =  #{memberPw}
 		WHERE MEMBER_ID =  #{memberId}
 	</update>
+	
+	
+	<!-- 회원 전체 목록 -->
+	<select id ="selectAll" resultType = "MemberDTO">
+		SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL
+	    FROM TBL_MEMBER
+	</select>
+	
+		<!-- 전체 회원 수 -->
+	<select id = "getTotal" resultType = "int">
+		select COUNT(MEMBER_NUMBER)
+		FROM TBL_MEMBER
+	</select>
+	
+	<!-- 회원 조회 -->
+	<select id ="select" resultType = "MemberDTO" parameterType = "int">
+	SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL
+	FROM TBL_MEMBER
+	WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
+	
+	<!-- 회원 목록 -->
+	<select id ="listSelect" resultType = "MemberDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL
+	        FROM TBL_MEMBER
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+	
+
+	
+	<!-- 회원이 작성한 글 목록 -->
+	<select id ="postListSelect" resultType = "SellPostDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT POST_TITLE,
+				   POST_CONTENT,
+				   POST_DATE,
+				   POST_UPDATE,
+				   MEMBER_NUMBER
+	        FROM TBL_POST
+	        WHERE MEMBER_NUMBER = #{memberNumber}
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
+	]]>
+	</select>
+	
+	<!-- 회원이 판매중인 글 목록 -->
+	<select id ="sellPostListSelect" resultType = "SellPostDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT SP.SELL_POST_NUMBER,
+	               SP.SELL_POST_TITLE,
+	               SP.SELL_POST_CONTENT,
+	               SP.PRICE_POINT,
+	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
+	               M.MEMBER_ID AS Buyer_ID,
+	               TS.STATUS_NAME
+	        FROM TBL_SELL_POST SP
+	        JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	        JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	        JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	        WHERE TS.STATUS_ID = 'SELL' AND M.MEMBER_NUMBER = #{memberNumber}
+	        ORDER BY SP.SELL_POST_CREATION_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
+	]]>
+	</select>
+	
+	<!-- 회원이 거래중인 글 목록 -->
+	<select id ="tradePostListSelect" resultType = "SellPostDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT SP.SELL_POST_NUMBER,
+	               SP.SELL_POST_TITLE,
+	               SP.SELL_POST_CONTENT,
+	               SP.PRICE_POINT,
+	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
+	               M.MEMBER_ID AS Buyer_ID,
+	               TS.STATUS_NAME
+	        FROM TBL_SELL_POST SP
+	        JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	        JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	        JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	        WHERE TS.STATUS_ID = 'SOLD' AND M.MEMBER_NUMBER = #{memberNumber}
+	        ORDER BY SP.SELL_POST_CREATION_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
+	]]>
+	</select>
 </mapper>

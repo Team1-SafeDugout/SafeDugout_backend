@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="body-sidebar">
       <div class="sidebar-div-name">
@@ -32,15 +32,15 @@
       <div class="sidebar-div-container">
         <div>
           <ul>
-            <li class="sidebar-elements"> <a href="./adminSiteStatistics.html"> 사이트 통계</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManagePosts.html"> 게시글 / 공지사항</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageFreeCommunity.html"> 전체 커뮤니티 </a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamNews.html"> 팀 뉴스</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamYoutube.html"> 팀 유튜브</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamSong.html"> 팀 응원가</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageSell.html"> 판매글</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTrading.html"> 거래중인 글</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageMember.html"> 회원관리</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminSiteStatisticsOk.ad"> 사이트 통계</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad"> 게시글 / 공지사항</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad"> 전체 커뮤니티 </a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad"> 팀 뉴스</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad"> 팀 유튜브</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad"> 팀 응원가</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad"> 판매글</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTradingListOk.ad"> 거래중인 글</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad"> 회원관리</a> </li>
           </ul>
         </div>
       </div>
@@ -82,8 +82,7 @@
       </section>
     </section>
   </main>
-  <div id="footer"></div>
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 
 </html>
