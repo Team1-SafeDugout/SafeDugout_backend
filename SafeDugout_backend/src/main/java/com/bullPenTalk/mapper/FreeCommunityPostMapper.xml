@@ -19,11 +19,7 @@
 		 ]]>
 	</select>
 	
-	<!-- 게시글 총 개수 -->
-   <select id="getTotal" resultType="int">
-      SELECT COUNT(board_number)
-      FROM tbl_board   
-   </select>
+	
 
 	<!-- 전체 커뮤니티 게시글 상세조회 -->
 	<select id="detailSelect" parameterType="int" resultMap="FreePostDTO">
