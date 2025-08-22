@@ -73,6 +73,7 @@
 		<typeAlias type="com.bullPenTalk.app.dto.TradePostDTO" alias="TradePostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.UpdateMemberDTO" alias="UpdateMemberDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.YoutubePostDTO" alias="YoutubePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamMainDTO" alias="TeamMainDTO"></typeAlias>
 	</typeAliases>
 
 	<environments default="oracle">
