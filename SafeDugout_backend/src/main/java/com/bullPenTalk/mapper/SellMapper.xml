@@ -51,7 +51,7 @@
 	       IMAGE_PATH,
 	       MEMBER_ID AS SELLER_ID
 	FROM (
-	    SELECT ROWNUM AS RN, SP_SUB.*
+	    SELECT ROWNUM AS RN, subquery.*
 	    FROM (
 	        SELECT SP.SELL_POST_NUMBER,
 	               SP.SELL_POST_TITLE,
@@ -70,7 +70,7 @@
 	          AND SP.CATEGORY_ID = #{categoryId}
 	          AND SP.TEAM_ID = #{teamId}
 	        ORDER BY SP.SELL_POST_NUMBER DESC, AT.ATTACHMENT_NUMBER ASC
-	    ) SP_SUB
+	    ) subquery
 	)
 	WHERE RN BETWEEN #{startRow} AND #{endRow}
 	]]>
@@ -86,7 +86,7 @@
 	       IMAGE_PATH,
 	       MEMBER_ID AS SELLER_ID
 	FROM (
-	    SELECT ROWNUM AS RN, SP_SUB.*
+	    SELECT ROWNUM AS RN, subquery.*
 	    FROM (
 	        SELECT SP.SELL_POST_NUMBER,
 	               SP.SELL_POST_TITLE,
@@ -104,7 +104,7 @@
 	        WHERE SP.STATUS_ID = 1
 	          AND SP.CATEGORY_ID = #{categoryId}
 	        ORDER BY SP.SELL_POST_NUMBER DESC, AT.ATTACHMENT_NUMBER ASC
-	    ) SP_SUB
+	    ) subquery
 	)
 	WHERE RN BETWEEN #{startRow} AND #{endRow}
 	]]>

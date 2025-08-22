@@ -16,6 +16,7 @@ public class SellPostDAO {
 	public SellPostDAO(){
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
+		
 	
 	// 모든 판매글 가져오기
 	public List<SellPostDTO> selectList(Map<String, Integer> pageMap) {

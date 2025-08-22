@@ -9,12 +9,6 @@
 	VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentSize}, #{attachmentPath})
 </insert>
 
-<insert id = "insertAttachment" parameterType = "AdminNoticeDTO">
-	INSERT INTO TBL_NOTICE_ATTACHMENT
-	(NOTICE_POST_NUMBER, ATTACHMENT_NUMBER)
-	VALUES(#{noticePostNumber}, #{attachmentNumber})
-</insert>
-
 <!-- 제거 관련 -->
 
 </mapper>

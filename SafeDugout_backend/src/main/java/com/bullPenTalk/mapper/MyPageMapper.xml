@@ -61,6 +61,7 @@
 		where member_number = #{memberNumber} and board_type_id in(1, 2)
 	</select> -->
 	<select id="selectPostList" resultType="PostDTO">
+		<![CDATA[
 		SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
 	        SELECT P.POST_NUMBER,
@@ -93,8 +94,9 @@
 		join tbl_comment c on p.post_number = c.post_number
 		where c.member_number = #{memberNumber}
 	</select> -->
-	<select id="selectCommentList" resultType="MyPageCommentDTO">
+
 		<select id="sleectPostList" resultType="PostDTO">
+		<![CDATA[
 		SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
 	        SELECT p.post_title,
@@ -129,6 +131,7 @@
 		where s.member_number = #{memberNumber}
 	</select> -->
 	<select id="selectTradeList" resultType="MyPageTradeListDTO">
+	<![CDATA[
 	SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
 	        SELECT T.TRADE_NUMBER,
@@ -176,6 +179,7 @@
 		where sell_post_number = #{sellPostNumber}
 	</select> -->
 	<select id="selectSe;;List" resultType="MyPageTradeListDTO">
+	<![CDATA[
 	SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
 	        SELECT 
