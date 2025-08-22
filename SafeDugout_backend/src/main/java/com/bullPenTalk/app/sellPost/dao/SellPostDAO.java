@@ -21,7 +21,7 @@ public class SellPostDAO {
 	// 모든 판매글 가져오기
 	public List<SellPostDTO> selectList(Map<String, Integer> pageMap) {
 		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<SellPostDTO> list = sqlSession.selectList("sell.sellList", pageMap);
+		List<SellPostDTO> list = sqlSession.selectList("sell.selectList", pageMap);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}

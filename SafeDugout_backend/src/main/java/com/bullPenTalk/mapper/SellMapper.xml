@@ -5,41 +5,32 @@
 	<!-- 판매글 목록 조회 -->
 	<select id="selectList" resultType="SellPostDTO">
 	<![CDATA[
-	SELECT SELL_POST_NUMBER,
-	       SELL_POST_TITLE,
-	       PRICE_POINT,
-	       TRADING_AREA,
-	       IMAGE_PATH,
-	       MEMBER_ID AS SELLER_ID
+	SELECT *
 	FROM (
-	    SELECT SP.SELL_POST_NUMBER,
-	           SP.SELL_POST_TITLE,
-	           SP.PRICE_POINT,
-	           SP.TRADING_AREA,
-	           M.MEMBER_ID,
-	           AT.ATTACHMENT_PATH AS IMAGE_PATH,
-	           ROWNUM AS RN
+	    SELECT ROWNUM AS RN,
+	           subquery.*
 	    FROM (
 	        SELECT SP.SELL_POST_NUMBER,
 	               SP.SELL_POST_TITLE,
 	               SP.PRICE_POINT,
 	               SP.TRADING_AREA,
-	               M.MEMBER_ID,
-	               AT.ATTACHMENT_PATH
+	               M.MEMBER_ID AS SELLER_ID,
+	               AT.ATTACHMENT_PATH AS IMAGE_PATH
 	        FROM TBL_SELL_POST SP
 	        JOIN TBL_MEMBER M
-             ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	          ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
 	        LEFT JOIN TBL_SELL_POST_ATTACHMENT SPA
-	               ON SP.SELL_POST_NUMBER = SPA.SELL_POST_NUMBER
+	          ON SP.SELL_POST_NUMBER = SPA.SELL_POST_NUMBER
 	        LEFT JOIN TBL_ATTACHMENT AT
-	               ON SPA.ATTACHMENT_NUMBER = AT.ATTACHMENT_NUMBER
+	          ON SPA.ATTACHMENT_NUMBER = AT.ATTACHMENT_NUMBER
 	        WHERE SP.STATUS_ID = 1
 	        ORDER BY SP.SELL_POST_NUMBER, AT.ATTACHMENT_NUMBER
-	    ) SP_SUB
+	    ) subquery
 	)
 	WHERE RN BETWEEN #{startRow} AND #{endRow}
 	]]>
 	</select>
+
 	
 	<!-- 특정 팀 카테고리 조회 -->
 	<select id="selectListTeam" parameterType="map" resultType="SellPostDTO">
