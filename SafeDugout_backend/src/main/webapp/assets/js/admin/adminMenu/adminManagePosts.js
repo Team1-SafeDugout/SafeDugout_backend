@@ -1,64 +1,15 @@
-/*const addbutton = document.getElementsByClassName("list-names").item(0);*/
-const addUserPostButton = document.getElementsByClassName("list-names").item(1);
+const postList = document.getElementById('list-ul');
 
-const postList = document.getElementById('post-list');
-const userPostList = document.getElementById('user-post-list');
 
-// 테스트용 추가 버튼
-/*addbutton.addEventListener('click', function () {
-
-	const userListNum = document.querySelectorAll("#post-list>li");
-	if (userListNum.length >= 10) return;
-
-	const newPost = document.createElement('li');
-
-	const postNum = document.createElement('div');
-	const postTitle = document.createElement('div');
-	const postDate = document.createElement('div');
-	const postType = document.createElement('div');
-	const deleteBtn = document.createElement('div');
-
-	// userIdURL.setAttribute('href', "./../adminDetailMenu/adminUserDetail.html");
-
-	postNumText = document.createTextNode("1");
-	postTitleText = document.createTextNode("공지입니다.");
-	postDateText = document.createTextNode("0000.00.00");
-	postTypeText = document.createTextNode("전체공지");
-	deleteBtnText = document.createTextNode("삭제하기");
-
-	postTitle.style.overflow = "hidden";
-  postTitle.style.whiteSpace = "nowrap";
-  postTitle.style.textOverflow = "eclipse";
-
-  const postTitleLink = document.createElement('a');
-  postTitleLink.setAttribute("href", "./../adminDetailMenu/adminNoticePost.html");
-  postTitleLink.appendChild(postTitleText);
-
-	postNum.appendChild(postNumText);
-	postTitle.appendChild(postTitleLink);
-	postDate.appendChild(postDateText);
-	postType.appendChild(postTypeText);
-	deleteBtn.appendChild(deleteBtnText);
-
-	deleteBtn.addEventListener('click', function () {
-		if (window.confirm("정말 삭제하시겠습니까")) {
-			newPost.remove();
-		}
-	});
-
-	newPost.appendChild(postNum);
-	newPost.appendChild(postTitle);
-	newPost.appendChild(postDate);
-	newPost.appendChild(postType);
-	newPost.appendChild(deleteBtn);
-
-	postList.appendChild(newPost);
-});*/
+document.addEventListener("DOMContentLoaded", function() {
+    if (typeof posts !== 'undefined') {
+        posts.forEach(post => {
+            addPost(post.number, post.title, post.date, "전체 공지사항");
+        });
+    }
+});
 
 function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
-	const userListNum = document.querySelectorAll("#post-list>li");
-	if (userListNum.length >= 10) return;
-
 	const newPost = document.createElement('li');
 
 	const postNum = document.createElement('div');
@@ -69,18 +20,18 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
 
 	// userIdURL.setAttribute('href', "./../adminDetailMenu/adminUserDetail.html");
 
-	postNumText = document.createTextNode(postNumberParam);
-	postTitleText = document.createTextNode(postTitleParam);
-	postDateText = document.createTextNode(postDateParam);
-	postTypeText = document.createTextNode(postTypeParam);
-	deleteBtnText = document.createTextNode("삭제하기");
+	const postNumText = document.createTextNode(postNumberParam);
+	const postTitleText = document.createTextNode(postTitleParam);
+	const postDateText = document.createTextNode(postDateParam);
+	const postTypeText = document.createTextNode("전체공지사항");
+	const deleteBtnText = document.createTextNode("삭제하기");
 
 	postTitle.style.overflow = "hidden";
 	postTitle.style.whiteSpace = "nowrap";
 	postTitle.style.textOverflow = "eclipse";
 
 	const postTitleLink = document.createElement('a');
-	postTitleLink.setAttribute("href", "./../adminDetailMenu/adminNoticePost.html");
+	postTitleLink.setAttribute("href", "/app/admin/adminDetailMenu/adminNoticePost.jsp");
 	postTitleLink.appendChild(postTitleText);
 
 	postNum.appendChild(postNumText);
@@ -91,7 +42,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
 
 	deleteBtn.addEventListener('click', function () {
 		if (window.confirm("정말 삭제하시겠습니까")) {
-			newPost.remove();
+			/*이부분은 다시 작성 필요*/
 		}
 	});
 
@@ -103,56 +54,3 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
 
 	postList.appendChild(newPost);
 }
-
-// 테스트용 추가 버튼
-addUserPostButton.addEventListener('click', function () {
-
-	const userListNum = document.querySelectorAll("#user-post-list>li");
-	if (userListNum.length >= 10) return;
-
-	const newPost = document.createElement('li');
-
-	const postNum = document.createElement('div');
-	const postTitle = document.createElement('div');
-	const postDate = document.createElement('div');
-	const postType = document.createElement('div');
-	const postID = document.createElement('div');
-	const deleteBtn = document.createElement('div');
-
-	postNumText = document.createTextNode("1");
-	postTitleText = document.createTextNode("커뮤니티 글 제목입니다.");
-	postDateText = document.createTextNode("0000.00.00");
-	postTypeText = document.createTextNode("게시글");
-	postIDText = document.createTextNode("th3180");
-	deleteBtnText = document.createTextNode("삭제하기");
-
-	postTitle.style.overflow = "hidden";
-  postTitle.style.whiteSpace = "nowrap";
-  postTitle.style.textOverflow = "eclipse";
-
-	const postTitleLink = document.createElement('a');
-  postTitleLink.setAttribute("href", "./../adminDetailMenu/adminUserPost.html");
-  postTitleLink.appendChild(postTitleText);
-
-	postNum.appendChild(postNumText);
-	postTitle.appendChild(postTitleLink);
-	postDate.appendChild(postDateText);
-	postType.appendChild(postTypeText);
-	postID.appendChild(postIDText);
-	deleteBtn.appendChild(deleteBtnText);
-
-	deleteBtn.addEventListener('click', function () {
-		if (window.confirm("정말 삭제하시겠습니까")) {
-			newPost.remove();
-		}
-	});
-
-	newPost.appendChild(postNum);
-	newPost.appendChild(postTitle);
-	newPost.appendChild(postDate);
-	newPost.appendChild(postType);
-	newPost.appendChild(postID);
-	newPost.appendChild(deleteBtn);
-
-	userPostList.appendChild(newPost);
-});
