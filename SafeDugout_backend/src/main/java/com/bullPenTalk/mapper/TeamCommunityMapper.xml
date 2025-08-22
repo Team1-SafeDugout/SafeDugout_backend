@@ -9,7 +9,8 @@
 		SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_CONTENT,	P.POST_DATE, M.MEMBER_NAME AS POST_WRITER
 		FROM TBL_POST P
 		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-		WHERE P.BOARD_ID = #{boardId} AND P.TEAM_NUMBER = #{teamNumber}
+		WHERE P.BOARD_ID = 2
+		AND P.TEAM_NUMBER = {teamNumber}
 		ORDER BY P.POST_DATE DESC
 		]]>
 	</select>
@@ -19,50 +20,79 @@
 
 		INSERT INTO tbl_board (
 		board_number, board_title, board_content, member_number)
-		VALUES (seq_board.NEXTVAL, #{boardTitle}, #{boardContent}, #{memberNumber})
+		VALUES
+		(seq_board.NEXTVAL, #{boardTitle}, #{boardContent}, #{memberNumber})
 	</insert>
 
 	<!-- 팀 게시글 상세 조회 -->
-	<select id="detailSelect" parameterType="int" resultMap="TeamPostDTO">
+	<select id="detailSelect" parameterType="TeamPostDTO">
 		<![CDATA[
-		SELECT 
-    	P.POST_NUMBER,P.POST_TITLE, P.POST_CONTENT, P.POST_DATE, M.MEMBER_NAME AS POST_WRITER,
-    	C.COMMENT_NUMBER,C.COMMENT_CONTENT, NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE, CM.MEMBER_NAME AS COMMENT_WRITER,
-    	A.ATTACHMENT_NUMBER, A.ATTACHMENT_NAME, A.ATTACHMENT_PATH
-		FROM TBL_POST P JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-		LEFT JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER
-		LEFT JOIN TBL_MEMBER CM ON C.MEMBER_NUMBER = CM.MEMBER_NUMBER
-		LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER
+		SELECT P.POST_NUMBER,
+	    P.POST_TITLE,
+	    P.POST_CONTENT,
+	    P.POST_DATE,
+	    M.MEMBER_ID AS POST_WRITER,
+	    C.COMMENT_NUMBER,
+	    C.COMMENT_CONTENT,
+	    NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE,
+	    CM.MEMBER_ID AS COMMENT_WRITER,
+	    A.ATTACHMENT_NUMBER,
+	    A.ATTACHMENT_NAME,
+	    A.ATTACHMENT_PATH
+	  	FROM TBL_POST P
+		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER                
+		LEFT JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER              
+		LEFT JOIN TBL_MEMBER CM ON C.MEMBER_NUMBER = CM.MEMBER_NUMBER         
+		LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER    
 		LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-		WHERE P.POST_NUMBER = #{postNumber}
+		WHERE P.POST_NUMBER = #{postNumber}                                  
+	  	AND P.TEAM_NUMBER = #{teamNumber}                                 
 		ORDER BY C.COMMENT_DATE ASC, A.ATTACHMENT_NUMBER ASC
 		]]>
 	</select>
 
-	<!-- 게시글 삭제 쿼리 -->
+	<!-- 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
-		delete from tbl_board
-		where board_number = #{boardNumber}
+		delete from tbl_post
+		where
+		post_number = #{postNumber}
+		AND TEAM_NUMBER =#{teamNumber}
+		AND BOARD_ID =#{boardid}
 	</delete>
 
 
 
 	<!-- 게시글 수정쿼리 -->
 	<update id="update" parameterType="TeamPostDTO">
-		UPDATE tbl_board SET board_title = #{boardTitle}, board_content = #{boardContent}, board_update = #{boardUpdate}
-		where board_number = #{boardNumber}
+		UPDATE tbl_post SET
+		post_title = #{postTitle}, post_content = #{postContent},
+		post_update = #{postUpdate}
+		where post_number = #{postNumber}
 	</update>
 
 
 	<!-- 팀 유튜브 목록 조회 -->
 	<select id="youtubeSelect" resultType="YoutubePostDTO">
 		<![CDATA[
-		SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_DATE, M.MEMBER_NAME AS POST_WRITER
-		FROM TBL_POST P
-		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-		JOIN TBL_BOARD B ON P.BOARD_ID = B.BOARD_NUMBER
-		WHERE B.BOARD_ID = #{boardId}
-		ORDER BY P.POST_DATE DESC
+		SELECT * FROM (
+        SELECT ROWNUM AS rnum, subquery.*
+        FROM (
+            SELECT p.POST_NUMBER,
+                   p.POST_TITLE,
+                   p.POST_DATE,
+                   p.POST_CONTENT,
+                   p.POST_LINK,
+                   t.TEAM_NAME,
+                   t.TEAM_NUMBER,
+                   a.ADMIN_id
+            FROM TBL_POST p
+            JOIN TBL_TEAM t ON p.TEAM_NUMBER = t.TEAM_NUMBER
+            JOIN TBL_ADMIN a ON p.ADMIN_NUMBER = a.ADMIN_NUMBER
+            WHERE p.BOARD_ID = 4
+            AND p.TEAM_NUMBER = #{teamNumber}
+            ORDER BY p.POST_DATE DESC
+        ) subquery
+    )WHERE rnum BETWEEN #{startRow} AND #{endRow}
 		]]>
 	</select>
 
@@ -71,43 +101,62 @@
 	<!-- 팀/선수 응원가 목록 조회 -->
 	<select id="songSelect" resultType="SongPostDTO">
 		<![CDATA[
-		SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_DATE, M.MEMBER_NAME AS POST_WRITER, B.BOARD_ID AS POST_TYPE
-		FROM TBL_POST P
-		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-		JOIN TBL_BOARD B ON P.BOARD_ID = B.BOARD_NUMBER
-		WHERE B.BOARD_ID IN ('5', '6')
-		ORDER BY P.POST_DATE DESC
+		SELECT * FROM (
+	        SELECT ROWNUM AS rnum, subquery.*
+	        FROM (
+	            SELECT POST_NUMBER,
+	                   POST_TITLE,
+	                   POST_DATE,
+	                   TEAM_NUMBER,
+	                   BOARD_TYPE_ID,
+	                   POST_LINK,
+	                   ADMIN_ID,
+	                   POST_CONTENT
+	            FROM TBL_POST
+	            WHERE BOARD_TYPE_ID IN (5, 6)
+	              AND TEAM_NUMBER = #{teamNumber}
+	            ORDER BY POST_DATE DESC
+	        )subquery
+	    )
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow};
 		]]>
 	</select>
 
 	<!-- 팀뉴스 목록 조회 -->
 	<select id="newsSelect" resultType="NewsPostDTO">
 		<![CDATA[
-		SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_DATE, M.MEMBER_NAME AS POST_WRITER
-		FROM TBL_POST P
-		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-		JOIN TBL_BOARD B ON P.BOARD_ID = B.BOARD_NUMBER
-		WHERE B.BOARD_ID = #{boardId}
-		ORDER BY P.POST_DATE DESC
+		  SELECT * FROM (
+	        SELECT ROWNUM AS rnum, subquery.*
+	        FROM (
+	            SELECT POST_NUMBER,
+	                   POST_TITLE,
+	                   POST_CONTENT,
+	                   POST_DATE,
+	                   TEAM_NUMBER,
+	                   JOURNALIST
+	            FROM TBL_POST
+	            WHERE BOARD_ID = 3
+	            AND TEAM_NUMBER = #{teamNumber}
+	            ORDER BY POST_DATE DESC
+	        ) subquery
+	    )WHERE rnum BETWEEN #{startRow} AND #{endRow};
 		]]>
 	</select>
 
 	<!-- 팀 시즌 기록 목록 조회 -->
-	<select id="teamRecordSelect" parameterType="int"
-		resultType="TeamRecordDTO">
+	<select id="teamRecordSelect" parameterType="int" resultType="TeamRecordDTO">
 		<![CDATA[
 		SELECT TR.SEASON_YEAR, T.TEAM_NAME,	TR.TEAM_RANK, TR.GAME_COUNT, TR.TEAM_WIN, TR.TEAM_DRAW, TR.TEAM_LOSE, TR.TEAM_WIN_RATE, TR.TEAM_AVG_BAT, TR.TEAM_ERA,
        	TR.TEAM_SCORE, TR.TEAM_CONCEDE
 		FROM TBL_TEAM_RECORD TR
 		JOIN TBL_TEAM T ON TR.TEAM_NUMBER = T.TEAM_NUMBER
-		WHERE TR.TEAM_NUMBER = #{teamNumber}
+		WHERE TR.TEAM_NUMBER = 2
 		ORDER BY TR.SEASON_YEAR DESC
 		]]>
 	</select>
 
 	<!-- 팀 투수 시즌 기록 조회 -->
-	<select id="playerRecordSelect" parameterType="int"
-		resultType="TeamPitcherRecordDTO">
+	<select id="playerRecordSelect" parameterType="int" resultType="TeamPitcherRecordDTO">
 		<![CDATA[
 		SELECT TPR.SEASON_YEAR,
        	T.TEAM_NAME, TPR.TEAM_PITCHER_ERA, TPR.TEAM_PITCHER_START_ERA, TPR.TEAM_PITCHER_RELIEF_ERA, TPR.TEAM_PITCHER_GAME_COUNT, TPR.TEAM_PITCHER_WIN,
@@ -115,14 +164,13 @@
        	TPR.TEAM_PITCHER_HR, TPR.TEAM_PITCHER_BB, TPR.TEAM_PITCHER_HBP, TPR.TEAM_PITCHER_SCORE, TPR.TEAM_PITCHER_SELF_SCORE
 		FROM TBL_TEAM_PITCHER_RECORD TPR
 		JOIN TBL_TEAM T ON TPR.TEAM_NUMBER = T.TEAM_NUMBER
-		WHERE TPR.TEAM_NUMBER = #{teamNumber}
+		WHERE TPR.TEAM_NUMBER = 2
 		ORDER BY TPR.SEASON_YEAR DESC
 		]]>
 	</select>
 
 	<!-- 팀 타자 시즌 기록 조회 -->
-	<select id="playerRecordSelect" parameterType="int"
-		resultType="TeamBatterRecordDTO">
+	<select id="playerRecordSelect" parameterType="int" resultType="TeamBatterRecordDTO">
 		<![CDATA[
 		SELECT TBR.SEASON_YEAR,
         T.TEAM_NAME, TBR.TEAM_BATTER_AVG_BAT, TBR.TEAM_BATTER_GAME_COUNT, TBR.TEAM_BATTER_AT_BAT,
