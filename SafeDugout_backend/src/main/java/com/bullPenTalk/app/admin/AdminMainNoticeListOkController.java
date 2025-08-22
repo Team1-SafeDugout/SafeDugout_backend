@@ -20,6 +20,8 @@ public class AdminMainNoticeListOkController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		System.out.println("일로들어옴");
+		
 		AdminMainNoticeDAO adminMainNoticeDAO = new AdminMainNoticeDAO();
 		Result result = new Result();
 		
