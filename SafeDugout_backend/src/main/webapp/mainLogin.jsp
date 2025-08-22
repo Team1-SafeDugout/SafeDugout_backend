@@ -337,6 +337,7 @@
   </main>
   <div id="footer">
     <script src="${pageContext.request.contextPath}/assets/js/includeMain.js"></script>
+    <script></script>
 </body>
 
 </html>
