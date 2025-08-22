@@ -56,7 +56,7 @@ public class TeamBatterRecordDTO {
 	public void setSeasonYear(int seasonYear) {
 		this.seasonYear = seasonYear;
 	}
-	public int getTeamBatterAvgBat() {
+	public double getTeamBatterAvgBat() {
 		return teamBatterAvgBat;
 	}
 	public void setTeamBatterAvgBat(int teamBatterAvgBat) {
@@ -134,7 +134,7 @@ public class TeamBatterRecordDTO {
 	public void setTeamBatterStrikeout(int teamBatterStrikeout) {
 		this.teamBatterStrikeout = teamBatterStrikeout;
 	}
-	public int getTeamBatterOps() {
+	public double getTeamBatterOps() {
 		return teamBatterOps;
 	}
 	public void setTeamBatterOps(int teamBatterOps) {
