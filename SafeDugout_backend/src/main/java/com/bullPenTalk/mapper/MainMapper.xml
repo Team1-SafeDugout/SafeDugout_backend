@@ -19,7 +19,6 @@
 	               NOTICE_POST_TITLE,
 	               NOTICE_POST_DATE
 	        FROM TBL_NOTICE_POST 
-	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
 	        WHERE NOTICE_TYPE_ID = 1
 	        ORDER BY NOTICE_POST_DATE DESC
 	    ) subquery
