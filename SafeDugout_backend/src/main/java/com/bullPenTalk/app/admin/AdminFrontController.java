@@ -60,8 +60,44 @@ public class AdminFrontController extends HttpServlet {
 			result = new AdminMainNoticeListOkController().execute(request, response);
 			break;
 			
-		case "admin/adminGuideListOk.ad":
+		case "/admin/adminManageFreeCommunityListOk.ad":
 			System.out.println("입문 가이드");
+			result = new AdminGuideListOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminSiteStatisticsOk.ad":
+			System.out.println("통계");
+			result = new AdminSiteStatisticsOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminManageTeamNewsListOk.ad":
+			System.out.println("팀 뉴스");
+			result = new AdminTeamNewsListOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminManageTeamYoutubeListOk.ad" :
+			System.out.println("팀 유튜브");
+			result = new AdminTeamYoutubeListOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminManageTeamSongListOk.ad":
+			System.out.println("팀 응원가");
+			result = new AdminTeamSongListOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminManageSellListOk.ad":
+			System.out.println("판매 목록");
+			result = new AdminSellListOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminManageTradingListOk.ad" :
+			System.out.println("거래 목록");
+			result = new TradingListOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminManageMemberListOk.ad" :
+			System.out.println("유저 목록");
+			result = new MemberListOkController().execute(request, response);
 			break;
 			
 		case "/admin/adminLogout.ad":
@@ -70,6 +106,10 @@ public class AdminFrontController extends HttpServlet {
 			
 		case "/admin/adminReadMainNoticeOk.ad":
 			result = new AdminReadMainNoticeOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminCreateMainNoticeOk.ad":
+			result = new AdminCreateMainNoticeOkController().execute(request, response);
 			break;
 		}	
 		

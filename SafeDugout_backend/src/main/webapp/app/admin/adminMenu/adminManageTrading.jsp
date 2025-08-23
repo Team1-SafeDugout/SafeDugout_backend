@@ -1,62 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kor">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ê±°ë ì¤</title>
+  <title>거래 중</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageTrading.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
+  <script async src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="body-sidebar">
       <div class="sidebar-div-name">
-        ê´ë¦¬ì ë©ë´
+        관리자 메뉴
       </div>
 
       <div class="sidebar-div-info">
         <div>
-          <div> ê´ë¦¬ì : ë°±ì ì´ </div>
-          <div> ê´ë¦¬ì ì´ë©ì¼ : ohohoho@naver.com</div>
+          <div> 관리자 : ${sessionScope.adminInfo.adminId} </div>
+          <div> 관리자 이메일 : ${sessionScope.adminInfo.adminEmail}</div>
         </div>
       </div>
 
       <div class="sidebar-div-container">
         <div>
           <ul>
-            <li class="sidebar-elements"> <a href="./adminSiteStatistics.html"> ì¬ì´í¸ íµê³</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManagePosts.html"> ê²ìê¸ / ê³µì§ì¬í­</a> </li>
-           <li class="sidebar-elements"> <a href="./adminManageFreeCommunity.html"> ì ì²´ ì»¤ë®¤ëí° </a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamNews.html"> í ë´ì¤</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamYoutube.html"> í ì íë¸</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamSong.html"> í ììê°</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageSell.html"> íë§¤ê¸</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTrading.html"> ê±°ëì¤ì¸ ê¸</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageMember.html"> íìê´ë¦¬</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminSiteStatisticsOk.ad"> 사이트 통계</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad"> 게시글 / 공지사항</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad"> 전체 커뮤니티 </a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad"> 팀 뉴스</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad"> 팀 유튜브</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad"> 팀 응원가</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad"> 판매글</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTradingListOk.ad"> 거래중인 글</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad"> 회원관리</a> </li>
           </ul>
         </div>
       </div>
     </section>
     <section class="body-container">
       <div class="body-container-name">
-        ê±°ë ì¤ì¸ê¸ ëª©ë¡
+        거래 중인글 목록
       </div>
       <section class="body-container-list">
         <div class="list-background">
 
           <div class="list-names">
-            <div>ê¸ ë²í¸</div>
+            <div>글 번호</div>
             <div></div>
-            <div>ì ëª©</div>
-            <div>ê±°ë ì¼ì</div>
-            <div>íë§¤ì ID</div>
-            <div>êµ¬ë§¤ì ID</div>
+            <div>제목</div>
+            <div>거래 일자</div>
+            <div>판매자 ID</div>
+            <div>구매자 ID</div>
           </div>
           
           <div class="list-container">
@@ -65,26 +66,40 @@
             </ul>
           </div>
 
-          <div class="page-buttons">
-            <form action="" method="get">
-              <button type="button" id="left-button"> â </button>
-              <ul id="numberlist-ul">
-                <li><a>1</a></li>
-                <li><a>2</a></li>
-                <li><a>3</a></li>
-                <li><a>4</a></li>
-                <li><a>5</a></li>
-              </ul>
-              <button type="button" id="right-button"> â· </button>
-            </form>
-          </div>
+	      <div class="pagination">
+	        <ul>
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul>
+	      </div>
 
         </div>
       </section>
     </section>
   </main>
-  <div id="footer"></div>
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 
 </html>

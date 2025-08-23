@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adminTrade">
+
 	<!-- 거래중인 목록 조회 -->
 	<select id="listSelect" parameterType="map" resultType="TradePostDTO">
 	<![CDATA[
@@ -15,15 +16,11 @@
 	               SP.TRADING_AREA,
 	               SP.SELL_POST_CREATION_DATE,
 	               M.MEMBER_ID AS Buyer_ID,
-	               A.ATTACHMENT_NUMBER,
-	      		   A.ATTACHMENT_NAME,
-	       		   A.ATTACHMENT_PATH,
 	               TS.STATUS_NAME
 	        FROM TBL_SELL_POST SP
 	        JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
 	        JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
 	        JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
-	        LEFT JOIN TBL_SELL_ATTACHMENT SA ON SP.SELL_POST_NUMBER = SA.SELL_POST_NUMBER
 	        WHERE TS.STATUS_ID = 'SOLD'
 	        ORDER BY SP.SELL_POST_CREATION_DATE DESC
 	    ) subquery
@@ -33,7 +30,7 @@
 	</select>
 	
 	<!-- 거래중인 글 상세 조회 -->
-	<select id="detailSelect" parameterType="int" resultType="TradePostDTO">
+	<select id="selectSellPostDetail" parameterType="int" resultType="TradePostDTO">
 	<![CDATA[
 	SELECT SP.SELL_POST_NUMBER,
 	       SP.SELL_POST_TITLE,
@@ -54,7 +51,13 @@
 	JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
 	LEFT JOIN TBL_SELL_ATTACHMENT SA ON SP.SELL_POST_NUMBER = SA.SELL_POST_NUMBER
 	LEFT JOIN TBL_ATTACHMENT A ON SA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-	WHERE SP.SELL_POST_NUMBER = #{sellPostNumber}
+	WHERE SP.SELL_POST_NUMBER = #{sellPostNumber} AND TS.STATUS_ID = 'SOLD'
 	]]>
 	</select>
+	
+	<select id = "total" resultType = "int">
+	SELECT COUNT(TRADE_POST_NUMBER)
+	FROM TBL_TRADE_POST
+	</select>
+	
 </mapper>
