@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class SellPostDetailDTO {
 
 //	SELECT SP.SELL_POST_NUMBER,
@@ -30,103 +32,140 @@ public class SellPostDetailDTO {
 	private int categoryName; // 카테고리 이름
 	private String StatusName; // 거래상태 
 	private String dealtypeName; // 거래 방식
-	private int attachmentNumber; // 첨부파일 번호
-	private String attachmentName; // 첨부파일 이름
-	private String attachmentPath; // 첨부파일 경로
-	
+	private List<AttachmentDTO> attachment; // 첨부파일 
+
 	
 	// get, set
 	public int getSellPostNumber() {
 		return sellPostNumber;
 	}
+
+
 	public void setSellPostNumber(int sellPostNumber) {
 		this.sellPostNumber = sellPostNumber;
 	}
+
+
 	public String getSellPostTitle() {
 		return sellPostTitle;
 	}
+
+
 	public void setSellPostTitle(String sellPostTitle) {
 		this.sellPostTitle = sellPostTitle;
 	}
+
+
 	public String getSellPostContent() {
 		return sellPostContent;
 	}
+
+
 	public void setSellPostContent(String sellPostContent) {
 		this.sellPostContent = sellPostContent;
 	}
+
+
 	public int getPricePoint() {
 		return pricePoint;
 	}
+
+
 	public void setPricePoint(int pricePoint) {
 		this.pricePoint = pricePoint;
 	}
+
+
 	public String getTradingArea() {
 		return tradingArea;
 	}
+
+
 	public void setTradingArea(String tradingArea) {
 		this.tradingArea = tradingArea;
 	}
+
+
 	public String getSellPostCreationDate() {
 		return sellPostCreationDate;
 	}
+
+
 	public void setSellPostCreationDate(String sellPostCreationDate) {
 		this.sellPostCreationDate = sellPostCreationDate;
 	}
+
+
 	public String getSellPostUpdate() {
 		return sellPostUpdate;
 	}
+
+
 	public void setSellPostUpdate(String sellPostUpdate) {
 		this.sellPostUpdate = sellPostUpdate;
 	}
+
+
 	public int getMemberNumber() {
 		return memberNumber;
 	}
+
+
 	public void setMemberNumber(int memberNumber) {
 		this.memberNumber = memberNumber;
 	}
+
+
 	public String getMemberId() {
 		return memberId;
 	}
+
+
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
+
+
 	public int getCategoryName() {
 		return categoryName;
 	}
+
+
 	public void setCategoryName(int categoryName) {
 		this.categoryName = categoryName;
 	}
+
+
 	public String getStatusName() {
 		return StatusName;
 	}
+
+
 	public void setStatusName(String statusName) {
 		StatusName = statusName;
 	}
+
+
 	public String getDealtypeName() {
 		return dealtypeName;
 	}
+
+
 	public void setDealtypeName(String dealtypeName) {
 		this.dealtypeName = dealtypeName;
 	}
-	public int getAttachmentNumber() {
-		return attachmentNumber;
+
+
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
 	}
-	public void setAttachmentNumber(int attachmentNumber) {
-		this.attachmentNumber = attachmentNumber;
+
+
+	public void setAttachment(List<AttachmentDTO> attachmet) {
+		this.attachment = attachmet;
 	}
-	public String getAttachmentName() {
-		return attachmentName;
-	}
-	public void setAttachmentName(String attachmentName) {
-		this.attachmentName = attachmentName;
-	}
-	public String getAttachmentPath() {
-		return attachmentPath;
-	}
-	public void setAttachmentPath(String attachmentPath) {
-		this.attachmentPath = attachmentPath;
-	}
-	
+
+
 	// toString
 	@Override
 	public String toString() {
@@ -134,9 +173,9 @@ public class SellPostDetailDTO {
 				+ ", sellPostContent=" + sellPostContent + ", pricePoint=" + pricePoint + ", tradingArea=" + tradingArea
 				+ ", sellPostCreationDate=" + sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate
 				+ ", memberNumber=" + memberNumber + ", memberId=" + memberId + ", categoryName=" + categoryName
-				+ ", StatusName=" + StatusName + ", dealtypeName=" + dealtypeName + ", attachmentNumber="
-				+ attachmentNumber + ", attachmentName=" + attachmentName + ", attachmentPath=" + attachmentPath + "]";
+				+ ", StatusName=" + StatusName + ", dealtypeName=" + dealtypeName + ", attachmet=" + attachment + "]";
 	}
+	
 	
 	
 }

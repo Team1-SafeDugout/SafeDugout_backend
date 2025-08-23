@@ -303,92 +303,55 @@ body {
   align-items: center;
 }
 
-/* 상품 가격 컨테이너 */
+
+
+/* 가격 영역 */
 .price-container {
-  border-bottom: 1px solid black;
-  width: 240px;
-  margin-right: 10px;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-/* 상품 가격 텍스트 */
-.price-container div {
-  font-size: 15px;
-  margin-right: 10px;
+.price-container label {
+  font-size: 16px;
+  font-weight: bold;
 }
 
-/* 상품 가격 입력칸 */
 .price-container input {
-  background-color: transparent;
-  width: 130px;
-  height: 30px;
+  width: 150px;
+  height: 32px;
+  padding: 5px 10px;
   font-size: 15px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-/* 상품 등록, 취소 버튼 */
-
-
-/* 긴 검은선 */
-.long-line {
-  width: 790px;
-  border-bottom: 1px solid black;
+/* 버튼 영역 */
+.button-container {
+  display: flex;
+  gap: 10px;
 }
 
-/* 짧은 검은선 */
-.short-line {
-  width: 440px;
-  border-bottom: 1px solid black;
-}
-
-/* 버튼 컨테이너 */
-.main-button-container {
-  width: 250px;
-  margin-left: 1px;
-}
-
-/* 버튼 컨테이너 button 태그 */
-.main-button-container button {
-  background-color: #DCD6D0;
-  width: 185px;
-  height: 60px;
+.button-container button {
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color: #eaeaea;
+  transition: background-color 0.2s ease;
 }
 
-/* 상품 등록 버튼 텍스트 */
-.main-button-next {
-  border: 2px solid black;
+.button-container .main-button-next {
   background-color: #DCD6D0;
-  width: 70px;
-  height: 30px;
-  margin-left: 45px;
-  display: inline-block;
-  color: black;
-  text-decoration: none;
-  font-size: 15px;
-  line-height: 30px;
-  text-align: center;
 }
 
-/* 버튼 컨테이너 a 태그 */
-.main-button-container a {}
-
-/* 버튼 컨테이너 a 태그 호버 */
-.main-button-container a:hover {
-  cursor: pointer;
+.button-container .main-button-next:hover {
+  background-color: #c9c3bd;
 }
 
-/* 취소 버튼 텍스트 */
-.main-button-cancel {
-  border: 2px solid black;
-  background-color: #efefef;
-  width: 80px;
-  height: 30px;
-  margin-left: 10px;
-  display: inline-block;
-  color: black;
-  text-decoration: none;
-  font-size: 15px;
-  line-height: 30px;
-  text-align: center;
+.button-container .main-button-cancel:hover {
+  background-color: #ddd;
 }

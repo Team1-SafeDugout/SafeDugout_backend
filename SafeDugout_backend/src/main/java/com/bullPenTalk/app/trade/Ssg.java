@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
 
-public class Doosan implements TradeService {
+public class Ssg implements TradeService{
 
 	@Override
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("두산 진입");
+		System.out.println("ssg 진입");
 		// Result 객체 생성
 		Result result = new Result();
 
