@@ -3,6 +3,11 @@ package com.bullPenTalk.app.teamCommunity.dao;
 	
 import java.util.List;
 
+
+import com.bullPenTalk.app.dto.TeamNoticePostDTO;
+
+import org.apache.ibatis.session.SqlSession;
+
 import com.bullPenTalk.config.MyBatisConfig;
 
 	public class TeamNoticePostDTO {

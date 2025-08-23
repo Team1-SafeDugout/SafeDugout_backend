@@ -34,6 +34,15 @@ public class SellPostDAO {
 		return list;
 	}
 	
+	// 특정 팀의 상품 카테고리 가져오기
+	public List<SellPostDTO> selectListTeamCategory(Map<String, Integer> pageMap) {
+		System.out.println("모든 게시글 조회하기 - selectListTeam 메소드 실행 : " + pageMap);
+		List<SellPostDTO> list = sqlSession.selectList("sell.selectListTeamCategory", pageMap);
+		System.out.println("조회결과 : " + list);
+		return list;
+	}
+		
+	
 	// 특정 카테고리 가져오기
 	public List<SellPostDTO> selectListCategory(Map<String, Integer> pageMap) {
 		System.out.println("모든 게시글 조회하기 - selectListCategory 메소드 실행 : " + pageMap);
@@ -41,6 +50,7 @@ public class SellPostDAO {
 		System.out.println("조회결과 : " + list);
 		return list;
 	}
+	
 	
 	// 판매글 총 개수 가져오기
 	public int getTotal() {

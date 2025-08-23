@@ -15,7 +15,6 @@ public class AttachmentDTO {
 	private int attachmentNumber; // 첨부파일 번호
 	private int attachmentTypeId; // 첨부파일 종류 번호 
 	private String attachmentName; // 첨부파일 이름
-	private int attachmentSize; // 첨부파일 크기 
 	private String attachmentPath; // 첨부파일 경로
 	
 	public int getAttachmentNumber() {
@@ -36,12 +35,6 @@ public class AttachmentDTO {
 	public void setAttachmentName(String attachmentName) {
 		this.attachmentName = attachmentName;
 	}
-	public int getAttachmentSize() {
-		return attachmentSize;
-	}
-	public void setAttachmentSize(int attachmentSize) {
-		this.attachmentSize = attachmentSize;
-	}
 	public String getAttachmentPath() {
 		return attachmentPath;
 	}
@@ -52,7 +45,7 @@ public class AttachmentDTO {
 	@Override
 	public String toString() {
 		return "AttachmentDTO [attachmentNumber=" + attachmentNumber + ", attachmentTypeId=" + attachmentTypeId
-				+ ", attachmentName=" + attachmentName + ", attachmentSize=" + attachmentSize + ", attachmentPath="
+				+ ", attachmentName=" + attachmentName + ", attachmentSize=" + ", attachmentPath="
 				+ attachmentPath + "]";
 	} 
 	

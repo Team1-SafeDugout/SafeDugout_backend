@@ -80,7 +80,10 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
+.category a.active {
+    background-color: #f0c040; /* 원하는 색상 */
+    color: #fff;
+}
 /* '상품 카테고리' */
 .aside-text {
   margin: 7px 0px 0px 0px;
