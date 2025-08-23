@@ -1,6 +1,6 @@
 package com.bullPenTalk.app.myPage;
 
-import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +64,7 @@ public class PostOkController implements Execute {
 		System.out.println("startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
 		System.out.println("====================");
 
-		result.setPath("/app/post/postList.jsp");
+		result.setPath("/app/mypostList/myPostList.jsp");
 		result.setRedirect(false);
 
 		return result;
