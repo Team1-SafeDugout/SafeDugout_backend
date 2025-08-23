@@ -50,7 +50,7 @@ public class MemberFrontController extends HttpServlet {
 		
 		switch(target) {
 		case "/member/join.me" :
-			request.getRequestDispatcher("/app/register/RegisterInput.me").forward(request, response);
+			request.getRequestDispatcher("/app/register/RegisterInput.jsp").forward(request, response);
 			break;
 			
 		case "/member/joinOk.me" :
