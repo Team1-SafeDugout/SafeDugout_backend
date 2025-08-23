@@ -1,20 +1,11 @@
-package com.bullPenTalk.app.trade;
+package com.bullPenTalk.app.myPage;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.SellPostDTO;
-import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
-
-public class ListController {
+public class SellPostOkController {
 
 	public Result list(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("TradeMainOkController 진입");
+		System.out.println("SellPostOkController 진입");
 		SellPostDAO sellPostDAO = new SellPostDAO();
 		Result result = new Result();
 		System.out.println("페이징 진입");

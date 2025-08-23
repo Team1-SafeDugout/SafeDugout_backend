@@ -1,28 +1,29 @@
-package com.bullPenTalk.app.trade;
+package com.bullPenTalk.app.myPage;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.SellPostDTO;
-import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
+import com.bullPenTalk.app.dto.PostDTO;
+import com.bullPenTalk.app.myPage.dao.MyPageDAO;
 
-public class ListController {
+public class PostOkController implements Execute {
 
-	public Result list(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("TradeMainOkController 진입");
-		SellPostDAO sellPostDAO = new SellPostDAO();
+	@Override
+	public Result execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("====PostOkController 실행====");
+		MyPageDAO myPageDAO = new MyPageDAO();
 		Result result = new Result();
-		System.out.println("페이징 진입");
+
 		String temp = request.getParameter("page");
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
 		int rowCount = 10; // 한 페이지당 게시글 수
 		int pageCount = 5; // 페이지 버튼 수
-		System.out.println("페이징 진입");
+
 		// 페이징 처리
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
 		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
@@ -31,15 +32,15 @@ public class ListController {
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 
-		// 판매글 목록 조회
-		List<SellPostDTO> sellPostList = sellPostDAO.selectList(pageMap);
-		request.setAttribute("sellPostList", sellPostList);
-		System.out.println("판매글 진입");
+		// 게시글 목록 조회
+		List<PostDTO> PostList = MyPageDAO.selectAll(pageMap);
+		request.setAttribute("postList", PostList);
+
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
 
-		int total = sellPostDAO.getTotal();
+		int total = MyPageDAO.getTotal();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
@@ -56,17 +57,17 @@ public class ListController {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
+
 		System.out.println("====페이징정보 확인====");
 		System.out.println("pageMap : " + pageMap);
-		System.out.println("sellPostList : " + sellPostList);
-		System.out.println(
-				"startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
+		System.out.println("PostList : " + PostList);
+		System.out.println("startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
 		System.out.println("====================");
 
-		System.out.println("끝 진입");
-		result.setPath("/app/trade/tradeMain.jsp");
+		result.setPath("/app/post/postList.jsp");
 		result.setRedirect(false);
-		System.out.println("리턴 진입");
+
 		return result;
 	}
+
 }
