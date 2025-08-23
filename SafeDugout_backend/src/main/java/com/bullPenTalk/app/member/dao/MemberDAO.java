@@ -36,4 +36,9 @@ public class MemberDAO {
 		memberDTO.setMemberPw(memberPw);
 		sqlSession.update("member.changePw", memberDTO);
 	}
+	
+	public String getMemberNumber(int memberNumber) {
+		MemberDTO memberDTO = sqlSession.selectOne("member.select");
+		return memberDTO.getMemberId();
+	}
 }

@@ -24,7 +24,6 @@ public class AdminCreateNoticePostController implements Execute{
 		String postTitle = request.getParameter("");
 		String postContent = request.getParameter("");
 		String targetTeam = request.getParameter("");
-		String postTitle = request.getParameter("");
 		return teamNoticeDTO;
 	}
 	
