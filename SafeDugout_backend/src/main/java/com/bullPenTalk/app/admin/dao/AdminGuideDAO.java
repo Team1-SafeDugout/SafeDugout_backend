@@ -42,4 +42,9 @@ public class AdminGuideDAO {
 	public List<GuidePostDTO> selectFilter(String postName){
 		return sqlSession.selectList("adminGuide.selectFilter", postName);
 	}
+	
+	public int getTotal() {
+		return 1;
+//		sqlSession.selectOne("adminGuide.getTotal");
+	}
 }

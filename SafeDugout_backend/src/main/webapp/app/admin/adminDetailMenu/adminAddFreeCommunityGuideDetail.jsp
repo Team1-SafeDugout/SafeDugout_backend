@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="section-background">
       <!-- 필수 입력 정보 : 제목 -->
@@ -57,8 +57,7 @@
       </form>
     </section>
   </main>
-  <div id="footer"></div>
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 
 </html>

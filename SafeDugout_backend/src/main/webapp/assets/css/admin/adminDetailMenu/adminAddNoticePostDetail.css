@@ -77,6 +77,10 @@ main {
   width: 95%;
 }
 
+#select-team{
+  display : none;
+}
+
 /* 본문 서식 */
 
 .content{

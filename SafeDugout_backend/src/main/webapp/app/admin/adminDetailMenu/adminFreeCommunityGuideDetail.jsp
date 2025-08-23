@@ -12,7 +12,7 @@
 </head>
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="section-background">
       <!-- 상단 버튼 -->
@@ -64,8 +64,7 @@
       </section>
     </section>
   </main>
-  <div id="footer"></div>
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 
 </html>

@@ -18,8 +18,6 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
 	const postType = document.createElement('div');
 	const deleteBtn = document.createElement('div');
 
-	// userIdURL.setAttribute('href', "./../adminDetailMenu/adminUserDetail.html");
-
 	const postNumText = document.createTextNode(postNumberParam);
 	const postTitleText = document.createTextNode(postTitleParam);
 	const postDateText = document.createTextNode(postDateParam);
@@ -31,7 +29,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam){
 	postTitle.style.textOverflow = "eclipse";
 
 	const postTitleLink = document.createElement('a');
-	postTitleLink.setAttribute("href", "/app/admin/adminDetailMenu/adminNoticePost.jsp");
+	postTitleLink.setAttribute("href", "/admin/adminReadMainNoticeOk.ad?postNumber=" + postNumberParam);
 	postTitleLink.appendChild(postTitleText);
 
 	postNum.appendChild(postNumText);

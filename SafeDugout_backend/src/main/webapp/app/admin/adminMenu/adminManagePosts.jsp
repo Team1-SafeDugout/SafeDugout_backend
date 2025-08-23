@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ page import="java.util.*, com.bullPenTalk.app.dto.MainNoticePostDTO" %>
-<%
-    List<MainNoticePostDTO> boardList = new ArrayList<>();
-	MainNoticePostDTO b1 = new MainNoticePostDTO();
-    b1.setNoticePostNumber(1);
-    b1.setNoticePostTitle("첫 번째 공지");
-    b1.setNoticePostDate("2025-08-21");
-    boardList.add(b1);
-
-    MainNoticePostDTO b2 = new MainNoticePostDTO();
-    b2.setNoticePostNumber(2);
-    b2.setNoticePostTitle("두 번째 공지");
-    b2.setNoticePostDate("2025-08-22");
-    boardList.add(b2);
-
-    request.setAttribute("boardList", boardList);
-%>
-
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -46,7 +28,7 @@
 
 <body>
 
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
   <main>
     <section class="body-sidebar">
       <div class="sidebar-div-name">
@@ -55,25 +37,23 @@
 
       <div class="sidebar-div-info">
         <div>
-          <div> 관리자 : 백정이 </div>
-          <div> 관리자 이메일 : ohohoho@naver.com</div>
+          <div> 관리자 : ${sessionScope.adminInfo.adminId} </div>
+          <div> 관리자 이메일 : ${sessionScope.adminInfo.adminEmail}</div>
         </div>
       </div>
-
-      <a href="./../adminDetailMenu/adminUserDetail.html"></a>
 
       <div class="sidebar-div-container">
         <div>
           <ul>
-            <li class="sidebar-elements"> <a href="./adminSiteStatistics.html"> 사이트 통계</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManagePosts.html"> 게시글 / 공지사항</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageFreeCommunity.html"> 전체 커뮤니티 </a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamNews.html"> 팀 뉴스</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamYoutube.html"> 팀 유튜브</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTeamSong.html"> 팀 응원가</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageSell.html"> 판매글</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageTrading.html"> 거래중인 글</a> </li>
-            <li class="sidebar-elements"> <a href="./adminManageMember.html"> 회원관리</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminSiteStatisticsOk.ad"> 사이트 통계</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad"> 게시글 / 공지사항</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad"> 전체 커뮤니티 </a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad"> 팀 뉴스</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad"> 팀 유튜브</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad"> 팀 응원가</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad"> 판매글</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTradingListOk.ad"> 거래중인 글</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad"> 회원관리</a> </li>
           </ul>
         </div>
       </div>
@@ -91,7 +71,7 @@
             <div>제목</div>
             <div>작성일자</div>
             <div>글종류</div>
-            <div></div>
+            <div><a href="${pageContext.request.contextPath}/admin/adminCreateMainNoticeOk.ad"> 추가하기+ </a></div>
           </div>
           
           <div class="list-container">          	
@@ -142,11 +122,7 @@
       </section>
     </section>
   </main>
-  <div id="footer"></div>
-  <script src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
-  <script>
-    	let memberNumber = "${sessionScope.memberNumber}";
-   </script>
+  <jsp:include page="${pageContext.request.contextPath}/app/admin/adminFooter.jsp" />
 </body>
 
 </html>

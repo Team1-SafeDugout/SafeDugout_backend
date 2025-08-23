@@ -69,6 +69,39 @@
 	]]>
 	</select>
 	
+	<!-- 판매글 상세 조회 -->
+	<select id="selectAll" resultType="SellPostDTO">
+	<![CDATA[
+	SELECT SP.SELL_POST_NUMBER,
+       SP.SELL_POST_TITLE,
+       SP.SELL_POST_CONTENT,
+       SP.PRICE_POINT,
+       SP.TRADING_AREA,
+       SP.SELL_POST_CREATION_DATE,
+       SP.SELL_POST_UPDATE,
+       M.MEMBER_NUMBER,
+       M.MEMBER_ID AS SELLER_NAME,
+       C.CATEGORY_NAME,
+       S.STATUS_NAME,
+       D.DEALTYPE_NAME,
+       A.ATTACHMENT_NUMBER,
+       A.ATTACHMENT_NAME,
+       A.ATTACHMENT_PATH
+	FROM TBL_SELL_POST SP
+	JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER            
+	JOIN TBL_CATEGORY C ON SP.CATEGORY_ID = C.CATEGORY_ID              
+	JOIN TBL_TRADE_STATUS S ON SP.STATUS_ID = S.STATUS_ID              
+	JOIN TBL_DEALTYPE D ON SP.DEALTYPE_ID = D.DEALTYPE_ID              
+	LEFT JOIN TBL_SELL_POST_ATTACHMENT PA ON SP.SELL_POST_NUMBER = PA.SELL_POST_NUMBER 
+	LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
+	]]>
+	</select>
+	
+	<select id = "total" resultType = "int">
+	SELECT COUNT(SELL_POST_NUMBER)
+	FROM TBL_SELL_POST
+	</select>
+	
 	<!-- 판매글 삭제 쿼리  -->
 	<delete id="delete" parameterType="int">
 		delete from tbl_sell_post

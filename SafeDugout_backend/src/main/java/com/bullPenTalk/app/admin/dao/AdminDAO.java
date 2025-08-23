@@ -19,8 +19,7 @@ public class AdminDAO {
 		return adminNumber == null ? -1 : adminNumber;
 	}
 	
-	public void logOut() {
-		
+	public AdminDTO takeInfo(int adminNumber) {
+		return sqlSession.selectOne("admin.takeInfo",adminNumber);
 	}
-
 }

@@ -10,7 +10,7 @@ public class AdminDTO {
 	private int adminNumber; // 관리자 번호
 	private String adminName; // 관리자 이름
 	private String adminId; // 관리자 ID
-	private String admidPw; // 관리자 비밀번호
+	private String adminPw; // 관리자 비밀번호
 	private String adminEmail; // 관리자 이메일주소
 	public int getAdminNumber() {
 		return adminNumber;
@@ -30,11 +30,11 @@ public class AdminDTO {
 	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
-	public String getAdmidPw() {
-		return admidPw;
+	public String getAdminPw() {
+		return adminPw;
 	}
 	public void setAdmidPw(String admidPw) {
-		this.admidPw = admidPw;
+		this.adminPw = admidPw;
 	}
 	public String getAdminEmail() {
 		return adminEmail;
@@ -45,7 +45,7 @@ public class AdminDTO {
 	@Override
 	public String toString() {
 		return "AdminDTO [adminNumber=" + adminNumber + ", adminName=" + adminName + ", adminId=" + adminId
-				+ ", admidPw=" + admidPw + ", adminEmail=" + adminEmail + "]";
+				+ ", admidPw=" + adminPw + ", adminEmail=" + adminEmail + "]";
 	}
 	
 	

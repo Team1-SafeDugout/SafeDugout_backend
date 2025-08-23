@@ -34,14 +34,34 @@
 	           p.POST_LINK,
 	           a.ATTACHMENT_NUMBER,
 	           A.ATTACHMENT_NAME,
-	           A.ATTACHMENT_PATH,
-	           a.FILE_NAME,
-	           a.FILE_PATH,
-	           a.FILE_SIZE
+	           A.ATTACHMENT_PATH
 	    FROM TBL_POST p
 	    LEFT JOIN TBL_POST_ATTACHMENT pa ON p.POST_NUMBER = pa.POST_NUMBER
 	    LEFT JOIN TBL_ATTACHMENT a ON pa.ATTACHMENT_NUMBER = a.ATTACHMENT_NUMBER
 	    WHERE p.POST_NUMBER = #{postNumber};
+	</select>
+	
+	<select id = "selectAll" resultType = "NewsPostDTO">
+	    SELECT p.POST_NUMBER,
+	           p.POST_TITLE,
+	           p.POST_CONTENT,
+	           p.POST_DATE,
+	           p.TEAM_NUMBER,
+	           p.JOURNALIST,
+	           p.POST_LINK,
+	           a.ATTACHMENT_NUMBER,
+	           A.ATTACHMENT_NAME,
+	           A.ATTACHMENT_PATH
+	    FROM TBL_POST p
+	    LEFT JOIN TBL_POST_ATTACHMENT pa ON p.POST_NUMBER = pa.POST_NUMBER
+	    LEFT JOIN TBL_ATTACHMENT a ON pa.ATTACHMENT_NUMBER = a.ATTACHMENT_NUMBER
+	    WHERE BOARD_ID = 3
+	</select>
+	
+	<select id = "total" resultType = "int">
+	SELECT COUNT(BOARD_ID)
+	FROM TBL_POST
+	WHERE BOARD_ID = 2
 	</select>
 
 	
