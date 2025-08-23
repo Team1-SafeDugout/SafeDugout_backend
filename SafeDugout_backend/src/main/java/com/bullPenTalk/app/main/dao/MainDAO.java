@@ -23,13 +23,16 @@ public class MainDAO {
 	
 	//메인 공지사항 목록 조회
 	public List<MainNoticePostDTO> selectMainList(Map<String, Integer> map) {
-		return sqlSession.selectList("main.selectMainlist");
+		System.out.println("selectMainList 메소드 실행");
+		List<MainNoticePostDTO> list = sqlSession.selectList("main.selectMainList", map);
+		System.out.println(list);
+		return list;
 	}
 	
 	//공지사항 총 개수 가져오기
 	public int getTotal() {
 		System.out.println("getTotal 메소드 실행");
-		return sqlSession.selectOne("main.getTotal");
+		return sqlSession.selectOne("main.getTotalMainList");
 	}
 	
 	//메인 공지사항 상세 조회

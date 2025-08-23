@@ -16,7 +16,7 @@
     <section class="section-background">
       <!-- 필수 입력 정보 : 제목 -->
        <!-- 선택 입력 정보 : 내용, 파일 -->
-      <form action="${pageContext.request.contextPath}/admin/adminCreateNoticePostOk.ad" method="post" name = "adminNoticePost">
+      <form action="${pageContext.request.contextPath}/admin/adminCreateMainNoticeOk.ad" method="post" name = "adminNoticePost" enctype="multipart/form-data">
 
         <!-- 제목 -->
         <section class = "title">

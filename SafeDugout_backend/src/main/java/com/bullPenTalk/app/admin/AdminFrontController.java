@@ -109,7 +109,13 @@ public class AdminFrontController extends HttpServlet {
 			break;
 			
 		case "/admin/adminCreateMainNoticeOk.ad":
+			System.out.println("글생성");
 			result = new AdminCreateMainNoticeOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminCreateNotice.ad":
+			System.out.println("gd");
+			result = new AdminCreateNotice().execute(request, response);
 			break;
 		}	
 		

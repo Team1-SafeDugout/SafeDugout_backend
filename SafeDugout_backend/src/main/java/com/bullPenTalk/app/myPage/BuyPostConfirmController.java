@@ -1,5 +1,5 @@
 package com.bullPenTalk.app.myPage;
 
-public class MainNoticeOkController {
+public class BuyPostConfirmController {
 
 }
