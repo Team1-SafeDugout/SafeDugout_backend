@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +8,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인 공지사항 디테일 페이지</title>
-  <link rel="stylesheet" href="./../../assets/css/mainNotice/mainNoticeDetail.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/mainNotice/mainNoticeDetail.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeDetail.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeDetail.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -58,7 +61,7 @@
   <!-- 푸터 -->
   <div id="footer"></div>
   <!-- 스크립트 -->
-  <script src="./../../assets/js/include.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
 </html>

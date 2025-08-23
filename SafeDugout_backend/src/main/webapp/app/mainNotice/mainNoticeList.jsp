@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +8,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인 공지사항 목록 페이지</title>
-  <link rel="stylesheet" href="./../../assets/css/mainNotice/mainNoticeList.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/mainNotice/mainNoticeList.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeList.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -48,7 +51,7 @@
             <div class="page-number">10</div>
             <!-- 제목 -->
             <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 불펜토크 사이트 이용
-                안내aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></div>
+                안내</a></div>
             <!-- 작성 일자 -->
             <div class="upload-date">2025.08.15</div>
           </div>
@@ -117,7 +120,7 @@
   <!-- 푸터 -->
   <div id="footer"></div>
   <!-- 스크립트 -->
-  <script src="./../../assets/js/include.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
 </html>
