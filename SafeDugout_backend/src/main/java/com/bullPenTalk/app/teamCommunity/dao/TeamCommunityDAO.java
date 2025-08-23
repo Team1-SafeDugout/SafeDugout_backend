@@ -92,14 +92,14 @@ import com.bullPenTalk.config.MyBatisConfig;
 		   
 	    	
 	    	// 선수(투수) 기록 조회 메소드
-		    public TeamPitcherRecordDTO playerRecordSelect(TeamPitcherRecordDTO teamPitcherRecordDTO) {
-			System.out.println("투수 기록 조회하기 - playerRecordSelect 메소드 실행");
-			return sqlSession.playerRecordSelect("TeamCommunityMapper.playerRecordSelect");
+		    public TeamPitcherRecordDTO PitcherRecordSelect(TeamPitcherRecordDTO teamPitcherRecordDTO) {
+			System.out.println("투수 기록 조회하기 - PitcherRecordSelect 메소드 실행");
+			return sqlSession.PitcherRecordSelect("TeamCommunityMapper.PitcherRecordSelect");
 			}
 			   
 	    	// 선수(포수) 기록 조회 메소드
-		    public TeamBatterRecordDTO playerRecordSelect(TeamBatterRecordDTO teamBatterRecordDTO) {
-			System.out.println("투수 기록 조회하기 - playerRecordSelect 메소드 실행");
-			return sqlSession.playerRecordSelect("TeamCommunityMapper.playerRecordSelect");
+		    public TeamBatterRecordDTO BatterRecordSelect(TeamBatterRecordDTO teamBatterRecordDTO) {
+			System.out.println("투수 기록 조회하기 - BatterRecordSelect 메소드 실행");
+			return sqlSession.BatterRecordSelect("TeamCommunityMapper.BatterRecordSelect");
 		    }
 }
