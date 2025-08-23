@@ -11,7 +11,6 @@
   <title>메인페이지</title>
 </head>
 
-
 <body>
   <jsp:include page="/headerLoginMain.jsp" />
   <nav>
