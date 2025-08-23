@@ -5,30 +5,28 @@
 
 
 	<!-- 전체 커뮤니티 목록 조회 -->
-
 	<select id="select" resultType="FreePostDTO">
 	<![CDATA[
-		SELECT *
-		FROM (
+		SELECT * FROM (
     		SELECT ROWNUM AS rnum, subquery.*
    			 FROM (
-       			 SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_CONTENT,  P.POST_DATE, M.MEMBER_NAME AS POST_WRITER  FROM TBL_POST P
-        			 JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-       				 WHERE P.BOARD_ID = 1
-        			 ORDER BY P.POST_DATE DESC
-    				) subquery
-				)
-			WHERE rnum BETWEEN #{startRow} AND #{endRow}
+       			SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_CONTENT,  P.POST_DATE, M.MEMBER_NAME AS POST_WRITER  FROM TBL_POST P
+        		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+       			WHERE P.BOARD_ID = 1
+        		ORDER BY P.POST_DATE DESC
+    		) subquery
+		)WHERE rnum BETWEEN #{startRow} AND #{endRow}
 		 ]]>
 	</select>
+	
+	
 
 	<!-- 전체 커뮤니티 게시글 상세조회 -->
-	<select id="detailSelect" parameterType="int"
-		resultMap="FreePostDTO">
+	<select id="detailSelect" parameterType="int" resultMap="FreePostDTO">
 			<![CDATA[
 			SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_CONTENT, P.POST_DATE, M.MEMBER_NAME AS POST_WRITER, C.COMMENT_NUMBER, C.COMMENT_CONTENT,
-		      NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE, CM.MEMBER_NAME AS COMMENT_WRITER, A.ATTACHMENT_NUMBER,
-		      A.ATTACHMENT_NAME, A.ATTACHMENT_PATH
+		    NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE, CM.MEMBER_NAME AS COMMENT_WRITER, A.ATTACHMENT_NUMBER,
+		    A.ATTACHMENT_NAME, A.ATTACHMENT_PATH
 			FROM TBL_POST P
 			JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
 			LEFT JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER
@@ -42,17 +40,26 @@
 
 	<!-- 게시글 작성 -->
 	<insert id="insert" parameterType="FreePostDTO">
+	 <selectKey keyProperty="boardNumber" resultType="int" order="BEFORE">
+         SELECT seq_board.CURRVAL FROM DUAL
+     </selectKey>
 		INSERT INTO tbl_board(board_number, board_title, board_content,
 		member_number)
 		VALUES(seq_board.nextval, #{boardTitle}, #{boardContent}, #{memberNumber})
 	</insert>
 
-
-
-	<!-- 게시글 삭제 쿼리 -->
+	<!-- 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
 		delete from tbl_board
 		where board_number = #{boardNumber}
 	</delete>
+	
+	<!-- 게시글 수정 -->
+   <update id="update" parameterType="BoardDTO">
+      UPDATE tbl_board
+      SET board_title = #{boardTitle}, board_content = #{boardContent}
+      <!-- , board_update = #{boardUpdate} 수정일 -->
+      where board_number = #{boardNumber}
+   </update>
 
 </mapper>
