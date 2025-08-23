@@ -1,126 +1,109 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>메인 공지사항 목록 페이지</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeList.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메인 공지사항 목록 페이지</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+<script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeList.js"></script>
 </head>
 
 <!-- 바디 -->
 
 <body>
-  <!-- 헤더 -->
-  <div id="header"></div>
-  <!-- 메인 -->
-  <main>
-    <!-- 메인 컨테이너 -->
-    <div class="main-container">
-      <!-- 페이지 큰 제목 -->
-      <div class="main-title">
+	<!-- 헤더 -->
+	<div id="header"></div>
+	<!-- 메인 -->
+	<main>
+		<!-- 메인 컨테이너 -->
+		<div class="main-container">
+			<!-- 페이지 큰 제목 -->
+			<div class="main-title"></div>
+			<!-- 페이지 작은 제목 -->
+			<div class="main-small-title">공지 사항</div>
+			<!-- 메시지 박스 -->
+			<div class="main-message-container">
+				<!-- 리스트 컨테이너 -->
+				<div class="list-container">
+					<!-- 목록 상단 바 -->
+					<div class="top-bar">
+						<!-- 글 번호 텍스트 -->
+						<div class="page-number">글 번호</div>
+						<!-- 제목 텍스트 -->
+						<div class="post-title">제목</div>
+						<!-- 작성 일자 텍스트 -->
+						<div class="upload-date">작성 일자</div>
+					</div>
+					<c:choose>
+						<c:when test="${not empty mainNoticeList}">
+							<c:forEach var="mainNotice" items="${mainNoticeList}">
+							<!-- 공지사항 리스트 -->
+							<div class="notice-list">
+								<!-- 글 번호 -->
+								<div class="page-number">
+									<c:out value="${mainNotice.getNoticePostNumber()}" />
+								</div>
+								<!-- 제목 -->
+								<div class="post-title">
+									<a href="./mainNoticeDetail.html">
+										<c:out value="${mainNotice.getNoticePostTitle()}" />
+									</a>
+								</div>
+								<!-- 작성 일자 -->
+								<div class="upload-date">
+									<c:out value="${mainNotice.getNoticePostDate()}" />
+								</div>
+							</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div style="text-align: center;">
+								등록된 게시물이 없습니다.
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
 
-      </div>
-      <!-- 페이지 작은 제목 -->
-      <div class="main-small-title">
-        공지 사항
-      </div>
-      <!-- 메시지 박스 -->
-      <div class="main-message-container">
-        <!-- 리스트 컨테이너 -->
-        <div class="list-container">
-          <!-- 목록 상단 바 -->
-          <div class="top-bar">
-            <!-- 글 번호 텍스트 -->
-            <div class="page-number">글 번호</div>
-            <!-- 제목 텍스트 -->
-            <div class="post-title">제목</div>
-            <!-- 작성 일자 텍스트 -->
-            <div class="upload-date">작성 일자</div>
-          </div>
-          <!-- 공지사항 리스트 -->
-          <div class="notice-list">
-            <!-- 글 번호 -->
-            <div class="page-number">10</div>
-            <!-- 제목 -->
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 불펜토크 사이트 이용
-                안내</a></div>
-            <!-- 작성 일자 -->
-            <div class="upload-date">2025.08.15</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">9</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 팀별 게시판 이용 가이드</a></div>
-            <div class="upload-date">2025.08.14</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">8</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 경기 사진 업로드 방법</a></div>
-            <div class="upload-date">2025.08.13</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">7</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 글 작성 시 주의사항</a></div>
-            <div class="upload-date">2025.08.12</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">6</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 게시판 이미지 첨부 용량 확대 안내</a></div>
-            <div class="upload-date">2025.08.11</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">5</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 중고거래 필수 확인 사항</a></div>
-            <div class="upload-date">2025.08.10</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">4</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 서버 안정화 작업 완료 안내</a></div>
-            <div class="upload-date">2025.08.09</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">3</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 시즌 기록 TOP 10 공개</a></div>
-            <div class="upload-date">2025.08.08</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">2</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 경기 취소 및 연기 일정 안내</a></div>
-            <div class="upload-date">2025.08.07</div>
-          </div>
-          <div class="notice-list">
-            <div class="page-number">1</div>
-            <div class="post-title"><a href="./mainNoticeDetail.html">[메인공지] : 전체 커뮤니티 게시판 뉴비가이드 참고 안내</a></div>
-            <div class="upload-date">2025.08.06</div>
-          </div>
-        </div>
-
-        <!-- 페이지네이션 컨테이너 -->
-        <div class="page-container">
-          <!-- 오른쪽 화살표 버튼 -->
-          <div class="arrow-button"><a>◀</a></div>
-          <!-- 페이지 버튼 -->
-          <div class="page-num"><a>1</a></div>
-          <div class="page-num"><a>2</a></div>
-          <div class="page-num"><a>3</a></div>
-          <div class="page-num"><a>4</a></div>
-          <div class="page-num"><a>5</a></div>
-          <!-- 오른쪽 화살표 버튼 -->
-          <div class="arrow-button"><a>▶</a></div>
-        </div>
-      </div>
-  </main>
-  <!-- 푸터 -->
-  <div id="footer"></div>
-  <!-- 스크립트 -->
-  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
+				<!-- 페이지네이션 컨테이너 -->
+				<div class="page-container">
+					<!-- 오른쪽 화살표 버튼 -->
+					<div class="arrow-button">
+						<a>◀</a>
+					</div>
+					<!-- 페이지 버튼 -->
+					<div class="page-num">
+						<a>1</a>
+					</div>
+					<div class="page-num">
+						<a>2</a>
+					</div>
+					<div class="page-num">
+						<a>3</a>
+					</div>
+					<div class="page-num">
+						<a>4</a>
+					</div>
+					<div class="page-num">
+						<a>5</a>
+					</div>
+					<!-- 오른쪽 화살표 버튼 -->
+					<div class="arrow-button">
+						<a>▶</a>
+					</div>
+				</div>
+			</div>
+	</main>
+	<!-- 푸터 -->
+	<div id="footer"></div>
+	<!-- 스크립트 -->
+	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
 </html>
