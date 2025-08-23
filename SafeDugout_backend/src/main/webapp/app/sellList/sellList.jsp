@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +7,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>판매 내역</title>
-  <link rel="stylesheet" href="./../../assets/css/sellList/sellList.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sellList/sellList.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@
     <section class="mybuy-list">
       <h3>판매 내역</h3>
       <section>
-        <img src="./../../assets/img/tradeImg/a.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/tradeImg/a.png" alt="">
         <div class="left">
           <li>제목 : 야구대표팀 점퍼팝니다.</li>
           <li>거래 방식 : 직거래</li>
@@ -46,7 +47,7 @@
       </section>
 
       <section>
-        <img src="./../../assets/img/tradeImg/b.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/tradeImg/b.png" alt="">
         <div class="left">
           <li>제목 : 야구대표팀 모자팝니다.</li>
           <li>거래 방식 : 직거래</li>
@@ -59,7 +60,7 @@
       </section>
 
       <section>
-        <img src="./../../assets/img/tradeImg/c.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/tradeImg/c.png" alt="">
         <div class="left">
           <li>제목 : 카카오프렌즈 무릎담요팝니다.</li>
           <li>거래 방식 : 직거래</li>
@@ -97,7 +98,7 @@
     </section>
   </main>
   <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
 </html>

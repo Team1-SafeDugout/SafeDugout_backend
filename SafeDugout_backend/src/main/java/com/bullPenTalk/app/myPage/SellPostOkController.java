@@ -1,69 +1,69 @@
 package com.bullPenTalk.app.myPage;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.dto.SellPostDTO;
 import com.bullPenTalk.app.myPage.dao.MyPageDAO;
 
-public class SellPostOkController {
+public class SellPostOkController implements Execute {
 
-	public Result list(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("SellPostOkController 진입");
-		MyPageDAO myPageDAO = new MyPageDAO();
-		Result result = new Result();
-		System.out.println("페이징 진입");
-		String temp = request.getParameter("page");
-		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
-		int rowCount = 10; // 한 페이지당 게시글 수
-		int pageCount = 5; // 페이지 버튼 수
-		System.out.println("페이징 진입");
-		// 페이징 처리
-		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
-		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
+    @Override
+    public Result execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println("SellPostOkController 진입");
+        MyPageDAO sellPostDAO = new MyPageDAO();
+        Result result = new Result();
 
-		Map<String, Integer> pageMap = new HashMap<>();
-		pageMap.put("startRow", startRow);
-		pageMap.put("endRow", endRow);
+        String temp = request.getParameter("page");
+        int page = (temp == null) ? 1 : Integer.parseInt(temp);
+        int rowCount = 10;
+        int pageCount = 5;
 
-		// 판매글 목록 조회
-		List<SellPostDTO> sellPostList = sellPostDAO.selectList(pageMap);
-		request.setAttribute("sellPostList", sellPostList);
-		System.out.println("판매글 진입");
-		// 페이징 정보 설정
-		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
-		// 실제 마지막 페이지 번호(realEndPage)를 계산함
-		
-		int total = sellPostDAO.getTotal();
-		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
-		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
-		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
+        int startRow = (page - 1) * rowCount + 1;
+        int endRow = startRow + rowCount - 1;
 
-		// endPage가 실제 존재하는 마지막 페이지보다 크면 조정
-		endPage = Math.min(endPage, realEndPage);
+        Map<String, Integer> pageMap = new HashMap<>();
+        pageMap.put("startRow", startRow);
+        pageMap.put("endRow", endRow);
 
-		// prev, next 버튼 활성화 여부 확인
-		boolean prev = startPage > 1;
-		boolean next = endPage < realEndPage;
+        List<SellPostDTO> sellPostList = sellPostDAO.selectList(pageMap);
+        request.setAttribute("sellPostList", sellPostList);
 
-		request.setAttribute("page", page);
-		request.setAttribute("startPage", startPage);
-		request.setAttribute("endPage", endPage);
-		request.setAttribute("prev", prev);
-		request.setAttribute("next", next);
-		System.out.println("====페이징정보 확인====");
-		System.out.println("pageMap : " + pageMap);
-		System.out.println("sellPostList : " + sellPostList);
-		System.out.println(
-				"startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
-		System.out.println("====================");
+        int total = sellPostDAO.getTotal();
+        int realEndPage = (int) Math.ceil(total / (double) rowCount);
+        int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount);
+        int startPage = endPage - (pageCount - 1);
 
-		System.out.println("끝 진입");
-		result.setPath("/app/sellList/sellList.jsp");
-		result.setRedirect(false);
-		System.out.println("리턴 진입");
-		return result;
-	}
+        endPage = Math.min(endPage, realEndPage);
+
+        boolean prev = startPage > 1;
+        boolean next = endPage < realEndPage;
+
+        request.setAttribute("page", page);
+        request.setAttribute("startPage", startPage);
+        request.setAttribute("endPage", endPage);
+        request.setAttribute("prev", prev);
+        request.setAttribute("next", next);
+
+        System.out.println("====페이징정보 확인====");
+        System.out.println("pageMap : " + pageMap);
+        System.out.println("sellPostList : " + sellPostList);
+        System.out.println(
+                "startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
+        System.out.println("====================");
+
+        result.setPath("/app/sellList/sellList.jsp");
+        result.setRedirect(false);
+
+        return result;
+    }
 }
