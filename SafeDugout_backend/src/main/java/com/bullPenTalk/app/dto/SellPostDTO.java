@@ -19,6 +19,15 @@ public class SellPostDTO { // 판매글
 //	CONSTRAINT FK_SELL_POST_STATUS FOREIGN KEY(STATUS_ID) REFERENCES TBL_TRADE_STATUS(STATUS_ID),
 //	CONSTRAINT FK_SELL_POST_DEALTYPE FOREIGN KEY(DEALTYPE_ID) REFERENCES TBL_DEALTYPE (DEALTYPE_ID)
 //	);
+//	ALTER TABLE TBL_SELL_POST
+//	ADD TEAM_ID NUMBER;
+//
+//	ALTER TABLE TBL_SELL_POST
+//	ADD CONSTRAINT FK_SELL_POST_TEAM
+//	FOREIGN KEY (TEAM_ID)
+//	REFERENCES TBL_TEAM(TEAM_number)
+//	ON DELETE CASCADE;
+	
 	
 	private int sellPostNumber; // 판매글 번호
 	private int memberNumber; // 회원번호 (판매자)
@@ -31,6 +40,7 @@ public class SellPostDTO { // 판매글
 	private String sellPostCreationDate; // 판매글 작성일자
 	private String sellPostUpdate; // 수정일자
 	private String sellPostContent; // 상품 설명
+	private int teamId;
 	
 	// get, set
 	public int getPricePoint() {
@@ -100,8 +110,13 @@ public class SellPostDTO { // 판매글
 	public void setSellPostUpdate(String sellPostUpdate) {
 		this.sellPostUpdate = sellPostUpdate;
 	}
-	
-	
+	public int getTeamId() {
+		return teamId;
+	}
+	public void setTeamId(int teamId) {
+		this.teamId = teamId;
+	}
+
 	// toSTring
 	@Override
 	public String toString() {
@@ -109,7 +124,10 @@ public class SellPostDTO { // 판매글
 				+ statusId + ", categoryId=" + categoryId + ", dealtypeId=" + dealtypeId + ", pricePoint=" + pricePoint
 				+ ", sellPostTitle=" + sellPostTitle + ", tradingArea=" + tradingArea + ", sellPostCreationDate="
 				+ sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate + ", sellPostContent=" + sellPostContent
-				+ "]";
+				+ ", teamId=" + teamId + "]";
 	}
+	
+	
+
 
 }

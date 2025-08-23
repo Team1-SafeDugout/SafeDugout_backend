@@ -60,7 +60,7 @@
 	
 	<servlet>
 		<servlet-name>Trade</servlet-name>
-		<servlet-class>com.bullPenTalk.app.trade.SellPostFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.trade.SellPostFrontController2</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Trade</servlet-name>

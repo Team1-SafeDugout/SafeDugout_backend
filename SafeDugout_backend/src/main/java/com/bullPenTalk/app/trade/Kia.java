@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
 
-public class Doosan implements TradeService {
+public class Kia implements TradeService{
 
 	@Override
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("두산 진입");
+		System.out.println("기아진입");
 		// Result 객체 생성
 		Result result = new Result();
 
@@ -25,6 +25,7 @@ public class Doosan implements TradeService {
 			case "list":
 				result = select.listTeam(action, request, response);
 				break;
+				
 			case "detail":
 				DetailControllerOK detailController = new DetailControllerOK();
 				result = detailController.detailselect(action, request, response);

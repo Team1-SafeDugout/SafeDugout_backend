@@ -2,15 +2,86 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "attachment">
-<!-- 추가 관련 -->
-<insert id = "insertAttachment" parameterType = "AttachmentDTO">
-	INSERT INTO TBL_ATTACHMENT
-	(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_SIZE, ATTACHMENT_PATH)
-	VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentSize}, #{attachmentPath})
-</insert>
+<!-- 조회 관련 -->
 
+	<!-- 게시글 파일 조회 -->
+	<select id="selectAttachment" parameterType="int" resultType="int">
+    <![CDATA[
+    SELECT PA.POST_NUMBER,
+           A.ATTACHMENT_NUMBER,
+           A.ATTACHMENT_PATH,
+           A.ATTACHMENT_NAME,
+           A.ATTACHMENT_TYPE_ID
+    FROM TBL_POST_ATTACHMENT PA
+    JOIN TBL_ATTACHMENT A
+      ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
+    WHERE PA.POST_NUMBER = #{postNumber}
+    ]]>
+	</select>
+	
+	<!-- 판매글 첨부파일 조회 -->
+	<select id="selectSellPostAttachment" parameterType="int" resultType="SellPostDTO">
+	<![CDATA[
+	SELECT SPA.SELL_POST_NUMBER,
+	       A.ATTACHMENT_NUMBER,
+	       A.ATTACHMENT_PATH,
+	       A.ATTACHMENT_ORIGINAL_NAME,
+	       A.ATTACHMENT_SYSTEM_NAME,
+	       A.ATTACHMENT_TYPE_ID
+	FROM TBL_SELL_POST_ATTACHMENT SPA
+	JOIN TBL_ATTACHMENT A
+	  ON SPA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
+	WHERE SPA.SELL_POST_NUMBER = #{sellPostNumber};
+	]]>
+	</select>
+	
+	<!-- 공지사항 파일 조회 -->
+	<select id="selectNoticeAttachment" parameterType="int" resultType="AttachmentDTO">
+    <![CDATA[
+    SELECT NA.NOTICE_POST_NUMBER,
+           A.ATTACHMENT_NUMBER,
+           A.ATTACHMENT_PATH,
+           A.ATTACHMENT_NAME,
+           A.ATTACHMENT_TYPE_ID
+    FROM TBL_NOTICE_ATTACHMENT NA
+    JOIN TBL_ATTACHMENT A
+      ON NA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
+    WHERE NA.NOTICE_POST_NUMBER = #{noticePostNumber}
+    ]]>
+	</select>
+	
+	
+	<!-- 추가 관련 -->
+	<insert id = "insertAttachment" parameterType = "AttachmentDTO">
+		INSERT INTO TBL_ATTACHMENT
+		(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_SIZE, ATTACHMENT_PATH)
+		VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentSize}, #{attachmentPath})
+	</insert>
+
+	<insert id="insertSellPost" parameterType="SellPostAttachmentDTO">
+    <![CDATA[
+    INSERT INTO TBL_SELL_POST_ATTACHMENT (SELL_POST_NUMBER, ATTACHMENT_NUMBER)
+    VALUES (#{sellPostNumber}, #{attachmentNumber})
+    ]]>
+	</insert>
+	
 <!-- 제거 관련 -->
+	<!-- 판매글 첨부파일 삭제  -->
+	<delete id="deleteSellPost" parameterType="int">
+    <![CDATA[
+    DELETE FROM TBL_ATTACHMENT
+    WHERE ATTACHMENT_NUMBER = #{sellPostNumber}
+    ]]>
+	</delete>
 
+	<!-- 게시글 첨부파일 삭제 -->
+	<delete id="deletePost" parameterType="int">
+    <![CDATA[
+    DELETE FROM TBL_ATTACHMENT
+    WHERE ATTACHMENT_NUMBER = #{PostNumber}
+    ]]>
+	</delete>
+	
 </mapper>
 <!-- CREATE TABLE TBL_NOTICE_ATTACHMENT(
 NOTICE_POST_NUMBER NUMBER,

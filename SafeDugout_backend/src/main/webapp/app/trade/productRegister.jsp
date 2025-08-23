@@ -9,7 +9,8 @@
 <title>상품 등록/수정 페이지</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/trade/productRegister.css">
-<link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
 <link rel="stylesheet"
@@ -18,216 +19,169 @@
 	src="${pageContext.request.contextPath}/assets/js/trade/productRegister.js"></script>
 </head>
 
-<!-- 바디 -->
-
 <body>
 	<!-- 헤더 -->
-	<div id="header"></div>
-	<!-- 검색 폼 태그 -->
-	<form action="" method="get">
-		<!-- 검색 컨테이너 -->
-		<div class="search-container">
-			<!-- 검색창 -->
-			<input type="text" placeholder="검색어를 입력해주세요">
-			<!-- 검색 버튼 -->
-			<button type="button"
-				onclick="location.href='./tradeSearchResult.html'">검색</button>
-		</div>
-	</form>
+	<jsp:include page="/headerLogin.jsp" />
+
 	<!-- 메인 -->
 	<main>
-		<!-- 메인 컨테이너 -->
 		<div class="main-container">
-			<!-- 메인 컨테이너 폼 태그 -->
-			<form action="" method="post">
-				<!-- 상품 등록 전체 컨테이너 -->
+			<form action="${pageContext.request.contextPath}/sellPostWriteOk.tr"
+				method="post" enctype="multipart/form-data"
+				onsubmit="return validateForm();">
+
 				<div class="register-container">
-					<!-- 이미지 컨테이너 -->
+					<!-- 이미지 업로드 -->
 					<div class="img-container">
-						<!-- 이미지 박스 -->
 						<div class="img-box">
-							<!-- 이미지 박스 img 태그 -->
-							<img src="./../../assets/img/communityImg/tradeLogo.png" alt=""
-								id="previewImg">
-							<!-- 이미지 박스 추가하기, 삭제 버튼 -->
+							<img
+								src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png"
+								alt="" id="previewImg">
 							<div>
-								<!-- 사진 등록 버튼 -->
-								<label for="uploadImg">사진 등록 +<input type="file"
-									id="uploadImg" accept="image/*"></label>
-								<!-- 사진 삭제 버튼 -->
-								<span id="deleteImg">삭제 X</span>
+								<label for="uploadImg">사진 등록 + <input type="file"
+									id="uploadImg" name="uploadFile" accept="image/*">
+								</label> <span id="deleteImg">삭제 X</span>
 							</div>
 						</div>
 					</div>
+
 					<!-- 중앙 컨테이너 -->
 					<div class="middle-container">
-						<!-- 상품명 입력 컨테이너 -->
+						<!-- 상품명 -->
 						<div class="name-input-container">
-							<!-- 등록 오류 메시지 -->
 							<div class="register-error-message">• 상품명을 입력하세요</div>
-							<!-- 상품 이름 텍스트 -->
 							<div class="product-name-text">
-								상품 명 : <input type="text" id="productName">
+								상품 명 : <input type="text" id="productName" name="sellPostTitle"
+									required>
 							</div>
 						</div>
-						<!-- 카테고리 입력 컨테이너 -->
+
+						<!-- 카테고리 -->
 						<div class="category-input-container">
-							<!-- 카테고리 텍스트 -->
 							<div class="product-category-text">
 								<span>카테고리 설정</span>
 							</div>
-							<!-- 팀 선택 텍스트 -->
-							<div class="product-team-text">팀 선택
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;• 팀을 선택하지 않으면 팀 카테고리가 기타로
+							<div class="product-team-text">팀 선택 • 팀을 선택하지 않으면 기타로
 								설정됩니다.</div>
-							<!-- 로고 컨테이너 -->
 							<div class="logo-container">
-								<!-- 로고 이미지 -->
+								<!-- 팀 로고 클릭 시 JS로 value 설정 -->
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png"
-										alt="">
-								</div>
-								<div class="logo">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"
-										alt="">
-								</div>
-								<div class="logo">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"
-										alt="">
-								</div>
-								<div class="logo">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"
-										alt="">
+										alt="두산" data-team-id="1">
 								</div>
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png"
-										alt="">
+										alt="lg" data-team-id="2">
 								</div>
 								<div class="logo">
 									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"
-										alt="">
-								</div>
-								<div class="logo">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"
-										alt="">
+										src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"
+										alt="한화" data-team-id="3">
 								</div>
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"
-										alt="">
-								</div>
+										alt="삼성" data-team-id="4">
+								</div>	
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png"
-										alt="">
+										alt="ssg" data-team-id="5">
+								</div>
+								<div class="logo">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"
+										alt="kt" data-team-id="6">
+								</div>
+								<div class="logo">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"
+										alt="nc" data-team-id="7">
+								</div>								
+								<div class="logo">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"
+										alt="롯데" data-team-id="8">
+								</div>																						
+								<div class="logo">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"
+										alt="기아" data-team-id="9">
 								</div>
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"
-										alt="">
+										alt="키움" data-team-id="10">
 								</div>
-								<input type="text" id="team" readonly>
+								<input type="text" id="team" name="teamId" readonly>
 							</div>
-							<!-- 상품 종류 선택 텍스트 컨테이너 -->
 							<div class="product-type-text-container">
-								<!-- 상품 종류 선택 텍스트 -->
 								<div class="product-type-text">굿즈 종류 선택</div>
-								<!-- 등록 오류 메시지 -->
-								<div class="register-error-message">• 굿즈 종류를 하나 선택해 주세요</div>
-							</div>
-							<!-- 상품 종류 값 -->
-							<div class="product-type">
-								<label for="baseball">유니폼</label><input type="radio"
-									name="productType" value="uniform">
+								<div class="register-error-message">굿즈 종류를 하나 선택해 주세요</div>
 							</div>
 							<div class="product-type">
-								<label for="baseball">모자</label><input type="radio"
-									name="productType" value="hat">
+								<label>유니폼</label><input type="radio" name="categoryId"
+									value="uniform">
 							</div>
 							<div class="product-type">
-								<label for="baseball">의류</label><input type="radio"
-									name="productType" value="cloths">
+								<label>모자</label><input type="radio" name="categoryId"
+									value="hat">
 							</div>
 							<div class="product-type">
-								<label for="baseball">잡화</label><input type="radio"
-									name="productType" value="etc">
+								<label>의류</label><input type="radio" name="categoryId"
+									value="cloths">
 							</div>
 							<div class="product-type">
-								<label for="baseball">응원 도구</label><input type="radio"
-									name="productType" value="cheeringTool">
+								<label>잡화</label><input type="radio" name="categoryId"
+									value="etc">
 							</div>
 							<div class="product-type">
-								<label for="baseball">야구 용품</label><input type="radio"
-									name="productType" value="baseballEqu">
+								<label>응원 도구</label><input type="radio" name="categoryId"
+									value="cheeringTool">
+							</div>
+							<div class="product-type">
+								<label>야구 용품</label><input type="radio" name="categoryId"
+									value="baseballEqu">
 							</div>
 						</div>
 					</div>
+
 					<!-- 오른쪽 컨테이너 -->
 					<div class="right-container">
-						<!-- 상품 설명 텍스트 -->
 						<div class="product-explain-text">상품 설명</div>
-						<!-- 상품 설명 박스 -->
 						<div class="product-explain-blank">
-							<!-- 텍스트 입력 칸 -->
-							<textarea name="" id=""></textarea>
+							<textarea name="sellPostContent" id="productContent" required></textarea>
 						</div>
-						<!-- 거래 지역 컨테이너 -->
+
 						<div class="trade-location-container">
-							<!-- 희망 지역 텍스트 -->
 							<div>희망 지역 :</div>
-							<!-- 희망 지역 입력 칸 -->
-							<input type="text">
+							<input type="text" name="tradingArea" required>
 						</div>
-						<!-- 짧은 검은선 -->
+
 						<div class="short-line"></div>
-						<!-- 등록 오류 메시지 -->
-						<div class="register-error-message">• 거래 방식을 선택해 주세요</div>
-						<!-- 거래 방식 컨테이너 -->
+
+						<div class="register-error-message">거래 방식을 선택해 주세요</div>
 						<div class="trade-method-container">
-							<!-- 거래 방식 텍스트 -->
 							<div>거래 방식 :</div>
-							<!-- 거래 방식 체크박스 -->
 							<div class="trade-method-checkbox">
-								<!-- 거래 방식 텍스트 -->
-								<span>배송</span>
-								<!-- 거래 방식 -->
-								<input type="radio" name="tradeMethod" value="deliver">
-								<!-- 거래 방식 텍스트-->
-								<span>직거래</span>
-								<!-- 거래 방식 input 태그 -->
-								<input type="radio" name="tradeMethod" value="meet">
+								<span>배송</span> <input type="radio" name="dealTypeId"
+									value="deliver"> <span>직거래</span> <input type="radio"
+									name="dealTypeId" value="meet">
 							</div>
 						</div>
-						<!-- 짧은 검은선 -->
 						<div class="short-line"></div>
-						<!-- 등록 오류 메시지 -->
-						<div class="register-error-message-price">• 가격을 입력하세요</div>
-						<!-- 하단 컨테이너 -->
+						<div class="register-error-message-price">가격을 입력하세요</div>
 						<div class="bottom-container">
-							<!-- 상품 가격 컨테이너 -->
 							<div class="price-container">
-								<!-- 상품 가격 텍스트 -->
 								<div>상품 가격 :</div>
-								<!-- 상품 가격 입력칸 -->
-								<input type="number" id="productPoint">
+								<input type="number" id="productPoint" name="pricePoint"
+									required>
 							</div>
-							<!-- 버튼 컨테이너 -->
 							<div class="main-button-container">
-								<!-- 상품 등록 a 태그 -->
-								<a> <!-- 상품 등록 버튼 텍스트 -->
-									<div class="main-button-next" id="registerBtn">상품 등록</div>
-								</a>
-								<!-- 버튼 컨테이너 a 태그 -->
-								<a> <!-- 취소 버튼 텍스트 -->
-									<div class="main-button-cancel" id="cancelBtn">취소</div>
-								</a>
+								<button type="submit" class="main-button-next" id="registerBtn">상품등록</button>
+								<button type="reset" class="main-button-cancel" id="cancelBtn">취소</button>
 							</div>
 						</div>
 					</div>
@@ -235,11 +189,10 @@
 			</form>
 		</div>
 	</main>
-
 	<!-- 푸터 -->
-	<div id="footer"></div>
-	<!-- 스크립트 -->
-	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
+	<jsp:include page="/footer.jsp" />
+	<script>
+    	let memberNumber = "${sessionScope.memberNumber}";
+    </script>
 </body>
-
 </html>
