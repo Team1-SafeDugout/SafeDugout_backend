@@ -19,10 +19,9 @@ public class SelectMainListOkController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("목록 처리 컨트롤러 진입");
+		System.out.println("매인 공지사항 목록 조회 처리 컨트롤러 진입");
 		MainDAO mainDAO = new MainDAO();
 		Result result = new Result();
-		
 		
 		String temp = request.getParameter("page");
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
