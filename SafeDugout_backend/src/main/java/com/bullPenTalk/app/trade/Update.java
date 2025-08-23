@@ -14,10 +14,22 @@ public class Update implements TradeService{
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Result result = new Result();
-		
+		UpdateControllerOK update = new UpdateControllerOK();
 		switch(action) {
 		case "update" :
-			
+			result =
+		case "updateOk" :
+			result = update.updateOk(request, response);
+			break;
+		}
+		
+		if (result != null) {
+			if (result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+			} else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
+
 		}
 	}
 

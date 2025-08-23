@@ -39,9 +39,9 @@ public class SellPostAttachmentDAO {
 		}
 
 	}
-	
+
 	// 파일 삭제 메소드
-	public void delete(int boardNumber) {
-		sqlSession.delete("attachment.deleteSellPost", boardNumber);
+	public void delete(int SellPostNumber) {
+		sqlSession.delete("attachment.deleteSellPost", SellPostNumber);
 	}
 }

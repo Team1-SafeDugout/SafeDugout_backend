@@ -48,8 +48,7 @@
 						<li>
 							<div class="category">
 								<a
-									href="SelectController.tr?team=${selectedTeam}&action=list">모든
-									상품 유형</a>
+									href="SelectController.tr?team=${selectedTeam}&action=list">모든 상품 유형</a>
 							</div>
 						</li>
 						<li>
