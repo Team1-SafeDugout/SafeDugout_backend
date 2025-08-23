@@ -56,7 +56,6 @@ public class ListController {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
-
 		System.out.println("====페이징정보 확인====");
 		System.out.println("pageMap : " + pageMap);
 		System.out.println("sellPostList : " + sellPostList);

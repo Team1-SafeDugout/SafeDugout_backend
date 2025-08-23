@@ -1,4 +1,15 @@
 const deleteBtn = document.getElementById("cancle-button");
+const category = document.getElementsByClassName("category").item(0);
+const teamList = document.getElementById('team-notice');
+
+category.addEventListener('click', function(){
+	if(category.value = "team"){
+		teamList.style.display = "block";
+	} else{
+		
+	}
+});
+
 
 deleteBtn.addEventListener('click', function(){
     // 삭제 confirm 창
