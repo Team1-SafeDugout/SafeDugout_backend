@@ -71,7 +71,7 @@
             <div>제목</div>
             <div>작성일자</div>
             <div>글종류</div>
-            <div><a href="${pageContext.request.contextPath}/admin/adminCreateMainNoticeOk.ad"> 추가하기+ </a></div>
+            <div><a href="${pageContext.request.contextPath}/admin/adminCreateNotice.ad"> 추가하기+ </a></div>
           </div>
           
           <div class="list-container">          	
