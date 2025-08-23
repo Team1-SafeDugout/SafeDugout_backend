@@ -26,12 +26,12 @@
 
         <!-- 카테고리 설정 -->
          <section class = "category">
-          <label for = "post-categories"> 카테고리 선택 : </label>
-          <input type = "radio" name = "post-categories" value = "main"> 전체공지
-          <input type = "radio" name = "post-categories" value = "guide"> 입문 가이드
-          <input type = "radio" name = "post-categories" value = "team"> 
+          <div> 카테고리 선택 : </div>
+          <input type = "radio" name = "post-categories" value = "main" required> 전체공지
+          <input type = "radio" name = "post-categories" value = "guide" required> 입문 가이드
+          <input type = "radio" name = "post-categories" value = "team" required> 
           <label for = "select-team"> 팀 공지 </label>
-          <select class = "select-team" name = "team-categories">
+          <select class = "select-team" id = "select-team" name = "team-categories">
             <option name = "team-category" value = "lg"> LG </option>
             <option name = "team-category" value = "hh"> 한화 </option>
             <option name = "team-category" value = "lotte"> 롯데 </option>
@@ -53,7 +53,7 @@
         <section class = "content">
           <label for ="content-textarea"> 내용 </label>
           <div> 서식 API </div>
-          <textarea name="content" id="content-textarea"></textarea>
+          <textarea name="content" id="content-textarea" required></textarea>
         </section>
 
         <!-- 중간에 선으로 구분 -->
@@ -71,7 +71,7 @@
 
         <!-- 확인 혹은 취소 버튼 -->
         <section class = "buttons">
-         <button id = "save-button" type = "button" onclick = "location.href = './../adminDetailMenu/adminNoticePost.html' "> 저장 </button>
+         <button id = "save-button" type = "submit" onclick = "location.href = './../adminDetailMenu/adminNoticePost.html' "> 저장 </button>
          <a id = "cancle-button"> 취소 </a>
         </section>
       </form>

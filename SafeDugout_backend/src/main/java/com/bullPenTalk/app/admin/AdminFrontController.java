@@ -107,6 +107,10 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/adminReadMainNoticeOk.ad":
 			result = new AdminReadMainNoticeOkController().execute(request, response);
 			break;
+			
+		case "/admin/adminCreateMainNoticeOk.ad":
+			result = new AdminCreateMainNoticeOkController().execute(request, response);
+			break;
 		}	
 		
 		if (result != null) {
