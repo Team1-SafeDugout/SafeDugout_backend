@@ -22,6 +22,13 @@ a{
   color: inherit;
 }
 
+input [type='file'] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
 /* 왼쪽에 있을 사이드 메뉴와 본 페이지 메뉴를 나눠줄 flex 제공 */
 main {
   width: 1200px;
@@ -135,6 +142,29 @@ main {
   width: 10%;
   text-align: center;
   border-left: 1px solid black;
+}
+
+.file-list > li {
+	display:flex;
+	position : relative;
+	width : 145px;
+	height : 100px;
+	margin-right : 10px;
+	
+}
+
+.img-cancel-btn{
+    background-color: #333333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 25px;
+}
+
+.img-cancel-btn:hover{
+	background-color: rgb(255, 87, 87);
+	color: #fff;
 }
 
 /* 저장 버튼 서식 */

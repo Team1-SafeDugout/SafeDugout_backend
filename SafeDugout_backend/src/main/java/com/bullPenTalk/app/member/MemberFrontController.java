@@ -59,7 +59,7 @@ public class MemberFrontController extends HttpServlet {
 			break;
 			
 		case "/member/login.me" : 
-			request.getRequestDispatcher("/app/login/login.me").forward(request, response);
+			result = new LoginController().execute(request, response);
 			break;
 			
 		case "/member/loginOk.me":

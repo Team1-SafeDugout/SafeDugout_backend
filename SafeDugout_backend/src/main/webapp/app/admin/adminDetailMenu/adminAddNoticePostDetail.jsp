@@ -16,7 +16,7 @@
     <section class="section-background">
       <!-- 필수 입력 정보 : 제목 -->
        <!-- 선택 입력 정보 : 내용, 파일 -->
-      <form action="" method="post" name = "adminNoticePost">
+      <form action="${pageContext.request.contextPath}/admin/adminCreateNoticePostOk.ad" method="post" name = "adminNoticePost">
 
         <!-- 제목 -->
         <section class = "title">
@@ -50,6 +50,7 @@
         <hr class = line>
 
         <!-- 본문 내용 -->
+        
         <section class = "content">
           <label for ="content-textarea"> 내용 </label>
           <div> 서식 API </div>
@@ -64,14 +65,19 @@
           <label for = "file-area"> 
             <div class = "file-button-style"> 파일 첨부 </div>
           </label>
-          <input type= "file" name = "file" id = "file-area">
-          <div> ※ 파일은 1개만 올리기 가능합니다   ※  글 수정 시 첨부된 파일이 삭제 됩니다 </div>
-          <div id = "delete-file"> 파일 삭제 </div>
+          <input type= "file" name = "file" id = "file-area" accept=".jpg, .jpeg, .png">
+          <div> ※ 파일은 1개만 올리기 가능합니다   ※  글 수정 시 첨부된 파일이 삭제 됩니다(<span class="cnt">0</span>/1) </div>
+<!--           <div id = "delete-file"> 파일 삭제 </div> -->
         </section>
+        <div class="img-controller-box">
+			<ul class="file-list">
+
+			</ul>
+		</div>
 
         <!-- 확인 혹은 취소 버튼 -->
         <section class = "buttons">
-         <button id = "save-button" type = "submit" onclick = "location.href = './../adminDetailMenu/adminNoticePost.html' "> 저장 </button>
+         <button id = "save-button" type = "submit"> 저장 </button>
          <a id = "cancle-button"> 취소 </a>
         </section>
       </form>
