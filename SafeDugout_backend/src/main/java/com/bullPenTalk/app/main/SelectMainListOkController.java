@@ -19,7 +19,7 @@ public class SelectMainListOkController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("목록 처리 컨트롤러 진입");
+		System.out.println("selectMainListOkController 진입");
 		MainDAO mainDAO = new MainDAO();
 		Result result = new Result();
 		
@@ -29,6 +29,8 @@ public class SelectMainListOkController implements Execute{
 		int rowCount = 10; // 한 페이지당 게시글 수
 		int pageCount = 5; // 페이지 버튼 수
 
+		System.out.println("page 값 : " + page);
+		
 		// 페이징 처리
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
 		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
@@ -37,8 +39,11 @@ public class SelectMainListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 
+		System.out.println("pageMap 정보 : " + pageMap);
+		
 		// 게시글 목록 조회
 		List<MainNoticePostDTO> mainNoticeList = mainDAO.selectMainList(pageMap);
+		System.out.println("selectMainList 메소드 호출 완료");
 		request.setAttribute("mainNoticeList", mainNoticeList);
 
 		// 페이징 정보 설정
