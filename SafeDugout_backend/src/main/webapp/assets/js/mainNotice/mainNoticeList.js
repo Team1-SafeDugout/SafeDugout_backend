@@ -8,7 +8,7 @@ const rightArrow = document.querySelector('.arrow-button:last-child');
 const leftArrow = document.querySelector('.arrow-button:first-child');
 
 // 현재 페이지 시작 번호
-let startNum = 1;
+let startNum = 1; 
 
 // 페이지 버튼 누를 시 동작 
 pageNum.forEach((btn, index) => {
