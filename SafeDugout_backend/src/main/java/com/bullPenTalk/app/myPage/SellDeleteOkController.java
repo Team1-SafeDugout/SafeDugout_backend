@@ -1,7 +1,7 @@
 package com.bullPenTalk.app.myPage;
 
-public class BuyCancleOkController implements Execute {
-
+public class SellDeleteOkController implements Execute {
+	
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

@@ -1,12 +1,18 @@
 package com.bullPenTalk.app.myPage;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.dto.SellPostDTO;
+import com.bullPenTalk.app.myPage.dao.MyPageDAO;
 
 public class SellPostOkController {
 
 	public Result list(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("SellPostOkController 진입");
-		SellPostDAO sellPostDAO = new SellPostDAO();
+		MyPageDAO myPageDAO = new MyPageDAO();
 		Result result = new Result();
 		System.out.println("페이징 진입");
 		String temp = request.getParameter("page");
@@ -29,7 +35,7 @@ public class SellPostOkController {
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
-
+		
 		int total = sellPostDAO.getTotal();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
@@ -55,7 +61,7 @@ public class SellPostOkController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/trade/tradeMain.jsp");
+		result.setPath("/app/sellList/sellList.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
