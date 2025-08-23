@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>포인트 충전 내역</title>
   <link rel="stylesheet" href="./../pointRecharge/pointList.html">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
 </head>
 
 <body>
@@ -87,7 +90,7 @@
     </section>
   </main>
   <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
 </html>

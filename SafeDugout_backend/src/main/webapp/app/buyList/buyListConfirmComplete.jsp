@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +8,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>구매 확정 완료 화면</title>
-  <link rel="stylesheet" href="./../../assets/css/buyList/buyListConfirmComplete.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyListConfirmComplete.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
 </head>
 
 <body>
@@ -32,7 +35,7 @@
     <section class="buy-complete">
       <h3>구매 확정 되었습니다.</h3>
       <section>
-        <img src="./../../assets/img/tradeImg/b.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/tradeImg/b.png" alt="">
         <div class="left">
           <li>제목 : 야구대표팀 모자팝니다!</li>
           <li>거래 방식 : 직거래</li>
@@ -53,7 +56,7 @@
     </section>
   </main>
   <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
 </html>
