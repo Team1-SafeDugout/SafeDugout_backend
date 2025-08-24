@@ -22,6 +22,23 @@ public class NewsPostDTO { // 뉴스글
 	private int attachmentNumber; // 첨부파일 번호
 	private String attachmentName; // 첨부파일 이름
 	private String attachmentPath; // 첨부파일 경로
+	private int adminNumber; // 어드민 번호
+	private int boardId;
+	
+	
+	
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
+	public int getAdminNumber() {
+		return adminNumber;
+	}
+	public void setAdminNumber(int adminNumber) {
+		this.adminNumber = adminNumber;
+	}
 	public int getPostNumber() {
 		return postNumber;
 	}
