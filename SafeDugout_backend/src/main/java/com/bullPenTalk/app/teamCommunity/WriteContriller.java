@@ -1,4 +1,4 @@
-package com.bullPenTalk.app.trade;
+package com.bullPenTalk.app.teamCommunity;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.member.dao.MemberDAO;
 
-public class WriteController {
-
+public class WriteContriller {
+	
 	public Result writerequest(HttpServletRequest request, HttpServletResponse response) {
 		
 		MemberDAO memberDAO = new MemberDAO();
@@ -20,7 +20,7 @@ public class WriteController {
 		if(memberNumber == null) {
 			path = "/app/member/login.jsp";
 		}else {
-			path = "/app/trade/productRegister.jsp";
+			path = "/app/communityHtml/communityTapPage/PostWriting.jsp";
 			request.setAttribute("memberId", memberDAO.getMemberNumber(memberNumber));
 		}
 		
@@ -31,3 +31,4 @@ public class WriteController {
 		return result;
 	}
 }
+

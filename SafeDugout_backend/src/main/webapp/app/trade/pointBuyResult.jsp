@@ -22,7 +22,7 @@
 <!-- 바디 -->
 <body>
 	<!-- 헤더 -->
-	<div id="header"></div>
+	<jsp:include page="/header.jsp" />
 	<!-- 메인 -->
 	<main>
 		<!-- 메인 컨테이너 -->

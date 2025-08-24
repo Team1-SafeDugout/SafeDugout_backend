@@ -13,8 +13,7 @@
 </head>
 <body>
 
-<jsp:include page="/headerLogin.jsp" />
-
+<jsp:include page="/header.jsp" />
 <main>
     <div class="main-container">
         <form action="${pageContext.request.contextPath}/sellPostUpdateOk.tr"

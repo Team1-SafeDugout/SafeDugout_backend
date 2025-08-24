@@ -19,7 +19,7 @@
 
 <body>
 	<!-- 헤더 -->
-	<div id="header"></div>
+<jsp:include page="/header.jsp" />
 	<!-- 폼 태그 -->
 	<form action="" method="get">
 		<!-- 검색 컨테이너 -->
