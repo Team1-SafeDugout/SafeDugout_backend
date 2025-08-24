@@ -14,11 +14,12 @@ public class LogoutOkController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		Result result = new Result();
 		request.getSession().invalidate(); // 세션 무효화
 		result.setPath("/main.ma");
 		result.setRedirect(true);
-		return null;
+		return result;
 	}
 
 }

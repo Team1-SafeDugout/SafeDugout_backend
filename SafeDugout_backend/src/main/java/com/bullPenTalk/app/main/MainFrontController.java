@@ -50,6 +50,14 @@ public class MainFrontController extends HttpServlet {
 			System.out.println("메인 페이지 처리 요청");
 			result = new MainOkController().execute(request, response); 
 			break;
+		case "/main/mainTeam.ma":
+			System.out.println("팀 커뮤니티 메인 페이지 처리 요청");
+			result = new MainTeamOkController().execute(request, response); 
+			break;
+		case "/main/mainAll.ma":
+			System.out.println("전체 커뮤니티 메인 페이지 처리 요청");
+			result = new MainAllOkController().execute(request, response); 
+			break;
 		case "/main/selectMainListOk.ma":
 			System.out.println("메인 공지사항 목록 페이지 처리 요청");
 			result = new SelectMainListOkController().execute(request, response); 

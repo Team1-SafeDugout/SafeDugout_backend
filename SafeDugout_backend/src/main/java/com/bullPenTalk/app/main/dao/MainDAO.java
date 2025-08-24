@@ -29,6 +29,12 @@ public class MainDAO {
 		return list;
 	}
 	
+	//메인 공지사항 최신 제목 가져오기
+	public MainNoticePostDTO getRecent() {
+		System.out.println("getRecent 메소드 실행");
+		return sqlSession.selectOne("main.getRecent");
+	}
+	
 	//메인 공지사항 총 개수 가져오기
 	public int getTotal() {
 		System.out.println("getTotal 메소드 실행");
