@@ -36,6 +36,7 @@ public class SellPostFrontController2 extends HttpServlet {
 		registry.put("kiwoom", new Kiwoom());
 		registry.put("allProduct", new AllProduct());
 		registry.put("tradeWirte", new TradeWirte());
+		registry.put("update", new Update());
 	}
 
 	@Override

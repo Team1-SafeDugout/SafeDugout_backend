@@ -1,5 +1,6 @@
 package com.bullPenTalk.app.trade;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Enumeration;
@@ -43,9 +44,16 @@ public class WriteControllerOk {
 			String uploadPath = UPLOAD_PATH + subPath;
 			final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
 			System.out.println("파일 업로드 경로 : " + UPLOAD_PATH);
+			
+			// 업로드 폴더가 존재하지 않으면 생성
+			File uploadDir = new File(uploadPath);
+			if (!uploadDir.exists()) {
+			    uploadDir.mkdirs(); // 상위 폴더까지 모두 생성
+			    System.out.println("업로드 폴더 생성 완료: " + uploadPath);
+			}
 
 			// MultipartRequest를 이용한 데이터 파싱
-			MultipartRequest multipartRequest = new MultipartRequest(request, UPLOAD_PATH, FILE_SIZE, "utf-8",
+			MultipartRequest multipartRequest = new MultipartRequest(request, uploadPath  , FILE_SIZE, "utf-8",
 					new DefaultFileRenamePolicy());
 			// request : HTTP 요청객체
 			// UPLOAD_PATH : 파일을 저장할 경로
@@ -102,10 +110,12 @@ public class WriteControllerOk {
 
 				// 파일 정보 DB 저장 후 시퀀스로 생성된 attachmentNumber 받기
 				AttachmentDTO attachmentDTO = new AttachmentDTO();
-				attachmentDTO.setAttachmentPath(uploadPath); 
-				attachmentDTO.setAttachmentName(name);
-				attachmentDTO.setAttachmentTypeId(1); // 1 = IMAGE
-				attachmentDAO.insert(attachmentDTO);
+				attachmentDTO.setAttachmentPath(subPath + fileSystemName); // 실제 서버 저장 파일명
+				attachmentDTO.setAttachmentName(fileOriginalName); // 사용자가 업로드한 원본 이름
+				attachmentDTO.setAttachmentTypeId(1); // 1 = 이미지
+				attachmentDAO.insert(attachmentDTO); // insert
+				
+				
 				int attachmentNumber = attachmentDTO.getAttachmentNumber(); // 생성된 번호 가져오기
 
 				// 매핑 DTO 생성
@@ -122,7 +132,7 @@ public class WriteControllerOk {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		result.setPath("/trade/productRegisterResult.tr");
+		result.setPath("/trade/productRegisterResult.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴징입");
 		return result;

@@ -17,7 +17,9 @@ public class TradeWirte implements TradeService {
 
 		try {
 			switch (action) {
-			case "write":
+			case "write" :
+				WriteController write = new WriteController();
+			case "writeOk":
 				WriteControllerOk writeOk = new WriteControllerOk();
 				writeOk.writeProduct(request, response);
 			}
