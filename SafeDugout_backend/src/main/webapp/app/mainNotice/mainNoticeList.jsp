@@ -8,18 +8,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인 공지사항 목록 페이지</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-<script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeList.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/footer.css">
+<%-- <script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeList.js"></script> --%>
 </head>
 
 <!-- 바디 -->
 
 <body>
 	<!-- 헤더 -->
-	<div id="header"></div>
+	<jsp:include page="/header.jsp" />
 	<!-- 메인 -->
 	<main>
 		<!-- 메인 컨테이너 -->
@@ -44,64 +48,73 @@
 					<c:choose>
 						<c:when test="${not empty mainNoticeList}">
 							<c:forEach var="mainNotice" items="${mainNoticeList}">
-							<!-- 공지사항 리스트 -->
-							<div class="notice-list">
-								<!-- 글 번호 -->
-								<div class="page-number">
-									<c:out value="${mainNotice.getNoticePostNumber()}" />
+								<!-- 공지사항 리스트 -->
+								<div class="notice-list">
+									<!-- 글 번호 -->
+									<div class="page-number">
+										<c:out value="${mainNotice.getNoticePostNumber()}" />
+									</div>
+									<!-- 제목 -->
+									<div class="post-title">
+										<a href="${pageContext.request.contextPath}/main/selectMainDetailOk.ma?noticePostNumber=${mainNotice.noticePostNumber}"> <c:out
+												value="${mainNotice.getNoticePostTitle()}" />
+										</a>
+									</div>
+									<!-- 작성 일자 -->
+									<div class="upload-date">
+										<c:out value="${mainNotice.getNoticePostDate()}" />
+									</div>
 								</div>
-								<!-- 제목 -->
-								<div class="post-title">
-									<a href="./mainNoticeDetail.html">
-										<c:out value="${mainNotice.getNoticePostTitle()}" />
-									</a>
-								</div>
-								<!-- 작성 일자 -->
-								<div class="upload-date">
-									<c:out value="${mainNotice.getNoticePostDate()}" />
-								</div>
-							</div>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<div style="text-align: center;">
-								등록된 게시물이 없습니다.
-							</div>
+							<div style="text-align: center;">등록된 공지사항이 없습니다.</div>
 						</c:otherwise>
 					</c:choose>
 				</div>
 
 				<!-- 페이지네이션 컨테이너 -->
 				<div class="page-container">
-					<!-- 오른쪽 화살표 버튼 -->
+					<!-- 왼쪽 화살표 버튼 -->
 					<div class="arrow-button">
-						<a>◀</a>
+						<c:if test="${prev}">
+							<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma?page=${startPage - 1}">
+								◀</a>
+						</c:if>
 					</div>
 					<!-- 페이지 버튼 -->
-					<div class="page-num">
-						<a>1</a>
-					</div>
-					<div class="page-num">
-						<a>2</a>
-					</div>
-					<div class="page-num">
-						<a>3</a>
-					</div>
-					<div class="page-num">
-						<a>4</a>
-					</div>
-					<div class="page-num">
-						<a>5</a>
-					</div>
-					<!-- 오른쪽 화살표 버튼 -->
-					<div class="arrow-button">
-						<a>▶</a>
-					</div>
+					<c:forEach var="i" begin="${startPage < 0 ? 0 : startPage}"
+						end="${endPage}">
+						<c:choose>
+							<c:when test="${!(i == page)}">
+								<div class="page-num">
+									<a
+										href="${pageContext.request.contextPath}/main/selectMainListOk.ma?page=${i}">
+										<c:out value="${i}" />
+									</a>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="page-num active">
+									<a href="#"> <c:out value="${i}" />
+									</a>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- 오른쪽 화표 버튼 -->
+					<c:if test="${next}">
+						<div class="arrow-button">
+							<a
+								href="${pageContext.request.contextPath}/main/selectMainListOk.ma?page=${endPage + 1}">
+								▶</a>
+						</div>
+					</c:if>
 				</div>
 			</div>
 	</main>
 	<!-- 푸터 -->
-	<div id="footer"></div>
+	<jsp:include page="/footer.jsp" />
 	<!-- 스크립트 -->
 	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
