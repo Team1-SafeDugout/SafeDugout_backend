@@ -20,7 +20,7 @@ import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.GuidePostDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
-import com.bullPenTalk.app.dto.TeamAdminPostDTO;
+import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -122,16 +122,17 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			
 		case "team":
 			boardNum = 3;
-			TeamAdminPostDTO teamPost = new TeamAdminPostDTO();
+			TeamNoticePostDTO teamPost = new TeamNoticePostDTO();
 			AdminTeamNoticeDAO teamDAO = new AdminTeamNoticeDAO();
 			
 			int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 			
-			teamPost.setPostTitle(title);
-			teamPost.setPostContent(content);
-			teamPost.setPostDate(date);
-			teamPost.setPostUpdate(upDate);
+			teamPost.setNoticePostTitle(title);
+			teamPost.setNoticePostContent(content);
+			teamPost.setNoticePostDate(date);
+			teamPost.setNoticePostUpdate(upDate);
 			teamPost.setTeamNumber(teamNum);
+			teamPost.setAdminNumber(adminNumber);
 			
 			teamDAO.insert(teamPost);
 			result.setPath("");

@@ -5,9 +5,9 @@
 	<!-- 추가 -->
 	<insert id = "insert" parameterType = "MainNoticePostDTO">
 		INSERT INTO TBL_NOTICE_POST 
-		(NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, TEAM_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE)
+		(NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE)
 		VALUES
-		(seq_notice_post_number.nextVal,1, #{adminNumber}, #{teamNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE);
+		(seq_notice_POST.nextVal, #{noticeTypeId}, #{adminNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE)
 	</insert>
 	
 	<!-- 상세페이지 -->
@@ -35,6 +35,7 @@
 	<select id = "selectAll" resultType = "MainNoticePostDTO">
 		SELECT NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, TEAM_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE
 		FROM TBL_NOTICE_POST
+		WHERE NOTICE_TYPE_ID = 1
 	</select>
 	
 	
@@ -91,7 +92,7 @@
 	<!-- 삭제 -->
 	<delete id = "delete" parameterType = "int">
 		DELETE FROM TBL_NOTICE_POST NP
-		WHERE NOTICE_POST_NUMBER = #{noticePostNumber]
+		WHERE NOTICE_POST_NUMBER = #{noticePostNumber}
 	</delete>
 	
 	<!-- 총 개수 -->

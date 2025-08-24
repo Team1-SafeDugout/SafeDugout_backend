@@ -19,9 +19,10 @@
             number: "${board.noticePostNumber}",
             title: "${board.noticePostTitle}",
             date: "${board.noticePostDate}",
-            type: "전체공지사항"
+            type: "${board.noticeTypeId}"
         });
     </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
   </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManagePosts.js"></script>
 </head>

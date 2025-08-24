@@ -11,6 +11,12 @@ public class GuidePostDTO {
 	
 
 	
+	public int getNoticeTypeId() {
+		return noticeTypeId;
+	}
+	public void setNoticeTypeId(int noticeTypeId) {
+		this.noticeTypeId = noticeTypeId;
+	}
 	public int getNoticePostNumber() {
 		return noticePostNumber;
 	}

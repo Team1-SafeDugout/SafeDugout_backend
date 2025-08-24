@@ -50,7 +50,7 @@
 	<!-- 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
 	    DELETE FROM TBL_POST
-	    WHERE BOARD_ID = #{boardId}
+	    WHERE BOARD_ID = 3
 	    AND POST_NUMBER = #{postNumber}
 	</delete>
 </mapper>
