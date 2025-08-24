@@ -2,7 +2,7 @@ package com.bullPenTalk.app.dto;
 
 public class TeamNoticePostDTO {
 	private int noticePostNumber; // 공지글 번호
-	private int noticeTypeId = 0; // 팀 공지글 번호 =  2
+	private int noticeTypeId; // 팀 공지글 번호 =  2
 	private int adminNumber; // 관리자 번호
 	private int teamNumber; // 팀 번호
 	private String noticePostTitle; // 팀공지글 제목
@@ -16,6 +16,14 @@ public class TeamNoticePostDTO {
 				+ ", adminNumber=" + adminNumber + ", teamNumber=" + teamNumber + ", noticePostTitle=" + noticePostTitle
 				+ ", noticePostContent=" + noticePostContent + ", noticePostDate=" + noticePostDate
 				+ ", noticePostUpdate=" + noticePostUpdate + "]";
+	}
+	
+	public int getNoticeTypeId() {
+		return noticeTypeId;
+	}
+
+	public void setNoticeTypeId(int noticeTypeId) {
+		this.noticeTypeId = noticeTypeId;
 	}
 	
 	public int getNoticePostNumber() {
