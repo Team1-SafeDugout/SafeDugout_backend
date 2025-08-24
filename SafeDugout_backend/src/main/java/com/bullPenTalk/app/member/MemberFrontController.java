@@ -68,12 +68,12 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("loginOk접속완");
 			break;
 			
-		case "member/logOutOk.me":
+		case "/member/logOutOk.me":
 			System.out.println("로그아웃 처리");
 			result = new LogoutOkController().execute(request, response);
 			break;
 			
-		case "member/sendSMS.me":
+		case "/member/sendSMS.me":
 			break;
 			
 		case "/member/findId.me":

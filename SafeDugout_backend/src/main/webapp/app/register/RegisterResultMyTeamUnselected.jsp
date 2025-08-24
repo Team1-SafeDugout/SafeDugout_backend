@@ -42,13 +42,13 @@
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
             <!-- 메인페이지 버튼 a태그 -->
-            <a href="${pageContext.request.contextPath}/mainLogin.jsp">
+            <a href="${pageContext.request.contextPath}/main.ma">
               <!-- 메인페이지 버튼 div 태그 -->
               <div class="main-button-next">메인페이지
               </div>
             </a>
             <!-- 로그인 버튼 a태그-->
-            <a href="${pageContext.request.contextPath}/login/login.jsp">
+            <a href="${pageContext.request.contextPath}/member/login.me">
               <!-- 로그인 버튼 -->
               <div class="main-button-login">로그인
               </div>

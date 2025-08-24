@@ -45,7 +45,7 @@
 					</div>
 					<div class="welcome">조성재님 환영합니다.</div>
 					<div class="logout">
-						<a href="${pageContext.request.contextPath}/mainNoLogin.jsp">|
+						<a href="${pageContext.request.contextPath}/member/logOutOk.me">|
 							logout</a>
 					</div>
 					<div class="mypage">
