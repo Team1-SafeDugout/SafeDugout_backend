@@ -19,7 +19,7 @@ public class AdminGuideListOkController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		AdminGuideDAO adminGudeDAO = new AdminGuideDAO();
+		AdminGuideDAO adminGuideDAO = new AdminGuideDAO();
 		Result result = new Result();
 		
 		// 페이지네이션
@@ -37,16 +37,17 @@ public class AdminGuideListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<GuidePostDTO> boardList = adminGudeDAO.select();
+		List<GuidePostDTO> boardList = adminGuideDAO.select();
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함	
-		int total = adminGudeDAO.getTotal();
+		int total = adminGuideDAO.getTotal();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
+		if(startPage == 1) startPage = 1; 
 		
 		// endPage가 실제 존재하는 마지막 페이지보다 크면 조정
 		endPage = Math.min(endPage, realEndPage);

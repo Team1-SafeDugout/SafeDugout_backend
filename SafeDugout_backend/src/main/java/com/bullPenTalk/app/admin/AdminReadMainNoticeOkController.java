@@ -22,7 +22,8 @@ public class AdminReadMainNoticeOkController implements Execute{
 		
 		// 메인공지 DAO 가져오기
 		AdminMainNoticeDAO adminMainNoticeDAO = new AdminMainNoticeDAO();
-		int postNumber =  Integer.parseInt(request.getParameter("postNumber"));
+		int postNumber =  Integer.parseInt(request.getParameter("noticePostNumber"));
+		int postType = Integer.parseInt(request.getParameter("noticeTypeId"));
 		
 		mainNoticeDTO = adminMainNoticeDAO.selectDetail(postNumber);
 		
@@ -35,8 +36,20 @@ public class AdminReadMainNoticeOkController implements Execute{
 			return result;
 		}
 		
+		switch(postType) {
+		case 1:
+			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
+			break;
+		case 2:
+			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
+			break;
+		case 3:
+			result.setPath("/app/admin/adminDetailMenu/adminAddFreeCommunityGuideDetail.jsp");
+			break;
+		}
+		
 		request.setAttribute("mainNotice", mainNoticeDTO);
-		result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
+		
 		result.setRedirect(false);		
 		
 		return result;

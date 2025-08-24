@@ -105,6 +105,7 @@ public class AdminFrontController extends HttpServlet {
 			break;
 			
 		case "/admin/adminReadMainNoticeOk.ad":
+			System.out.println("읽는중");
 			result = new AdminReadMainNoticeOkController().execute(request, response);
 			break;
 			
@@ -114,8 +115,12 @@ public class AdminFrontController extends HttpServlet {
 			break;
 			
 		case "/admin/adminCreateNotice.ad":
-			System.out.println("gd");
 			result = new AdminCreateNotice().execute(request, response);
+			break;
+			
+		case "/admin/adminDeleteNoticeOk.ad":
+			System.out.println("삭제 진입");
+			result = new AdminDeleteNoticeOkController().execute(request, response);
 			break;
 		}	
 		

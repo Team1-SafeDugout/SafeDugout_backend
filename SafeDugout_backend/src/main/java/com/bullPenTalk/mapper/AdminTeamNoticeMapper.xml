@@ -4,15 +4,15 @@
 <mapper namespace = "adminTeamNotice">
 
 	<!-- 추가 -->
-	<insert id = "insert" parameterType = "AdminPostDTO">
+	<insert id = "insert" parameterType = "TeamAdminPostDTO">
 		INSERT INTO TBL_NOTICE_POST 
 		(NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, TEAM_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE)
 		VALUES
-		(seq_notice_post_number.nextVal, 2, #{adminNumber}, #{teamNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE);
+		(seq_notice_POST.nextVal, 2, #{adminNumber}, #{teamNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE)
 	</insert>
 	
 	<!-- 상세페이지 조회 -->
-	<select id = "selectDetail" resultType = "AdminPostDTO" parameterType = "int">
+	<select id = "selectDetail" resultType = "TeamNoticePostDTO" parameterType = "int">
 	<![CDATA[
 		SELECT NP.NOTICE_POST_NUMBER,
 		       NP.NOTICE_POST_TITLE,
@@ -35,7 +35,7 @@
 	
 	
 	<!-- 목록 조회 -->
-	<select id="select" resultType="AdminPostDTO">
+	<select id="select" resultType="TeamNoticePostDTO">
 	<![CDATA[
 	SELECT *
 	FROM (
@@ -55,7 +55,7 @@
 	</select>
 	
 	<!-- 목록 검색 -->
-	<select id = "selectFilter" parameterType = "string" resultType = "AdminPostDTO">
+	<select id = "selectFilter" parameterType = "string" resultType = "TeamNoticePostDTO">
 	<![CDATA[
 	SELECT *
 		FROM (
@@ -76,7 +76,7 @@
 	</select>
 	
 	<!-- 수정 -->
-	<update id = "update" parameterType = "AdminPostDTO">
+	<update id = "update" parameterType = "TeamNoticePostDTO">
 		UPDATE TBL_NOTICE_POST SET
 		NOTICE_POST_TITLE = #{noticePostTitle},
 		NOTICE_POST_CONTENT = '#{noticePostContent},
@@ -87,7 +87,7 @@
 	<!-- 삭제 -->
 	<delete id = "delete" parameterType = "int">
 		DELETE FROM TBL_NOTICE_POST NP
-		WHERE NOTICE_POST_NUMBER = #{noticePostNumber]
+		WHERE NOTICE_POST_NUMBER = #{noticePostNumber}
 	</delete>
 
 

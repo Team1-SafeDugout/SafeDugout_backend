@@ -41,7 +41,7 @@ public class SelectMainListOkController implements Execute{
 
 		System.out.println("pageMap 정보 : " + pageMap);
 		
-		// 게시글 목록 조회
+		// 공지사항 목록 조회
 		List<MainNoticePostDTO> mainNoticeList = mainDAO.selectMainList(pageMap);
 		System.out.println("selectMainList 메소드 호출 완료");
 		request.setAttribute("mainNoticeList", mainNoticeList);

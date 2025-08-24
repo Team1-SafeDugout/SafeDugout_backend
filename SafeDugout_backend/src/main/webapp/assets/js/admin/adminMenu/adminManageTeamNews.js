@@ -65,6 +65,10 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, 
 	postTitle.style.overflow = "hidden";
 	postTitle.style.whiteSpace = "nowrap";
 	postTitle.style.textOverflow = "eclipse";
+	
+	postDate.style.overflow = "hidden";
+	postDate.style.whiteSpace = "nowrap";
+	postDate.style.textOverflow = "eclipse";
 
 	const postTitleLink = document.createElement('a');
 	postTitleLink.setAttribute("href", "/admin/adminReadMainNoticeOk.ad?postNumber=" + postNumberParam);

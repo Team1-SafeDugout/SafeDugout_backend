@@ -130,11 +130,12 @@ main {
 
 /* 페이지네이션 컨테이너 */
 .page-container {
-  width: 205px;
+  width: 230px;
   height: 22px;
   margin: 40px 0px 0px 0px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  /* justify-content: space-between; */
 }
 
 /* 페이지 버튼 */
@@ -143,14 +144,15 @@ main {
   border: 1px solid black;
   width: 20px;
   height: 20px;
+  margin: 8px;
   font-size: 15px;
   text-align: center;
   line-height: 20px;
   color: black;
 }
 
-/* 페이지 첫번째 버튼 */
-.page-num:nth-child(2) {
+/* 페이지 버튼 (현재 페이지) */
+.active {
   background-color: #DCD6D0;
 }
 
@@ -160,8 +162,8 @@ main {
   text-decoration: none;
 }
 
-/* 페이지 버튼 a태그 첫번째 */
-.page-num:nth-child(2) a {
+/* 페이지 버튼 a태그 (현재 페이지) */
+.active a {
   color: white;
 }
 
