@@ -44,7 +44,7 @@ public class AdminTeamYoutubeDAO {
 	}
 	
 	// 조회(하나만)
-	public SongPostDTO selectDetail(int youtubePostNumber) {
+	public YoutubePostDTO selectDetail(int youtubePostNumber) {
 		return sqlSession.selectOne("adminNews.selectDetail",youtubePostNumber);
 	}
 	

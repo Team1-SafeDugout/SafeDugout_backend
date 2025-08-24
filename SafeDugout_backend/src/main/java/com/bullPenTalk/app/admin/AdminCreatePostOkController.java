@@ -16,6 +16,7 @@ import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
 import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
+import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -89,7 +90,7 @@ public class AdminCreatePostOkController implements Execute{
 		case "teamnews":
 			System.out.println("뉴스생성");
 			boardNum = 3;
-			NewsPostDTO newsPost = new NewsPostDTO();
+			NewsDetailDTO newsPost = new NewsDetailDTO();
 			AdminTeamNewsDAO newsDAO = new AdminTeamNewsDAO();
 			String journalist = multipartRequest.getParameter("journal-text");
 			String url = multipartRequest.getParameter("url-text");

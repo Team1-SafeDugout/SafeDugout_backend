@@ -129,7 +129,7 @@
           <label for="kia"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"> </label>
 
           <input type="radio" id="kt" name="team" required>
-          <label for="kt"> <img src=".${pageContext.request.contextPath}/assets/img/communityImg/kt.png"> </label>
+          <label for="kt"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"> </label>
 
           <input type="radio" id="nc" name="team" required>
           <label for="nc"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"> </label>

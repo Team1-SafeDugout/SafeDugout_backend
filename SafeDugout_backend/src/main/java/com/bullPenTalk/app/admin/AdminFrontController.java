@@ -1,8 +1,8 @@
 package com.bullPenTalk.app.admin;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -107,6 +107,11 @@ public class AdminFrontController extends HttpServlet {
 		case "/admin/adminReadMainNoticeOk.ad":
 			System.out.println("읽는중");
 			result = new AdminReadMainNoticeOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminReadPostOk.ad":
+			System.out.println("포스트 읽는중");
+			result = new AdminReadPostOkController().execute(request, response);
 			break;
 			
 		case "/admin/adminCreateMainNoticeOk.ad":
