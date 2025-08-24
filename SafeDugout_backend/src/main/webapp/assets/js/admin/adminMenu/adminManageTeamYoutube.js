@@ -18,8 +18,6 @@ closeModal.addEventListener('click', function(){
 
 // 테스트용 추가 버튼
 addbutton.addEventListener('click', function () {
-  const userListNum = document.querySelectorAll("#list-ul>li");
-  if (userListNum.length >= 10) return;
 
   const newMember = document.createElement('li');
 

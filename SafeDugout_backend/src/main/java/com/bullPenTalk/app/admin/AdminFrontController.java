@@ -129,6 +129,7 @@ public class AdminFrontController extends HttpServlet {
 			break;
 			
 		case "/admin/adminCreatePost.ad" :
+			System.out.println("생성창");
 			result = new AdminCreatePostController().execute(request, response);
 			break;
 			

@@ -14,10 +14,14 @@ import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
+import com.bullPenTalk.app.admin.dao.AdminTeamSongDAO;
+import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
 import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
+import com.bullPenTalk.app.dto.SongPostDTO;
+import com.bullPenTalk.app.dto.YoutubePostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -93,7 +97,7 @@ public class AdminCreatePostOkController implements Execute{
 			NewsDetailDTO newsPost = new NewsDetailDTO();
 			AdminTeamNewsDAO newsDAO = new AdminTeamNewsDAO();
 			String journalist = multipartRequest.getParameter("journal-text");
-			String url = multipartRequest.getParameter("url-text");
+			String newsUrl = multipartRequest.getParameter("url-text");
 //			VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, 
 //			#{postLink} , #{journalist})
 			newsPost.setPostTitle(title);
@@ -101,7 +105,7 @@ public class AdminCreatePostOkController implements Execute{
 			newsPost.setTeamNumber(teamNum);
 			newsPost.setJournalist(journalist);
 			newsPost.setAdminNumber(adminNumber);
-			newsPost.setPostLink(url);
+			newsPost.setPostLink(newsUrl);
 			newsPost.setAttachmentPath(uploadPath);
 			newsPost.setBoardId(boardNum);
 			
@@ -111,16 +115,57 @@ public class AdminCreatePostOkController implements Execute{
 			
 		case "teamyoutube":
 			boardNum = 4;
+			YoutubePostDTO youtubePostDTO = new YoutubePostDTO();
+			AdminTeamYoutubeDAO youtubeDAO = new AdminTeamYoutubeDAO();
+			String youtubeUrl = multipartRequest.getParameter("youtubeUrl");
+			title = multipartRequest.getParameter("youtubeTitle");
+			
+			youtubePostDTO.setBoardId(boardNum);
+			youtubePostDTO.setPostContent(content);
+			youtubePostDTO.setPostTitle(title);
+			youtubePostDTO.setTeamNumber(teamNum);
+			youtubePostDTO.setAdminNumber(adminNumber);
+			youtubePostDTO.setPostDate(date);
+			youtubePostDTO.setPostLink(youtubeUrl);
+			
+			youtubeDAO.insert(youtubePostDTO);
 			
 			break;
 			
 		case "teamCheeringsong":
 			boardNum = 5;
 			
+			SongPostDTO songPostDTO = new SongPostDTO();
+			AdminTeamSongDAO songPostDAO = new AdminTeamSongDAO();
+			String songUrl = multipartRequest.getParameter("songUrl");
+			title = multipartRequest.getParameter("songTitle");
+			
+			songPostDTO.setPostTitle(title);
+			songPostDTO.setPostDate(date);
+			songPostDTO.setTeamNumber(teamNum);
+			songPostDTO.setBoardTypeId(boardNum);
+			songPostDTO.setAdminId(adminNumber);
+			songPostDTO.setSongUrl(songUrl);
+			
+			songPostDAO.insert(songPostDTO);			
 			break;
 			
 		case "playercheeringsong":
 			boardNum = 6;
+			
+			SongPostDTO songPlayerPostDTO = new SongPostDTO();
+			AdminTeamSongDAO songPlayerPostDAO = new AdminTeamSongDAO();
+			String songPlayerUrl = multipartRequest.getParameter("songUrl");
+			title = multipartRequest.getParameter("songTitle");
+			
+			songPlayerPostDTO.setPostTitle(title);
+			songPlayerPostDTO.setPostDate(date);
+			songPlayerPostDTO.setTeamNumber(teamNum);
+			songPlayerPostDTO.setBoardTypeId(boardNum);
+			songPlayerPostDTO.setAdminId(adminNumber);
+			songPlayerPostDTO.setSongUrl(songPlayerUrl);
+			
+			songPlayerPostDAO.insert(songPlayerPostDTO);	
 			
 			break;
 		}

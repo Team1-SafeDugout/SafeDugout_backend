@@ -70,20 +70,13 @@ public class YoutubePostDTO {
 	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
-	public String getPostlink() {
-		return postlink;
-	}
-	public void setPostlink(String postlink) {
-		this.postlink = postlink;
-	}
-	private String postlink;
 
 	// toString
 	@Override
 	public String toString() {
 		return "YoutubePostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postDate=" + postDate
 				+ ", postContent=" + postContent + ", postLink=" + postLink + ", teamNumber=" + teamNumber
-				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postlink=" + postlink + "]";
+				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postlink=" + "]";
 	}
 
 	

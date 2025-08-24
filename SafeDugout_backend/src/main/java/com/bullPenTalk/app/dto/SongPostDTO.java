@@ -14,10 +14,18 @@ public class SongPostDTO {
 	private int teamNumber; // 대상 팀
 	private int boardTypeId; // 어느 보드에 저장될 
 	private int adminId; // 등록한 관리자 ID
+	private String songUrl; // 응원가 URL
 	
 	// get, set
+	
 	public int getPostNumber() {
 		return postNumber;
+	}
+	public String getSongUrl() {
+		return songUrl;
+	}
+	public void setSongUrl(String songUrl) {
+		this.songUrl = songUrl;
 	}
 	public void setPostNumber(int postNumber) {
 		this.postNumber = postNumber;

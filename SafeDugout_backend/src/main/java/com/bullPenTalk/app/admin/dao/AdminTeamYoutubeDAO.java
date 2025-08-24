@@ -18,37 +18,38 @@ public class AdminTeamYoutubeDAO {
 	// 추가
 	
 	public void insert(YoutubePostDTO youtubePostDTO) {
-		sqlSession.insert("adminNews.insert", youtubePostDTO);
+		sqlSession.insert("adminYoutube.insert", youtubePostDTO);
 	}
 	
 	// 수정
 	
 	public void update(YoutubePostDTO youtubePostDTO) {
-		sqlSession.update("adminNews.update", youtubePostDTO);
+		sqlSession.update("adminYoutube.update", youtubePostDTO);
 	}
 	
 	// 조회(전부)
 	
 	public List<YoutubePostDTO> select() {
-		return sqlSession.selectList("adminNews.selectAll");
+		return sqlSession.selectList("adminYoutube.selectAll");
 	}
+	
 	
 	// 삭제
 	public void delete(int youtubePostNumber) {
-		sqlSession.delete("adminNews.delete", youtubePostNumber);
+		sqlSession.delete("adminYoutube.delete", youtubePostNumber);
 	}
 	
 	// 검색
 	public List<YoutubePostDTO> selectFilter(String postName){
-		return sqlSession.selectList("adminNews.selectFilter", postName);
+		return sqlSession.selectList("adminYoutube.selectFilter", postName);
 	}
 	
 	// 조회(하나만)
 	public YoutubePostDTO selectDetail(int youtubePostNumber) {
-		return sqlSession.selectOne("adminNews.selectDetail",youtubePostNumber);
+		return sqlSession.selectOne("adminYoutube.selectDetail",youtubePostNumber);
 	}
 	
 	public int getTotal() {
-		return sqlSession.selectOne("adminNews.total");
+		return sqlSession.selectOne("adminYoutube.total");
 	}
 }

@@ -7,11 +7,18 @@ const modalForm = document.getElementById("modal-form");
 
 var addOn = false;
 
+openModal.addEventListener('click', function(){
+  modal.style.display = "flex";
+  modalForm.reset();
+  addOn = true;
+});
+
+closeModal.addEventListener('click', function(){
+  modal.style.display = "none";
+});
+
 // 테스트용 추가 버튼
 addbutton.addEventListener('click', function () {
-  const userListNum = document.querySelectorAll("#list-ul>li");
-  if (userListNum.length >= 10) return;
-
   const newMember = document.createElement('li');
 
   const number = document.createElement('div');
