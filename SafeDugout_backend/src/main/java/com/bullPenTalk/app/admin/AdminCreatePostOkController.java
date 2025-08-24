@@ -24,8 +24,7 @@ import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
-public class AdminCreateMainNoticeOkController implements Execute {
+public class AdminCreatePostOkController implements Execute{
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
@@ -90,8 +89,8 @@ public class AdminCreateMainNoticeOkController implements Execute {
 		int adminNumber = adminInfo.getAdminNumber();
 		
 		switch(boardCategory) {
-		case "main":
-			boardNum = 1;
+		case "teamnews":
+			boardNum = 3;
 			MainNoticePostDTO mainPost = new MainNoticePostDTO();
 			AdminMainNoticeDAO mainDAO = new AdminMainNoticeDAO();
 			
@@ -105,8 +104,8 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			result.setPath("");
 			break;
 			
-		case "guide":
-			boardNum = 2;
+		case "teamyoutube":
+			boardNum = 4;
 			GuidePostDTO guidePost = new GuidePostDTO();
 			AdminGuideDAO guideDAO = new AdminGuideDAO();
 			
@@ -115,14 +114,13 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			guidePost.setNoticePostDate(date);
 			guidePost.setNoticePostUpdate(upDate);
 			guidePost.setAdminNumber(adminNumber);
-			guidePost.setNoticeTypeId(boardNum);
 			
 			guideDAO.insert(guidePost);
 			result.setPath("");
 			break;
 			
-		case "team":
-			boardNum = 3;
+		case "teamCheeringsong":
+			boardNum = 5;
 			TeamNoticePostDTO teamPost = new TeamNoticePostDTO();
 			AdminTeamNoticeDAO teamDAO = new AdminTeamNoticeDAO();
 			
@@ -134,14 +132,27 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			teamPost.setNoticePostUpdate(upDate);
 			teamPost.setTeamNumber(teamNum);
 			teamPost.setAdminNumber(adminNumber);
-			teamPost.setNoticeTypeId(boardNum);
 			
 			teamDAO.insert(teamPost);
 			result.setPath("");
 			break;
 			
-		default:
-			result = null;
+		case "playercheeringsong":
+			boardNum = 6;
+			TeamNoticePostDTO teamPost = new TeamNoticePostDTO();
+			AdminTeamNoticeDAO teamDAO = new AdminTeamNoticeDAO();
+			
+			int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
+			
+			teamPost.setNoticePostTitle(title);
+			teamPost.setNoticePostContent(content);
+			teamPost.setNoticePostDate(date);
+			teamPost.setNoticePostUpdate(upDate);
+			teamPost.setTeamNumber(teamNum);
+			teamPost.setAdminNumber(adminNumber);
+			
+			teamDAO.insert(teamPost);
+			result.setPath("");
 			break;
 		}
 		result.setPath("/admin/adminMainNoticeListOk.ad");
@@ -149,7 +160,6 @@ public class AdminCreateMainNoticeOkController implements Execute {
 		
 		return result;
 	}
-	
 	
 	
 	int getTeamNumber(String teamName) {
@@ -188,5 +198,4 @@ public class AdminCreateMainNoticeOkController implements Execute {
 		}
 		return teamNumber;
 	}
-
 }

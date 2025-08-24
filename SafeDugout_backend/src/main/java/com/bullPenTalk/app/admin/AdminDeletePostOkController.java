@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 
-public class AdminCreateNoticePostController implements Execute{
+public class AdminDeletePostOkController implements Execute{
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
@@ -18,13 +17,5 @@ public class AdminCreateNoticePostController implements Execute{
 		
 		return null;
 	}
-	
-	private TeamNoticePostDTO addTeamNotice(HttpServletRequest request) {
-		TeamNoticePostDTO teamNoticeDTO = new TeamNoticePostDTO();
-		String postTitle = request.getParameter("");
-		String postContent = request.getParameter("");
-		String targetTeam = request.getParameter("");
-		return teamNoticeDTO;
-	}
-	
+
 }
