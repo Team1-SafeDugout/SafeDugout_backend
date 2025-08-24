@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class PostDetailDTO {
 
 //	<!-- 팀 게시글 상세 조회 -->
@@ -38,9 +40,7 @@ public class PostDetailDTO {
 	private String commentContent;
 	private String update;
 	private String commentMemberNumber;
-	private int attachmentNumber;
-	private String attachmentName;
-	private String attachmentPath;
+	private List<AttachmentDTO> attachment;
 	
 	// get,set
 	public int getPostNumber() {
@@ -97,23 +97,11 @@ public class PostDetailDTO {
 	public void setCommentMemberNumber(String commentMemberNumber) {
 		this.commentMemberNumber = commentMemberNumber;
 	}
-	public int getAttachmentNumber() {
-		return attachmentNumber;
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
 	}
-	public void setAttachmentNumber(int attachmentNumber) {
-		this.attachmentNumber = attachmentNumber;
-	}
-	public String getAttachmentName() {
-		return attachmentName;
-	}
-	public void setAttachmentName(String attachmentName) {
-		this.attachmentName = attachmentName;
-	}
-	public String getAttachmentPath() {
-		return attachmentPath;
-	}
-	public void setAttachmentPath(String attachmentPath) {
-		this.attachmentPath = attachmentPath;
+	public void setAttachment(List<AttachmentDTO> attachment) {
+		this.attachment = attachment;
 	}
 	
 	// toString
@@ -122,10 +110,7 @@ public class PostDetailDTO {
 		return "PostDetailDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
 				+ ", postDate=" + postDate + ", memberNumber=" + memberNumber + ", commentNumber=" + commentNumber
 				+ ", commentContent=" + commentContent + ", update=" + update + ", commentMemberNumber="
-				+ commentMemberNumber + ", attachmentNumber=" + attachmentNumber + ", attachmentName=" + attachmentName
-				+ ", attachmentPath=" + attachmentPath + "]";
+				+ commentMemberNumber + ", attachment=" + attachment + "]";
 	}
-	
-	
 	
 }
