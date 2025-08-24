@@ -16,7 +16,7 @@
 				<div class="header-right">
 					<div class="notice">
 						<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
-							[메인공지] : 불펜토크 사이트 이용 안내</a>
+							<c:out value="${recentMainTitle}"/></a>
 					</div>
 					<div class="login">
 						<a href="${pageContext.request.contextPath}/member/login.me">
@@ -33,7 +33,7 @@
 				<div class="header-right">
 					<div class="notice">
 						<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
-							[메인공지] : 불펜토크 사이트 이용 안내</a>
+							<c:out value="${recentMainTitle}"/></a>
 					</div>
 					<div class="trade-logo">
 						<a

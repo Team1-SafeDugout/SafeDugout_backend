@@ -16,34 +16,34 @@
   <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <nav>
     <div class="team-logo">
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=3">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=2">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=8">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=5">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=9">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=6">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=7">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=4">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=1">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="">
       </a>
-      <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.jsp">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=10">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png" alt="">
       </a>
     </div>
