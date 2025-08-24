@@ -29,10 +29,12 @@
 	
 	<!-- 메인 공지사항 최신 항목(제목) 가져오기 -->
 	<select id="getRecent" resultType="MainNoticePostDTO">
-		SELECT NOTICE_POST_TITLE
+		SELECT * FROM 
+		(SELECT NOTICE_POST_TITLE
 		FROM TBL_NOTICE_POST
 		WHERE NOTICE_TYPE_ID = 1
-		ORDER BY NOTICE_POST_DATE DESC
+		ORDER BY NOTICE_POST_DATE DESC)
+		WHERE ROWNUM = 1
 	</select>
 	
 	<!-- 공지사항 총 개수 가져오기 -->

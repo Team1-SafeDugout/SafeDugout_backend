@@ -21,7 +21,7 @@
 
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <!-- 메인 -->
   <main>
     <!-- 메인 컨테이너 -->
@@ -190,7 +190,7 @@
     </div>
   </main>
   <!-- 푸터 -->
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <!-- 스크립트 -->
   <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
