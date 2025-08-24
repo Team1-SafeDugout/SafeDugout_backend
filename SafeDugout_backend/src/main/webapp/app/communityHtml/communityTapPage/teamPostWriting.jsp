@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamPsotWriting.css">
-  <script defer src="./../../../assets/js/communityJs/communityTapPage/teamPostWriting.js"></script>
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamPsotWriting.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamPostWriting.js"></script>
 </head>
 <body>
   <div id="team-header"></div>
@@ -36,7 +35,7 @@
     <!-- 파일 첨부 -->
     <div class="team-file-section">
       <span class="team-file-info">* 파일은 1개만 업로드 가능합니다
-      * 이미지파일 10MB 이상 불가
+      * 이미지파일 5MB 이상 불가
       * 수정 시 첨부된 파일이 삭제됩니다</span>
       <div class="team-file-actions">
         <button class="team-file-btn">파일 업로드</button>

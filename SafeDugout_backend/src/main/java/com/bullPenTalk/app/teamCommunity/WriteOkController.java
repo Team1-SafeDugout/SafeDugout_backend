@@ -10,22 +10,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
-import com.bullPenTalk.app.Attachment.dao.SellPostAttachmentDAO;
+import com.bullPenTalk.app.Attachment.dao.PostAttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
+import com.bullPenTalk.app.dto.PostAttachmentDTO;
 import com.bullPenTalk.app.dto.PostDTO;
-import com.bullPenTalk.app.dto.SellPostAttachmentDTO;
 import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
-public class WriteOkContriller {
-	public Result writeProduct(HttpServletRequest request, HttpServletResponse response) {
+
+
+public class WriteOkController {
+	public Result writePost(HttpServletRequest request, HttpServletResponse response) {
 		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
 		PostDTO postDTO = new PostDTO();
 		Result result = new Result();
 		AttachmentDAO attachmentDAO = new AttachmentDAO();
-//		PostAttachmentDAO postAttachmentDAO = new PostAttachmentDAO();
+		PostAttachmentDAO postAttachmentDAO = new PostAttachmentDAO();
 
 		System.out.println("Write 컨트롤러 진입");
 		// 로그인 한 회원 정보 가져오기
@@ -75,7 +77,7 @@ public class WriteOkContriller {
 			System.out.println("게시글 추가 - PostDetailDTO : " + postDTO);
 
 			// 게시글 추가
-			int PostNumber = teamCommunityDAO.insertPost(postDTO);
+			int postNumber = teamCommunityDAO.insertPost(postDTO);
 			System.out.println("생성된 게시글 번호 : " + postDTO);
 
 			// 파일 업로드 처리
@@ -105,21 +107,18 @@ public class WriteOkContriller {
 				
 				int attachmentNumber = attachmentDTO.getAttachmentNumber(); // 생성된 번호 가져오기
 
-//				// 매핑 DTO 생성
-//				SellPostAttachmentDTO sellPostAttachmentDTO = new SellPostAttachmentDTO();
-//				sellPostAttachmentDTO.setSellPostNumber(sellPostNumber); // 방금 생성된 판매글 번호
-//				sellPostAttachmentDTO.setAttachmentNumber(attachmentNumber); // DB에서 생성된 첨부파일 번호
-//
-//				// 매핑 테이블에 INSERT
-//				sellPostAttachmentDTO.setSellPostNumber(sellPostNumber);
-//				sellPostAttachmentDTO.setAttachmentNumber(attachmentNumber);
-//				sellPostAttachmentDAO.insert(sellPostAttachmentDTO);
+				// 매핑 DTO 생성
+				PostAttachmentDTO postAttachmentDTO = new PostAttachmentDTO();
+				postAttachmentDTO.setPostNumber(postNumber); // 방금 생성된 판매글 번호
+				postAttachmentDTO.setAttachmentNumber(attachmentNumber); // DB에서 생성된 첨부파일 번호
+				postAttachmentDAO.insert(postAttachmentDTO);
+				
 
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		result.setPath("/trade/productRegisterResult.jsp");
+		result.setPath("/communityHtml/communityTapPage/teamBoardComplete.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴징입");
 		return result;

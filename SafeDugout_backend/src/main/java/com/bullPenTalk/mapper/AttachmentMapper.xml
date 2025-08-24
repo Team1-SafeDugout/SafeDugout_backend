@@ -58,6 +58,16 @@
     	VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentPath})
 	</insert>
 
+
+	<!-- 매핑테이블 추가 -->
+	<insert id="insertPost" parameterType="PostAttachmentDTO">
+    <![CDATA[
+    INSERT INTO TBL_POST_ATTACHMENT (POST_NUMBER, ATTACHMENT_NUMBER)
+    VALUES (#{postNumber}, #{attachmentNumber})
+    ]]>
+	</insert>
+
+	<!-- 매핑테이블 추가 -->
 	<insert id="insertSellPost" parameterType="SellPostAttachmentDTO">
     <![CDATA[
     INSERT INTO TBL_SELL_POST_ATTACHMENT (SELL_POST_NUMBER, ATTACHMENT_NUMBER)

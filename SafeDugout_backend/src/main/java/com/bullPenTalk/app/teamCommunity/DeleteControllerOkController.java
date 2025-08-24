@@ -1,4 +1,4 @@
-package com.bullPenTalk.app.trade;
+package com.bullPenTalk.app.teamCommunity;
 
 import java.io.File;
 import java.util.List;
@@ -10,20 +10,21 @@ import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
+import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 
-public class DeleteOkController {
+public class DeleteControllerOkController {
 
-	public Result deleteSellPost(HttpServletRequest request, HttpServletResponse response) {
+	public Result deletePost(HttpServletRequest request, HttpServletResponse response) {
 		
-		SellPostDAO sellPostDAO = new SellPostDAO();
+		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
 	    AttachmentDAO attachmentDAO = new AttachmentDAO();
 	    Result result = new Result();
 	    
 	    try {
-	        int sellPostNumber = Integer.parseInt(request.getParameter("sellPostNumber"));
+	        int postNumber = Integer.parseInt(request.getParameter("postNumber"));
 
 	        // 첨부파일 조회 (서버 파일 삭제용)
-	        List<AttachmentDTO> attachments = attachmentDAO.select(sellPostNumber);
+	        List<AttachmentDTO> attachments = attachmentDAO.select(postNumber);
 	        for (AttachmentDTO attachment : attachments) {
 	            File file = new File(request.getSession().getServletContext().getRealPath("/") + attachment.getAttachmentPath());
 	            if (file.exists()) {
@@ -33,10 +34,10 @@ public class DeleteOkController {
 	        }
 
 	        // 판매글 삭제 (DB에서 첨부파일, 매핑 자동 삭제)
-	        sellPostDAO.delete(sellPostNumber);
-	        System.out.println("판매글 삭제 완료: " + sellPostNumber);
+	        teamCommunityDAO.delete(postNumber);
+	        System.out.println("판매글 삭제 완료: " + postNumber);
 
-	        result.setPath("/trade/tradeMain.jsp");
+	        result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");
 	        result.setRedirect(true);
 
 	    } catch (NumberFormatException e) {
