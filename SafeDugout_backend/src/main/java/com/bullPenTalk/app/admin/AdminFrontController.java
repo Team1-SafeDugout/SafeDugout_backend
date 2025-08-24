@@ -122,6 +122,15 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("삭제 진입");
 			result = new AdminDeleteNoticeOkController().execute(request, response);
 			break;
+			
+		case "/admin/adminCreatePost.ad" :
+			result = new AdminCreatePostController().execute(request, response);
+			break;
+			
+		case "/admin/adminCreatePostOk.ad" :
+			System.out.println("포스트 생성");
+			result = new AdminCreatePostOkController().execute(request, response);
+			break;
 		}	
 		
 		if (result != null) {

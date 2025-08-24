@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminAddTeamNewsDetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  <script>
+  
+  </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminAddTeamNewsDetail.js"></script>
 </head>
 
@@ -18,18 +21,7 @@
     <section class="section-background">
       <!-- 필수 입력 정보 : 제목, URL -->
       <!-- 선택 입력 정보 : 내용, 첨부파일 -->
-      <form action="" method="post" name="adminNewsPost">
-        <!-- 첨부 파일 -->
-        <section class="file">
-          <label for="file-area">
-            <div class="img-area">
-              <img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png">
-            </div>
-            <div class="file-button-style"> 클릭하여 파일 추가 </div>
-          </label>
-          <input type="file" name="file" id="file-area">
-        </section>
-
+      <form action="/admin/adminCreatePostOk.ad?boardCategory=teamnews" method="post" name="adminNewsPost" enctype="multipart/form-data">
 
         <!-- 제목 추가 부분 -->
         <section class="title">
@@ -40,7 +32,9 @@
         <!-- URL 추가 부분 -->
         <section class="url">
           <label for="url-text"> URL </label>
-          <input type="url" name="url-text" required>
+          <input type="url" id = "url-text" name="url-text" required>
+          <label for="journal-text"> 기자 </label>
+          <input type="text" id = "journal-text" name="journal-text" required>
         </section>
 
         <!-- 게시글 선택 -->
@@ -66,6 +60,21 @@
           <div> 서식 API </div>
           <textarea name="content" id="content-textarea"> </textarea>
         </section>
+        
+        <!-- 첨부 파일 -->
+        <section class = "file">
+          <label for = "file-area"> 
+            <div class = "file-button-style"> 파일 첨부 </div>
+          </label>
+          <input type= "file" name = "file" id = "file-area" accept=".jpg, .jpeg, .png">
+          <div> ※ 파일은 1개만 올리기 가능합니다   ※  글 수정 시 첨부된 파일이 삭제 됩니다(<span class="cnt">0</span>/1) </div>
+<!--           <div id = "delete-file"> 파일 삭제 </div> -->
+        </section>
+        <div class="img-controller-box">
+			<ul class="file-list">
+
+			</ul>
+		</div>
 
         <!-- 버튼 추가 부분 -->
         <section class="buttons">

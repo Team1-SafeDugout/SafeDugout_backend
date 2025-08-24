@@ -13,14 +13,10 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
-import com.bullPenTalk.app.admin.dao.AdminGuideDAO;
-import com.bullPenTalk.app.admin.dao.AdminMainNoticeDAO;
-import com.bullPenTalk.app.admin.dao.AdminTeamNoticeDAO;
+import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
 import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
-import com.bullPenTalk.app.dto.GuidePostDTO;
-import com.bullPenTalk.app.dto.MainNoticePostDTO;
-import com.bullPenTalk.app.dto.TeamNoticePostDTO;
+import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -79,7 +75,7 @@ public class AdminCreatePostOkController implements Execute{
 			int attachmentNumber = attachmentDTO.getAttachmentNumber(); // 생성된 번호 가져오기
 		}
 		
-		String boardCategory = multipartRequest.getParameter("post-categories"); // 리퀘스트로 넘어온 
+		String boardCategory =  request.getParameter("boardCategory"); // 리퀘스트로 넘어온 
 		int boardNum = 0; // 카테고리 테이블에서의 boardNUM
 		
 		String title = multipartRequest.getParameter("title-text");
@@ -87,72 +83,44 @@ public class AdminCreatePostOkController implements Execute{
 		String upDate = date;
 		String content  = multipartRequest.getParameter("content");
 		int adminNumber = adminInfo.getAdminNumber();
+		int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 		
 		switch(boardCategory) {
 		case "teamnews":
+			System.out.println("뉴스생성");
 			boardNum = 3;
-			MainNoticePostDTO mainPost = new MainNoticePostDTO();
-			AdminMainNoticeDAO mainDAO = new AdminMainNoticeDAO();
+			NewsPostDTO newsPost = new NewsPostDTO();
+			AdminTeamNewsDAO newsDAO = new AdminTeamNewsDAO();
+			String journalist = multipartRequest.getParameter("journal-text");
+			String url = multipartRequest.getParameter("url-text");
+//			VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, 
+//			#{postLink} , #{journalist})
+			newsPost.setPostTitle(title);
+			newsPost.setPostContent(content);
+			newsPost.setTeamNumber(teamNum);
+			newsPost.setJournalist(journalist);
+			newsPost.setAdminNumber(adminNumber);
+			newsPost.setPostLink(url);
+			newsPost.setAttachmentPath(uploadPath);
+			newsPost.setBoardId(boardNum);
 			
-			mainPost.setNoticePostTitle(title);
-			mainPost.setNoticePostContent(content);
-			mainPost.setNoticePostDate(date);
-			mainPost.setNoticePostUpdate(upDate);
-			mainPost.setAdminNumber(adminNumber);
-			
-			mainDAO.insert(mainPost);
+			newsDAO.insert(newsPost);
 			result.setPath("");
 			break;
 			
 		case "teamyoutube":
 			boardNum = 4;
-			GuidePostDTO guidePost = new GuidePostDTO();
-			AdminGuideDAO guideDAO = new AdminGuideDAO();
 			
-			guidePost.setNoticePostTitle(title);
-			guidePost.setNoticePostContent(content);
-			guidePost.setNoticePostDate(date);
-			guidePost.setNoticePostUpdate(upDate);
-			guidePost.setAdminNumber(adminNumber);
-			
-			guideDAO.insert(guidePost);
-			result.setPath("");
 			break;
 			
 		case "teamCheeringsong":
 			boardNum = 5;
-			TeamNoticePostDTO teamPost = new TeamNoticePostDTO();
-			AdminTeamNoticeDAO teamDAO = new AdminTeamNoticeDAO();
 			
-			int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
-			
-			teamPost.setNoticePostTitle(title);
-			teamPost.setNoticePostContent(content);
-			teamPost.setNoticePostDate(date);
-			teamPost.setNoticePostUpdate(upDate);
-			teamPost.setTeamNumber(teamNum);
-			teamPost.setAdminNumber(adminNumber);
-			
-			teamDAO.insert(teamPost);
-			result.setPath("");
 			break;
 			
 		case "playercheeringsong":
 			boardNum = 6;
-			TeamNoticePostDTO teamPost = new TeamNoticePostDTO();
-			AdminTeamNoticeDAO teamDAO = new AdminTeamNoticeDAO();
 			
-			int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
-			
-			teamPost.setNoticePostTitle(title);
-			teamPost.setNoticePostContent(content);
-			teamPost.setNoticePostDate(date);
-			teamPost.setNoticePostUpdate(upDate);
-			teamPost.setTeamNumber(teamNum);
-			teamPost.setAdminNumber(adminNumber);
-			
-			teamDAO.insert(teamPost);
-			result.setPath("");
 			break;
 		}
 		result.setPath("/admin/adminMainNoticeListOk.ad");
