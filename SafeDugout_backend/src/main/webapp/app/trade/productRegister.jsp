@@ -21,7 +21,7 @@
 
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/headerLogin.jsp" />
+	<jsp:include page="/header.jsp" />
 
 	<!-- 메인 -->
 	<main>

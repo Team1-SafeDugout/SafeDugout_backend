@@ -36,7 +36,7 @@
 <select id = "getTotal" resultType = "int">
 	SELECT COUNT(NOTICE_POST_NUMBER)
 	FROM TBL_NOTICE_POST
-	WHERE NOTICE_TYPE_ID = 3
+	WHERE NOTICE_TYPE_ID = 2
 </select>
 
 
@@ -55,7 +55,7 @@
 	               P.NOTICE_POST_DATE,
 	               P.NOTICE_POST_UPDATE
 	        FROM TBL_NOTICE_POST P
-	        WHERE P.NOTICE_TYPE_ID = 3
+	        WHERE P.NOTICE_TYPE_ID = 2
 	        ORDER BY P.NOTICE_POST_DATE DESC
 	    ) subquery
 	)
@@ -72,7 +72,7 @@
 	       P.NOTICE_POST_DATE,
 	       P.NOTICE_POST_UPDATE
 	FROM TBL_NOTICE_POST P
-	WHERE P.NOTICE_TYPE_ID = 3
+	WHERE P.NOTICE_TYPE_ID = 2
 </select>
 
 

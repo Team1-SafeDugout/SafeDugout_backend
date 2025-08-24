@@ -22,7 +22,7 @@
 
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/headerLogin.jsp" />
+	<jsp:include page="/header.jsp" />
 
 	<!-- 검색 폼 -->
 	<form action="tradeMainOkController.do" method="get">
