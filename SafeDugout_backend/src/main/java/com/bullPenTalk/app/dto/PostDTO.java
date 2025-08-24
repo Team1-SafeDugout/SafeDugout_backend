@@ -20,10 +20,10 @@ public class PostDTO { // 게시글 번호
 //	);
 
 	
-	private int postNUmber; //게시글 번호
-	private int memberNUmber; // 회원 번호(게시글 작성자)
+	private int postNumber; //게시글 번호
+	private int memberNumber; // 회원 번호(게시글 작성자)
 	private int teamNumber; // 팀번호
-	private int adminNUmber; // 관리자 번호
+	private int adminNumber; // 관리자 번호
 	private int boardId; // 게시판 종류 id
 	private String postTitle; // 게시글 제목
 	private String postContent; // 게시글 내용
@@ -31,25 +31,17 @@ public class PostDTO { // 게시글 번호
 	private String postUpdate; // 수정일자
 	private String postLink; // 게시글 링크
 	private String journalist; // 기자이름
-
-	
-	public String getJournalist() {
-		return journalist;
+	public int getPostNumber() {
+		return postNumber;
 	}
-	public void setJournalist(String journalist) {
-		this.journalist = journalist;
+	public void setPostNumber(int postNumber) {
+		this.postNumber = postNumber;
 	}
-	public int getPostNUmber() {
-		return postNUmber;
+	public int getMemberNumber() {
+		return memberNumber;
 	}
-	public void setPostNUmber(int postNUmber) {
-		this.postNUmber = postNUmber;
-	}
-	public int getMemberNUmber() {
-		return memberNUmber;
-	}
-	public void setMemberNUmber(int memberNUmber) {
-		this.memberNUmber = memberNUmber;
+	public void setMemberNumber(int memberNumber) {
+		this.memberNumber = memberNumber;
 	}
 	public int getTeamNumber() {
 		return teamNumber;
@@ -57,11 +49,11 @@ public class PostDTO { // 게시글 번호
 	public void setTeamNumber(int teamNumber) {
 		this.teamNumber = teamNumber;
 	}
-	public int getAdminNUmber() {
-		return adminNUmber;
+	public int getAdminNumber() {
+		return adminNumber;
 	}
-	public void setAdminNUmber(int adminNUmber) {
-		this.adminNUmber = adminNUmber;
+	public void setAdminNumber(int adminNumber) {
+		this.adminNumber = adminNumber;
 	}
 	public int getBoardId() {
 		return boardId;
@@ -99,15 +91,21 @@ public class PostDTO { // 게시글 번호
 	public void setPostLink(String postLink) {
 		this.postLink = postLink;
 	}
+	public String getJournalist() {
+		return journalist;
+	}
+	public void setJournalist(String journalist) {
+		this.journalist = journalist;
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "PostDTO [postNUmber=" + postNUmber + ", memberNUmber=" + memberNUmber + ", teamNumber=" + teamNumber
-				+ ", adminNUmber=" + adminNUmber + ", boardId=" + boardId + ", postTitle=" + postTitle
+		return "PostDTO [postNumber=" + postNumber + ", memberNumber=" + memberNumber + ", teamNumber=" + teamNumber
+				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postTitle=" + postTitle
 				+ ", postContent=" + postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate
 				+ ", postLink=" + postLink + ", journalist=" + journalist + "]";
 	}
-	
 	
 
 }

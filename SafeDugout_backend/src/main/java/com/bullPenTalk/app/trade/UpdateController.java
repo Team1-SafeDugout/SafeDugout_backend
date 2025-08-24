@@ -10,13 +10,13 @@ public class UpdateController {
 
 	public Result update(HttpServletRequest request, HttpServletResponse response) {
 		
-		int bsellPostNumber = Integer.valueOf(request.getParameter("sellPostNumber"));
-		SellPostDAO boardDAO = new SellPostDAO();
+		int sellPostNumber = Integer.valueOf(request.getParameter("sellPostNumber"));
+		SellPostDAO sellPostDAO = new SellPostDAO();
 		Result result = new Result();
 		
-		request.setAttribute("board", boardDAO.select(boardNumber));
+		request.setAttribute("sellPost", sellPostDAO.selectDetail(sellPostNumber));
 		
-		result.setPath("/app/board/boardUpdate.jsp");
+		result.setPath("/app/trade/Update.jsp");
 		result.setRedirect(false);
 			
 		return result;
