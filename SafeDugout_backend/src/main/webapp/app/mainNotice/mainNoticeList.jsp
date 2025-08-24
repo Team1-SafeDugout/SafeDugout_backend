@@ -1,4 +1,4 @@
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,15 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>메인 공지사항 목록 페이지</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/footer.css">
+<title>메인 공지사항 목록 페이지</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mainNotice/mainNoticeList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 <%-- <script defer src="${pageContext.request.contextPath}/assets/js/mainNotice/mainNoticeList.js"></script> --%>
 </head>
 
@@ -22,7 +17,7 @@
 
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/header.jsp" />
 	<!-- 메인 -->
 	<main>
 		<!-- 메인 컨테이너 -->
@@ -42,7 +37,7 @@
 						<!-- 제목 텍스트 -->
 						<div class="post-title">제목</div>
 						<!-- 작성 일자 텍스트 -->
-						<div class="upload-date">작성 일자</div>
+						<div class="upload-date">작성 일자</div>
 					</div>
 					<c:choose>
 						<c:when test="${not empty mainNoticeList}">
@@ -101,7 +96,7 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-					<!-- 오른쪽 화표 버튼 -->
+					<!-- 오른쪽 화살표 버튼 -->
 					<c:if test="${next}">
 						<div class="arrow-button">
 							<a
@@ -113,7 +108,7 @@
 			</div>
 	</main>
 	<!-- 푸터 -->
-	<jsp:include page="/footer.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 	<!-- 스크립트 -->
 	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

@@ -7,16 +7,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>상품 디테일 페이지(구매자)</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/trade/productDetailBuyer.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/footer.css">
-<script defer
-	src="${pageContext.request.contextPath}/assets/js/trade/productDetailBuyer.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/productDetailBuyer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+<script defer src="${pageContext.request.contextPath}/assets/js/trade/productDetailBuyer.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -146,7 +140,7 @@
 		</section>
 	</main>
 	<!-- 푸터 -->
-	<div id="footer"></div>
+	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 	<!-- 스크립트 -->
 	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="./../../assets/css/communityCss/communityTapPage/freeCommunityWriting.css">
   <script defer src="./../../assets/js/communityJs/communityTapPage/freeCommunityWriting.js"></script>
   <script defer src="./../../assets/js/include.js"></script>
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="./../../assets/css/footer.css">
 </head>
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <!-- 게시글 작성 컨테이너 -->
   <main class="free-community-writer-container">
     <h2 class="free-community-writer-title">게시물 작성</h2>
@@ -53,6 +53,6 @@
       <!-- </form> -->
     </div>
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 </html>

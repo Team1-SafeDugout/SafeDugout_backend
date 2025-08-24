@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="./../../assets/css/communityCss/communityTapPage/freeCommuntiyList.css">
   <script defer src="./../../assets/js/communityJs/communityTapPage/freeCommunityList.js"></script>
   <script defer src="./../../assets/js/include.js"></script>
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="./../../assets/css/footer.css">
 </head>
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <!-- 자유게시판 컨테이너 -->
     <div class="free-board-list-container">
@@ -43,6 +43,6 @@
       </div>
     </div>  
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 </html>

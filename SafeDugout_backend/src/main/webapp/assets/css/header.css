@@ -33,7 +33,8 @@ header {
 	height: 100px;
 	display: flex;
 	float: right;
-
+	gap: 15px;
+	padding-right: 10px;
 }
 
 .notice {
@@ -41,9 +42,23 @@ header {
 	line-height: 100px;
 }
 
+.login {
+	display: flex;
+	line-height: 100px;
+}
+
+.register {
+	display: flex;
+	line-height: 100px;
+}
+
 .welcome {
 	display: flex;
 	line-height: 100px;
+}
+
+.welcome span {
+	font-weight: 700;
 }
 
 .logout {
@@ -59,4 +74,18 @@ header {
 .mypage img {
 	width: 80px;
 	height: 80px;
+}
+
+a{
+	color: black; 
+	text-decoration: none;
+}
+
+.notice a {
+	text-decoration: underline;
+}
+
+.register span, 
+.logout span {
+	margin-right: 10px;
 }

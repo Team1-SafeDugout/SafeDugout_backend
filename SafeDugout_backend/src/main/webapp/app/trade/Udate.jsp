@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>상품 수정/등록 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/productRegister.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 <script defer src="${pageContext.request.contextPath}/assets/js/trade/productRegister.js"></script>
 </head>

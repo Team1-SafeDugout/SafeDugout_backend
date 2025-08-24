@@ -9,8 +9,7 @@
 <title>중고거래 검색결과 페이지</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 <script defer src="${pageContext.request.contextPath}/assets/js/trade/tradeSearchResult.js"></script>
 </head>
@@ -270,7 +269,7 @@
 		</div>
 	</main>
 	<!-- 푸터 -->
-	<div id="footer"></div>
+	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 	<!-- 스크립트 -->
 	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

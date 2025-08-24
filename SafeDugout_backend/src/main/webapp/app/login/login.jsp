@@ -9,8 +9,7 @@
   <title>로그인 페이지</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login/login.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <script defer src="${pageContext.request.contextPath}/assets/js/login/login.js"></script>
 </head>
 
@@ -18,7 +17,7 @@
 
 <body>
   <!-- 헤더 -->
-  <jsp:include page="/headerNoLogin.jsp" />
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <!-- 메인 -->
   <main>
     <!-- 메인 컨테이너 -->
@@ -73,7 +72,7 @@
   </main>
 
   <!-- 푸터 -->
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <!-- 스크립트 -->
   <script src="${pageContext.request.contextPath}/assets/js/includeNoLogin.js"></script>
 </body>

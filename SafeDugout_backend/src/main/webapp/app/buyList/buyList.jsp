@@ -10,12 +10,11 @@
   <title>구매 내역</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyList.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
 
     <section class="buyList">
@@ -103,7 +102,7 @@
     <a href="./../trade/pointBuy.html">충전</a>
     </section>
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 
