@@ -39,7 +39,8 @@ public class Kiwoom implements TradeService{
 				result = select.listTeamItemCategory(action, request, response);
 				break;
 			case "deletePostOk":
-
+				DeleteOkController delete = new DeleteOkController();
+				delete.deleteSellPost(request, response);
 				break;
 			}
 		} catch (Exception e) {
