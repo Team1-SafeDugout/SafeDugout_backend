@@ -21,7 +21,7 @@ public class WriteController {
 			path = "/app/member/login.jsp";
 		}else {
 			path = "/app/trade/productRegister.jsp";
-			request.setAttribute("memberId", memberDAO.getMemberId(memberNumber));
+			request.setAttribute("memberId", memberDAO.getMemberNumber(memberNumber));
 		}
 		
 		result.setPath(path);
