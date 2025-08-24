@@ -8,8 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인 공지사항 디테일 페이지</title>
   <link rel="stylesheet" href="./../../assets/css/mainNotice/mainNoticeDetail.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="./../../assets/css/footer.css">
   <script defer src="./../../assets/js/mainNotice/mainNoticeDetail.js"></script>
 </head>
@@ -18,7 +17,7 @@
 
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <!-- 메인 -->
   <main>
     <!-- 공지사항 디테일 컨테이너 -->
@@ -68,7 +67,7 @@
     </div>
   </main>
   <!-- 푸터 -->
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <!-- 스크립트 -->
   <script src="./../../assets/js/include.js"></script>
 </body>

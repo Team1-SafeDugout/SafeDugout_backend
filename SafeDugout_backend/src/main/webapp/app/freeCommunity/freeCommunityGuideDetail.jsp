@@ -7,11 +7,11 @@
   <title>불펜토크</title>
   <link rel="stylesheet" href="./../../assets/css/communityCss/communityTapPage/freeCommunityGuideDetail.css">
   <script defer src="./../../assets/js/include.js"></script>
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="./../../assets/css/footer.css">
 </head>
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <!-- 입문자 가이드 디테일 컨테이너 -->
     <div class="free-guide-board-detail">
@@ -44,6 +44,6 @@
       </div>
     </div>
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 </html>

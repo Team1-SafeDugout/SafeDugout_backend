@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
+import com.bullPenTalk.app.dto.MemberDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 //메인페이지 DAO
@@ -20,6 +21,12 @@ public class MainDAO {
 //	public void selectMainList(MemberDTO memberDTO) {
 //		sqlSession.insert("member.join", memberDTO);
 //	}
+	
+	//로그인한 회원 정보 조회 
+	public MemberDTO selectLoginMember(int memberNumber) {
+		System.out.println("selectLoginMember 메소드 실행");
+		return sqlSession.selectOne("main.selectLoginMember", memberNumber);
+	}
 	
 	//메인 공지사항 목록 조회
 	public List<MainNoticePostDTO> selectMainList(Map<String, Integer> map) {

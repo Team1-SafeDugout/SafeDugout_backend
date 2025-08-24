@@ -8,10 +8,9 @@
   <title>중고거래 검색결과 페이지(결과없음)</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResultNoResult.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/trade/tradeSearchResultNoResult.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+<script defer src="${pageContext.request.contextPath}/assets/js/trade/tradeSearchResultNoResult.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -134,7 +133,7 @@
     </div>
   </main>
   <!-- 푸터 -->
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <!-- 스크립트 -->
   <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

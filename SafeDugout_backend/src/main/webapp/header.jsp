@@ -24,7 +24,7 @@
 					</div>
 					<div class="register">
 						<a href="${pageContext.request.contextPath}/member/join.me">
-							| 회원가입</a>
+							<span>|</span> 회원가입</a>
 					</div>
 					<div class=""></div>
 				</div>
@@ -43,16 +43,14 @@
 							alt="">
 						</a>
 					</div>
-					<div class="welcome">조성재님 환영합니다.</div>
+					<div class="welcome"><span><c:out value="${sessionScope.memberName}" /></span>님 환영합니다.</div>
 					<div class="logout">
-						<a href="${pageContext.request.contextPath}/member/logOutOk.me">|
-							logout</a>
+						<a href="${pageContext.request.contextPath}/member/logOutOk.me">
+						<span>|</span> 로그아웃</a>
 					</div>
 					<div class="mypage">
-						<a
-							href="${pageContext.request.contextPath}/app/myPostList/myPostList.jsp"><img
-							src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png"
-							alt=""></a>
+						<a href="${pageContext.request.contextPath}/app/myPostList/myPostList.jsp">
+						<img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt=""></a>
 					</div>
 				</div>
 			</c:otherwise>

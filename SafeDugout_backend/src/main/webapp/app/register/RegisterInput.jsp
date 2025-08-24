@@ -9,8 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원정보 입력 페이지(회원가입)</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/register/RegisterInput.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -21,7 +20,7 @@
 
 <body>
   <!-- 헤더 -->
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <!-- 메인 -->
   <main>
     <!-- 메인 컨테이너 -->
@@ -190,7 +189,7 @@
     </div>
   </main>
   <!-- 푸터 -->
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <!-- 스크립트 -->
   <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

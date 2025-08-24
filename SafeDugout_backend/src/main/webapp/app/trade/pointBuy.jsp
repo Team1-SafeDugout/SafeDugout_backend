@@ -78,7 +78,7 @@
 	</main>
 
 	<!-- 푸터 -->
-	<div id="footer"></div>
+	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 	<!-- 스크립트 -->
 	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

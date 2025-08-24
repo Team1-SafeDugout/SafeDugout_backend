@@ -24,12 +24,6 @@ public class MainOkController implements Execute{
 		System.out.println("DAO 생성 완료");
 		Result result = new Result();
 		
-		//메인 공지사항 최신 공지 제목 가져오기
-		String recentMainTitle = mainDAO.getRecent().getNoticePostTitle();
-		
-		//request 속성에 최신 공지 제목 대입 
-		request.setAttribute("recentMainTitle", recentMainTitle);
-		
 		//path 값, redirect 여부 설정 
 		result.setPath("/main.jsp");
 		result.setRedirect(false);

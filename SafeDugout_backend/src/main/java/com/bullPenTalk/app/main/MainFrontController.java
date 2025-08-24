@@ -6,8 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.main.dao.MainDAO;
 
 /**
  * Servlet implementation class MainFrontController
@@ -45,14 +47,44 @@ public class MainFrontController extends HttpServlet {
 		System.out.println("현재 경로 : " + target);
 		Result result = new Result();
 		
+		//세션 저장 
+		HttpSession session = request.getSession();
+				
+		//MainDAO 객체 생성
+		MainDAO mainDAO = new MainDAO();
+		
+		//헤더에서 띄울 최신 공지 제목 저장
+		String recentMainTitle = mainDAO.getRecent().getNoticePostTitle();
+		request.setAttribute("recentMainTitle", recentMainTitle);
+		
+		//팀 번호가 있을 경우 실행 
+		if(request.getParameter("teamNumber") != null) {
+			System.out.println("팀 번호 전송됨");
+			session.setAttribute("teamNumber", request.getParameter("teamNumber"));
+		}else {
+			
+		}
+		
 		switch (target) {
 		case "/main.ma":
 			System.out.println("메인 페이지 처리 요청");
+			//로그인한 회원 회원번호 저장 
+			int memberNumber = 0;
+			if(session.getAttribute("memberNumber") != null) {
+				memberNumber = (Integer)session.getAttribute("memberNumber");
+				//로그인한 사용자 이름 저장 
+				String memberName = mainDAO.selectLoginMember(memberNumber).getMemberName();
+				System.out.println(memberName);
+				request.getSession().setAttribute("memberName", memberName);
+			}
 			result = new MainOkController().execute(request, response); 
 			break;
 		case "/main/mainTeam.ma":
 			System.out.println("팀 커뮤니티 메인 페이지 처리 요청");
-			result = new MainTeamOkController().execute(request, response); 
+			result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
+			System.out.println(result.getPath());
+			System.out.println("팀 번호 : " + session.getAttribute("teamNumber"));
+			result.setRedirect(false);
 			break;
 		case "/main/mainAll.ma":
 			System.out.println("전체 커뮤니티 메인 페이지 처리 요청");
