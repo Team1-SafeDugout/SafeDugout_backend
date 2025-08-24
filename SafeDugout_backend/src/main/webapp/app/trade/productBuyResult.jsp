@@ -1,109 +1,74 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ìí êµ¬ë§¤ ìë£ íì´ì§</title>
+<title>포인트 충전 완료 페이지</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/trade/productBuyResult.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/footer.css">
-<script defer
-	src="${pageContext.request.contextPath}/assets/js/trade/productBuyResult.js"></script>
+	href="./../../assets/css/trade/pointBuyResult.css">
+<link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+<link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
+<link rel="stylesheet" href="./../../assets/css/footer.css">
+<script defer src="./../../assets/js/trade/pointBuyResult.js"></script>
 </head>
 
-<!-- ë°ë -->
+<!-- 바디 -->
 <body>
-	<!-- í¤ë -->
+	<!-- 헤더 -->
 	<div id="header"></div>
-	<!-- ë©ì¸ -->
+	<!-- 메인 -->
 	<main>
-		<!-- ë©ì¸ ì»¨íì´ë -->
+		<!-- 메인 컨테이너 -->
 		<div class="main-container">
-			<!-- í¼ íê·¸ -->
+			<!-- 폼 태그 -->
 			<form action="" method="post">
-				<!-- ë©ìì§ ë°ì¤ -->
+				<!-- 메시지 박스 -->
 				<div class="main-message-container">
-					<!-- ë©ìì§ ë°ì¤ ì ëª© -->
-					<div class="container-title">ìí êµ¬ë§¤ ìë£</div>
-					<!-- ê¸´ ê²ìì  -->
+					<!-- 메시지 박스 제목 -->
+					<div class="container-title">포인트 충전 완료</div>
+					<!-- 긴 검은선 -->
 					<div class="long-line"></div>
-					<!-- ì¶ë ¥ ì»¨íì´ë -->
+					<!-- 출력값 컨테이너 -->
 					<div class="container-full">
-						<!-- ì¶ë ¥ ì¼ìª½ ë¶ë¶ -->
-						<div class="container-left">
-							<!-- í¬ì¸í¸ ì¢ë¥ -->
-							<div class="point-name">
-								íì¬ ë³´ì  í¬ì¸í¸ <br> <br>
-							</div>
-							<!-- í¬ì¸í¸ ê° -->
-							<div class="point-amount">
-								163000 í¬ì¸í¸ <br> <br> <br>
-							</div>
-							<!-- í¬ì¸í¸ ì¢ë¥ -->
-							<div class="point-name">
-								ìí ê°ê²© <br> <br>
-							</div>
-							<!-- í¬ì¸í¸ ê° -->
-							<div class="point-amount">
-								20000 í¬ì¸í¸ <br> <br>
-							</div>
-						</div>
-						<!-- ì¶ë ¥ ì¤ë¥¸ìª½ ë¶ë¶ -->
-						<div class="container-right">
-							<!-- ìí ì´ë¯¸ì§ -->
-							<div class="product-img">
-								<img src="./../../assets/img/tradeImg/product6.jpg" alt="">
-							</div>
-							<!-- ìí ì ë³´ íì¤í¸ -->
-							<div class="product-text">ìí ëª : [ëì°]
-								ëì°ë² ì´ì¤Xì¼ì´ì¤í°íì´ TICKET ì¼ì´ì¤</div>
-							<!-- ìí ì ë³´ íì¤í¸ -->
-							<div class="product-text">ê±°ë ë°©ì : íë°° ë°ì¡ /
-								ì§ê±°ë</div>
-						</div>
+						<!-- 결제 정보 텍스트 -->
+						<div class="pay-info-text">결제 금액 :</div>
+						<!-- 결제 정보 값 -->
+						<div class="pay-value">100,000 원</div>
 					</div>
-					<!-- ì§§ì ê²ìì  -->
-					<div class="short-line"></div>
-					<!-- ì¶ë ¥ ì»¨íì´ë -->
+					<!-- 출력값 컨테이너 -->
 					<div class="container-full">
-						<!-- ì¶ë ¥ ì¼ìª½ ìë -->
-						<div class="container-left-bottom">
-							<!-- í¬ì¸í¸ ì¢ë¥ -->
-							<div class="point-name">
-								ê²°ì  í ìì¬ í¬ì¸í¸ <br> <br>
-							</div>
-							<!-- í¬ì¸í¸ ê° -->
-							<div class="point-amount">
-								143000 í¬ì¸í¸ <br> <br>
-							</div>
-						</div>
-						<div></div>
+						<!-- 결제 정보 텍스트 -->
+						<div class="pay-info-text">결제 방식 :</div>
+						<!-- 결제 정보 값 -->
+						<div class="pay-value">카드</div>
 					</div>
-					<!-- ê¸´ ê²ìì  -->
-					<div class="long-line"></div>
-					<!-- ë²í¼ ì»¨íì´ë -->
+					<!-- 긴 검은선(아래쪽) -->
+					<div class="long-line-bottom"></div>
+					<!-- 출력값 컨테이너(아래쪽) -->
+					<div class="container-full-bottom">
+						<!-- 포인트 종류 -->
+						<div class="point-name">현재 포인트 :</div>
+						<!-- 포인트 값 -->
+						<div class="point-amount">100000 원</div>
+					</div>
+					<!-- 버튼 컨테이너 -->
 					<div class="main-button-container">
-						<!-- ë²í¼ ì»¨íì´ë a íê·¸ -->
-						<a href="./productDetailBuyer.html"> <!-- íì¸ ë²í¼ íì¤í¸ -->
-							<div class="main-button-next">íì¸</div>
+						<!-- 버튼 컨테이너 a 태그 -->
+						<a href="./../mypostlist/myPostList.html"> <!-- 확인 버튼 텍스트 -->
+							<div class="main-button-next">확인</div>
 						</a>
 					</div>
 				</div>
 			</form>
 		</div>
 	</main>
-	<!-- í¸í° -->
+
+	<!-- 푸터 -->
 	<div id="footer"></div>
-	<!-- ì¤í¬ë¦½í¸ -->
-	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
+	<!-- 스크립트 -->
+	<script src="./../../assets/js/include.js"></script>
 </body>
 
 </html>

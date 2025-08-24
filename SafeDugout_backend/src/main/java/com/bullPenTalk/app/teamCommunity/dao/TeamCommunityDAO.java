@@ -7,10 +7,18 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.BatterRecordDTO;
 import com.bullPenTalk.app.dto.DeffenseBaseRecordDTO;
+import com.bullPenTalk.app.dto.GameScheduleDTO;
+import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.app.dto.PostDTO;
+import com.bullPenTalk.app.dto.PostDetailDTO;
 import com.bullPenTalk.app.dto.SongPostDTO;
+import com.bullPenTalk.app.dto.StadiumDTO;
+import com.bullPenTalk.app.dto.StadiumFoodDTO;
+import com.bullPenTalk.app.dto.StadiumTicketDTO;
 import com.bullPenTalk.app.dto.TeamBatterRecordDTO;
+import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
+import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.bullPenTalk.app.dto.TeamPitcherRecordDTO;
 import com.bullPenTalk.app.dto.TeamRecordDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
@@ -32,6 +40,26 @@ public class TeamCommunityDAO {
 		return list;
 	}
 	
+	// 게시글 상세 페이지
+	public PostDetailDTO postDetail(int PostNumber) {
+		System.out.println("게시글 상세 페이지 조회(단건조회)");
+		return sqlSession.selectOne("TeamCommunityMapper.detailSelect", PostNumber);
+	}
+	
+	
+	// 공지 목록 가져오기
+	public List<TeamNoticePostDTO> selectNotice(Map<String, Integer> pageMap){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
+		List<TeamNoticePostDTO> list = sqlSession.selectList("TeamCommunityNoticeMapper.select", pageMap);
+		System.out.println("조회결과 : " + list);
+		return list;
+	}
+	
+	// 공지목록 상세페이지
+	public TeamNoticeDetailDTO teamNoticeDetail(int PostNumber) {
+		System.out.println("게시글 상세 페이지 조회(단건조회)");
+		return sqlSession.selectOne("TeamCommunityNoticeMapper.detailSelect", PostNumber);
+	}
 	
 	// 뉴스 목록 가져오기
 	public List<NewsPostDTO> selectNews(Map<String, Integer> pageMap){
@@ -39,6 +67,13 @@ public class TeamCommunityDAO {
 		List<NewsPostDTO> list = sqlSession.selectList("TeamCommunityMapper.newsSelect", pageMap);
 		System.out.println("조회결과 : " + list);
 		return list;
+	}
+	
+	
+	// 뉴스 상세페이지 가져오기
+	public NewsDetailDTO teamNewsDetail(int PostNumber) {
+		System.out.println("게시글 상세 페이지 조회(단건조회)");
+		return sqlSession.selectOne("TeamCommunityMapper.detailNewsSelect", PostNumber);
 	}
 	
 	// 유튜브 목록 가져오기
@@ -120,5 +155,99 @@ public class TeamCommunityDAO {
 		List<BatterRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.playerBatterRecord", pageMap);
 		System.out.println("조회결과 : " + list);
 		return list;
-	}	
+	}
+	
+	
+	// 게시글 등록
+	public int insertPost(PostDTO postDTO) {
+		System.out.println("게시글 작성 - insertSellPost 메소드 실행 ");
+		int insert = sqlSession.insert("TeamCommunityMapper.insert", postDTO);
+		System.out.println(postDTO + "출력");
+		System.out.println(postDTO.getPostContent() + "출력 === ");
+		System.out.println("insert 결과 : " + insert);
+		System.out.println("생성된 SellPostNumber : " + postDTO.getPostNumber());
+		return postDTO.getPostNumber();
+	}
+	
+	// 게시글 수정
+	public void update(PostDTO PostDTO) {
+		sqlSession.update("TeamCommunityMapper.update", PostDTO);
+	}
+	
+	// 게시글 삭제
+	public void delete(int PostNumber) {
+		System.out.println("게시글 삭제 실행 : " + PostNumber);
+		sqlSession.delete("TeamCommunityMapper.delete", PostNumber);
+		System.out.println("게시글 삭제 쿼리 실행 완료");
+	}
+	
+	// 게시글 총 개수 가져오기
+	public int getTotalBoard() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("TeamCommunityMapper.getTotal");
+	}
+	
+	// 뉴스글 총 개수 가져오기
+	public int getTotalNews() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("TeamCommunityMapper.getTotalNews");
+	}
+	
+	// 유튜브 총 개수 가져오기
+	public int getTotalYoutube() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("TeamCommunityMapper.getTotalYoutube");
+	}
+	
+	// 응원가 총 개수 가져오기
+	public int getTotalSong() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("TeamCommunityMapper.getTotalSong");
+	}
+	
+	// 팀 응원가 총 개수 가져오기
+	public int getTotalTeamSong() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("TeamCommunityMapper.getTotalTeamSong");
+	}
+	
+	// 응원가 총 개수 가져오기
+	public int getTotalPlayerSong() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("TeamCommunityMapper.getTotalPlayerSong");
+	}
+	
+	// 경기장 정보 가져오기
+	public List<StadiumDTO> selectStadium(Map<String, Integer> pageMap){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
+		List<StadiumDTO> list = sqlSession.selectList("TeamCommunityMapper.selectStadium", pageMap);
+		System.out.println("조회결과 : " + list);
+		return list;
+	}
+	
+	// 경기장 티켓 정보 
+	public List<StadiumTicketDTO> selectTicket(Map<String, Integer> pageMap){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
+		List<StadiumTicketDTO> list = sqlSession.selectList("TeamCommunityMapper.selectTictek", pageMap);
+		System.out.println("조회결과 : " + list);
+		return list;
+	}
+	
+	// 경기장 먹거리 정보
+	public List<StadiumFoodDTO> selectFood(Map<String, Integer> pageMap){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
+		List<StadiumFoodDTO> list = sqlSession.selectList("TeamCommunityMapper.selectFood", pageMap);
+		System.out.println("조회결과 : " + list);
+		return list;
+	}
+	
+	// 경기 일정 조회
+	public List<GameScheduleDTO> selectGame(Map<String, Integer> pageMap){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
+		List<GameScheduleDTO> list = sqlSession.selectList("TeamCommunityMapper.selectGame", pageMap);
+		System.out.println("조회결과 : " + list);
+		return list;
+	}
+	
+	
 }

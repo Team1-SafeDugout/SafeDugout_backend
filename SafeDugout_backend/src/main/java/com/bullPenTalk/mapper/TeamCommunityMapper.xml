@@ -16,16 +16,16 @@
 	</select>
 
 	<!-- 게시글 작성 -->
-	<insert id="insert" parameterType="TeamPostDTO">
-
-		INSERT INTO tbl_board (
-		board_number, board_title, board_content, member_number)
-		VALUES
-		(seq_board.NEXTVAL, #{boardTitle}, #{boardContent}, #{memberNumber})
+	<insert id="insert" parameterType="PostDTO">
+		<selectKey keyProperty="SellPostNumber" resultType="int" order="BEFORE">
+			SELECT SEQ_SELL_POST.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_POST (POST_NUMBER, MEMBER_NUMBER, TEAM_NUMBER, BOARD_ID, POST_TITLE, POST_CONTENT, POST_DATE)
+    	 VALUES (#{postNumber}, #{memberNumber}, #{teamNumber}, 2, #{postTitle}, #{postContent}, sysdate);
 	</insert>
 
 	<!-- 팀 게시글 상세 조회 -->
-	<select id="detailSelect" parameterType="TeamPostDTO">
+	<select id="detailSelect" parameterType="PostDetailDTO">
 		<![CDATA[
 		SELECT P.POST_NUMBER,
 	    P.POST_TITLE,
@@ -51,13 +51,32 @@
 		]]>
 	</select>
 
+	<!-- 팀 뉴스글 상세 조회 -->
+	<select id="detailNewsSelect" parameterType="NewsDetailDTO">
+		<![CDATA[
+		SELECT P.POST_NUMBER,
+	    P.POST_TITLE,
+	    P.POST_CONTENT,
+	    P.POST_DATE,
+	    p.JOURNALIST,
+	    A.ATTACHMENT_NUMBER,
+	    A.ATTACHMENT_NAME,
+	    A.ATTACHMENT_PATH
+	  	FROM TBL_POST P                                
+		LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER    
+		LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
+		WHERE P.POST_NUMBER = #{postNumber}                                  
+	  	AND P.TEAM_NUMBER = #{teamNumber}                                 
+		ORDER BY A.ATTACHMENT_NUMBER ASC
+		]]>
+	</select>
+	
 	<!-- 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
 		delete from tbl_post
 		where
 		post_number = #{postNumber}
 		AND TEAM_NUMBER =#{teamNumber}
-		AND BOARD_ID =#{boardId}
 	</delete>
 
 
@@ -334,6 +353,13 @@
 		FROM tbl_post
 		where board_id = 4
 	</select>
+		
+	<!-- 팀응원가 총 갯수 -->
+	<select id="getTotalSong" resultType="int">
+		SELECT COUNT(post_number)
+		FROM tbl_post
+		where board_id IN(5, 6)
+	</select>	
 	
 	<!-- 팀응원가 총 갯수 -->
 	<select id="getTotalTeamSong" resultType="int">
@@ -347,6 +373,66 @@
 		SELECT COUNT(post_number)
 		FROM tbl_post
 		where board_id = 6
+	</select>
+	
+	<!-- 경기장 정보 조회 -->
+	<select id="selectStadium" parameterType="int" resultType="StadiumDTO">
+	SELECT 
+	    STADIUM_NUMBER,
+	    STADIUM_NAME,
+	    STADIUM_ADDRESS,
+	    TEAM_NUMBER
+	FROM TBL_STADIUM
+	WHERE TEAM_NUMBER = {teamNumber};
+	</select>
+	
+	<!-- 경기장 티켓 조회 -->
+	<select id="selectTictek" parameterType="int" resultType="StadiumTictekDTO">
+		SELECT 
+	    TICKET_ID,
+	    STADIUM_NUMBER,
+	    TEAM_NUMBER,
+	    SEAT_NAME,
+	    WEEKDAY_PRICE,
+	    WEEKEND_PRICE,
+	    RESERVATION_SITE
+	FROM TBL_STADIUM_TICKET
+	WHERE TEAM_NUMBER = {teamNumber};
+	</select>
+	
+	<!-- 경기장 먹거리 조회 -->
+	<select id="selectFood" parameterType="int" resultType="StadiumFoodDTO">
+	SELECT 
+	    FOOD_ID,
+	    FOOD_NAME,
+	    FOOD_LOCATION,
+	    FOOD_TIP,
+	    STADIUM_NUMBER
+	FROM TBL_STADIUM_FOOD
+	WHERE TEAM_NUMBER = {teamNumber};
+	</select>
+	
+	<!-- 게임 일정 조회 -->
+	<select id="selectGame" parameterType="int" resultType="GameSchduleDTO">
+	SELECT
+	    gs.GAME_ID,
+	    gs.SCHEDULE_DATE,
+	    ht.TEAM_NAME AS HOME_TEAM,
+	    at.TEAM_NAME AS AWAY_TEAM,
+	    s.STADIUM_NAME,
+	    s.STADIUM_ADDRESS
+	FROM
+	    TBL_GAME_SCHEDULE gs
+	JOIN TBL_TEAM ht
+	    ON gs.HOME_TEAM_NUMBER = ht.TEAM_NUMBER
+	JOIN TBL_TEAM at
+	    ON gs.AWAY_TEAM_NUMBER = at.TEAM_NUMBER
+	JOIN TBL_STADIUM s
+	    ON gs.STADIUM_NUMBER = s.STADIUM_NUMBER
+	WHERE
+	    gs.HOME_TEAM_NUMBER = #{teamNumber} OR gs.AWAY_TEAM_NUMBER = #{teamNumber}
+	ORDER BY
+	    gs.SCHEDULE_DATE;	
 	</select>
 	
 </mapper>
