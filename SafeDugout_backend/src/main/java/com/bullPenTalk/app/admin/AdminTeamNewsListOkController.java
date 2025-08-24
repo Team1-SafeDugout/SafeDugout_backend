@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
-import com.bullPenTalk.app.dto.NewsPostDTO;
+import com.bullPenTalk.app.dto.NewsDetailDTO;
 
 public class AdminTeamNewsListOkController implements Execute{
 
@@ -37,7 +37,7 @@ public class AdminTeamNewsListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<NewsPostDTO> boardList = adminTeamNewsDAO.select();
+		List<NewsDetailDTO> boardList = adminTeamNewsDAO.select();
 		System.out.println("test:"+adminTeamNewsDAO.select());
 		request.setAttribute("boardList", boardList);
 		

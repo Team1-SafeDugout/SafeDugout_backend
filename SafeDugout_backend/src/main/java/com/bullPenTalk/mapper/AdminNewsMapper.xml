@@ -3,7 +3,7 @@
 <mapper namespace="adminNews">
 
 	<!-- 뉴스 목록 조회 -->
-	<select id="listSelect" resultType="NewsPostDTO">
+	<select id="listSelect" resultType="NewsDetailDTO">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*
@@ -20,11 +20,11 @@
 	            ORDER BY POST_DATE DESC
 	        ) subquery
 	    )
-	    WHERE rnum BETWEEN #{startRow} AND #{endRow};
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<!-- 뉴스 상세 조회 -->
-	<select id="detailSelect" parameterType="int" resultType="NewsPostDTO">
+	<select id="detailSelect" parameterType="int" resultType="NewsDetailDTO">
 	    SELECT p.POST_NUMBER,
 	           p.POST_TITLE,
 	           p.POST_CONTENT,
@@ -38,10 +38,10 @@
 	    FROM TBL_POST p
 	    LEFT JOIN TBL_POST_ATTACHMENT pa ON p.POST_NUMBER = pa.POST_NUMBER
 	    LEFT JOIN TBL_ATTACHMENT a ON pa.ATTACHMENT_NUMBER = a.ATTACHMENT_NUMBER
-	    WHERE p.POST_NUMBER = #{postNumber};
+	    WHERE p.POST_NUMBER = #{postNumber}
 	</select>
 	
-	<select id = "selectAll" resultType = "NewsPostDTO">
+	<select id = "selectAll" resultType = "NewsDetailDTO">
 	    SELECT p.POST_NUMBER,
 	           p.POST_TITLE,
 	           p.POST_CONTENT,
@@ -61,7 +61,7 @@
 	<select id = "total" resultType = "int">
 	SELECT COUNT(BOARD_ID)
 	FROM TBL_POST
-	WHERE BOARD_ID = 2
+	WHERE BOARD_ID = 3
 	</select>
 
 	

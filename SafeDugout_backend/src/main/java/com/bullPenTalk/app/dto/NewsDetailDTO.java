@@ -25,11 +25,40 @@ public class NewsDetailDTO {
 	private String postContent;
 	private String postDate;
 	private String journalist;
+	private String postLink;
+	private int boardId;
+	private int adminNumber;
+	private int teamNumber;
 	private int attachmentNumber;
 	private String attachmentName;
 	private String attachmentPath;
 	
 	// get, set
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+	public int getBoardId() {
+		return boardId;
+	}
+	public void setBoardId(int boardId) {
+		this.boardId = boardId;
+	}
+	public String getPostLink() {
+		return postLink;
+	}
+	public void setPostLink(String postLink) {
+		this.postLink = postLink;
+	}
+	public int getAdminNumber() {
+		return adminNumber;
+	}
+	public void setAdminNumber(int adminNumber) {
+		this.adminNumber = adminNumber;
+	}
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
+	}
+	
 	public int getPostNumber() {
 		return postNumber;
 	}

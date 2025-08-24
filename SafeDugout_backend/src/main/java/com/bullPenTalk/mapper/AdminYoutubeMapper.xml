@@ -33,9 +33,20 @@
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink}, #{postContent})
+		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle}, #{postDate}, #{postLink}, #{postContent})
 	</insert>
 	
+	<select id="selectAll" resultType = "YouTubePostDTO">
+		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
+		FROM TBL_POST
+		WHERE BOARD_ID = 4
+	</select>
+	
+	<select id = "total" resultType = "int">
+		SELECT COUNT(POST_NUMBER)
+		FROM TBL_POST
+		WHERE BOARD_ID = 4
+	</select>
 	
 	<!-- 유튜브 삭제 -->
 	<delete id="delete" parameterType="int">
