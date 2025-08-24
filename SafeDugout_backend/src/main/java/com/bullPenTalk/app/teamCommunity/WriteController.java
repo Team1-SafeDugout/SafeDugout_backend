@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.member.dao.MemberDAO;
 
-public class WriteContriller {
+public class WriteController {
 	
 	public Result writerequest(HttpServletRequest request, HttpServletResponse response) {
 		
