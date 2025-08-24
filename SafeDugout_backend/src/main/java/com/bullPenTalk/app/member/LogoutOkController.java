@@ -16,7 +16,7 @@ public class LogoutOkController implements Execute{
 			throws ServletException, IOException {
 		Result result = new Result();
 		request.getSession().invalidate(); // 세션 무효화
-		result.setPath("/app/login/login.me");
+		result.setPath("/main.ma");
 		result.setRedirect(true);
 		return null;
 	}
