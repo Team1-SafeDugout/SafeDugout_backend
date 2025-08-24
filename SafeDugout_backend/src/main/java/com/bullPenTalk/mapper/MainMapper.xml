@@ -39,7 +39,57 @@
 		select notice_post_number, notice_post_title, notice_post_date, notice_post_update,
 		notice_post_content
 		from tbl_notice_post
-		where notice_type_id = 1 and notice_post-number = #{noticePostNumber}
+		where notice_type_id = 1 and notice_post_number = #{noticePostNumber}
+	</select>
+	
+	<!-- 메인 공지사항 상세 조회 (이전글) -->
+	<select id="selectMainPrev" parameterType="int" resultType="MainNoticePostDTO">
+	<![CDATA[
+	SELECT notice_post_number, 
+			notice_post_title, 
+			notice_post_date, 
+			notice_post_update,
+			notice_post_content
+	FROM (SELECT rownum rn2, n.* FROM tbl_notice_post n)
+	WHERE rn2 = (SELECT rn - 1 FROM (
+		SELECT rownum rn, n2.notice_post_number
+		FROM tbl_notice_post n2
+		WHERE n2.notice_type_id = 1
+		order by n2.notice_post_number desc) subquery
+		WHERE subquery.notice_post_number = #{noticePostNumber}
+	)
+	]]>
+	</select>
+	
+	<!-- 메인 공지사항 상세 조회 (다음글) -->
+	<select id="selectMainNext" parameterType="int" resultType="MainNoticePostDTO">
+	<![CDATA[
+	SELECT notice_post_number, 
+			notice_post_title, 
+			notice_post_date, 
+			notice_post_update,
+			notice_post_content
+	FROM (SELECT rownum rn2, n.* FROM tbl_notice_post n)
+	WHERE rn2 = (SELECT rn + 1 FROM (
+		SELECT rownum rn, n2.notice_post_number
+		FROM tbl_notice_post n2
+		WHERE n2.notice_type_id = 1
+		order by n2.notice_post_number desc) subquery
+		WHERE subquery.notice_post_number = #{noticePostNumber}
+	)
+	]]>
+	</select>
+	
+	<!-- 현재 메인 공지사항 항목 순서 가져오기 -->
+	<select id="getMainIndex" parameterType="int" resultType="int">
+	<![CDATA[
+		SELECT rn FROM (
+			SELECT rownum rn, n2.notice_post_number
+			FROM tbl_notice_post n2
+			WHERE n2.notice_type_id = 1
+			order by n2.notice_post_number desc) subquery
+		WHERE subquery.notice_post_number = #{noticePostNumber}
+	]]>
 	</select>
 	
 	<!-- 경기 일정 목록 조회 -->
