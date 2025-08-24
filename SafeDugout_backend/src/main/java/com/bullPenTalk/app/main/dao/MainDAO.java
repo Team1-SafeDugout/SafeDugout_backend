@@ -29,15 +29,31 @@ public class MainDAO {
 		return list;
 	}
 	
-	//공지사항 총 개수 가져오기
+	//메인 공지사항 총 개수 가져오기
 	public int getTotal() {
 		System.out.println("getTotal 메소드 실행");
 		return sqlSession.selectOne("main.getTotalMainList");
 	}
 	
+	//현재 메인 공지사항 항목 순서 가져오기
+	public int getIndex(int noticePostNumber) {
+		System.out.println("getIndex 메소드 실행");
+		return sqlSession.selectOne("main.getMainIndex", noticePostNumber);
+	}
+	
 	//메인 공지사항 상세 조회
 	public MainNoticePostDTO selectMainDetail(int noticePostNumber) {
 		return sqlSession.selectOne("main.selectMainDetail", noticePostNumber);
+	}
+	
+	//메인 공지사항 상세 조회 (이전글) 
+	public MainNoticePostDTO selectMainPrev(int noticePostNumber) {
+		return sqlSession.selectOne("main.selectMainPrev", noticePostNumber);
+	}
+	
+	//메인 공지사항 상세 조회 (다음글) 
+	public MainNoticePostDTO selectMainNext(int noticePostNumber) {
+		return sqlSession.selectOne("main.selectMainNext", noticePostNumber);
 	}
 	
 	//경기 일정 목록 조회

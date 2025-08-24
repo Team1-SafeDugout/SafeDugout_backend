@@ -30,31 +30,41 @@
         <!-- '제목' -->
         <span>제목: </span>
         <!-- 공지사항 제목 텍스트 -->
-        <p>[메인공지] : 불펜토크 사이트 이용 안내</p>
+        <p><c:out value="${mainNoticePost.getNoticePostTitle()}" /></p>
       </div>
       <!-- 공지사항 내용 -->
       <div class="notice-board-content">
-        <p>상품 등록 페이지로 이동합니다.</p>
-        <p>팀 로고 버튼 클릭시 팀 커뮤니티 메인페이지로 이동합니다.</p>
-        <p>마이페이지로 이동합니다.</p>
-        <p>불펜토크 메인페이지로 이동합니다.</p>
-        <p>안녕하세요 불펜토크 이용자 여러분! 원활한 사이트 이용을 위한 안내문입니다.</p>
-        <p>불펜토크 사이트 비회원 이용자께서는 MY 팀 커뮤니티와 중고거래 페이지에서 게시글 및 정보, 상품 열람만 가능하며, ...</p>
+      	<p><c:out value="${mainNoticePost.getNoticePostContent()}" /></p>
       </div>
       <!-- 버튼 컨테이너 -->
       <div class="notice-board-btn-container">
         <!-- 이전글, 다음글 버튼 -->
         <div class="notice-board-btn">
           <!-- 이전글 버튼 -->
-          <button type="button">이전글</button>
+          <c:if test="${prevPost}">
+          <a href="${pageContext.request.contextPath}/main/selectMainDetailOk.ma?prevNext=prev&noticePostNumber=${mainNoticePost.getNoticePostNumber()}"><button type="button">이전글</button></a>
+          </c:if>
           <!-- 다음글 버튼 -->
-          <button type="button">다음글</button>
+          <c:if test="${nextPost}">
+          <a href="${pageContext.request.contextPath}/main/selectMainDetailOk.ma?prevNext=next&noticePostNumber=${mainNoticePost.getNoticePostNumber()}"><button type="button">다음글</button></a>
+          </c:if>
         </div>
         <!-- 목록으로 버튼 -->
-        <div class="btn-to-list"><a href="./mainNoticeList.html"><button type="button">목록으로</button></a></div>
-      </div>
+        <div class="btn-to-list"><a href="${pageContext.request.contextPath}/main/selectMainListOk.ma"><button type="button">목록으로</button></a></div></div>
       <!-- 게시 일자 -->
-      <div class="notice-date">작성일 : <span>2025.06.23</span><br>수정일 : <span>2025.07.01</span></div>
+      <div class="notice-date">
+      	작성일 : 
+      	<span><c:out value="${mainNoticePost.getNoticePostDate()}" /></span><br>
+      	<c:if test="${updateDate} != null" >
+      	수정일 : 
+      		<span>
+      			<c:set var="updateDate" value="${mainNoticePost.getNoticePostUpdate()}" />
+      		
+      				<c:out value="${updateDate}" />
+      		
+      		</span>
+      	</c:if>
+      </div>
     </div>
   </main>
   <!-- 푸터 -->

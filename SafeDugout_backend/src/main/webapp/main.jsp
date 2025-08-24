@@ -8,11 +8,12 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
   <title>메인페이지</title>
 </head>
 
 <body>
-  <jsp:include page="/headerLoginMain.jsp" />
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <nav>
     <div class="team-logo">
       <a href="${pageContext.request.contextPath}/app/communityHtml/communityMainPage.html">
@@ -334,9 +335,7 @@
       </section>
     </section>
   </main>
-  <div id="footer">
+    <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
     <script src="${pageContext.request.contextPath}/assets/js/includeMain.js"></script>
-    <script></script>
 </body>
-
 </html>
