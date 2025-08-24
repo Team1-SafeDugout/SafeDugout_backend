@@ -30,7 +30,8 @@ public class AdminGuideDAO {
 	// 조회
 	
 	public List<GuidePostDTO> select() {
-		return sqlSession.selectList("adminGuide.select");
+		List<GuidePostDTO> newList = sqlSession.selectList("adminGuide.selectAll");
+		return newList;
 	}
 	
 	// 삭제
@@ -44,7 +45,10 @@ public class AdminGuideDAO {
 	}
 	
 	public int getTotal() {
-		return 1;
-//		sqlSession.selectOne("adminGuide.getTotal");
+		return sqlSession.selectOne("adminGuide.getTotal");
+	}
+	
+	public GuidePostDTO selectDetail(int noticePostNumber) {
+		return sqlSession.selectOne("adminGuide.selectDetail", noticePostNumber);
 	}
 }

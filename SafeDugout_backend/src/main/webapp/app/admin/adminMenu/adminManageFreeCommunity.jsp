@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageFreeCommunity.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+            number: "${board.noticePostNumber}",
+            title: "${board.noticePostTitle}",
+            date: "${board.noticePostDate}",
+            type: "${board.noticeTypeId}"
+        });
+    </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageFreeCommunity.js"></script>
 </head>
 
@@ -51,7 +63,7 @@
 
       <section class="body-container-list">
         <div>
-          <div class="search-container">
+<!--           <div class="search-container">
             <div class="search-bar">
               <form action="" method="get">
                 <label for="search-button"> 글 검색 </label>
@@ -59,7 +71,7 @@
                 <button type="submit" id="search-button"> 검색 </button>
               </form>
             </div>
-          </div>
+          </div> -->
 
           <!-- -------------------------------------------------------------여기서부터 공지 게시글-------------------------------------------------------------------- -->
 
@@ -69,13 +81,19 @@
 	             <div class="list-names">
 	                <div>글번호</div>
 	                <div>제목</div>
-	                <div>작성자</div>
 	                <div>작성일자</div>
+	                <div>게시글 종류</div>
 	                <div><a href="./../adminDetailMenu/adminAddFreeCommunityGuideDetail.html"> 추가하기+ </a></div>
 	             </div>
 	             <div class="list-container">
-	               <ul class="list-ul" id='post-list'>
-	
+	               <ul class="list-ul" id="list-ul">	               
+		            <c:choose>
+						<c:when test="${empty boardList}">
+							<div>
+		   						<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
+		   					</div>
+						</c:when>
+					</c:choose>
 	               </ul>
 	             </div>
 	             <div class="pagination">
@@ -84,7 +102,7 @@
 	                 <c:if test="${prev}">
 	                 	<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
 	                 </c:if>
-	                 <c:set var="realStartPage1" value="${startPage < 0 ? 0 : startPage}" />
+	                 <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	                 <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	                 	<c:choose>
 	                 		<c:when test="${!(i == page) }">
@@ -110,7 +128,7 @@
           </section>
 
           <!-- -------------------------------------------------------------여기서부터 유저 게시글-------------------------------------------------------------------- -->
-
+<%-- 
           <section class="section-admin-postlist">
             <div class="list-background">
               <div class="list-title"> 전체 커뮤니티 글 목록 </div>
@@ -126,7 +144,13 @@
 
               <div class="list-container">
                 <ul class="list-ul" id="user-post-list">
-
+				<c:choose>
+					<c:when test="${empty boardList}">
+						<div>
+   							<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
+   						</div>
+					</c:when>
+				</c:choose>
                 </ul>
               </div>
 
@@ -134,13 +158,13 @@
 	            <ul>
 	              
 	              <c:if test="${prev}">
-	              	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	              	<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
 	              </c:if>
 	              <c:set var="realStartPage2" value="${startPage < 0 ? 0 : startPage}" />
 	              <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	              	<c:choose>
 	              		<c:when test="${!(i == page) }">
-	              			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	              			<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${i}">
 	              				<c:out value="${i}" />
 	              			</a></li>
 	              		</c:when>
@@ -153,13 +177,13 @@
 	              </c:forEach>
 	              
 	              <c:if test="${next}">
-	              	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	              	<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
 	              </c:if>
 	              
 	            </ul>
 	          </div>
             </div>
-          </section>
+          </section> --%>
           <!-- -------------------------------------------------------------끝-------------------------------------------------------------------- -->
 		</div>          
       </section>
