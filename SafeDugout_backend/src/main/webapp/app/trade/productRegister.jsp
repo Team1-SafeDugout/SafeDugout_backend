@@ -61,7 +61,7 @@
 							<div class="product-category-text">
 								<span>카테고리 설정</span>
 							</div>
-							<div class="product-team-text">팀 선택 • 팀을 선택하지 않으면 기타로
+							<div class="product-team-text">팀 선택  • 팀을 선택하지 않으면 기타로
 								설정됩니다.</div>
 							<div class="logo-container">
 								<!-- 팀 로고 클릭 시 JS로 value 설정 -->

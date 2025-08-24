@@ -197,24 +197,24 @@
 						<div class="no-result-text">결과 없음</div>
 					</c:if>
 
-					<c:forEach var="sellPost" items="${sellPostList}">
+					<c:forEach var="sellPost" items="${sellPostDetail}">
 						<div class="product-list">
 							<div class="product-img">
 								<a
-									href="tradeDetailOkController.do?sellPostNumber=${sellPost.sellPostNumber}">
+									href="tradeDetailOkController.do?sellPostNumber=${sellPostDetail.sellPostNumber}">
 									<img src="${sellPost.imagePath}" alt="상품이미지">
 								</a>
 							</div>
 							<div class="product-name">
 								<a
-									href="tradeDetailOkController.do?sellPostNumber=${sellPost.sellPostNumber}">
+									href="tradeDetailOkController.do?sellPostNumber=${sellPostDetail.sellPostNumber}">
 									${sellPost.sellPostTitle} </a>
 							</div>
 							<div class="product-price">
-								<fmt:formatNumber value="${sellPost.pricePoint}" pattern="#,###" />
+								<fmt:formatNumber value="${sellPostDetail.pricePoint}" pattern="#,###" />
 								포인트
 							</div>
-							<div class="product-time">${sellPost.postDate}</div>
+							<div class="product-time">${sellPostDetail.postDate}</div>
 						</div>
 					</c:forEach>
 				</div>
