@@ -1,14 +1,10 @@
 package com.bullPenTalk.app.freeCommunity.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.bullPenTalk.app.dto.GuidePostDTO;
-import com.bullPenTalk.app.teamCommunity.dao.SqlSession;
-import com.bullPenTalk.app.teamCommunity.dao.TeamNoticePostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class GuidePostDAO {

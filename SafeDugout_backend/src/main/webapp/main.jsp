@@ -268,7 +268,7 @@
           <h2 class="product-title">최신 등록 상품</h2>
           <!-- 중고 거래 창으로 -->
           <div class="product-used">
-            <a href="./app/trade/tradeMain.html" class="product-used-text">중고거래 창으로</a>
+            <a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr" class="product-used-text">중고거래 창으로</a>
           </div>
           <!-- 중고거래 목록 묶음 -->
           <div class="product-box">

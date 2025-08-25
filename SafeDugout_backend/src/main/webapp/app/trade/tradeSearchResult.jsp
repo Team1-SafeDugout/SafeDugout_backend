@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>중고거래 검색결과 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet"href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">

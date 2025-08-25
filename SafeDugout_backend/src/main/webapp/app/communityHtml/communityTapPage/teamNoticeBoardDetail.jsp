@@ -5,11 +5,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>공지사항 상세</title>
-  <link rel="stylesheet" href="./../../../assets/css/communityCss/communityTapPage/teamNoticeBoardDetail.css">
-  <script defer src="./../../../assets/js/communityJs/teamInclude.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamNoticeBoardDetail.css">
+  <c:choose>
+  	<c:when test="${sessionScope.teamNumber == 1}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/doosanHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/doosanFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 3}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/hanwhaHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/hanwhaFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 9}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/kiaHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/kiaFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 10}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/kiwoomHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/kiwoomFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 6}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ktHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ktFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 2}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/lgHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/lgFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 8}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/lotteHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/lotteFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 7}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ncHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ncFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 4}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/samsungHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/samsungFooter.css">
+  	</c:when>
+  	<c:when test="${sessionScope.teamNumber == 5}">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ssgHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ssgFooter.css">
+  	</c:when>
+  </c:choose>
+  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script> --%>
 </head>
 <body>
-  <div id="team-header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <main>
     <!-- 공지 디테일 컨테이너 -->
     <div class="team-notice-board-detail">
@@ -42,6 +84,6 @@
       </div>
     </div>
   </main>
-  <div id="team-footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
 </body>
 </html>

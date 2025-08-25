@@ -23,8 +23,19 @@
 
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/header.jsp" />
-
+	<jsp:include page="${pageContext.request.contextPath}/header.jsp" />
+	<!-- 폼 태그 -->
+	<form action="" method="get">
+		<!-- 검색 컨테이너 -->
+		<div class="search-container">
+			<!-- 검색칸 -->
+			<input type="text" placeholder="검색어를 입력해주세요">
+			<!-- 검색 버튼 -->
+			<button type="button"
+				onclick="location.href='./tradeSearchResult.html'">검색</button>
+		</div>
+	</form>
+	<!-- 메인 -->
 	<main>
 		<section class="section-background">
 
