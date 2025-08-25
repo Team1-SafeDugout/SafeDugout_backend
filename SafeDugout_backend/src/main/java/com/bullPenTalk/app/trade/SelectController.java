@@ -248,4 +248,56 @@ public class SelectController {
 		System.out.println("리턴 진입");
 		return result;
 	}
+	
+	
+	// 검색결과
+	public Result search(String action, HttpServletRequest request, HttpServletResponse response) {
+	    System.out.println("search 메소드 진입");
+	    SellPostDAO sellPostDAO = new SellPostDAO();
+	    Result result = new Result();
+
+	    String temp = request.getParameter("page");
+	    int page = (temp == null) ? 1 : Integer.valueOf(temp); 
+	    int rowCount = 10; 
+	    int pageCount = 5; 
+
+	    int startRow = (page - 1) * rowCount + 1; 
+	    int endRow = startRow + rowCount - 1; 
+
+	    String searchWord = request.getParameter("searchWord");
+	    if(searchWord == null) {
+	        searchWord = "";
+	    }
+
+	    Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("startRow", startRow);
+	    pageMap.put("endRow", endRow);
+	    pageMap.put("searchWord", searchWord);
+
+	    List<SellPostDTO> tradePostList = sellPostDAO.searchList(pageMap);
+	    request.setAttribute("tradePostList", tradePostList);
+	    request.setAttribute("searchWord", searchWord);
+
+	    int total = sellPostDAO.getTotalSearch(searchWord);
+	    int realEndPage = (int) Math.ceil(total / (double) rowCount);
+	    int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount);
+	    int startPage = endPage - (pageCount - 1);
+	    endPage = Math.min(endPage, realEndPage);
+
+	    boolean prev = startPage > 1;
+	    boolean next = endPage < realEndPage;
+
+	    request.setAttribute("page", page);
+	    request.setAttribute("startPage", startPage);
+	    request.setAttribute("endPage", endPage);
+	    request.setAttribute("prev", prev);
+	    request.setAttribute("next", next);
+	    request.setAttribute("total", total);
+
+	    result.setPath("/app/trade/tradeSearchResult.jsp");
+	    result.setRedirect(false);
+	    return result;
+	}
+
+
 }

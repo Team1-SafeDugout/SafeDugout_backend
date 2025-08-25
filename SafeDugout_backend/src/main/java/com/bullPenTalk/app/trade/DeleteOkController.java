@@ -36,7 +36,7 @@ public class DeleteOkController {
 	        sellPostDAO.delete(sellPostNumber);
 	        System.out.println("판매글 삭제 완료: " + sellPostNumber);
 
-	        result.setPath("/trade/tradeMain.jsp");
+	        result.setPath("/trade/tradeDetail.jsp");
 	        result.setRedirect(true);
 
 	    } catch (NumberFormatException e) {
