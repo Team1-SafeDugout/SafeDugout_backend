@@ -60,7 +60,7 @@
       <section class="team-news">
         <div class="top-section">
           <h2>팀 뉴스</h2>
-          <a href="./communityTapPage/teamNews.html">더보기</a>
+          <a href="./communityTapPage/teamNews.jsp">더보기</a>
         </div>
         <div class="main-news">
         </div>
@@ -72,7 +72,7 @@
       <section class="team-youtube">
         <div class="top-section">
           <h2>팀 유튜브</h2>
-          <a href="./communityTapPage/teamYoutube.html">더보기</a>
+          <a href="./communityTapPage/teamYoutube.jsp">더보기</a>
         </div>
         <ul class="thumb-list">
         </ul>

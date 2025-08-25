@@ -50,14 +50,14 @@
   <div class="bottom-header">
     <nav>
       <ul class="team-menu">
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStats.html">팀 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPlayerStats.html">선수 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamYoutube.html">팀 유튜브</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamSong.html">팀 응원가</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamBoard.html">게시판</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/trade/tradeMain.html">굿즈거래</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStadium.html">경기장</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamNews.html">팀뉴스</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStats.jsp">팀 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPlayerStats.jsp">선수 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamYoutube.jsp">팀 유튜브</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamSong.jsp">팀 응원가</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamBoard.jsp">게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/trade/tradeMain.jsp">굿즈거래</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStadium.jsp">경기장</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamNews.jsp">팀뉴스</a></li>
         <li class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색">
