@@ -115,13 +115,14 @@ public class AdminCreatePostOkController implements Execute{
 			
 		case "teamyoutube":
 			boardNum = 4;
+			System.out.println(teamNum);
 			YoutubePostDTO youtubePostDTO = new YoutubePostDTO();
 			AdminTeamYoutubeDAO youtubeDAO = new AdminTeamYoutubeDAO();
 			String youtubeUrl = multipartRequest.getParameter("youtubeUrl");
 			title = multipartRequest.getParameter("youtubeTitle");
-			
+			teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 			youtubePostDTO.setBoardId(boardNum);
-			youtubePostDTO.setPostContent(content);
+			youtubePostDTO.setPostContent("youtubeID");
 			youtubePostDTO.setPostTitle(title);
 			youtubePostDTO.setTeamNumber(teamNum);
 			youtubePostDTO.setAdminNumber(adminNumber);
@@ -139,13 +140,14 @@ public class AdminCreatePostOkController implements Execute{
 			AdminTeamSongDAO songPostDAO = new AdminTeamSongDAO();
 			String songUrl = multipartRequest.getParameter("songUrl");
 			title = multipartRequest.getParameter("songTitle");
-			
+			teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 			songPostDTO.setPostTitle(title);
 			songPostDTO.setPostDate(date);
 			songPostDTO.setTeamNumber(teamNum);
 			songPostDTO.setBoardTypeId(boardNum);
 			songPostDTO.setAdminId(adminNumber);
 			songPostDTO.setSongUrl(songUrl);
+			songPostDTO.setPostContent("song");
 			
 			songPostDAO.insert(songPostDTO);			
 			break;
@@ -157,13 +159,14 @@ public class AdminCreatePostOkController implements Execute{
 			AdminTeamSongDAO songPlayerPostDAO = new AdminTeamSongDAO();
 			String songPlayerUrl = multipartRequest.getParameter("songUrl");
 			title = multipartRequest.getParameter("songTitle");
-			
+			teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 			songPlayerPostDTO.setPostTitle(title);
 			songPlayerPostDTO.setPostDate(date);
 			songPlayerPostDTO.setTeamNumber(teamNum);
 			songPlayerPostDTO.setBoardTypeId(boardNum);
 			songPlayerPostDTO.setAdminId(adminNumber);
 			songPlayerPostDTO.setSongUrl(songPlayerUrl);
+			songPlayerPostDTO.setPostContent("song");
 			
 			songPlayerPostDAO.insert(songPlayerPostDTO);	
 			

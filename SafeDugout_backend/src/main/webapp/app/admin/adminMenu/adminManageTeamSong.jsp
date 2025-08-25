@@ -10,6 +10,19 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageTeamSong.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+  
+  <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+            number: "${board.noticePostNumber}", //버놓 읨
+            teamname: "${board.teamNumber}",
+            lj: "${board.noticePostDate}",
+            date: "${board.date}"
+        });
+    </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>  
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTeamSong.js"></script>
 </head>
 
@@ -74,13 +87,13 @@
 	        <ul>
 	          
 	          <c:if test="${prev}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
 	          </c:if>
 	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	          	<c:choose>
 	          		<c:when test="${!(i == page) }">
-	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad?page=${i}">
 	          				<c:out value="${i}" />
 	          			</a></li>
 	          		</c:when>
@@ -93,7 +106,7 @@
 	          </c:forEach>
 	          
 	          <c:if test="${next}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
 	          </c:if>
 	          
 	        </ul>

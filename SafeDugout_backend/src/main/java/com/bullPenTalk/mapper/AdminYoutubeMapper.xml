@@ -33,7 +33,7 @@
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle}, #{postDate}, #{postLink}, #{postContent})
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle}, sysdate, #{postLink}, #{postContent})
 	</insert>
 	
 	<select id="selectAll" resultType = "YouTubePostDTO">
