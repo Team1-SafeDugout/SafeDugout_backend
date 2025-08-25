@@ -55,7 +55,7 @@
 							<div class="product-category-text">
 								<span>카테고리 설정</span>
 							</div>
-							<div class="product-team-text">팀 선택  • 팀을 선택하지 않으면 기타로
+							<div class="product-team-text">팀 선택 • 팀을 선택하지 않으면 기타로
 								설정됩니다.</div>
 							<div class="logo-container">
 								<!-- 팀 로고 클릭 시 JS로 value 설정 -->
@@ -78,7 +78,7 @@
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"
 										alt="삼성" data-team-id="4">
-								</div>	
+								</div>
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png"
@@ -93,12 +93,12 @@
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"
 										alt="nc" data-team-id="7">
-								</div>								
+								</div>
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"
 										alt="롯데" data-team-id="8">
-								</div>																						
+								</div>
 								<div class="logo">
 									<img
 										src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"
@@ -160,9 +160,8 @@
 						<div class="trade-method-container">
 							<div>거래 방식 :</div>
 							<div class="trade-method-checkbox">
-								<span>배송</span> <input type="radio" name="dealTypeId"
-									value="deliver"> <span>직거래</span> <input type="radio"
-									name="dealTypeId" value="meet">
+								<span>배송</span> <input type="radio" name="dealTypeId"value="deliver"> 
+								<span>직거래</span> <input type="radio" name="dealTypeId" value="meet">
 							</div>
 						</div>
 						<div class="short-line"></div>
@@ -186,7 +185,7 @@
 	<!-- 푸터 -->
 	<jsp:include page="/footer.jsp" />
 	<script>
-    	let memberNumber = "${sessionScope.memberNumber}";
-    </script>
+		let memberNumber = "${sessionScope.memberNumber}";
+	</script>
 </body>
 </html>

@@ -16,7 +16,7 @@ public class DetailControllerOK {
 	public Result detailselect(String action, HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
 
-		// boardNumber가 빈 문자열이거나 null인경우
+		// sellPostNumber가 빈 문자열이거나 null인경우
 		String sellPostNumberStr = request.getParameter("sellPostNumber");
 		if (sellPostNumberStr == null || sellPostNumberStr.trim().isEmpty()) {
 			System.out.println("sellPostNumber 값이 없습니다");
@@ -25,8 +25,15 @@ public class DetailControllerOK {
 			return result;
 		}
 
+		
 		int sellPostNumber = Integer.parseInt(sellPostNumberStr);
 
+	     // team 파라미터 가져오기(없으면 기본값)
+        String team = request.getParameter("team");
+        if (team == null || team.trim().isEmpty()) {
+            team = "allProduct";
+        }
+		
 		SellPostDAO sellPostDAO = new SellPostDAO();
 		SellPostAttachmentDAO sellPostattachmentDAO = new SellPostAttachmentDAO();
 
@@ -58,7 +65,7 @@ public class DetailControllerOK {
 		int boardWriterNumber = sellPostDetailDTO.getMemberNumber();	
 		System.out.println("현재 게시글 작성자 번호 : " + boardWriterNumber);		
 
-		request.setAttribute("board", sellPostDetailDTO);
+		request.setAttribute("sellPost", sellPostDetailDTO);
 		result.setPath("/app/trade/productDetail.jsp");
 		result.setRedirect(false);
 

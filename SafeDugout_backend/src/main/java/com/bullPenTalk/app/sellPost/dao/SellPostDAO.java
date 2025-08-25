@@ -87,4 +87,14 @@ public class SellPostDAO {
 		System.out.println("게시글 상세 페이지 조회(단건조회)");
 		return sqlSession.selectOne("sell.selectDetail", sellPostNumber);
 	}
+	
+	// 검색 메소드
+	public List<SellPostDTO> searchList(Map<String, Object> pageMap) {
+	    return sqlSession.selectList("trade.searchList", pageMap);
+	}
+	
+	// 검색 결과 개수
+	public int getTotalSearch(String searchWord) {
+	    return sqlSession.selectOne("trade.getTotalSearch", searchWord);
+	}
 }
