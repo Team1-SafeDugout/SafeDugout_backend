@@ -29,13 +29,24 @@ public class SellPostDetailDTO {
 	private String sellPostUpdate; // 수정일자
 	private int memberNumber; // 회원번호
 	private String memberId; // 판매자Id
-	private int categoryName; // 카테고리 이름
-	private String StatusName; // 거래상태 
+	private String categoryName; // 카테고리 이름
+	private String statusName; // 거래상태 
 	private String dealtypeName; // 거래 방식
+	private String teamName; // 팀 이름
 	private List<AttachmentDTO> attachment; // 첨부파일 
-
 	
 	// get, set
+	
+	public String getTeamName() {
+		return teamName;
+	}
+
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
+
+	
 	public int getSellPostNumber() {
 		return sellPostNumber;
 	}
@@ -126,23 +137,23 @@ public class SellPostDetailDTO {
 	}
 
 
-	public int getCategoryName() {
+	public String getCategoryName() {
 		return categoryName;
 	}
 
 
-	public void setCategoryName(int categoryName) {
+	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
 
 
 	public String getStatusName() {
-		return StatusName;
+		return statusName;
 	}
 
 
 	public void setStatusName(String statusName) {
-		StatusName = statusName;
+		this.statusName = statusName;
 	}
 
 
@@ -173,9 +184,9 @@ public class SellPostDetailDTO {
 				+ ", sellPostContent=" + sellPostContent + ", pricePoint=" + pricePoint + ", tradingArea=" + tradingArea
 				+ ", sellPostCreationDate=" + sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate
 				+ ", memberNumber=" + memberNumber + ", memberId=" + memberId + ", categoryName=" + categoryName
-				+ ", StatusName=" + StatusName + ", dealtypeName=" + dealtypeName + ", attachmet=" + attachment + "]";
+				+ ", statusName=" + statusName + ", dealtypeName=" + dealtypeName + ", teamName=" + teamName
+				+ ", attachment=" + attachment + "]";
 	}
-	
 	
 	
 }

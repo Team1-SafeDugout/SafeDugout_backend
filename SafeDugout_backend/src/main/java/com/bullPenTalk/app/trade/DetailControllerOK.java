@@ -65,7 +65,7 @@ public class DetailControllerOK {
 		int boardWriterNumber = sellPostDetailDTO.getMemberNumber();	
 		System.out.println("현재 게시글 작성자 번호 : " + boardWriterNumber);		
 
-		request.setAttribute("sellPost", sellPostDetailDTO);
+		request.setAttribute("sellPostDetail", sellPostDetailDTO);
 		result.setPath("/app/trade/productDetail.jsp");
 		result.setRedirect(false);
 
