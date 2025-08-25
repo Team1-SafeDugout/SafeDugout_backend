@@ -7,6 +7,29 @@ const modalForm = document.getElementById("modal-form");
 
 var addOn = false;
 
+document.addEventListener("DOMContentLoaded", function() {
+	if (typeof posts !== 'undefined') {
+		posts.forEach(post => {
+			let typeName = "";
+			switch (post.type) {
+				case "1":
+					typeName = "메인공지";
+					break;
+				case "2":
+					typeName = "팀공지";
+					break;
+				case "3":
+					typeName = "입문자가이드";
+					break;
+				default:
+					typeName = "기타";
+					break;
+			}
+			addPost(post.number, post.title, post.date, typeName, post.type);
+		});
+	}
+});
+
 openModal.addEventListener('click', function(){
   modal.style.display = "flex";
   modalForm.reset();

@@ -15,10 +15,10 @@
     let posts = [];
     <c:forEach var="board" items="${boardList}">
     	posts.push({
-            number: "${board.noticePostNumber}", //버놓 읨
+            number: "${board.postNumber}", 
             teamname: "${board.teamNumber}",
-            lj: "${board.noticePostDate}",
-            date: "${board.date}"
+            link: "${board.songUrl}",
+            date: "${board.postDate}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
