@@ -109,18 +109,20 @@
 	</select>
 	
 	<!-- 경기 일정 목록 조회 -->
-	<select id="selectSchedule" parameterType="int" resultType="MainDTO">
-		select home_team_number, stadium_name, away_team_number, schedule_date
-		from tbl_game_schedule
-		where game_id = #{gameId};
+	<select id="selectSchedule" resultType="MainDTO">
+		select t1.team_name, sc.stadium_number, t2.team_name, sc.schedule_date
+		from tbl_game_schedule sc join tbl_stadium st on sc.stadium_number = st.stadium_number
+		join tbl_team t1 on sc.home_team_number = t1.team_number
+		join tbl_team t2 on sc.away_team_number = t2.team_number
+		where sc.schedule_date = trunc(sysdate)
 	</select>
 	
 	<!-- 중고거래 목록 조회 -->
 	<select id="selectSellList" resultType="MainDTO">
-		select s.sell_post_number, s.sell_post_title, s.sell_post_creation_date,
+		select s.sell_post_number, s.sell_post_title, s.sell_post_creation_date, s.price_point,
 		a.attachment_path
-		from tbl_sell_post s join tbl_attachment a on s.sell_post_number = a.sell_post_number
-		join tbl_sell_post_attachment on a.attachment_number = sa.attachment_number
+		from tbl_sell_post s join tbl_sell_post_attachment sa on s.sell_post_number = sa.sell_post_number
+		join tbl_attachment a on sa.attachment_number = a.attachment_number
 	</select>
 	
 	<!-- 입문자 가이드 목록 조회 -->
@@ -130,7 +132,7 @@
 		where notice_type_id = 3
 	</select>
 	
-	<!-- 팀별 순위 목록 조회 -->
+	<!-- 팀 순위 목록 조회 -->
 	<select id="selectTeamRank" resultType="MainDTO">
 		select t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate
 		from tbl_team_record r join tbl_team t on r.team_number = t.team_number

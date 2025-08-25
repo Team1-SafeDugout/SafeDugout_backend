@@ -80,15 +80,19 @@
 	]]>
 	</select>
 
-	<!-- 경기 일정 목록 조회 -->
-	<select id="selectTeamSchedule" resultType="TeamMainDTO">
-		select home_team_number, stadium_name, away_team_number, schedule_date
-		from tbl_game_schedule
-		where game_id = #{gameId} and home_team_number = #{teamNumber};
-	</select>
-
-	<!-- 팀별 순위 목록 조회 -->
-	<select id="selectTeamRank" resultType="TeamMainDTO">
+	<!-- 팀별 경기 일정 목록 조회 -->
+	<select id="selectTeamSchedule" parameterType="int" resultType="TeamMainDTO">
+	<![CDATA[
+		from select t1.team_name, sc.stadium_number, t2.team_name, sc.schedule_date
+		from tbl_game_schedule sc join tbl_stadium st on sc.stadium_number = st.stadium_number
+		join tbl_team t1 on sc.home_team_number = t1.team_number
+		join tbl_team t2 on sc.away_team_number = t2.team_number
+		where sc.home_team_number = #{teamNumber} and sc.schedule_date = trunc(sysdate)
+		and rownum <= 5
+	]]>
+	
+	<!-- 팀 순위 목록 조회 -->
+	<select id="selectTeamRank" resultType="MainDTO">
 		select t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate
 		from tbl_team_record r join tbl_team t on r.team_number = t.team_number
 		order by r.team_win_rate

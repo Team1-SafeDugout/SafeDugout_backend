@@ -1,0 +1,87 @@
+package com.bullPenTalk.app.main;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.bullPenTalk.app.Execute;
+import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.dto.TeamMainDTO;
+import com.bullPenTalk.app.main.dao.TeamMainDAO;
+
+public class TeamMainOkController implements Execute {
+
+	@Override
+	public Result execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// 진입 확인 메시지
+		System.out.println("팀 커뮤니티 메인 페이지 처리 컨트롤러 진입");
+
+		// TeamMainDAO, Result 객체 생성
+		TeamMainDAO teamMainDAO = new TeamMainDAO();
+		System.out.println("DAO 생성 완료");
+		Result result = new Result();
+
+		// session 저장
+		HttpSession session = request.getSession();
+
+		// 팀별 값(팀 번호) 저장 
+		int teamNumber = Integer.valueOf(request.getParameter("teamNumber"));
+		
+		// session에 팀별 값(팀 번호) 저장
+		session.setAttribute("teamNumber", teamNumber);
+
+		String temp = request.getParameter("page");
+		// 페이지 번호 기본값 1로 설정
+		int page = (temp == null) ? 1 : Integer.valueOf(temp);
+		// 한 페이지당 게시글 수
+		int rowCount = 10;
+		// 페이지 버튼 수
+		int pageCount = 5;
+
+		System.out.println("page 값 : " + page);
+
+		// 페이징 처리
+		// 시작행(1, 11, 21, ..)
+		int startRow = (page - 1) * rowCount + 1;
+		// 끝 행(10, 20, 30, ..)
+		int endRow = startRow + rowCount - 1;
+		Map<String, Integer> pageMap = new HashMap<>();
+		pageMap.put("startRow", startRow);
+		pageMap.put("endRow", endRow);
+
+		// 팀 뉴스 목록 조회
+		List<TeamMainDTO> newsList = teamMainDAO.selectPostList(pageMap);
+		request.setAttribute("newsList", newsList);
+
+		// 팀 게시글 목록 조회
+		List<TeamMainDTO> postList = teamMainDAO.selectPostList(pageMap);
+		request.setAttribute("newsList", newsList);
+
+		// 팀 유튜브 썸네일 목록 조회
+		List<TeamMainDTO> youTubeList = teamMainDAO.selectYouTubeList(pageMap);
+		request.setAttribute("youTubeList", youTubeList);
+
+		// 팀 경기 일정 조회
+		List<TeamMainDTO> teamSchedule = teamMainDAO.selectTeamSchedule(teamNumber);
+		request.setAttribute("youTubeList", youTubeList);
+
+		// 팀 순위 조회
+		List<TeamMainDTO> rankList = teamMainDAO.selectTeamRank();
+		request.setAttribute("rankList", rankList);
+		
+		// path 값, redirect 여부 설정
+		result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+		result.setRedirect(false);
+
+		return result;
+	}
+
+}
