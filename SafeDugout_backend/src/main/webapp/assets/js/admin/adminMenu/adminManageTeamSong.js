@@ -7,6 +7,29 @@ const modalForm = document.getElementById("modal-form");
 
 var addOn = false;
 
+document.addEventListener("DOMContentLoaded", function() {
+	if (typeof posts !== 'undefined') {
+		posts.forEach(post => {
+			let typeName = "";
+			switch (post.type) {
+				case "1":
+					typeName = "메인공지";
+					break;
+				case "2":
+					typeName = "팀공지";
+					break;
+				case "3":
+					typeName = "입문자가이드";
+					break;
+				default:
+					typeName = "기타";
+					break;
+			}
+			addPost(post.number, post.title, post.date, post.type, post.type);
+		});
+	}
+});
+
 openModal.addEventListener('click', function(){
   modal.style.display = "flex";
   modalForm.reset();
@@ -18,7 +41,7 @@ closeModal.addEventListener('click', function(){
 });
 
 // 테스트용 추가 버튼
-addbutton.addEventListener('click', function () {
+fucntion addbutton(postNumberParam, postTitleParam, postDateParam, postTypeParam, postURLParam) {
   const newMember = document.createElement('li');
 
   const number = document.createElement('div');
@@ -28,16 +51,7 @@ addbutton.addEventListener('click', function () {
   const linkURL = document.createElement('div');
   const buttons = document.createElement('div');
 
-  const changeButton = document.createElement('button');
   const deleteButton = document.createElement('button');
-
-  changeButton.setAttribute('type', 'button');
-  changeButton.appendChild(document.createTextNode("수정"));
-  changeButton.addEventListener('click', function(){
-    modal.style.display = "flex";
-    modalForm.reset();
-    addOn = false;
-  })
 
   deleteButton.setAttribute('type', 'button');
   deleteButton.appendChild(document.createTextNode("삭제"));
@@ -48,7 +62,7 @@ addbutton.addEventListener('click', function () {
     }
   })
 
-  const NumberText = document.createTextNode("number");
+  const NumberText = document.createTextNode(postNumberParam);
   const teamNameText = document.createTextNode("team");
   const songNameText = document.createTextNode("YAHO");
   const linkURLText = document.createTextNode("naver.com");

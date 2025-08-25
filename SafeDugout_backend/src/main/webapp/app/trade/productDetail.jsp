@@ -20,10 +20,8 @@
 <body>
     <!-- 헤더 -->
     <jsp:include page="/header.jsp" />
-
     <main>
         <section class="section-background">
-
             <!-- 상단 작성자/삭제 버튼 -->
             <section class="section-top-menus">
                 <div class="product-info">

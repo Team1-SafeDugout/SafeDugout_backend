@@ -66,7 +66,14 @@
 	    )
 	    WHERE rnum BETWEEN #{startRow} AND #{endRow};
 	</select>
-	
+<!-- 		private int postNumber; // 게시글 번호
+	private String postTitle; // 응원가 명
+	private String postDate; // 등록일자
+	private int teamNumber; // 대상 팀
+	private int boardTypeId; // 어느 보드에 저장될 
+	private int adminId; // 등록한 관리자 ID
+	private String songUrl; // 응원가 URL
+	private String postContent; -->
 	<select id="selectAll" resultType = "SongPostDTO">
 		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
 		FROM TBL_POST
@@ -82,19 +89,19 @@
 	<!-- 팀 응원가 추가 -->
 	<insert id="teamInsert">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
-			SELECT SEQ_POST.CURRVAL FROM DUAL
+			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle}, #{postDate}, #{postLink}, #{postContent})
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTitle}, sysdate, #{songUrl}, #{postContent})
 	</insert>
 	
 	<!-- 선수 응원가 추가 -->
-	<insert id="palyerInsert">
+	<insert id="playerInsert">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
-		VALUES(#{postNumber}, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink})
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTilte}, sysdate, #{songUrl})
 	</insert>
 	
 	<!-- 응원가 삭제 -->

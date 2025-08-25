@@ -10,7 +10,7 @@
   <script defer src="./../../../assets/js/communityJs/communityMainPage.js"></script>
 </head>
 <body>
-  <div id="team-header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <main>
     <div class="main-container">
       <!-- 메인페이지 뉴스 탭 -->
@@ -192,6 +192,6 @@
       </section>
     </div>
   </main>
-  <div id="team-footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
 </body>
 </html>

@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 public class SellPostFrontController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-		
 	
 	// 요청별 서비스 컨트롤러 등록
 	private final Map<String, TradeService> registry = new HashMap<>();

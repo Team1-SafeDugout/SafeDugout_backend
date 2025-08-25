@@ -25,8 +25,8 @@
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/kiwoomFooter.css">
   	</c:when>
   	<c:when test="${sessionScope.teamNumber == 6}">
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/KtHeader.css">
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/KtFooter.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ktHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ktFooter.css">
   	</c:when>
   	<c:when test="${sessionScope.teamNumber == 2}">
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/lgHeader.css">
@@ -49,8 +49,8 @@
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ssgFooter.css">
   	</c:when>
   </c:choose>
-  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityMainPage.js"></script> --%>
+  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script> --%>
+  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityMainPage.js"></script> --%>
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
@@ -60,7 +60,7 @@
       <section class="team-news">
         <div class="top-section">
           <h2>팀 뉴스</h2>
-          <a href="./communityTapPage/teamNews.html">더보기</a>
+          <a href="./communityTapPage/teamNews.jsp">더보기</a>
         </div>
         <div class="main-news">
         </div>
@@ -72,7 +72,7 @@
       <section class="team-youtube">
         <div class="top-section">
           <h2>팀 유튜브</h2>
-          <a href="./communityTapPage/teamYoutube.html">더보기</a>
+          <a href="./communityTapPage/teamYoutube.jsp">더보기</a>
         </div>
         <ul class="thumb-list">
         </ul>
@@ -101,7 +101,7 @@
       <section class="team-board">
         <div class="top-section">
           <h2>게시판</h2>
-          <a href="./communityTapPage/teamBoard.html">더보기</a>
+          <a href="./communityTapPage/teamBoard.jsp">더보기</a>
         </div>
         <ul class="team-board-list">
 
@@ -111,7 +111,7 @@
       <section class="stadium">
         <div class="top-section">
           <h2>경기장 정보</h2>
-          <a href="./communityTapPage/teamStadium.html">더보기</a>
+          <a href="./communityTapPage/teamStadium.jsp">더보기</a>
         </div>
         <div class="stadium-img">
 

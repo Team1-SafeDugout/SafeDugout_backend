@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: column;
   background-color: #005BAC;
-  height: 100px;
+  min-height: 100px;
   width: 100%;
+  position: fiexd;
+  bottom: 0px;
 }
 
 .team-footer-container a{
