@@ -38,14 +38,14 @@ public class Samsung implements TradeService{
 			case "baseballgearlist":
 				result = select.listTeamItemCategory(action, request, response);
 				break;
-			case "deletePostOk":
+			case "deletepostok":
 				DeleteOkController delete = new DeleteOkController();
 				delete.deleteSellPost(request, response);
 				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace(); // 로그 출력
-			result.setPath("/app/trade/tradeMain.jsp"); // 예외 발생 시 이동 페이지
+			result.setPath("/trade/tradeMain.jsp"); // 예외 발생 시 이동 페이지
 			result.setRedirect(false);
 		}
 		if (result != null) {

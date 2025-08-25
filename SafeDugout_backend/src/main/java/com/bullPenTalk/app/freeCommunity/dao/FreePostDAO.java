@@ -3,6 +3,8 @@ package com.bullPenTalk.app.freeCommunity.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.bullPenTalk.app.dto.FreePostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 

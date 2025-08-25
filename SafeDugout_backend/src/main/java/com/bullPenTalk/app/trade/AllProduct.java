@@ -14,6 +14,7 @@ public class AllProduct implements TradeService{
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("AllProcudt 진입");
+		System.out.println("action값: " + action);
 		// Result 객체 생성
 		Result result = new Result();
 
@@ -37,7 +38,7 @@ public class AllProduct implements TradeService{
 		case "baseballgearList":
 			result = select.listCategory(action, request, response); // 특정 카테고리 
 			break;
-		case "deletePostOk":
+		case "deletepostok":
 			DeleteOkController delete = new DeleteOkController();
 			delete.deleteSellPost(request, response);
 			break;

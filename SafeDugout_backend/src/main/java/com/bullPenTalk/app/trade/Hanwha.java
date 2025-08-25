@@ -38,7 +38,7 @@ public class Hanwha implements TradeService {
 			case "baseballgearlist":
 				result = select.listTeamItemCategory(action, request, response);
 				break;
-			case "deletePostOk":
+			case "deletepostok":
 				DeleteOkController delete = new DeleteOkController();
 				delete.deleteSellPost(request, response);
 				break;

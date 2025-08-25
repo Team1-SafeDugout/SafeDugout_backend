@@ -1,277 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>중고거래 검색결과 페이지</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet"href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-<script defer src="${pageContext.request.contextPath}/assets/js/trade/tradeSearchResult.js"></script>
 </head>
-
-<!-- 바디 -->
-
 <body>
-	<!-- 헤더 -->
 <jsp:include page="/header.jsp" />
-	<!-- 폼 태그 -->
-	<form action="" method="get">
-		<!-- 검색 컨테이너 -->
-		<div class="search-container">
-			<!-- 검색어 입력칸 -->
-			<input type="text" placeholder="검색어를 입력해주세요">
-			<!-- 검색 컨테이너 button 태그 -->
-			<button type="button"
-				onclick="location.href='./tradeSearchResult.html'">검색</button>
-		</div>
+<!-- 검색 폼 -->
+<form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
+	    <input type="hidden" name="team" value="search">
+	    <input type="hidden" name="action" value="search">
+	    <input type="text" name="searchWord" placeholder="검색어를 입력해주세요"
+	           value="${searchWord != null ? searchWord : ''}">
+	    <button type="submit">검색</button>
 	</form>
-	<!-- 메인 -->
-	<main>
-		<!-- 메인 컨테이너 -->
-		<div class="main-container">
-			<!-- <div class="title">
-        중고거래 메인페이지
-      </div> -->
-			<div class="small-title"></div>
-			<aside>
-				<!-- 왼쪽 메뉴 컨테이너 -->
-				<div class="aside-container">
-					<!-- 상품 카테고리 텍스트 -->
-					<div class="aside-text">상품 카테고리</div>
-					<!-- ul 태그 -->
-					<ul>
-						<!-- li 태그 -->
-						<li>
-							<!-- 카테고리 -->
-							<div class="category">
-								<a href="">모든 상품 유형</a>
-							</div>
-						</li>
-						<li>
-							<div class="category">
-								<a href="">유니폼</a>
-							</div>
-						</li>
-						<li>
-							<div class="category">
-								<a href="">모자</a>
-							</div>
-						</li>
-						<li>
-							<div class="category">
-								<a href="">의류</a>
-							</div>
-						</li>
-						<li>
-							<div class="category">
-								<a href="">잡화</a>
-							</div>
-						</li>
-						<li>
-							<div class="category">
-								<a href="">응원용품</a>
-							</div>
-						</li>
-						<li>
-							<div class="category">
-								<a href="">야구용품</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</aside>
-			<!-- 오른쪽 section 컨테이너 -->
-			<section class="section-container">
-				<!-- 팀 로고 바 -->
-				<div class="team-bar">
-					<!-- 팀 선택 텍스트 -->
-					<div class="team-bar-text">팀 선택</div>
-					<!-- 팀 로고 컨테이너 -->
-					<div class="team-bar-logo-container">
-						<div class="team-bar-logo">
-							<a href="">모든 팀</a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img
-								src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"
-								alt=""></a>
-						</div>
-						<div class="team-bar-logo">
-							<a href=""><img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"
-								alt=""></a>
-						</div>
-					</div>
-				</div>
-				<!-- 로고 하단 컨테이너 -->
-				<div class="page-bar">
-					<!-- 로고 하단 컨테이너 텍스트 -->
-					<div class="page-bar-text">
-						<!-- 조회 결과 - 검색어 -->
-						<span class="big-text">[“검색 글”] 검색 결과</span>
-						<!-- 조회 결과 - 개수, 팀, 상품 종류 -->
-						<span class="small-text">134개 모든 팀 > 모든 상품 유형</span>
-					</div>
-					<!-- 페이지 버튼 컨테이너 -->
-					<div class="page-container">
-						<!-- 페이지 버튼 -->
-						<div class="page-num">
-							<a href="">1</a>
-						</div>
-						<div class="page-num">
-							<a href="">2</a>
-						</div>
-						<div class="page-num">
-							<a href="">3</a>
-						</div>
-						<div class="page-num">
-							<a href="">4</a>
-						</div>
-						<div class="page-num">
-							<a href="">5</a>
-						</div>
-						<div class="arrow-button">
-							<a href="">▶</a>
-						</div>
-					</div>
-				</div>
-				<!-- 상품 컨테이너 -->
-				<div class="product-container">
-					<!-- 상품 항목 -->
-					<div class="product-list">
-						<!-- 상품 이미지 -->
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product1.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[KIA타이거즈] 레플리카 모자(블랙)</a>
-						</div>
-						<div class="product-price">15000 포인트</div>
-						<div class="product-time">1분 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product2.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[LG트윈스] 일반형 원정 유니폼</a>
-						</div>
-						<div class="product-price">30000 포인트</div>
-						<div class="product-time">3분 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product3.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[KBO] 2025 KBO 올스타전 공인구</a>
-						</div>
-						<div class="product-price">10000 포인트</div>
-						<div class="product-time">5분 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product4.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[TEAM KOREA] PVC 글러브</a>
-						</div>
-						<div class="product-price">15000 포인트</div>
-						<div class="product-time">하루 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product9.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[SSG랜더스] 랜디 야구공 머리띠</a>
-						</div>
-						<div class="product-price">10000 포인트</div>
-						<div class="product-time">1주 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product6.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[두산] 두산베어스X케이스티파이 TICKET
-								케이스</a>
-						</div>
-						<div class="product-price">40000 포인트</div>
-						<div class="product-time">3주 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product7.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[한화이글스] 화이트 레플리카 유니폼</a>
-						</div>
-						<div class="product-price">30000 포인트</div>
-						<div class="product-time">1달 전</div>
-					</div>
-					<div class="product-list">
-						<div class="product-img">
-							<a href="./productDetailBuyer.html"><img
-								src="${pageContext.request.contextPath}/assets/img/tradeImg/product8.jpg" alt=""></a>
-						</div>
-						<div class="product-name">
-							<a href="./productDetailBuyer.html">[삼성] 삼성라이온즈X케이스티파이 TICKET
-								케이스</a>
-						</div>
-						<div class="product-price">40000 포인트</div>
-						<div class="product-time">1년 전</div>
-					</div>
-				</div>
-			</section>
-		</div>
-	</main>
-	<!-- 푸터 -->
-	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
-	<!-- 스크립트 -->
-	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
-</body>
+<main>
+    <div class="main-container">
+        <!-- 좌측 카테고리 -->
+        <aside>
+            <div class="aside-container">
+                <div class="aside-text">상품 카테고리</div>
+                <ul>
+                    <li><div class="category"><a href="searchController.tr?category=all&searchWord=${param.searchWord}">모든 상품 유형</a></div></li>
+                    <li><div class="category"><a href="searchController.tr?category=uniform&searchWord=${param.searchWord}">유니폼</a></div></li>
+                    <li><div class="category"><a href="searchController.tr?category=cap&searchWord=${param.searchWord}">모자</a></div></li>
+                    <li><div class="category"><a href="searchController.tr?category=apparel&searchWord=${param.searchWord}">의류</a></div></li>
+                    <li><div class="category"><a href="searchController.tr?category=accessories&searchWord=${param.searchWord}">잡화</a></div></li>
+                    <li><div class="category"><a href="searchController.tr?category=cheering&searchWord=${param.searchWord}">응원용품</a></div></li>
+                    <li><div class="category"><a href="searchController.tr?category=gear&searchWord=${param.searchWord}">야구용품</a></div></li>
+                </ul>
+            </div>
+        </aside>
 
+        <!-- 오른쪽 검색 결과 섹션 -->
+        <section class="section-container">
+            <div class="page-bar">
+                <div class="page-bar-text">
+                    <span class="big-text">[“<c:out value='${param.searchWord}' />”] 검색 결과</span>
+                    <span class="small-text"><c:out value="${total}" />개 모든 팀 > 모든 상품 유형</span>
+                </div>
+            </div>
+
+            <!-- 검색 결과 상품 목록 -->
+            <div class="product-container">
+                <c:choose>
+                    <c:when test="${not empty sellPostList}">
+                        <c:forEach var="product" items="${sellPostList}">
+                            <div class="product-list">
+                                <div class="product-img">
+                                    <a href="productDetail.tr?sellPostNumber=${product.sellPostNumber}">
+                                        <img src="${pageContext.request.contextPath}/assets/img/tradeImg/${product.imagePath}" alt="">
+                                    </a>
+                                </div>
+                                <div class="product-name">
+                                    <a href="productDetail.tr?sellPostNumber=${product.sellPostNumber}">${product.sellPostTitle}</a>
+                                </div>
+                                <div class="product-price"><fmt:formatNumber value="${product.pricePoint}" type="number"/> 포인트</div>
+                                <div class="product-time"><c:out value="${product.timeDiff}"/></div>
+                            </div>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="no-result">검색 결과가 없습니다.</div>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+
+            <!-- 페이징 -->
+            <div class="page-container">
+                <c:if test="${prev}">
+                    <div class="arrow-button"><a href="searchController.tr?page=${startPage-1}&searchWord=${param.searchWord}">◀</a></div>
+                </c:if>
+
+                <c:forEach var="i" begin="${startPage}" end="${endPage}">
+                    <div class="page-num ${i == page ? 'active' : ''}">
+                        <a href="searchController.tr?page=${i}&searchWord=${param.searchWord}">${i}</a>
+                    </div>
+                </c:forEach>
+
+                <c:if test="${next}">
+                    <div class="arrow-button"><a href="searchController.tr?page=${endPage+1}&searchWord=${param.searchWord}">▶</a></div>
+                </c:if>
+            </div>
+        </section>
+    </div>
+</main>
+
+<div id="footer"></div>
+</body>
 </html>

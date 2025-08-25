@@ -108,15 +108,9 @@ uploadImg.addEventListener('change', function () {
   deleteImg.style.display = 'inline';
 });
 
-// 이미지 삭제 버튼 누를 시 파일 업로드 해제, 기본 이미지 표시, 삭제 버튼 감추기
-deleteImg.addEventListener('click', function () {
-  uploadImg.value = "";
-  previewImg.src = "./../../assets/img/communityImg/tradeLogo.png";
-  deleteImg.style.display = 'none';
-});
 
 // 팀에 따른 value 값 배열 
-const teamValue = ['doosan', 'HH', 'kia', 'kt', 'lg', 'LT', 'nc', 'SS', 'ssg', 'WO'];
+/*const teamValue = ['doosan', 'HH', 'kia', 'kt', 'lg', 'LT', 'nc', 'SS', 'ssg', 'WO'];*/
 
 // 팀 로고 누를 시 빨간 네모 표시, input 태그 value 설정 
 teamLogo.forEach((logo, index) => {
