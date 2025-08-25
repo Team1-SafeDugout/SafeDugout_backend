@@ -101,7 +101,7 @@
       <section class="team-board">
         <div class="top-section">
           <h2>게시판</h2>
-          <a href="./communityTapPage/teamBoard.html">더보기</a>
+          <a href="./communityTapPage/teamBoard.jsp">더보기</a>
         </div>
         <ul class="team-board-list">
 
@@ -111,7 +111,7 @@
       <section class="stadium">
         <div class="top-section">
           <h2>경기장 정보</h2>
-          <a href="./communityTapPage/teamStadium.html">더보기</a>
+          <a href="./communityTapPage/teamStadium.jsp">더보기</a>
         </div>
         <div class="stadium-img">
 
