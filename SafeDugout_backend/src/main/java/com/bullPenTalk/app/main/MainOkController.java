@@ -35,10 +35,10 @@ public class MainOkController implements Execute{
 		request.setAttribute("rankList", rankList);
 
 		//경기 일정 목록 조회
-		List<MainDTO> schedule = 
+		List<MainDTO> schedule = mainDAO.selectSchedule(0);
 		
 		
-		return result;
+		return result; 
 	}
 	
 }
