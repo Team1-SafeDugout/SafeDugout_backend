@@ -15,9 +15,16 @@ public class SongPostDTO {
 	private int boardTypeId; // 어느 보드에 저장될 
 	private int adminId; // 등록한 관리자 ID
 	private String songUrl; // 응원가 URL
+	private String postContent;
 	
 	// get, set
 	
+	public String getPostContent() {
+		return postContent;
+	}
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
+	}
 	public int getPostNumber() {
 		return postNumber;
 	}

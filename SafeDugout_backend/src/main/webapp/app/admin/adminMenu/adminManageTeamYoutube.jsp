@@ -10,6 +10,19 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageTeamYoutube.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+
+  <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+            number: "${board.postNumber}",
+            title: "${board.postTitle}",
+            date: "${board.postDate}",
+            type: "${board.boardId}"
+        });
+    </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTeamYoutube.js"></script>
 </head>
 
@@ -65,7 +78,7 @@
           </div>
           <div class="list-container">
             <ul class="list-ul" id="list-ul">
-
+				
             </ul>
           </div>
 
@@ -73,13 +86,13 @@
 	        <ul>
 	          
 	          <c:if test="${prev}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
 	          </c:if>
 	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	          	<c:choose>
 	          		<c:when test="${!(i == page) }">
-	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad?page=${i}">
 	          				<c:out value="${i}" />
 	          			</a></li>
 	          		</c:when>
@@ -92,7 +105,7 @@
 	          </c:forEach>
 	          
 	          <c:if test="${next}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
 	          </c:if>
 	          
 	        </ul>
@@ -118,34 +131,34 @@
 
         <div class="modal-input-radio">
 
-          <input type="radio" id="lg" name="team-categories" required>
+          <input type="radio" id="lg" value = "lg" name="team-categories" required>
           <label for="lg"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png"> </label>
 
-          <input type="radio" id="hh" name="team-categories" required>
+          <input type="radio" id="hh" value = "hh" name="team-categories" required>
           <label for="hh"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"> </label>
 
-          <input type="radio" id="lotte" name="team-categories" required>
+          <input type="radio" id="lotte" value = "lotte" name="team-categories" required>
           <label for="lotte"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"> </label>
 
-          <input type="radio" id="ssg" name="team-categories" required>
+          <input type="radio" id="ssg" value = "ssg" name="team-categories" required>
           <label for="ssg"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png"> </label>
 
-          <input type="radio" id="kia" name="team-categories" required>
+          <input type="radio" id="kia" value = "kia" name="team-categories" required>
           <label for="kia"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"> </label>
 
-          <input type="radio" id="kt" name="team-categories" required>
+          <input type="radio" id="kt" value = "kt" name="team-categories" required>
           <label for="kt"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"> </label>
 
-          <input type="radio" id="nc" name="team-categories" required>
+          <input type="radio" id="nc" value = "nc" name="team-categories" required>
           <label for="nc"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"> </label>
 
-          <input type="radio" id="samsung" name="team-categories" required>
+          <input type="radio" id="samsung" value = "samsung" name="team-categories" required>
           <label for="samsung"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"> </label>
 
-          <input type="radio" id="doosan" name="team-categories" required>
+          <input type="radio" id="doosan" value = "doosan" name="team-categories" required>
           <label for="doosan"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png"> </label>
 
-          <input type="radio" id="kiwoom" name="team-categories" required>
+          <input type="radio" id="kiwoom" value = "kiwoom" name="team-categories" required>
           <label for="kiwoom"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"> </label>
 
         </div>
