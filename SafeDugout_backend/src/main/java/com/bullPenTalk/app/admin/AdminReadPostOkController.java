@@ -8,29 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.admin.dao.AdminGuideDAO;
-import com.bullPenTalk.app.admin.dao.AdminMainNoticeDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
-import com.bullPenTalk.app.admin.dao.AdminTeamNoticeDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
-import com.bullPenTalk.app.dto.GuidePostDTO;
-import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
-import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
 
-public class AdminDeletePostOkController implements Execute {
+public class AdminReadPostOkController implements Execute{
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Result result = new Result();
-
-		// 메인공지 DAO 가져오기
-		int postNumber = Integer.parseInt(request.getParameter("noticePostNumber"));
-		int postType = Integer.parseInt(request.getParameter("noticeTypeId"));
-
-		switch(postType) {
+			
+		int postNumber = Integer.parseInt(request.getParameter("postNumber"));
+		int boardId = Integer.parseInt(request.getParameter("boardId"));
+		
+		switch(boardId) {
 		case 1:
 //			전체 커뮤니티
 			break;
@@ -43,13 +36,16 @@ public class AdminDeletePostOkController implements Execute {
 //			팀뉴스
 			System.out.println("뉴스여는중");
 			AdminTeamNewsDAO adminNewsDAO = new AdminTeamNewsDAO();
-			adminNewsDAO.delete(postNumber);
+			NewsDetailDTO newsDTO = adminNewsDAO.selectDetail(postNumber);
 			result.setPath("/app/admin/adminDetailMenu/adminTeamNewesDetail.jsp");
+			request.setAttribute("newsDTO", newsDTO);
 			result.setRedirect(false);
 			break;
 			
 		case 4:
 //			팀 유튜브
+			AdminTeamYoutubeDAO adminYoutubeDAO = new AdminTeamYoutubeDAO();
+			YoutubePostDTO newYoutube = adminYoutubeDAO.selectDetail(postNumber);
 			break;
 			
 		case 5:
@@ -61,10 +57,9 @@ public class AdminDeletePostOkController implements Execute {
 //			선수 응원가
 			break;
 		}
-
-		result.setRedirect(true);
-
+		
+		
 		return result;
 	}
-
+	
 }
