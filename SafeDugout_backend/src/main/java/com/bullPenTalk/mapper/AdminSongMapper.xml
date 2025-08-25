@@ -67,13 +67,25 @@
 	    WHERE rnum BETWEEN #{startRow} AND #{endRow};
 	</select>
 	
+	<select id="selectAll" resultType = "SongPostDTO">
+		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
+		FROM TBL_POST
+		WHERE BOARD_ID = 5
+	</select>
+	
+	<select id = "total" resultType = "int">
+		SELECT COUNT(POST_NUMBER)
+		FROM TBL_POST
+		WHERE BOARD_ID = 5
+	</select>
+	
 	<!-- 팀 응원가 추가 -->
 	<insert id="teamInsert">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.CURRVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTilte}, #{postDate}, #{postLink}, #{postContent})
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle}, #{postDate}, #{postLink}, #{postContent})
 	</insert>
 	
 	<!-- 선수 응원가 추가 -->

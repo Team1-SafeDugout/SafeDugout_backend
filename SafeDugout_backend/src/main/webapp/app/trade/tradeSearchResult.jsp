@@ -10,19 +10,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+<link rel="stylesheet"href="${pageContext.request.contextPath}/assets/css/trade/tradeSearchResult.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 </head>
 <body>
 <jsp:include page="/header.jsp" />
-
 <!-- 검색 폼 -->
-<form action="searchController.tr" method="get">
-    <div class="search-container">
-        <input type="text" name="searchWord" placeholder="검색어를 입력해주세요" value="${param.searchWord}">
-        <button type="submit">검색</button>
-    </div>
-</form>
-
+<form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
+	    <input type="hidden" name="team" value="search">
+	    <input type="hidden" name="action" value="search">
+	    <input type="text" name="searchWord" placeholder="검색어를 입력해주세요"
+	           value="${searchWord != null ? searchWord : ''}">
+	    <button type="submit">검색</button>
+	</form>
 <main>
     <div class="main-container">
         <!-- 좌측 카테고리 -->

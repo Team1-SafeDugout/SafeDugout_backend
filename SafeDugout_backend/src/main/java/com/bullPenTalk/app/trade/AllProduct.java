@@ -38,7 +38,7 @@ public class AllProduct implements TradeService{
 		case "baseballgearList":
 			result = select.listCategory(action, request, response); // 특정 카테고리 
 			break;
-		case "deletePostOk":
+		case "deletepostok":
 			DeleteOkController delete = new DeleteOkController();
 			delete.deleteSellPost(request, response);
 			break;

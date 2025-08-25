@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("DOMContentLoaded", function () {
       // 전체 상품 div 선택
       const productLinks = document.querySelectorAll(".product a");
-
       productLinks.forEach(link => {
           link.addEventListener("click", function (e) {
               e.preventDefault(); // 기본 링크 이동 방지
@@ -29,4 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.log("비로그인 상태");
   }
+});
 });

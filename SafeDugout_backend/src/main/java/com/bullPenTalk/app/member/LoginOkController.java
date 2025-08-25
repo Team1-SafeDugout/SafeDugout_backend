@@ -3,7 +3,6 @@ package com.bullPenTalk.app.member;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.dto.MemberDTO;
+import com.bullPenTalk.app.main.dao.MainDAO;
 import com.bullPenTalk.app.member.dao.MemberDAO;
 
 public class LoginOkController implements Execute{
@@ -21,6 +21,7 @@ public class LoginOkController implements Execute{
 		
 		MemberDTO memberDTO = new MemberDTO();
 		MemberDAO memberDAO = new MemberDAO();
+		
 		int memberNumber = 0;
 		Result result = new Result();
 		String path = null;

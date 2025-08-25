@@ -7,7 +7,16 @@
 footer {
 	height: 100px;
 	width: 100%;
+	padding-left: 50px;
 	background-color: #DCD6D0;
 	align-content: end;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	
+}
+
+footer a {
+	text-decoration: underline;
+	color: black;
 }

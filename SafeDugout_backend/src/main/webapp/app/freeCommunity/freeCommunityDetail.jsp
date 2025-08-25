@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="./../../assets/css/communityCss/communityTapPage/freeCommunityDetail.css">
   <script defer src="./../../../assets/js/communityJs/communityTapPage/freeCommunityDetail.js"></script>
   <script defer src="./../../assets/js/include.js"></script>
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="./../../assets/css/footer.css">
 </head>
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <!-- 메인 컨테이너 -->
     <div class="free-community-detail-container">
@@ -73,7 +73,7 @@
       </section>
     </div>
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 </html>
 

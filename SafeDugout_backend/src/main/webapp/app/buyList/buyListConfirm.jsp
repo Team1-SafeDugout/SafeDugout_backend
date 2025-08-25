@@ -10,12 +10,11 @@
   <title>구매 확정 페이지</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyListConfirm.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <section class="buy-confirm">
       <h2>확정이 필요한 제품 정보</h2>
@@ -36,7 +35,7 @@
       <button type="button">취소</button>
     </section>
   </main>
-  <div id="footer"></div>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>
 

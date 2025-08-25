@@ -17,37 +17,37 @@ public class AdminTeamSongDAO {
 	// 추가
 	
 	public void insert(SongPostDTO songPostDTO) {
-		sqlSession.insert("adminNews.insert", songPostDTO);
+		sqlSession.insert("adminSong.teamInsert", songPostDTO);
 	}
 	
 	// 수정
 	
 	public void update(SongPostDTO songPostDTO) {
-		sqlSession.update("adminNews.update", songPostDTO);
+		sqlSession.update("adminSong.update", songPostDTO);
 	}
 	
 	// 조회(전부)
 	
 	public List<SongPostDTO> select() {
-		return sqlSession.selectList("adminNews.selectAll");
+		return sqlSession.selectList("adminSong.selectAll");
 	}
 	
 	// 삭제
 	public void delete(int songPostNumber) {
-		sqlSession.delete("adminNews.delete", songPostNumber);
+		sqlSession.delete("adminSong.delete", songPostNumber);
 	}
 	
 	// 검색
 	public List<SongPostDTO> selectFilter(String postName){
-		return sqlSession.selectList("adminNews.selectFilter", postName);
+		return sqlSession.selectList("adminSong.selectFilter", postName);
 	}
 	
 	// 조회(하나만)
 	public SongPostDTO selectDetail(int songPostNumber) {
-		return sqlSession.selectOne("adminNews.selectDetail",songPostNumber);
+		return sqlSession.selectOne("adminSong.selectDetail",songPostNumber);
 	}
 	
 	public int getTotal() {
-		return sqlSession.selectOne("adminNews.total");
+		return sqlSession.selectOne("adminSong.total");
 	}
 }

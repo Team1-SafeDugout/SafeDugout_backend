@@ -104,43 +104,48 @@
 
     <section class="section-modal" id="section-modal">
       <div class="modal-background"></div>
-      <form action="" method="get" id="modal-form">
+      <form action="/admin/adminCreatePostOk.ad?boardCategory=teamyoutube" method="post" id="modal-form" enctype="multipart/form-data">
 
         <div class="modal-input-text">
-          <label for="song-url"> 유튜브 주소 : </label>
-          <input type="url" id="song-url" name=songUrl required>
+          <label for="youtube-url"> 유튜브 주소 : </label>
+          <input type="url" id="youtube-url" name="youtubeUrl" required>
+        </div>
+        
+        <div class="modal-input-text">
+        	<label for="youtube-title"> 유튜브 제목 : </label>
+        	<input type="text" id="youtube-title" name = "youtubeTitle" required>
         </div>
 
         <div class="modal-input-radio">
 
-          <input type="radio" id="lg" name="team" required>
+          <input type="radio" id="lg" name="team-categories" required>
           <label for="lg"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png"> </label>
 
-          <input type="radio" id="hh" name="team" required>
+          <input type="radio" id="hh" name="team-categories" required>
           <label for="hh"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"> </label>
 
-          <input type="radio" id="lotte" name="team" required>
+          <input type="radio" id="lotte" name="team-categories" required>
           <label for="lotte"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"> </label>
 
-          <input type="radio" id="ssg" name="team" required>
+          <input type="radio" id="ssg" name="team-categories" required>
           <label for="ssg"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png"> </label>
 
-          <input type="radio" id="kia" name="team" required>
+          <input type="radio" id="kia" name="team-categories" required>
           <label for="kia"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png"> </label>
 
-          <input type="radio" id="kt" name="team" required>
-          <label for="kt"> <img src=".${pageContext.request.contextPath}/assets/img/communityImg/kt.png"> </label>
+          <input type="radio" id="kt" name="team-categories" required>
+          <label for="kt"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png"> </label>
 
-          <input type="radio" id="nc" name="team" required>
+          <input type="radio" id="nc" name="team-categories" required>
           <label for="nc"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png"> </label>
 
-          <input type="radio" id="samsung" name="team" required>
+          <input type="radio" id="samsung" name="team-categories" required>
           <label for="samsung"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"> </label>
 
-          <input type="radio" id="doosan" name="team" required>
+          <input type="radio" id="doosan" name="team-categories" required>
           <label for="doosan"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png"> </label>
 
-          <input type="radio" id="kiwoom" name="team" required>
+          <input type="radio" id="kiwoom" name="team-categories" required>
           <label for="kiwoom"> <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"> </label>
 
         </div>

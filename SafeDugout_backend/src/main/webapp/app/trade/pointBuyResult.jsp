@@ -7,16 +7,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>포인트 충전 완료 페이지</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/trade/pointBuyResult.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/footer.css">
-<script defer
-	src="${pageContext.request.contextPath}/assets/js/trade/pointBuyResult.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/pointBuyResult.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+<script defer src="${pageContext.request.contextPath}/assets/js/trade/pointBuyResult.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -71,7 +65,7 @@
 	</main>
 
 	<!-- 푸터 -->
-	<div id="footer"></div>
+	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 	<!-- 스크립트 -->
 	<script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
 </body>

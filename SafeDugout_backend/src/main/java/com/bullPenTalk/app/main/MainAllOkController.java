@@ -27,7 +27,7 @@ public class MainAllOkController implements Execute {
 
 		// path 값, redirect 여부 설정
 		result.setPath("/app/freeCommunity/freeCommunity.jsp");
-		result.setRedirect(true);
+		result.setRedirect(false);
 		
 		return result;
 	}
