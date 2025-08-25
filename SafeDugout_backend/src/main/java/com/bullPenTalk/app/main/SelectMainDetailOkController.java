@@ -36,7 +36,7 @@ public class SelectMainDetailOkController implements Execute{
 		
 		//조회 방식에 맞게 MainDAO의 공지사항 상세 조회 메소드 호출
 		if(prevNext != null) {
-			if(prevNext == "prev") {
+			if(prevNext.equals("prev")) {
 				//이전글 조회
 				mainNoticePostDTO = mainDAO.selectMainPrev(noticePostNumber);
 			}else {
