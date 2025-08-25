@@ -15,7 +15,7 @@
 
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/header.jsp" />
 
 	<!-- 메인 -->
 	<main>

@@ -17,7 +17,7 @@
 
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/header.jsp" />
 	<!-- 폼 태그 -->
 	<form action="" method="get">
 		<!-- 검색 컨테이너 -->

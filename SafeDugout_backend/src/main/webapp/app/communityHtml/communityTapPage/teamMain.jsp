@@ -25,8 +25,8 @@
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/kiwoomFooter.css">
   	</c:when>
   	<c:when test="${sessionScope.teamNumber == 6}">
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/KtHeader.css">
-  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/KtFooter.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/ktHeader.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ktFooter.css">
   	</c:when>
   	<c:when test="${sessionScope.teamNumber == 2}">
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/lgHeader.css">
@@ -49,8 +49,8 @@
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ssgFooter.css">
   	</c:when>
   </c:choose>
-  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityMainPage.js"></script> --%>
+  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script> --%>
+  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityMainPage.js"></script> --%>
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />

@@ -6,16 +6,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>상품 구매 완료 페이지</title>
-<link rel="stylesheet" href="./../../assets/css/trade/pointBuyResult.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/pointBuyResult.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-<link rel="stylesheet" href="./../../assets/css/footer.css">
-<script defer src="./../../assets/js/trade/pointBuyResult.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+<script defer src="${pageContext.request.contextPath}/assets/js/trade/pointBuyResult.js"></script>
 </head>
 
 <!-- 바디 -->
 <body>
 	<!-- 헤더 -->
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/header.jsp" />
 	<!-- 메인 -->
 	<main>
 		<!-- 메인 컨테이너 -->
