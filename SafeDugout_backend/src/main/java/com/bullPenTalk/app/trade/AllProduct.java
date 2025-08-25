@@ -14,6 +14,7 @@ public class AllProduct implements TradeService{
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("AllProcudt 진입");
+		System.out.println("action값: " + action);
 		// Result 객체 생성
 		Result result = new Result();
 

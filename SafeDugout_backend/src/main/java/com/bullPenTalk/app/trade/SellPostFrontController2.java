@@ -37,23 +37,29 @@ public class SellPostFrontController2 extends HttpServlet {
 		registry.put("allProduct", new AllProduct());
 		registry.put("tradeWirte", new TradeWirte());
 		registry.put("update", new Update());
+		registry.put("search", new Search());
+		registry.put("detail", new Detail());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("현재 경로 진입" );
+		
 		req.setCharacterEncoding("UTF-8"); // 한글 깨짐 방지
 		// 요청 파라미터(team, action) 꺼내기
 		String category = nvl(req.getParameter("team")).toLowerCase();
 		String action = nvl(req.getParameter("action")).toLowerCase();
+		System.out.println(category);
+		System.out.println("현재 경로 :" + req);
+		System.out.println("액션값: " + action);
 		// team에 맞는 서비스 찾기 (없으면 defaultService로)
 		TradeService svc = registry.getOrDefault(category, defaultService);
 		// 찾은 서비스 실행 -> 실제 로직은 서비스 클래스에서 처리
 		svc.execute(action, req, resp);
+		
 	}
 
 	// null 값 들어오면 ""로 바꿔주기
 	private String nvl(String s) {
-		return (s == null) ? "" : s;
+		return (s == null) ? "allProduct" : s;
 	}
 }

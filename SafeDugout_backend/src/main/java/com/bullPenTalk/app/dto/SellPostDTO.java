@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class SellPostDTO { // 판매글
 //	CREATE TABLE TBL_SELL_POST(
 //	SELL_POST_NUMBER NUMBER,
@@ -41,8 +43,15 @@ public class SellPostDTO { // 판매글
 	private String sellPostUpdate; // 수정일자
 	private String sellPostContent; // 상품 설명
 	private int teamId;
+	private String imagePath;  // 첨부파일
 	
 	// get, set
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public int getPricePoint() {
 		return pricePoint;
 	}
@@ -117,6 +126,7 @@ public class SellPostDTO { // 판매글
 		this.teamId = teamId;
 	}
 
+
 	// toSTring
 	@Override
 	public String toString() {
@@ -124,7 +134,7 @@ public class SellPostDTO { // 판매글
 				+ statusId + ", categoryId=" + categoryId + ", dealtypeId=" + dealtypeId + ", pricePoint=" + pricePoint
 				+ ", sellPostTitle=" + sellPostTitle + ", tradingArea=" + tradingArea + ", sellPostCreationDate="
 				+ sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate + ", sellPostContent=" + sellPostContent
-				+ ", teamId=" + teamId + "]";
+				+ ", teamId=" + teamId + ", imagePath=" + imagePath + "]";
 	}
 	
 	
