@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.main;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.main.dao.MainDAO;
 
 public class MainOkController implements Execute{
@@ -28,7 +30,15 @@ public class MainOkController implements Execute{
 		result.setPath("/main.jsp");
 		result.setRedirect(false);
 		
-		return result;
+//		//팀 순위 조회(1~10위)
+//		List<MainDTO> rankList = mainDAO.selectTeamRank();
+//		request.setAttribute("rankList", rankList);
+
+//		//경기 일정 목록 조회
+//		List<MainDTO> schedule = mainDAO.selectSchedule(1);
+//		request.
+		
+		return result; 
 	}
 	
 }

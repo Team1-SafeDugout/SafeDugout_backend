@@ -36,11 +36,8 @@
 							<c:out value="${recentMainTitle}"/></a>
 					</div>
 					<div class="trade-logo">
-						<a
-							href="${pageContext.request.contextPath}/app/trade/productRegister.jsp">
-							<img
-							src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png"
-							alt="">
+						<a  href="${pageContext.request.contextPath}/app/trade/productRegister.jsp">
+							<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
 						</a>
 					</div>
 					<div class="welcome"><span><c:out value="${sessionScope.memberName}" /></span>님 환영합니다.</div>
