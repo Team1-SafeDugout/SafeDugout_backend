@@ -116,7 +116,7 @@
             <!-- 하단 버튼 -->
             <section class="section-bottom-menus">
                 <button type="button" class="post-button"
-                    onclick="location.href='${pageContext.request.contextPath}/trade/tradeMain.jsp'">
+                    onclick="location.href='${pageContext.request.contextPath}/trade/tradeMain.tr'">
                     목록으로
                 </button>
             </section>
