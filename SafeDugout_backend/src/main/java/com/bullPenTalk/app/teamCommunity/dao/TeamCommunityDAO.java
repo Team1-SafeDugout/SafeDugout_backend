@@ -10,6 +10,7 @@ import com.bullPenTalk.app.dto.DeffenseBaseRecordDTO;
 import com.bullPenTalk.app.dto.GameScheduleDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
+import com.bullPenTalk.app.dto.PitcherRecordDTO;
 import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.dto.PostDetailDTO;
 import com.bullPenTalk.app.dto.SongPostDTO;
@@ -110,49 +111,49 @@ public class TeamCommunityDAO {
 	}	
 	
 	// 팀 시즌 기록 조회
-	public List<TeamRecordDTO> selectTeamRecord(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<TeamRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.teamRecordSelect", pageMap);
-		System.out.println("조회결과 : " + list);
-		return list;
-	}	
-	
+    public List<TeamRecordDTO> selectTeamRecord(Map<String, Integer> param){
+        System.out.println("DAO: 팀 기록 조회 - selectTeamRecord 실행, param: " + param);
+        List<TeamRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.teamRecordSelect", param);
+        System.out.println("조회결과: " + list);
+        return list;
+    }
+    
 	// 팀 투수 기록 조회
-	public List<TeamPitcherRecordDTO> selectTeamPitcherRecord(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<TeamPitcherRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.pitcherRecordSelect", pageMap);
+	public List<TeamPitcherRecordDTO> selectTeamPitcherRecord(Map<String, Integer> param){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + param);
+		List<TeamPitcherRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.pitcherRecordSelect", param);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}	
 	
 	// 팀 타자 기록 조회
-	public List<TeamBatterRecordDTO> selectTeamBatterRecord(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<TeamBatterRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.batterRecordSelect", pageMap);
+	public List<TeamBatterRecordDTO> selectTeamBatterRecord(Map<String, Integer> param){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + param);
+		List<TeamBatterRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.batterRecordSelect", param);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}	
 	
 	// 팀 수비/주루 기록
-	public List<DeffenseBaseRecordDTO> selectTeamDeffenseRecord(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<DeffenseBaseRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.batterRecordSelect", pageMap);
+	public List<DeffenseBaseRecordDTO> selectTeamDeffenseRecord(Map<String, Integer> param){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + param);
+		List<DeffenseBaseRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.deffenseBaseRecord", param);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}	
 	
 	// 투수 기록 조회
-	public List<DeffenseBaseRecordDTO> selectPlayerPitcher(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<DeffenseBaseRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.playerPitcherRecord", pageMap);
+	public List<PitcherRecordDTO> selectPlayerPitcher(Map<String, Integer> param){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + param);
+		List<PitcherRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.playerPitcherRecord", param);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}	
 	
 	// 타자 기록 조회
-	public List<BatterRecordDTO> selectPlayerBatter(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<BatterRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.playerBatterRecord", pageMap);
+	public List<BatterRecordDTO> selectPlayerBatter(Map<String, Integer> param){
+		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + param);
+		List<BatterRecordDTO> list = sqlSession.selectList("TeamCommunityMapper.playerBatterRecord", param);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}

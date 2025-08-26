@@ -36,11 +36,14 @@ public class Board implements CommunityService {
 		case "write":
 			result= writeController.writerequest(request, response);
 			break;
-		case "writeOk":
+		case "writeok":
 			result = writeOkController.writePost(request, response);
 			break;
 		case "detail": 
 			result = detail.detailselect(action, request, response);
+			break;
+		case "noticedetail":
+			
 			break;
 		case "delete":
 			result = delete.deletePost(request, response);
@@ -48,7 +51,7 @@ public class Board implements CommunityService {
 		case "update":
 			result = update.update(request, response);
 			break;
-		case "updateOk":		
+		case "updateok":		
 			result = updateOk.updateOk(request, response);
 			break;
 		default :

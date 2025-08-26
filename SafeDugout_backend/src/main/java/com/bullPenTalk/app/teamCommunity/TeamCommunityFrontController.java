@@ -17,7 +17,6 @@ import com.bullPenTalk.app.trade.TradeService;
 /**
  * Servlet implementation class TeamCommunityFrontController
  */
-@WebServlet("/TeamCommunityFrontController")
 public class TeamCommunityFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

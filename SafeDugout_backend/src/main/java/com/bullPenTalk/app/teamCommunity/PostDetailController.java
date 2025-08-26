@@ -17,6 +17,7 @@ import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 
 public class PostDetailController {
 
+	// 게시판
 	public Result detailselect(String action, HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
 

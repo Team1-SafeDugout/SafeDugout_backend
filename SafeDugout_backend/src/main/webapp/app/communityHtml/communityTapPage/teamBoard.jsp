@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,47 +57,24 @@
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <main>
-    <!-- 공지목록 -->
-    <div class="team-notice-container">
-      <h2>게시판</h2>
-      <div class="team-notice-board">
-        <h4>공지글</h4>
-        <div class="team-notice-more"><a href="./teamNoticeBoard.html">더보기</a></div>
-        <ul id="team-notice-content">
-          <li class="team-notice-header">
-            <div>글번호</div>
-            <div>제목</div>
-            <div>작성자</div>
-            <div>작성일자</div>
-          </li>
-          <li class="team-notice-list">
-            <a href="#">
-              <div>1</div>
-              <div>공지 제목 예시</div>
-              <div>관리자</div>
-              <div>2025-08-12</div>
-            </a>
-          </li>
-          <!-- 공지글 더 추가 -->
-        </ul>
-      </div>
-    </div> 
-
     <!-- 게시글 목록 -->
     <div class="team-board-container">
       <div class="team-board-tools-header">
         <h4>게시글</h4>
         <div class="team-board-tools">
           <!-- 검색 창 -->
-          <form action="">
-            <span>검색</span>
-            <input type="text">
-            <button>
-              <img class="team-board-search" src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="">
-            </button>
-          </form>
+          
+	        <form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
+	            <input type="hidden" name="team" value="search">
+	            <input type="hidden" name="action" value="search"> 
+	            <input type="text" name="searchWord" placeholder="검색어를 입력해주세요" value="${searchWord != null ? searchWord : ''}"> 
+	            <button>
+              		<img class="team-board-search" src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="">
+            	</button>
+	       </form>	
+           
           <!-- 글쓰기 탭 -->
-          <a href="./teamPostWriting.html" class="team-board-write">글쓰기</a>
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=write" class="team-board-write">글쓰기</a>
         </div>
       </div>
       <!-- 게시글 리스트 헤더 -->
@@ -105,21 +85,60 @@
           <div>작성자</div>
           <div>작성일자</div>
         </li>
+        
+        	<c:choose>
+	        	<c:when test="${not empty postList}">
+	        		<c:forEach var="community" items="${postList}">
+	        			<li class="team-board-list">
+		        		<div>
+		        			<c:out value="${community.postNumber}"/>
+		        		</div>
+		        		<div>
+		        			<a herf=>
+		        				<c:out value="${community.postTitle }"/>
+		        			</a>
+		        		</div>
+		        		<div>
+		        			<c:out value="${community.memberId}"/>
+		        		</div>
+		        		<div>
+		        			<c:out value="${community.postDate}"/>
+		        		</div>
+		        		</li>	
+	      			</c:forEach>	      			
+	        	</c:when>
+	        </c:choose>
+       
         <!-- 게시글 들어갈 공간 -->
       </ul>
     </div>
     <!-- 페이지 네이션 -->
-    <div class = "list-pagenumber">
-      <div id ="left-button"> ◁ </div>
-      <ul id = "numberlist-ul">
-        <li><a>1</a></li>
-        <li><a>2</a></li>
-        <li><a>3</a></li>
-        <li><a>4</a></li>
-        <li><a>5</a></li>
-      </ul>
-      <div id ="right-button"> ▷ </div>
-    </div>
+                <!-- 검색 결과 & 페이지네이션 -->
+       <div class="pagination">
+        <ul>     
+          <c:if test="${prev}">
+          	<li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist&page=${startPage - 1}" class="prev">&lt;</a></li>
+          </c:if>
+          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+          	<c:choose>
+          		<c:when test="${!(i == page) }">
+          			<li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist&page=${startPage - 1}" class="prev">
+          				<c:out value="${i}" />
+          			</a></li>
+          		</c:when>
+          		<c:otherwise>
+          			<li><a href="#" class="active">
+          				<c:out value="${i}" />
+          			</a></li>
+          		</c:otherwise>
+          	</c:choose>
+          </c:forEach>
+          <c:if test="${next}">
+          	<li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist&page=${endPage + 1}" class="next">&gt;</a></li>
+          </c:if>
+        </ul>
+      </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
 </body>

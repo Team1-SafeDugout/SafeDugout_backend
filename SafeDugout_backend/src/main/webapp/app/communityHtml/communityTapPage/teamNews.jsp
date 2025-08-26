@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,13 +58,13 @@
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <main>
     <div class="team-news-container">
-      <h2>팀 뉴스</h2>
+      <h2>팀뉴스</h2>
       <!-- 뉴스 박스 -->
       <ul id="team-news-box">
         <li class="team-news-list">
           <a href="./teamNewsDetail.html">
             <span><img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt=""></span>
-            <span>타격 기계도 4번 타자도 아니다, LG 후반기 타격 1위는 '슈퍼 백업'</span>
+            <span></span>
           </a>
         </li>
         <!-- 뉴스 추가 공간 -->

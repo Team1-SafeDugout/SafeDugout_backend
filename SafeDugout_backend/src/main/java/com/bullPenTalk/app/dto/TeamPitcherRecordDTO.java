@@ -42,108 +42,211 @@ public class TeamPitcherRecordDTO {
 	private int teamPitcherScore;
 	private int teamPitcherSelfScore;
 	
+	
+
 	public int getTeamNumber() {
 		return teamNumber;
 	}
+
+
+
 	public void setTeamNumber(int teamNumber) {
 		this.teamNumber = teamNumber;
 	}
+
+
+
 	public int getSeasonYear() {
 		return seasonYear;
 	}
+
+
+
 	public void setSeasonYear(int seasonYear) {
 		this.seasonYear = seasonYear;
 	}
+
+
+
 	public double getTeamPitcherEra() {
 		return teamPitcherEra;
 	}
-	public void setTeamPitcherEra(int teamPitcherEra) {
+
+
+
+	public void setTeamPitcherEra(double teamPitcherEra) {
 		this.teamPitcherEra = teamPitcherEra;
 	}
+
+
+
 	public double getTeamPitcherStartEra() {
 		return teamPitcherStartEra;
 	}
-	public void setTeamPitcherStartEra(int teamPitcherStartEra) {
+
+
+
+	public void setTeamPitcherStartEra(double teamPitcherStartEra) {
 		this.teamPitcherStartEra = teamPitcherStartEra;
 	}
+
+
+
 	public double getTeamPitcherReliefEra() {
 		return teamPitcherReliefEra;
 	}
-	public void setTeamPitcherReliefEra(int teamPitcherReliefEra) {
+
+
+
+	public void setTeamPitcherReliefEra(double teamPitcherReliefEra) {
 		this.teamPitcherReliefEra = teamPitcherReliefEra;
 	}
+
+
+
 	public int getTeamPitcherGameCount() {
 		return teamPitcherGameCount;
 	}
+
+
+
 	public void setTeamPitcherGameCount(int teamPitcherGameCount) {
 		this.teamPitcherGameCount = teamPitcherGameCount;
 	}
+
+
+
 	public int getTeamPitcherWin() {
 		return teamPitcherWin;
 	}
+
+
+
 	public void setTeamPitcherWin(int teamPitcherWin) {
 		this.teamPitcherWin = teamPitcherWin;
 	}
+
+
+
 	public int getTeamPitcherLose() {
 		return teamPitcherLose;
 	}
+
+
+
 	public void setTeamPitcherLose(int teamPitcherLose) {
 		this.teamPitcherLose = teamPitcherLose;
 	}
+
+
+
 	public int getTeamPitcherSave() {
 		return teamPitcherSave;
 	}
+
+
+
 	public void setTeamPitcherSave(int teamPitcherSave) {
 		this.teamPitcherSave = teamPitcherSave;
 	}
+
+
+
 	public int getTeamPitcherHold() {
 		return teamPitcherHold;
 	}
+
+
+
 	public void setTeamPitcherHold(int teamPitcherHold) {
 		this.teamPitcherHold = teamPitcherHold;
 	}
+
+
+
 	public int getTeamPitcherStrikeout() {
 		return teamPitcherStrikeout;
 	}
+
+
+
 	public void setTeamPitcherStrikeout(int teamPitcherStrikeout) {
 		this.teamPitcherStrikeout = teamPitcherStrikeout;
 	}
+
+
+
 	public int getTeamPitcherHits() {
 		return teamPitcherHits;
 	}
+
+
+
 	public void setTeamPitcherHits(int teamPitcherHits) {
 		this.teamPitcherHits = teamPitcherHits;
 	}
+
+
+
 	public int getTeamPitcherHr() {
 		return teamPitcherHr;
 	}
+
+
+
 	public void setTeamPitcherHr(int teamPitcherHr) {
 		this.teamPitcherHr = teamPitcherHr;
 	}
+
+
+
 	public int getTeamPitcherBb() {
 		return teamPitcherBb;
 	}
+
+
+
 	public void setTeamPitcherBb(int teamPitcherBb) {
 		this.teamPitcherBb = teamPitcherBb;
 	}
+
+
+
 	public int getTeamPitcherHbp() {
 		return teamPitcherHbp;
 	}
+
+
+
 	public void setTeamPitcherHbp(int teamPitcherHbp) {
 		this.teamPitcherHbp = teamPitcherHbp;
 	}
+
+
+
 	public int getTeamPitcherScore() {
 		return teamPitcherScore;
 	}
+
+
+
 	public void setTeamPitcherScore(int teamPitcherScore) {
 		this.teamPitcherScore = teamPitcherScore;
 	}
+
+
+
 	public int getTeamPitcherSelfScore() {
 		return teamPitcherSelfScore;
 	}
+
+
+
 	public void setTeamPitcherSelfScore(int teamPitcherSelfScore) {
 		this.teamPitcherSelfScore = teamPitcherSelfScore;
 	}
+
+
 
 	@Override
 	public String toString() {

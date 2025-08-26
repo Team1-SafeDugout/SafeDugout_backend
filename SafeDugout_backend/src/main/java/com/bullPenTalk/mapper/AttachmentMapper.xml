@@ -51,14 +51,6 @@
     ]]>
 	</select>
 	
-	<!-- 경기장 파일 조회 -->
-	<select id="selectStadiumAttachment" parameterType="int" resultType="AttachmentDTO">
-    SELECT A.ATTACHMENT_NUMBER, A.ATTACHMENT_NAME, A.ATTACHMENT_PATH
-    FROM TBL_ATTACHMENT A
-    JOIN TBL_STADIUM_ATTACHMENT SA ON A.ATTACHMENT_NUMBER = SA.ATTACHMENT_NUMBER
-    WHERE SA.STADIUM_NUMBER = #{stadiumNumber}
-	</select>
-	
 	<!-- 추가 관련 -->
 	<insert id = "insertAttachment" parameterType = "AttachmentDTO">
 		INSERT INTO TBL_ATTACHMENT(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_PATH)
@@ -82,13 +74,8 @@
     ]]>
 	</insert>
 	
-	<!-- 경기장 첨부파일 매핑 추가 -->
-	<insert id="insertStadiumAttachment" parameterType="StadiumAttachmentDTO">
-	    INSERT INTO TBL_STADIUM_ATTACHMENT (STADIUM_NUMBER, ATTACHMENT_NUMBER)
-	    VALUES (#{stadiumNumber}, #{attachmentNumber})
-	</insert>
 	
-<!-- 제거 관련 -->
+	<!-- 제거 관련 -->
 	<!-- 판매글 첨부파일 삭제  -->
 	<delete id="deleteSellPost" parameterType="int">
     <![CDATA[
