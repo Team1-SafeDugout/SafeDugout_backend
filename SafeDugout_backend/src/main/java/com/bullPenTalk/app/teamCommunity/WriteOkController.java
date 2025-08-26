@@ -67,9 +67,7 @@ public class WriteOkController {
 			postDTO.setPostTitle(multipartRequest.getParameter("postTitle"));
 			postDTO.setPostContent(multipartRequest.getParameter("postContent"));
 			postDTO.setMemberNumber(memberNumber);
-			String priceStr = multipartRequest.getParameter("pricePoint");
-			
-
+	
 			// 팀 번호
 			String teamIdStr = multipartRequest.getParameter("teamId");
 			postDTO.setTeamNumber(Integer.parseInt(teamIdStr));
@@ -120,7 +118,7 @@ public class WriteOkController {
 		}
 		result.setPath("/communityHtml/communityTapPage/teamBoardComplete.jsp");
 		result.setRedirect(false);
-		System.out.println("리턴징입");
+		System.out.println("리턴진입");
 		return result;
 
 	}

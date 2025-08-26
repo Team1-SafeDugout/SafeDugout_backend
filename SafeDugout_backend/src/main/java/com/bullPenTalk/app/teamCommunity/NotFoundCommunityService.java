@@ -11,7 +11,7 @@ public class NotFoundCommunityService implements CommunityService{
 	@Override
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	

@@ -134,8 +134,9 @@
   </main>
   <!-- 푸터 -->
   <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
-  <!-- 스크립트 -->
-  <script src="${pageContext.request.contextPath}/assets/js/include.js"></script>
+    <script>
+    	let memberNumber = "${sessionScope.memberNumber}";
+    </script>
 </body>
 
 </html>
