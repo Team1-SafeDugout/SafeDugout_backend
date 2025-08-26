@@ -17,14 +17,13 @@
     		tradeNumber: "${board.sellPostNumber}", 
     		postTitle: "${board.sellPostTitle}",
     		statusName: "${board.statusName}",
-    		memberId: "${board.memberNumber}",
-    		paymentDay: "${board.paymentDate}",
-    		completeDay: "${board.completeDate}"
+    		memberId: "${board.memberId}",
+    		paymentDay: "${board.sellPostUpdate}",
+    		completeDay: "${board.sellPostCreationDate}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
   </script>  
-  <script async src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageSell.js"></script>
 </head>
 
@@ -69,10 +68,11 @@
 
           <div class="list-names">
             <div>글 번호</div>
-            <div></div>
-            <div>제목 </div>
-            <div>작성 일자</div>
-            <div></div>
+            <div>제목</div>
+            <div>거래 상태 </div>
+            <div>작성자</div>
+            <div>작성일자</div>
+            <div> 구매 일자 </div>
           </div>
           <div class="list-container">
             <ul class="list-ul" id="list-ul">
@@ -84,13 +84,13 @@
 	        <ul>
 	          
 	          <c:if test="${prev}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
 	          </c:if>
 	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	          	<c:choose>
 	          		<c:when test="${!(i == page) }">
-	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad?page=${i}">
 	          				<c:out value="${i}" />
 	          			</a></li>
 	          		</c:when>
@@ -103,7 +103,7 @@
 	          </c:forEach>
 	          
 	          <c:if test="${next}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
 	          </c:if>
 	          
 	        </ul>
