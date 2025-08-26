@@ -58,7 +58,7 @@
     <section class="cheer-section">
       <div class="section-header">
         <h2>팀 응원가</h2>
-        <a href="./teamSongTeamList.html" class="more-link">더보기</a>
+        <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=teamsong" class="more-link">더보기</a>
       </div>
       <div class="cheer-song">
         <button class="last_song">&lt;</button>
@@ -76,7 +76,7 @@
     <section class="cheer-section">
       <div class="section-header">
         <h2>선수 응원가</h2>
-        <a href="./teamSongPlayerList.html" class="more-link">더보기</a>
+        <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=playersong" class="more-link">더보기</a>
       </div>
       <div class="cheer-song">
         <button class="last_song">&lt;</button>
@@ -84,6 +84,7 @@
           <li><div class="thumb">
             <a href="https://www.youtube.com/results?search_query=%ED%99%8D%EC%B0%BD%EA%B8%B0+%EC%9D%91%EC%9B%90%EA%B0%80">응원가 1</a>
           </li>
+          
           <!-- 선수응원가 추가 공간 -->
         </ul>
         <!-- 슬라이딩 버튼 -->

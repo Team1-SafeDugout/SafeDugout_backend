@@ -82,14 +82,14 @@ registerBtn.addEventListener('click', function () {
       isValidAll = false;
     }
   }
-  if (errorMessagePrice.style.visibility === 'visible') {
+/*  if (errorMessagePrice.style.visibility === 'visible') {
     isValidAll = false;
-  }
+  }*/
 
-  // 모든 입력값이 유효하면 페이지 이동
+/*  // 모든 입력값이 유효하면 페이지 이동
   if (isValidAll === true) {
     location.href = "./productRegisterResult.html";
-  }
+  }*/
 });
 
 // 취소 버튼 누를 시 작동

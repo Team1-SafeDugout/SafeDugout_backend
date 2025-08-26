@@ -63,14 +63,27 @@ public class WriteOkController {
 			// "utf-8" : 파일명 인코딩 방식
 			// new DefaultFileRenamePolicy() : 파일명이 중복될 경우 자동으로 이름 변경해주는 정책
 
+			
+
+	
+			// 팀 번호, 맴버넘버
+			String memberNumberStr = multipartRequest.getParameter("memberNumber");
+			String teamNumberStr = multipartRequest.getParameter("teamNumber");
+			String boardIdStr = multipartRequest.getParameter("boardId");
+					
+			int teamNumber = Integer.parseInt(teamNumberStr);
+			int boardId = Integer.parseInt(boardIdStr);
+			
+			if(memberNumberStr == null || teamNumberStr == null || boardIdStr == null) {
+			    System.out.println("오류: memberNumber 또는 teamNumber 전달 안됨");
+			    return null;
+			}
 			// 게시글 정보 설정
 			postDTO.setPostTitle(multipartRequest.getParameter("postTitle"));
 			postDTO.setPostContent(multipartRequest.getParameter("postContent"));
 			postDTO.setMemberNumber(memberNumber);
-	
-			// 팀 번호
-			String teamIdStr = multipartRequest.getParameter("teamId");
-			postDTO.setTeamNumber(Integer.parseInt(teamIdStr));
+			postDTO.setBoardId(boardId);
+			postDTO.setTeamNumber(teamNumber);
 			
 			System.out.println("게시글 추가 - PostDetailDTO : " + postDTO);
 
@@ -116,7 +129,7 @@ public class WriteOkController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		result.setPath("/communityHtml/communityTapPage/teamBoardComplete.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamBoardComplete.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴진입");
 		return result;

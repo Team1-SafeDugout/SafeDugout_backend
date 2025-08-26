@@ -33,8 +33,8 @@ public class SellPostFrontController2 extends HttpServlet {
 		registry.put("lotte", new Lotte());
 		registry.put("kia", new Kia());
 		registry.put("kiwoom", new Kiwoom());
-		registry.put("allProduct", new AllProduct());
-		registry.put("tradeWirte", new TradeWirte());
+		registry.put("allproduct", new AllProduct());
+		registry.put("tradewirte", new TradeWirte());
 		registry.put("update", new Update());
 		registry.put("search", new Search());
 	}

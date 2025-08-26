@@ -69,7 +69,7 @@ public class PostSelectListController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/communtiyHtml/communtiyTapPage/teamBoardjsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamBoardjsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
@@ -128,7 +128,7 @@ public class PostSelectListController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/communtiyHtml/communtiyTapPage/teamNoticeBoard.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamNoticeBoard.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
@@ -186,7 +186,7 @@ public class PostSelectListController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/communtiyHtml/communtiyTapPage/teamNoticeBoard.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamNoticeBoard.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
@@ -245,7 +245,7 @@ public class PostSelectListController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/communtiyHtml/communtiyTapPage/teamNoticeBoard.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamNoticeBoard.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
@@ -253,7 +253,7 @@ public class PostSelectListController {
 	
 	// 선수 응원가 목록 조회
 	public Result playerSongList(String action, HttpServletRequest request, HttpServletResponse response){
-		System.out.println("listTeam 메소드 진입");
+		System.out.println("playerSongList 메소드 진입");
 		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
 		Result result = new Result();
 		String temp = request.getParameter("page");
@@ -268,7 +268,7 @@ public class PostSelectListController {
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 
-		// ㅅ 목록 조회
+		// 목록 조회
 		List<SongPostDTO> PostList = teamCommunityDAO.selectPlayerSong(pageMap);
 		request.setAttribute("PostList", PostList);
 		System.out.println("게시판 진입");
@@ -277,7 +277,7 @@ public class PostSelectListController {
 
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
 
-		int total = teamCommunityDAO.getTotalBoard();
+		int total = teamCommunityDAO.getTotalPlayerSong();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
@@ -303,7 +303,7 @@ public class PostSelectListController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/communtiyHtml/communtiyTapPage/teamSongPlayerList.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamSongPlayerList.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
@@ -336,7 +336,7 @@ public class PostSelectListController {
 
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
 
-		int total = teamCommunityDAO.getTotalBoard();
+		int total = teamCommunityDAO.getTotalTeamSong();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
@@ -362,7 +362,7 @@ public class PostSelectListController {
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/communtiyHtml/communtiyTapPage/teamSongTeamList.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamSongTeamList.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
@@ -420,7 +420,7 @@ public class PostSelectListController {
 			System.out.println("====================");
 
 			System.out.println("끝 진입");
-			result.setPath("/app/communtiyHtml/communtiyTapPage/teamSongTeamList.jsp");
+			result.setPath("/app/communityHtml/communityTapPage/teamSongTeamList.jsp");
 			result.setRedirect(false);
 			System.out.println("리턴 진입");
 			return result;
