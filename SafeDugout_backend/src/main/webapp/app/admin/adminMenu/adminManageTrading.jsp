@@ -17,10 +17,9 @@
     	posts.push({
     		tradeNumber: "${board.tradeNumber}", 
     		postTitle: "${board.sellPostTitle}",
-    		statusName: "${board.statusName}",
-    		memberId: "${board.memberId}",
-    		paymentDay: "${board.paymentDate}",
-    		completeDay: "${board.completeDate}"
+    		postUpdate: "${board.sellPostUpdate}",
+    		seller: "${board.seller}",
+    		buyer: "${board.buyer}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
@@ -68,7 +67,6 @@
 
           <div class="list-names">
             <div>글 번호</div>
-            <div></div>
             <div>제목</div>
             <div>거래 일자</div>
             <div>판매자 ID</div>

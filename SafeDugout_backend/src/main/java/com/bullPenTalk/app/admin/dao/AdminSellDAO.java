@@ -41,6 +41,10 @@ public class AdminSellDAO {
 	public List<AdminSellPostDTO> selectList(){
 		return sqlSession.selectList("adminSellPost.adminSelectList");
 	}
+	
+	public AdminSellPostDTO selectDetail(int postNumber) {
+		return sqlSession.selectOne("adminSellPost.adminSelectDetail", postNumber);
+	}
 
 
 //	// 조회(하나만)

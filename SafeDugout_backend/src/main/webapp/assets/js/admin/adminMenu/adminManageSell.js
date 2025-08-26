@@ -51,7 +51,7 @@ function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId,
 
 
 	const postTitleLink = document.createElement('a');
-	/*postTitleLink.setAttribute("href", "/admin/adminReadMainNoticeOk.ad?noticePostNumber=" + postNumberParam);*/
+	postTitleLink.setAttribute("href", "/admin/adminReadSellOk.ad?postNumber=" + postNumberParam);
 	postTitleLink.appendChild(postTitleText);
 
 	postNum.appendChild(postNumText);
