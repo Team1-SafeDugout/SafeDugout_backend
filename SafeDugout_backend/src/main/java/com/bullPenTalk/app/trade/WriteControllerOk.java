@@ -60,32 +60,31 @@ public class WriteControllerOk {
 			// FILE_SIZE : 파일의 최대 크기
 			// "utf-8" : 파일명 인코딩 방식
 			// new DefaultFileRenamePolicy() : 파일명이 중복될 경우 자동으로 이름 변경해주는 정책
-			System.out.println("price 파라미터 값: " + request.getParameter("pricePoint"));
-			System.out.println("productTitle 파라미터 값: " + request.getParameter("productTitle"));
-			System.out.println("productContent 파라미터 값: " + request.getParameter("productContent"));
-			// 게시글 정보 설정
-			sellPostDTO.setSellPostTitle(multipartRequest.getParameter("productTitle"));
-			sellPostDTO.setSellPostContent(multipartRequest.getParameter("productContent"));
-			sellPostDTO.setMemberNumber(memberNumber);
+			String title = multipartRequest.getParameter("sellPostTitle");
+			String content = multipartRequest.getParameter("sellPostContent");
 			String priceStr = multipartRequest.getParameter("pricePoint");
-			sellPostDTO.setPricePoint(Integer.parseInt(priceStr));
-
-
-			// 거래 방식
-			String dealTypeIdStr = multipartRequest.getParameter("dealTypeId");
-			sellPostDTO.setDealtypeId(Integer.parseInt(dealTypeIdStr));
-
-
-			// 카테고리
-			String categoryIdStr = multipartRequest.getParameter("categoryId");
-			sellPostDTO.setCategoryId(Integer.parseInt(categoryIdStr));
-
-			// 거래 지역
-			sellPostDTO.setTradingArea(multipartRequest.getParameter("tradingArea"));
-
-			// 팀 번호
+			String dealTypeStr = multipartRequest.getParameter("dealTypeId");
+			String categoryStr = multipartRequest.getParameter("categoryId");
 			String teamIdStr = multipartRequest.getParameter("teamId");
+			String tradingArea = multipartRequest.getParameter("tradingArea");
+			
+			System.out.println(title);
+			System.out.println(content);
+			System.out.println(priceStr);
+			System.out.println(dealTypeStr);
+			System.out.println(categoryStr);
+			System.out.println(teamIdStr);
+			System.out.println(tradingArea);
+			// 게시글 정보 설정
+			sellPostDTO.setSellPostTitle(title);
+			sellPostDTO.setSellPostContent(content);
+			sellPostDTO.setMemberNumber(memberNumber);
+			sellPostDTO.setPricePoint(Integer.parseInt(priceStr));
+			sellPostDTO.setDealtypeId(Integer.parseInt(dealTypeStr));
+			sellPostDTO.setCategoryId(Integer.parseInt(categoryStr));
 			sellPostDTO.setTeamId(Integer.parseInt(teamIdStr));
+			sellPostDTO.setTradingArea(tradingArea);
+			sellPostDTO.setStatusId(1);
 			
 			System.out.println("게시글 추가 - SellPostDetailDTO : " + sellPostDTO);
 

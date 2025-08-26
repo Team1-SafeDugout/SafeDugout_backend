@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="payment">
+
+    <!-- 구매자 포인트 차감 -->
+    <update id="decreaseBuyerPoint">
+        UPDATE TBL_MEMBER
+        SET MEMBER_POINT = MEMBER_POINT - #{price}
+        WHERE MEMBER_NUMBER = #{buyerNumber}
+          AND MEMBER_POINT >= #{price}
+    </update>
+
+    <!-- 판매자 포인트 적립 -->
+    <update id="increaseSellerPoint">
+        UPDATE TBL_MEMBER
+        SET MEMBER_POINT = MEMBER_POINT + #{price}
+        WHERE MEMBER_NUMBER = #{sellerNumber}
+    </update>
+
+    <!-- 거래 기록 생성 -->
+    <insert id="insertTradePost">
+        INSERT INTO TBL_TRADE_POST(
+            TRADE_NUMBER, SELL_POST_NUMBER, STATUS_NUMBER, BUY_MEMBER, PAYMENT_DATE
+        ) VALUES (
+            seq_TRADE_POST.nextval, #{sellPostNumber}, 3, #{buyerNumber}, SYSDATE
+        )
+    </insert>
+
+    <!-- 판매글 상태 변경 -->
+    <update id="updateSellPostStatus">
+        UPDATE TBL_SELL_POST
+        SET STATUS_ID = 2
+        WHERE SELL_POST_NUMBER = #{sellPostNumber}
+    </update>
+</mapper>

@@ -104,9 +104,12 @@
                                 <fmt:formatNumber value="${sellPostDetail.pricePoint}" pattern="#,###" /> 포인트
                             </div>
                         </div>
-                        <a href="${pageContext.request.contextPath}/trade/productBuy.jsp?sellPostNumber=${sellPostDetail.sellPostNumber}">
-                            <div class="main-button-next">구매</div>
-                        </a>
+                        <form action="${pageContext.request.contextPath}/trade/" method="get">
+						    <input type="hidden" name="sellPostNumber" value="${sellPostDetail.sellPostNumber}">
+						    <input type="hidden" name="category" value="trade">
+    						<input type="hidden" name="action" value="buy">
+						    <button type="submit" class="main-button-next">구매</button>
+						</form>
                     </div>
                 </div>
             </section>
