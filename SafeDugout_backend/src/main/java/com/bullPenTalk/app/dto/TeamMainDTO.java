@@ -21,14 +21,14 @@ public class TeamMainDTO {
 	private String scheduleDate; //경기 날짜
 	
 	//팀별 순위 목록
-	private int teamRank; //팀순위
-	private String teamName; //팀 이름
-	private int gameCount; //경기 수 
-	private int teamWin;  //승리한 팀
-	private int teamDraw; //비긴 팀
-	private int teamLose; //진 팀
-	private double teamWinLoss; //팀 승차
-	private double teamWinRate; //팀 승률
+	private int teamRank; // 팀 순위
+	private String teamName; // 팀 이름
+	private int gameCount; // 게임 수
+	private int teamWin;  // 이긴 횟수
+	private int teamDraw; // 비긴 횟수
+	private int teamLose;  // 진 횟수
+	private double teamWinRate; // 팀 승률
+	private double teamWinLoss; // 팀 승차
 	
 	public String getNewsPostTitle() {
 		return newsPostTitle;

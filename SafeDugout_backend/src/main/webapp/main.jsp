@@ -68,6 +68,7 @@
             <li class="rank-table-column-li rank-li-win">승</li>
             <li class="rank-table-column-li rank-li-draw">무</li>
             <li class="rank-table-column-li rank-li-loss">패</li>
+            <li class="rank-table-column-li rank-li-winRate">승률</li>
             <li class="rank-table-column-li rank-li-winloss">승차</li>
           </div>
           <!-- 팀 순위 1위 ~ 10위 -->
@@ -81,6 +82,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.613</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -91,6 +93,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -101,6 +104,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -111,6 +115,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -121,6 +126,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -131,6 +137,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -141,6 +148,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -151,6 +159,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -161,6 +170,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
             <div class="rank-table-teamlist-team">
@@ -171,6 +181,7 @@
               <li class="rank-table-teamlist-team-list rank-li-win">59</li>
               <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
               <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate">0.0</li>
               <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
             </div>
           </div>

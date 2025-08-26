@@ -4,9 +4,9 @@ public class MainDTO {
 	
 	//경기 일정
 	private int gameId; //게임번호
-	private int homeTeamNumber; //홈팀 번호
+	private String homeTeamName; //홈팀 이름
 	private String stadiumName; //경기장 이름
-	private int awayTeamNumber; //어웨이팀 번호
+	private String awayTeamName; //원정팀 이름
 	private String scheduleDate; //경기 날짜  
 	//판매글 목록
 	private int sellPostNumber; //판매 게시글 번호
@@ -17,15 +17,15 @@ public class MainDTO {
 	private int noticePostNumber; //공지사항 게시글 번호
 	private String noticePostTitle; //공지사항 게시글 제목
 	private String noticePostDate; // 공지사항 게시글 날짜
-	//팀별 순위 목록
-	private int teamRank; //팀순위
-	private String teamName; //팀 이름
-	private int gameCount; //경기 수 
-	private int teamWin;  //승리한 팀
-	private int teamDraw; //비긴 팀
-	private int teamLose; //진 팀
-	private double teamWinLoss; //팀 승차
-	private double teamWinRate; //팀 승률
+	//팀 순위 목록
+	private int teamRank; // 팀 순위
+	private String teamName; // 팀 이름
+	private int gameCount; // 게임 수
+	private int teamWin;  // 이긴 횟수
+	private int teamDraw; // 비긴 횟수
+	private int teamLose;  // 진 횟수
+	private double teamWinRate; // 팀 승률
+	private double teamWinLoss; // 팀 승차
 	
 	public int getGameId() {
 		return gameId;
