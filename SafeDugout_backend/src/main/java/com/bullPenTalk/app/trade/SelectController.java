@@ -140,7 +140,7 @@ public class SelectController {
 		System.out.println("페이징 진입");
 		String temp = request.getParameter("page");
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
-		int rowCount = 10; // 한 페이지당 게시글 수
+		int rowCount = 8; // 한 페이지당 게시글 수
 		int pageCount = 5; // 페이지 버튼 수
 		System.out.println("페이징 진입");
 		// 페이징 처리
@@ -198,7 +198,7 @@ public class SelectController {
 		Result result = new Result();
 		String temp = request.getParameter("page");
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
-		int rowCount = 10; // 한 페이지당 게시글 수
+		int rowCount = 8; // 한 페이지당 게시글 수
 		int pageCount = 5; // 페이지 버튼 수
 		// 페이징 처리
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
@@ -258,7 +258,7 @@ public class SelectController {
 
 	    String temp = request.getParameter("page");
 	    int page = (temp == null) ? 1 : Integer.valueOf(temp); 
-	    int rowCount = 10; 
+	    int rowCount = 8; 
 	    int pageCount = 5; 
 
 	    int startRow = (page - 1) * rowCount + 1; 

@@ -27,7 +27,7 @@ public class PostAttachmentDAO {
 		System.out.println("파일 DAO - 파일 저장 " + postAttachmentDTO);
 
 		try {
-			int result = sqlSession.insert("attachment.insertSellPost", postAttachmentDTO);
+			int result = sqlSession.insert("attachment.insertPost", postAttachmentDTO);
 			System.out.println("파일 저장 완료 - DB에 저장된 행의 개수 : " + result);
 
 			// db에 파일이 제대로 저장되었는지 확인

@@ -20,7 +20,7 @@
 	<!-- 메인 -->
 	<main>
 		<div class="main-container">
-			<form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=writeOk"
+			<form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=writeok"
 				method="post" enctype="multipart/form-data">
 
 				<div class="register-container">
