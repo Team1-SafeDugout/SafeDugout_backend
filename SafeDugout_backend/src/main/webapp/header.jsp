@@ -14,6 +14,10 @@
 		<c:choose>
 			<c:when test="${empty sessionScope.memberNumber}">
 				<div class="header-right">
+					<div class="guide-notice">
+						<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
+							<c:out value="${recentGuideTitle}"/></a>
+					</div>
 					<div class="notice">
 						<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
 							<c:out value="${recentMainTitle}"/></a>

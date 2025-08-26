@@ -66,6 +66,9 @@
         </div>
         <ul class="news-list">
           <!-- 뉴스리스트 들어갈 공간 -->
+          <c:forEach var="newsRow" items="${newsList}">
+          	<li><c:out value="${newsRow.newsPostTitle}"/></li>
+          </c:forEach>
         </ul>
       </section>
       <!-- 메인페이지 유튜브 탭 -->
@@ -75,25 +78,30 @@
           <a href="./communityTapPage/teamYoutube.jsp">더보기</a>
         </div>
         <ul class="thumb-list">
+        <c:forEach var="youTube" items="${youTubeList}">
+        <li><a hredf="<c:out value="${youTube.attachmentPath}"/>">
+        <img src="<c:out value="${youTube.postLink}"/>"></a></li>
+        </c:forEach>
         </ul>
       </section>
       <!-- 메인페이지 경기일정 탭 -->
       <section class="games">
         <h2>경기 일정</h2>
         <div class="game-schedule-group">
-          <h4>주중 경기</h4>
+          <h4>경기 일정</h4>
           <div class="game-schedule">
-            <div class="gamebox"></div>
-            <div class="gamebox"></div>
-            <div class="gamebox"></div>
-          </div>
-        </div>
-        <div class="game-schedule-group">
-          <h4>주말 경기</h4>
-          <div class="game-schedule">
-            <div class="gamebox"></div>
-            <div class="gamebox"></div>
-            <div class="gamebox"></div>
+          <c:forEach var="scheduleRow" items="${teamSchedule}">
+            <div class="gamebox">
+            	<div class="schedule-li-home"><c:out value="${scheduleRow.awayTeamName}"/></div>
+                <div class="schedule-li-loc">
+                  <div class="schedule-li-loc-text">
+                    <c:out value="${scheduleRow.stadiumName}"/>
+                  </div>
+                </div>
+                <div class="schedule-li-away"><c:out value="${scheduleRow.homeTeamName}"/></div>
+                <div class="schedule-li-time"><c:out value="${scheduleRow.scheduleDate}"/></div>
+            </div>
+          </c:forEach>
           </div>
         </div>
       </section>
@@ -104,7 +112,14 @@
           <a href="./communityTapPage/teamBoard.jsp">더보기</a>
         </div>
         <ul class="team-board-list">
-
+        	<c:forEach var="postRow" items="${postList}">
+			<li>
+			<span><c:out value="${postRow.postNumber}"/></span>
+			<span><c:out value="${postRow.memberId}"/></span>
+			<span><c:out value="${postRow.PostTitle}"/></span>
+			<span><c:out value="${postRow.postDate}"/></span>
+			</li>
+			</c:forEach>
         </ul>
       </section>
       <!-- 메인페이지 경기장 정보 탭 -->
@@ -131,106 +146,18 @@
             <div>승률</div>
             <div>게임차</div>
           </li>
+          <c:forEach var="rankRow" items="${rankList}">
           <li class="ranking-list-team">
-            <div>1</div>
-            <div>KIA</div>
-            <div>144</div>
-            <div>87</div>
-            <div>2</div>
-            <div>55</div>
-            <div>0.613</div>
-            <div>0</div>
+            <div><c:out value="${rankRow.teamRank}"/></div>
+            <div><c:out value="${rankRow.teamName}"/></div>
+            <div><c:out value="${rankRow.gameCount}"/></div>
+            <div><c:out value="${rankRow.teamWin}"/></div>
+            <div><c:out value="${rankRow.teamDraw}"/></div>
+            <div><c:out value="${rankRow.teamLose}"/></div>
+            <div><c:out value="${rankRow.teamWinRate}"/></div>
+            <div><c:out value="${rankRow.teamWinLoss}"/></div>
           </li>
-          <li class="ranking-list-team">
-            <div>2</div>
-            <div>삼성</div>
-            <div>144</div>
-            <div>78</div>
-            <div>2</div>
-            <div>64</div>
-            <div>0.549</div>
-            <div>9</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>3</div>
-            <div>LG</div>
-            <div>144</div>
-            <div>76</div>
-            <div>2</div>
-            <div>66</div>
-            <div>0.535</div>
-            <div>11</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>4</div>
-            <div>두산</div>
-            <div>144</div>
-            <div>74</div>
-            <div>2</div>
-            <div>68</div>
-            <div>0.521</div>
-            <div>13</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>5</div>
-            <div>KT</div>
-            <div>144</div>
-            <div>72</div>
-            <div>2</div>
-            <div>70</div>
-            <div>0.507</div>
-            <div>15</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>6</div>
-            <div>SSG</div>
-            <div>144</div>
-            <div>72</div>
-            <div>2</div>
-            <div>60</div>
-            <div>0.507</div>
-            <div>15</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>7</div>
-            <div>롯데</div>
-            <div>144</div>
-            <div>66</div>
-            <div>4</div>
-            <div>74</div>
-            <div>0.471</div>
-            <div>20</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>8</div>
-            <div>한화</div>
-            <div>144</div>
-            <div>66</div>
-            <div>2</div>
-            <div>76</div>
-            <div>0.465</div>
-            <div>21</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>9</div>
-            <div>NC</div>
-            <div>144</div>
-            <div>61</div>
-            <div>2</div>
-            <div>81</div>
-            <div>0.430</div>
-            <div>26</div>
-          </li>
-          <li class="ranking-list-team">
-            <div>10</div>
-            <div>키움</div>
-            <div>144</div>
-            <div>58</div>
-            <div>0</div>
-            <div>86</div>
-            <div>0.403</div>
-            <div>30</div>
-          </li>
+          </c:forEach>
         </ul>
       </section>
     </div>

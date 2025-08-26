@@ -32,9 +32,12 @@ public class TeamMainOkController implements Execute {
 		// session 저장
 		HttpSession session = request.getSession();
 
+		int teamNumber = 0;
 		// 팀별 값(팀 번호) 저장 
-		int teamNumber = Integer.valueOf(request.getParameter("teamNumber"));
-		
+		if(request.getParameter("teamNumber") != null) {
+			teamNumber = Integer.valueOf(request.getParameter("teamNumber"));
+		}
+
 		// session에 팀별 값(팀 번호) 저장
 		session.setAttribute("teamNumber", teamNumber);
 
