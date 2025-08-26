@@ -40,25 +40,23 @@ document.addEventListener("DOMContentLoaded", function() {
 			            teamName = "기타";
 			            break;
 			    }
-            addPost(post.number, post.title, post.date, post.type, teamName);
+            addPost(post.number, post.title, post.date, teamName);
         });
     }
 });
 
-function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, postTeamName){
+function addPost(postNumberParam, postTitleParam, postDateParam, postTeamName){
 	const newPost = document.createElement('li');
 
 	const postNum = document.createElement('div');
 	const postTitle = document.createElement('div');
 	const postDate = document.createElement('div');
-	const postType = document.createElement('div');
 	const teamType = document.createElement('div');
 	const deleteBtn = document.createElement('div');
 
 	const postNumText = document.createTextNode(postNumberParam);
 	const postTitleText = document.createTextNode(postTitleParam);
 	const postDateText = document.createTextNode(postDateParam);
-	const postTypeText = document.createTextNode(postTypeParam);
 	const postTeamText = document.createTextNode(postTeamName);
 	const deleteBtnText = document.createTextNode("삭제하기");
 
@@ -77,20 +75,22 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, 
 	postNum.appendChild(postNumText);
 	postTitle.appendChild(postTitleLink);
 	postDate.appendChild(postDateText);
-	postType.appendChild(postTypeText);
 	teamType.appendChild(postTeamText);
 	deleteBtn.appendChild(deleteBtnText);
 
 	deleteBtn.addEventListener('click', function () {
-		if (window.confirm("정말 삭제하시겠습니까")) {
-			/*이부분은 다시 작성 필요*/
+		if (confirm("삭제하시겠습니까?")) {
+			alert("삭제되었습니다.");
+			window.location.href =  
+			contextPath + 
+			"/admin/adminDeletePostOk.ad?" + 
+			"postNumber=" + postNumberParam + "&postTypeId=3";
 		}
 	});
 
 	newPost.appendChild(postNum);
 	newPost.appendChild(postTitle);
 	newPost.appendChild(postDate);
-	newPost.appendChild(postType);
 	newPost.appendChild(teamType);
 	newPost.appendChild(deleteBtn);
 

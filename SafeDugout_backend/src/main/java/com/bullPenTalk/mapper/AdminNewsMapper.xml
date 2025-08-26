@@ -79,8 +79,6 @@
 		DELETE 
 		FROM TBL_POST
 		WHERE POST_NUMBER = #{postNumber}
-  		AND TEAM_NUMBER = #{teamNumber}
-  		AND BOARD_ID = #{boardId}
 	</delete>
 	
 </mapper>

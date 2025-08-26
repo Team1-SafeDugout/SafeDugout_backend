@@ -92,7 +92,7 @@
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTitle}, sysdate, #{songUrl}, #{postContent})
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTitle}, sysdate, #{postLink}, #{postContent})
 	</insert>
 	
 	<!-- 선수 응원가 추가 -->
@@ -101,7 +101,7 @@
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTilte}, sysdate, #{songUrl})
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTitle}, sysdate, #{postLink}, #{postContent})
 	</insert>
 	
 	<!-- 응원가 삭제 -->
@@ -109,8 +109,6 @@
 		DELETE 
 		FROM TBL_POST
 		WHERE POST_NUMBER = #{postNumber}
-  		AND TEAM_NUMBER = #{teamNumber}
-  		AND BOARD_ID = #{boardId}
 	</delete>
 	
 		
