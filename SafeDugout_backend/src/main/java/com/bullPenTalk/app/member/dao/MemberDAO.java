@@ -41,4 +41,9 @@ public class MemberDAO {
 		MemberDTO memberDTO = sqlSession.selectOne("member.select");
 		return memberDTO.getMemberId();
 	}
+	
+	public String getMemberIdByNumber(int memberNumber) {
+	    MemberDTO memberDTO = sqlSession.selectOne("member.selectByNumber", memberNumber);
+	    return memberDTO != null ? memberDTO.getMemberId() : null;
+	}
 }

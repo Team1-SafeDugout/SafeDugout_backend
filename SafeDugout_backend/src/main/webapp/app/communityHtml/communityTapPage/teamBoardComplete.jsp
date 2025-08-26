@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,12 +62,13 @@
       <h2 class="team-complete-title">게시글을 등록 하셨습니다.</h2>
       <!-- 게시글 등록 내용 -->
       <div class="team-complete-content">
-        <p>게시글 제목 : 우리팀 개못하네</p>
-        <p class="team-sub-text">작성 일자 : 2025.06.12</p>
-        <p class="team-sub-text">작성자 : th3179</p>
+        <p>게시글 제목 :  <c:out value="${coummnunity.postTitle}" /></p>
+        <p class="team-sub-text">작성 일자 :<c:out value="${coummnunity.postDate}" /></p>
+        <p class="team-sub-text">작성자 : <c:out value="${coummnunity.memberId}" /></p>
         <div class="team-post-body">
-          ERA 9.99 찍고도 1군 유지... 야구 말고 역사 찍는 중<br>
-          잠실엔 야구 보러 가는 게 아님. 치킨 먹으러 감
+			<p>
+				 <c:out value="${coummnunity.postContent}" />
+			</p>
         </div>
       </div>
     </div>
@@ -76,5 +80,8 @@
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
+  <script >
+    let memberNumber = "${sessionScope.memberNumber}";
+  </script>
 </body>
 </html>

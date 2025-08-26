@@ -20,9 +20,8 @@
 	<!-- 메인 -->
 	<main>
 		<div class="main-container">
-			<form action="${pageContext.request.contextPath}/sellPostWriteOk.tr"
-				method="post" enctype="multipart/form-data"
-				onsubmit="return validateForm();">
+			<form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=writeOk"
+				method="get" enctype="multipart/form-data">
 
 				<div class="register-container">
 					<!-- 이미지 업로드 -->
@@ -117,27 +116,27 @@
 							</div>
 							<div class="product-type">
 								<label>유니폼</label><input type="radio" name="categoryId"
-									value="uniform">
+									value="1">
 							</div>
 							<div class="product-type">
 								<label>모자</label><input type="radio" name="categoryId"
-									value="hat">
+									value="2">
 							</div>
 							<div class="product-type">
 								<label>의류</label><input type="radio" name="categoryId"
-									value="cloths">
+									value="3">
 							</div>
 							<div class="product-type">
 								<label>잡화</label><input type="radio" name="categoryId"
-									value="etc">
+									value="4">
 							</div>
 							<div class="product-type">
 								<label>응원 도구</label><input type="radio" name="categoryId"
-									value="cheeringTool">
+									value="5">
 							</div>
 							<div class="product-type">
 								<label>야구 용품</label><input type="radio" name="categoryId"
-									value="baseballEqu">
+									value="6">
 							</div>
 						</div>
 					</div>
@@ -160,8 +159,8 @@
 						<div class="trade-method-container">
 							<div>거래 방식 :</div>
 							<div class="trade-method-checkbox">
-								<span>배송</span> <input type="radio" name="dealTypeId"value="deliver"> 
-								<span>직거래</span> <input type="radio" name="dealTypeId" value="meet">
+								<span>배송</span> <input type="radio" name="dealTypeId"value="1"> 
+								<span>직거래</span> <input type="radio" name="dealTypeId" value="2">
 							</div>
 						</div>
 						<div class="short-line"></div>
@@ -169,8 +168,7 @@
 						<div class="bottom-container">
 							<div class="price-container">
 								<div>상품 가격 :</div>
-								<input type="number" id="productPoint" name="pricePoint"
-									required>
+								<input type="number" id="productPoint" name="pricePoint" required>
 							</div>
 							<div class="main-button-container">
 								<button type="submit" class="main-button-next" id="registerBtn">상품등록</button>

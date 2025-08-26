@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,21 +59,25 @@
   <main>
     <div class="team-youtube-board">
       <h2>youtube목록</h2>
-      <a href="">팀 공식 youtube 사이트 바로가기</a>
+      <a href="${youtube.link}">팀 공식 youtube 사이트 바로가기</a>
       <ul class="team-youtube-list">
         <li class="team-youtube-list-header">
           <span class="team-youtube-num">글번호</span>
           <span class="team-youtube-title">제목</span>
         </li>
         <!-- js로 유튜브 목록 추가 -->
-        <li class="team-youtube-list-row" onclick="location.href='https://www.youtube.com/watch?v=sFEzzqbpmM4'">
-          <span>1</span>
-          <span>쾅쾅🐻아빠 곰 양의지의 연타석 홈런과 기묘한 덕아웃...? [2025 잠실직캠] (08.08)</span>
-        </li>
-        <li class="team-youtube-list-row">
-          <span>2</span>
-          <span>제목2</span>
-        </li>
+        <c:choose>
+       		<c:when test="${not empty youtubeList}">
+        		<c:forEach var="youtube" items="${youtubeList}">
+			        <li class="team-youtube-list-row">
+			        	<a href="${youtube.link}">
+			          		<span><c:out value="${youtube.postNumber}" /></span>
+			          		<span><c:out value="${youtube.postTitle}" /></span>
+			          	</a>
+			        </li>
+		        </c:forEach>
+	       </c:when>
+		</c:choose>
       </ul>
   </div>
   </main>

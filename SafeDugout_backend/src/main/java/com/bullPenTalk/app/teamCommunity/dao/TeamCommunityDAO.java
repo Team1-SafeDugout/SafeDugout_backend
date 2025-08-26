@@ -102,7 +102,7 @@ public class TeamCommunityDAO {
 		return list;
 	}
 	
-	// 선수 응원가 목록 조회
+	// 선수 응원가 목록 조회 --
 	public List<SongPostDTO> selectPlayerSong(Map<String, Integer> pageMap){
 		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
 		List<SongPostDTO> list = sqlSession.selectList("TeamCommunityMapper.playerSongSelect", pageMap);

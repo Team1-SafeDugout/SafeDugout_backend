@@ -124,7 +124,7 @@ public class UpdateOkController {
         System.out.println("게시글 수정 완료");
 
         //수정 완료 후 리스트 페이지로 이동
-        result.setPath("/communityHtml/communityTapPage/teamBoard.jsp");
+        result.setPath("/app/communityHtml/communityTapPage/teamBoard.tc");
         result.setRedirect(true);
         return result;
 		

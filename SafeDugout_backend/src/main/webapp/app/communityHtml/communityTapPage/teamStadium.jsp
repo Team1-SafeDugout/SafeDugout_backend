@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +64,38 @@
       <!-- 경기장 이미지 공간 -->
     <section class="team-stadium-img">
       <div>
-        <img src="" alt="">경기장 이미지
+        <c:choose>
+	      <c:when test="${sessionScope.teamNumber == 1}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/doosanStadium.jpg" alt="두산 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 2}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lgStadium.jpg" alt="lg 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 3}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/hanwhaStadium.jpg" alt="한화 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 4}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/samsungStadium.jpg" alt="삼성 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 5}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ssgStadium.jpg" alt="ssg 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 6}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ktStadium.jpg" alt="kt 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 7}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ncStadium.jpg" alt="nc 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 8}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lotteStadium.jpg" alt="롯데 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 9}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiaStadium.jpg" alt="kia 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 10}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiwoomStadium.jpg" alt="키움 경기장">
+	      </c:when>	      	      	      	      	      	      	      	      
+	    </c:choose>  
       </div>
     </section>
     
@@ -70,21 +104,47 @@
       <div class="team-stadium-info-container">
         <ul class="team-stadium-address">경기장 주소
           <!-- 경기장 주소 공간 -->
+          <li>          
+          	<p><c:out value="${stadium.stadiumAddress}" /></p>
+          </li>
         </ul>
         <ul class="team-stadium-ticket">티켓가격
-          <!-- 경기장 티켓가격 공간 -->
+		<c:forEach var="ticket" items="${ticketList}">
+			<li>
+			    <p>
+			        좌석명: <c:out value="${ticket.seatName}" />
+			        평일 가격: <c:out value="${ticket.weekdayPrice}" />
+			        주말 가격: <c:out value="${ticket.weekendPrice}" />
+			    </p>
+		    </li>
+		</c:forEach>
         </ul>
         <ul class="team-stadium-ticket-site">티켓 예매
           <!-- 예매처 -->
+          <p><c:out value="${ticket.reservationSite}" /></p>
         </ul>
       </div>
       <!-- 먹거리 컨테이너 -->
       <div class="team-stadium-food-container">
         <ul class="team-stadium-food">먹거리추천
           <!-- 경기장 먹거리 들어갈 공간 -->
+          <c:forEach var="food" items="${foodList}">
+			<li>
+			    <p>추천음식: <c:out value="${foods.foodName}" />
+			        위치: c:out value="${foods.foodLocation}" />
+			    </p>
+		    </li>
+		</c:forEach>
         </ul>
         <ul class="team-stadium-food-tip">먹거리 이용 팁
           <!-- 먹거리 이용 팁 공간 -->
+          <c:forEach var="food" items="${foodList}">
+			<li>
+			    <p>
+			      <c:out value="${foods.foodTip}" />
+			    </p>
+		    </li>
+		</c:forEach>
         </ul>
       </div>
     </section>
@@ -92,5 +152,9 @@
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
+  <script>
+	let memberNumber = ${sessionScope.memberNumber};
+  	let teamNumber = ${sessionScope.teamNumber};
+  </script>
 </body>
 </html>
