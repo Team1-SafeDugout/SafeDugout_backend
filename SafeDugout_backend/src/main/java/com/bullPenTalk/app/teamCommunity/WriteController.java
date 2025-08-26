@@ -18,10 +18,10 @@ public class WriteController {
 		String path = null;
 		
 		if(memberNumber == null) {
-			path = "/app/member/login.jsp";
+			path = "/app/login/login.jsp";
 		}else {
-			path = "/app/communityHtml/communityTapPage/PostWriting.jsp";
-			request.setAttribute("memberId", memberDAO.getMemberNumber(memberNumber));
+			path = "/app/communityHtml/communityTapPage/teamPostWriting.jsp";
+			request.setAttribute("memberId", memberDAO.getMemberIdByNumber(memberNumber));
 		}
 		
 		result.setPath(path);

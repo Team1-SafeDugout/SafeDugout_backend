@@ -118,6 +118,7 @@
 		<mapper resource="com/bullPenTalk/mapper/MemberMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/MyPageMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/SellMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TeamCommunityMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/TeamCommentMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/TradeMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/TeamMainMapper.xml" />

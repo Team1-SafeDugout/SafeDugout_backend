@@ -14,14 +14,18 @@ public class TradeWirte implements TradeService {
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Result 객체 생성
 		Result result = new Result();
+		System.out.println("액션: " + action);
 
 		try {
 			switch (action) {
 			case "write" :
+				System.out.println("write진입 ");
 				WriteController write = new WriteController();
-			case "writeOk":
-				WriteControllerOk writeOk = new WriteControllerOk();
-				writeOk.writeProduct(request, response);
+				result = write.writerequest(request, response);
+			case "writeok":
+				System.out.println("writeOk여기 진입");
+				 WriteControllerOk writeOk = new WriteControllerOk();
+				 result =  writeOk.writeProduct(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace(); // 로그 출력

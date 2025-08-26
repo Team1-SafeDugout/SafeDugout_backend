@@ -60,7 +60,9 @@ public class WriteControllerOk {
 			// FILE_SIZE : 파일의 최대 크기
 			// "utf-8" : 파일명 인코딩 방식
 			// new DefaultFileRenamePolicy() : 파일명이 중복될 경우 자동으로 이름 변경해주는 정책
-
+			System.out.println("price 파라미터 값: " + request.getParameter("pricePoint"));
+			System.out.println("productTitle 파라미터 값: " + request.getParameter("productTitle"));
+			System.out.println("productContent 파라미터 값: " + request.getParameter("productContent"));
 			// 게시글 정보 설정
 			sellPostDTO.setSellPostTitle(multipartRequest.getParameter("productTitle"));
 			sellPostDTO.setSellPostContent(multipartRequest.getParameter("productContent"));

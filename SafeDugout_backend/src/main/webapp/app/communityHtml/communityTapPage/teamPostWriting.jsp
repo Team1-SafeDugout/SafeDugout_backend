@@ -57,7 +57,9 @@
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <!-- 게시글 작성 컨테이너 -->
   <main class="team-post-container">
-	  <form action="">
+	  <form action="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=writeok" 
+	  		method="post"
+	  		enctype="multipart/form-data">
 	    <h2 class="team-post-title">게시물 작성</h2>
 	    <div class="team-form-row">
 	      <!-- 게시글 제목 입력 -->
@@ -65,6 +67,9 @@
 	      <input type="text" class="team-input" placeholder="제목을 입력하세요" name="postTitle" required>
 	    </div>
 	    <!-- 게시글 작성자 정보 입력 -->
+	    <input type="hidden" name="memberNumber" value="${sessionScope.memberNumber}" />
+		<input type="hidden" name="teamNumber" value="${sessionScope.teamNumber}" />
+		<input type="hidden" name="boardId" value="2" />
 	    <div class="team-form-row">
 	      <label class="team-label">작성자:</label>
 	      <c:out value="${memberId}" />	
@@ -114,5 +119,9 @@
 	   </form>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
+  <script >
+	let memberNumber = ${sessionScope.memberNumber};
+  	let teamNumber = ${sessionScope.teamNumber};
+  </script>
 </body>
 </html>

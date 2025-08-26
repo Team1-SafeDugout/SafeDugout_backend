@@ -27,6 +27,12 @@
 		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
 	</select>
 	
+	<select id="selectByNumber" parameterType="int" resultType="MemberDTO">
+	    SELECT MEMBER_ID, MEMBER_NUMBER, MEMBER_NAME, MEMBER_EMAIL
+	    FROM TBL_MEMBER
+	    WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
+	
 	<!-- 탈퇴시 비밀번호 검사 -->
 	<select id = "checkPw" parameterType = "MemberDTO" resultType = "int">
 		select Count(member_number) from tbl_member
