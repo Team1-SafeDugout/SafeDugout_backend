@@ -80,16 +80,16 @@ public class MainFrontController extends HttpServlet {
 				request.getSession().setAttribute("memberName", memberName);
 				//메인페이지 처리 
 				result = new MainOkController().execute(request, response);
-				
+				System.out.println("메인페이지 처리 완료");
 			}
 			result = new MainOkController().execute(request, response); 
 			break;
 		case "/main/mainTeam.ma":
-			System.out.println("팀 커뮤니티 메인 페이지 처리 요청");
-			result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
+			System.out.println("팀 커뮤니티 메인페이지 처리 요청");
 			System.out.println(result.getPath());
 			System.out.println("팀 번호 : " + session.getAttribute("teamNumber"));
-			result.setRedirect(false);
+			result = new TeamMainOkController().execute(request, response);
+			System.out.println("팀 커뮤니티 메인페이지 처리 완료");
 			break;
 		case "/main/mainAll.ma":
 			System.out.println("전체 커뮤니티 메인 페이지 처리 요청");
@@ -104,7 +104,6 @@ public class MainFrontController extends HttpServlet {
 			result = new SelectMainDetailOkController().execute(request, response);
 			break;
 		}
-
 		
 		if (result != null) {
 			if (result.isRedirect()) {

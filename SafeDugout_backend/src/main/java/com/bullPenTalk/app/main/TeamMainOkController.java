@@ -59,8 +59,9 @@ public class TeamMainOkController implements Execute {
 		request.setAttribute("rankList", rankList);
 		
 		// path 값, redirect 여부 설정
-		result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
 		result.setRedirect(false);
+		System.out.println(result.getPath());
 
 		return result;
 	}
