@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,51 +21,80 @@
 	<!-- 헤더 -->
 	<jsp:include page="${pageContext.request.contextPath}/header.jsp" />
 	<!-- 메인 -->
-	<main>
-		<!-- 메인 컨테이너 -->
-		<div class="main-container">
-			<!-- 폼 태그 -->
-			<form action="" method="post">
-				<!-- 메시지 박스 -->
-				<div class="main-message-container">
-					<!-- 메시지 박스 제목 -->
-					<div class="container-title">상품 구매 완료</div>
-					<!-- 긴 검은선 -->
-					<div class="long-line"></div>
-					<!-- 출력 컨테이너 -->
-					<div class="container-full">
-						<!-- 출력 왼쪽 부분 -->
-						<div class="pay-info-text">ê²°ì  ê¸ì¡ :</div>
-						<!-- 포인트 종류 -->
-						<div class="pay-value">100,000 ì</div>
-					</div>
-					<!-- ì¶ë ¥ê° ì»¨íì´ë -->
-					<div class="container-full">
-						<!-- ê²°ì  ì ë³´ íì¤í¸ -->
-						<div class="pay-info-text">ê²°ì  ë°©ì :</div>
-						<!-- ê²°ì  ì ë³´ ê° -->
-						<div class="pay-value">ì¹´ë</div>
-					</div>
-					<!-- ê¸´ ê²ìì (ìëìª½) -->
-					<div class="long-line-bottom"></div>
-					<!-- ì¶ë ¥ê° ì»¨íì´ë(ìëìª½) -->
-					<div class="container-full-bottom">
-						<!-- í¬ì¸í¸ ì¢ë¥ -->
-						<div class="point-name">íì¬ í¬ì¸í¸ :</div>
-						<!-- í¬ì¸í¸ ê° -->
-						<div class="point-amount">100000 ì</div>
-					</div>
-					<!-- 버튼 컨테이너 -->
-					<div class="main-button-container">
-						<!-- 버튼 컨테이너 a 태그 -->
-						<a href="./../mypostlist/myPostList.html"> <!-- 확인 버튼 텍스트 -->
-							<div class="main-button-next">íì¸</div>
-						</a>
-					</div>
-				</div>
-			</form>
-		</div>
-	</main>
+	 <main>
+    <!-- 메인 컨테이너 -->
+    <div class="main-container">
+      <!-- 폼 태그 -->
+      <form action="" method="post">
+        <!-- 메시지 박스 -->
+        <div class="main-message-container">
+          <!-- 메시지 박스 제목 -->
+          <div class="container-title">상품 구매 완료</div>
+          <!-- 긴 검은선 -->
+          <div class="long-line"></div>
+          <!-- 출력 컨테이너 -->
+          <div class="container-full">
+            <!-- 출력 왼쪽 부분 -->
+            <div class="container-left">
+              <!-- 포인트 종류 -->
+              <div class="point-name">
+                현재 보유 포인트 <br><br>
+              </div>
+              <!-- 포인트 값 -->
+              <div class="point-amount">
+                163000 포인트 <br><br><br>
+              </div>
+              <!-- 포인트 종류 -->
+              <div class="point-name">
+                상품 가격 <br><br>
+              </div>
+              <!-- 포인트 값 -->
+              <div class="point-amount">
+                20000 포인트 <br><br>
+              </div>
+            </div>
+            <!-- 출력 오른쪽 부분 -->
+            <div class="container-right">
+              <!-- 상품 이미지 -->
+              <div class="product-img"><img src="./../../assets/img/tradeImg/product6.jpg" alt=""></div>
+              <!-- 상품 정보 텍스트 -->
+              <div class="product-text">상품 명 : [두산] 두산베어스X케이스티파이 TICKET 케이스</div>
+              <!-- 상품 정보 텍스트 -->
+              <div class="product-text">거래 방식 : 택배 발송 / 직거래</div>
+            </div>
+          </div>
+          <!-- 짧은 검은선 -->
+          <div class="short-line"></div>
+          <!-- 출력 컨테이너 -->
+          <div class="container-full">
+            <!-- 출력 왼쪽 아래 -->
+            <div class="container-left-bottom">
+              <!-- 포인트 종류 -->
+              <div class="point-name">
+                결제 후 잔여 포인트 <br><br>
+              </div>
+              <!-- 포인트 값 -->
+              <div class="point-amount">
+                143000 포인트 <br><br>
+              </div>
+            </div>
+            <div></div>
+          </div>
+          <!-- 긴 검은선 -->
+          <div class="long-line"></div>
+          <!-- 버튼 컨테이너 -->
+          <div class="main-button-container">
+            <!-- 버튼 컨테이너 a 태그 -->
+            <a href="./productDetailBuyer.html">
+              <!-- 확인 버튼 텍스트 -->
+              <div class="main-button-next">확인
+              </div>
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
 
 	<!-- 푸터 -->
 	<jsp:include page="${pageContext.request.contextPath}/footer.jsp" />

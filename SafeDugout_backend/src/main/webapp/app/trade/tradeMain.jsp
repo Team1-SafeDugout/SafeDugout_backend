@@ -100,7 +100,14 @@
                         <div class="product-list">
                             <div class="product-img">
                                 <a href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=${selectedTeam}&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
-                                    <img src="${sellPost.imagePath}" alt="상품이미지">
+                                    <c:choose>
+			                            <c:when test="${not empty sellPost.imagePath}">
+			                                <img src="${sellPost.imagePath}" alt="상품이미지">
+			                            </c:when>
+			                            <c:otherwise>
+			                                <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png" alt="기본이미지">
+			                            </c:otherwise>
+			                        </c:choose>
                                 </a>
                             </div>
                             <div class="product-name">

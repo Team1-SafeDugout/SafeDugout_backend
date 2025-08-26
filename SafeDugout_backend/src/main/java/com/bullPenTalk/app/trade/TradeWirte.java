@@ -15,20 +15,19 @@ public class TradeWirte implements TradeService {
 		// Result 객체 생성
 		Result result = new Result();
 		System.out.println("액션: " + action);
+		WriteControllerOk writeOk = new WriteControllerOk();
+		WriteController write = new WriteController();
 
 		try {
 			switch (action) {
 			case "write" :
-				System.out.println("write진입 ");
-				WriteController write = new WriteController();
+				System.out.println("write진입 ");				
 				result = write.writerequest(request, response);
 				break;
 			case "writeok":
-				System.out.println("writeOk여기 진입");
-				WriteControllerOk writeOk = new WriteControllerOk();
+				System.out.println("writeOk여기 진입");				
 				result =  writeOk.writeProduct(request, response);
 				break;
-			case "writeresult" :
 				
 			}
 		} catch (Exception e) {

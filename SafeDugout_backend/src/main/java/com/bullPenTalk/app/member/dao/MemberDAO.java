@@ -46,4 +46,10 @@ public class MemberDAO {
 	    MemberDTO memberDTO = sqlSession.selectOne("member.selectByNumber", memberNumber);
 	    return memberDTO != null ? memberDTO.getMemberId() : null;
 	}
+	
+	// 포인트 조회
+    public int getMemberPoint(int memberNumber) {
+        Integer point = sqlSession.selectOne("member.getMemberPoint", memberNumber);
+        return (point != null) ? point : 0;
+    }
 }

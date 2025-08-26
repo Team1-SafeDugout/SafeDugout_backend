@@ -163,4 +163,12 @@
 	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
 	]]>
 	</select>
+	
+	
+	<!-- 회원 포인트 조회 -->
+    <select id="getMemberPoint" parameterType="int" resultType="int">
+        SELECT MEMBER_POINT
+        FROM TBL_MEMBER
+        WHERE MEMBER_NUMBER = #{memberNumber}
+    </select>	
 </mapper>
