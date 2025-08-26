@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
+import com.bullPenTalk.app.admin.dao.AdminTradeDAO;
+import com.bullPenTalk.app.dto.AdminTradeListDTO;
 
 public class AdminReadTradeOkController implements Execute{
 
@@ -18,7 +19,7 @@ public class AdminReadTradeOkController implements Execute{
 		
 		Result result = new Result();
 		
-		SellPostDAO sellPostDAO = new SellPostDAO();
+		AdminTradeDAO tradeDAO = new AdminTradeDAO();
 		if(request.getParameter("postNumber") == null) {
 			System.out.println("눌값임");
 			return null;
@@ -26,11 +27,10 @@ public class AdminReadTradeOkController implements Execute{
 		
 		int postNumber = Integer.parseInt(request.getParameter("postNumber"));
 		
-		request.setAttribute("sellPostDetail", sellPostDAO.selectDetail(postNumber));
+		request.setAttribute("tradePostDetail", tradeDAO.selectDetail(postNumber));
 		
-		result.setPath("${pageContext.request.contextPath}/app"
-				+ "/admin/adminDetailMenu/adminProductTradingDetail.jsp");
-		result.setRedirect(true);
+		result.setPath("/app/admin/adminDetailMenu/adminProductTradingDetail.jsp");
+		result.setRedirect(false);
 		
 		return result;
 	}

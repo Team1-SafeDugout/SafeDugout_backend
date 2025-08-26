@@ -14,39 +14,33 @@ function formatDate(dateString) {
 document.addEventListener("DOMContentLoaded", function() {
 	if (typeof posts !== 'undefined') {
 		posts.forEach(post => {
-			addPost(post.tradeNumber, post.postTitle, post.statusName, post.memberId, formatDate(post.paymentDay), formatDate(post.completeDay));
+			addPost(post.tradeNumber, post.postTitle, formatDate(post.postUpdate), post.seller, post.buyer);
 		});
 	}
 });
 
-function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId, postPaymentDate, postCompleteDate) {
+function addPost(postNumberParam, postTitleParam, postUpdateParam, sellerParam, buyerParam) {
 	const newPost = document.createElement('li');
 
 	const postNum = document.createElement('div');
 	const postTitle = document.createElement('div');
-	const postStatus = document.createElement('div');
-	const memberId = document.createElement('div');
-	const payMentDate = document.createElement('div');
-	const completeDate = document.createElement('div');
+	const postUpdate = document.createElement('div');
+	const seller = document.createElement('div');
+	const buyer = document.createElement('div');
 
 	const postNumText = document.createTextNode(postNumberParam);
 	const postTitleText = document.createTextNode(postTitleParam);
-	const postStatusText = document.createTextNode(postStatusParam)
-	const memberIdText = document.createTextNode(postMemberId);
-	const paymentDateText = document.createTextNode(postPaymentDate);
-	const completeDateText = document.createTextNode(postCompleteDate);
+	const postUpdateText = document.createTextNode(postUpdateParam)
+	const sellerText = document.createTextNode(sellerParam);
+	const buyerText = document.createTextNode(buyerParam);
 
 	postTitle.style.overflow = "hidden";
 	postTitle.style.whiteSpace = "nowrap";
 	postTitle.style.textOverflow = "eclipse";
 
-	payMentDate.style.overflow = "hidden";
-	payMentDate.style.whiteSpace = "nowrap";
-	payMentDate.style.textOverflow = "eclipse";
-
-	completeDate.style.overflow = "hidden";
-	completeDate.style.whiteSpace = "nowrap";
-	completeDate.style.textOverflow = "eclipse";
+	postUpdate.style.overflow = "hidden";
+	postUpdate.style.whiteSpace = "nowrap";
+	postUpdate.style.textOverflow = "eclipse";
 
 
 	const postTitleLink = document.createElement('a');
@@ -55,19 +49,15 @@ function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId,
 
 	postNum.appendChild(postNumText);
 	postTitle.appendChild(postTitleLink);
-	postStatus.appendChild(postStatusText);
-	memberId.appendChild(memberIdText);
-	payMentDate.appendChild(paymentDateText);
-	completeDate.appendChild(completeDateText);
-
-
+	postUpdate.appendChild(postUpdateText);
+	seller.appendChild(sellerText);
+	buyer.appendChild(buyerText);
 
 	newPost.appendChild(postNum);
 	newPost.appendChild(postTitle);
-	newPost.appendChild(postStatus);
-	newPost.appendChild(memberId);
-	newPost.appendChild(payMentDate);
-	newPost.appendChild(completeDate);
+	newPost.appendChild(postUpdate);
+	newPost.appendChild(seller);
+	newPost.appendChild(buyer);
 
 	postList.appendChild(newPost);
 }

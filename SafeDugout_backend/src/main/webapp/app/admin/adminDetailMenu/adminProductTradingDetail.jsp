@@ -31,42 +31,42 @@
           <div class="product-info">
             상품 이름 :
             <div>
-              ${sellPostDetail.attachmentPath}
+              ${tradePostDetail.sellPostTitle}
             </div>
           </div>
 
           <div class="product-price">
             상품 가격 :
             <div>
-              ${sellPostDetail.attachmentPath}
+              ${tradePostDetail.pricePoint}
             </div>
           </div>
 
           <div class="product-info">
             상품 카테고리 :
             <div>
-              ${sellPostDetail.attachmentPath}>${sellPostDetail.attachmentPath}
+              ${tradePostDetail.teamName}>${tradePostDetail.categoryName}
             </div>
           </div>
 
           <div class="product-info">
             판매자 ID :
             <div>
-              ${sellPostDetail.attachmentPath}
+              ${tradePostDetail.seller}
             </div>
           </div>
 
           <div class="product-info">
             구매자 ID :
             <div>
-              ${sellPostDetail.attachmentPath}
+              ${tradePostDetail.buyer}
             </div>
           </div>
 
           <div class="product-info">
             거래 일자 :
             <div>
-              ${sellPostDetail.sellPostUpdate}
+              ${tradePostDetail.sellPostUpdate}
             </div>
           </div>
         </div>

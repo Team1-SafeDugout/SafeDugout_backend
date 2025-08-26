@@ -29,8 +29,8 @@ public class AdminTradeDAO {
 	}
 	
 	// 상세조회
-	public TradePostDTO selectDetail(int tradingPostNumber) {
-		return sqlSession.selectOne("adminTrade.selectSellPostDetail", tradingPostNumber);
+	public AdminTradeListDTO selectDetail(int postNumber) {
+		return sqlSession.selectOne("adminTrade.selectSellPostDetail", postNumber);
 	}
 
 
