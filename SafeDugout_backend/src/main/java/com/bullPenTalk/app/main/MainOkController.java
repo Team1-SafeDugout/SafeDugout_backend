@@ -34,6 +34,7 @@ public class MainOkController implements Execute {
 		List<MainDTO> schedule = mainDAO.selectSchedule();
 		request.setAttribute("schedule", schedule);
 		System.out.println("경기 일정 목록 대입");
+		System.out.println(schedule);
 
 		// 판매글 목록 조회
 		List<MainDTO> sellList = mainDAO.selectSellList();
