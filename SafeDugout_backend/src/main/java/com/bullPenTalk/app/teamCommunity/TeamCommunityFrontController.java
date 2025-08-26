@@ -42,6 +42,8 @@ public class TeamCommunityFrontController extends HttpServlet {
 		// 요청 파라미터(team, action) 꺼내기
 		String category = nvl(req.getParameter("category")).toLowerCase();
 		String action = nvl(req.getParameter("action")).toLowerCase();
+		System.out.println("액션: " + action);
+		System.out.println("카테고리: " + category);
 		// team에 맞는 서비스 찾기 (없으면 defaultService로)
 		CommunityService svc = registry.getOrDefault(category, defaultService);
 		// 찾은 서비스 실행 -> 실제 로직은 서비스 클래스에서 처리

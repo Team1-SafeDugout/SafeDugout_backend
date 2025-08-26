@@ -85,31 +85,29 @@
           <div>작성자</div>
           <div>작성일자</div>
         </li>
-        
-        	<c:choose>
-	        	<c:when test="${not empty postList}">
-	        		<c:forEach var="community" items="${postList}">
-	        			<li class="team-board-list">
-		        		<div>
-		        			<c:out value="${community.postNumber}"/>
-		        		</div>
-		        		<div>
-		        			<a herf=>
-		        				<c:out value="${community.postTitle }"/>
-		        			</a>
-		        		</div>
-		        		<div>
-		        			<c:out value="${community.memberId}"/>
-		        		</div>
-		        		<div>
-		        			<c:out value="${community.postDate}"/>
-		        		</div>
-		        		</li>	
-	      			</c:forEach>	      			
-	        	</c:when>
-	        </c:choose>
-       
         <!-- 게시글 들어갈 공간 -->
+       	<c:choose>
+        	<c:when test="${not empty postList}">
+        		<c:forEach var="community" items="${postList}">
+        			<li class="team-board-list">
+	        		<div>
+	        			<c:out value="${community.postNumber}"/>
+	        		</div>
+	        		<div>
+	        			<a herf=>
+	        				<c:out value="${community.postTitle }"/>
+	        			</a>
+	        		</div>
+	        		<div>
+	        			<c:out value="${community.memberId}"/>
+	        		</div>
+	        		<div>
+	        			<c:out value="${community.postDate}"/>
+	        		</div>
+	        		</li>	
+      			</c:forEach>	      			
+        	</c:when>
+        </c:choose>
       </ul>
     </div>
     <!-- 페이지 네이션 -->

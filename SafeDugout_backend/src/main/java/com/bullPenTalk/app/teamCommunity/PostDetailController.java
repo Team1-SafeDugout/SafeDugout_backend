@@ -75,7 +75,7 @@ public class PostDetailController {
 	// 뉴스 디테일 조회
 	public Result newsdetailselect(String action, HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
-
+		System.out.println("메소드 실행");
 		// boardNumber가 빈 문자열이거나 null인경우
 		String newspostNumberStr = request.getParameter("postNumber");
 		if (newspostNumberStr == null || newspostNumberStr.trim().isEmpty()) {

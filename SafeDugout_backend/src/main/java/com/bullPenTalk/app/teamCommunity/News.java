@@ -25,6 +25,7 @@ public class News implements CommunityService{
 			result = postSelectListController.newsList(action, request, response);
 			break;
 		case "newsdetail":
+			
 			result = detail.newsdetailselect(action, request, response);
 			break;
 		default :
