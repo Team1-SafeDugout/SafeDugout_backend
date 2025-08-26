@@ -66,6 +66,7 @@
                         </c:forEach>
                     </div>
                 </div>
+                
 
                 <!-- 검색 결과 & 페이지네이션 -->
                 <div class="page-bar">

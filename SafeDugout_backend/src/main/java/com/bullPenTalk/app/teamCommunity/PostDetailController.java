@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.PostAttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
+import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.PostDetailDTO;
 import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 
@@ -58,10 +59,63 @@ public class PostDetailController {
 		int boardWriterNumber = postDetailDTO.getMemberNumber();	
 		System.out.println("현재 게시글 작성자 번호 : " + boardWriterNumber);		
 
-		request.setAttribute("board", postDetailDTO);
+		request.setAttribute("community", postDetailDTO);
 		result.setPath("/app/trade/productDetail.jsp");
 		result.setRedirect(false);
 
 		return result;
 	}
+	
+	
+	
+	// 뉴스 디테일 조회
+	public Result newsdetailselect(String action, HttpServletRequest request, HttpServletResponse response) {
+		Result result = new Result();
+
+		// boardNumber가 빈 문자열이거나 null인경우
+		String newspostNumberStr = request.getParameter("postNumber");
+		if (newspostNumberStr == null || newspostNumberStr.trim().isEmpty()) {
+			System.out.println("PostNumber 값이 없습니다");
+			result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp"); // 커뮤니티 메인 페이지로 리다이렉트
+			result.setRedirect(true);
+			return result;
+		}
+
+		int postNumber = Integer.parseInt(newspostNumberStr);
+
+		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
+		PostAttachmentDAO postattachmentDAO = new PostAttachmentDAO();
+
+		// DB에서 게시글 가져오기
+		NewsDetailDTO newsPostDetailDTO = teamCommunityDAO.teamNewsDetail(postNumber);
+
+//		 게시글이 존재하지 않을 경우 처리
+		if(newsPostDetailDTO == null) {
+			System.out.println("존재하지 않는 게시글입니다. " + postNumber);
+			result.setPath("/app/communityHtml/communityTapPage/teamNews.jsp");
+			result.setRedirect(true);
+			return result;
+		}
+
+		 //첨부파일 가져오기
+		List<AttachmentDTO> files = postattachmentDAO.select(postNumber);
+		System.out.println("======파일 확인======");
+		System.out.println(files);
+		System.out.println("===================");
+		
+		//첨부파일 붙이기
+		newsPostDetailDTO.setAttachment(files);
+//		
+		//로그인한 사용자 번호 가져오기
+		Integer loginMemberNumber = (Integer) request.getSession().getAttribute("memberNumber");
+		System.out.println("로그인 한 멤버 번호 : " + loginMemberNumber);
+//			
+
+		request.setAttribute("community", newsPostDetailDTO);
+		result.setPath("/app/communityHtml/communityTapPage/teamNewsDetail.jsp");
+		result.setRedirect(false);
+
+		return result;
+	}
+	
 }

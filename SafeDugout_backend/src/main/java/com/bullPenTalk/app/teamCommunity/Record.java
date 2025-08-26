@@ -6,12 +6,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Game implements CommunityService{
+public class Record implements CommunityService{
 
 	@Override
 	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		switch(action) {
+		case "teamRecord" :
+			
+		case "playerRecord" :
+			
+		}
 		
 	}
 }

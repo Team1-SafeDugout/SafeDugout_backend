@@ -31,9 +31,8 @@ public class TeamCommunityFrontController extends HttpServlet {
 		registry.put("news", new News());
 		registry.put("youtube", new Youtube());
 		registry.put("song", new Song());
-		registry.put("game", new Game());
-		registry.put("stadium", new Stadium());
-		
+		registry.put("record", new Record());	
+		registry.put("stadium", new Stadium());		
 	}
 
 	// 요청 꺼내기
