@@ -1,10 +1,20 @@
 const postList = document.getElementById('list-ul');
 
+function formatDate(dateString) {
+	if (!dateString) return "-"; // 값이 없으면 대시 표시
+	const date = new Date(dateString);
+	if (isNaN(date.getTime())) return dateString; // 변환 실패 시 원본 반환
+	return date.toLocaleDateString("ko-KR", {
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit"
+	});
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	if (typeof posts !== 'undefined') {
 		posts.forEach(post => {
-		addPost(post.tradeNumber, post.postTitle, post.statusName, post.memberId, post.paymentDay, post.completeDay);
-/*			addPost(1, 1, 1, 1, 1, 1);*/
+			addPost(post.tradeNumber, post.postTitle, post.statusName, post.memberId, formatDate(post.paymentDay), formatDate(post.completeDay));
 		});
 	}
 });
@@ -28,8 +38,8 @@ function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId,
 
 	postTitle.style.overflow = "hidden";
 	postTitle.style.whiteSpace = "nowrap";
-	postTitle.style.textOverflow = "eclipse";	
-	
+	postTitle.style.textOverflow = "eclipse";
+
 	payMentDate.style.overflow = "hidden";
 	payMentDate.style.whiteSpace = "nowrap";
 	payMentDate.style.textOverflow = "eclipse";

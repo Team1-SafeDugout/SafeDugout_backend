@@ -74,7 +74,7 @@ public class MainDAO {
 		return sqlSession.selectList("main.selectSchedule");
 	}
 	
-	//중고거래 목록 조회
+	//판매글 목록 조회
 	public List<MainDTO> selectSellList() {
 		return sqlSession.selectList("main.selectSellList");
 	}
