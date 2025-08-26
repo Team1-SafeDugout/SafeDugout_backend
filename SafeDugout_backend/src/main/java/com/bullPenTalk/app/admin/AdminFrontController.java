@@ -114,6 +114,16 @@ public class AdminFrontController extends HttpServlet {
 			result = new AdminReadPostOkController().execute(request, response);
 			break;
 			
+		case "/admin/adminReadTradeOk.ad":
+			System.out.println("거래중 읽는중");
+			result = new AdminReadTradeOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminReadSellOk.ad":
+			System.out.println("판매중 읽는중");
+			result = new AdminReadSellOkController().execute(request, response);
+			break;
+			
 		case "/admin/adminCreateMainNoticeOk.ad":
 			System.out.println("글생성");
 			result = new AdminCreateMainNoticeOkController().execute(request, response);

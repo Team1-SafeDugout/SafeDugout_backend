@@ -130,6 +130,35 @@
 	]]>
 	</select>
 
+	<select id="adminSelectDetail" resultType="com.bullPenTalk.app.dto.AdminSellPostDTO" parameterType = "int">
+	<![CDATA[
+		SELECT
+		sp.SELL_POST_NUMBER,
+		tm.MEMBER_ID ,
+		tts.STATUS_NAME,
+		tc.CATEGORY_NAME,
+		td.DEALTYPE_NAME,
+		sp.PRICE_POINT,
+		sp.SELL_POST_TITLE,
+		sp.SELL_POST_CONTENT,
+		sp.TRADING_AREA,
+		SP.SELL_POST_CREATION_DATE,
+		SP.SELL_POST_UPDATE,
+		sp.SELL_POST_CONTENT,
+		tt.TEAM_NAME ,
+		tta.ATTACHMENT_PATH
+		FROM TBL_SELL_POST SP
+		JOIN TBL_CATEGORY TC ON SP.CATEGORY_ID = TC.CATEGORY_ID
+		JOIN TBL_MEMBER tm ON sp.MEMBER_NUMBER = tm.MEMBER_NUMBER
+		JOIN TBL_TRADE_STATUS tts ON sp.STATUS_ID = tts.STATUS_ID
+		LEFT JOIN TBL_TEAM tt ON sp.TEAM_ID = tt.TEAM_NUMBER
+		LEFT JOIN TBL_SELL_POST_ATTACHMENT ta ON sp.SELL_POST_NUMBER = ta.SELL_POST_NUMBER
+		LEFT JOIN TBL_ATTACHMENT TTA ON ta.ATTACHMENT_NUMBER =tta.ATTACHMENT_NUMBER
+		JOIN TBL_DEALTYPE td ON sp.DEALTYPE_ID = td.DEALTYPE_ID
+		WHERE sp.SELL_POST_NUMBER = #{postNumber}
+	]]>
+	</select>
+
 	<!-- 판매글 삭제 쿼리 -->
 	<delete id="delete" parameterType="int">
 		delete from tbl_sell_post
