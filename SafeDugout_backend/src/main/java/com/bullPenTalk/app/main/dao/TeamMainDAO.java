@@ -17,18 +17,18 @@ public class TeamMainDAO {
 	}
 
 	//팀 뉴스 목록 조회
-	public List<TeamMainDTO> selectNewsList() {
-		return sqlSession.selectList("teamMain.selectNewsList");
+	public List<TeamMainDTO> selectNewsList(int teamNumber) {
+		return sqlSession.selectList("teamMain.selectNewsList", teamNumber);
 	}
 	
 	//팀 게시글 목록 조회
-	public List<TeamMainDTO> selectPostList() {
-		return sqlSession.selectList("teamMain.selectPostList");
+	public List<TeamMainDTO> selectPostList(int teamNumber) {
+		return sqlSession.selectList("teamMain.selectPostList", teamNumber);
 	}
 	
 	//팀 유튜브 썸네일 목록 조회
-	public List<TeamMainDTO> selectYouTubeList() {
-		return sqlSession.selectList("teamMain.selectYouTubeList");
+	public List<TeamMainDTO> selectYouTubeList(int teamNumber) {
+		return sqlSession.selectList("teamMain.selectYouTubeList", teamNumber);
 	}
 	
 	//팀별 경기 일정 목록 조회

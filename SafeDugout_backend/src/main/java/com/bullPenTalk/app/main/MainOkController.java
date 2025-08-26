@@ -31,13 +31,15 @@ public class MainOkController implements Execute {
 		request.setAttribute("rankList", rankList);
 
 		// 경기 일정 목록 조회
-		List<MainDTO> scheduleList = mainDAO.selectSchedule(1);
-		request.setAttribute("scheduleList", scheduleList);
+		List<MainDTO> schedule = mainDAO.selectSchedule();
+		request.setAttribute("schedule", schedule);
 
 		// 최신 상품 목록 조회
-		List<MainDTO> recentProductList = mainDAO.selectSellList();
-		request.setAttribute("recentProductList", recentProductList);
+		List<MainDTO> sellList = mainDAO.selectSellList();
+		request.setAttribute("sellList", sellList);
 
+		// 입문자 가이드 목록 조회
+		
 		// path 값, redirect 여부 설정
 		result.setPath("/main.jsp");
 		result.setRedirect(false);
