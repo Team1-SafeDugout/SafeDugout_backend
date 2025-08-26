@@ -36,7 +36,7 @@ public class TeamMainOkController implements Execute {
 		int teamNumber = Integer.valueOf(request.getParameter("teamNumber"));
 		
 		// session에 팀별 값(팀 번호) 저장
-//		session.setAttribute("teamNumber", teamNumber);
+		session.setAttribute("teamNumber", teamNumber);
 
 		// 팀 뉴스 목록 조회
 		List<TeamMainDTO> newsList = teamMainDAO.selectPostList(teamNumber);
@@ -59,7 +59,7 @@ public class TeamMainOkController implements Execute {
 		request.setAttribute("rankList", rankList);
 		
 		// path 값, redirect 여부 설정
-		result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
 		result.setRedirect(false);
 		System.out.println(result.getPath());
 
