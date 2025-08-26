@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
 
-  <script>
+  <script async>
     let posts = [];
     <c:forEach var="board" items="${boardList}">
     	posts.push({
@@ -25,7 +25,7 @@
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
   </script>  
-  <script async src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
 </head>
 
 <body>

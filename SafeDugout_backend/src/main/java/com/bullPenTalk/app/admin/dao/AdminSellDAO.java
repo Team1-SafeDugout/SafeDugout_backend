@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.AdminSellPostDTO;
 import com.bullPenTalk.app.dto.SellPostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
@@ -35,6 +36,10 @@ public class AdminSellDAO {
 	// 삭제
 	public void delete(int sellPostNumber) {
 		sqlSession.delete("adminSellPost.delete", sellPostNumber);
+	}
+	
+	public List<AdminSellPostDTO> selectList(){
+		return sqlSession.selectList("adminSellPost.adminSelectList");
 	}
 
 

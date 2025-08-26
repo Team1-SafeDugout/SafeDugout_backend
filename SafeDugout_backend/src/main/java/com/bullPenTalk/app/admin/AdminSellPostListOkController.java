@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminSellDAO;
-import com.bullPenTalk.app.dto.SellPostDTO;
+import com.bullPenTalk.app.dto.AdminSellPostDTO;
 
 
 public class AdminSellPostListOkController implements Execute{
@@ -38,7 +38,7 @@ public class AdminSellPostListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<SellPostDTO> boardList = adminSellDAO.select();
+		List<AdminSellPostDTO> boardList = adminSellDAO.selectList();
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정
