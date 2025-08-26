@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크 관리자</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/login/adminlogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminProductDetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminlogin/adminLogin.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminProductDetail.js"></script>
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
@@ -24,27 +24,27 @@
       <section class="section-middle-menus">
         <div class="product-info-container">
           <div class="product-image">
-            <img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
+            <img src="${sellPostDetail.attachmentPath}">
             <div class="product-slide-buttons">
               <div id="left-slide-button"> ◁ </div>
               <div id="right-slide-button"> ▷ </div>
             </div>
           </div>
-          <div class="product-info"> 두산>야구용품 </div>
-          <div class="product-info"> 0000.00.00 </div>
+          <div class="product-info"> ${sellPostDetail.teamName}>${sellPostDetail.categoryName} </div>
+          <div class="product-info"> ${sellPostDetail.sellPostUpdate} </div>
         </div>
 
         <div class="product-detail-container">
           <div class="product-name">
             상품 이름 :
             <div>
-              dfd
+              ${sellPostDetail.sellPostTitle}
             </div>
           </div>
           <div class="product-description">
             상품 설명 :
             <div>
-              dfdfdfdfdf
+              ${sellPostDetail.sellPostContent}
             </div>
           </div>
 
@@ -52,14 +52,14 @@
             <div class="trading-info">
               거래 지역 :
               <div>
-                구리
+                ${sellPostDetail.tradingArea}
               </div>
             </div>
 
             <div class="trading-info">
               거래 방식 :
               <div>
-                택배,직거래
+                ${sellPostDetail.dealTypeName}
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
           <div class="product-price">
             상품 가격 :
             <div>
-              5000 포인트
+              ${sellPostDetail.pricePoint}
             </div>
           </div>
         </div>

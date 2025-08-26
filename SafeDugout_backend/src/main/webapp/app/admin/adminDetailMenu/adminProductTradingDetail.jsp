@@ -31,42 +31,42 @@
           <div class="product-info">
             상품 이름 :
             <div>
-              쁘띠 야구 용품
+              ${tradePostDetail.sellPostTitle}
             </div>
           </div>
 
           <div class="product-price">
             상품 가격 :
             <div>
-              5000 포인트
+              ${tradePostDetail.pricePoint}
             </div>
           </div>
 
           <div class="product-info">
             상품 카테고리 :
             <div>
-              두산>야구용품
+              ${tradePostDetail.teamName}>${tradePostDetail.categoryName}
             </div>
           </div>
 
           <div class="product-info">
             판매자 ID :
             <div>
-              th3179
+              ${tradePostDetail.seller}
             </div>
           </div>
 
           <div class="product-info">
             구매자 ID :
             <div>
-              sjk6245
+              ${tradePostDetail.buyer}
             </div>
           </div>
 
           <div class="product-info">
             거래 일자 :
             <div>
-              0000.00.00
+              ${tradePostDetail.sellPostUpdate}
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
       <section class="section-bottom-menus">
         <div>
           <form action="" method="get">
-            <button type = "submit" class = "post-button"> <a href = "${pageContext.request.contextPath}/adminMenu/adminManageTrading.html"> 목록으로 </a> </button>
+            <button type = "submit" class = "post-button"> <a href = "${pageContext.request.contextPath}/adminMenu/adminManageTrading.jsp"> 목록으로 </a> </button>
           </form>
         </div>
       </section>

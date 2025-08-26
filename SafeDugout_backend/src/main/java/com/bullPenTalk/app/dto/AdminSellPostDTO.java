@@ -8,6 +8,7 @@ public class AdminSellPostDTO {
 	String dealTypeName;
 	int pricePoint;
 	String sellPostTitle;
+	String sellPostContent;
 	String tradingArea;
 	String sellPostCreationDate;
 	String sellPostUpdate;
@@ -183,14 +184,30 @@ public class AdminSellPostDTO {
 
 
 
+	public String getSellPostContent() {
+		return sellPostContent;
+	}
+
+
+
+
+	public void setSellPostContent(String sellPostContent) {
+		this.sellPostContent = sellPostContent;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "AdminSellPostDTO [sellPostNumber=" + sellPostNumber + ", memberId=" + memberId + ", statusName="
 				+ statusName + ", categoryName=" + categoryName + ", dealTypeName=" + dealTypeName + ", pricePoint="
-				+ pricePoint + ", sellPostTitle=" + sellPostTitle + ", tradingArea=" + tradingArea
-				+ ", sellPostCreationDate=" + sellPostCreationDate + ", sellPostUpdate=" + sellPostUpdate
-				+ ", teamName=" + teamName + ", attachmentPath=" + attachmentPath + "]";
+				+ pricePoint + ", sellPostTitle=" + sellPostTitle + ", sellPostContent=" + sellPostContent
+				+ ", tradingArea=" + tradingArea + ", sellPostCreationDate=" + sellPostCreationDate
+				+ ", sellPostUpdate=" + sellPostUpdate + ", teamName=" + teamName + ", attachmentPath=" + attachmentPath
+				+ "]";
 	}
+	
 	
 	
 }
