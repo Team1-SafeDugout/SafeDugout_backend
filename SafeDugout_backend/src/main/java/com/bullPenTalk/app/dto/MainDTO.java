@@ -7,7 +7,7 @@ public class MainDTO {
 	private int homeTeamNumber; //홈팀 번호
 	private String stadiumName; //경기장 이름
 	private int awayTeamNumber; //어웨이팀 번호
-	private String scheduleDate; //경기 날짜
+	private String scheduleDate; //경기 날짜  
 	//판매글 목록
 	private int sellPostNumber; //판매 게시글 번호
 	private String sellPostTitle; //판매 게시글 제목
