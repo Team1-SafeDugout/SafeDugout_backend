@@ -138,13 +138,13 @@
 	
 	<!-- 판매글 등록 쿼리  -->
 	<insert id="insert" parameterType="SellPostDTO">
-		<selectKey keyProperty="SellPostNumber" resultType="int" order="BEFORE">
+		<selectKey keyProperty="sellPostNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_SELL_POST.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_SELL_POST(SELL_POST_NUMBER, MEMBER_NUMBER, STATUS_ID, CATEGORY_ID, DEALTYPE_ID, PRICE_POINT,
 		SELL_POST_TITLE, TRADING_AREA, SELL_POST_CREATION_DATE, SELL_POST_CONTENT, TEAM_ID)
 		VALUES(#{sellPostNumber}, #{memberNumber}, #{statusId}, #{categoryId}, #{dealtypeId}, #{pricePoint},
-				#{sellPostTitle}, #{tradingArea}, #{sellPostCreationDate}, #{sellPostContent}, #{teamID})
+				#{sellPostTitle}, #{tradingArea}, #{sellPostCreationDate}, #{sellPostContent}, #{teamId})
 	</insert>
 	
 	<!-- 판매글 상세조회 -->

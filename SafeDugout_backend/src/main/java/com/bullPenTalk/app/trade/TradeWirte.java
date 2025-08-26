@@ -22,10 +22,14 @@ public class TradeWirte implements TradeService {
 				System.out.println("write진입 ");
 				WriteController write = new WriteController();
 				result = write.writerequest(request, response);
+				break;
 			case "writeok":
 				System.out.println("writeOk여기 진입");
-				 WriteControllerOk writeOk = new WriteControllerOk();
-				 result =  writeOk.writeProduct(request, response);
+				WriteControllerOk writeOk = new WriteControllerOk();
+				result =  writeOk.writeProduct(request, response);
+				break;
+			case "writeresult" :
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace(); // 로그 출력

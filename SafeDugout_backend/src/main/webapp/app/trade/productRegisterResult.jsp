@@ -46,29 +46,34 @@
 						<!-- 상품 정보 텍스트 -->
 						<div class="register-info-text">상품 명 :</div>
 						<!-- 등록 값 -->
-						<div class="register-value">[두산베어스] 오리지널 모자</div>
+						<div class="register-value"><c:out value="${sellPost.sellPostTitle}" /></div>
 					</div>
 					<div class="container-full">
 						<div class="register-info-text">거래 방식 :</div>
-						<div class="register-value">직거래</div>
+						<div class="register-value">
+							<c:choose>
+                                <c:when test="${sellPost.dealtypeId == 1}">배송</c:when>
+                                <c:when test="${sellPost.dealtypeId == 2}">직거래</c:when>
+                            </c:choose>
+						</div>
 					</div>
 					<div class="container-full">
 						<div class="register-info-text">거래 희망 지역 :</div>
-						<div class="register-value">구리</div>
+						<div class="register-value">${sellPost.tradingArea}</div>
 					</div>
 					<!-- 긴 검은선 -->
 					<div class="long-line"></div>
 					<div class="container-full-bottom">
 						<div class="register-info-text">상품 가격 :</div>
 						<!-- 포인트 값 -->
-						<div class="point-amount">15000 포인트</div>
+						<div class="point-amount">${sellPost.pricePoint}</div>
 					</div>
 				</div>
 			</form>
 			<!-- 버튼 컨테이너 -->
 			<div class="main-button-container">
 				<!-- 메인 버튼 컨테이너 -->
-				<a href="./productDetailSeller.html"> <!-- 확인 버튼 텍스트 -->
+				<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=allproduct&action=list&"> <!-- 확인 버튼 텍스트 -->
 					<div class="main-button-next">확인</div>
 				</a>
 			</div>

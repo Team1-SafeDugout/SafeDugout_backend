@@ -21,7 +21,7 @@
 	<main>
 		<div class="main-container">
 			<form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=writeOk"
-				method="get" enctype="multipart/form-data">
+				method="post" enctype="multipart/form-data">
 
 				<div class="register-container">
 					<!-- 이미지 업로드 -->
@@ -108,7 +108,7 @@
 										src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"
 										alt="키움" data-team-id="10">
 								</div>
-								<input type="text" id="team" name="teamId" readonly>
+								<input type="text" id="team" name="teamId" value="0" readonly>
 							</div>
 							<div class="product-type-text-container">
 								<div class="product-type-text">굿즈 종류 선택</div>

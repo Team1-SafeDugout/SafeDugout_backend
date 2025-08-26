@@ -20,6 +20,7 @@
 	</typeAliases> 
 	-->
 	<typeAliases>
+		<typeAlias type="com.bullPenTalk.app.dto.PaymentDTO" alias="PaymentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminDTO" alias="AdminDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AddressDTO" alias="AddressDTO"></typeAlias>
@@ -101,6 +102,7 @@
 	</mappers> 
 	-->
 	<mappers>
+		<mapper resource="com/bullPenTalk/mapper/PaymentMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/Admin.xml" />
 		<mapper resource="com/bullPenTalk/mapper/AdminFreePostMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/AdminGuideMapper.xml" />

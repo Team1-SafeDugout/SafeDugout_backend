@@ -1,129 +1,82 @@
-// 상품 등록 버튼
-const registerBtn = document.getElementById('registerBtn');
-// 취소 버튼
-const cancelBtn = document.getElementById('cancelBtn');
-// 이미지 표시  
-const previewImg = document.getElementById('previewImg');
-// 이미지 업로드 input 태그 
-const uploadImg = document.getElementById('uploadImg');
-// 이미지 삭제 버튼 
-const deleteImg = document.getElementById('deleteImg');
-// 팀 로고 
-const teamLogo = document.querySelectorAll('.logo');
-// 로고에 따른 value 가 들어갈 input 
-const team = document.getElementById('team');
+// productRegister.js
 
-// 상품 정보 필수 입력값 
-const productName = document.getElementById('productName');
-const productType = document.getElementsByName('productType');
-const tradeMethod = document.getElementsByName('tradeMethod');
-const productPoint = document.getElementById('productPoint');
+document.addEventListener("DOMContentLoaded", () => {
 
-// 상품 종류 선택 여부
-let isTypeChecked = false;
-// 거래 방식 선택 여부 
-let isMethodChecked = false;
+    // ----------------------------
+    // 이미지 업로드 & 미리보기
+    // ----------------------------
+    const uploadImg = document.getElementById("uploadImg");
+    const previewImg = document.getElementById("previewImg");
+    const deleteImg = document.getElementById("deleteImg");
 
-// 입력값 누락 메시지 
-// 가격 외
-const errorMessage = document.getElementsByClassName('register-error-message');
-// 가격 
-const errorMessagePrice = document.getElementsByClassName('register-error-message-price')[0];
+    uploadImg.addEventListener("change", () => {
+        const file = uploadImg.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                previewImg.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
-// 이벤트리스너
-// 상품 등록 버튼 누를 시 작동
-registerBtn.addEventListener('click', function () {
-  // 입력값 누락 메시지 초기화
-  for (const message of errorMessage) {
-    message.style.visibility = 'hidden';
-  }
-  errorMessagePrice.style.visibility = 'hidden';
+    deleteImg.addEventListener("click", () => {
+        uploadImg.value = ""; // 파일 선택 초기화
+        previewImg.src = "/assets/img/communityImg/tradeLogo.png"; // 기본 이미지
+    });
 
-  // 모든 입력값 유효 여부 초기화
-  let isValidAll = true;
+    // ----------------------------
+    // 팀 선택
+    // ----------------------------
+    const logos = document.querySelectorAll(".logo img");
+    const teamInput = document.getElementById("team");
 
-  // 필수 입력값 누락 시 메시지 표시
-  if (productName.value === "") {
-    errorMessage[0].style.visibility = 'visible';
-  }
+    logos.forEach(logo => {
+        logo.addEventListener("click", () => {
+            teamInput.value = logo.dataset.teamId; // 클릭한 팀 ID 세팅
+            logos.forEach(l => l.classList.remove("selected"));
+            logo.classList.add("selected"); // 선택 강조
+        });
+    });
 
-  // 상품 종류 선택되어 있으면 선택 여부 true로 변경 
-  for (radioBtn of productType) {
-    if (radioBtn.checked) {
-      isTypeChecked = true;
-    }
-  }
+    // ----------------------------
+    // 상품 등록 폼 검증
+    // ----------------------------
+    const form = document.querySelector("form");
+    const productName = document.getElementById("productName");
+    const productContent = document.getElementById("productContent");
+    const pricePoint = document.getElementById("productPoint");
+    
+    form.addEventListener("submit", (e) => {
+        let valid = true;
 
-  // 상품 종류 선택되어 있지 않으면 메시지 표시 
-  if (isTypeChecked === false) {
-    errorMessage[1].style.visibility = 'visible';
-  }
+        // 상품명 확인
+        if (!productName.value.trim()) {
+            alert("상품명을 입력해주세요.");
+            valid = false;
+        }
 
-  // 거래 방식 선택되어 있으면 선택 여부 true로 변경 
-  for (radioBtn of tradeMethod) {
-    if (radioBtn.checked) {
-      isMethodChecked = true;
-    }
-  }
+        // 굿즈 종류 확인
+        const categoryChecked = form.querySelector("input[name='categoryId']:checked");
+        if (!categoryChecked) {
+            alert("굿즈 종류를 선택해주세요.");
+            valid = false;
+        }
 
-  // 거래 방식 선택되어 있지 않으면 메시지 표시 
-  if (isMethodChecked === false) {
-    errorMessage[2].style.visibility = 'visible';
-  }
+        // 거래 방식 확인
+        const dealChecked = form.querySelector("input[name='dealTypeId']:checked");
+        if (!dealChecked) {
+            alert("거래 방식을 선택해주세요.");
+            valid = false;
+        }
 
-  // 상품 가격 입력되어 있지 않으면 메시지 표시 
-  if (productPoint.value === "") {
-    errorMessagePrice.style.visibility = 'visible';
-  }
+        // 가격 확인
+        if (!pricePoint.value || isNaN(pricePoint.value) || pricePoint.value <= 0) {
+            alert("가격을 올바르게 입력해주세요.");
+            valid = false;
+        }
 
-  // 하나라도 입력 오류 메시지가 있으면 모든 입력값 유효 여부를 false로 변경
-  for (const message of errorMessage) {
-    if (message.style.visibility === 'visible') {
-      isValidAll = false;
-    }
-  }
-/*  if (errorMessagePrice.style.visibility === 'visible') {
-    isValidAll = false;
-  }*/
+        if (!valid) e.preventDefault(); // 검증 실패 시 제출 막기
+    });
 
-/*  // 모든 입력값이 유효하면 페이지 이동
-  if (isValidAll === true) {
-    location.href = "./productRegisterResult.html";
-  }*/
-});
-
-// 취소 버튼 누를 시 작동
-cancelBtn.addEventListener('click', function () {
-  if (confirm("등록을 취소하시겠습니까?")) {
-    location.href = "./tradeMain.html";
-  } else {
-
-  }
-});
-
-// 이미지 파일 업로드될 시 이미지 표시, 삭제 버튼 표시 
-uploadImg.addEventListener('change', function () {
-  const img = uploadImg.files[0];
-  previewImg.src = URL.createObjectURL(img);
-  deleteImg.style.display = 'inline';
-});
-
-
-// 팀에 따른 value 값 배열 
-/*const teamValue = ['doosan', 'HH', 'kia', 'kt', 'lg', 'LT', 'nc', 'SS', 'ssg', 'WO'];*/
-
-// 팀 로고 누를 시 빨간 네모 표시, input 태그 value 설정 
-teamLogo.forEach((logo, index) => {
-  logo.addEventListener('click', function (e) {
-    // 기존 빨간 네모 없애기 
-    for (let targetLogo of teamLogo) {
-      targetLogo.style.border = 'none';
-    }
-
-    // 빨간 네모 표시 
-    e.currentTarget.style.border = '1px solid red';
-
-    // input 태그 value 설정 
-    team.value = teamValue[index];
-  });
 });
