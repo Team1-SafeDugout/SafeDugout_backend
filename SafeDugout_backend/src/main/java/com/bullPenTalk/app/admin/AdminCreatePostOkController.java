@@ -146,7 +146,7 @@ public class AdminCreatePostOkController implements Execute{
 			songPostDTO.setTeamNumber(teamNum);
 			songPostDTO.setBoardTypeId(boardNum);
 			songPostDTO.setAdminId(adminNumber);
-			songPostDTO.setSongUrl(songUrl);
+			songPostDTO.setPostLink(songUrl);
 			songPostDTO.setPostContent("song");
 			
 			songPostDAO.insert(songPostDTO);			
@@ -165,7 +165,7 @@ public class AdminCreatePostOkController implements Execute{
 			songPlayerPostDTO.setTeamNumber(teamNum);
 			songPlayerPostDTO.setBoardTypeId(boardNum);
 			songPlayerPostDTO.setAdminId(adminNumber);
-			songPlayerPostDTO.setSongUrl(songPlayerUrl);
+			songPlayerPostDTO.setPostLink(songPlayerUrl);
 			songPlayerPostDTO.setPostContent("song");
 			
 			songPlayerPostDAO.insert(songPlayerPostDTO);	

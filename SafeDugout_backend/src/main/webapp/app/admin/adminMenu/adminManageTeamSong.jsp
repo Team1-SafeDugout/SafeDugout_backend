@@ -16,8 +16,9 @@
     <c:forEach var="board" items="${boardList}">
     	posts.push({
             number: "${board.postNumber}", 
-            teamname: "${board.teamNumber}",
-            link: "${board.songUrl}",
+            teamtype: "${board.teamNumber}",
+            title: "${board.postTitle}",
+            link: "${board.postLink}",
             date: "${board.postDate}"
         });
     </c:forEach>
