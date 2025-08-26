@@ -106,7 +106,7 @@ public class AdminCreatePostOkController implements Execute{
 			newsPost.setJournalist(journalist);
 			newsPost.setAdminNumber(adminNumber);
 			newsPost.setPostLink(newsUrl);
-			newsPost.setAttachmentPath(uploadPath);
+//			newsPost.setAttachmentPath(uploadPath);
 			newsPost.setBoardId(boardNum);
 			
 			newsDAO.insert(newsPost);

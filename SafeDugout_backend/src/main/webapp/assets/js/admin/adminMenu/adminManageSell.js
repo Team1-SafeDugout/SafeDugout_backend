@@ -1,127 +1,74 @@
-const postList = document.getElementById("list-ul");
-const addbutton = document.getElementsByClassName("list-names").item(0);
+const postList = document.getElementById('list-ul');
 
-const leftButton = document.getElementById("left-button");
-const rightButton = document.getElementById("right-button");
-const numberList = document.querySelectorAll("#numberlist-ul>li");
-
-// 
-
-const userNums = 12;
-var curPage = 0;
-
-// 숫자 버튼들 세팅
-function setNumber() {
-  for (var i = 0; i < numberList.length; i++) {
-    var curNum = i + (Math.floor((curPage / 5)) * 5);
-    numberList.item(i).firstChild.firstChild.nodeValue = curNum + 1;
-
-    if (curPage == curNum) {
-      numberList.item(i).style.backgroundColor = "#4D5061";
-      numberList.item(i).style.color = "white";
-    }
-
-    else {
-      numberList.item(i).style.backgroundColor = "white";
-      numberList.item(i).style.color = "black";
-    }
-
-    if (curNum > userNums) {
-      numberList.item(i).style.display = "none";
-    }
-    else {
-      numberList.item(i).style.display = "block";
-    }
-  }
+function formatDate(dateString) {
+    if (!dateString) return "-"; // 값이 없으면 대시 표시
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return dateString; // 변환 실패 시 원본 반환
+    return date.toLocaleDateString("ko-KR", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    });
 }
 
 
-// leftright button 보이기 말기
-function setButton() {
-  if (curPage == 0) {
-    leftButton.style.display = "none";
-  } else {
-    leftButton.style.display = "block";
-  }
+document.addEventListener("DOMContentLoaded", function() {
+	if (typeof posts !== 'undefined') {
+		posts.forEach(post => {
+		addPost(post.tradeNumber, post.postTitle, post.statusName, post.memberId, formatDate(post.paymentDay), formatDate(post.completeDay));
+		});
+	}
+});
 
-  if (curPage >= userNums) {
-    rightButton.style.display = "none";
-  } else {
-    rightButton.style.display = "block";
-  }
+function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId, postPaymentDate, postCompleteDate) {
+	const newPost = document.createElement('li');
+
+	const postNum = document.createElement('div');
+	const postTitle = document.createElement('div');
+	const postStatus = document.createElement('div');
+	const memberId = document.createElement('div');
+	const payMentDate = document.createElement('div');
+	const completeDate = document.createElement('div');
+
+	const postNumText = document.createTextNode(postNumberParam);
+	const postTitleText = document.createTextNode(postTitleParam);
+	const postStatusText = document.createTextNode(postStatusParam)
+	const memberIdText = document.createTextNode(postMemberId);
+	const paymentDateText = document.createTextNode(postPaymentDate);
+	const completeDateText = document.createTextNode(postCompleteDate);
+
+	postTitle.style.overflow = "hidden";
+	postTitle.style.whiteSpace = "nowrap";
+	postTitle.style.textOverflow = "eclipse";	
+	
+	payMentDate.style.overflow = "hidden";
+	payMentDate.style.whiteSpace = "nowrap";
+	payMentDate.style.textOverflow = "eclipse";
+
+	completeDate.style.overflow = "hidden";
+	completeDate.style.whiteSpace = "nowrap";
+	completeDate.style.textOverflow = "eclipse";
+
+
+	const postTitleLink = document.createElement('a');
+	/*postTitleLink.setAttribute("href", "/admin/adminReadMainNoticeOk.ad?noticePostNumber=" + postNumberParam);*/
+	postTitleLink.appendChild(postTitleText);
+
+	postNum.appendChild(postNumText);
+	postTitle.appendChild(postTitleLink);
+	postStatus.appendChild(postStatusText);
+	memberId.appendChild(memberIdText);
+	payMentDate.appendChild(paymentDateText);
+	completeDate.appendChild(completeDateText);
+
+
+
+	newPost.appendChild(postNum);
+	newPost.appendChild(postTitle);
+	newPost.appendChild(postStatus);
+	newPost.appendChild(memberId);
+	newPost.appendChild(payMentDate);
+	newPost.appendChild(completeDate);
+
+	postList.appendChild(newPost);
 }
-
-// 왼쪽 오른쪽 버튼 보이기 말기
-leftButton.addEventListener('click', function () {
-  if (curPage > 0) {
-    curPage--;
-    setNumber();
-  }
-  setButton();
-});
-
-// 테스트용 왼쪽 오른쪽 버튼
-rightButton.addEventListener('click', function () {
-  if (curPage < userNums) {
-    curPage++;
-    setNumber();
-  }
-  setButton();
-});
-
-// 테스트용 추가 버튼
-addbutton.addEventListener('click', function () {
-
-  setNumber();
-  const userListNum = document.querySelectorAll("#list-ul>li");
-  if (userListNum.length >= 10) return;
-
-  const newMember = document.createElement('li');
-
-  const number = document.createElement('div');
-  const tradeImgDiv = document.createElement('div');
-  const title = document.createElement('div');
-  const tradeDate = document.createElement('div');
-  const deleteButtonDiv = document.createElement('div');
-
-  // 주소 이동
-  const aTag = document.createElement('a');
-  aTag.setAttribute('href', "./../adminDetailMenu/adminProductDetail.html");
-
-  title.appendChild(aTag);
-
-  const numberText = document.createTextNode("number");
-  const tradeImg = document.createElement('img');
-  const titleText = document.createTextNode("title");
-  const tradeDateText = document.createTextNode("0000.00.00");
-  const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('type', 'button');
-  deleteButton.appendChild(document.createTextNode("삭제"));
-
-  deleteButton.addEventListener('click', function(){
-    newMember.remove();
-  });
-
-  tradeImg.setAttribute('src', "./../../../assets/img/communityImg/doosan.png");
-
-  number.appendChild(numberText);
-  tradeImgDiv.appendChild(tradeImg);
-  aTag.appendChild(titleText);
-  tradeDate.appendChild(tradeDateText);
-  deleteButtonDiv.appendChild(deleteButton);
-
-  newMember.appendChild(number);
-  newMember.appendChild(tradeImgDiv);
-  newMember.appendChild(title);
-  newMember.appendChild(tradeDate);
-  newMember.appendChild(deleteButtonDiv);
-
-  postList.appendChild(newMember);
-});
-
-
-
-window.onload = function () {
-  setNumber();
-  setButton();
-};
