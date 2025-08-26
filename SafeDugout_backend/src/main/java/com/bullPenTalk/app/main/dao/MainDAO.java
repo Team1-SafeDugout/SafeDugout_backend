@@ -71,6 +71,7 @@ public class MainDAO {
 	
 	//경기 일정 목록 조회
 	public List<MainDTO> selectSchedule() {
+		System.out.println("경기 일정 목록 조회 쿼리 실행");
 		return sqlSession.selectList("main.selectSchedule");
 	}
 	
