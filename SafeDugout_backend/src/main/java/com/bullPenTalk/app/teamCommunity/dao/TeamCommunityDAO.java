@@ -217,29 +217,29 @@ public class TeamCommunityDAO {
 		return sqlSession.selectOne("TeamCommunityMapper.getTotalPlayerSong");
 	}
 	
-	// 경기장 정보 가져오기
-	public List<StadiumDTO> selectStadium(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<StadiumDTO> list = sqlSession.selectList("TeamCommunityMapper.selectStadium", pageMap);
-		System.out.println("조회결과 : " + list);
-		return list;
-	}
-	
-	// 경기장 티켓 정보 
-	public List<StadiumTicketDTO> selectTicket(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<StadiumTicketDTO> list = sqlSession.selectList("TeamCommunityMapper.selectTictek", pageMap);
-		System.out.println("조회결과 : " + list);
-		return list;
-	}
-	
-	// 경기장 먹거리 정보
-	public List<StadiumFoodDTO> selectFood(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<StadiumFoodDTO> list = sqlSession.selectList("TeamCommunityMapper.selectFood", pageMap);
-		System.out.println("조회결과 : " + list);
-		return list;
-	}
+    // 팀 번호로 경기장 정보 조회
+    public StadiumDTO selectStadium(int teamNumber) {
+        System.out.println("DAO: selectStadium 실행 - teamNumber : " + teamNumber);
+        StadiumDTO stadium = sqlSession.selectOne("TeamCommunityMapper.selectStadium", teamNumber);
+        System.out.println("조회 결과: " + stadium);
+        return stadium;
+    }
+
+    // 경기장 번호로 티켓 정보 조회
+    public List<StadiumTicketDTO> selectTicket(int stadiumNumber) {
+        System.out.println("DAO: selectTicket 실행 - stadiumNumber : " + stadiumNumber);
+        List<StadiumTicketDTO> tickets = sqlSession.selectList("TeamCommunityMapper.selectTicket", stadiumNumber);
+        System.out.println("조회 결과: " + tickets);
+        return tickets;
+    }
+
+    // 경기장 번호로 먹거리 정보 조회
+    public List<StadiumFoodDTO> selectFood(int stadiumNumber) {
+        System.out.println("DAO: selectFood 실행 - stadiumNumber : " + stadiumNumber);
+        List<StadiumFoodDTO> foods = sqlSession.selectList("TeamCommunityMapper.selectFood", stadiumNumber);
+        System.out.println("조회 결과: " + foods);
+        return foods;
+    }
 	
 	// 경기 일정 조회
 	public List<GameScheduleDTO> selectGame(Map<String, Integer> pageMap){

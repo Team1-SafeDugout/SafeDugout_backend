@@ -120,7 +120,7 @@ public class WriteOkController {
 		}
 		result.setPath("/communityHtml/communityTapPage/teamBoardComplete.jsp");
 		result.setRedirect(false);
-		System.out.println("리턴징입");
+		System.out.println("리턴진입");
 		return result;
 
 	}

@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class StadiumDTO {
 //	CREATE TABLE TBL_STADIUM (
 //	STADIUM_NUMBER   NUMBER PRIMARY KEY,
@@ -9,15 +11,17 @@ public class StadiumDTO {
 //	CONSTRAINT FK_STADIUM_TEAM FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
 //	);
 
-	private int stadiumNUmber; // 경기장 번호
+	private int stadiumNumber; // 경기장 번호
 	private String stadiumAddress; // 경기장 주소
 	private String stadiumName; // 경기장 이름
 	private int stadiumteamNumber; // 경기장 홈 팀
-	public int getStadiumNUmber() {
-		return stadiumNUmber;
+	
+	//get, set
+	public int getStadiumNumber() {
+		return stadiumNumber;
 	}
-	public void setStadiumNUmber(int stadiumNUmber) {
-		this.stadiumNUmber = stadiumNUmber;
+	public void setStadiumNumber(int stadiumNUmber) {
+		this.stadiumNumber = stadiumNUmber;
 	}
 	public String getStadiumAddress() {
 		return stadiumAddress;
@@ -38,9 +42,10 @@ public class StadiumDTO {
 		this.stadiumteamNumber = stadiumteamNumber;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
-		return "StadiumDTO [stadiumNUmber=" + stadiumNUmber + ", stadiumAddress=" + stadiumAddress + ", stadiumName="
+		return "StadiumDTO [stadiumNumber=" + stadiumNumber + ", stadiumAddress=" + stadiumAddress + ", stadiumName="
 				+ stadiumName + ", stadiumteamNumber=" + stadiumteamNumber + "]";
 	}
 }

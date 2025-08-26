@@ -17,7 +17,7 @@ public class PostAttachmentDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 
-	// 게시글글 파일 조회 메소드
+	// 게시글 파일 조회 메소드
 	public List<AttachmentDTO> select(int postNumber) {
 		return sqlSession.selectList("attachment.selectAttachment", postNumber);
 	}

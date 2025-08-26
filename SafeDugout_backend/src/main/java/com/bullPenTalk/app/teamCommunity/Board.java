@@ -16,8 +16,15 @@ public class Board implements CommunityService {
 			throws ServletException, IOException {
 
 		System.out.println("전달된 액션값: " + action);
+		// 객체 생성
 		Result result = new Result();
 		PostSelectListController postSelectListController = new PostSelectListController();
+		WriteController writeController = new WriteController();
+		PostDetailController detail = new PostDetailController();
+		WriteOkController writeOkController = new WriteOkController();
+		DeleteControllerOkController delete = new DeleteControllerOkController();
+		UpdateController update = new UpdateController();
+		UpdateOkController updateOk = new UpdateOkController();
 
 		switch (action) {
 		case "postlist":
@@ -27,29 +34,30 @@ public class Board implements CommunityService {
 			result= postSelectListController.noticeMoreList(action, request, response);
 			break;
 		case "write":
-			WriteController writeController = new WriteController();
 			result= writeController.writerequest(request, response);
 			break;
 		case "writeOk":
-			WriteOkController writeOkController = new WriteOkController();
 			result = writeOkController.writePost(request, response);
 			break;
 		case "detail": 
-			PostDetailController detail = new PostDetailController();
 			result = detail.detailselect(action, request, response);
 			break;
 		case "delete":
-			DeleteControllerOkController delete = new DeleteControllerOkController();
 			result = delete.deletePost(request, response);
 			break;
 		case "update":
-			UpdateController update = new UpdateController();
 			result = update.update(request, response);
 			break;
-		case "updateOk":
-			UpdateOkController updateOk = new UpdateOkController();
+		case "updateOk":		
 			result = updateOk.updateOk(request, response);
+			break;
+		default :
+            System.out.println("알 수 없는 액션입니다: " + action);
+            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setRedirect(true);
+            break;
 		}
+		
 
 		if (result != null) {
 			if (result.isRedirect()) {

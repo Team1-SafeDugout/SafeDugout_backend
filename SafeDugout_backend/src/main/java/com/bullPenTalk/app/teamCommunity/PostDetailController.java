@@ -10,6 +10,9 @@ import com.bullPenTalk.app.Attachment.dao.PostAttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.PostDetailDTO;
+import com.bullPenTalk.app.dto.StadiumDTO;
+import com.bullPenTalk.app.dto.StadiumFoodDTO;
+import com.bullPenTalk.app.dto.StadiumTicketDTO;
 import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 
 public class PostDetailController {
@@ -118,4 +121,45 @@ public class PostDetailController {
 		return result;
 	}
 	
+	// 경기장 정보 조회
+	public Result stadiumetailselect(String action, HttpServletRequest request, HttpServletResponse response) {
+        Result result = new Result();
+
+        // teamNumber 체크
+        String teamNumberStr = request.getParameter("teamNumber");
+        if (teamNumberStr == null || teamNumberStr.trim().isEmpty()) {
+            System.out.println("teamNumber 값이 없습니다");
+            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setRedirect(true);
+            return result;
+        }
+
+        int teamNumber = Integer.parseInt(teamNumberStr);
+
+        TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
+
+        // 팀 번호로 경기장 조회
+        StadiumDTO stadium = teamCommunityDAO.selectStadium(teamNumber);
+        if (stadium == null) {
+            System.out.println("해당 팀의 경기장이 없습니다");
+            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setRedirect(true);
+            return result;
+        }
+
+        int stadiumNumber = stadium.getStadiumNumber();
+
+        // 경기장 티켓 및 먹거리 조회
+        List<StadiumTicketDTO> tickets = teamCommunityDAO.selectTicket(stadiumNumber);
+        List<StadiumFoodDTO> foods = teamCommunityDAO.selectFood(stadiumNumber);
+			
+
+		request.setAttribute("stadium", stadium);
+		request.setAttribute("tickets", tickets);
+		request.setAttribute("foods", foods);
+		result.setPath("/app/communityHtml/communityTapPage/teamStadium.jsp");
+		result.setRedirect(false);
+
+		return result;
+	}
 }

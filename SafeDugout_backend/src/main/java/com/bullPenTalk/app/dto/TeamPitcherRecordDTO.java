@@ -35,6 +35,12 @@ public class TeamPitcherRecordDTO {
 	private int teamPitcherSave; // 구원 투수가 기록한 세이브(SV) 횟수
 	private int teamPitcherHold; // 불펜 투수가 기록한 홀드(Hold) 횟수
 	private int teamPitcherStrikeout; // 팀 투수가 기록한 탈삼진 개수
+	private int teamPitcherHits;
+	private int teamPitcherHr;
+	private int teamPitcherBb;
+	private int teamPitcherHbp;
+	private int teamPitcherScore;
+	private int teamPitcherSelfScore;
 	
 	public int getTeamNumber() {
 		return teamNumber;
@@ -138,12 +144,7 @@ public class TeamPitcherRecordDTO {
 	public void setTeamPitcherSelfScore(int teamPitcherSelfScore) {
 		this.teamPitcherSelfScore = teamPitcherSelfScore;
 	}
-	private int teamPitcherHits;
-	private int teamPitcherHr;
-	private int teamPitcherBb;
-	private int teamPitcherHbp;
-	private int teamPitcherScore;
-	private int teamPitcherSelfScore;
+
 	@Override
 	public String toString() {
 		return "TeamPitcherRecordDTO [teamNumber=" + teamNumber + ", seasonYear=" + seasonYear + ", teamPitcherEra="
