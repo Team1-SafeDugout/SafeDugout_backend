@@ -17,7 +17,7 @@ public class TeamMainDAO {
 	}
 
 	//팀 뉴스 목록 조회
-	public List<TeamMainDTO> selectMainList(Map<String, Integer> map) {
+	public List<TeamMainDTO> selectNewsList(Map<String, Integer> map) {
 		return sqlSession.selectList("main.selectNewsList", map);
 	}
 	
@@ -32,8 +32,8 @@ public class TeamMainDAO {
 	}
 	
 	//경기 일정 목록 조회
-	public List<TeamMainDTO> selectTeamSchedule(Map<String, Integer> map) {
-		return sqlSession.selectList("main.selectTeamSchedule", map);
+	public List<TeamMainDTO> selectTeamSchedule(int teamNumber) {
+		return sqlSession.selectList("main.selectTeamSchedule", teamNumber);
 	}
 	
 	//팀별 순위 목록 조회

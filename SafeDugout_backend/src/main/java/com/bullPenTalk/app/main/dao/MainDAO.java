@@ -79,14 +79,14 @@ public class MainDAO {
 		return sqlSession.selectList("main.selectSellList");
 	}
 	
-	//입문자 가이드 목록 조회
-	public List<MainDTO> selectGuideList() {
-		return sqlSession.selectList("main.selectGuideList");
-	}
-	
 	//팀별 순위 조회
 	public List<MainDTO> selectTeamRank() {
 		return sqlSession.selectList("main.selectTeamRank");
+	}
+	
+	//입문자 가이드 목록 조회
+	public List<MainDTO> selectGuideList() {
+		return sqlSession.selectList("main.selectGuideList");
 	}
 	
 }
