@@ -10,8 +10,22 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminManageSell.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
+   <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+    		tradeNumber: "${board.sellPostNumber}", 
+    		postTitle: "${board.sellPostTitle}",
+    		statusName: "${board.statusName}",
+    		memberId: "${board.memberNumber}",
+    		paymentDay: "${board.paymentDate}",
+    		completeDay: "${board.completeDate}"
+        });
+    </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>  
+  <script async src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageSell.js"></script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>
 </head>
 
 <body>

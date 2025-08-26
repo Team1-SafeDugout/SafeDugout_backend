@@ -1,122 +1,63 @@
-const postList = document.getElementById("list-ul");
-const addbutton = document.getElementsByClassName("list-names").item(0);
+const postList = document.getElementById('list-ul');
 
-const leftButton = document.getElementById("left-button");
-const rightButton = document.getElementById("right-button");
-const numberList = document.querySelectorAll("#numberlist-ul>li");
+document.addEventListener("DOMContentLoaded", function() {
+	if (typeof posts !== 'undefined') {
+		posts.forEach(post => {
+		addPost(post.tradeNumber, post.postTitle, post.statusName, post.memberId, post.paymentDay, post.completeDay);
+/*			addPost(1, 1, 1, 1, 1, 1);*/
+		});
+	}
+});
 
-const userNums = 12;
-var curPage = 0;
+function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId, postPaymentDate, postCompleteDate) {
+	const newPost = document.createElement('li');
 
-// 숫자 버튼들 세팅
-function setNumber() {
-  for (var i = 0; i < numberList.length; i++) {
-    var curNum = i + (Math.floor((curPage / 5)) * 5);
-    numberList.item(i).firstChild.firstChild.nodeValue = curNum + 1;
+	const postNum = document.createElement('div');
+	const postTitle = document.createElement('div');
+	const postStatus = document.createElement('div');
+	const memberId = document.createElement('div');
+	const payMentDate = document.createElement('div');
+	const completeDate = document.createElement('div');
 
-    if (curPage == curNum) {
-      numberList.item(i).style.backgroundColor = "#4D5061";
-      numberList.item(i).style.color = "white";
-    }
+	const postNumText = document.createTextNode(postNumberParam);
+	const postTitleText = document.createTextNode(postTitleParam);
+	const postStatusText = document.createTextNode(postStatusParam)
+	const memberIdText = document.createTextNode(postMemberId);
+	const paymentDateText = document.createTextNode(postPaymentDate);
+	const completeDateText = document.createTextNode(postCompleteDate);
 
-    else {
-      numberList.item(i).style.backgroundColor = "white";
-      numberList.item(i).style.color = "black";
-    }
+	postTitle.style.overflow = "hidden";
+	postTitle.style.whiteSpace = "nowrap";
+	postTitle.style.textOverflow = "eclipse";	
+	
+	payMentDate.style.overflow = "hidden";
+	payMentDate.style.whiteSpace = "nowrap";
+	payMentDate.style.textOverflow = "eclipse";
 
-    if (curNum > userNums) {
-      numberList.item(i).style.display = "none";
-    }
-    else {
-      numberList.item(i).style.display = "block";
-    }
-  }
+	completeDate.style.overflow = "hidden";
+	completeDate.style.whiteSpace = "nowrap";
+	completeDate.style.textOverflow = "eclipse";
+
+
+	const postTitleLink = document.createElement('a');
+	/*postTitleLink.setAttribute("href", "/admin/adminReadMainNoticeOk.ad?noticePostNumber=" + postNumberParam);*/
+	postTitleLink.appendChild(postTitleText);
+
+	postNum.appendChild(postNumText);
+	postTitle.appendChild(postTitleLink);
+	postStatus.appendChild(postStatusText);
+	memberId.appendChild(memberIdText);
+	payMentDate.appendChild(paymentDateText);
+	completeDate.appendChild(completeDateText);
+
+
+
+	newPost.appendChild(postNum);
+	newPost.appendChild(postTitle);
+	newPost.appendChild(postStatus);
+	newPost.appendChild(memberId);
+	newPost.appendChild(payMentDate);
+	newPost.appendChild(completeDate);
+
+	postList.appendChild(newPost);
 }
-
-
-// leftright button 보이기 말기
-function setButton() {
-  if (curPage == 0) {
-    leftButton.style.display = "none";
-  } else {
-    leftButton.style.display = "block";
-  }
-
-  if (curPage >= userNums) {
-    rightButton.style.display = "none";
-  } else {
-    rightButton.style.display = "block";
-  }
-}
-
-// 왼쪽 오른쪽 버튼 보이기 말기
-leftButton.addEventListener('click', function () {
-  if (curPage > 0) {
-    curPage--;
-    setNumber();
-  }
-  setButton();
-});
-
-// 테스트용 왼쪽 오른쪽 버튼
-rightButton.addEventListener('click', function () {
-  if (curPage < userNums) {
-    curPage++;
-    setNumber();
-  }
-  setButton();
-});
-
-// 테스트용 추가 버튼
-addbutton.addEventListener('click', function () {
-
-  setNumber();
-  const userListNum = document.querySelectorAll("#list-ul>li");
-  if (userListNum.length >= 10) return;
-
-  const newMember = document.createElement('li');
-
-  const aTag = document.createElement('a');
-
-  const number = document.createElement('div');
-  const tradeImgDiv = document.createElement('div');
-  const title = document.createElement('div');
-  const tradeDate = document.createElement('div');
-  const sellerID = document.createElement('div');
-  const buyerID = document.createElement('div');
-
-  const numberText = document.createTextNode("number");
-  const tradeImg = document.createElement('img');
-  const titleText = document.createTextNode("title");
-  const tradeDateText = document.createTextNode("0000.00.00");
-  const sellerIDText = document.createTextNode("seller");
-  const buyerIDText = document.createTextNode("buyer");
-
-  tradeImg.setAttribute('src', "./../../../assets/img/communityImg/doosan.png");
-  aTag.setAttribute('href', './../adminDetailMenu/adminProductTradingDetail.html');
-
-  number.appendChild(numberText);
-  tradeImgDiv.appendChild(tradeImg);
-  title.appendChild(aTag);
-  tradeDate.appendChild(tradeDateText);
-  sellerID.appendChild(sellerIDText);
-  buyerID.appendChild(buyerIDText);
-  aTag.appendChild(titleText);
-
-
-  newMember.appendChild(number);
-  newMember.appendChild(tradeImgDiv);
-  newMember.appendChild(title);
-  newMember.appendChild(tradeDate);
-  newMember.appendChild(sellerID);
-  newMember.appendChild(buyerID);
-
-  postList.appendChild(newMember);
-});
-
-
-
-window.onload = function () {
-  setNumber();
-  setButton();
-};
