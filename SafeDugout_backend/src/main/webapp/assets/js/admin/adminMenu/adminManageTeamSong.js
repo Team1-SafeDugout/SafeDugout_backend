@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					typeName = "입문자가이드";
 					break;
 				default:
-					typeName = "기타";
+					typeName = "응원가";
 					break;
 			}
 			addPost(post.number, post.title, post.date, post.type, post.type);
@@ -41,7 +41,7 @@ closeModal.addEventListener('click', function(){
 });
 
 // 테스트용 추가 버튼
-fucntion addbutton(postNumberParam, postTitleParam, postDateParam, postTypeParam, postURLParam) {
+function addbutton(postNumberParam, postTitleParam, postDateParam, postTypeParam, postURLParam) {
   const newMember = document.createElement('li');
 
   const number = document.createElement('div');
@@ -63,12 +63,11 @@ fucntion addbutton(postNumberParam, postTitleParam, postDateParam, postTypeParam
   })
 
   const NumberText = document.createTextNode(postNumberParam);
-  const teamNameText = document.createTextNode("team");
-  const songNameText = document.createTextNode("YAHO");
-  const linkURLText = document.createTextNode("naver.com");
-  const fixDateText = document.createTextNode("0000.00.00");
+  const teamNameText = document.createTextNode(postTypeParam);
+  const songNameText = document.createTextNode(postTitleParam);
+  const linkURLText = document.createTextNode(postURLParam);
+  const fixDateText = document.createTextNode(postDateParam);
 
-  buttons.appendChild(changeButton);
   buttons.appendChild(deleteButton);
 
   number.appendChild(NumberText);
@@ -77,7 +76,7 @@ fucntion addbutton(postNumberParam, postTitleParam, postDateParam, postTypeParam
   linkURL.appendChild(linkURLText);
   fixDate.appendChild(fixDateText);
 
-  linkURL.setAttribute('href',"https://www.youtube.com/");
+  linkURL.setAttribute('href',postURLParam);
 
   newMember.appendChild(number);
   newMember.appendChild(teamName);
@@ -90,4 +89,4 @@ fucntion addbutton(postNumberParam, postTitleParam, postDateParam, postTypeParam
     userList.appendChild(newMember);
   }
   modal.style.display = "none";
-});
+};
