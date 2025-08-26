@@ -13,5 +13,11 @@ public class Song implements CommunityService{
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		switch(action) {
+		case "teamsong" :
+		
+		case "playersong":
+			
+		}
 	}
 }
