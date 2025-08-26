@@ -1,41 +1,41 @@
 const teamHeaders = {
   loginHeader: {
-    doosan : "./../../../../webapp/app/communityHtml/headerHtml/doosanHeader.html",
-    hanwha : "./../../../../webapp/app/communityHtml/headerHtml/hanwhaHeader.html",
+    doosan : "./../../../../webapp/app/communityHtml/headerHtml/doosanHeader.jsp",
+    hanwha : "./../../../../webapp/app/communityHtml/headerHtml/hanwhaHeader.jsp",
     kia : "./../../../../webapp/app/communityHtml/headerHtml/kiaHeader.html",
-    kiwoom: "./../../../../webapp/app/communityHtml/headerHtml/kiwoomHeader.html",
-    kt : "./../../../../webapp/app/communityHtml/headerHtml/ktHeader.html",
-    lg: "./../../../../webapp/app/communityHtml/headerHtml/lgHeader.html",
-    lotte: "./../../../../webapp/app/communityHtml/headerHtml/lotteHeader.html",
-    nc: "./../../../../webapp/app/communityHtml/headerHtml/ncHeader.html",
-    samsung: "./../../../../webapp/app/communityHtml/headerHtml/samsungHeader.html",
-    ssg: "./../../../../webapp/app/communityHtml/headerHtml/ssgHeader.html"
+    kiwoom: "./../../../../webapp/app/communityHtml/headerHtml/kiwoomHeader.jsp",
+    kt : "./../../../../webapp/app/communityHtml/headerHtml/ktHeader.jsp",
+    lg: "./../../../../webapp/app/communityHtml/headerHtml/lgHeader.jsp",
+    lotte: "./../../../../webapp/app/communityHtml/headerHtml/lotteHeader.jsp",
+    nc: "./../../../../webapp/app/communityHtml/headerHtml/ncHeader.jsp",
+    samsung: "./../../../../webapp/app/communityHtml/headerHtml/samsungHeader.jsp",
+    ssg: "./../../../../webapp/app/communityHtml/headerHtml/ssgHeader.jsp"
   },
   beforeLoginHeader: {
-    doosan: "./../../../../webapp/app/communityHtml/beforeLoginHeader/doosan.html",
-    hanwha: "./../../../../webapp/app/communityHtml/beforeLoginHeader/hanwha.html",
-    kia : "./../../../../webapp/app/communityHtml/beforeLoginHeader/kia.html",
-    kiwoom: "./../../../../webapp/app/communityHtml/beforeLoginHeader/kiwoom.html",
-    kt : "./../../../../webapp/app/communityHtml/beforeLoginHeader/kt.html",
-    lg: "./../../../../webapp/app/communityHtml/beforeLoginHeader/lg.html",
-    lotte: "./../../../../webapp/app/communityHtml/beforeLoginHeader/lotte.html",
-    nc: "./../../../../webapp/app/communityHtml/beforeLoginHeader/nc.html",
-    samsung: "./../../../../webapp/app/communityHtml/beforeLoginHeader/samsung.html",
-    ssg: "./../../../../webapp/app/communityHtml/beforeLoginHeader/ssg.html"
+    doosan: "./../../../../webapp/app/communityHtml/beforeLoginHeader/doosan.jsp",
+    hanwha: "./../../../../webapp/app/communityHtml/beforeLoginHeader/hanwha.jsp",
+    kia : "./../../../../webapp/app/communityHtml/beforeLoginHeader/kia.jsp",
+    kiwoom: "./../../../../webapp/app/communityHtml/beforeLoginHeader/kiwoom.jsp",
+    kt : "./../../../../webapp/app/communityHtml/beforeLoginHeader/kt.jsp",
+    lg: "./../../../../webapp/app/communityHtml/beforeLoginHeader/lg.jsp",
+    lotte: "./../../../../webapp/app/communityHtml/beforeLoginHeader/lotte.jsp",
+    nc: "./../../../../webapp/app/communityHtml/beforeLoginHeader/nc.jsp",
+    samsung: "./../../../../webapp/app/communityHtml/beforeLoginHeader/samsung.jsp",
+    ssg: "./../../../../webapp/app/communityHtml/beforeLoginHeader/ssg.jsp"
   }
 };
 
 const teamFooter = {
-  doosan: "./../../../../webapp/app/communityHtml/teamFooter/doosanFooter.html",
-  hanwha: "./../../../../webapp/app/communityHtml/teamFooter/hanwhaFooter.html",
-  kia: "./../../../../webapp/app/communityHtml/teamFooter/kiaFooter.html",
-  kiwoom: "./../../../../webapp/app/communityHtml/teamFooter/kiwoomFooter.html",
-  kt: "./../../../../webapp/app/communityHtml/teamFooter/ktFooter.html",
-  lg: "./../../../../webapp/app/communityHtml/teamFooter/lgFooter.html",
-  lotte: "./../../../../webapp/app/communityHtml/teamFooter/lotteFooter.html",
-  nc: "./../../../../webapp/app/communityHtml/teamFooter/ncFooter.html",
-  samsung: "./../../../../webapp/app/communityHtml/teamFooter/samsungFooter.html",
-  ssg: "./../../../../webapp/app/communityHtml/teamFooter/ssgFooter.html"
+  doosan: "./../../../../webapp/app/communityHtml/teamFooter/doosanFooter.jsp",
+  hanwha: "./../../../../webapp/app/communityHtml/teamFooter/hanwhaFooter.jsp",
+  kia: "./../../../../webapp/app/communityHtml/teamFooter/kiaFooter.jsp",
+  kiwoom: "./../../../../webapp/app/communityHtml/teamFooter/kiwoomFooter.jsp",
+  kt: "./../../../../webapp/app/communityHtml/teamFooter/ktFooter.jsp",
+  lg: "./../../../../webapp/app/communityHtml/teamFooter/lgFooter.jsp",
+  lotte: "./../../../../webapp/app/communityHtml/teamFooter/lotteFooter.jsp",
+  nc: "./../../../../webapp/app/communityHtml/teamFooter/ncFooter.jsp",
+  samsung: "./../../../../webapp/app/communityHtml/teamFooter/samsungFooter.jsp",
+  ssg: "./../../../../webapp/app/communityHtml/teamFooter/ssgFooter.jsp"
 };
 
 const teamCSS = {

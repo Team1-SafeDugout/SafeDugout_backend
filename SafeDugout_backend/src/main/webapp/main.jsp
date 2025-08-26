@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,111 +69,25 @@
             <li class="rank-table-column-li rank-li-win">승</li>
             <li class="rank-table-column-li rank-li-draw">무</li>
             <li class="rank-table-column-li rank-li-loss">패</li>
+            <li class="rank-table-column-li rank-li-winRate">승률</li>
             <li class="rank-table-column-li rank-li-winloss">승차</li>
           </div>
           <!-- 팀 순위 1위 ~ 10위 -->
           <div class="rank-table-teamlist">
+          <c:forEach var="rankRow" items="${rankList}">
             <!-- 팀순위 팀 데이터 리스트 -->
             <div class="rank-table-teamlist-team">
               <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
+              <li class="rank-table-teamlist-team-list rank-li-rank"><c:out value="${rankRow.teamRank}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-team"><c:out value="${rankRow.teamName}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-G"><c:out value="${rankRow.gameCount}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-win"><c:out value="${rankRow.teamWin}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-draw"><c:out value="${rankRow.teamDraw}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-loss"><c:out value="${rankRow.teamLose}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-winRate"><c:out value="${rankRow.teamWinRate}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-winloss"><c:out value="${rankRow.teamWinLoss}"/></li>
             </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
-            <div class="rank-table-teamlist-team">
-              <!-- 팀순위 팀 데이터 리스트 목록 -->
-              <li class="rank-table-teamlist-team-list rank-li-rank">1</li>
-              <li class="rank-table-teamlist-team-list rank-li-team">한화</li>
-              <li class="rank-table-teamlist-team-list rank-li-G">100</li>
-              <li class="rank-table-teamlist-team-list rank-li-win">59</li>
-              <li class="rank-table-teamlist-team-list rank-li-draw">3</li>
-              <li class="rank-table-teamlist-team-list rank-li-loss">38</li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss">0.0</li>
-            </div>
+          </c:forEach>
           </div>
         </div>
       </section>
@@ -189,20 +104,22 @@
             <!-- 경기 일정 빠른 5일 -->
             <div class="schedule-table-schedulelist">
               <!-- 경기 일정 데이터 리스트 -->
+              <c:forEach var="scheduleRow" items="${schedule}">
               <div class="schedule-table-schedulelist-schedule">
                 <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home">두산</li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-home"><C:out value="${scheduleRow.awayTeamName}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
                   <div class="schedule-li-loc-text">
                     잠실
                   </div>
                 </li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-away">LG</li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-away"><C:out value="${scheduleRow.homeTeamName}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-time">18:30</li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
                   <a class="schedule-li-info-link" href="">정보</a>
                 </li>
               </div>
+              </c:forEach>
               <div class="schedule-table-schedulelist-schedule">
                 <!-- 경기 일정 데이터 리스트 목록 -->
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-home">두산</li>

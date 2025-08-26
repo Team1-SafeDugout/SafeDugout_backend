@@ -236,5 +236,9 @@
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
+<!--   <script>
+  	let memberNumber = ${sessionScope.memberNumber};
+  	let teamNumber = ${sessionScope.teamNumber};
+  </script> -->
 </body>
 </html>

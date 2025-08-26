@@ -132,31 +132,35 @@ main {
 
 /* 팀순위 테이블 컬럼별 간격 */
 .rank-li-rank {
-  width: 8%;
+  width: 7%;
 }
 
 .rank-li-team {
-  width: 17%;
+  width: 15%;
 }
 
 .rank-li-G {
-  width: 15%;
+  width: 13%;
 }
 
 .rank-li-win {
-  width: 15%;
+  width: 13%;
 }
 
 .rank-li-draw {
-  width: 15%;
+  width: 13%;
 }
 
 .rank-li-loss {
-  width: 15%;
+  width: 13%;
+}
+
+.rank-li-winRate {
+  width: 13%;
 }
 
 .rank-li-winloss {
-  width: 15%;
+  width: 13%;
 }
 
 

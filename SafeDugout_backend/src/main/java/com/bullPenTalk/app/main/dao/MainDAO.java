@@ -70,8 +70,8 @@ public class MainDAO {
 	}
 	
 	//경기 일정 목록 조회
-	public List<MainDTO> selectSchedule(int gameId) {
-		return sqlSession.selectList("main.selectSchedule", gameId);
+	public List<MainDTO> selectSchedule() {
+		return sqlSession.selectList("main.selectSchedule");
 	}
 	
 	//중고거래 목록 조회
