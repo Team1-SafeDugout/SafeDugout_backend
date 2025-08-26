@@ -35,5 +35,13 @@ public class TeamCommentDAO {
 	// 삭제
 	public void delete(int commentNumber) {
 		sqlSession.delete("teamComment.delete", commentNumber);
-	}	
+	}
+	
+	public CommentDTO selectOne(int commentNumber) {
+		return sqlSession.selectOne("teamComment.selectOne");
+	}
+	
+	public List<CommentDTO> selectAll(int boardNumber){
+		return sqlSession.selectList("teamComment.selectAll", boardNumber);
+	}
 }
