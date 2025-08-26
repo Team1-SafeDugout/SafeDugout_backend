@@ -14,6 +14,7 @@ import com.bullPenTalk.app.Attachment.dao.SellPostAttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.SellPostAttachmentDTO;
 import com.bullPenTalk.app.dto.SellPostDTO;
+import com.bullPenTalk.app.dto.TradePostDTO;
 import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -133,10 +134,12 @@ public class WriteControllerOk {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		result.setPath("/trade/productRegisterResult.jsp");
+		result.setPath("/trade/SellPostFrontController2.tr?category=allproduct&action=list");
 		result.setRedirect(false);
 		System.out.println("리턴징입");
 		return result;
 
 	}
+	
+	
 }

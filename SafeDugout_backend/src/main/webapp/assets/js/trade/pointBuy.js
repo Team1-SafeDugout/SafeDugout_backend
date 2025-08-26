@@ -1,19 +1,34 @@
-// 버튼 
-const payBtn = document.getElementById('payBtn');
+const payBtn = document.getElementById("payBtn");
+const pointInput = document.getElementById("pointValue");
 
-// 포인트 입력값 
-const pointValue = document.getElementById('pointValue');
+payBtn.addEventListener("click", () => {
+    const amount = parseInt(pointInput.value);
 
-// 포인트 입력 오류 메시지 
-const pointRequiredMessage = document.getElementsByClassName('input-error-message')[0];
+    if (!amount || amount <= 0) {
+        alert("충전할 금액을 입력하세요.");
+        return;
+    }
 
-// 이벤트리스너
-// 결제 버튼 누를 시 
-payBtn.addEventListener('click', function () {
-  if (pointValue.value === "") {
-    pointRequiredMessage.style.visibility = 'visible';
-  } else {
-    location.href = "./pointBuyResult.html";
-  }
+    // 실제 결제 처리 함수 호출
+    requestKakaoPay(amount);
 });
 
+
+function requestKakaoPay(amount) {
+    // 서버에 결제 준비 요청
+    fetch('/payment/kakaoReady', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: amount })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.next_redirect_pc_url) {
+            // 카카오페이 결제 페이지로 이동
+            window.location.href = data.next_redirect_pc_url;
+        } else {
+            alert("결제 준비 실패");
+        }
+    })
+    .catch(err => console.error(err));
+}
