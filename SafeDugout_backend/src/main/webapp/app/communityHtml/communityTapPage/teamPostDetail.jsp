@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,24 +61,34 @@
       <!-- 게시글 -->
       <section class="team-post-detail">
         <div class="team-post-header">
-          <h2>제목</h2>
+          <h2>${community.postTitle}</h2>
           <div>
             <!-- 수정 삭제 버튼 -->
-            <button><a href="./teamPostWriting.html">수정</a></button>
-            <button type="button">삭제</button>
+            <c:if test="${sessionScope.memberNumber == coumminty.memberNumber}">
+					<!-- 수정 버튼 -->
+					<button type="button" class="modify-btn"
+						data-board-number="${community.postNumber}"
+						data-member-number="${sessionScope.memberNumber}">수정</button>
+					<!-- 삭제 버튼 -->
+					<button type="button" class="delete-btn"
+						data-board-number="${board.postNumber}"
+						data-member-number="${sessionScope.memberNumber}">삭제</button>
+				</c:if>
           </div>
         </div>
         <!-- 작성자 정보 -->
         <div class="team-post-info">
-          <div class="team-post-num">글번호:<p>1</p></div>
-          <div class="team-post-writer">작성자ID:<p>pga0929</p></div>
-          <div class="team-post-date">작성일자:<p>250808</p></div>
+          <div class="team-post-num">글번호:<p><c:out value="${community.postNumber}" /></p></div>
+          <div class="team-post-writer">작성자ID:<p><c:out value="${community.memberNumber}" /></p></div>
+          <div class="team-post-date">작성일자:<p><c:out value="${community.createdDate}" /></p></div>
         </div>
         <!-- 본문 -->
         <article class="team-post-main">
-          <p>내용</p>
+          <p><c:out value="${community.postContent}" /></p>
         </article>
-        <a href="./teamBoard.html"><button type="submit">목록</button></a>
+         <button type="button" class="list-btn"
+					data-boardNumber="${communtiy.postNumber}"
+					data-memberNumber="${sessionScope.memberNumber}">목록</button>
       </section>
       <!-- 댓글 -->
       <section class="team-post-comment">
@@ -112,5 +125,8 @@
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
+  <script >
+    let memberNumber = "${sessionScope.memberNumber}";
+  </script>
 </body>
 </html>

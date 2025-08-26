@@ -162,6 +162,8 @@
 </main>
 
 <jsp:include page="/footer.jsp" />
-
+    <script>
+    	let memberNumber = "${sessionScope.memberNumber}";
+    </script>
 </body>
 </html>

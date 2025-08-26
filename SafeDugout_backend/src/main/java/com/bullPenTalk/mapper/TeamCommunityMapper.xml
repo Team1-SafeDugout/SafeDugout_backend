@@ -59,6 +59,7 @@
 	    P.POST_CONTENT,
 	    P.POST_DATE,
 	    p.JOURNALIST,
+	    p.POST_LINK,
 	    A.ATTACHMENT_NUMBER,
 	    A.ATTACHMENT_NAME,
 	    A.ATTACHMENT_PATH
@@ -210,8 +211,9 @@
 		]]>
 	</select>
 
+
 	<!-- 팀 시즌 기록 목록 조회 -->
-	<select id="teamRecordSelect" parameterType="int" resultType="TeamRecordDTO">
+	<select id="teamRecordSelect" parameterType="map" resultType="TeamRecordDTO">
 		<![CDATA[
 		SELECT TR.SEASON_YEAR, T.TEAM_NAME,	TR.TEAM_RANK, TR.GAME_COUNT, TR.TEAM_WIN, TR.TEAM_DRAW, TR.TEAM_LOSE, TR.TEAM_WIN_RATE, TR.TEAM_AVG_BAT, TR.TEAM_ERA,
        	TR.TEAM_SCORE, TR.TEAM_CONCEDE
@@ -223,7 +225,7 @@
 	</select>
 
 	<!-- 팀 투수 시즌 기록 조회 -->
-	<select id="pitcherRecordSelect" parameterType="int" resultType="TeamPitcherRecordDTO">
+	<select id="pitcherRecordSelect" parameterType="map" resultType="TeamPitcherRecordDTO">
 		<![CDATA[
 		SELECT TPR.SEASON_YEAR,
        	T.TEAM_NAME, TPR.TEAM_PITCHER_ERA, TPR.TEAM_PITCHER_START_ERA, TPR.TEAM_PITCHER_RELIEF_ERA, TPR.TEAM_PITCHER_GAME_COUNT, TPR.TEAM_PITCHER_WIN,
@@ -231,13 +233,13 @@
        	TPR.TEAM_PITCHER_HR, TPR.TEAM_PITCHER_BB, TPR.TEAM_PITCHER_HBP, TPR.TEAM_PITCHER_SCORE, TPR.TEAM_PITCHER_SELF_SCORE
 		FROM TBL_TEAM_PITCHER_RECORD TPR
 		JOIN TBL_TEAM T ON TPR.TEAM_NUMBER = T.TEAM_NUMBER
-		WHERE TPR.TEAM_NUMBER = 2
+		WHERE TPR.TEAM_NUMBER = #{teamNumber}
 		ORDER BY TPR.SEASON_YEAR DESC
 		]]>
 	</select>
 
 	<!-- 팀 타자 시즌 기록 조회 -->
-	<select id="batterRecordSelect" parameterType="int" resultType="TeamBatterRecordDTO">
+	<select id="batterRecordSelect" parameterType="map" resultType="TeamBatterRecordDTO">
 		<![CDATA[
 		SELECT TBR.SEASON_YEAR,
         T.TEAM_NAME, TBR.TEAM_BATTER_AVG_BAT, TBR.TEAM_BATTER_GAME_COUNT, TBR.TEAM_BATTER_AT_BAT,
@@ -246,13 +248,13 @@
         TBR.TEAM_BATTER_HBP, TBR.TEAM_BATTER_STRIKEOUT, TBR.TEAM_BATTER_OPS, TBR.TEAM_BATTER_STOLEN_BASE
 		FROM TBL_TEAM_BATTER_RECORD TBR
 		JOIN TBL_TEAM T ON TBR.TEAM_ID = T.TEAM_NUMBER
-		WHERE TBR.TEAM_ID = #{teamId}
+		WHERE TBR.TEAM_ID = #{teamNumber}
 		ORDER BY TBR.SEASON_YEAR DESC
 		]]>
 	</select>
 	
 	<!-- 팀 수비/주루기록 -->
-	<select id="deffenseBaseRecord" parameterType="int" resultType="DeffenseBaseRecordDTO">
+	<select id="deffenseBaseRecord" parameterType="map" resultType="DeffenseBaseRecordDTO">
 	SELECT 
     T.TEAM_NAME,
     R.SEASON_YEAR,
@@ -272,7 +274,7 @@
 	</select>
 	
 	<!-- 선수 타자 기록 -->
-	<select id="playerBatterRecord" parameterType="int" resultType="BatterRecordDTO">
+	<select id="playerBatterRecord" parameterType="map" resultType="BatterRecordDTO">
 	SELECT 
 	    T.TEAM_NAME,
 	    P.PLAYER_NAME,
@@ -303,7 +305,7 @@
 	</select>
 	
 	<!-- 투수 기록 -->
-	<select id="playerPitcherRecord" parameterType="int" resultType="PitcherRecordDTO">
+	<select id="playerPitcherRecord" parameterType="map" resultType="PitcherRecordDTO">
 	SELECT 
 	    T.TEAM_NAME,
 	    P.PLAYER_NAME,
@@ -383,7 +385,7 @@
 	    STADIUM_ADDRESS,
 	    TEAM_NUMBER
 	FROM TBL_STADIUM
-	WHERE TEAM_NUMBER = {teamNumber};
+	WHERE TEAM_NUMBER = #{teamNumber};
 	</select>
 	
 	<!-- 경기장 티켓 조회 -->
@@ -397,7 +399,7 @@
 	    WEEKEND_PRICE,
 	    RESERVATION_SITE
 	FROM TBL_STADIUM_TICKET
-	WHERE TEAM_NUMBER = {teamNumber};
+	WHERE TEAM_NUMBER = #{stadiumNumber};
 	</select>
 	
 	<!-- 경기장 먹거리 조회 -->
@@ -409,7 +411,7 @@
 	    FOOD_TIP,
 	    STADIUM_NUMBER
 	FROM TBL_STADIUM_FOOD
-	WHERE TEAM_NUMBER = {teamNumber};
+	WHERE TEAM_NUMBER = #{stadiumNumber};
 	</select>
 	
 	<!-- 게임 일정 조회 -->

@@ -66,6 +66,7 @@
                         </c:forEach>
                     </div>
                 </div>
+                
 
                 <!-- 검색 결과 & 페이지네이션 -->
                 <div class="page-bar">
@@ -74,7 +75,6 @@
                         <span class="small-text">
                         <span id="productCount">${total}</span>개 모든 팀 > 모든 상품 유형</span>
                     </div>
-
                     <div class="page-container">
                         <c:if test="${prev}">
                             <a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?page=${startPage-1}${not empty searchWord ? '&searchWord=' + searchWord : ''}">◀</a>

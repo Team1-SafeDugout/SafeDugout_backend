@@ -59,7 +59,7 @@ h2{
   width: 150px;
   height: 150px;
 }
-/* 현재 페이지 번호 */
+/* 페이지 네이션*/
 .list-pagenumber{
   margin-top: 50px;
   display: flex;
@@ -67,23 +67,37 @@ h2{
   align-items: center;
 }
 
-.list-pagenumber>div{
-  margin: 1px;
-}
-
-.list-pagenumber>ul{
+.pagination {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
 
-.list-pagenumber>ul>li{
-  border: 1px solid black;
-  margin: 0 10px;
-  width: 25px;
-  text-align: center;
+.pagination > ul {
+  display: flex;
+  list-style: none;
 }
 
-.list-pagenumber>ul>li:nth-child(1){
-  background-color: #0f0f0f;
-  color:white;
-  
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: rgb(255, 87, 87);
+  border-color: rgb(255, 87, 87);
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
 }
