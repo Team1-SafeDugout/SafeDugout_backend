@@ -110,72 +110,16 @@
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-home"><C:out value="${scheduleRow.awayTeamName}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
                   <div class="schedule-li-loc-text">
-                    잠실
+                    <C:out value="${scheduleRow.stadiumName}"/>
                   </div>
                 </li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-away"><C:out value="${scheduleRow.homeTeamName}"/></li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-time">18:30</li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-time"><C:out value="${scheduleRow.scheduleDate}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
                   <a class="schedule-li-info-link" href="">정보</a>
                 </li>
               </div>
               </c:forEach>
-              <div class="schedule-table-schedulelist-schedule">
-                <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home">두산</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
-                  <div class="schedule-li-loc-text">
-                    잠실
-                  </div>
-                </li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-away">LG</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-time">18:30</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
-                  <a class="schedule-li-info-link" href="">정보</a>
-                </li>
-              </div>
-              <div class="schedule-table-schedulelist-schedule">
-                <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home">두산</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
-                  <div class="schedule-li-loc-text">
-                    잠실
-                  </div>
-                </li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-away">LG</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-time">18:30</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
-                  <a class="schedule-li-info-link" href="">정보</a>
-                </li>
-              </div>
-              <div class="schedule-table-schedulelist-schedule">
-                <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home">두산</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
-                  <div class="schedule-li-loc-text">
-                    잠실
-                  </div>
-                </li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-away">LG</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-time">18:30</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
-                  <a class="schedule-li-info-link" href="">정보</a>
-                </li>
-              </div>
-              <div class="schedule-table-schedulelist-schedule">
-                <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home">두산</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
-                  <div class="schedule-li-loc-text">
-                    잠실
-                  </div>
-                </li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-away">LG</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-time">18:30</li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
-                  <a class="schedule-li-info-link" href="">정보</a>
-                </li>
-              </div>
             </div>
           </div>
         </section>
@@ -189,6 +133,7 @@
           </div>
           <!-- 중고거래 목록 묶음 -->
           <div class="product-box">
+          <c:forEach var="sellPost" items="${sellList}">
             <!-- 중고거래 목록 아이템 -->
             <div class="product-box-item">
               <!-- 중고 거래 이미지 -->
@@ -197,55 +142,18 @@
               </div>
               <!-- 중고 거래 상품명 -->
               <div class="product-box-item-name">
-                [PRO-SPECS] 야구 대표팀 점퍼
+                <!-- [PRO-SPECS] 야구 대표팀 점퍼 --><c:out value="${sellPost.sellPostTitle}"/>
               </div>
               <!-- 중고 거래 상품 판매가 -->
               <div class="product-box-item-price">
-                판매가 : 249,000원
+                <!-- 판매가 : 249,000원 -->판매가 : <c:out value="${sellPost.pricePoint}"/>
               </div>
               <!-- 중고 거래 상품 등록날짜 -->
               <div class="product-box-item-date">
-                등록날짜 : 2025.08.05
+                <!-- 등록날짜 : 2025.08.05 -->등록날짜 : <c:out value="${sellPost.sellPostCreationDate}"/>
               </div>
             </div>
-            <!-- 중고거래 목록 아이템 -->
-            <div class="product-box-item">
-              <!-- 중고 거래 이미지 -->
-              <div class="product-box-item-imgdiv">
-                <img src="./img2.jpg" alt="" class="product-box-item-img">
-              </div>
-              <!-- 중고 거래 상품명 -->
-              <div class="product-box-item-name">
-                [PRO-SPECS] 야구 대표팀 점퍼
-              </div>
-              <!-- 중고 거래 상품 판매가 -->
-              <div class="product-box-item-price">
-                판매가 : 249,000원
-              </div>
-              <!-- 중고 거래 상품 등록날짜 -->
-              <div class="product-box-item-date">
-                등록날짜 : 2025.08.05
-              </div>
-            </div>
-            <!-- 중고거래 목록 아이템 -->
-            <div class="product-box-item">
-              <!-- 중고 거래 이미지 -->
-              <div class="product-box-item-imgdiv">
-                <img src="./img3.jpg" alt="" class="product-box-item-img">
-              </div>
-              <!-- 중고 거래 상품명 -->
-              <div class="product-box-item-name">
-                [PRO-SPECS] 야구 대표팀 점퍼
-              </div>
-              <!-- 중고 거래 상품 판매가 -->
-              <div class="product-box-item-price">
-                판매가 : 249,000원
-              </div>
-              <!-- 중고 거래 상품 등록날짜 -->
-              <div class="product-box-item-date">
-                등록날짜 : 2025.08.05
-              </div>
-            </div>
+            </c:forEach>
           </div>
         </section>
       </section>

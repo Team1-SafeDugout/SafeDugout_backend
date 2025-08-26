@@ -61,6 +61,7 @@ public class TeamMainOkController implements Execute {
 		// path 값, redirect 여부 설정
 		result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
 		result.setRedirect(false);
+		System.out.println(result.getPath());
 
 		return result;
 	}
