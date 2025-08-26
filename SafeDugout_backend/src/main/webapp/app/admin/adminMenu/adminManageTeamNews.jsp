@@ -23,6 +23,7 @@
             teamtype: "${board.teamNumber}"
         });
     </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
   </script>
 </head>
 
@@ -69,6 +70,7 @@
             <div>글 번호</div>
             <div>뉴스 제목</div>
             <div>작성 일자</div>
+            <div>팀</div>
             <div class="add-button"> <a href="${pageContext.request.contextPath}/admin/adminCreatePost.ad" id="add-news-button"> 추가하기+ </a> </div>
           </div>
           <div class="list-container">
