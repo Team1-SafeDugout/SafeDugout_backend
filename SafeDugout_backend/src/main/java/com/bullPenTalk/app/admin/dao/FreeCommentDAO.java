@@ -35,5 +35,13 @@ public class FreeCommentDAO {
 	// 삭제
 	public void delete(int commentNumber) {
 		sqlSession.delete("freeComment.delete", commentNumber);
-	}	
+	}
+	
+	public CommentDTO selectOne(int commentNumber) {
+		return sqlSession.selectOne("freeComment.selectOne");
+	}
+	
+	public List<CommentDTO> selectAll(int boardNumber){
+		return sqlSession.selectList("freeComment.selectAll", boardNumber);
+	}
 }

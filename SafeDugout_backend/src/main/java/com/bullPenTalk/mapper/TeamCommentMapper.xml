@@ -46,5 +46,35 @@
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	]]>
 	</select>
+	
+	<select id = "selectOne" resultType = "CommentDTO" parameterType = "int">
+	<![CDATA[
+	SELECT 
+    	C.COMMENT_NUMBER,
+    	C.COMMENT_CONTENT,
+    	C.COMMENT_DATE,
+    	C.COMMENT_UPDATE,
+    	M.MEMBER_ID
+	FROM TBL_COMMENT C
+	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
+	WHERE COMMENT_NUMBER = #{commentNumber}
+	]]>
+	</select>
+	
+	<select id = "selectAll" resultType = "CommentDTO" parameterType = "int">
+	<![CDATA[
+	SELECT 
+    	C.COMMENT_NUMBER,
+    	C.COMMENT_CONTENT,
+    	C.COMMENT_DATE,
+    	C.COMMENT_UPDATE,
+    	M.MEMBER_ID
+	FROM TBL_COMMENT C
+	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
+	WHERE POST_NUMBER = #{postNumber}
+	]]>
+	</select>
 
 </mapper>
