@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminTradeDAO;
-import com.bullPenTalk.app.dto.TradePostDTO;
+import com.bullPenTalk.app.dto.AdminTradeListDTO;
 
-public class TradingListOkController implements Execute{
+public class AdminTradePostListOkController implements Execute{
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
@@ -37,7 +37,7 @@ public class TradingListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<TradePostDTO> boardList = adminTradeDAO.select();
+		List<AdminTradeListDTO> boardList = adminTradeDAO.selectInfo(pageMap);
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정

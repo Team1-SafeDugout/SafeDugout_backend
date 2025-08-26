@@ -87,12 +87,12 @@ public class AdminFrontController extends HttpServlet {
 			
 		case "/admin/adminManageSellListOk.ad":
 			System.out.println("판매 목록");
-			result = new AdminSellListOkController().execute(request, response);
+			result = new AdminSellPostListOkController().execute(request, response);
 			break;
 			
 		case "/admin/adminManageTradingListOk.ad" :
 			System.out.println("거래 목록");
-			result = new TradingListOkController().execute(request, response);
+			result = new AdminTradePostListOkController().execute(request, response);
 			break;
 			
 		case "/admin/adminManageMemberListOk.ad" :

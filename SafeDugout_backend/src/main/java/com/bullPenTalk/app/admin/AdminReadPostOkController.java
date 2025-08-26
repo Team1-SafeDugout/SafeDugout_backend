@@ -41,21 +41,6 @@ public class AdminReadPostOkController implements Execute{
 			request.setAttribute("newsDTO", newsDTO);
 			result.setRedirect(false);
 			break;
-			
-		case 4:
-//			팀 유튜브
-			AdminTeamYoutubeDAO adminYoutubeDAO = new AdminTeamYoutubeDAO();
-			YoutubePostDTO newYoutube = adminYoutubeDAO.selectDetail(postNumber);
-			break;
-			
-		case 5:
-//			팀 응원가
-			
-			break;
-			
-		case 6:
-//			선수 응원가
-			break;
 		}
 		
 		

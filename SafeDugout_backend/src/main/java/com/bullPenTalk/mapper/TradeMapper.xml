@@ -94,7 +94,6 @@
 	WHERE TS.STATUS_ID = 1
 	  AND SP.SELL_POST_TITLE LIKE '%' || #{searchWord} || '%'
 	]]>
-	</select>
-	
+	</select>	
 	
 </mapper>
