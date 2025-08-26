@@ -63,6 +63,7 @@
 		<typeAlias type="com.bullPenTalk.app.dto.SellPostDetailDTO" alias="SellPostDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.SongPostDTO" alias="SongPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.StadiumDTO" alias="StadiumDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.StadiumDetailDTO" alias="StadiumDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.StadiumFoodDTO" alias="StadiumFoodDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.StadiumTicketDTO" alias="StadiumTicketDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.StatisticsDTO" alias="StatisticsDTO"></typeAlias>

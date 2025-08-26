@@ -214,21 +214,39 @@ ul {
 
 
 /* 페이지 네이션 */
-.list-pagenumber {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  gap: 10px;
+  margin-top: 50px;
 }
 
-.list-pagenumber > div {
-  cursor: pointer;
-  font-size: 20px;
-  user-select: none;
-  padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.pagination > ul {
+  display: flex;
+  list-style: none;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: rgb(255, 87, 87);
+  border-color: rgb(255, 87, 87);
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
 }
 
 #numberlist-ul {

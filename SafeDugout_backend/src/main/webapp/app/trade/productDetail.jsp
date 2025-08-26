@@ -101,7 +101,7 @@
                         <div class="product-price">
                             상품 가격:
                             <div>
-                                <fmt:formatNumber value="${sellPostDetail.pricePoint}" /> 포인트
+                                <fmt:formatNumber value="${sellPostDetail.pricePoint}" pattern="#,###" /> 포인트
                             </div>
                         </div>
                         <a href="${pageContext.request.contextPath}/trade/productBuy.jsp?sellPostNumber=${sellPostDetail.sellPostNumber}">

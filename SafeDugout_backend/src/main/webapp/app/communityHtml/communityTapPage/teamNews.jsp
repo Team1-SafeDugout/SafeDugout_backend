@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,28 +58,56 @@
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <main>
     <div class="team-news-container">
-      <h2>팀 뉴스</h2>
+      <h2>팀뉴스</h2>
       <!-- 뉴스 박스 -->
       <ul id="team-news-box">
+      	
         <li class="team-news-list">
-          <a href="./teamNewsDetail.html">
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=newsdetail">
             <span><img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt=""></span>
-            <span>타격 기계도 4번 타자도 아니다, LG 후반기 타격 1위는 '슈퍼 백업'</span>
+            <span></span>
           </a>
         </li>
         <!-- 뉴스 추가 공간 -->
+        <c:choose>
+        	<c:when test="${not empty postList}">
+        		<c:forEach var="community" items="${postList}">
+		        	<li class="team-news-list">
+		        		<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=newsdetail">
+		        			<span><img src="${pageContext.request.contextPath}/upload/${file.imgPath}" ></span>
+		        			<span><c:out value="${community.postTitle}" /></span>
+		        		</a>
+		        	</li>	
+	        	</c:forEach>  
+        	</c:when>      	
+        </c:choose>
+        
       </ul>
       <!-- 페이지 네이션 -->
-      <div class = "list-pagenumber">
-        <div id ="left-button"> ◁ </div>
-        <ul id = "numberlist-ul">
-          <li><a>1</a></li>
-          <li><a>2</a></li>
-          <li><a>3</a></li>
-          <li><a>4</a></li>
-          <li><a>5</a></li>
+      <div class="pagination">
+        <ul>     
+          <c:if test="${prev}">
+          	<li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news&page=${startPage - 1}" class="prev">&lt;</a></li>
+          </c:if>
+          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+          	<c:choose>
+          		<c:when test="${!(i == page) }">
+          			<li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news&page=${startPage - 1}" class="prev">
+          				<c:out value="${i}" />
+          			</a></li>
+          		</c:when>
+          		<c:otherwise>
+          			<li><a href="#" class="active">
+          				<c:out value="${i}" />
+          			</a></li>
+          		</c:otherwise>
+          	</c:choose>
+          </c:forEach>
+          <c:if test="${next}">
+          	<li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news&page=${endPage + 1}" class="next">&gt;</a></li>
+          </c:if>
         </ul>
-        <div id ="right-button"> ▷ </div>
       </div>
     </div>
   </main>

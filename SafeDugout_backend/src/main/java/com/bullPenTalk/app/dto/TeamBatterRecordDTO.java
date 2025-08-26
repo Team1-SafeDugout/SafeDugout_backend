@@ -42,112 +42,245 @@ public class TeamBatterRecordDTO {
 	private double teamBatterOps; // 출루율 + 장타율
 	private int teamBatterStolenBase; // 도루(Stolen Bases) 개수.
 	
-	
-	
+	// get, set
 	public int getTeamId() {
 		return teamId;
 	}
+
+
+
+
 	public void setTeamId(int teamId) {
 		this.teamId = teamId;
 	}
+
+
+
+
 	public int getSeasonYear() {
 		return seasonYear;
 	}
+
+
+
+
 	public void setSeasonYear(int seasonYear) {
 		this.seasonYear = seasonYear;
 	}
+
+
+
+
 	public double getTeamBatterAvgBat() {
 		return teamBatterAvgBat;
 	}
-	public void setTeamBatterAvgBat(int teamBatterAvgBat) {
+
+
+
+
+	public void setTeamBatterAvgBat(double teamBatterAvgBat) {
 		this.teamBatterAvgBat = teamBatterAvgBat;
 	}
+
+
+
+
 	public int getTeamBatterGameCount() {
 		return teamBatterGameCount;
 	}
+
+
+
+
 	public void setTeamBatterGameCount(int teamBatterGameCount) {
 		this.teamBatterGameCount = teamBatterGameCount;
 	}
+
+
+
+
 	public int getTeamBatterAtBat() {
 		return teamBatterAtBat;
 	}
+
+
+
+
 	public void setTeamBatterAtBat(int teamBatterAtBat) {
 		this.teamBatterAtBat = teamBatterAtBat;
 	}
+
+
+
+
 	public int getTeamBatterRbi() {
 		return teamBatterRbi;
 	}
+
+
+
+
 	public void setTeamBatterRbi(int teamBatterRbi) {
 		this.teamBatterRbi = teamBatterRbi;
 	}
+
+
+
+
 	public int getTeamBatterScore() {
 		return teamBatterScore;
 	}
+
+
+
+
 	public void setTeamBatterScore(int teamBatterScore) {
 		this.teamBatterScore = teamBatterScore;
 	}
+
+
+
+
 	public int getTeamBatterHits() {
 		return teamBatterHits;
 	}
+
+
+
+
 	public void setTeamBatterHits(int teamBatterHits) {
 		this.teamBatterHits = teamBatterHits;
 	}
+
+
+
+
 	public int getTeamBatterDoubleHit() {
 		return teamBatterDoubleHit;
 	}
+
+
+
+
 	public void setTeamBatterDoubleHit(int teamBatterDoubleHit) {
 		this.teamBatterDoubleHit = teamBatterDoubleHit;
 	}
+
+
+
+
 	public int getTeamBatterTripleHit() {
 		return teamBatterTripleHit;
 	}
+
+
+
+
 	public void setTeamBatterTripleHit(int teamBatterTripleHit) {
 		this.teamBatterTripleHit = teamBatterTripleHit;
 	}
+
+
+
+
 	public int getTeamBatterHr() {
 		return teamBatterHr;
 	}
+
+
+
+
 	public void setTeamBatterHr(int teamBatterHr) {
 		this.teamBatterHr = teamBatterHr;
 	}
+
+
+
+
 	public int getTeamBatterBb() {
 		return teamBatterBb;
 	}
+
+
+
+
 	public void setTeamBatterBb(int teamBatterBb) {
 		this.teamBatterBb = teamBatterBb;
 	}
+
+
+
+
 	public int getTeamBatterGidout() {
 		return teamBatterGidout;
 	}
+
+
+
+
 	public void setTeamBatterGidout(int teamBatterGidout) {
 		this.teamBatterGidout = teamBatterGidout;
 	}
+
+
+
+
 	public int getTeamBatterHbp() {
 		return teamBatterHbp;
 	}
+
+
+
+
 	public void setTeamBatterHbp(int teamBatterHbp) {
 		this.teamBatterHbp = teamBatterHbp;
 	}
+
+
+
+
 	public int getTeamBatterStrikeout() {
 		return teamBatterStrikeout;
 	}
+
+
+
+
 	public void setTeamBatterStrikeout(int teamBatterStrikeout) {
 		this.teamBatterStrikeout = teamBatterStrikeout;
 	}
+
+
+
+
 	public double getTeamBatterOps() {
 		return teamBatterOps;
 	}
-	public void setTeamBatterOps(int teamBatterOps) {
+
+
+
+
+	public void setTeamBatterOps(double teamBatterOps) {
 		this.teamBatterOps = teamBatterOps;
 	}
+
+
+
+
 	public int getTeamBatterStolenBase() {
 		return teamBatterStolenBase;
 	}
+
+
+
+
 	public void setTeamBatterStolenBase(int teamBatterStolenBase) {
 		this.teamBatterStolenBase = teamBatterStolenBase;
 	}
-	
-	
+
+
+
+
 	@Override
 	public String toString() {
 		return "TeamBatterRecordDTO [teamId=" + teamId + ", seasonYear=" + seasonYear + ", teamBatterAvgBat="

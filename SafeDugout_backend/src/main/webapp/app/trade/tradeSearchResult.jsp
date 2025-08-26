@@ -97,4 +97,7 @@
 
 <div id="footer"></div>
 </body>
+    <script>
+    	let memberNumber = "${sessionScope.memberNumber}";
+    </script>
 </html>
