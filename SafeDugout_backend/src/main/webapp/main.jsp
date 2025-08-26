@@ -107,14 +107,14 @@
               <c:forEach var="scheduleRow" items="${schedule}">
               <div class="schedule-table-schedulelist-schedule">
                 <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home"><C:out value="${scheduleRow.awayTeamName}"/></li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-home"><c:out value="${scheduleRow.awayTeamName}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
                   <div class="schedule-li-loc-text">
-                    <C:out value="${scheduleRow.stadiumName}"/>
+                    <c:out value="${scheduleRow.stadiumName}"/>
                   </div>
                 </li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-away"><C:out value="${scheduleRow.homeTeamName}"/></li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-time"><C:out value="${scheduleRow.scheduleDate}"/></li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-away"><c:out value="${scheduleRow.homeTeamName}"/></li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-time"><c:out value="${scheduleRow.scheduleDate}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
                   <a class="schedule-li-info-link" href="">정보</a>
                 </li>

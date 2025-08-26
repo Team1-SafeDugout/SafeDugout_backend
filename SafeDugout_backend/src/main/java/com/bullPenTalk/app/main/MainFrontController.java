@@ -78,11 +78,9 @@ public class MainFrontController extends HttpServlet {
 				String memberName = mainDAO.selectLoginMember(memberNumber).getMemberName();
 				System.out.println(memberName);
 				request.getSession().setAttribute("memberName", memberName);
-				//메인페이지 처리 
-				result = new MainOkController().execute(request, response);
-				System.out.println("메인페이지 처리 완료");
 			}
 			result = new MainOkController().execute(request, response); 
+			System.out.println("메인페이지 처리 완료");
 			break;
 		case "/main/mainTeam.ma":
 			System.out.println("팀 커뮤니티 메인페이지 처리 요청");
