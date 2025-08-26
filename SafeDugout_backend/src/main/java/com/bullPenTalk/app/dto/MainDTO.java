@@ -12,6 +12,7 @@ public class MainDTO {
 	private int sellPostNumber; //판매 게시글 번호
 	private String sellPostTitle; //판매 게시글 제목
 	private String sellPostCreationDate; //판매 게시글 작성 일자
+	private int pricePoint; //상품 가격 포인트
 	private String attachmentPath; //첨부파일 경로
 	//입문자 가이드 목록
 	private int noticePostNumber; //공지사항 게시글 번호
