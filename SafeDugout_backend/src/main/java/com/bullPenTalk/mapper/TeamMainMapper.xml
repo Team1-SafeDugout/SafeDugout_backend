@@ -86,7 +86,8 @@
 	<!-- 팀별 경기 일정 목록 조회 -->
 	<select id="selectTeamSchedule" parameterType="int" resultType="TeamMainDTO">
 	<![CDATA[
-		select t1.team_name, sc.stadium_number, t2.team_name, sc.schedule_date
+		select t1.team_name as away_team_name , st.stadium_name, t2.team_name as home_team_name, 
+		to_char(sc.schedule_date, 'HH:mi') as schedule_date
 		from tbl_game_schedule sc join tbl_stadium st on sc.home_team_number = st.team_number
 		join tbl_team t1 on sc.home_team_number = t1.team_number
 		join tbl_team t2 on sc.away_team_number = t2.team_number

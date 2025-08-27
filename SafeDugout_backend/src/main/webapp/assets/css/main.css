@@ -240,7 +240,7 @@ main {
 
 /* 경기일정 테이블 컬럼 간격 및 스타일 */
 .schedule-li-home {
-  width: 10%;
+  width: 15%;
   padding: 10px;
   display: flex;
   justify-content: right;
@@ -248,7 +248,8 @@ main {
 }
 
 .schedule-li-loc {
-  width: 8%;
+  width: 40%;
+  margin-left: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,8 +268,8 @@ main {
 }
 
 .schedule-li-away {
-  width: 62%;
-  padding-left: 10px;
+  width: 55%;
+  padding-left: 17px;
 }
 
 .schedule-li-time {

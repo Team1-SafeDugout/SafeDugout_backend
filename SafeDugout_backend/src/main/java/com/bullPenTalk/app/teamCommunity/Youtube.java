@@ -25,7 +25,7 @@ public class Youtube implements CommunityService{
 			break;
 		default :
             System.out.println("알 수 없는 액션입니다: " + action);
-            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
             result.setRedirect(true);
             break;
 		

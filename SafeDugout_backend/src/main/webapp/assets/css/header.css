@@ -37,6 +37,16 @@ header {
 	padding-right: 10px;
 }
 
+.guide-notice {
+	display: flex;
+	line-height: 100px;
+	margin-right: 15px;
+}
+
+.guide-notice a {
+	text-decoration: underline;
+}
+
 .notice {
 	display: flex;
 	line-height: 100px;

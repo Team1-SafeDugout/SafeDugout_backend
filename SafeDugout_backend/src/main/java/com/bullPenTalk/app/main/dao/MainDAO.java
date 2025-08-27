@@ -42,6 +42,12 @@ public class MainDAO {
 		return sqlSession.selectOne("main.getRecent");
 	}
 	
+	//입문가이드 최신 제목 가져오기
+	public MainNoticePostDTO getRecentGuide() {
+		System.out.println("getRecentGuide 메소드 실행");
+		return sqlSession.selectOne("main.getRecentGuide");
+	}
+	
 	//메인 공지사항 총 개수 가져오기
 	public int getTotal() {
 		System.out.println("getTotal 메소드 실행");
