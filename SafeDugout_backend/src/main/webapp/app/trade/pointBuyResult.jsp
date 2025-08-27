@@ -58,7 +58,7 @@
 					<!-- 버튼 컨테이너 -->
 					<div class="main-button-container">
 						<!-- 버튼 컨테이너 a 태그 -->
-						<a href="./../mypostlist/myPostList.html"> <!-- 확인 버튼 텍스트 -->
+						<a href=""> <!-- 확인 버튼 텍스트 -->
 							<div class="main-button-next">확인</div>
 						</a>
 					</div>

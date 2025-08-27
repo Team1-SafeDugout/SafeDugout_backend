@@ -19,9 +19,11 @@ public class BuyProduct implements TradeService{
 		BuyController buy = new BuyController();
 		switch(action) {
 		case "buy" :
+			System.out.println("buy 진입" );
 			result =  buy.buy(request, response); // 결제 페이지 이동
 			break;
 		case "payment":
+			System.out.println("payment 진입");
 			result = buy.payment(request, response); // 결제 진행
 			break;		
 		case "canceled" :

@@ -20,6 +20,7 @@
 	</typeAliases> 
 	-->
 	<typeAliases>
+		<typeAlias type="com.bullPenTalk.app.dto.PointPaymentDTO" alias="PointPaymentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PaymentDTO" alias="PaymentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminDTO" alias="AdminDTO"></typeAlias>

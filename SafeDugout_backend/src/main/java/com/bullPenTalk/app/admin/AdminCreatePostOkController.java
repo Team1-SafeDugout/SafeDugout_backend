@@ -19,7 +19,6 @@ import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
 import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
-import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.app.dto.SongPostDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
 import com.oreilly.servlet.MultipartRequest;

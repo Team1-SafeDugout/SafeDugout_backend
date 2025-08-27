@@ -1,11 +1,9 @@
 package com.bullPenTalk.app.main.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.dto.TeamMainDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.dto.MemberDTO;
-import com.bullPenTalk.app.main.dao.MainDAO;
 import com.bullPenTalk.app.member.dao.MemberDAO;
 
 public class LoginOkController implements Execute{
