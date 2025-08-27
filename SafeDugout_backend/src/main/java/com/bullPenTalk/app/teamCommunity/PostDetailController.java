@@ -130,7 +130,7 @@ public class PostDetailController {
         String teamNumberStr = request.getParameter("teamNumber");
         if (teamNumberStr == null || teamNumberStr.trim().isEmpty()) {
             System.out.println("teamNumber 값이 없습니다");
-            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
             result.setRedirect(true);
             return result;
         }
@@ -143,7 +143,7 @@ public class PostDetailController {
         StadiumDTO stadium = teamCommunityDAO.selectStadium(teamNumber);
         if (stadium == null) {
             System.out.println("해당 팀의 경기장이 없습니다");
-            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
             result.setRedirect(true);
             return result;
         }
