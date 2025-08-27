@@ -57,6 +57,7 @@ public class MainFrontController extends HttpServlet {
 		
 		//헤더에서 띄울 최신 공지 제목 저장
 		String recentMainTitle = mainDAO.getRecent().getNoticePostTitle();
+		System.out.println(recentMainTitle);
 		if(recentMainTitle != null) {
 			request.setAttribute("recentMainTitle", recentMainTitle);
 		}else {
@@ -64,10 +65,11 @@ public class MainFrontController extends HttpServlet {
 		}
 		
 		String recentGuideTitle = mainDAO.getRecentGuide().getNoticePostTitle();
+		System.out.println(recentGuideTitle);
 		if(recentMainTitle != null) {
-			request.setAttribute("recentMainTitle", recentGuideTitle);
+			request.setAttribute("recentGuideTitle", recentGuideTitle);
 		}else {
-			request.setAttribute("recentMainTitle", "[입문가이드]");
+			request.setAttribute("recentGuideTitle", "[입문가이드]");
 		}
 		
 		//팀 번호가 있을 경우 실행 

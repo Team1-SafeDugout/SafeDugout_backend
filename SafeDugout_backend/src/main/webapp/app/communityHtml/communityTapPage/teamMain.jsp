@@ -60,7 +60,7 @@
       <section class="team-news">
         <div class="top-section">
           <h2>팀 뉴스</h2>
-          <a href="./communityTapPage/teamNews.jsp">더보기</a>
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">더보기</a>
         </div>
         <div class="main-news">
         </div>
@@ -75,7 +75,7 @@
       <section class="team-youtube">
         <div class="top-section">
           <h2>팀 유튜브</h2>
-          <a href="./communityTapPage/teamYoutube.jsp">더보기</a>
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=youtube&action=youtube">더보기</a>
         </div>
         <ul class="thumb-list">
         <c:forEach var="youTube" items="${youTubeList}">
@@ -109,7 +109,7 @@
       <section class="team-board">
         <div class="top-section">
           <h2>게시판</h2>
-          <a href="./communityTapPage/teamBoard.jsp">더보기</a>
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">더보기</a>
         </div>
         <ul class="team-board-list">
         	<c:forEach var="postRow" items="${postList}">
@@ -126,10 +126,43 @@
       <section class="stadium">
         <div class="top-section">
           <h2>경기장 정보</h2>
-          <a href="./communityTapPage/teamStadium.jsp">더보기</a>
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium">더보기</a>
         </div>
         <div class="stadium-img">
-
+			<div>
+        <c:choose>
+	      <c:when test="${sessionScope.teamNumber == 1}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/doosanStadium.jpg" alt="두산 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 2}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lgStadium.jpg" alt="lg 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 3}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/hanwhaStadium.jpg" alt="한화 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 4}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/samsungStadium.jpg" alt="삼성 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 5}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ssgStadium.jpg" alt="ssg 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 6}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ktStadium.jpg" alt="kt 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 7}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ncStadium.jpg" alt="nc 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 8}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lotteStadium.jpg" alt="롯데 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 9}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiaStadium.jpg" alt="kia 경기장">
+	      </c:when>
+	      <c:when test="${sessionScope.teamNumber == 10}">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiwoomStadium.jpg" alt="키움 경기장">
+	      </c:when>	      	      	      	      	      	      	      	      
+	    </c:choose>  
+      </div>
         </div>
       </section>
       <!-- 메인페이지 팀순위 탭 -->
