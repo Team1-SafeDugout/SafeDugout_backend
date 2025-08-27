@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.team-footer-container{
+#team-footer4{
   display: flex;
   flex-direction: column;
   background-color: #005BAC;
@@ -9,7 +9,7 @@
   bottom: 0px;
 }
 
-.team-footer-container a{
+#team-footer4 a{
   margin: 5px; 
   color: white;
   font-size: 14px;
