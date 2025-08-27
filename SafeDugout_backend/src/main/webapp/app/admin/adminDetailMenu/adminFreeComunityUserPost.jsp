@@ -62,14 +62,14 @@
 
       <section class="section-bottom-buttons">
         <form action="" method="get">
-          <button class="post-button" type="button" onclick="location.href = './../adminMenu/adminManageFreeCommunity.html' ">
+          <button class="post-button" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad' ">
             목록으로
           </button>
         </form>
 
         <form action="" method="get">
-          <button class="post-button" type="button" onclick="location.href = './../adminDetailMenu/adminFreeComunityUserPost.html' "> 이전 글 </button>
-          <button class="post-button" type="button" onclick="location.href = './../adminDetailMenu/adminFreeComunityUserPost.html' "> 다음 글 </button>
+<!--           <button class="post-button" type="button" onclick="location.href = './../adminDetailMenu/adminFreeComunityUserPost.html' "> 이전 글 </button>
+          <button class="post-button" type="button" onclick="location.href = './../adminDetailMenu/adminFreeComunityUserPost.html' "> 다음 글 </button> -->
         </form>
       </section>
     </section>

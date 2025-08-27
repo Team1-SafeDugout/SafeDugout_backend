@@ -3,7 +3,7 @@
 <header id="team-header">
   <div class="top-header">
     <div class="team-logo">
-      <a href="${pageContext.request.contextPath}/main/mainTeam.ma">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber="${sessionScope.teamNumber}">
       	<c:choose>
       	<c:when test="${sessionScope.teamNumber == 1}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="두산 로고">
@@ -50,14 +50,16 @@
   <div class="bottom-header">
     <nav>
       <ul class="team-menu">
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStats.jsp">팀 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPlayerStats.jsp">선수 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamYoutube.jsp">팀 유튜브</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamSong.jsp">팀 응원가</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamBoard.jsp">게시판</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/trade/tradeMain.jsp">굿즈거래</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStadium.jsp">경기장</a></li>
-        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamNews.jsp">팀뉴스</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=teamRecord">팀 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=playerRecord">선수 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=youtube&action=youtube">팀 유튜브</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=teamsong">팀 응원가</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=playersong">선수 응원가</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">굿즈거래</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium">경기장</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀뉴스</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">공지사항</a></li>
         <li class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색">

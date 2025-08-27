@@ -78,7 +78,7 @@
       <section class="section-bottom-menus">
         <div>
           <form action="" method="get">
-            <button type = "button" class = "post-button" onclick = "location.href = './../adminMenu/adminManageSell.html' "> 목록으로 </button>
+            <button type = "button" class = "post-button" onclick = "location.href = '${pageContext.request.contextPath}/admin/adminManageSellListOk.ad' "> 목록으로 </button>
           </form>
         </div>
       </section>

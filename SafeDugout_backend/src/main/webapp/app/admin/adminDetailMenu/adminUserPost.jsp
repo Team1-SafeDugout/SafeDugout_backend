@@ -63,7 +63,7 @@
 
       <section class="section-bottom-buttons">
         <form action="" method="get">
-          <button class="post-button" type="button" onclick="location.href = './../adminMenu/adminManagePosts.html' ">
+          <button class="post-button" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad' ">
             목록으로
           </button>
         </form>

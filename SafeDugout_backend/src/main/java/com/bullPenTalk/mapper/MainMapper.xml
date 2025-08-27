@@ -43,6 +43,16 @@
 		WHERE ROWNUM = 1
 	</select>
 	
+	<!-- 입문 가이드 최신 항목(제목) 가져오기 -->
+	<select id="getRecentGuide" resultType="MainNoticePostDTO">
+		SELECT * FROM 
+		(SELECT NOTICE_POST_TITLE
+		FROM TBL_NOTICE_POST
+		WHERE NOTICE_TYPE_ID = 3
+		ORDER BY NOTICE_POST_DATE DESC)
+		WHERE ROWNUM = 1
+	</select>
+	
 	<!-- 공지사항 총 개수 가져오기 -->
 	<select id="getTotalMainList" resultType="int">
 		SELECT COUNT(NOTICE_POST_NUMBER)
@@ -116,7 +126,7 @@
 		from tbl_game_schedule sc join tbl_stadium st on sc.home_team_number = st.team_number
 		join tbl_team t1 on sc.home_team_number = t1.team_number
 		join tbl_team t2 on sc.away_team_number = t2.team_number
-		WHERE trunc(sc.schedule_date) = trunc(to_date('2025.08.29', 'YYYY.MM.DD'))
+		WHERE trunc(sc.schedule_date) = trunc(to_date('2025.08.29', 'YYYY.MM.DD')) and rownum <= 5
 	]]>
 	</select>
 	

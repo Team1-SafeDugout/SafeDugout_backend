@@ -34,6 +34,10 @@ public class AdminMemberDAO {
 		return sqlSession.selectOne("member.getTotal");
 	}
 	
+	public PostDTO postSelect(int postNumber) {
+		return sqlSession.selectOne("member.postSelect", postNumber);
+	}
+	
 	public List<PostDTO> postListSelect(Map<String, Object> map){
 		return sqlSession.selectList("member.postListSelect", map);
 	}

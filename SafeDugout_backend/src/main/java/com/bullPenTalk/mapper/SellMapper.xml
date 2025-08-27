@@ -190,4 +190,12 @@
 		FROM tbl_sell_post
 	</select>
 	
+	<!-- 거래중 탭에 존내하는지 확인 -->
+	<select id = "isTrading" resultType = "int" parameterType = "int">
+		SELECT COUNT(SELL_POST_NUMBER)
+		FROM TBL_SELL_POST SP
+		JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+		WHERE SELL_POST_NUMBER = #{sellPostNumber}
+	</select>
+	
 </mapper>

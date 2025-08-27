@@ -152,6 +152,16 @@ public class AdminFrontController extends HttpServlet {
 			System.out.println("포스트 제거");
 			result = new AdminDeletePostOkController().execute(request, response);
 			break;
+			
+		case "/admin/adminReadMemberOk.ad":
+			System.out.println("멤버 디테일 진입");
+			result = new AdminReadMemberOk().execute(request, response);
+			break;
+			
+		case "/admin/adminDeleteMemberOk.ad":
+			System.out.println("멤버 삭제 진입");
+			result = new AdminDeleteMemberOkController().execute(request, response);
+			break;
 		}	
 		
 		if (result != null) {

@@ -52,10 +52,10 @@
         </form>
 
         <form action="" method="get">
-          <button class="post-button" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad' ">
+<%--           <button class="post-button" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad' ">
             이전 글 </button>
           <button class="post-button" type="button" onclick="location.href = '${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad' ">
-            다음 글 </button>
+            다음 글 </button> --%>
         </form>
       </section>
     </section>

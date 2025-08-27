@@ -71,8 +71,8 @@
             <div>제목</div>
             <div>거래 상태 </div>
             <div>작성자</div>
-            <div>작성일자</div>
-            <div> 구매 일자 </div>
+            <div>작성 일자</div>
+            <div>구매 일자</div>
           </div>
           <div class="list-container">
             <ul class="list-ul" id="list-ul">

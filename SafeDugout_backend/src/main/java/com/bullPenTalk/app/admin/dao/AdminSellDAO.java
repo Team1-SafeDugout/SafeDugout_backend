@@ -45,6 +45,10 @@ public class AdminSellDAO {
 	public AdminSellPostDTO selectDetail(int postNumber) {
 		return sqlSession.selectOne("adminSellPost.adminSelectDetail", postNumber);
 	}
+	
+	public boolean isTrading(int postNumber) {
+		return sqlSession.selectList("adminSellPost.isTrading", postNumber).size() > 0 ? true : false; 
+	}
 
 
 //	// 조회(하나만)
