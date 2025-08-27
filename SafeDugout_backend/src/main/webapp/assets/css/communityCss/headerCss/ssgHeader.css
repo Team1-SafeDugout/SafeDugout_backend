@@ -4,13 +4,13 @@
   margin: 0;
 }
 /* 헤더 */
-header{
+#team-header header{
   background-color: #ED1C24;
   width: 100%;
   height: 150px;
 }
 /* 헤더 상단 부분 */
-.top-header{
+#team-header .top-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
