@@ -50,14 +50,16 @@
   <div class="bottom-header">
     <nav>
       <ul class="team-menu">
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=${registry.record}&action=${registry.action}">팀 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=teamRecord">팀 기록</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=playerRecord">선수 기록</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=youtube&action=youtube">팀 유튜브</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=teamsong">팀 응원가</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=playersong">선수 응원가</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">게시판</a></li>
         <li><a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">굿즈거래</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium">경기장</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀뉴스</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">공지사항</a></li>
         <li class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색">
