@@ -1,8 +1,12 @@
 package com.bullPenTalk.app.member.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.MemberDTO;
+import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class MemberDAO {
@@ -59,5 +63,14 @@ public class MemberDAO {
     
     public MemberDTO getMember(int memberNumber) {
     	return sqlSession.selectOne("member.select", memberNumber);
+    }
+    
+    // 유저가 쓴 글 목록 조회
+    public List<PostDTO> getPosts(int memberNumber) {
+    	return sqlSession.selectList("member.selectPosts", memberNumber);
+    }
+    
+    public List<PostDTO> getPostsPage(Map<String, Integer> map){
+    	return sqlSession.selectList("member.selectPostPage", map);
     }
 }

@@ -178,5 +178,31 @@
         SELECT MEMBER_POINT
         FROM TBL_MEMBER
         WHERE MEMBER_NUMBER = #{memberNumber}
-    </select>	
+    </select>
+    
+    <!-- 회원이 작성한 글 전체 목록 -->
+    <select id = "selectPosts" parameterType = "int" resultType = "PostDTO">
+    	SELECT TP.POST_NUMBER as postNumber, TP.POST_TITLE as postTitle ,  TBT.BOARD_TYPE_ID as boardId
+		FROM TBL_MEMBER TM
+		JOIN TBL_POST TP ON TM.MEMBER_NUMBER = TP.MEMBER_NUMBER
+		JOIN TBL_BOARD_TYPE tbt ON TP.BOARD_ID = tbt.BOARD_TYPE_ID
+		WHERE TM.MEMBER_NUMBER = #{memberNumber}
+    </select>
+    
+    <!-- 회원이 작성한 글 페이지 네이션 -->
+    <select id = "selectPostPage" parameterType = "map" resultType = "PostDTO">
+    <![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM(
+	    SELECT TP.POST_NUMBER as postNumber, TP.POST_TITLE as postTitle , TBT.BOARD_TYPE_ID as boardId
+		FROM TBL_MEMBER TM
+		JOIN TBL_POST TP ON TM.MEMBER_NUMBER = TP.MEMBER_NUMBER
+		JOIN TBL_BOARD_TYPE tbt ON TP.BOARD_ID = tbt.BOARD_TYPE_ID
+		) subquery
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>	
+    </select>
 </mapper>
