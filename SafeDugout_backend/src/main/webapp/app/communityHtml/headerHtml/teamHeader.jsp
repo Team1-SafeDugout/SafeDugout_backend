@@ -3,39 +3,39 @@
 <header id="team-header">
   <div class="top-header">
     <div class="team-logo">
-      <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber="${sessionScope.teamNumber}">
-      	<c:choose>
-      	<c:when test="${sessionScope.teamNumber == 1}">
+      <a href="${pageContext.request.contextPath}/main/mainTeam.ma">
+         <c:choose>
+         <c:when test="${sessionScope.teamNumber == 1}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="두산 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 3}">
+         <c:when test="${sessionScope.teamNumber == 3}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png" alt="hanwha 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 9}">
+         <c:when test="${sessionScope.teamNumber == 9}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png" alt="kia 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 10}">
+         <c:when test="${sessionScope.teamNumber == 10}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png" alt="kiwoom 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 6}">
+         <c:when test="${sessionScope.teamNumber == 6}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png" alt="kt 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 2}">
+         <c:when test="${sessionScope.teamNumber == 2}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="lg 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 8}">
+         <c:when test="${sessionScope.teamNumber == 8}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png" alt="lotte 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 7}">
+         <c:when test="${sessionScope.teamNumber == 7}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="nc 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 4}">
+         <c:when test="${sessionScope.teamNumber == 4}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png" alt="삼성 로고">
         </c:when>
-      	<c:when test="${sessionScope.teamNumber == 5}">
+         <c:when test="${sessionScope.teamNumber == 5}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="ssg 로고">
         </c:when>
-    	</c:choose>
+       </c:choose>
       </a>
     </div>
     <div class="team-right-link">
@@ -50,14 +50,14 @@
   <div class="bottom-header">
     <nav>
       <ul class="team-menu">
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=teamRecord">팀 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=playerRecord">선수 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=youtube&action=youtube">팀 유튜브</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=teamsong">팀 응원가</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">게시판</a></li>
-        <li><a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr"">굿즈거래</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium">경기장</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀뉴스</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStats.jsp">팀 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamPlayerStats.jsp">선수 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamYoutube.jsp">팀 유튜브</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamSong.jsp">팀 응원가</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamBoard.jsp">게시판</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/trade/tradeMain.jsp">굿즈거래</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamStadium.jsp">경기장</a></li>
+        <li><a href="${pageContext.request.contextPath}/app/communityHtml/communityTapPage/teamNews.jsp">팀뉴스</a></li>
         <li class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색">
@@ -67,16 +67,16 @@
           </form>
         </li>
         <li class="mypage">
-        	<c:choose>
-        	<c:when test="${empty sessionScope.memberNumber}">
-        	<a href="${pageContext.request.contextPath}/member/login.me">로그인</a>
-        	</c:when>
-        	<c:otherwise>
-          	<a href="${pageContext.request.contextPath}/app/mypostlist/myPostList.jsp">
+           <c:choose>
+           <c:when test="${empty sessionScope.memberNumber}">
+           <a href="${pageContext.request.contextPath}/member/login.me">로그인</a>
+           </c:when>
+           <c:otherwise>
+             <a href="${pageContext.request.contextPath}/app/mypostlist/myPostList.jsp">
             <img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="마이페이지">
-          	</a>
-          	</c:otherwise>
-          	</c:choose>
+             </a>
+             </c:otherwise>
+             </c:choose>
         </li>
       </ul>
     </nav>
