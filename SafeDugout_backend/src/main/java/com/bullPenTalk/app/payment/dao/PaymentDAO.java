@@ -1,10 +1,10 @@
 package com.bullPenTalk.app.payment.dao;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.PointPaymentDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class PaymentDAO {
@@ -57,17 +57,23 @@ public class PaymentDAO {
     
     // 구매자에게 포인트 환불
     public int refundBuyerPoint(Map<String, Object> param) {
-        return sqlSession.update("trade.refundBuyerPoint", param);
+        return sqlSession.update("payment.refundBuyerPoint", param);
     }
 
     // 판매글 상태를 판매중으로 변경
     public int updateSellPostStatusAfterCancel(Map<String, Object> param) {
-        return sqlSession.update("trade.updateSellPostStatusAfterCancel", param);
+        return sqlSession.update("payment.updateSellPostStatusAfterCancel", param);
     }
     
     // 포인트 충전
     public int chargeMemberPoint(Map<String, Object> param) {
-        return sqlSession.update("trade.chargeMemberPoint", param);
+        return sqlSession.update("payment.chargeMemberPoint", param);
     }
+    
+    // 결제 기록 저장 
+    public int insertPointPayment(PointPaymentDTO payment) {
+        return sqlSession.insert("payment.insertPayment", payment);
+    }
+    
 }
 

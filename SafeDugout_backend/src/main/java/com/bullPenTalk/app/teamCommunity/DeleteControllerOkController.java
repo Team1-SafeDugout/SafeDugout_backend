@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
-import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
 import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 
 public class DeleteControllerOkController {

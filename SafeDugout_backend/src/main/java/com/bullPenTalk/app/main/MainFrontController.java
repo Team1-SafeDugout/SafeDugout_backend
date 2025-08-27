@@ -1,7 +1,6 @@
 package com.bullPenTalk.app.main;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.main.dao.MainDAO;
 
 /**

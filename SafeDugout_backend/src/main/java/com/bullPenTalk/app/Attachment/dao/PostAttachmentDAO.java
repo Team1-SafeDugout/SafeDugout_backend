@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.PostAttachmentDTO;
-import com.bullPenTalk.app.dto.SellPostAttachmentDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class PostAttachmentDAO {

@@ -1,7 +1,5 @@
 package com.bullPenTalk.app.dto;
 
-import java.util.List;
-
 public class SellPostDTO { // 판매글
 //	CREATE TABLE TBL_SELL_POST(
 //	SELL_POST_NUMBER NUMBER,

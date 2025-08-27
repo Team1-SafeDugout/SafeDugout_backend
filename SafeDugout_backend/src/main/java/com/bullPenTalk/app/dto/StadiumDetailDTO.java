@@ -1,7 +1,5 @@
 package com.bullPenTalk.app.dto;
 
-import java.util.List;
-
 public class StadiumDetailDTO {
 
 	private int stadiumNumber; // 대상 경기장 번호

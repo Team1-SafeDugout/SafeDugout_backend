@@ -1,34 +1,44 @@
-const payBtn = document.getElementById("payBtn");
-const pointInput = document.getElementById("pointValue");
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("chargeForm");
+    const pointInput = document.getElementById("pointValue");
 
-payBtn.addEventListener("click", () => {
-    const amount = parseInt(pointInput.value);
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // 폼 기본 제출 막기
+        const point = parseInt(pointInput.value);
 
-    if (!amount || amount <= 0) {
-        alert("충전할 금액을 입력하세요.");
-        return;
-    }
-
-    // 실제 결제 처리 함수 호출
-    requestKakaoPay(amount);
-});
-
-
-function requestKakaoPay(amount) {
-    // 서버에 결제 준비 요청
-    fetch('/payment/kakaoReady', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: amount })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data.next_redirect_pc_url) {
-            // 카카오페이 결제 페이지로 이동
-            window.location.href = data.next_redirect_pc_url;
-        } else {
-            alert("결제 준비 실패");
+        if (!point || point <= 0) {
+            alert("충전 금액을 입력하세요");
+            return;
         }
-    })
-    .catch(err => console.error(err));
-}
+
+        var IMP = window.IMP;
+        IMP.init('imp81327187'); // 아임포트 키 입력
+
+        IMP.request_pay({
+            pg: 'html5_inicis',
+            pay_method: 'card',
+            merchant_uid: 'charge_' + new Date().getTime(),
+            name: '포인트 충전',
+            amount: point
+        }, function(rsp) {
+            if (rsp.success) {
+                // 결제 성공하면 폼에 imp_uid, merchant_uid 추가 후 제출
+                let impUidInput = document.createElement("input");
+                impUidInput.type = "hidden";
+                impUidInput.name = "impUid";
+                impUidInput.value = rsp.imp_uid;
+                form.appendChild(impUidInput);
+
+                let merchantUidInput = document.createElement("input");
+                merchantUidInput.type = "hidden";
+                merchantUidInput.name = "merchantUid";
+                merchantUidInput.value = rsp.merchant_uid;
+                form.appendChild(merchantUidInput);
+
+                form.submit();
+            } else {
+                alert("결제 실패: " + rsp.error_msg);
+            }
+        });
+    });
+});

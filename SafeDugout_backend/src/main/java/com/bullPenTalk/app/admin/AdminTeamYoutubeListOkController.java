@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
-import com.bullPenTalk.app.dto.SongPostDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
 
 public class AdminTeamYoutubeListOkController implements Execute{

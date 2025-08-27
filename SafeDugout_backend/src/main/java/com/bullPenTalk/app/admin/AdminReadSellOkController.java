@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminSellDAO;
-import com.bullPenTalk.app.dto.AdminSellPostDTO;
 
 public class AdminReadSellOkController implements Execute{
 
