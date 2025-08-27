@@ -51,7 +51,7 @@
 
         <!-- 확인 혹은 취소 버튼 -->
         <section class = "buttons">
-         <button id = "save-button" type = "button" onclick = "location.href = './../adminDetailMenu/adminFreeCommunityGuideDetail.html' "> 저장 </button>
+         <button id = "save-button" type = "button" onclick = "location.href = '${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad'"> 저장 </button>
          <a id = "cancle-button"> 취소 </a>
         </section>
       </form>

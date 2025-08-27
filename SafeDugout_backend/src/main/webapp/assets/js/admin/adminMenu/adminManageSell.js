@@ -30,6 +30,10 @@ function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId,
 	const payMentDate = document.createElement('div');
 	const completeDate = document.createElement('div');
 
+	if(postStatusParam == "selling"){
+			postCompleteDate = '거래이전';
+	}
+	
 	const postNumText = document.createTextNode(postNumberParam);
 	const postTitleText = document.createTextNode(postTitleParam);
 	const postStatusText = document.createTextNode(postStatusParam)
@@ -53,6 +57,8 @@ function addPost(postNumberParam, postTitleParam, postStatusParam, postMemberId,
 	const postTitleLink = document.createElement('a');
 	postTitleLink.setAttribute("href", "/admin/adminReadSellOk.ad?postNumber=" + postNumberParam);
 	postTitleLink.appendChild(postTitleText);
+	
+
 
 	postNum.appendChild(postNumText);
 	postTitle.appendChild(postTitleLink);

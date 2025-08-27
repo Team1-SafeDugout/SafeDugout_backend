@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 // 테스트용 추가 버튼
 function addPost(userNumberParam, userIdParam, addDateParam){
-  const userListNum = document.querySelectorAll("#list-ul>li");
-  if (userListNum.length >= 10) return;
-
   const newMember = document.createElement('li');
 
   const userNumber = document.createElement('div');
@@ -25,7 +22,7 @@ function addPost(userNumberParam, userIdParam, addDateParam){
   const userIDText = document.createTextNode(userIdParam);
   const addDateText = document.createTextNode(addDateParam);
 
-/*  userIdURL.setAttribute('href', "./../adminDetailMenu/adminUserDetail.html");*/
+  userIdURL.setAttribute('href', "/admin/adminReadMemberOk.ad?memberNumber="+userNumberParam);
 
   userNumber.appendChild(userNumberText);
   userID.appendChild(userIdURL);
