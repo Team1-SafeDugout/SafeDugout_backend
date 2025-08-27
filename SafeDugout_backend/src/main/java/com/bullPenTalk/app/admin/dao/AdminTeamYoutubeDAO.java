@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.bullPenTalk.app.dto.SongPostDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 

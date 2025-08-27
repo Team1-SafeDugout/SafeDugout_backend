@@ -1,7 +1,5 @@
 package com.bullPenTalk.app.dto;
 
-import java.util.List;
-
 public class StadiumDTO {
 //	CREATE TABLE TBL_STADIUM (
 //	STADIUM_NUMBER   NUMBER PRIMARY KEY,

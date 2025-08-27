@@ -8,17 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.admin.dao.AdminGuideDAO;
-import com.bullPenTalk.app.admin.dao.AdminMainNoticeDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
-import com.bullPenTalk.app.admin.dao.AdminTeamNoticeDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamSongDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
-import com.bullPenTalk.app.dto.GuidePostDTO;
-import com.bullPenTalk.app.dto.MainNoticePostDTO;
-import com.bullPenTalk.app.dto.NewsDetailDTO;
-import com.bullPenTalk.app.dto.TeamNoticePostDTO;
-import com.bullPenTalk.app.dto.YoutubePostDTO;
 
 public class AdminDeletePostOkController implements Execute {
 

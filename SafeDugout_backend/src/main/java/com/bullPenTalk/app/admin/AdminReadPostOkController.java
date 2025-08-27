@@ -8,18 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.admin.dao.AdminMemberDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
-import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
-import com.bullPenTalk.app.admin.dao.TeamCommentDAO;
 import com.bullPenTalk.app.dto.FreePostDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
-import com.bullPenTalk.app.dto.PostDTO;
-import com.bullPenTalk.app.dto.PostDetailDTO;
-import com.bullPenTalk.app.dto.TeamDTO;
-import com.bullPenTalk.app.dto.YoutubePostDTO;
 import com.bullPenTalk.app.freeCommunity.dao.FreePostDAO;
-import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
+
+
 
 public class AdminReadPostOkController implements Execute{
 

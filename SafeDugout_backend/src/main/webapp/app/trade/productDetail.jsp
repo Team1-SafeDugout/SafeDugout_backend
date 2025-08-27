@@ -105,9 +105,9 @@
                                 <fmt:formatNumber value="${sellPostDetail.pricePoint}" pattern="#,###" /> 포인트
                             </div>
                         </div>
-                        <form action="${pageContext.request.contextPath}/trade/" method="get">
+                        <form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=buy&action=buy" method="get">
 						    <input type="hidden" name="sellPostNumber" value="${sellPostDetail.sellPostNumber}">
-						    <input type="hidden" name="category" value="trade">
+						    <input type="hidden" name="category" value="buy">
     						<input type="hidden" name="action" value="buy">
 						    <button type="submit" class="main-button-next">구매</button>
 						</form>

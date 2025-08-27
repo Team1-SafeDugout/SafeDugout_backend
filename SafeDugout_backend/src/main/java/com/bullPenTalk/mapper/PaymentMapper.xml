@@ -59,11 +59,26 @@
 	    )
 	</update>
 	
-	<!-- 포인트 충전 -->
+	
 	<update id="chargeMemberPoint" parameterType="map">
 	    UPDATE TBL_MEMBER
 	    SET MEMBER_POINT = MEMBER_POINT + #{chargePoint}
 	    WHERE MEMBER_NUMBER = #{memberNumber}
 	</update>
 	
+	
+	<!-- 포인트 충전 -->
+	 <insert id="insertPayment" parameterType="PointPaymentDTO">
+        INSERT INTO TBL_POINT_PAYMENT (PAYMENT_ID, MERCHANT_UID, MEMBER_NUMBER, AMOUNT, STATUS, PAY_METHOD, PAID_AT, CREATED_AT)
+         VALUES (#{paymentId}, #{merchantUid}, #{memberNumber}, #{amount},  #{status}, #{payMethod}, SYSDATE , SYSDATE)
+    </insert>
+    
+    <select id="selectByMember" parameterType="int" resultType="PointPaymentDTO">
+     	<![CDATA[
+	        SELECT * FROM TBL_POINT_PAYMENT
+	        WHERE MEMBER_NUMBER = #{memberNumber}
+	        ORDER BY CREATED_AT DESC
+     	]]> 
+    </select>
+    
 </mapper>
