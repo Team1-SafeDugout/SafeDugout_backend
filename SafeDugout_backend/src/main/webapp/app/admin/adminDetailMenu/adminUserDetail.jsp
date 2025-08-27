@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크 관리자</title>
-  <link rel="stylesheet" href=".${pageContext.request.contextPath}/assets/css/admin/login/adminlogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminUserDetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminlogin/adminLogin.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminUserDetail.js"></script>
 </head>
 
 <body>
@@ -21,15 +23,15 @@
         <form action="" method="post">
 
           <div class="user-info-value">
-            ID : <div id="user-id" name="userId"> th3179 </div>
+            ID : <div id="user-id" name="userId"> ${memberDetail.memberId} </div>
           </div>
 
           <div class="user-info-value">
-            응원팀 : <div id="user-team" name="userTeam"> 두산 </div>
+            응원팀 : <div id="user-team" name="userTeam"> ${myTeam} </div>
           </div>
 
           <div class="user-info-value">
-            <button type = "button" id = "delete-user-button" class = "delete-btn"> 탈퇴 </button>
+            <!-- <button type = "button" id = "delete-user-button" class = "delete-btn"> 탈퇴 </button> -->
           </div>
         </form>
       </section>
@@ -147,7 +149,7 @@
       <!-- 최하단 : 목록으로 버튼 -->
       <section class="section-button">
         <form action="" method="post">
-          <button type="button" onclick="location.href='./../adminMenu/adminManageMember.html'"> 목록으로 </button>
+          <button type="button" onclick="location.href='${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad'"> 목록으로 </button>
         </form>
       </section>
     </section>  

@@ -74,9 +74,7 @@
 
       <section class="section-bottom-menus">
         <div>
-          <form action="" method="get">
-            <button type = "submit" class = "post-button"> <a href = "${pageContext.request.contextPath}/adminMenu/adminManageTrading.jsp"> 목록으로 </a> </button>
-          </form>
+            <button type = "submit" class = "post-button"> <a href = "${pageContext.request.contextPath}/admin/adminManageTradingListOk.ad"/> 목록으로 </button>
         </div>
       </section>
     </section>

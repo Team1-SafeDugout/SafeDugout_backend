@@ -68,8 +68,16 @@
 	
 	<!-- 회원 조회 -->
 	<select id ="select" resultType = "MemberDTO" parameterType = "int">
-	SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL
+	SELECT MEMBER_NUMBER,MEMBER_NAME,MEMBER_PHONE,MEMBER_ID,MEMBER_PW,MEMBER_EMAIL,MEMBER_MY_TEAM,MEMBER_POINT,MEMBER_JOIN_DATE,MEMBER_POSTAL_CODE
 	FROM TBL_MEMBER
+	WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
+	
+	<!-- 회원 마이팀 조회 -->
+	<select id = "selectMyTeam" resultType = "string" parameterType = "int">
+	SELECT TT.TEAM_NAME
+	FROM TBL_MEMBER TM
+	JOIN TBL_TEAM TT ON TM.MEMBER_MY_TEAM = TT.TEAM_NUMBER
 	WHERE MEMBER_NUMBER = #{memberNumber}
 	</select>
 	

@@ -12,6 +12,10 @@ public class MemberDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
+	public String getMyTeam(int memberNumber) {
+		return sqlSession.selectOne("member.selectMyTeam", memberNumber);
+	}
+	
 	public void join(MemberDTO memberDTO) {
 		sqlSession.insert("member.join", memberDTO);
 	}
@@ -51,5 +55,9 @@ public class MemberDAO {
     public int getMemberPoint(int memberNumber) {
         Integer point = sqlSession.selectOne("member.getMemberPoint", memberNumber);
         return (point != null) ? point : 0;
+    }
+    
+    public MemberDTO getMember(int memberNumber) {
+    	return sqlSession.selectOne("member.select", memberNumber);
     }
 }
