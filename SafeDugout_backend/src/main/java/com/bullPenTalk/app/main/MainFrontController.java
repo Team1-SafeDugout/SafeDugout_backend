@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.dto.GuidePostDTO;
+import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.main.dao.MainDAO;
 
 /**
@@ -53,19 +55,17 @@ public class MainFrontController extends HttpServlet {
 		//MainDAO 객체 생성
 		MainDAO mainDAO = new MainDAO();
 		
-		//헤더에서 띄울 최신 공지 제목 저장
-		String recentMainTitle = mainDAO.getRecent().getNoticePostTitle();
-		System.out.println(recentMainTitle);
-		if(recentMainTitle != null) {
-			request.setAttribute("recentMainTitle", recentMainTitle);
+		//헤더에서 띄울 최신 공지 저장
+		MainNoticePostDTO recentMainNotice = mainDAO.getRecent();
+		if(recentMainNotice != null) {
+			request.setAttribute("recentMainTitle", recentMainNotice.getNoticePostTitle());
 		}else {
 			request.setAttribute("recentMainTitle", "[메인공지]");
 		}
-		
-		String recentGuideTitle = mainDAO.getRecentGuide().getNoticePostTitle();
-		System.out.println(recentGuideTitle);
-		if(recentMainTitle != null) {
-			request.setAttribute("recentGuideTitle", recentGuideTitle);
+
+		GuidePostDTO recentGuide = mainDAO.getRecentGuide();
+		if(recentGuide != null) {
+			request.setAttribute("recentGuideTitle", recentGuide.getNoticePostTitle());
 		}else {
 			request.setAttribute("recentGuideTitle", "[입문가이드]");
 		}
