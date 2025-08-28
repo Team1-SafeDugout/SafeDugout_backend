@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.GuidePostDTO;
 import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.dto.MemberDTO;
@@ -43,7 +44,7 @@ public class MainDAO {
 	}
 	
 	//입문가이드 최신 제목 가져오기
-	public MainNoticePostDTO getRecentGuide() {
+	public GuidePostDTO getRecentGuide() {
 		System.out.println("getRecentGuide 메소드 실행");
 		return sqlSession.selectOne("main.getRecentGuide");
 	}

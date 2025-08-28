@@ -29,7 +29,7 @@ public class Board implements CommunityService {
 		case "postlist":
 			result = postSelectListController.boardList(action, request, response);
 			break;
-		case "noitce":
+		case "notice":
 			result= postSelectListController.noticeMoreList(action, request, response);
 			break;
 		case "write":
@@ -55,7 +55,7 @@ public class Board implements CommunityService {
 			break;
 		default :
             System.out.println("알 수 없는 액션입니다: " + action);
-            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+            result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
             result.setRedirect(true);
             break;
 		}
