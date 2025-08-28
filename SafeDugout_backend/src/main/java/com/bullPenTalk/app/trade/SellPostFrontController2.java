@@ -15,12 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SellPostFrontController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	
-	// 요청별 서비스 컨트롤러 등록
 	private final Map<String, TradeService> registry = new HashMap<>();
 	private final TradeService defaultService = new NotFoundService();
 	
+	// 요청별 서비스 컨트롤러 등록
 	@Override
 	public void init() {
 		registry.put("doosan", new Doosan());
@@ -40,6 +39,7 @@ public class SellPostFrontController2 extends HttpServlet {
 		registry.put("buy", new BuyProduct());
 	}
 
+	
 	  @Override
 	    protected void service(HttpServletRequest req, HttpServletResponse resp)
 	            throws ServletException, IOException {

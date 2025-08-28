@@ -172,8 +172,8 @@ public class BuyController {
 	        Result result = new Result();
 
 	        // 파라미터 가져오기
-	        String memberNumberStr = request.getParameter("memberNumber");
-	        String chargePointStr = request.getParameter("chargePoint");
+	        String memberNumberStr = request.getParameter("memberNumber"); // 회원번호
+	        String chargePointStr = request.getParameter("chargePoint"); // 충전 포인트
 	        String paymentId = request.getParameter("paymentId");      // IMP 결제번호
 	        String merchantUid = request.getParameter("merchantUid");  // 가맹점 주문번호
 	        String payMethod = request.getParameter("payMethod");      // 결제수단
@@ -187,12 +187,14 @@ public class BuyController {
 	        System.out.println(payMethod);
 	        System.out.println(paidAt);
 	        
+	        // 회원번호, 충전 금액이 null 이면 충전페이지로 강제 리다이랙트
 	        if(memberNumberStr == null || chargePointStr == null ||
 	           memberNumberStr.trim().isEmpty() || chargePointStr.trim().isEmpty()) {
 	            response.sendRedirect(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=buy&action=charging");
 	            return null;
 	        }
-
+	        
+	         // 문자열로 받은 회원번호, 충전금액 형변환
 	        int memberNumber = Integer.parseInt(memberNumberStr);
 	        int chargePoint = Integer.parseInt(chargePointStr);
 
@@ -203,7 +205,7 @@ public class BuyController {
 	        	// 결제 api key로 서버검증
 	            String impKey = "7128467038170850";
 	            String impSecret = "xuhDtfZuwNLH0rqd2SRfauYejfRiZfPvyjUarvK5JTnJVwBXqfCuGzgx2G0mJtaF0Ul5aQfRBaRvyI1j";
-	            // 1. 아임포트 토큰 요청
+	            // 아임포트 토큰 요청 Json으로 토큰 획득
 	            org.jsoup.Connection.Response jsoupResponse = org.jsoup.Jsoup.connect("https://api.iamport.kr/users/getToken")
 	                    .ignoreContentType(true)
 	                    .method(org.jsoup.Connection.Method.POST)
@@ -212,20 +214,20 @@ public class BuyController {
 	                    .execute();
 
 
-	            // 2. JSON 문자열 파싱
+	            // JSON 문자열 파싱
 	            JSONParser parser = new JSONParser();
 	            JSONObject tokenObj = (JSONObject) parser.parse(jsoupResponse.body());
 
-	            // 3. "response" 객체 가져오기
+	            // "response" 객체 가져오기
 	            JSONObject responseObj = (JSONObject) tokenObj.get("response");
 
-	            // 4. access_token 추출
+	            // access_token 추출
 	            String accessToken = (String) responseObj.get("access_token");
 
 	            System.out.println("Access Token: " + accessToken);
 
 	            
-	         // 2. imp_uid로 결제 정보 조회
+	         // imp_uid로 결제 정보 조회
 	            String impUid = request.getParameter("paymentId");
 
 	            org.jsoup.Connection.Response paymentResponse = org.jsoup.Jsoup

@@ -33,7 +33,7 @@
 				<input type="hidden" name="merchantUid" id="merchantUid">
 				<input type="hidden" name="payMethod" id="payMethod">
 				<input type="hidden" name="paidAt" id="paidAt">
-				<input type="hidden" name="amount" id="amount">
+
 
                 <!-- 메시지 박스 -->
                 <div class="main-message-container">
@@ -47,7 +47,7 @@
                     <div class="container-full">
                         <div class="input-message">충전 금액 :</div>
                         <div class="point-amount">
-                            <input type="number" name="chargePoint" placeholder="포인트 입력" id="pointValue" required>원                            
+                            <input id="amount" type="number" name="chargePoint"  placeholder="포인트 입력" id="pointValue" required>원                            
                         </div>
                     </div>
 
@@ -62,8 +62,6 @@
                             <div class="main-button-cancel">취소</div>
                         </a>
                     </div>
-
-                    <div class="container-full">결제 방식</div>
                    	<script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 					<script>
 					document.getElementById("payBtn").addEventListener("click", function(event) {
@@ -72,11 +70,10 @@
 					    if(!chargePoint || chargePoint <= 0){
 					        alert("충전할 금액을 입력해주세요!");
 					        return;
-					    }
-					
+					    }					
 					    var IMP = window.IMP;
-					    IMP.init(''); // 테스트 모드용 가맹점 코드
-					
+					    IMP.init('imp81327187'); // 테스트 모드용 가맹점 코드
+					  
 					    IMP.request_pay({
 					        pg: 'kakaopay.TC0ONETIME',
 					        pay_method: 'card',
