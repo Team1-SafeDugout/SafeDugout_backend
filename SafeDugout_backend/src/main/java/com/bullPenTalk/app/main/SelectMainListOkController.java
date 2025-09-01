@@ -50,11 +50,9 @@ public class SelectMainListOkController implements Execute{
 		List<MainNoticePostDTO> mainNoticeList = mainDAO.selectMainList(pageMap);
 		System.out.println("selectMainList 메소드 호출 완료");
 		request.setAttribute("mainNoticeList", mainNoticeList);
-
 		// 페이징 정보 설정
 		// MainMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
-
 		int total = mainDAO.getTotal();
 		// 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); 
@@ -62,14 +60,11 @@ public class SelectMainListOkController implements Execute{
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount);
 		// 현재 페이지 그룹에서의 첫 페이지
 		int startPage = endPage - (pageCount - 1); 
-
 		// endPage가 실제 존재하는 마지막 페이지보다 크면 조정
 		endPage = Math.min(endPage, realEndPage);
-
 		// 이전, 다음 버튼 활성화 여부 확인
 		boolean prev = startPage > 1;
 		boolean next = endPage < realEndPage;
-
 		request.setAttribute("page", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);

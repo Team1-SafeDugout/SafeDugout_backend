@@ -44,6 +44,7 @@ public class MainFrontController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
 		System.out.println("현재 경로 : " + target);
