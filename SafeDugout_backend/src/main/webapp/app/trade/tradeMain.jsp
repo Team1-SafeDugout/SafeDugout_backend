@@ -22,7 +22,7 @@
     <!-- 검색 폼 -->
     <div class="search-container">
         <form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
-            <input type="hidden" name="category" value="search">
+            <input type="hidden" name="team" value="search">
             <input type="hidden" name="action" value="search"> 
             <input type="text" name="searchWord" placeholder="검색어를 입력해주세요" value="${searchWord != null ? searchWord : ''}"> 
             <button type="submit">검색</button>
@@ -101,13 +101,13 @@
                             <div class="product-img">
                                 <a href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=${selectedTeam}&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
                                     <c:choose>
-			                            <c:when test="${not empty sellPost.imagePath}">
-			                                <img src="${sellPost.imagePath}" alt="상품이미지">
-			                            </c:when>
-			                            <c:otherwise>
-			                                <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png" alt="기본이미지">
-			                            </c:otherwise>
-			                        </c:choose>
+									    <c:when test="${not empty sellPost.imagePath}">
+									        <img src="${sellPost.imagePath}" alt="상품이미지">
+									    </c:when>
+									    <c:otherwise>
+									        <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png" alt="기본이미지">
+									    </c:otherwise>
+									</c:choose>
                                 </a>
                             </div>
                             <div class="product-name">

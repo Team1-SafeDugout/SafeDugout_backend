@@ -16,21 +16,21 @@ public class PaymentDAO {
 	
 	// 결제 트랜젝션 처리
 	public boolean processPayment(Map<String, Object> param, int sellPostNumber) {
-	    PaymentDAO dao = new PaymentDAO();
+	   
 	    try {
-	        dao.insertTradePost(param);
-	        dao.decreaseBuyerPoint(param);
-	        dao.increaseSellerPoint(param);
-	        dao.updateSellPostStatus(sellPostNumber);
+	        insertTradePost(param);
+	        decreaseBuyerPoint(param);
+	        increaseSellerPoint(param);
+	        updateSellPostStatus(sellPostNumber);
 
-	        dao.sqlSession.commit();
+	        sqlSession.commit();
 	        return true;
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        dao.sqlSession.rollback();
+	        sqlSession.rollback();
 	        return false;
 	    } finally {
-	        dao.sqlSession.close();
+	        sqlSession.close();
 	    }
 	}
 	
