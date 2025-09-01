@@ -58,21 +58,18 @@ public class MainFrontController extends HttpServlet {
 		
 		//헤더에서 띄울 최신 공지 저장
 		MainNoticePostDTO recentMainNotice = mainDAO.getRecent();
-		request.setAttribute("recentMainTitle", recentMainNotice.getNoticePostTitle());
+		if(recentMainNotice != null) {
+			request.setAttribute("recentMainTitle", recentMainNotice.getNoticePostTitle());
+		}else {
+			request.setAttribute("recentMainTitle", "[메인공지]");
+		}
+
 		GuidePostDTO recentGuide = mainDAO.getRecentGuide();
-		request.setAttribute("recentGuideTitle", recentGuide.getNoticePostTitle());
-//		if(recentMainNotice != null) {
-//			request.setAttribute("recentMainTitle", recentMainNotice.getNoticePostTitle());
-//		}else {
-//			request.setAttribute("recentMainTitle", "[메인공지]");
-//		}
-//
-//		GuidePostDTO recentGuide = mainDAO.getRecentGuide();
-//		if(recentGuide != null) {
-//			request.setAttribute("recentGuideTitle", recentGuide.getNoticePostTitle());
-//		}else {
-//			request.setAttribute("recentGuideTitle", "[입문가이드]");
-//		}
+		if(recentGuide != null) {
+			request.setAttribute("recentGuideTitle", recentGuide.getNoticePostTitle());
+		}else {
+			request.setAttribute("recentGuideTitle", "[입문가이드]");
+		}
 		
 		//팀 번호가 있을 경우 실행 
 		if(request.getParameter("teamNumber") != null) {
