@@ -138,7 +138,7 @@
             <div class="product-box-item">
               <!-- 중고 거래 이미지 -->
               <div class="product-box-item-imgdiv">
-                <img src="./img1.jpg" alt="" class="product-box-item-img">
+                <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png" alt="" class="product-box-item-img">
               </div>
               <!-- 중고 거래 상품명 -->
               <div class="product-box-item-name">

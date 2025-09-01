@@ -33,7 +33,8 @@
 				<input type="hidden" name="merchantUid" id="merchantUid">
 				<input type="hidden" name="payMethod" id="payMethod">
 				<input type="hidden" name="paidAt" id="paidAt">
-				<input type="hidden" name="amount" id="amount">
+				<input type="hidden" name="amount" id="amountHidden">
+
 
                 <!-- 메시지 박스 -->
                 <div class="main-message-container">
@@ -47,12 +48,11 @@
                     <div class="container-full">
                         <div class="input-message">충전 금액 :</div>
                         <div class="point-amount">
-                            <input type="number" name="chargePoint" placeholder="포인트 입력" id="pointValue" required>원                            
+                            <input type="number" name="chargePoint" placeholder="포인트 입력" id="amount" required>원                        
                         </div>
                     </div>
 
                     <div class="container-full"><div class="short-line"></div></div>
-                    <div class="long-line"></div>
 
                     <!-- 버튼 -->
                     <div class="main-button-container">
@@ -66,14 +66,15 @@
                     <div class="container-full">결제 방식</div>
                    	<script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 					<script>
+					// 결제 버튼 클릭 시 이벤트 발생
 					document.getElementById("payBtn").addEventListener("click", function(event) {
 					    event.preventDefault();
-					    let chargePoint = document.getElementById("pointValue").value;
+					    let chargePoint = document.getElementById("amount").value;
+					    // 충전 금액이 0보다 작거나 같으면 aret창으로 알림
 					    if(!chargePoint || chargePoint <= 0){
 					        alert("충전할 금액을 입력해주세요!");
 					        return;
-					    }
-					
+					    }					
 					    var IMP = window.IMP;
 					    IMP.init(''); // 테스트 모드용 가맹점 코드
 					
@@ -88,14 +89,14 @@
 					        buyer_email: '${sessionScope.memberEmail}'
 					    }, function(rsp) {
 					        if (rsp.success) {
-								// form태그 아이 값으로 선택
+								// form태그 아이디 값으로 선택
 					            let form = document.getElementById("chargeForm");
 								// 요청 파라미터 값 설정
 								document.getElementById("paymentId").value = rsp.imp_uid;
 								document.getElementById("merchantUid").value = rsp.merchant_uid;
 								document.getElementById("payMethod").value = rsp.pay_method;
 								document.getElementById("paidAt").value = rsp.paid_at;
-								document.getElementById("amount").value = chargePoint;
+								document.getElementById("amountHidden").value = chargePoint;
 					            form.submit();
 					        } else {
 					            alert("결제 실패: " + rsp.error_msg);

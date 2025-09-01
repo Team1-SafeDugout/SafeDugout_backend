@@ -71,6 +71,7 @@ public class PostSelectListController {
 		System.out.println("끝 진입");
 		result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");
 		result.setRedirect(false);
+		System.out.println("teamNumber" + request.getSession().getAttribute("teamNumber"));
 		System.out.println("리턴 진입");
 		return result;
 	}
@@ -364,6 +365,7 @@ public class PostSelectListController {
 		System.out.println("끝 진입");
 		result.setPath("/app/communityHtml/communityTapPage/teamSongTeamList.jsp");
 		result.setRedirect(false);
+		System.out.println("teamNumber" + request.getSession().getAttribute("teamNumber"));
 		System.out.println("리턴 진입");
 		return result;
 	}

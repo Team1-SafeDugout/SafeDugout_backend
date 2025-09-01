@@ -9,12 +9,6 @@
 	</select>
 	
 	<!-- 메인 공지사항 목록 조회 -->
-	<!-- <select id="selectMainList" resultType="MainNoticePostDTO">
-		select notice_post_number, notice_post_title, notice_post_date,
-		from tbl_notice_post
-		where notice_type_id = 1
-		order by notice_post_date desc
-	</select> -->
 	<select id="selectMainList" resultType="MainNoticePostDTO">
 	<![CDATA[
 	SELECT *
@@ -44,7 +38,7 @@
 	</select>
 	
 	<!-- 입문 가이드 최신 항목(제목) 가져오기 -->
-	<select id="getRecentGuide" resultType="MainNoticePostDTO">
+	<select id="getRecentGuide" resultType="GuidePostDTO">
 		SELECT * FROM 
 		(SELECT NOTICE_POST_TITLE
 		FROM TBL_NOTICE_POST
