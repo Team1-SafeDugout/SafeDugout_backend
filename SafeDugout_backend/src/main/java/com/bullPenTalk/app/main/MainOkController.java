@@ -38,6 +38,7 @@ public class MainOkController implements Execute {
 
 		// 판매글 목록 조회
 		List<MainDTO> sellList = mainDAO.selectSellList();
+		System.out.println("상품 목록" + sellList);
 		request.setAttribute("sellList", sellList);
 
 		// 입문자 가이드 목록 조회
