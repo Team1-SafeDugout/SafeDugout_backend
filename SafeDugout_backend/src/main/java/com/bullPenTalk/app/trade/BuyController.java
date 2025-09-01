@@ -173,7 +173,7 @@ public class BuyController {
 
 	        // 파라미터 가져오기
 	        String memberNumberStr = request.getParameter("memberNumber"); // 회원번호
-	        String chargePointStr = request.getParameter("chargePoint"); // 충전 포인트
+	        String chargePointStr = request.getParameter("amount"); // 충전 포인트
 	        String paymentId = request.getParameter("paymentId");      // IMP 결제번호
 	        String merchantUid = request.getParameter("merchantUid");  // 가맹점 주문번호
 	        String payMethod = request.getParameter("payMethod");      // 결제수단
@@ -190,7 +190,7 @@ public class BuyController {
 	        // 회원번호, 충전 금액이 null 이면 충전페이지로 강제 리다이랙트
 	        if(memberNumberStr == null || chargePointStr == null ||
 	           memberNumberStr.trim().isEmpty() || chargePointStr.trim().isEmpty()) {
-	            response.sendRedirect(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=buy&action=charging");
+	            response.sendRedirect(request.getContextPath() + "/app/trade/pointBuy.jsp");
 	            return null;
 	        }
 	        
@@ -203,9 +203,9 @@ public class BuyController {
 	        try {
 	        	
 	        	// 결제 api key로 서버검증
-	            String impKey = "7128467038170850";
-	            String impSecret = "xuhDtfZuwNLH0rqd2SRfauYejfRiZfPvyjUarvK5JTnJVwBXqfCuGzgx2G0mJtaF0Ul5aQfRBaRvyI1j";
-	            // 아임포트 토큰 요청 Json으로 토큰 획득
+	            String impKey = "";
+	            String impSecret = "";
+	            // 아임포트 토큰 요청 
 	            org.jsoup.Connection.Response jsoupResponse = org.jsoup.Jsoup.connect("https://api.iamport.kr/users/getToken")
 	                    .ignoreContentType(true)
 	                    .method(org.jsoup.Connection.Method.POST)
@@ -247,11 +247,11 @@ public class BuyController {
 	            // 실제 결제 정보 접근
 	            org.json.simple.JSONObject respObj = (org.json.simple.JSONObject) paymentObj.get("response");
 
-	            // 예: 결제 금액
+	            // 결제 금액
 	            Long amount = (Long) responseObj.get("amount");
 	            System.out.println("결제 금액: " + amount);
 	        	
-	            // 1. 회원 포인트 충전
+	            // 회원 포인트 충전
 	            Map<String, Object> param = new HashMap<>();
 	            param.put("memberNumber", memberNumber);
 	            param.put("chargePoint", chargePoint);
@@ -259,7 +259,7 @@ public class BuyController {
 	            int update = paymentDAO.chargeMemberPoint(param);
 
 	            if(update > 0) {
-	                // 2. 결제 기록 저장
+	                // 결제 기록 저장
 	                PointPaymentDTO payment = new PointPaymentDTO();
 	                payment.setPaymentId(paymentId);
 	                payment.setMerchantUid(merchantUid);
@@ -267,15 +267,15 @@ public class BuyController {
 	                payment.setAmount(chargePoint);
 	                payment.setStatus("paid"); // 결제 완료
 	                payment.setPayMethod(payMethod);
-	                payment.setPaidAt(paidAt); // "YYYY-MM-DD HH:mm:ss" 형태
+	                payment.setPaidAt(paidAt); 
 	                // createdAt는 매퍼에서 SYSDATE로 처리
 
 	                paymentDAO.insertPointPayment(payment);
 
-	                // 3. 커밋
+	                //  커밋
 	                paymentDAO.sqlSession.commit();
 
-	                // 4. 성공 페이지 이동
+	                // 성공 페이지 이동
 	                result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=allproduct&action=list");
 	                result.setRedirect(true);
 
