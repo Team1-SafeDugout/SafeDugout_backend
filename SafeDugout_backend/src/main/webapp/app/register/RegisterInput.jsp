@@ -107,7 +107,7 @@
               <!-- 입력 컨테이너 -->
               <div class="main-input-list">
                 <div class="main-input-list-text">인증 번호 입력</div>
-                <input type="text" placeholder="인증 번호 입력" id="code">
+                <input type="text" placeholder="인증 번호 입력" id="code" name = "code">
                 <button type="button">인증</button>
               </div>
             </li>

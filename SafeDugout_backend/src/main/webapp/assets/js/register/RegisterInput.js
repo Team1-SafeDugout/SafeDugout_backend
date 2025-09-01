@@ -59,174 +59,119 @@ const codeMismatchMessage = document.querySelector('li:nth-child(6) span');
 const requiredMessage = document.querySelector('li:nth-child(6) span:last-child');
 const invalidEmail = document.querySelector('li:nth-child(7) span:last-child');
 
-// 이벤트리스너
-// 회원 가입 버튼 누를 시 메시지 표시 
-/*registerBtn.addEventListener('click', function() {
-
-	// 입력 오류 메시지 초기화
-	for (const message of errorMessage) {
-		message.style.display = 'none';
-	}
-	// 모든 입력값 유효 여부 초기화
-	let isValidAll = true;
-
-	// 필수값 누락 시 메시지 표시
-	if (userName.value === "") {
-		inputMissingMessage[0].style.display = 'inline';
-	}
-	if (id.value === "") {
-		inputMissingMessage[1].style.display = 'inline';
-	}
-	if (pw.value === "") {
-		inputMissingMessage[2].style.display = 'inline';
-	}
-	if (phoneNumber.value === "") {
-		inputMissingMessage[3].style.display = 'inline';
-	}
-	if (email.value === "") {
-		inputMissingMessage[4].style.display = 'inline';
-	}
-
-	// 아이디가 유효하지 않을 경우 메시지 표시 
-	if (checkIdValid(id.value) === false) {
-		invalidIdMessage.style.display = 'inline';
-	}
-
-	// 아이디가 중복되었거나 중복 확인 안 된 경우 메시지 표시
-	if (isDuplicate === true) {
-		duplicateMessage.style.display = 'inline';
-	}
-
-	// 비밀번호가 유효하지 않을 경우 메시지 표시 
-	if (checkPwValid(pw.value) === false) {
-		invalidPwMessage.style.display = 'inline';
-	}
-
-	// 비밀번호 재입력이 일치하지 않을 경우 메시지 표시 
-	if (checkPwSame(pw.value, rePw.value) === false) {
-		pwMismatchMessage.style.display = 'inline';
-	}
-
-	// 인증번호가 일치하지 않거나 확인 안 된 경우 메시지 표시
-	if (isCodeSame === false) {
-		codeMismatchMessage.style.display = 'inline';
-	}
-
-	// 하나라도 입력 오류 메시지가 있으면 모든 입력값 유효 여부를 false로 변경
-	for (const message of errorMessage) {
-		if (message.style.display === 'inline') {
-			isValidAll = false;
-		}
-	}
-});*/
 
 let idCheck = false;
 let pwCheck = false;
 let phoneCheck = false;
+let emailCheck = false;
 
 
 // 회원 가입 버튼 누를떄 요효성 검사
-onsubmit="return validateForm()"
+onsubmit = "return validateForm()"
 
-function validateForm(){
-	
-	if(userName.value === ""){
+function validateForm() {
+
+	if (userName.value === "") {
 		inputMissingMessage[0].style.display = 'inline';
 		return false;
 	}
-	
-	if(email.value === ""){
+
+	if (email.value === "") {
 		inputMissingMessage[4].style.display = 'inline';
 		return false;
 	}
-	
-	if(idCheck == false){
+
+	if (idCheck == false) {
 		inputMissingMessage[1].style.display = 'inline';
 		id.scrollIntoView({ behavior: "smooth", block: "center" });
 		return false;
 	}
-	
-	else if(pwCheck == false){
+
+	else if (pwCheck == false) {
 		inputMissingMessage[2].style.display = 'inline';
 		pw.scrollIntoView({ behavior: "smooth", block: "center" });
 		return false;
 	}
-	
-	else if(phoneCheck == false){
+
+	else if (phoneCheck == false) {
 		inputMissingMessage[3].style.display = 'inline';
 		phoneNumber.scrollIntoView({ behavior: "smooth", block: "center" });
 		return false;
 	}
-	
-	else{
-		if(!postalCode.value.trim()){
+
+	else if (emailCheck == false) {
+		return false;
+	}
+
+	else {
+		if (!postalCode.value.trim()) {
 			postalCode.value = "0";
 		}
 		return true
 	}
 }
 
-userName.addEventListener("blur", function(){
-	
-	if(userName.value !== "")
+userName.addEventListener("blur", function() {
+
+	if (userName.value !== "")
 		inputMissingMessage[0].style.display = "none";
 });
 
-email.addEventListener("blur", function(){
-	
-	if(email.value !== "")
+email.addEventListener("blur", function() {
+
+	if (email.value !== "")
 		inputMissingMessage[4].style.display = "none";
 });
 
-id.addEventListener("blur", function(){
-	
-	if(id.value !== "")
+id.addEventListener("blur", function() {
+
+	if (id.value !== "")
 		inputMissingMessage[1].style.display = "none";
 });
 
-pw.addEventListener("blur", function(){
-	
-	if(pw.value !== "")
+pw.addEventListener("blur", function() {
+
+	if (pw.value !== "")
 		inputMissingMessage[2].style.display = "none";
 });
 
-phoneNumber.addEventListener("blur", function(){
-	
-	if(phoneNumber.value !== "")
+phoneNumber.addEventListener("blur", function() {
+
+	if (phoneNumber.value !== "")
 		inputMissingMessage[3].style.display = "none";
 });
 
 const duplicateMessage = document.querySelector('li:nth-child(2) span:nth-child(3)');
 // 중복 확인 버튼 누를 시 아이디 중복 검사
-checkDuplicate.addEventListener("click", function () {
-    const memberId = id.value.trim();
+checkDuplicate.addEventListener("click", function() {
+	const memberId = id.value.trim();
 	duplicateMessage.style.display = 'inline';
-    if (!memberId) {
-      duplicateMessage.textContent = "아이디를 입력해주세요.";
-      duplicateMessage.style.color = "red";
-      return;
-    }
-    fetch(`${base}/member/checkIdOk.me?memberId=${encodeURIComponent(memberId)}`, {
-      headers: { "Accept": "application/json" }
-    })
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(data => {
-        if (data.available) {
-          duplicateMessage.textContent = "사용 가능한 아이디입니다.";
-          duplicateMessage.style.color = "green";
-		  idCheck = true;
-        } else {
-          duplicateMessage.textContent = "이미 사용 중인 아이디입니다.";
-          duplicateMessage.style.color = "red";
-		  idCheck = false;
-        }
-      })
-      .catch(() => {
-        duplicateMessage.textContent = "아이디 중복 검사 중 오류가 발생했습니다.";
-        duplicateMessage.style.color = "red";
-		idCheck = false;
-      });
-  });
+	if (!memberId) {
+		duplicateMessage.textContent = "아이디를 입력해주세요.";
+		duplicateMessage.style.color = "red";
+		return;
+	}
+	fetch(`${base}/member/checkIdOk.me?memberId=${encodeURIComponent(memberId)}`, {
+		headers: { "Accept": "application/json" }
+	})
+		.then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+		.then(data => {
+			if (data.available) {
+				duplicateMessage.textContent = "사용 가능한 아이디입니다.";
+				duplicateMessage.style.color = "green";
+				idCheck = true;
+			} else {
+				duplicateMessage.textContent = "이미 사용 중인 아이디입니다.";
+				duplicateMessage.style.color = "red";
+				idCheck = false;
+			}
+		})
+		.catch(() => {
+			duplicateMessage.textContent = "아이디 중복 검사 중 오류가 발생했습니다.";
+			duplicateMessage.style.color = "red";
+			idCheck = false;
+		});
+});
 
 const invalidPwMessage = document.querySelector('li:nth-child(3) span:last-child');
 const pwMismatchMessage = document.querySelector('li:nth-child(4) span');
@@ -257,57 +202,110 @@ rePw.addEventListener("blur", function() {
 	} else {
 		pwMismatchMessage.textContent = "비밀번호가 일치하지 않습니다.";
 		pwMismatchMessage.style.color = "red";
-		pwCheck =false;
+		pwCheck = false;
 	}
 });
 
 // ===== SMS 발송 (임시 인증번호 생성) =====
-let tempCode = "";   // 임시 발급 코드 저장할 변수
 code.disabled = true; // 처음엔 비활성화
+const phoneRegex = /^01[016789]-?\d{3,4}-?\d{4}$/;
+sendCode.addEventListener("click", function() {
+	const phoneNumberChecker = phoneNumber.value.trim();
+	if (phoneNumber == null || !phoneRegex.test(phoneNumberChecker)) {
+		alert("핸드폰 번호를 입력해주세요.");
+		return;
+	}
 
-sendCode.addEventListener("click", function () {
-  const phoneNumberChecker = phoneNumber.value.trim();
-  if (!phoneNumberChecker) {
-    alert("핸드폰 번호를 입력해주세요.");
-    return;
-  }
-
-  // 6자리 난수 생성
-  tempCode = String(Math.floor(100000 + Math.random() * 900000));
-  console.log("임시 인증번호:", tempCode); // 콘솔 확인용
-  code.disabled = false;
-
-  alert("임시 인증번호는 [" + tempCode + "] 입니다.");
+	fetch(`${base}/member/sendSMS.me?memberPhoneNumber=${encodeURIComponent(phoneNumberChecker)}`, {
+		method: "GET",
+		headers: {
+			"Accept": "text/plain",
+			"X-Requested-With": "XMLHttpRequest" // 이걸 추가해야 서버를 다시로드 하지 않고 인증번호를 받을 수 있음
+		}
+	})
+		.then(res => {
+			if (!res.ok) throw new Error("발송 실패: " + res.status);
+			return res.text(); // text 형식으로 받음
+		})
+		.then(msg => {
+			// 서버가 성공적으로 처리했을 때만 실행
+			alert(msg);               // 발송 메시지
+			code.disabled = false;     // 인증번호 입력 활성화
+			authenticate.disabled = false; // 인증 버튼 활성화
+			sendCode.disabled = true;  // 재발송 방지
+		})
+		.catch(err => {
+			// 실패했을 때
+			alert("SMS 발송 중 오류가 발생했습니다.\n" + err);
+			code.disabled = true;      // 입력 비활성화 유지
+			authenticate.disabled = true; // 인증 버튼 비활성화
+			sendCode.disabled = false; // 다시 시도 가능
+		});
 });
 
 // ===== 인증번호 확인 (서버 대신 로컬 비교) =====
-authenticate.addEventListener("click", function () {
-  const codeChecker = code.value.trim();
-  codeMismatchMessage.style.display = 'inline';
-  if (!codeChecker) {
-    codeMismatchMessage.textContent = "인증번호를 입력해주세요.";
-    codeMismatchMessage.style.color = "red";
-    return;
-  }
+authenticate.addEventListener("click", function() {
+	const codeChecker = code.value.trim();
+	codeMismatchMessage.style.display = 'inline';
+	if (!codeChecker) {
+		codeMismatchMessage.textContent = "인증번호를 입력해주세요.";
+		codeMismatchMessage.style.color = "red";
+		return;
+	}
 
-  if (codeChecker === tempCode) {
-    codeMismatchMessage.textContent = "인증에 성공했습니다.";
-    codeMismatchMessage.style.color = "green";
-    code.dataset.verified = "true";
-	code.disabled = true;
-	/*phoneNumber.disabled = true;*/
-	authenticate.style.display = "none";
-	sendCode.style.display = "none";
-	phoneCheck = true;
-  } else {
-    codeMismatchMessage.textContent = "인증번호가 일치하지 않습니다.";
-    codeMismatchMessage.style.color = "red";
-    code.dataset.verified = "false";
-	phoneCheck = false;
-  }
+	fetch(`${base}/member/checkSMS.me?verificationCode=${encodeURIComponent(codeChecker)}`, {
+		headers: { "Accept": "text/plain", "X-Requested-With": "XMLHttpRequest"} 
+		}).then(res => {
+			    if (!res.ok) throw new Error("발송 실패: " + res.status);
+			    return res.text(); // text 형식으로 받음
+		})
+		.then(msg => {
+			if (msg.includes("성공")) {
+				codeMismatchMessage.textContent = "인증에 성공했습니다.";
+				codeMismatchMessage.style.color = "green";
+				code.dataset.verified = "true";
+				code.readonly = true;
+				authenticate.style.display = "none";
+				sendCode.style.display = "none";
+				phoneCheck = true;
+			} else {
+				codeMismatchMessage.textContent = "인증번호가 일치하지 않습니다.";
+				codeMismatchMessage.style.color = "red";
+				code.dataset.verified = "false";
+				phoneCheck = false;
+			}
+		})
+		.catch(() => {
+			duplicateMessage.textContent = "요청 중 오류가 발생했습니다.";
+			duplicateMessage.style.color = "red";
+		});
 });
 
+// 이메일 유효성 검사
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+email.addEventListener('blur', function() {
 
+	const value = email.value.trim();
+
+	if (value === "") {
+		inputMissingMessage[4].style.display = "inline";
+		return;
+	}
+
+	if (emailRegex.test(value)) {
+		invalidEmail.style.display = "inline";
+		invalidEmail.textContent = "사용 가능한 이메일입니다.";
+		invalidEmail.style.color = "green";
+		emailCheck = true;
+	} else {
+		invalidEmail.style.display = "inline";
+		invalidEmail.textContent = "유효한 이메일 주소를 입력해주세요.";
+		invalidEmail.style.color = "red";
+		emailCheck = false;
+	}
+
+
+});
 
 // 우편번호 버튼 누를 시 우편번호 검색
 postalButton.addEventListener('click', function() {
@@ -328,27 +326,7 @@ postalButton.addEventListener('click', function() {
 					extra += (extra ? ", " : "") + data.buildingName;
 				}
 			}
-
-			/*			var main = base + (extra ? " (" + extra + ")" : "");
-						document.getElementById("mainAddress").value = main;
-			
-						// 3) 상세주소 포커스
-						document.getElementById("detailAddress").focus();*/
 		}
 	}).open({ popupTitle: "우편번호 검색" });
 });
-
-// 우편번호가 입력될 경우 상세 주소 입력 가능 
-/*postalCode.addEventListener('input', function() {
-	if (postalCode.value != "") {
-		detailAddress.style.placeholder = "상세 주소 입력"
-		detailAddress.readonly = false;
-		detailAddress.style.pointerEvents = "auto";
-	}
-	if (postalCode.value === "") {
-		detailAddress.style.placeholder = undefined;
-		detailAddress.readonly = true;
-		detailAddress.style.pointerEvents = "none";
-	}
-});*/
 
