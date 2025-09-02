@@ -56,7 +56,7 @@
                 <div class="team-bar">
                     <div class="team-bar-text">팀 선택</div>
                     <div class="team-bar-logo-container">
-                        <c:set var="teamList" value="doosan,lg,HH,SS,ssg,kt,nc,LT,kia,WO" />
+                        <c:set var="teamList" value="doosan,lg,hanwha,samsung,ssg,kt,nc,lotte,kia,kiwoom" />
                         <c:forEach var="teamName" items="${fn:split(teamList, ',')}">
                             <div class="team-bar-logo">
                                 <a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=allProduct&action=list&team=${teamName}">

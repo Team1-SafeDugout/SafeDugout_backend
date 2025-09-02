@@ -23,7 +23,7 @@ public class DeleteOkController {
 	        int sellPostNumber = Integer.parseInt(request.getParameter("sellPostNumber"));
 
 	        // 첨부파일 조회 (서버 파일 삭제용)
-	        List<AttachmentDTO> attachments = attachmentDAO.select(sellPostNumber);
+	        List<AttachmentDTO> attachments = attachmentDAO.selectBySellPost(sellPostNumber);
 	        for (AttachmentDTO attachment : attachments) {
 	            File file = new File(request.getSession().getServletContext().getRealPath("/") + attachment.getAttachmentPath());
 	            if (file.exists()) {
@@ -32,11 +32,11 @@ public class DeleteOkController {
 	            }
 	        }
 
-	        // 판매글 삭제 (DB에서 첨부파일, 매핑 자동 삭제)
+	        // 판매글 삭제 (DB에서 첨부파일 자동 삭제)
 	        sellPostDAO.delete(sellPostNumber);
 	        System.out.println("판매글 삭제 완료: " + sellPostNumber);
 
-	        result.setPath("/trade/tradeDetail.jsp");
+	        result.setPath("/trade/tradeMain.tr");
 	        result.setRedirect(true);
 
 	    } catch (NumberFormatException e) {
