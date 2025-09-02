@@ -97,10 +97,9 @@
 	<!-- 팀 순위 목록 조회 -->
 	<select id="selectTeamRank" resultType="TeamMainDTO">
 	<![CDATA[
-		select r.team_rank, t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate
-		from tbl_team_record r join tbl_team t on r.team_number = t.team_number
-		where season_year = to_number(to_char(sysdate, 'YYYY'))
-		order by r.team_win_rate desc
+		select r.team_rank, t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate, r.team_gb
+		from tbl_team_ranking r join tbl_team t on r.team_number = t.team_number
+		order by r.team_rank
 	]]>
 	</select>
 
