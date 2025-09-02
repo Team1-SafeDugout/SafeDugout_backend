@@ -40,7 +40,7 @@ fileInput.addEventListener('change', (event) => {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
             <div class="show-img-box">
-                <img src="${src}" alt="${file.name}">
+                <img width = 300px height = 300px src="${src}" alt="${file.name}">
             </div>
             <div class="btn-box">
                 <button type='button' class='img-cancel-btn' data-name='${file.name}'>삭제</button>

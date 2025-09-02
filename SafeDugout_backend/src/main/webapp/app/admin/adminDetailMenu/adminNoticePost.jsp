@@ -36,6 +36,7 @@
         <div class="post-content-container">
           <div> 내용 </div>
           <div class="post-content">
+          	<img width = 100% height = 500px src= "${pageContext.request.contextPath}" + "${mainNotice.attachmentPath}" + "${mainNotice.attachmentName}">
             <c:out value= "${mainNotice.getNoticePostContent()}" />
           </div>
         </div>

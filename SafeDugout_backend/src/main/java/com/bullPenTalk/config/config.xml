@@ -20,6 +20,8 @@
 	</typeAliases> 
 	-->
 	<typeAliases>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminTradeListDTO" alias="AdminTradeListDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminSellPostDTO" alias="AdminSellPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PointPaymentDTO" alias="PointPaymentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PaymentDTO" alias="PaymentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
@@ -46,7 +48,6 @@
 		<typeAlias type="com.bullPenTalk.app.dto.MyPageTradeListDTO" alias="MyPageTradeListDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NewsPostDTO" alias="NewsPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NewsDetailDTO" alias="NewsDetailDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.NoticeAttachmentDTO" alias="NoticeAttachmentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NoticePostDTO" alias="NoticePostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.TeamNoticeDetailDTO" alias="TeamNoticeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NoticeTypeDTO" alias="NoticeTypeDTO"></typeAlias>
