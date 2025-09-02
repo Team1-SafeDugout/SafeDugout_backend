@@ -85,7 +85,7 @@
               <li class="rank-table-teamlist-team-list rank-li-draw"><c:out value="${rankRow.teamDraw}"/></li>
               <li class="rank-table-teamlist-team-list rank-li-loss"><c:out value="${rankRow.teamLose}"/></li>
               <li class="rank-table-teamlist-team-list rank-li-winRate"><c:out value="${rankRow.teamWinRate}"/></li>
-              <li class="rank-table-teamlist-team-list rank-li-winloss"><c:out value="${rankRow.teamWinLoss}"/></li>
+              <li class="rank-table-teamlist-team-list rank-li-winloss"><c:out value="${rankRow.teamGB}"/></li>
             </div>
           </c:forEach>
           </div>
