@@ -28,52 +28,117 @@ public class MainOkController implements Execute {
 
 		// 팀 순위 조회
 		List<MainDTO> rankList = mainDAO.selectTeamRank();
-		request.setAttribute("rankList", rankList);
 
 		// 경기 일정 목록 조회
 		List<MainDTO> schedule = mainDAO.selectSchedule();
+
+		// 일정표와 순위표에서 반복문과 switch문을 통해 팀명이 한글로 출력되도록 변환 
+		for(MainDTO scheduleRow : schedule) {
+			switch (scheduleRow.getHomeTeamName()) {
+			case "doosan":
+				scheduleRow.setHomeTeamName("두산");
+				break;
+			case "lg":
+				scheduleRow.setHomeTeamName("LG");
+				break;
+			case "hanwha":
+				scheduleRow.setHomeTeamName("한화");
+				break;
+			case "samsung":
+				scheduleRow.setHomeTeamName("삼성");
+				break;
+			case "ssg":
+				scheduleRow.setHomeTeamName("SSG");
+				break;
+			case "kt":
+				scheduleRow.setHomeTeamName("KT");
+				break;
+			case "nc":
+				scheduleRow.setHomeTeamName("NC");
+				break;
+			case "lotte":
+				scheduleRow.setHomeTeamName("롯데");
+				break;
+			case "kia":
+				scheduleRow.setHomeTeamName("KIA");
+				break;
+			case "kiwoom":
+				scheduleRow.setHomeTeamName("키움");
+				break;
+			}
+			switch (scheduleRow.getAwayTeamName()) {
+			case "doosan":
+				scheduleRow.setAwayTeamName("두산");
+				break;
+			case "lg":
+				scheduleRow.setAwayTeamName("LG");
+				break;
+			case "hanwha":
+				scheduleRow.setAwayTeamName("한화");
+				break;
+			case "samsung":
+				scheduleRow.setAwayTeamName("삼성");
+				break;
+			case "ssg":
+				scheduleRow.setAwayTeamName("SSG");
+				break;
+			case "kt":
+				scheduleRow.setAwayTeamName("KT");
+				break;
+			case "nc":
+				scheduleRow.setAwayTeamName("NC");
+				break;
+			case "lotte":
+				scheduleRow.setAwayTeamName("롯데");
+				break;
+			case "kia":
+				scheduleRow.setAwayTeamName("KIA");
+				break;
+			case "kiwoom":
+				scheduleRow.setAwayTeamName("키움");
+				break;
+			}
+		}
+		for(MainDTO rankRow : rankList) {
+			switch (rankRow.getTeamName()) {
+			case "doosan":
+				rankRow.setTeamName("두산");
+				break;
+			case "lg":
+				rankRow.setTeamName("LG");
+				break;
+			case "hanwha":
+				rankRow.setTeamName("한화");
+				break;
+			case "samsung":
+				rankRow.setTeamName("삼성");
+				break;
+			case "ssg":
+				rankRow.setTeamName("SSG");
+				break;
+			case "kt":
+				rankRow.setTeamName("KT");
+				break;
+			case "nc":
+				rankRow.setTeamName("NC");
+				break;
+			case "lotte":
+				rankRow.setTeamName("롯데");
+				break;
+			case "kia":
+				rankRow.setTeamName("KIA");
+				break;
+			case "kiwoom":
+				rankRow.setTeamName("키움");
+				break;
+			}
+		}
+		
+		//일정표 목록과 순위표 목록 대입 
+		request.setAttribute("rankList", rankList);
 		request.setAttribute("schedule", schedule);
 		System.out.println("경기 일정 목록 대입");
 		System.out.println(schedule);
-
-		// 순위표와 일정표에서 반복문과 switch문을 통해 팀명이 한글로 출력되도록 변환 
-		for(MainDTO rankRow : rankList) {
-			
-		}
-		for(MainDTO scheduleRow : schedule) {
-			switch (scheduleRow.getTeamName()) {
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "lg":
-				scheduleRow.setTeamName("LG");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			case "doosan":
-				scheduleRow.setTeamName("두산");
-			}
-		}
-//		 * 1 : doosan -> 두산 
-//		 * 2 : lg -> LG
-//		 * 3 : hanwha -> 한화 
-//		 * 4 : samsung -> 삼성
-//		 * 5 : ssg -> SSG
-//		 * 6 : kt -> KT
-//		 * 7 : nc -> NC
-//		 * 8 : lotte -> 롯데
-//		 * 9 : kia -> KIA
-//		 * 10 : kiwoom -> 키움
 		
 		// 판매글 목록 조회
 		List<MainDTO> sellList = mainDAO.selectSellList();
