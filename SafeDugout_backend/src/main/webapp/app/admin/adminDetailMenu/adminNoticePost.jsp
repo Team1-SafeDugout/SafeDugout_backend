@@ -17,11 +17,10 @@
     <section class="section-background">
       <!-- 상단 버튼 -->
       <section class="section-top-buttons">
-        <form action="" method="get">
-          <button class="post-button" type="button"
-            onclick="location.href = '${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad'"> 수정 </button>
+        <form action="" method="get">    
+          <button class="post-button" type="button" > 수정 </button>
           <button class="post-button" type="button" id="delete-button"> 삭제 </button>
-        </form>
+        </form>        
       </section>
 
       <!-- 본문 공간 -->
@@ -36,7 +35,12 @@
         <div class="post-content-container">
           <div> 내용 </div>
           <div class="post-content">
-          	<img width = 100% height = 500px src= "${pageContext.request.contextPath}" + "${mainNotice.attachmentPath}" + "${mainNotice.attachmentName}">
+          	<c:choose>
+				<c:when test = "${!empty mainNotice.attachmentName}">
+					<img width = 100% height = 500px src= "${mainNotice.attachmentPath}${mainNotice.attachmentName}"/>
+				</c:when>
+			</c:choose>	
+          	
             <c:out value= "${mainNotice.getNoticePostContent()}" />
           </div>
         </div>

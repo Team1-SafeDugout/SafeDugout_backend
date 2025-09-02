@@ -137,7 +137,7 @@ public class AdminCreateMainNoticeOkController implements Execute {
 
 			// 파일 정보 DB 저장 후 시퀀스로 생성된 attachmentNumber 받기
 			AttachmentDTO attachmentDTO = new AttachmentDTO();
-			attachmentDTO.setAttachmentPath(uploadPath);
+			attachmentDTO.setAttachmentPath("/upload/" + subPath);
 			attachmentDTO.setAttachmentName(fileOriginalName);
 			attachmentDTO.setAttachmentTypeId(1); // 1 = IMAGE
 			attachmentDTO.setNoticePostNumber(attachmentDAO.getNoticePostNumber());
