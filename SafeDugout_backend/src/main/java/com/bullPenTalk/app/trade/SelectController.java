@@ -26,9 +26,29 @@ public class SelectController {
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
 		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
 
+		
+		String teamParam = request.getParameter("category"); // JSP에서 넘어온 문자열
+		int teamId = 0; // 기본값
+
+		switch(teamParam) {
+		    case "doosan": teamId = 1; break;
+		    case "lg": teamId = 2; break;
+		    case "hanwha": teamId = 3; break;
+		    case "samsung": teamId = 4; break;
+		    case "ssg": teamId = 5; break;
+		    case "kt" : teamId = 6; break;
+		    case "nc" : teamId =7; break;
+		    case "lotte": teamId = 8; break;
+		    case "kia" : teamId = 9; break;
+		    case "kiwoom" : teamId = 10; break; 
+		}
+		
 		Map<String,  Object> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		pageMap.put("categoryId", action);  
+		pageMap.put("teamId", teamId);
+		
 		// 판매글 목록 조회
 		List<SellPostDTO> sellPostList = sellPostDAO.selectListTeam(pageMap);
 		request.setAttribute("sellPostList", sellPostList);
@@ -83,13 +103,44 @@ public class SelectController {
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
 		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
 
+		
+		String teamParam = request.getParameter("category"); 
+		int teamId = 0; // 기본값
+
+		switch(teamParam) {
+		    case "doosan": teamId = 1; break;
+		    case "lg": teamId = 2; break;
+		    case "hanwha": teamId = 3; break;
+		    case "samsung": teamId = 4; break;
+		    case "ssg": teamId = 5; break;
+		    case "kt" : teamId = 6; break;
+		    case "nc" : teamId =7; break;
+		    case "lotte": teamId = 8; break;
+		    case "kia" : teamId = 9; break;
+		    case "kiwoom" : teamId = 10; break; 
+		}
+		
+		
+		String catParam = request.getParameter("action"); 
+		int categoryId = 0;
+		switch(catParam) {
+		    case "uniformList": categoryId = 1; break;
+		    case "capList": categoryId = 2; break;
+		    case "apparelList" : categoryId = 3; break;
+		    case "accessoriesList" : categoryId = 4; break;
+		    case "cheeringitemList" :  categoryId = 5; break;
+		    case "baseballgearList" : categoryId =6; break;
+		}
+		
+		
 		Map<String, Object> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
-		pageMap.put("category", request.getParameter("category"));
-		pageMap.put("action", request.getParameter("action"));
+		pageMap.put("categoryId", categoryId);  
+		pageMap.put("teamId", teamId);
+		
 		// 판매글 목록 조회
-		List<SellPostDTO> sellPostList = sellPostDAO.selectListTeam(pageMap);
+		List<SellPostDTO> sellPostList = sellPostDAO.selectListTeamCategory(pageMap);
 		request.setAttribute("sellPostList", sellPostList);
 		System.out.println("판매글 진입");
 		// 페이징 정보 설정
@@ -203,10 +254,22 @@ public class SelectController {
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
 		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
 
+		String catParam = request.getParameter("action"); 
+		int categoryId = 0;
+		switch(catParam) {
+		    case "uniformList": categoryId = 1; break;
+		    case "capList": categoryId = 2; break;
+		    case "apparelList" : categoryId = 3; break;
+		    case "accessoriesList" : categoryId = 4; break;
+		    case "cheeringitemList" :  categoryId = 5; break;
+		    case "baseballgearList" : categoryId =6; break;
+		}
+		
+		
 		Map<String, Object> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
-		pageMap.put("category", request.getParameter("category"));
+		pageMap.put("categoryId", categoryId);  
 		
 		// 판매글 목록 조회
 		List<SellPostDTO> sellPostList = sellPostDAO.selectListCategory(pageMap);
@@ -250,54 +313,54 @@ public class SelectController {
 	}
 	
 	
-	// 검색결과
 	public Result search(String action, HttpServletRequest request, HttpServletResponse response) {
-	    System.out.println("search 메소드 진입");
 	    SellPostDAO sellPostDAO = new SellPostDAO();
 	    Result result = new Result();
 
-	    String temp = request.getParameter("page");
-	    int page = (temp == null) ? 1 : Integer.valueOf(temp); 
-	    int rowCount = 8; 
-	    int pageCount = 5; 
+	    System.out.println("search 메소드 진입");
+	    
+	    int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	    int rowCount = 8;
+	    int pageCount = 5;
 
-	    int startRow = (page - 1) * rowCount + 1; 
-	    int endRow = startRow + rowCount - 1; 
+	    int startRow = (page - 1) * rowCount + 1;
+	    int endRow = startRow + rowCount - 1;
 
 	    String searchWord = request.getParameter("searchWord");
-	    if(searchWord == null) {
-	        searchWord = "";
-	    }
+	    if(searchWord == null) searchWord = "";
 
+	    // DAO 호출용 Map
 	    Map<String, Object> pageMap = new HashMap<>();
 	    pageMap.put("startRow", startRow);
 	    pageMap.put("endRow", endRow);
-	    pageMap.put("searchWord", searchWord);
+	    pageMap.put("keyword", searchWord);
+
+	    System.out.println("keyword: " + searchWord);
 
 	    List<SellPostDTO> tradePostList = sellPostDAO.searchList(pageMap);
-	    request.setAttribute("tradePostList", tradePostList);
+	    request.setAttribute("sellPostList", tradePostList);
 	    request.setAttribute("searchWord", searchWord);
 
+	    // 페이징 계산
 	    int total = sellPostDAO.getTotalSearch(searchWord);
-	    int realEndPage = (int) Math.ceil(total / (double) rowCount);
-	    int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount);
+	    int realEndPage = (int)Math.ceil(total / (double)rowCount);
+	    int endPage = (int)(Math.ceil(page / (double)pageCount) * pageCount);
 	    int startPage = endPage - (pageCount - 1);
 	    endPage = Math.min(endPage, realEndPage);
-
-	    boolean prev = startPage > 1;
-	    boolean next = endPage < realEndPage;
 
 	    request.setAttribute("page", page);
 	    request.setAttribute("startPage", startPage);
 	    request.setAttribute("endPage", endPage);
-	    request.setAttribute("prev", prev);
-	    request.setAttribute("next", next);
+	    request.setAttribute("prev", startPage > 1);
+	    request.setAttribute("next", endPage < realEndPage);
 	    request.setAttribute("total", total);
+	    
 
 	    result.setPath("/app/trade/tradeSearchResult.jsp");
 	    result.setRedirect(false);
 	    return result;
 	}
+
 
 
 }

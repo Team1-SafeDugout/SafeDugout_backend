@@ -77,7 +77,7 @@
 	          ON SP.SELL_POST_NUMBER = AT.SELL_POST_NUMBER
 	        WHERE SP.STATUS_ID = 1
 	          AND SP.TEAM_ID = #{teamId}
-	          AND SP.CATEGORY_ID = #{categoryName}
+	          AND SP.CATEGORY_ID = #{categoryId}
 	        ORDER BY SP.SELL_POST_NUMBER DESC
 	    ) subquery
 	)
@@ -125,7 +125,7 @@
 		INSERT INTO TBL_SELL_POST(SELL_POST_NUMBER, MEMBER_NUMBER, STATUS_ID, CATEGORY_ID, DEALTYPE_ID, PRICE_POINT,
 		SELL_POST_TITLE, TRADING_AREA, SELL_POST_CREATION_DATE, SELL_POST_CONTENT, TEAM_ID)
 		VALUES(#{sellPostNumber}, #{memberNumber}, #{statusId}, #{categoryId}, #{dealtypeId}, #{pricePoint},
-				#{sellPostTitle}, #{tradingArea}, #{sellPostCreationDate}, #{sellPostContent}, #{teamId})
+				#{sellPostTitle}, #{tradingArea}, sysdate, #{sellPostContent}, <if test="teamId != null">#{teamId}</if> <if test="teamId == null">NULL</if>)
 	</insert>
 	
 	<!-- 판매글 상세조회 -->
@@ -174,6 +174,15 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(sell_post_number)
 		FROM tbl_sell_post
+	</select>
+	
+	<!-- 팀 카테고리 총 갯수 -->
+	<select id="getTotalByTeamCategory" parameterType="map" resultType="int">
+    SELECT COUNT(*)
+    FROM TBL_SELL_POST
+    WHERE STATUS_ID = 0
+      AND TEAM_ID = #{teamId}
+      AND CATEGORY_ID = #{categoryId}
 	</select>
 	
 	<!-- 거래중 탭에 존재하는지 확인 -->
