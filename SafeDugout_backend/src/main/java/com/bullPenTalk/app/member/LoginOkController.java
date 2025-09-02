@@ -57,7 +57,7 @@ public class LoginOkController implements Execute{
 			path = "/member/login.me?login=fail";
 		}
 		
-		result.setRedirect(true); //세션에 저장된 값은 유지
+		result.setRedirect(false); //세션에 저장된 값은 유지
 		result.setPath(path);
 		return result;
 	}
