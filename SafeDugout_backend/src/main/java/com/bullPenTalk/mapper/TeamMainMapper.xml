@@ -29,7 +29,7 @@
 	FROM (
 	    SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
-	        SELECT P.POST_TITLE
+	        SELECT P.POST_TITLE as news_post_title
 	        FROM TBL_POST P
 	        WHERE BOARD_ID = 3
 	          AND TEAM_NUMBER = #{teamNumber}
@@ -72,8 +72,7 @@
 	        SELECT A.ATTACHMENT_PATH,
 	        	   P.POST_LINK
 	        FROM TBL_POST P
-	        JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER
-	        JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
+	        JOIN TBL_ATTACHMENT A ON P.POST_NUMBER = A.POST_NUMBER
 	        WHERE P.BOARD_ID = 4
 	          AND P.TEAM_NUMBER = #{teamNumber}
 	        ORDER BY P.POST_DATE DESC
