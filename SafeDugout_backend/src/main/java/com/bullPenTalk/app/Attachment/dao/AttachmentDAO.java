@@ -8,42 +8,59 @@ import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class AttachmentDAO {
-	
-	
-	public SqlSession sqlSession;
-	
-	public AttachmentDAO() {
-		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
-	}
-	
-	//  파일 조회 메소드
-	public List<AttachmentDTO> select(int PostNumber) {
-		return sqlSession.selectList("attachment.selectAttachment", PostNumber);
-	}
-	
-	// 파일 추가 메소드
-	public void insert(AttachmentDTO AttachmentDTO) {
-		System.out.println("파일 DAO - 파일 저장 " + AttachmentDTO);
 
-		try {
-			int result = sqlSession.insert("attachment.insertAttachment", AttachmentDTO);
-			System.out.println("파일 저장 완료 - DB에 저장된 행의 개수 : " + result);
+    private SqlSession sqlSession;
 
-			// db에 파일이 제대로 저장되었는지 확인
-			List<AttachmentDTO> uploadFile = select(AttachmentDTO.getAttachmentNumber());
-			System.out.println("db에서 자겨온 파일 : " + uploadFile);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("파일 저장이 실패되었습니다. : " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-	
-	
-	// 파일 삭제 메소드
-	public void delete(int boardNumber) {
-		sqlSession.delete("attachment.delete", boardNumber);
-	}
+    public AttachmentDAO() {
+        sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true); // auto commit
+    }
 
+    // 조회
+    // 게시글 첨부파일 조회
+    public List<AttachmentDTO> selectByPost(int postNumber) {
+        return sqlSession.selectList("attachment.selectAttachment", postNumber);
+    }
 
+    // 판매글 첨부파일 조회
+    public List<AttachmentDTO> selectBySellPost(int sellPostNumber) {
+        return sqlSession.selectList("attachment.selectAttachmentBySellPost", sellPostNumber);
+    }
+
+    // 공지사항 첨부파일 조회
+    public List<AttachmentDTO> selectByNoticePost(int noticePostNumber) {
+        return sqlSession.selectList("attachment.selectNoticeAttachment", noticePostNumber);
+    }
+
+    // 추가
+    public void insert(AttachmentDTO attachmentDTO) {
+        try {
+            int result = sqlSession.insert("attachment.insertAttachment", attachmentDTO);
+            System.out.println("AttachmentDAO - insert 완료: " + result);
+            System.out.println("생성된 attachmentNumber: " + attachmentDTO.getAttachmentNumber());
+        } catch (Exception e) {
+            System.out.println("AttachmentDAO - insert 실패: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // 삭제
+    // 게시글 첨부파일 삭제
+    public void deleteByPost(int postNumber) {
+        sqlSession.delete("attachment.deletePost", postNumber);
+    }
+
+    // 판매글 첨부파일 삭제
+    public void deleteBySellPost(int sellPostNumber) {
+        sqlSession.delete("attachment.deleteSellPost", sellPostNumber);
+    }
+
+    // 공지사항 첨부파일 삭제
+    public void deleteByNoticePost(int noticePostNumber) {
+        sqlSession.delete("attachment.deleteNoticePost", noticePostNumber);
+    }
+
+    // 개별 파일 삭제
+    public void deleteByAttachmentNumber(int attachmentNumber) {
+        sqlSession.delete("attachment.deleteAttachment", attachmentNumber);
+    }
 }

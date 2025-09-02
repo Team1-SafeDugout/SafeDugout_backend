@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
-import com.bullPenTalk.app.Attachment.dao.SellPostAttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
-import com.bullPenTalk.app.dto.SellPostAttachmentDTO;
 import com.bullPenTalk.app.dto.SellPostDTO;
 import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
 import com.oreilly.servlet.MultipartRequest;
@@ -25,7 +23,6 @@ public class WriteControllerOk {
 		SellPostDTO sellPostDTO = new SellPostDTO();
 		Result result = new Result();
 		AttachmentDAO attachmentDAO = new AttachmentDAO();
-		SellPostAttachmentDAO sellPostAttachmentDAO = new SellPostAttachmentDAO();
 
 		System.out.println("Write 컨트롤러 진입");
 		// 로그인 한 회원 정보 가져오기
@@ -97,39 +94,23 @@ public class WriteControllerOk {
 			Enumeration<String> fileNames = multipartRequest.getFileNames();
 
 			while (fileNames.hasMoreElements()) {
-				
-				String name = fileNames.nextElement();
+			    String name = fileNames.nextElement();
+			    String fileSystemName = multipartRequest.getFilesystemName(name);
+			    String fileOriginalName = multipartRequest.getOriginalFileName(name);
 
-				// 서버에 저장된 파일명
-				String fileSystemName = multipartRequest.getFilesystemName(name);
-				// 업로드한 원본 파일명
-				String fileOriginalName = multipartRequest.getOriginalFileName(name);
+			    if (fileSystemName == null) continue;
 
-				if (fileSystemName == null) {
-					continue; // 업로드 안된 필드는 무시
-				}
+			    AttachmentDTO attachmentDTO = new AttachmentDTO();
+			    attachmentDTO.setAttachmentPath(subPath + fileSystemName);
+			    attachmentDTO.setAttachmentName(fileOriginalName);
+			    attachmentDTO.setAttachmentTypeId(1);
+			    attachmentDTO.setSellPostNumber(sellPostNumber); // 반드시 insert 전에 세팅
 
-				// 파일 정보 DB 저장 후 시퀀스로 생성된 attachmentNumber 받기
-				AttachmentDTO attachmentDTO = new AttachmentDTO();
-				attachmentDTO.setAttachmentPath(subPath + fileSystemName); // 실제 서버 저장 파일명
-				attachmentDTO.setAttachmentName(fileOriginalName); // 사용자가 업로드한 원본 이름
-				attachmentDTO.setAttachmentTypeId(1); // 1 = 이미지
-				attachmentDAO.insert(attachmentDTO); // insert
-				
-				
-				int attachmentNumber = attachmentDTO.getAttachmentNumber(); // 생성된 번호 가져오기
-
-				// 매핑 DTO 생성
-				SellPostAttachmentDTO sellPostAttachmentDTO = new SellPostAttachmentDTO();
-				sellPostAttachmentDTO.setSellPostNumber(sellPostNumber); // 방금 생성된 판매글 번호
-				sellPostAttachmentDTO.setAttachmentNumber(attachmentNumber); // DB에서 생성된 첨부파일 번호
-
-				// 매핑 테이블에 INSERT
-				sellPostAttachmentDTO.setSellPostNumber(sellPostNumber);
-				sellPostAttachmentDTO.setAttachmentNumber(attachmentNumber);
-				sellPostAttachmentDAO.insert(sellPostAttachmentDTO);
-
+			    // DB에 insert
+			    attachmentDAO.insert(attachmentDTO);
 			}
+
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

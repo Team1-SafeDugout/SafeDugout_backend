@@ -6,14 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.Attachment.dao.SellPostAttachmentDAO;
+import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.SellPostDetailDTO;
 import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
 
 public class DetailControllerOK {
 
-	public Result detailselect(String action, HttpServletRequest request, HttpServletResponse response) {
+	public Result detailselect(String action, String category, HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
 
 		// sellPostNumber가 빈 문자열이거나 null인경우
@@ -35,7 +35,7 @@ public class DetailControllerOK {
         }
 		
 		SellPostDAO sellPostDAO = new SellPostDAO();
-		SellPostAttachmentDAO sellPostattachmentDAO = new SellPostAttachmentDAO();
+		AttachmentDAO AttachmentDAO = new AttachmentDAO();
 
 		// DB에서 게시글 가져오기
 		SellPostDetailDTO sellPostDetailDTO = sellPostDAO.selectDetail(sellPostNumber);
@@ -49,7 +49,7 @@ public class DetailControllerOK {
 		}
 
 		 //첨부파일 가져오기
-		List<AttachmentDTO> files = sellPostattachmentDAO.select(sellPostNumber);
+		List<AttachmentDTO> files = AttachmentDAO.selectBySellPost(sellPostNumber);
 		System.out.println("======파일 확인======");
 		System.out.println(files);
 		System.out.println("===================");

@@ -16,9 +16,23 @@ public class AttachmentDTO {
 	private int attachmentTypeId; // 첨부파일 종류 번호 
 	private String attachmentName; // 첨부파일 이름
 	private String attachmentPath; // 첨부파일 경로
-	private int sellPostNumber; // 매핑용
+	private int sellPostNumber; 
+	private int postNumber;
+	private int noticePostNumber;
 	
 	// get, set
+	public int getPostNumber() {
+		return postNumber;
+	}
+	public void setPostNumber(int postNumber) {
+		this.postNumber = postNumber;
+	}
+	public int getNoticePostNumber() {
+		return noticePostNumber;
+	}
+	public void setNoticePostNumber(int noticePostNumber) {
+		this.noticePostNumber = noticePostNumber;
+	}
 	public int getSellPostNumber() {
 		return sellPostNumber;
 	}
@@ -50,12 +64,15 @@ public class AttachmentDTO {
 		this.attachmentPath = attachmentPath;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
 		return "AttachmentDTO [attachmentNumber=" + attachmentNumber + ", attachmentTypeId=" + attachmentTypeId
-				+ ", attachmentName=" + attachmentName + ", attachmentSize=" + ", attachmentPath="
-				+ attachmentPath + "]";
-	} 
+				+ ", attachmentName=" + attachmentName + ", attachmentPath=" + attachmentPath + ", sellPostNumber="
+				+ sellPostNumber + ", postNumber=" + postNumber + ", noticePostNumber=" + noticePostNumber + "]";
+	}
+	
+
 	
 	
 
