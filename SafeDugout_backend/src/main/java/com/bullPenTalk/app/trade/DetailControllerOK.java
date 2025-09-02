@@ -13,7 +13,7 @@ import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
 
 public class DetailControllerOK {
 
-	public Result detailselect(String action, HttpServletRequest request, HttpServletResponse response) {
+	public Result detailselect(String action, String category, HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
 
 		// sellPostNumber가 빈 문자열이거나 null인경우

@@ -36,36 +36,46 @@
             <aside>
                 <div class="aside-container">
                     <div class="aside-text">상품 카테고리</div>
-                    <ul>
-                        <c:set var="selectedTeam" value="${param.team != null ? param.team : 'allProduct'}" />
-
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=list">모든 상품 유형</a></li>
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=uniformList">유니폼</a></li>
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=capList">모자</a></li>
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=apparelList">의류</a></li>
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=accessoriesList">잡화</a></li>
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=cheeringitemList">응원용품</a></li>
-                        <li><a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=${selectedTeam}&action=baseballgearList">야구용품</a></li>
-                    </ul>
+					<form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">					    
+					    <input type="hidden" name="category" value="${param.category != null ? param.category : 'all'}">
+					
+					    <c:set var="categories" value="list,uniformList,capList,apparelList,accessoriesList,cheeringitemList,baseballgearList" />
+					    <c:forEach var="cat" items="${fn:split(categories, ',')}">
+					        <button type="submit" name="action" value="${cat}" class="category-btn ${param.category == cat ? 'active' : ''}">
+					            <c:choose>
+					                <c:when test="${cat == 'list'}">모든 상품 유형</c:when>
+					                <c:when test="${cat == 'uniformList'}">유니폼</c:when>
+					                <c:when test="${cat == 'capList'}">모자</c:when>
+					                <c:when test="${cat == 'apparelList'}">의류</c:when>
+					                <c:when test="${cat == 'accessoriesList'}">잡화</c:when>
+					                <c:when test="${cat == 'cheeringitemList'}">응원용품</c:when>
+					                <c:when test="${cat == 'baseballgearList'}">야구용품</c:when>
+					            </c:choose>
+					        </button>
+					    </c:forEach>
+					</form>
                 </div>
             </aside>
 
             <!-- 우측 메인 영역 -->
             <section class="section-container">
                 <!-- 팀 로고 바 -->
-                <div class="team-bar">
-                    <div class="team-bar-text">팀 선택</div>
-                    <div class="team-bar-logo-container">
-                        <c:set var="teamList" value="doosan,lg,hanwha,samsung,ssg,kt,nc,lotte,kia,kiwoom" />
-                        <c:forEach var="teamName" items="${fn:split(teamList, ',')}">
-                            <div class="team-bar-logo">
-                                <a href="${pageContext.request.contextPath}/trade/tradeFrontController2.tr?category=allProduct&action=list&team=${teamName}">
-                                    <img src="${pageContext.request.contextPath}/assets/img/communityImg/${teamName}.png" alt="${teamName}" title="${teamName}">
-                                </a>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
+				<form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">				   
+				    <input type="hidden" name="action" value="list">
+				
+				    <div class="team-bar">
+				        <div class="team-bar-text">팀 선택</div>
+				        <div class="team-bar-logo-container">
+				            <c:set var="teamList" value="doosan,lg,hanwha,samsung,ssg,kt,nc,lotte,kia,kiwoom" />
+				            <c:forEach var="teamName" items="${fn:split(teamList, ',')}">
+				                <button type="submit" name="category" value="${teamName}" class="team-bar-logo-btn">
+				                    <img src="${pageContext.request.contextPath}/assets/img/communityImg/${teamName}.png"
+				                         alt="${teamName}" title="${teamName}">
+				                </button>
+				            </c:forEach>
+				        </div>
+				    </div>
+				</form>
                 
 
                 <!-- 검색 결과 & 페이지네이션 -->

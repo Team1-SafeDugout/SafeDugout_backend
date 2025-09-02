@@ -11,7 +11,7 @@ import com.bullPenTalk.app.Result;
 public class Search implements TradeService{
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
+	public void execute(String action, String category, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("search 진입");
 		System.out.println("action값: "+ action);

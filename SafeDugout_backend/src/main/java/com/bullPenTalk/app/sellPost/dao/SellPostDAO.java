@@ -19,7 +19,7 @@ public class SellPostDAO {
 		
 	
 	// 모든 판매글 가져오기
-	public List<SellPostDTO> selectList(Map<String, Integer> pageMap) {
+	public List<SellPostDTO> selectList(Map<String, Object> pageMap) {
 		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
 		List<SellPostDTO> list = sqlSession.selectList("sell.selectList", pageMap);
 		System.out.println("조회결과 : " + list);
@@ -27,7 +27,7 @@ public class SellPostDAO {
 	}
 	
 	// 특정 팀 카테고리 가져오기
-	public List<SellPostDTO> selectListTeam(Map<String, Integer> pageMap) {
+	public List<SellPostDTO> selectListTeam(Map<String, Object> pageMap) {
 		System.out.println("모든 게시글 조회하기 - selectListTeam 메소드 실행 : " + pageMap);
 		List<SellPostDTO> list = sqlSession.selectList("sell.selectListTeam", pageMap);
 		System.out.println("조회결과 : " + list);
@@ -35,7 +35,7 @@ public class SellPostDAO {
 	}
 	
 	// 특정 팀의 상품 카테고리 가져오기
-	public List<SellPostDTO> selectListTeamCategory(Map<String, Integer> pageMap) {
+	public List<SellPostDTO> selectListTeamCategory(Map<String, Object> pageMap) {
 		System.out.println("모든 게시글 조회하기 - selectListTeam 메소드 실행 : " + pageMap);
 		List<SellPostDTO> list = sqlSession.selectList("sell.selectListTeamCategory", pageMap);
 		System.out.println("조회결과 : " + list);
@@ -44,7 +44,7 @@ public class SellPostDAO {
 		
 	
 	// 특정 카테고리 가져오기
-	public List<SellPostDTO> selectListCategory(Map<String, Integer> pageMap) {
+	public List<SellPostDTO> selectListCategory(Map<String, Object> pageMap) {
 		System.out.println("모든 게시글 조회하기 - selectListCategory 메소드 실행 : " + pageMap);
 		List<SellPostDTO> list = sqlSession.selectList("sell.selectListCategory", pageMap);
 		System.out.println("조회결과 : " + list);

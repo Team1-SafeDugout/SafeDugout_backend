@@ -11,7 +11,7 @@ import com.bullPenTalk.app.Result;
 public class TradeWirte implements TradeService {
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(String action, String category, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Result 객체 생성
 		Result result = new Result();
 		System.out.println("액션: " + action);

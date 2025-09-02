@@ -25,9 +25,6 @@
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminDTO" alias="AdminDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AddressDTO" alias="AddressDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AdminManagementDTO" alias="AdminManagement"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AdminNoticeDTO" alias="AdminNoticeDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AdminPostDTO" alias="AdminPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AttachmentDTO" alias="AttachmentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AttachmentTypeDTO" alias="AttachmentTypeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.BatterRecordDTO" alias="BatterRecordDTO"></typeAlias>
