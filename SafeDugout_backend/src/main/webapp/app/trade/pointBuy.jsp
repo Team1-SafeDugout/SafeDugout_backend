@@ -76,7 +76,7 @@
 					        return;
 					    }					
 					    var IMP = window.IMP;
-					    IMP.init(''); // 테스트 모드용 가맹점 코드
+					    IMP.init('imp81327187'); // 테스트 모드용 가맹점 코드
 					
 					    IMP.request_pay({
 					        pg: 'kakaopay.TC0ONETIME',

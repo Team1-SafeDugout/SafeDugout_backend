@@ -28,6 +28,7 @@ public class AllProduct implements TradeService{
 			result = select.selectAll(action, category, request, response); // 전체 품목 
 			break;
 		case "detail": // 디테일 페이지
+			System.out.println("detail 진입");
 			DetailControllerOK detailController = new DetailControllerOK();
 			result = detailController.detailselect(action, category, request, response);
 			break;
