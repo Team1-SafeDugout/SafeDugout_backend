@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.NewsDetailDTO;
+import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class AdminTeamNewsDAO {
@@ -16,13 +17,13 @@ public class AdminTeamNewsDAO {
 	
 	// 추가
 	
-	public void insert(NewsDetailDTO newsPostDTO) {
+	public void insert(NewsPostDTO newsPostDTO) {
 		sqlSession.insert("adminNews.insert", newsPostDTO);
 	}
 	
 	// 조회(전부)
 	
-	public List<NewsDetailDTO> select() {
+	public List<NewsPostDTO> select() {
 		return sqlSession.selectList("adminNews.selectAll");
 	}
 	
@@ -32,7 +33,7 @@ public class AdminTeamNewsDAO {
 	}
 	
 	// 조회(하나만)
-	public NewsDetailDTO selectDetail(int newsPostNumber) {
+	public NewsPostDTO selectDetail(int newsPostNumber) {
 		return sqlSession.selectOne("adminNews.detailSelect", newsPostNumber);
 	}
 	

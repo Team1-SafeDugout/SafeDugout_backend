@@ -18,7 +18,7 @@ import com.bullPenTalk.app.admin.dao.AdminTeamSongDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
 import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
-import com.bullPenTalk.app.dto.NewsDetailDTO;
+import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.app.dto.SongPostDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -93,7 +93,7 @@ public class AdminCreatePostOkController implements Execute{
 		case "teamnews":
 			System.out.println("뉴스생성");
 			boardNum = 3;
-			NewsDetailDTO newsPost = new NewsDetailDTO();
+			NewsPostDTO newsPost = new NewsPostDTO();
 			AdminTeamNewsDAO newsDAO = new AdminTeamNewsDAO();
 			String journalist = multipartRequest.getParameter("journal-text");
 			String newsUrl = multipartRequest.getParameter("url-text");
@@ -105,7 +105,7 @@ public class AdminCreatePostOkController implements Execute{
 			newsPost.setJournalist(journalist);
 			newsPost.setAdminNumber(adminNumber);
 			newsPost.setPostLink(newsUrl);
-//			newsPost.setAttachmentPath(uploadPath);
+			newsPost.setAttachmentPath(uploadPath);
 			newsPost.setBoardId(boardNum);
 			
 			newsDAO.insert(newsPost);

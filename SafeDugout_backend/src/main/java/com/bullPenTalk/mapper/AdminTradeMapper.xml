@@ -30,42 +30,12 @@
 	]]>
 	</select>
 
-	<!-- 거래중인 글 상세 조회 -->
-<!-- 	<select id="selectSellPostDetail" parameterType="int"
-		resultType="TradePostDTO">
-	<![CDATA[
-	SELECT SP.SELL_POST_NUMBER,
-	       SP.SELL_POST_TITLE,
-	       SP.SELL_POST_CONTENT,
-	       SP.PRICE_POINT,
-	       SP.TRADING_AREA,
-	       SP.SELL_POST_CREATION_DATE,
-	       NVL(SP.SELL_POST_UPDATE, SP.SELL_POST_CREATION_DATE) AS LAST_UPDATE,
-	       M.MEMBER_NUMBER,
-	       M.MEMBER_ID AS Buyer_ID,
-	       TS.STATUS_NAME,
-	       A.ATTACHMENT_NUMBER,
-	       A.ATTACHMENT_NAME,
-	       A.ATTACHMENT_PATH
-	FROM TBL_SELL_POST SP
-	JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
-	JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
-	JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
-	LEFT JOIN TBL_SELL_ATTACHMENT SA ON SP.SELL_POST_NUMBER = SA.SELL_POST_NUMBER
-	LEFT JOIN TBL_ATTACHMENT A ON SA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-	WHERE SP.SELL_POST_NUMBER = #{sellPostNumber} AND TS.STATUS_ID = 'SOLD'
-	]]>
-	</select> -->
-
 	<select id="total" resultType="int">
 		SELECT COUNT(TRADE_POST_NUMBER)
 		FROM TBL_TRADE_POST
 	</select>
 
-	<!-- private int tradeNumber; private int sellPostNumber; private int statusNumber; 
-		private int buyMember; private String paymentDate; private String completeDate; -->
-
-	<!-- wjscp -->
+	<!-- 전체 -->
 	<select id="selectAll" resultType="TradePostDTO">
 	<![CDATA[
 	SELECT
@@ -79,8 +49,7 @@
 	]]>
 	</select>
 
-	<select id="selectAllInfo"
-		resultType="com.bullPenTalk.app.dto.AdminTradeListDTO">
+	<select id="selectAllInfo" resultType="com.bullPenTalk.app.dto.AdminTradeListDTO">
 	<![CDATA[
 	SELECT * FROM (
     SELECT ROWNUM AS rnum, subquery.*
@@ -106,8 +75,7 @@
 			JOIN TBL_MEMBER SELLER ON tsp.MEMBER_NUMBER = SELLER.MEMBER_NUMBER
 			JOIN TBL_MEMBER BUYER ON ttp.BUY_MEMBER = BUYER.MEMBER_NUMBER
 			JOIN TBL_DEALTYPE td ON tsp.DEALTYPE_ID = td.DEALTYPE_ID
-			LEFT JOIN TBL_SELL_POST_ATTACHMENT tspa ON tsp.SELL_POST_NUMBER = tspa.SELL_POST_NUMBER
-			LEFT JOIN TBL_ATTACHMENT ta ON tspa.ATTACHMENT_NUMBER = ta.ATTACHMENT_NUMBER
+			LEFT JOIN TBL_ATTACHMENT ta ON tsp.SELL_POST_NUMBER = ta.SELL_POST_NUMBER
     	    ORDER BY ttp.TRADE_NUMBER DESC
     	) subquery
 	)
@@ -138,8 +106,7 @@
 	JOIN TBL_MEMBER SELLER ON tsp.MEMBER_NUMBER = SELLER.MEMBER_NUMBER
 	JOIN TBL_MEMBER BUYER ON ttp.BUY_MEMBER = BUYER.MEMBER_NUMBER
 	JOIN TBL_DEALTYPE td ON tsp.DEALTYPE_ID = td.DEALTYPE_ID
-	LEFT JOIN TBL_SELL_POST_ATTACHMENT tspa ON tsp.SELL_POST_NUMBER = tspa.SELL_POST_NUMBER
-	LEFT JOIN TBL_ATTACHMENT ta ON tspa.ATTACHMENT_NUMBER = ta.ATTACHMENT_NUMBER
+	LEFT JOIN TBL_ATTACHMENT ta ON tsp.SELL_POST_NUMBER = ta.SELL_POST_NUMBER
 	WHERE TRADE_NUMBER = #{postNumber}
 	]]>
 	</select>
