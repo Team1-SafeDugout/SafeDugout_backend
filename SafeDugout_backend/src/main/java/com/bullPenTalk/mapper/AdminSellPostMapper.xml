@@ -33,7 +33,7 @@
 		FROM TBL_SELL_POST
 	</select>
 
-	<select id="adminSelectList" resultType="com.bullPenTalk.app.dto.AdminSellPostDTO">
+	<select id="adminSelectList" resultType="AdminSellPostDTO">
 	<![CDATA[
 		SELECT
 		sp.SELL_POST_NUMBER,
@@ -59,7 +59,7 @@
 	]]>
 	</select>
 
-	<select id="adminSelectDetail" resultType="com.bullPenTalk.app.dto.AdminSellPostDTO" parameterType = "int">
+	<select id="adminSelectDetail" resultType="AdminSellPostDTO" parameterType = "int">
 	<![CDATA[
 		SELECT
 		sp.SELL_POST_NUMBER,

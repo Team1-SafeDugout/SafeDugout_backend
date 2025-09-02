@@ -42,6 +42,7 @@ public class JoinSMSController implements Execute {
            result.setPath("/app/register/RegisterInput.jsp");
            result.setRedirect(false); // 포워딩 방식 사용
        } catch (Exception e) {
+    	   e.printStackTrace();
            // 예외 발생 시 에러 메시지 전송
            if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

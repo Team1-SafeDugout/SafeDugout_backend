@@ -42,6 +42,27 @@ public class AttachmentDAO {
             e.printStackTrace();
         }
     }
+    
+    public void insertNoticeAttachment(AttachmentDTO attachmentDTO) {
+    	try {
+    		sqlSession.insert("attachment.insertNoticeAttachment", attachmentDTO);
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    // 글번호 가져오기
+    public int getNoticePostNumber() {
+    	return sqlSession.selectOne("attachment.getCurrentNoticeNumber");
+    }
+    
+    public int getPostNumber() {
+    	return sqlSession.selectOne("attachment.getCurrentPostNumber");
+    }
+    
+    public int getTradeNumber() {
+    	return sqlSession.selectOne("attachment.getCurrentTradeNumber");
+    }
 
     // 삭제
     // 게시글 첨부파일 삭제

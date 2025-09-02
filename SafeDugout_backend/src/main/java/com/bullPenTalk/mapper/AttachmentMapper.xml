@@ -51,9 +51,38 @@
 	    INSERT INTO TBL_ATTACHMENT(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_PATH, SELL_POST_NUMBER, POST_NUMBER, NOTICE_POST_NUMBER)
 	    VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentPath}, #{sellPostNumber}, #{postNumber}, #{noticePostNumber})
 	</insert>
+	
+		<!-- 추가 관련 -->
+	<insert id="insertNoticeAttachment" parameterType="AttachmentDTO">
+	    INSERT INTO TBL_ATTACHMENT(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_PATH, NOTICE_POST_NUMBER)
+	    VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentPath}, #{noticePostNumber})
+	</insert>
 
 
 
+
+
+	<!-- 게시글 번호 가져오기 -->
+	<select id = "getCurrentNoticeNumber" resultType = "int">
+	SELECT NOTICE_POST_NUMBER 
+	FROM TBL_NOTICE_POST
+	ORDER BY NOTICE_POST_NUMBER DESC
+	FETCH FIRST 1 ROWS ONLY
+	</select>
+
+	<select id = "getCurrentPostNumber" resultType = "int">
+	SELECT POST_NUMBER
+	FROM TBL_POST
+	ORDER BY TBL_POST DESC
+	FETCH FIRST 1 ROWS ONLY
+	</select>
+	
+	<select id = "getCurrentTradeNumber" resultType = "int">
+	SELECT SELL_POST_NUMBER
+	FROM TBL_SELL_POST
+	ORDER BY SELL_POST_NUMBER DESC
+	FETCH FIRST 1 ROWS ONLY
+	</select>
 
 	
 	

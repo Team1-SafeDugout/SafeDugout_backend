@@ -84,12 +84,13 @@ public class JoinOkController implements Execute {
 		if(memberDTO.getMemberMyTeam() != 0) {
 			
 			result.setPath(request.getContextPath() + "/app/register/RegisterResultMyTeamSelected.jsp");
+			request.setAttribute("selectTeam", request.getParameter("memberMyTeam"));
 		}
 		else {
 			result.setPath(request.getContextPath() + "/app/register/RegisterResultMyTeamUnselected.jsp");
 		}
 		
-		result.setRedirect(true);
+		result.setRedirect(false);
 
 		return result;
 	}

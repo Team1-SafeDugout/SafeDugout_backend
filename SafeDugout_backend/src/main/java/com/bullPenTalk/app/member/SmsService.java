@@ -11,11 +11,11 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class SmsService {
 	// CoolSMS API 인증 키
-   private static final String API_KEY = "";
-   private static final String API_SECRET = "";
+   private static final String API_KEY = System.getenv("MESSAGE_API_KEY");
+   private static final String API_SECRET = System.getenv("MESSAGE_SECRET_KEY");
    
    // SMS 발신자 번호
-   private static final String FROM_NUMBER = "";
+   private static final String FROM_NUMBER = System.getenv("FROM_NUMBER");
 
    /*
     * 인증번호를 SMS로 발송하는 메서드
@@ -38,8 +38,11 @@ public class SmsService {
       params.put("type", "SMS");
       params.put("text", "인증번호는 [" + verificationCode + "] 입니다.");
 
+      System.out.println("인증코드까지는 만들어짐");
       // SMS 발송
       JSONObject obj = (JSONObject) coolsms.send(params);
+      
+      System.out.println("전송시도까지함");
       
       // 발송 결과 콘솔에 출력 (디버깅용)
       System.out.println(obj.toString());
