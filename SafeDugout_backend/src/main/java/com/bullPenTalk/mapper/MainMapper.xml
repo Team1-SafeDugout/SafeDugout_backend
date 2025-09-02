@@ -127,19 +127,31 @@
 	<!-- 판매글 목록 조회 -->
 	<select id="selectSellList" resultType="MainDTO">
 	<![CDATA[
-		select s.sell_post_number, s.sell_post_title, s.sell_post_creation_date, s.price_point,
-		a.attachment_path
-		from tbl_sell_post s join tbl_attachment a on s.sell_post_number = a.sell_post_number
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT S.SELL_POST_NUMBER, 
+	        		S.SELL_POST_TITLE, 
+	        		TO_CHAR(S.SELL_POST_CREATION_DATE, 'YYYY.MM.DD.') AS SELL_POST_CREATION_DATE, 
+	        		S.PRICE_POINT, 
+	        		A.ATTACHMENT_PATH
+	        FROM TBL_SELL_POST S
+	        LEFT OUTER JOIN TBL_ATTACHMENT A 
+	        ON S.SELL_POST_NUMBER = A.SELL_POST_NUMBER
+	        ORDER BY SELL_POST_CREATION_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum <= 3
 	]]>
 	</select>
 	
 	<!-- 팀 순위 목록 조회 -->
 	<select id="selectTeamRank" resultType="MainDTO">
 	<![CDATA[
-		select r.team_rank, t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate
-		from tbl_team_record r join tbl_team t on r.team_number = t.team_number
-		where season_year = to_number(to_char(sysdate, 'YYYY'))
-		order by r.team_win_rate desc
+		select r.team_rank, t.team_name, r.game_count, r.team_win, r.team_draw, r.team_lose, r.team_win_rate, r.team_gb
+		from tbl_team_ranking r join tbl_team t on r.team_number = t.team_number
+		order by r.team_rank
 	]]>
 	</select>
 	

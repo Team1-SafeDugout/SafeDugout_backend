@@ -188,7 +188,7 @@
             <div><c:out value="${rankRow.teamDraw}"/></div>
             <div><c:out value="${rankRow.teamLose}"/></div>
             <div><c:out value="${rankRow.teamWinRate}"/></div>
-            <div><c:out value="${rankRow.teamWinLoss}"/></div>
+            <div><c:out value="${rankRow.teamGB}"/></div>
           </li>
           </c:forEach>
         </ul>
