@@ -44,11 +44,13 @@ public class TeamMainOkController implements Execute {
 		session.setAttribute("teamNumber", teamNumber);
 
 		// 팀 뉴스 목록 조회
-		List<TeamMainDTO> newsList = teamMainDAO.selectPostList(teamNumber);
+		List<TeamMainDTO> newsList = teamMainDAO.selectNewsList(teamNumber);
+		System.out.println(newsList);
 		request.setAttribute("newsList", newsList);
 
 		// 팀 게시글 목록 조회
 		List<TeamMainDTO> postList = teamMainDAO.selectPostList(teamNumber);
+		System.out.println(postList);
 		request.setAttribute("postList", postList);
 
 		// 팀 유튜브 썸네일 목록 조회
