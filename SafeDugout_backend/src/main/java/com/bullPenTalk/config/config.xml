@@ -25,13 +25,9 @@
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminDTO" alias="AdminDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AddressDTO" alias="AddressDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AdminManagementDTO" alias="AdminManagement"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AdminNoticeDTO" alias="AdminNoticeDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AdminPostDTO" alias="AdminPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AttachmentDTO" alias="AttachmentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AttachmentTypeDTO" alias="AttachmentTypeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.BatterRecordDTO" alias="BatterRecordDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.BoardDTO" alias="BoardDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.BoardTypeDTO" alias="BoardTypeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.ChampionshipRecordDTO" alias="ChampionshipRecordDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.CommentDTO" alias="CommentDTO"></typeAlias>
@@ -57,10 +53,8 @@
 		<typeAlias type="com.bullPenTalk.app.dto.PitcherRecordDTO" alias="PitcherRecordDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PlayerDTO" alias="PlayerDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PointChargeRecordDTO" alias="PointChargeRecordDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.PostAttachmentDTO" alias="PostAttachmentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PostDTO" alias="PostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PostDetailDTO" alias="PostDetailDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.SellPostAttachmentDTO" alias="SellPostAttachmentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.SellPostDTO" alias="SellPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.SellPostDetailDTO" alias="SellPostDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.SongPostDTO" alias="SongPostDTO"></typeAlias>

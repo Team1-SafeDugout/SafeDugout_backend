@@ -11,7 +11,7 @@ import com.bullPenTalk.app.Result;
 public class BuyProduct implements TradeService{
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
+	public void execute(String action, String category,HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("들어온 액션값: " + action);
 		// 객체 생성

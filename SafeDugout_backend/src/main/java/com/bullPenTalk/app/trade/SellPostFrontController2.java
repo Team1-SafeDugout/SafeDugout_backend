@@ -52,7 +52,7 @@ public class SellPostFrontController2 extends HttpServlet {
 	        // category에 맞는 서비스 찾기 (없으면 defaultService로)
 	        TradeService svc = registry.getOrDefault(category, defaultService);
 	        // 찾은 서비스 실행 -> 실제 로직은 서비스 클래스에서 처리
-	        svc.execute(action, req, resp);
+	        svc.execute(action, category, req, resp);
 	    }
 	    // null 값 들어오면 ""로 바꿔주기
 	    private String nvl(String s) { return (s == null) ? "" : s; }

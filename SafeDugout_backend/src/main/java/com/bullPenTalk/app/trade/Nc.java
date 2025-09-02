@@ -11,7 +11,7 @@ import com.bullPenTalk.app.Result;
 public class Nc implements TradeService{
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
+	public void execute(String action, String category,  HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("nc 진입");
 		// Result 객체 생성
@@ -23,11 +23,11 @@ public class Nc implements TradeService{
 		try {
 			switch (action) {
 			case "list":
-				result = select.listTeam(action, request, response);
+				result = select.listTeam(action, category, request, response);
 				break;
 			case "detail":
 				DetailControllerOK detailController = new DetailControllerOK();
-				result = detailController.detailselect(action, request, response);
+				result = detailController.detailselect(action, category, request, response);
 				break;
 
 			case "uniformlist":
@@ -36,7 +36,7 @@ public class Nc implements TradeService{
 			case "accessorieslist":
 			case "cheeringitemlist":
 			case "baseballgearlist":
-				result = select.listTeamItemCategory(action, request, response);
+				result = select.listTeamItemCategory(action, category, request, response);
 				break;
 			case "deletepostok":
 				DeleteOkController delete = new DeleteOkController();
@@ -59,3 +59,4 @@ public class Nc implements TradeService{
 
 	}
 }
+

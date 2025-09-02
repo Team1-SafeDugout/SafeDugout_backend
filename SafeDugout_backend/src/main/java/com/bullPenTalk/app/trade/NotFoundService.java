@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 public class NotFoundService implements TradeService{
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response) {
+	public void execute(String action, String category, HttpServletRequest request, HttpServletResponse response) {
 		AllProduct allProduct = new AllProduct();
 		try {
-			allProduct.execute("list", request, response);
+			allProduct.execute("list", category, request, response);
 		} catch (ServletException e) {
 			
 			e.printStackTrace();

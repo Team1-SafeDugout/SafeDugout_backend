@@ -73,58 +73,57 @@ body {
 
 /* aside 컨테이너 */
 .aside-container {
-  background-color: #DCD6D0;
-  width: 200px;
-  height: 300px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* 세로 배열 */
+  align-items: center;    /* 가로 중앙 정렬 */
+  background-color: #DCD6D0;
+  padding: 20px;
+  width: 180px;
 }
 .category a.active {
     background-color: #f0c040; /* 원하는 색상 */
     color: #fff;
 }
-/* '상품 카테고리' */
-.aside-text {
-  margin: 7px 0px 0px 0px;
-  font-size: 15px;
-}
-
-/* 상품 카테고리 ul */
-.aside-container ul {
-  list-style-type: none;
-  padding: 0px 0px;
-  margin: 7px 0px;
-  background-color: white;
-  width: 180px;
+/* 카테고리 선택 바 - 세로 배열 */
+.category-bar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* 세로 배열 */
+  align-items: center;    /* 가운데 정렬 */
+  gap: 10px;              /* 버튼 사이 간격 */
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
 
-/* 카테고리 */
-.category {
-  border-bottom: 1px solid black;
-  width: 135px;
-  height: 21px;
-  margin: 7px 0px;
-  text-align: center;
-}
-
-/* 첫번째 li 태그 */
-.aside-container ul>li:nth-child(1) .category {
-  background-color: #DCD6D0;
-}
-
-/* 카테고리 a 태그 */
-.category a {
-  color: black;
-  text-decoration: none;
-}
-
-/* 상품 종류 텍스트 호버 */
-.category a:hover {
+/* 카테고리 버튼 */
+.category-btn {
+  width: 150px;           /* 버튼 너비 고정 */
+  padding: 8px 0px;       /* 위아래 패딩만 */
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #f5f5f5;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 14px;
+  color: #333;
+  text-align: center;     /* 글자 가운데 정렬 */
+  margin: 4px 0px;
+}
+
+/* 마우스 오버 시 */
+.category-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* 현재 선택된 카테고리 */
+.category-btn.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
 }
 
 /* 오른쪽 section 컨테이너 */
@@ -135,72 +134,166 @@ body {
   align-items: center;
 }
 
-/* 팀 로고 바 */
+/* 전체 레이아웃 */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* 팀 선택 바 */
 .team-bar {
-  background-color: #DCD6D0;
-  border: solid 1px black;
-  width: 100%;
-  height: 110px;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
+  gap: 30px;              /* 간격 더 넓게 */
+  padding: 25px 20px;     /* 위아래 여백 크게 */
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
 }
 
-/* 팀 선택 텍스트 */
 .team-bar-text {
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  line-height: 70px;
-  font-size: 15px;
+  font-size: 18px;        /* 글씨 조금 크게 */
+  font-weight: bold;
+  margin-right: 20px;
 }
 
-/* 팀 로고 컨테이너 */
 .team-bar-logo-container {
-  background-color: white;
-  width: 970px;
-  height: 75px;
-  padding: 0px 5px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;              /* 로고 사이 간격 */
 }
 
-/* 팀 로고(모든 팀 버튼 포함) */
-.team-bar-logo {
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  line-height: 70px;
-  font-size: 15px;
-}
-
-/* 팀 로고 호버 */
-.team-bar-logo:hover {
+.team-bar-logo-btn {
+  border: none;
+  background: none;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  padding: 10px;          /* 버튼 클릭 영역 넓히기 */
 }
 
-/* 모든 팀 버튼 */
-.team-bar-logo:nth-child(1) {
-  border: 1px solid orangered;
+.team-bar-logo-btn img {
+  width: 65px;            /* 로고 크기 ↑ */
+  height: 65px;
+  object-fit: contain;
 }
 
-/* 모든 팀 버튼 첫번째 요소 a 태그*/
-.team-bar-logo:nth-child(1) a {
-  color: black;
+.team-bar-logo-btn:hover {
+  transform: scale(1.15); /* hover 효과도 조금 더 강하게 */
+}
+
+
+/* 카테고리 선택 바 */
+.category-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-btn {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 14px;
+}
+
+.category-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/* 상품 리스트 */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-list {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.product-list:hover {
+  transform: translateY(-5px);
+}
+
+.product-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-name {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-name a {
   text-decoration: none;
+  color: #333;
 }
 
-/* 팀 로고 첫번째 요소 a 태그 호버 */
-.team-bar-logo:nth-child(1) a:hover {
-  color: black;
-  text-decoration: underline;
+.product-price {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 5px;
 }
 
-/* 팀 로고 img */
-.team-bar-logo img {
-  width: 70px;
-  height: 70px;
+.product-time {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  padding-bottom: 10px;
+}
+
+/* 페이지네이션 */
+.page-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+}
+
+.page-bar a {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.page-bar a:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.page-bar a.active {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
 }
 
 /* 로고 하단 컨테이너 */
@@ -236,54 +329,35 @@ body {
   margin-top: 12px;
 }
 
-/* 공통 버튼 스타일 */
-.page-num,
-.arrow-button {
+/* 페이지네이션 영역 */
+.pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-width: 28px;
-  height: 28px;
-  font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;  /* 연한 회색 */
-  background: #f9fafb;         /* 밝은 회색 */
-  transition: all 0.2s ease;
+  margin: 20px 0;
+  gap: 6px; /* 버튼 간격 조금 좁게 */
 }
 
-/* 번호 버튼 */
-.page-num a,
-.arrow-button a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  line-height: 28px;
-  text-align: center;
-  text-decoration: none;
-  color: #374151; /* 진회색 */
+/* 페이지 버튼 */
+.pagination button {
+  padding: 4px 8px;      /* 버튼 크기 ↓ */
+  font-size: 13px;       /* 글씨 크기 ↓ */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
 }
 
-/* 현재 페이지 */
-.page-num.active {
-  background: #111827; /* 진회색 */
-  border-color: #111827;
-}
-.page-num.active a {
+/* 현재 선택된 페이지 */
+.pagination button.active {
+  background-color: #007bff;
   color: #fff;
-  font-weight: 600;
-  cursor: default;
+  border-color: #007bff;
 }
 
 /* hover 효과 */
-.page-num:not(.active):hover,
-.arrow-button:hover {
-  background: #f3f4f6;   /* hover 시 조금 진해짐 */
-  border-color: #d1d5db;
-}
-.page-num:not(.active):hover a,
-.arrow-button:hover a {
-  color: #111827;
-  text-decoration: none;
+.pagination button:hover {
+  background-color: #f0f0f0;
 }
 
 /* 화살표 비활성 */

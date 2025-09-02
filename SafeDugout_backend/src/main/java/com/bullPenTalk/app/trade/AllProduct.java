@@ -11,10 +11,12 @@ import com.bullPenTalk.app.Result;
 public class AllProduct implements TradeService{
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
+	public void execute(String action, String category, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("AllProcudt 진입");
 		System.out.println("action값: " + action);
+		System.out.println("category값: " + category);
+		
 		// Result 객체 생성
 		Result result = new Result();
 
@@ -23,20 +25,20 @@ public class AllProduct implements TradeService{
 
 		switch (action) {
 		case "list":
-			result = select.selectAll(action, request, response); // 전체 품목 
+			result = select.selectAll(action, category, request, response); // 전체 품목 
 			break;
 		case "detail": // 디테일 페이지
 			DetailControllerOK detailController = new DetailControllerOK();
-			result = detailController.detailselect(action, request, response);
+			result = detailController.detailselect(action, category, request, response);
 			break;
 
-		case "uniformList":			
-		case "capList":
-		case "apparelList":
-		case "accessoriesList":
-		case "cheeringitemList":
-		case "baseballgearList":
-			result = select.listCategory(action, request, response); // 특정 카테고리 
+		case "uniformlist":			
+		case "caplist":
+		case "apparellist":
+		case "accessorieslist":
+		case "cheeringitemlist":
+		case "baseballgearlist":
+			result = select.listCategory(action, category, request, response); // 특정 카테고리 
 			break;
 		case "deletepostok":
 			DeleteOkController delete = new DeleteOkController();

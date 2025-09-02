@@ -11,7 +11,7 @@ import com.bullPenTalk.app.Result;
 public class Update implements TradeService{
 
 	@Override
-	public void execute(String action, HttpServletRequest request, HttpServletResponse response)
+	public void execute(String action, String category, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Result result = new Result();
 		UpdateController update = new UpdateController();
