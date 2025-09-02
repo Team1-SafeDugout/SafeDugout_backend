@@ -129,8 +129,7 @@
 	<![CDATA[
 		select s.sell_post_number, s.sell_post_title, s.sell_post_creation_date, s.price_point,
 		a.attachment_path
-		from tbl_sell_post s join tbl_sell_post_attachment sa on s.sell_post_number = sa.sell_post_number
-		join tbl_attachment a on sa.attachment_number = a.attachment_number
+		from tbl_sell_post s join tbl_attachment a on s.sell_post_number = a.sell_post_number
 	]]>
 	</select>
 	

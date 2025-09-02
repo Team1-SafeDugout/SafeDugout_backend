@@ -50,8 +50,8 @@
 									</div>
 									<!-- 제목 -->
 									<div class="post-title">
-										<a href="${pageContext.request.contextPath}/main/selectMainDetailOk.ma?noticePostNumber=${mainNotice.noticePostNumber}"> <c:out
-												value="${mainNotice.getNoticePostTitle()}" />
+										<a href="${pageContext.request.contextPath}/main/selectMainDetailOk.ma?noticePostNumber=${mainNotice.noticePostNumber}"> 
+										<c:out value="${mainNotice.getNoticePostTitle()}" />
 										</a>
 									</div>
 									<!-- 작성 일자 -->
