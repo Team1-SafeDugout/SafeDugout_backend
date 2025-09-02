@@ -19,7 +19,7 @@
 <jsp:include page="/header.jsp" />
 <!-- 검색 폼 -->
 <form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
-	    <input type="hidden" name="team" value="search">
+	    <input type="hidden" name="category" value="search">
 	    <input type="hidden" name="action" value="search">
 	    <input type="text" name="searchWord" placeholder="검색어를 입력해주세요"
 	           value="${searchWord != null ? searchWord : ''}">

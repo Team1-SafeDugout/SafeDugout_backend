@@ -68,38 +68,38 @@
 		values(#{treadNumber}, #{sellPostNumber}, #{statusNumber}, #{buyMember}, #{paymentDate}, #{completeDAte})
 	</insert>
 	
-	<!-- 거래중인 글 검색-->
-	<select id="searchList" parameterType="map" resultType="TradePostDTO">
-	<![CDATA[
-	SELECT SP.SELL_POST_NUMBER,
-	       SP.SELL_POST_TITLE,
-	       SP.SELL_POST_CONTENT,
-	       SP.PRICE_POINT,
-	       SP.TRADING_AREA,
-	       SP.SELL_POST_CREATION_DATE,
-	       A.ATTACHMENT_PATH AS imagePath
-	FROM TBL_SELL_POST SP
-	LEFT JOIN TBL_SELL_POST_ATTACHMENT SA ON SP.SELL_POST_NUMBER = SA.SELL_POST_NUMBER
-	LEFT JOIN TBL_ATTACHMENT A ON SA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-	JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
-	JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
-	WHERE TS.STATUS_ID = 1
-	  AND SP.SELL_POST_TITLE LIKE '%' || #{searchWord} || '%'
-	ORDER BY SP.SELL_POST_CREATION_DATE DESC
-	]]>
+	
+	<!-- 검색 결과 -->
+	<select id="searchList" parameterType="map" resultType="SellPostDTO">
+		<![CDATA[
+		  SELECT *
+		  FROM (
+		      SELECT ROWNUM AS rnum, SP.*
+		      FROM (
+		          SELECT SP.SELL_POST_NUMBER, SP.SELL_POST_TITLE, SP.SELL_POST_CONTENT,
+		                 SP.PRICE_POINT, SP.TRADING_AREA, SP.SELL_POST_CREATION_DATE
+		          FROM TBL_SELL_POST SP
+		          JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+		          JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+		          WHERE TS.STATUS_ID = 0
+		            AND SP.SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
+		          ORDER BY SP.SELL_POST_CREATION_DATE DESC
+		      ) SP
+		  )
+		  WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		]]>  
 	</select>
 	
 	
-	<!-- 검색 결과 전체 개수 -->
+
+	<!-- 검색 결과 총 개수 -->
 	<select id="getTotalSearch" parameterType="string" resultType="int">
-	<![CDATA[
-	SELECT COUNT(*)
-	FROM TBL_SELL_POST SP
-	JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
-	JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
-	WHERE TS.STATUS_ID = 1
-	  AND SP.SELL_POST_TITLE LIKE '%' || #{searchWord} || '%'
-	]]>
-	</select>	
+	    SELECT COUNT(*)
+	    FROM TBL_SELL_POST SP
+	    JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	    JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	    WHERE TS.STATUS_ID = 1
+	      AND SP.SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
+	</select>
 	
 </mapper>

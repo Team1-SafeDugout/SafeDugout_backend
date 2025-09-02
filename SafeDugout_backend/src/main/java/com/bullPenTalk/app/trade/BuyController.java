@@ -203,8 +203,14 @@ public class BuyController {
 	        try {
 	        	
 	        	// 결제 api key로 서버검증
-	            String impKey = "";
-	            String impSecret = "";
+	            String impKey = System.getenv("IMP_API_KEY");
+	            String impSecret = System.getenv("IMP_SECRET_KEY");
+	            
+	            if(impKey == null || impSecret == null) {
+	                throw new RuntimeException("API Key 또는 Secret Key가 설정되지 않았습니다.");
+	            }
+
+	         
 	            // 아임포트 토큰 요청 
 	            org.jsoup.Connection.Response jsoupResponse = org.jsoup.Jsoup.connect("https://api.iamport.kr/users/getToken")
 	                    .ignoreContentType(true)

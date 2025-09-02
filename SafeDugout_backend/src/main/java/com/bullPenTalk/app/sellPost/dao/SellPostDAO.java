@@ -1,5 +1,6 @@
 package com.bullPenTalk.app.sellPost.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +59,15 @@ public class SellPostDAO {
 		return sqlSession.selectOne("sell.getTotal");
 	}
 	
+    // 특정 팀 + 카테고리 게시글 수
+    public int getTotalByTeamCategory(int teamId, int categoryId) {
+        Map<String, Object> param = new HashMap<>();
+        param.put("teamId", teamId);
+        param.put("categoryId", categoryId);
+        return sqlSession.selectOne("sell.getTotalByTeamCategory", param);
+    }
+	
+	
 	// 판매글 추가 후 자동으로 생성된 getSellPostNumber 반환 -> 파일 테이블에서도 써야하기 때문에
 	public int insertSellPost(SellPostDTO sellPostDTO) {
 		System.out.println("게시글 작성 - insertSellPost 메소드 실행 ");
@@ -88,13 +98,14 @@ public class SellPostDAO {
 		return sqlSession.selectOne("sell.selectDetail", sellPostNumber);
 	}
 	
-	// 검색 메소드
+	
+	// 검색 결과 리스트
 	public List<SellPostDTO> searchList(Map<String, Object> pageMap) {
 	    return sqlSession.selectList("trade.searchList", pageMap);
 	}
 	
-	// 검색 결과 개수
-	public int getTotalSearch(String searchWord) {
-	    return sqlSession.selectOne("trade.getTotalSearch", searchWord);
+	// 검색 결과 총 개수
+	public int getTotalSearch(String keyword) {
+	    return sqlSession.selectOne("trade.getTotalSearch", keyword);
 	}
 }
