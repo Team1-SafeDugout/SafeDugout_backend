@@ -74,6 +74,13 @@ public class MemberFrontController extends HttpServlet {
 			break;
 			
 		case "/member/sendSMS.me":
+			System.out.println("문자인증 처리");
+			result = new JoinSMSController().execute(request, response);
+			break;
+			
+		case "/member/checkSMS.me":
+			System.out.println("문자인증 완료 처리");
+			result = new VerifyCodeController().execute(request, response);
 			break;
 			
 		case "/member/findId.me":

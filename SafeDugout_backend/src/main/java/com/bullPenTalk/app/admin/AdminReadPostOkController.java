@@ -11,6 +11,7 @@ import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
 import com.bullPenTalk.app.dto.FreePostDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
+import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.app.freeCommunity.dao.FreePostDAO;
 
 
@@ -50,7 +51,7 @@ public class AdminReadPostOkController implements Execute{
 //			팀뉴스
 			System.out.println("뉴스여는중");
 			AdminTeamNewsDAO adminNewsDAO = new AdminTeamNewsDAO();
-			NewsDetailDTO newsDTO = adminNewsDAO.selectDetail(postNumber);
+			NewsPostDTO newsDTO = adminNewsDAO.selectDetail(postNumber);
 			result.setPath("/app/admin/adminDetailMenu/adminTeamNewesDetail.jsp");
 			request.setAttribute("newsDTO", newsDTO);
 			result.setRedirect(false);
