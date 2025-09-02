@@ -36,6 +36,45 @@ public class MainOkController implements Execute {
 		System.out.println("경기 일정 목록 대입");
 		System.out.println(schedule);
 
+		// 순위표와 일정표에서 반복문과 switch문을 통해 팀명이 한글로 출력되도록 변환 
+		for(MainDTO rankRow : rankList) {
+			
+		}
+		for(MainDTO scheduleRow : schedule) {
+			switch (scheduleRow.getTeamName()) {
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "lg":
+				scheduleRow.setTeamName("LG");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			case "doosan":
+				scheduleRow.setTeamName("두산");
+			}
+		}
+//		 * 1 : doosan -> 두산 
+//		 * 2 : lg -> LG
+//		 * 3 : hanwha -> 한화 
+//		 * 4 : samsung -> 삼성
+//		 * 5 : ssg -> SSG
+//		 * 6 : kt -> KT
+//		 * 7 : nc -> NC
+//		 * 8 : lotte -> 롯데
+//		 * 9 : kia -> KIA
+//		 * 10 : kiwoom -> 키움
+		
 		// 판매글 목록 조회
 		List<MainDTO> sellList = mainDAO.selectSellList();
 		System.out.println("상품 목록" + sellList);
