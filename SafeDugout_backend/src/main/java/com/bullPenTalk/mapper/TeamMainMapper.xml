@@ -86,11 +86,13 @@
 	<select id="selectTeamSchedule" parameterType="int" resultType="TeamMainDTO">
 	<![CDATA[
 		select t1.team_name as away_team_name , st.stadium_name, t2.team_name as home_team_name, 
-		to_char(sc.schedule_date, 'HH:mi') as schedule_date
+		to_char(sc.schedule_date, 'FMMM.FMDD(DY) HH:mi') as schedule_date
 		from tbl_game_schedule sc join tbl_stadium st on sc.home_team_number = st.team_number
 		join tbl_team t1 on sc.home_team_number = t1.team_number
 		join tbl_team t2 on sc.away_team_number = t2.team_number
-		where sc.home_team_number = #{teamNumber} and rownum <= 5
+		where (sc.home_team_number = #{teamNumber} or sc.away_team_number = #{teamNumber})
+		and (sc.schedule_date between trunc(sysdate, 'iw') and trunc(sysdate, 'iw') + 7)
+		order by sc.schedule_date
 	]]>
 	</select>
 	
