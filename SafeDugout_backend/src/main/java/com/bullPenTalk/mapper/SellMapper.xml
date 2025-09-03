@@ -158,22 +158,18 @@
     WHERE SP.SELL_POST_NUMBER = #{sellPostNumber}
 	</select>
 	
+	<!-- 글 작성자 조회 -->
+	<select id="getWriter" resultType="int" parameterType="int">
+	    SELECT MEMBER_NUMBER
+	    FROM TBL_SELL_POST
+	    WHERE SELL_POST_NUMBER = #{sellPostNumber}
+	</select>
+	
 	<!-- 판매글 삭제 쿼리  -->
 	<delete id="delete" parameterType="int">
 		delete from tbl_sell_post
 		where sell_post_number = #{sellPostNumber}
 	</delete>
-	
-	<!-- 판매글 수정 쿼리 -->
-	<update id="update" parameterType="SellPostDTO">
-	    UPDATE tbl_sell_post
-	    SET sell_post_title = #{sellPostTitle},
-	        price_point = #{pricePoint},
-	        trading_area = #{tradingArea},
-	        sell_post_update = #{sellPostUpdate},
-	        sell_post_content = #{sellPostContent}
-	    WHERE sell_post_number = #{sellPostNumber}
-	</update>
 	
 	<!-- 판매글 총 갯수 -->
 	<select id="getTotal" resultType="int">
@@ -198,4 +194,36 @@
 		WHERE SELL_POST_NUMBER = #{sellPostNumber}
 	</select>
 	
+	<!-- 키워드 검색 결과  -->
+	<select id="searchListAllByKeyword" parameterType="map" resultType="SellPostDTO">
+	    <![CDATA[
+	    SELECT *
+	    FROM (
+	        SELECT ROWNUM AS rnum, SP.*
+	        FROM (
+	            SELECT SP.SELL_POST_NUMBER,
+	                   SP.SELL_POST_TITLE,
+	                   SP.SELL_POST_CONTENT,
+	                   SP.PRICE_POINT,
+	                   SP.TRADING_AREA,
+	                   SP.SELL_POST_CREATION_DATE,
+	                   SP.CATEGORY_ID,
+	                   SP.TEAM_ID
+	            FROM TBL_SELL_POST SP
+	            WHERE SP.STATUS_ID = 1
+	              AND SP.SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
+	            ORDER BY SP.SELL_POST_CREATION_DATE DESC
+	        ) SP
+	    )
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	    ]]>
+	</select>
+	
+	<!-- 키워드 기준 전체 게시글 수 조회 -->
+	<select id="getTotalByKeyword" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM TBL_SELL_POST
+	    WHERE STATUS_ID = 1
+	      AND SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
+	</select>
 </mapper>
