@@ -52,6 +52,7 @@ public class AdminReadPostOkController implements Execute{
 			System.out.println("뉴스여는중");
 			AdminTeamNewsDAO adminNewsDAO = new AdminTeamNewsDAO();
 			NewsPostDTO newsDTO = adminNewsDAO.selectDetail(postNumber);
+			System.out.println(newsDTO);
 			result.setPath("/app/admin/adminDetailMenu/adminTeamNewesDetail.jsp");
 			request.setAttribute("newsDTO", newsDTO);
 			result.setRedirect(false);
