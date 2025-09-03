@@ -17,13 +17,13 @@
   <nav>
     <div class="team-logo">
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=3">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/hanwha.png" alt="">
       </a>
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=2">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">
       </a>
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=8">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/lotte.png" alt="">
       </a>
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=5">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="">
@@ -38,13 +38,13 @@
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="">
       </a>
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=4">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/samsung.png" alt="">
       </a>
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=1">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="">
       </a>
       <a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=10">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png" alt="">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/kiwoom.png" alt="">
       </a>
     </div>
   </nav>

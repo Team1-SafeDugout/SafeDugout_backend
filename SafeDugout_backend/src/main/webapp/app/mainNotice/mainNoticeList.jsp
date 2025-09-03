@@ -37,7 +37,7 @@
 						<!-- 제목 텍스트 -->
 						<div class="post-title">제목</div>
 						<!-- 작성 일자 텍스트 -->
-						<div class="upload-date">작성 일자</div>
+						<div class="upload-date">작성 일자</div>
 					</div>
 					<c:choose>
 						<c:when test="${not empty mainNoticeList}">
