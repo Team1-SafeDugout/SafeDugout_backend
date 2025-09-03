@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.Date;
+
 public class SellPostDTO { // 판매글
 //	CREATE TABLE TBL_SELL_POST(
 //	SELL_POST_NUMBER NUMBER,
@@ -37,8 +39,8 @@ public class SellPostDTO { // 판매글
 	private int pricePoint;  // 가격
 	private String sellPostTitle; // 판매글 제목
 	private String tradingArea; // 거래지역
-	private String sellPostCreationDate; // 판매글 작성일자
-	private String sellPostUpdate; // 수정일자
+	private Date sellPostCreationDate; // 판매글 작성일자
+	private Date sellPostUpdate; // 수정일자
 	private String sellPostContent; // 상품 설명
 	private int teamId;
 	private String imagePath;  // 첨부파일
@@ -105,16 +107,16 @@ public class SellPostDTO { // 판매글
 	public void setTradingArea(String tradingArea) {
 		this.tradingArea = tradingArea;
 	}
-	public String getSellPostCreationDate() {
+	public Date getSellPostCreationDate() {
 		return sellPostCreationDate;
 	}
-	public void setSellPostCreationDate(String sellPostCreationDate) {
+	public void setSellPostCreationDate(Date sellPostCreationDate) {
 		this.sellPostCreationDate = sellPostCreationDate;
 	}
-	public String getSellPostUpdate() {
+	public Date getSellPostUpdate() {
 		return sellPostUpdate;
 	}
-	public void setSellPostUpdate(String sellPostUpdate) {
+	public void setSellPostUpdate(Date sellPostUpdate) {
 		this.sellPostUpdate = sellPostUpdate;
 	}
 	public int getTeamId() {
