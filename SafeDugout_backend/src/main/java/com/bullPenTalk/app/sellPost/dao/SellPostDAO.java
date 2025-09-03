@@ -84,13 +84,7 @@ public class SellPostDAO {
 		System.out.println("게시글 삭제 실행 : " + SellPostNumber);
 		sqlSession.delete("sell.delete", SellPostNumber);
 		System.out.println("게시글 삭제 쿼리 실행 완료");
-	}
-	
-	// 판매글 수정 메소드
-	public void update(SellPostDTO sellPostDTO) {
-		sqlSession.update("sell.update", sellPostDTO);
-	}
-	
+	}	
 	
 	// 판매글 상세 페이지 조회 메소드
 	public SellPostDetailDTO selectDetail(int sellPostNumber) {
@@ -101,11 +95,16 @@ public class SellPostDAO {
 	
 	// 검색 결과 리스트
 	public List<SellPostDTO> searchList(Map<String, Object> pageMap) {
-	    return sqlSession.selectList("trade.searchList", pageMap);
+	    return sqlSession.selectList("sell.searchListAllByKeyword", pageMap);
 	}
 	
 	// 검색 결과 총 개수
 	public int getTotalSearch(String keyword) {
-	    return sqlSession.selectOne("trade.getTotalSearch", keyword);
+	    return sqlSession.selectOne("sell.getTotalByKeyword", keyword);
+	}
+	
+	// 작성자 권한 체크
+	public int getWriter(int sellPostNumber) {
+	    return sqlSession.selectOne("sell.getWriter", sellPostNumber);
 	}
 }

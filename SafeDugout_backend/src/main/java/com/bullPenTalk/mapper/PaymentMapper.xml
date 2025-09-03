@@ -5,15 +5,14 @@
     <!-- 구매자 포인트 차감 -->
     <update id="decreaseBuyerPoint">
         UPDATE TBL_MEMBER
-        SET MEMBER_POINT = MEMBER_POINT - #{price}
+        SET MEMBER_POINT = MEMBER_POINT - #{pricePoint}
         WHERE MEMBER_NUMBER = #{buyerNumber}
-          AND MEMBER_POINT >= #{price}
     </update>
 
     <!-- 판매자 포인트 적립 -->
     <update id="increaseSellerPoint">
         UPDATE TBL_MEMBER
-        SET MEMBER_POINT = MEMBER_POINT + #{price}
+        SET MEMBER_POINT = MEMBER_POINT + #{pricePoint}
         WHERE MEMBER_NUMBER = #{sellerNumber}
     </update>
 

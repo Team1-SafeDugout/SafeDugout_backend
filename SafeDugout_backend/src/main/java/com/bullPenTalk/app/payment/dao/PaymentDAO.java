@@ -14,28 +14,41 @@ public class PaymentDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(false);
 	}
 	
-	// 결제 트랜젝션 처리
-	public boolean processPayment(Map<String, Object> param, int sellPostNumber) {
-	   
-	    try {
-	        insertTradePost(param);
-	        decreaseBuyerPoint(param);
-	        increaseSellerPoint(param);
-	        updateSellPostStatus(sellPostNumber);
+    // 결제 트랜잭션 처리
+    public boolean processPayment(Map<String, Object> param, int sellPostNumber) {
+        try {
+            int buyer = decreaseBuyerPoint(param);
+            int seller = increaseSellerPoint(param);
+            int trade = insertTradePost(param);
+            int updateStatus = updateSellPostStatus(sellPostNumber);
 
-	        sqlSession.commit();
-	        return true;
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        sqlSession.rollback();
-	        return false;
-	    } finally {
-	        sqlSession.close();
-	    }
-	}
+            System.out.println("buyer update = " + buyer);
+            System.out.println("seller update = " + seller);
+            System.out.println("trade insert = " + trade);
+            System.out.println("status update = " + updateStatus);
+
+            // 모두 성공해야 commit
+            if(buyer > 0 && seller > 0 && trade > 0 && updateStatus > 0) {
+            	System.out.println("성공 커밋");
+                sqlSession.commit();
+                return true;
+            } else {
+            	System.out.println("실패 롤백");
+                sqlSession.rollback();
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+            return false;
+        } finally {
+            sqlSession.close();
+        }
+    }
 	
 	
-	// 구매자 포인트 차감
+    // 구매자 포인트 차감 
     public int decreaseBuyerPoint(Map<String, Object> param) {
         return sqlSession.update("payment.decreaseBuyerPoint", param);
     }

@@ -5,11 +5,19 @@ public class FreePostDTO {
 	private String postTitle; //게시글 제목
 	private String postDate; //게시글 작성 날짜
 	private String postUpdate; //게시글 수정
-	private int boardId; //게시판 ID
 	private int memberNumber; //회원 번호
 	private String memberId; //회원 ID
 	private String postContent; //게시글 내용
+	private String postComment; // 게시글 댓글
 	
+	
+	// get, set
+	public String getPostComment() {
+		return postComment;
+	}
+	public void setPostComment(String postComment) {
+		this.postComment = postComment;
+	}
 	public int getPostNumber() {
 		return postNumber;
 	}
@@ -34,12 +42,6 @@ public class FreePostDTO {
 	public void setPostUpdate(String postUpdate) {
 		this.postUpdate = postUpdate;
 	}
-	public int getBoardId() {
-		return boardId;
-	}
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
-	}
 	public int getMemberNumber() {
 		return memberNumber;
 	}
@@ -59,11 +61,14 @@ public class FreePostDTO {
 		this.postContent = postContent;
 	}
 	
+	// toString 오버라이딩
 	@Override
 	public String toString() {
 		return "FreePostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postDate=" + postDate
-				+ ", postUpdate=" + postUpdate + ", boardId=" + boardId + ", memberNumber=" + memberNumber
-				+ ", memberId=" + memberId + ", postContent=" + postContent + "]";
+				+ ", postUpdate=" + postUpdate + ", memberNumber=" + memberNumber + ", memberId=" + memberId
+				+ ", postContent=" + postContent + ", postComment=" + postComment + "]";
 	}
+	
+
 	
 }

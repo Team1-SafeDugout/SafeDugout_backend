@@ -129,7 +129,7 @@
 									<c:choose>
 										<c:when test="${not empty sellPost.imagePath}">
 											<img
-												src="${pageContext.request.contextPath}/upload/${sellPost.imagePath}"
+												src="/upload/product/${file.attachmentPath}"
 												alt="${sellPost.sellPostTitle}"
 												onerror="this.src='${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png'">
 										</c:when>
