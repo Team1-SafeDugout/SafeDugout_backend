@@ -61,6 +61,7 @@ public class BuyController {
     public Result payment(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Result result = new Result();
 
+        // 파라미터 가져오기
         int sellPostNumber = Integer.parseInt(request.getParameter("sellPostNumber"));
         int buyerNumber = Integer.parseInt(request.getParameter("buyerNumber"));
         int sellerNumber = Integer.parseInt(request.getParameter("sellerNumber"));
@@ -68,20 +69,18 @@ public class BuyController {
 
         System.out.println("payment 메소드 진입");
 
-        // 멤버 포인트 조회
+        // 구매자 포인트 조회
         MemberDAO memberDAO = new MemberDAO();
         int buyerPoint = memberDAO.getMemberPoint(buyerNumber);
 
-        // 포인트 부족시 충전페이지 이동
+        // 포인트 부족 시 충전 페이지로 이동
         if (buyerPoint < pricePoint) {
             System.out.println("충전페이지 이동");
             result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=buy&action=charging");
-            result.setRedirect(false);
+            result.setRedirect(true); 
             return result;
         }
 
-        
-        
         // 결제 정보 매핑
         Map<String, Object> param = new HashMap<>();
         param.put("buyerNumber", buyerNumber);
@@ -89,27 +88,27 @@ public class BuyController {
         param.put("pricePoint", pricePoint);
         param.put("sellPostNumber", sellPostNumber);
 
-        // 결제 메소드 실행
+        // PaymentDAO의 processPayment 사용
         PaymentDAO paymentDAO = new PaymentDAO();
-        int buyer = paymentDAO.decreaseBuyerPoint(param);
-        int seller = paymentDAO.increaseSellerPoint(param);
-        int trade = paymentDAO.insertTradePost(param);
-        int updateStatus = paymentDAO.updateSellPostStatus(sellPostNumber);
+        boolean success = paymentDAO.processPayment(param, sellPostNumber);
 
-        if (buyer > 0 && seller > 0 && trade > 0 && updateStatus > 0) {
+        if (success) {
             // 결제 완료 후 세션 포인트 갱신
             int updatedBuyerPoint = memberDAO.getMemberPoint(buyerNumber);
             request.getSession().setAttribute("memberPoint", updatedBuyerPoint);
 
+            // 상품 리스트 페이지로 이동
             result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=allproduct&action=list");
             result.setRedirect(true);
         } else {
-            response.getWriter().println("결제 실패");
-            return null;
+            // 결제 실패 시 상품 디테일 페이지로 이동
+            result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=allproduct&action=detail&sellPostNumber=" + sellPostNumber);
+            result.setRedirect(true);
         }
 
         return result;
     }
+
 
     // 구매 취소
     public Result canceled(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -162,14 +161,17 @@ public class BuyController {
     public Result chargingOk(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Result result = new Result();
 
-        String memberNumberStr = request.getParameter("memberNumber");
-        String chargePointStr = request.getParameter("amount");
-        String paymentId = request.getParameter("paymentId");
-        String merchantUid = request.getParameter("merchantUid");
-        String payMethod = request.getParameter("payMethod");
-        String paidAt = request.getParameter("paidAt");
+        // 파라미터 가져오기
+        String memberNumberStr = request.getParameter("memberNumber"); // 회원번호
+        String chargePointStr = request.getParameter("amount");       // 충전 포인트
+        String paymentId = request.getParameter("paymentId");         // IMP 결제번호
+        String merchantUid = request.getParameter("merchantUid");     // 가맹점 주문번호
+        String payMethod = request.getParameter("payMethod");         // 결제수단
+        String paidAt = request.getParameter("paidAt");               // 결제 완료 시각
 
-        if (memberNumberStr == null || chargePointStr == null || memberNumberStr.trim().isEmpty() || chargePointStr.trim().isEmpty()) {
+        // 입력값 확인
+        if(memberNumberStr == null || chargePointStr == null ||
+           memberNumberStr.trim().isEmpty() || chargePointStr.trim().isEmpty()) {
             response.sendRedirect(request.getContextPath() + "/app/trade/pointBuy.jsp");
             return null;
         }
@@ -180,41 +182,67 @@ public class BuyController {
         PaymentDAO paymentDAO = new PaymentDAO();
 
         try {
-            // 아임포트 토큰 요청 및 결제 검증 (생략)
+            // 아임포트 서버 검증 및 토큰 요청
+            String impKey = System.getenv("IMP_API_KEY"); 
+            String impSecret = System.getenv("IMP_SECRET_KEY"); 
+            org.jsoup.Connection.Response jsoupResponse = org.jsoup.Jsoup.connect("https://api.iamport.kr/users/getToken")
+                    .ignoreContentType(true)
+                    .method(org.jsoup.Connection.Method.POST)
+                    .data("imp_key", impKey)
+                    .data("imp_secret", impSecret)
+                    .execute();
 
+            JSONParser parser = new JSONParser();
+            JSONObject tokenObj = (JSONObject) parser.parse(jsoupResponse.body());
+            JSONObject responseObj = (JSONObject) tokenObj.get("response");
+            String accessToken = (String) responseObj.get("access_token");
+
+            // imp_uid로 결제 정보 조회
+            String impUid = request.getParameter("paymentId");
+            org.jsoup.Connection.Response paymentResponse = org.jsoup.Jsoup
+                    .connect("https://api.iamport.kr/payments/" + impUid)
+                    .ignoreContentType(true)
+                    .header("Authorization", "Bearer " + accessToken)
+                    .method(org.jsoup.Connection.Method.GET)
+                    .execute();
+
+            String paymentJson = paymentResponse.body();
+            org.json.simple.JSONObject paymentObj = (org.json.simple.JSONObject) parser.parse(paymentJson);
+            org.json.simple.JSONObject respObj = (org.json.simple.JSONObject) paymentObj.get("response");
+            Long amount = (Long) responseObj.get("amount");
+
+            // DB 업데이트: 회원 포인트 충전
             Map<String, Object> param = new HashMap<>();
             param.put("memberNumber", memberNumber);
             param.put("chargePoint", chargePoint);
 
             int update = paymentDAO.chargeMemberPoint(param);
 
-            if (update > 0) {
+            if(update > 0) {
+                // 결제 기록 저장
                 PointPaymentDTO payment = new PointPaymentDTO();
                 payment.setPaymentId(paymentId);
                 payment.setMerchantUid(merchantUid);
                 payment.setMemberNumber(memberNumber);
                 payment.setAmount(chargePoint);
-                payment.setStatus("paid");
+                payment.setStatus("paid"); 
                 payment.setPayMethod(payMethod);
-                payment.setPaidAt(paidAt);
+                payment.setPaidAt(paidAt); 
 
                 paymentDAO.insertPointPayment(payment);
                 paymentDAO.sqlSession.commit();
 
-                // ✅ 충전 후 세션 포인트 갱신
-                MemberDAO memberDAO = new MemberDAO();
-                int updatedMemberPoint = memberDAO.getMemberPoint(memberNumber);
-                request.getSession().setAttribute("memberPoint", updatedMemberPoint);
-
+                // 성공 페이지 이동
                 result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=allproduct&action=list");
                 result.setRedirect(true);
+
             } else {
                 paymentDAO.sqlSession.rollback();
                 result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=buy&action=charging");
                 result.setRedirect(true);
             }
 
-        } catch (Exception e) {
+        } catch(Exception e) {
             paymentDAO.sqlSession.rollback();
             e.printStackTrace();
             result.setPath(request.getContextPath() + "/trade/sellPostFrontController2.tr?category=buy&action=charging");
@@ -225,4 +253,5 @@ public class BuyController {
 
         return result;
     }
+
 }

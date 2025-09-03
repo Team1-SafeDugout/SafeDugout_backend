@@ -5,17 +5,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>상품 디테일 페이지</title>
-
 <!-- CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/productDetailBuyer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-
 </head>
 
 <body>
@@ -24,16 +21,20 @@
     <main>
         <section class="section-background">
             <!-- 상단 작성자/삭제 버튼 -->
-            <section class="section-top-menus">
-                <div class="product-info">
-                    작성자: <c:out value="${sellPostDetail.memberId}" />
-                </div>
-                <c:if test="${sellPostDetail.memberNumber == sessionScope.memberNumber}">
-                    <button class="post-button-delete" type="button">
-                        삭제하기
-                    </button>
-                </c:if>
-            </section>
+			<section class="section-top-menus">
+			    <div class="product-info">
+			        작성자: <c:out value="${sellPostDetail.memberId}" />
+			    </div>
+			    <!-- 삭제 버튼: 로그인한 멤버와 작성자 번호가 같으면 표시 -->
+			    <form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=allproduct&action=deletepostok"  method="post">  
+			    	<input type="hidden" name="sellPostNumber" value="${sellPostDetail.sellPostNumber}">         
+				    <c:if test="${sellPostDetail.memberNumber != null and sessionScope.memberNumber != null and sellPostDetail.memberNumber.toString() == sessionScope.memberNumber.toString()}">	        
+				        <button class="post-button-delete" >
+				            삭제하기
+				        </button>
+				    </c:if>
+			    </form> 
+			</section>
 
             <!-- 중단 요소 -->
             <section class="section-middle-menus">
@@ -44,7 +45,7 @@
                             <c:when test="${not empty sellPostDetail.attachment}">
                                 <c:forEach var="file" items="${sellPostDetail.attachment}" varStatus="status">
                                     <c:if test="${status.index == 1}">
-                                        <img src="${pageContext.request.contextPath}/${file.attachmentPath}" alt="상품 이미지">
+                                        <img src="/upload/product/${file.attachmentPath}" alt="상품 이미지">
                                     </c:if>
                                 </c:forEach>
                             </c:when>

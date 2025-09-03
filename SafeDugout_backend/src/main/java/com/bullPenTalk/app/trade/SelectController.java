@@ -313,6 +313,7 @@ public class SelectController {
 	}
 	
 	
+	// 검색
 	public Result search(String action, HttpServletRequest request, HttpServletResponse response) {
 	    SellPostDAO sellPostDAO = new SellPostDAO();
 	    Result result = new Result();
