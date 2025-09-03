@@ -7,7 +7,6 @@
 body {
   margin: 0px 0px;
 }
-
 /* 검색 컨테이너 */
 .search-container {
   background-color: #DCD6D0;
@@ -47,10 +46,11 @@ body {
 /* 메인 컨테이너*/
 .main-container {
   width: 100vw;
-  min-height: 750px;
-  padding: 30px 0px 0px 0px;
+  min-height: 900px;
+  padding: 30px 0 0 0;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap; /* 상품이 많으면 다음 줄로 넘어가도록 */
 }
 
 /* 제목 */
@@ -217,6 +217,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
   padding: 20px;
+  
 }
 
 .product-list {
@@ -414,7 +415,7 @@ body {
   background-color: #f5f5f5;
   width: 250px;
   height: 275px;
-  margin: 15px 0px 0px 0px;
+  margin: 15px 0px 15px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;

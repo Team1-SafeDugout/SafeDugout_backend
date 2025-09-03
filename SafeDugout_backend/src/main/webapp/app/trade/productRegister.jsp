@@ -70,12 +70,12 @@
 								</div>
 								<div class="logo">
 									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png"
+										src="${pageContext.request.contextPath}/assets/img/communityImg/hanwha.png"
 										alt="한화" data-team-id="3">
 								</div>
 								<div class="logo">
 									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png"
+										src="${pageContext.request.contextPath}/assets/img/communityImg/samsung.png"
 										alt="삼성" data-team-id="4">
 								</div>
 								<div class="logo">
@@ -95,7 +95,7 @@
 								</div>
 								<div class="logo">
 									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png"
+										src="${pageContext.request.contextPath}/assets/img/communityImg/lotte.png"
 										alt="롯데" data-team-id="8">
 								</div>
 								<div class="logo">
@@ -105,7 +105,7 @@
 								</div>
 								<div class="logo">
 									<img
-										src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png"
+										src="${pageContext.request.contextPath}/assets/img/communityImg/kiwoom.png"
 										alt="키움" data-team-id="10">
 								</div>
 								<input type="text" id="team" name="teamId" value="0" readonly>

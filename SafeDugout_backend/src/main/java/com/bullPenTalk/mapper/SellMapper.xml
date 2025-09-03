@@ -13,6 +13,7 @@
                    SP.SELL_POST_TITLE,
                    SP.PRICE_POINT,
                    SP.TRADING_AREA,
+                   SP.SELL_POST_CREATION_DATE,
                    M.MEMBER_ID AS SELLER_ID,
                    AT.ATTACHMENT_PATH AS IMAGE_PATH
             FROM TBL_SELL_POST SP
@@ -40,6 +41,7 @@
 	               SP.SELL_POST_TITLE,
 	               SP.PRICE_POINT,
 	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
 	               M.MEMBER_ID AS SELLER_ID,
 	               AT.ATTACHMENT_PATH AS IMAGE_PATH
 	        FROM TBL_SELL_POST SP
@@ -68,6 +70,7 @@
 	               SP.SELL_POST_TITLE,
 	               SP.PRICE_POINT,
 	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
 	               M.MEMBER_ID AS SELLER_ID,
 	               AT.ATTACHMENT_PATH AS IMAGE_PATH
 	        FROM TBL_SELL_POST SP
@@ -93,6 +96,7 @@
 	       PRICE_POINT,
 	       TRADING_AREA,
 	       IMAGE_PATH,
+	       SELL_POST_CREATION_DATE,
 	       MEMBER_ID AS SELLER_ID
 	FROM (
 	    SELECT ROWNUM AS RN, subquery.*
@@ -101,6 +105,7 @@
 	               SP.SELL_POST_TITLE,
 	               SP.PRICE_POINT,
 	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
 	               M.MEMBER_ID,
 	               AT.ATTACHMENT_PATH AS IMAGE_PATH
 	        FROM TBL_SELL_POST SP
