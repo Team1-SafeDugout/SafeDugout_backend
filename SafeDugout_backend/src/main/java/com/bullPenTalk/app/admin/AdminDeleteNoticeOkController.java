@@ -26,7 +26,6 @@ public class AdminDeleteNoticeOkController implements Execute{
 		int postNumber =  Integer.parseInt(request.getParameter("noticePostNumber"));
 		int postType = Integer.parseInt(request.getParameter("noticeTypeId"));
 		
-		
 		switch(postType) {
 		case 1:
 			result.setPath("/admin/adminMainNoticeListOk.ad");

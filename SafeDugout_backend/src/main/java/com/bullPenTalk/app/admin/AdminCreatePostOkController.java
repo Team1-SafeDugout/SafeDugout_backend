@@ -57,28 +57,6 @@ public class AdminCreatePostOkController implements Execute{
 		// Enumeration : java.util 패키지에 포함된 인터페이스, Iterator와 비슷한 역할함
 		Enumeration<String> fileNames = multipartRequest.getFileNames();
 		
-		while (fileNames.hasMoreElements()) {
-			
-			String name = fileNames.nextElement();
-
-			// 서버에 저장된 파일명
-			String fileSystemName = multipartRequest.getFilesystemName(name);
-			// 업로드한 원본 파일명
-			String fileOriginalName = multipartRequest.getOriginalFileName(name);
-
-			if (fileSystemName == null) {
-				continue; // 업로드 안된 필드는 무시
-			}
-
-			// 파일 정보 DB 저장 후 시퀀스로 생성된 attachmentNumber 받기
-			AttachmentDTO attachmentDTO = new AttachmentDTO();
-			attachmentDTO.setAttachmentPath(uploadPath); 
-			attachmentDTO.setAttachmentName(name);
-			attachmentDTO.setAttachmentTypeId(1); // 1 = IMAGE
-			attachmentDAO.insert(attachmentDTO);
-			int attachmentNumber = attachmentDTO.getAttachmentNumber(); // 생성된 번호 가져오기
-		}
-		
 		String boardCategory =  request.getParameter("boardCategory"); // 리퀘스트로 넘어온 
 		int boardNum = 0; // 카테고리 테이블에서의 boardNUM
 		
@@ -86,7 +64,7 @@ public class AdminCreatePostOkController implements Execute{
 		String date = today.getYear() + "-" + today.getMonth() + "-" + today.getDayOfMonth();
 		String upDate = date;
 		String content  = multipartRequest.getParameter("content");
-		int adminNumber = adminInfo.getAdminNumber();
+		int adminNumber = adminInfo != null ? adminInfo.getAdminNumber() : 99;
 		int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 		
 		switch(boardCategory) {
@@ -171,6 +149,30 @@ public class AdminCreatePostOkController implements Execute{
 			
 			break;
 		}
+		
+		while (fileNames.hasMoreElements()) {
+
+			String name = fileNames.nextElement();
+
+			// 서버에 저장된 파일명
+			String fileSystemName = multipartRequest.getFilesystemName(name);
+			// 업로드한 원본 파일명
+			String fileOriginalName = multipartRequest.getOriginalFileName(name);
+
+			if (fileSystemName == null) {
+				continue; // 업로드 안된 필드는 무시
+			}
+
+			// 파일 정보 DB 저장 후 시퀀스로 생성된 attachmentNumber 받기
+			AttachmentDTO attachmentDTO = new AttachmentDTO();
+			attachmentDTO.setAttachmentPath("/upload/" + subPath);
+			attachmentDTO.setAttachmentName(fileOriginalName);
+			attachmentDTO.setAttachmentTypeId(1); // 1 = IMAGE
+			attachmentDTO.setPostNumber(attachmentDAO.getPostNumber());
+			attachmentDAO.insertNoticeAttachment(attachmentDTO);
+			System.out.println("파일 추가 완료");
+		}
+		
 		result.setPath("/admin/adminMainNoticeListOk.ad");
 		result.setRedirect(true);
 		
