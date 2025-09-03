@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class FreePostDTO {
 	private int postNumber; //게시글 번호
 	private String postTitle; //게시글 제목
@@ -9,9 +11,16 @@ public class FreePostDTO {
 	private String memberId; //회원 ID
 	private String postContent; //게시글 내용
 	private String postComment; // 게시글 댓글
+	private List<AttachmentDTO> atachment; // 파일
 	
 	
 	// get, set
+	public List<AttachmentDTO> getAtachment() {
+		return atachment;
+	}
+	public void setAtachment(List<AttachmentDTO> atachment) {
+		this.atachment = atachment;
+	}
 	public String getPostComment() {
 		return postComment;
 	}
