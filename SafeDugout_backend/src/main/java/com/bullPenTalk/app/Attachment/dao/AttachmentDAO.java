@@ -51,6 +51,17 @@ public class AttachmentDAO {
     	}
     }
     
+    public int insertSellPostAttachment(AttachmentDTO attachment) {
+        try {
+            int result = sqlSession.insert("attachment.insertSellPostAttachment", attachment);
+            System.out.println("판매글 첨부 insert 완료: " + result);
+            return result;
+        } catch (Exception e) {
+            System.out.println("판매글 첨부 insert 실패: " + e.getMessage());
+            e.printStackTrace();
+            return 0;
+        }
+    }
     // 글번호 가져오기
     public int getNoticePostNumber() {
     	return sqlSession.selectOne("attachment.getCurrentNoticeNumber");

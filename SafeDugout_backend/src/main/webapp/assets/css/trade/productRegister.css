@@ -13,9 +13,8 @@ body {
   background-color: #DCD6D0;
   width: 100vw;
   height: 100px;
-  /* padding: 0px 50px; */
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
 
 /* 검색창 */
@@ -37,7 +36,6 @@ body {
   font-weight: 800;
 }
 
-/* 검색 컨테이너 */
 .search-container button:hover {
   filter: brightness(0.9);
   cursor: pointer;
@@ -76,19 +74,17 @@ body {
   width: 100px;
 }
 
-/* 이미지 박스 img 태그 */
 .img-box img {
   width: 100px;
   height: 100px;
+  transition: all 0.2s ease;
 }
 
-/* 이미지 박스 div 태그 */
 .img-box>div {
   display: flex;
   align-items: center;
 }
 
-/* 사진 등록 버튼 */
 .img-container label {
   background-color: transparent;
   border: none;
@@ -96,24 +92,20 @@ body {
   font-size: 12px;
 }
 
-/* 사진 등록 버튼 호버 */
 .img-container label:hover {
   cursor: pointer;
 }
 
-/* 사진 삭제 버튼 */
 .img-container span {
   display: none;
   font-size: 12px;
   color: red;
 }
 
-/* 사진 삭제 버튼 호버 */
 .img-container span:hover {
   cursor: pointer;
 }
 
-/* 이미지 컨테이너 input 태그 */
 .img-container input {
   display: none;
 }
@@ -157,7 +149,6 @@ body {
   font-weight: 700;
 }
 
-/* 상품명 이름 입력칸 */
 .product-name-text input {
   background-color: transparent;
   font-size: 24px;
@@ -173,7 +164,6 @@ body {
   align-items: center;
 }
 
-/* 카테고리 텍스트 */
 .product-category-text {
   border-bottom: 1px solid black;
   width: 100%;
@@ -187,7 +177,6 @@ body {
   line-height: 65px;
 }
 
-/* '팀 선택' */
 .product-team-text {
   border-bottom: 1px solid black;
   width: 500px;
@@ -195,7 +184,6 @@ body {
   font-size: 15px;
 }
 
-/* 로고 컨테이너 */
 .logo-container {
   width: 500px;
   margin: 10px 0px;
@@ -204,25 +192,27 @@ body {
   flex-wrap: wrap;
 }
 
-/* 로고 컨테이너 input 태그 */
 .logo-container input {
   display: none;
 }
 
-/* 로고 이미지 */
 .logo img {
   width: 60px;
   height: 60px;
+  transition: all 0.2s ease;
 }
 
-/* 첫번째 로고 */
-.logo:nth-child(1) {
-  border: none;
-}
-
-/* 로고 이미지 호버 */
 .logo img:hover {
   cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* 클릭된 팀 로고 강조 */
+.logo.selected img {
+  border: 3px solid #FF5722;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.7);
+  transform: scale(1.1);
 }
 
 /* 상품 종류 선택 텍스트 컨테이너 */
@@ -233,13 +223,11 @@ body {
   display: flex;
 }
 
-/* 상품 종류 선택 텍스트 */
 .product-type-text {
   font-size: 15px;
   font-weight: 700;
 }
 
-/* 상품 종류 값 */
 .product-type {
   width: 500px;
   font-size: 15px;
@@ -247,7 +235,6 @@ body {
   line-height: 17px;
 }
 
-/* 상품 종류 label 태그 */
 .product-type label {
   display: inline-block;
   width: 65px;
@@ -263,21 +250,18 @@ body {
   align-items: center;
 }
 
-/* 상품 설명 텍스트 */
 .product-explain-text {
   width: 440px;
   margin-top: 10px;
   font-size: 15px;
 }
 
-/* 상품 설명 박스 */
 .product-explain-blank textarea {
   border: 1px solid black;
   width: 440px;
   height: 340px;
 }
 
-/* 희망 지역 컨테이너 */
 .trade-location-container {
   width: 440px;
   margin: 20px 0px;
@@ -286,7 +270,6 @@ body {
   justify-content: space-between;
 }
 
-/* 거래 방식 컨테이너 */
 .trade-method-container {
   width: 440px;
   margin: 0px 0px 20px 0px;
@@ -295,7 +278,6 @@ body {
   justify-content: space-between;
 }
 
-/* 하단 컨테이너 */
 .bottom-container {
   width: 440px;
   margin-top: 0px;
@@ -303,9 +285,6 @@ body {
   align-items: center;
 }
 
-
-
-/* 가격 영역 */
 .price-container {
   display: flex;
   align-items: center;
@@ -327,7 +306,6 @@ body {
   box-sizing: border-box;
 }
 
-/* 버튼 영역 */
 .button-container {
   display: flex;
   gap: 10px;
