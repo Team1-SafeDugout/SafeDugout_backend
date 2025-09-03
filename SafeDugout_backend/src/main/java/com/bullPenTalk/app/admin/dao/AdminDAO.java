@@ -22,4 +22,8 @@ public class AdminDAO {
 	public AdminDTO takeInfo(int adminNumber) {
 		return sqlSession.selectOne("admin.takeInfo",adminNumber);
 	}
+	
+	public int getFirstAdmin() {
+		return sqlSession.selectOne("admin.getNumber");
+	}
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
+import com.bullPenTalk.app.admin.dao.AdminDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamSongDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
@@ -35,6 +36,7 @@ public class AdminCreatePostOkController implements Execute{
 		AttachmentDAO attachmentDAO = new AttachmentDAO();
 		HttpSession session = request.getSession();
 		AdminDTO adminInfo = (AdminDTO) session.getAttribute("adminInfo");
+		AdminDAO adminDAO = new AdminDAO();
         
 		// 파일 업로드 환경 설정
 		LocalDate today = LocalDate.now();
@@ -42,15 +44,17 @@ public class AdminCreatePostOkController implements Execute{
 		String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
 		String uploadPath = UPLOAD_PATH + subPath;
 		final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
-		System.out.println("파일 업로드 경로 : " + UPLOAD_PATH);
+		System.out.println("파일 업로드 경로 : " + uploadPath);
 		
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdirs(); // 상위 폴더까지 모두 생성
             System.out.println("업로드 폴더 생성 완료: " + uploadPath);
         }
+        
+        System.out.println(UPLOAD_PATH);
 		
-		MultipartRequest multipartRequest = new MultipartRequest(request, UPLOAD_PATH, FILE_SIZE, "utf-8",
+		MultipartRequest multipartRequest = new MultipartRequest(request, uploadPath, FILE_SIZE, "utf-8",
 				new DefaultFileRenamePolicy());
 		
 		// 파일 업로드 처리
@@ -64,7 +68,7 @@ public class AdminCreatePostOkController implements Execute{
 		String date = today.getYear() + "-" + today.getMonth() + "-" + today.getDayOfMonth();
 		String upDate = date;
 		String content  = multipartRequest.getParameter("content");
-		int adminNumber = adminInfo != null ? adminInfo.getAdminNumber() : 99;
+		int adminNumber = adminInfo != null ? adminInfo.getAdminNumber() : adminDAO.getFirstAdmin();
 		int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
 		
 		switch(boardCategory) {
@@ -87,7 +91,7 @@ public class AdminCreatePostOkController implements Execute{
 			newsPost.setBoardId(boardNum);
 			
 			newsDAO.insert(newsPost);
-			result.setPath("");
+			result.setPath("/admin/adminManageTeamNewsListOk.ad");
 			break;
 			
 		case "teamyoutube":
@@ -107,6 +111,7 @@ public class AdminCreatePostOkController implements Execute{
 			youtubePostDTO.setPostLink(youtubeUrl);
 			
 			youtubeDAO.insert(youtubePostDTO);
+			result.setPath("/admin/adminManageTeamYoutubeListOk.ad");
 			
 			break;
 			
@@ -126,7 +131,8 @@ public class AdminCreatePostOkController implements Execute{
 			songPostDTO.setPostLink(songUrl);
 			songPostDTO.setPostContent("song");
 			
-			songPostDAO.insert(songPostDTO);			
+			songPostDAO.insert(songPostDTO);
+			result.setPath("/admin/adminManageTeamSongListOk.ad");
 			break;
 			
 		case "playercheeringsong":
@@ -145,7 +151,8 @@ public class AdminCreatePostOkController implements Execute{
 			songPlayerPostDTO.setPostLink(songPlayerUrl);
 			songPlayerPostDTO.setPostContent("song");
 			
-			songPlayerPostDAO.insert(songPlayerPostDTO);	
+			songPlayerPostDAO.insert(songPlayerPostDTO);
+			result.setPath("/admin/adminManageTeamSongListOk.ad");
 			
 			break;
 		}
@@ -169,11 +176,10 @@ public class AdminCreatePostOkController implements Execute{
 			attachmentDTO.setAttachmentName(fileOriginalName);
 			attachmentDTO.setAttachmentTypeId(1); // 1 = IMAGE
 			attachmentDTO.setPostNumber(attachmentDAO.getPostNumber());
-			attachmentDAO.insertNoticeAttachment(attachmentDTO);
+			attachmentDAO.insertPostAttachment(attachmentDTO);
 			System.out.println("파일 추가 완료");
 		}
 		
-		result.setPath("/admin/adminMainNoticeListOk.ad");
 		result.setRedirect(true);
 		
 		return result;
@@ -183,33 +189,43 @@ public class AdminCreatePostOkController implements Execute{
 	int getTeamNumber(String teamName) {
 		int teamNumber = 0;
 		switch(teamName) {
-		case "lg":
+		
+		case "doosan":
 			teamNumber = 1;
 			break;
-		case "hh":
+			
+		case "lg":
 			teamNumber = 2;
 			break;
-		case "lotte":
+			
+		case "hh":
 			teamNumber = 3;
 			break;
-		case "ssg":
+			
+		case "samsung":
 			teamNumber = 4;
 			break;
-		case "kia":
+			
+		case "ssg":
 			teamNumber = 5;
 			break;
+			
 		case "kt":
 			teamNumber = 6;
 			break;
+			
 		case "nc":
 			teamNumber = 7;
 			break;
-		case "samsung":
+			
+		case "lotte":
 			teamNumber = 8;
 			break;
-		case "doosan":
+
+		case "kia":
 			teamNumber = 9;
 			break;
+
 		case "kiwoom":
 			teamNumber = 10;
 			break;

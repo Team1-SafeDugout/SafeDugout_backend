@@ -52,10 +52,16 @@
 	    VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentPath}, #{sellPostNumber}, #{postNumber}, #{noticePostNumber})
 	</insert>
 	
-		<!-- 추가 관련 -->
+	<!--  공지 첨부 -->
 	<insert id="insertNoticeAttachment" parameterType="AttachmentDTO">
 	    INSERT INTO TBL_ATTACHMENT(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_PATH, NOTICE_POST_NUMBER)
 	    VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentPath}, #{noticePostNumber})
+	</insert>
+	
+	<!-- 게시글 첨부 -->
+	<insert id="insertPostAttachment" parameterType="AttachmentDTO">
+	    INSERT INTO TBL_ATTACHMENT(ATTACHMENT_NUMBER, ATTACHMENT_TYPE_ID, ATTACHMENT_NAME, ATTACHMENT_PATH, POST_NUMBER)
+	    VALUES(seq_attachment_number.nextval, #{attachmentTypeId}, #{attachmentName}, #{attachmentPath}, #{postNumber})
 	</insert>
 
 	<!-- 판매글 첨부 -->
@@ -80,7 +86,7 @@
 	<select id = "getCurrentPostNumber" resultType = "int">
 	SELECT POST_NUMBER
 	FROM TBL_POST
-	ORDER BY TBL_POST DESC
+	ORDER BY POST_NUMBER DESC
 	FETCH FIRST 1 ROWS ONLY
 	</select>
 	

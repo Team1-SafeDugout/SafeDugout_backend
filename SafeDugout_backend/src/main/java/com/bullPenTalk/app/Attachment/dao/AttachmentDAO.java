@@ -43,6 +43,14 @@ public class AttachmentDAO {
         }
     }
     
+    public void insertPostAttachment(AttachmentDTO attachmentDTO) {
+    	try {
+    		sqlSession.insert("attachment.insertPostAttachment", attachmentDTO);
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     public void insertNoticeAttachment(AttachmentDTO attachmentDTO) {
     	try {
     		sqlSession.insert("attachment.insertNoticeAttachment", attachmentDTO);

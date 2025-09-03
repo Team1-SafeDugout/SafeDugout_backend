@@ -14,4 +14,9 @@
 		from tbl_admin
 		where admin_number = #{adminNumber}
 	</select>
+	
+	<select id = "getNumber" resultType = "int">
+		select admin_number
+		FROM TBL_ADMIN
+	</select>
 </mapper>

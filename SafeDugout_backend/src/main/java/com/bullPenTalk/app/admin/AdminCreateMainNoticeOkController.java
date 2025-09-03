@@ -153,34 +153,44 @@ public class AdminCreateMainNoticeOkController implements Execute {
 
 	int getTeamNumber(String teamName) {
 		int teamNumber = 0;
-		switch (teamName) {
-		case "lg":
+		switch(teamName) {
+		
+		case "doosan":
 			teamNumber = 1;
 			break;
-		case "hh":
+			
+		case "lg":
 			teamNumber = 2;
 			break;
-		case "lotte":
+			
+		case "hh":
 			teamNumber = 3;
 			break;
-		case "ssg":
+			
+		case "samsung":
 			teamNumber = 4;
 			break;
-		case "kia":
+			
+		case "ssg":
 			teamNumber = 5;
 			break;
+			
 		case "kt":
 			teamNumber = 6;
 			break;
+			
 		case "nc":
 			teamNumber = 7;
 			break;
-		case "samsung":
+			
+		case "lotte":
 			teamNumber = 8;
 			break;
-		case "doosan":
+
+		case "kia":
 			teamNumber = 9;
 			break;
+
 		case "kiwoom":
 			teamNumber = 10;
 			break;

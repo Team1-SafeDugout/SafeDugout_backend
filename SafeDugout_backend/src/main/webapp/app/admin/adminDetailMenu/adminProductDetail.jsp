@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -15,7 +16,7 @@
   <main>
     <section class="section-background">
       <section class="section-top-menus">
-        <div class="product-info"> 작성자 </div>
+        <div class="product-info"> 작성자 : ${sellPostDetail.memberId} </div>
         <form action="" method="get">
           <button class="post-button" type="button" id = "delete-button"> 삭제하기 </button>
         </form>
@@ -24,7 +25,14 @@
       <section class="section-middle-menus">
         <div class="product-info-container">
           <div class="product-image">
-            <img src="${sellPostDetail.attachmentPath}">
+            <c:choose>
+				<c:when test = "${!empty sellPostDetail.attachmentPath}">
+					<img src= "/upload/product/${sellPostDetail.attachmentPath}"/>
+				</c:when>
+				<c:otherwise>
+					<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
+				</c:otherwise>
+			</c:choose>
             <div class="product-slide-buttons">
               <div id="left-slide-button"> ◁ </div>
               <div id="right-slide-button"> ▷ </div>
