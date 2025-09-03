@@ -64,7 +64,7 @@
             <h> | </h>
             <a href="${pageContext.request.contextPath}/findPw/findPwInput.jsp">비밀번호 찾기</a>
             <h> | </h>
-            <a href="${pageContext.request.contextPath}/register/terms.jsp">회원가입</a>
+            <a href="/member/terms.me">회원가입</a>
           </div>
         </div>
       </form>

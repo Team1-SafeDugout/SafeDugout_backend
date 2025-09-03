@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminNoticePost.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script async src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminNoticePost.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminNoticePost.js"></script>
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/admin/adminHeader.jsp" />
@@ -39,7 +39,7 @@
 				<c:when test = "${!empty mainNotice.attachmentName}">
 					<img width = 100% height = 500px src= "${mainNotice.attachmentPath}${mainNotice.attachmentName}"/>
 				</c:when>
-			</c:choose>	
+			</c:choose>
           	
             <c:out value= "${mainNotice.getNoticePostContent()}" />
           </div>

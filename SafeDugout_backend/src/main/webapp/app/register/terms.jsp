@@ -8,11 +8,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>약관 동의 페이지</title>
-  <link rel="stylesheet" href="./../../assets/css/register/terms.css">
-  <link rel="stylesheet" href="./../../assets/css/headerLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/headerNoLogin.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/register/terms.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/register/terms.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/register/terms.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -139,7 +138,7 @@
   <!-- 전체 화면 -->
   <div class="full-screen">
     <!-- 헤더 -->
-    <div id="header"></div>
+    <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
     <!-- 메인 -->
     <main>
       <!-- 메인 컨테이너 -->
@@ -206,10 +205,8 @@
       </div>
     </main>
     <!-- 푸터 -->
-    <div id="footer"></div>
+    <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
   </div>
-  <!-- 스크립트 -->
-  <script src="./../../assets/js/include.js"></script>
 </body>
 
 </html>

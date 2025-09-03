@@ -100,6 +100,12 @@ public class AdminFrontController extends HttpServlet {
 			result = new MemberListOkController().execute(request, response);
 			break;
 			
+		case "/admin/adminManageUserPostListOk.ad":
+			System.out.println("유저 게시물 목록");
+			// 유저 게시물은 한 탭에서 전체, 팀 게시물 모두 볼수 있도록 할거임(탭을 나눠서 진행)
+			result = new AdminPostListOkController().execute(request, response);
+			break;
+			
 		case "/admin/adminLogout.ad":
 			result = new AdminLogoutController().execute(request, response);
 			break;
@@ -130,12 +136,18 @@ public class AdminFrontController extends HttpServlet {
 			break;
 			
 		case "/admin/adminCreateNotice.ad":
+			System.out.println("공지글 생성");
 			result = new AdminCreateNotice().execute(request, response);
 			break;
 			
 		case "/admin/adminDeleteNoticeOk.ad":
 			System.out.println("삭제 진입");
 			result = new AdminDeleteNoticeOkController().execute(request, response);
+			break;
+			
+		case "/admin/adminDelteSellOk.ad":
+			System.out.println("판매글 삭제");
+			result = new AdminDeleteSellPostOkController().execute(request, response);
 			break;
 			
 		case "/admin/adminCreatePost.ad" :

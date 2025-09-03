@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminUserPostDAO;
+import com.bullPenTalk.app.dto.FreePostDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.dto.TeamPostDTO;
 
@@ -20,8 +21,6 @@ public class AdminPostListOkController implements Execute{
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		System.out.println("일로들어옴");
 		
 		AdminUserPostDAO adminUserPostDAO = new AdminUserPostDAO();
 		Result result = new Result();
@@ -41,8 +40,20 @@ public class AdminPostListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<TeamPostDTO> boardList = adminUserPostDAO.selectAll();
-		request.setAttribute("boardList", boardList);
+		String currentTab = request.getParameter("currentTab");
+		switch(currentTab) {
+		case "Free":
+			List<FreePostDTO> boardFreeList = adminUserPostDAO.selectAllFree();
+			request.setAttribute("boardList", boardFreeList);
+			break;
+			
+		case "Team":
+			List<TeamPostDTO> boardTeamList = adminUserPostDAO.selectAll();
+//			request.setAttribute("boardList", boardTeamListg);
+			break;
+		}
+		
+//		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회

@@ -67,12 +67,12 @@ modalCancelBtn.addEventListener('click', function () {
 // 다음 버튼 누를 시 동작 
 nextBtn.addEventListener('click', function () {
   if (useTermCheckBox.checked && consentUsePICheckBox.checked) {
-    location.href = './RegisterInput.html';
+    location.href = '/member/join.me';
   } else {
     alert("약관에 동의해주세요.")
   }
 });
 // 취소 버튼 누를 시 동작 
 cancelBtn.addEventListener('click', function () {
-  location.href = './../../mainNoLogin.html';
+  location.href = '/main.ma';
 });

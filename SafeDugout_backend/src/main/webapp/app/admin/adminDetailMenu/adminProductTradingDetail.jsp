@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kor">
 
@@ -9,7 +10,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminProductTradingDetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script src="${pageContext.request.contextPath}/adminDetailMenu/adminProductTradingDetail.js"></script>
+  <script defer src="${pageContext.request.contextPath}/adminDetailMenu/adminProductTradingDetail.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,14 @@
       <section class="section-middle-menus">
         <div class="product-info-container">
           <div class="product-image">
-            <img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
+            <c:choose>
+				<c:when test = "${!empty tradePostDetail.attachmentPath}">
+					<img src= "/upload/product/${tradePostDetail.attachmentPath}"/>
+				</c:when>
+				<c:otherwise>
+					<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
+				</c:otherwise>
+			</c:choose>
             <div class="product-slide-buttons">
               <div id="left-slide-button"> ◁ </div>
               <div id="right-slide-button"> ▷ </div>

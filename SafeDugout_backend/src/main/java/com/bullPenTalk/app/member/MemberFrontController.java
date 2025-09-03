@@ -49,6 +49,11 @@ public class MemberFrontController extends HttpServlet {
 		Result result = new Result();
 		
 		switch(target) {
+		case "/member/terms.me":
+			System.out.println("회원 가입전 이용약관 확인");
+			request.getRequestDispatcher("/app/register/terms.jsp").forward(request, response);
+			break;
+		
 		case "/member/join.me" :
 			request.getRequestDispatcher("/app/register/RegisterInput.jsp").forward(request, response);
 			break;
