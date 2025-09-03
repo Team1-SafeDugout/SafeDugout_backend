@@ -9,13 +9,13 @@
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="두산 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 3}">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/HH.png" alt="hanwha 로고">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/hanwha.png" alt="hanwha 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 9}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png" alt="kia 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 10}">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/WO.png" alt="kiwoom 로고">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/kiwoom.png" alt="kiwoom 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 6}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png" alt="kt 로고">
@@ -24,13 +24,13 @@
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="lg 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 8}">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/LT.png" alt="lotte 로고">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/lotte.png" alt="lotte 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 7}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="nc 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 4}">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/SS.png" alt="삼성 로고">
+        <img src="${pageContext.request.contextPath}/assets/img/communityImg/samsung.png" alt="삼성 로고">
         </c:when>
       	<c:when test="${sessionScope.teamNumber == 5}">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="ssg 로고">

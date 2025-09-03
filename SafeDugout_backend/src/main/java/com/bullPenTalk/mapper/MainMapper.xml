@@ -17,7 +17,7 @@
 	    FROM (
 	        SELECT NOTICE_POST_NUMBER,
 	               NOTICE_POST_TITLE,
-	               NOTICE_POST_DATE
+	               TO_CHAR(NOTICE_POST_DATE, 'YYYY-MM-DD') AS NOTICE_POST_DATE
 	        FROM TBL_NOTICE_POST 
 	        WHERE NOTICE_TYPE_ID = 1
 	        ORDER BY NOTICE_POST_DATE DESC
@@ -56,9 +56,12 @@
 	
 	<!-- 메인 공지사항 상세 조회 -->
 	<select id="selectMainDetail" parameterType="int" resultType="MainNoticePostDTO">
-		select notice_post_number, notice_post_title, notice_post_date, notice_post_update,
-		notice_post_content
-		from tbl_notice_post
+		SELECT NOTICE_POST_NUMBER, 
+				NOTICE_POST_TITLE, 
+				TO_CHAR(NOTICE_POST_DATE, 'YYYY-MM-DD HH:mi') AS NOTICE_POST_DATE, 
+				TO_CHAR(NOTICE_POST_UPDATE, 'YYYY-MM-DD HH:mi') AS NOTICE_POST_UPDATE, 
+				NOTICE_POST_CONTENT
+		FROM TBL_NOTICE_POST
 		where notice_type_id = 1 and notice_post_number = #{noticePostNumber}
 	</select>
 	
