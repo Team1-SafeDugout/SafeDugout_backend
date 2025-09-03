@@ -54,7 +54,7 @@
       <div class="notice-date">
       	작성일 : 
       	<span><c:out value="${mainNoticePost.getNoticePostDate()}" /></span><br>
-      	<c:if test="${updateDate} != null" >
+      	<c:if test="${not empty mainNoticePost.getNoticePostUpdate()}" >
       	수정일 : 
       		<span>
       			<c:set var="updateDate" value="${mainNoticePost.getNoticePostUpdate()}" />

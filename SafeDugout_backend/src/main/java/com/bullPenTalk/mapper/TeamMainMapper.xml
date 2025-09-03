@@ -31,7 +31,7 @@
 	    FROM (
 	        SELECT P.POST_TITLE as news_post_title
 	        FROM TBL_POST P
-	        WHERE BOARD_ID = 3
+	        WHERE POST_TYPE = 3
 	          AND TEAM_NUMBER = #{teamNumber}
 	        ORDER BY POST_DATE DESC
 	    ) subquery
@@ -50,10 +50,10 @@
 	        SELECT P.POST_NUMBER,
 	               P.POST_TITLE,
 	               M.MEMBER_ID,
-	               P.POST_DATE
+	               TO_CHAR(P.POST_DATE, 'YYYY-MM-DD') AS POST_DATE
 	        FROM TBL_POST P 
 	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-	        WHERE P.BOARD_ID = 2
+	        WHERE P.POST_TYPE = 2
 	          AND P.TEAM_NUMBER = #{teamNumber}
 	        ORDER BY P.POST_DATE DESC
 	    ) subquery
@@ -73,7 +73,7 @@
 	        	   P.POST_LINK
 	        FROM TBL_POST P
 	        JOIN TBL_ATTACHMENT A ON P.POST_NUMBER = A.POST_NUMBER
-	        WHERE P.BOARD_ID = 4
+	        WHERE P.POST_TYPE = 4
 	          AND P.TEAM_NUMBER = #{teamNumber}
 	        ORDER BY P.POST_DATE DESC
 	    ) subquery

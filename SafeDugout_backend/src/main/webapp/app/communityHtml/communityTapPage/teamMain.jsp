@@ -67,7 +67,7 @@
         <ul class="news-list">
           <!-- 뉴스리스트 들어갈 공간 -->
           <c:forEach var="newsRow" items="${newsList}">
-          	<li><c:out value="${newsRow.newsPostTitle}"/></li>
+          	<li><a href=""><c:out value="${newsRow.newsPostTitle}"/></a></li>
           </c:forEach>
         </ul>
       </section>
@@ -114,11 +114,13 @@
         <ul class="team-board-list">
         	<c:forEach var="postRow" items="${postList}">
 			<li>
-			<span><c:out value="${postRow.postNumber}"/></span>
-			<span><c:out value="${postRow.memberId}"/></span>
-			<span><c:out value="${postRow.PostTitle}"/></span>
-			<span><c:out value="${postRow.postDate}"/></span>
+			<a href="">
+			<span><c:out value="${postRow.getPostNumber()} | "/></span>
+			<span><c:out value="${postRow.getMemberId()} | "/></span>
+			<span><c:out value="${postRow.getPostTitle()} | "/></span>
+			<span><c:out value="${postRow.getPostDate()}"/></span>
 			</li>
+			</a>
 			</c:forEach>
         </ul>
       </section>
