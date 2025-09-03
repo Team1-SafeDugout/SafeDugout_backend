@@ -66,6 +66,11 @@ public class BuyController {
         int sellerNumber = Integer.parseInt(request.getParameter("sellerNumber"));
         int pricePoint = Integer.parseInt(request.getParameter("pricePoint"));
 
+        System.out.println("sellPostNumber = " + sellPostNumber);
+        System.out.println("buyerNumber = " + buyerNumber);
+        System.out.println("sellerNumber = " + sellerNumber);
+        System.out.println("pricePoint = " + pricePoint);
+        
         System.out.println("payment 메소드 진입");
 
         // 멤버 포인트 조회
