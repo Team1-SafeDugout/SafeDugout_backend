@@ -49,33 +49,16 @@
 			<div class="sidebar-div-container">
 				<div>
 					<ul>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminSiteStatisticsOk.ad">
-								사이트 통계</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad">
-								게시글 / 공지사항</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad">
-								전체 커뮤니티 </a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad">
-								팀 뉴스</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad">
-								팀 유튜브</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad">
-								팀 응원가</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad">
-								판매글</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageTradingListOk.ad">
-								거래중인 글</a></li>
-						<li class="sidebar-elements"><a
-							href="${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad">
-								회원관리</a></li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminSiteStatisticsOk.ad"> 사이트 통계</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad"> 공지사항</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad"> 전체 커뮤니티 </a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageUserPostListOk.ad?currentTab=all"> 게시글 </a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad"> 팀 뉴스</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad"> 팀 유튜브</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad"> 팀 응원가</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageSellListOk.ad"> 판매글</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTradingListOk.ad"> 거래중인 글</a> </li>
+			            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageMemberListOk.ad"> 회원관리</a> </li>
 					</ul>
 				</div>
 			</div>
