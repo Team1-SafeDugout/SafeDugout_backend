@@ -161,9 +161,19 @@
 	<!-- 입문자 가이드 목록 조회 -->
 	<select id="selectGuideList" resultType="MainDTO">
 	<![CDATA[
-		select notice_post_number, notice_post_title, notice_post_date
-		from tbl_notice_post
-		where notice_type_id = 3
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT NOTICE_POST_NUMBER,
+	               NOTICE_POST_TITLE,
+	               TO_CHAR(NOTICE_POST_DATE, 'YYYY-MM-DD') AS NOTICE_POST_DATE
+	        FROM TBL_NOTICE_POST 
+	        WHERE NOTICE_TYPE_ID = 3
+	        ORDER BY NOTICE_POST_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum <= 5
 	]]>	
 	</select>
 	

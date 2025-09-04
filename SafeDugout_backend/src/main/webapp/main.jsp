@@ -90,6 +90,21 @@
           </c:forEach>
           </div>
         </div>
+        
+        <!-- 입문가이드 목록 제목 -->
+        <h2 class="rank-section-title">입문가이드</h2>
+        <!-- 입문가이드 목록 공간 -->
+        <div class="guide-list-container">
+          <div class="guide-list-all">
+          <c:forEach var="guideRow" items="${guideList}">
+            <div class="guide-list-guide">
+              <li class="guide-list-guide-li guide-li-number"><a></a><c:out value="${guideRow.noticePostNumber}"/></a></li>
+              <li class="guide-list-guide-li guide-li-title"><c:out value="${guideRow.noticePostTitle}"/></li>
+              <li class="guide-list-guide-li guide-li-date"><c:out value="${guideRow.noticePostDate}"/></li>
+            </div>
+          </c:forEach>
+          </div>
+        </div>
       </section>
       <!-- 경기 일정 & 최신 등록 상품 섹션 -->
       <section class="schedule-product-section">

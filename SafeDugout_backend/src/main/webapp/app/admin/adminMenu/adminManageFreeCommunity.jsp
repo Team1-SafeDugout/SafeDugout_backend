@@ -84,7 +84,7 @@
 	                <div>제목</div>
 	                <div>작성일자</div>
 	                <div>게시글 종류</div>
-	                <div><a href="./../adminDetailMenu/adminAddFreeCommunityGuideDetail.html"> 추가하기+ </a></div>
+	                <div> <a href="${pageContext.request.contextPath}/admin/adminCreateNotice.ad"> 추가하기+  </a></div>
 	             </div>
 	             <div class="list-container">
 	               <ul class="list-ul" id="list-ul">	               
