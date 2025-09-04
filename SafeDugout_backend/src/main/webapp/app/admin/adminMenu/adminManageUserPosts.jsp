@@ -16,15 +16,16 @@
     let posts = [];
     <c:forEach var="board" items="${boardList}">
     	posts.push({
-            number: "${board.noticePostNumber}",
-            title: "${board.noticePostTitle}",
-            date: "${board.noticePostDate}",
-            type: "${board.noticeTypeId}"
+            number: "${board.postNumber}",
+            title: "${board.postTitle}",
+            date: "${board.postDate}",
+            type: "${board.boardId}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
+    <c:set var="currentTab" value="${param.currentTab != null ? param.currentTab : 'all'}"/>
   </script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManagePosts.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageUserPost.js"></script>
 </head>
 
 <body>
@@ -47,8 +48,9 @@
         <div>
           <ul>
             <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminSiteStatisticsOk.ad"> 사이트 통계</a> </li>
-            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad"> 게시글 / 공지사항</a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad"> 공지사항</a> </li>
             <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad"> 전체 커뮤니티 </a> </li>
+            <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageUserPostListOk.ad?currentTab=all"> 게시글 </a> </li>
             <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamNewsListOk.ad"> 팀 뉴스</a> </li>
             <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamYoutubeListOk.ad"> 팀 유튜브</a> </li>
             <li class="sidebar-elements"> <a href="${pageContext.request.contextPath}/admin/adminManageTeamSongListOk.ad"> 팀 응원가</a> </li>
@@ -72,7 +74,13 @@
             <div>제목</div>
             <div>작성일자</div>
             <div>글종류</div>
-            <div><a href="${pageContext.request.contextPath}/admin/adminCreateNotice.ad"> 추가하기+ </a></div>
+            <div>
+                <select id="currentTab" name="currentTab">
+                	<option value="all"> 전부 선택 </option>
+                	<option value="Team">팀 커뮤니티 </option>
+             		<option value="Free">전체 커뮤니티 </option>
+                </select>
+            </div>
           </div>
           
           <div class="list-container">          	
@@ -92,13 +100,13 @@
 	        <ul>
 	          
 	          <c:if test="${prev}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageUserPostListOk.ad?page=${startPage - 1}&currentTab=${currentTab}" class="prev">&lt;</a></li>
 	          </c:if>
 	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	          	<c:choose>
 	          		<c:when test="${!(i == page) }">
-	          			<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${i}">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminManageUserPostListOk.ad?page=${i}&currentTab=${currentTab}">
 	          				<c:out value="${i}" />
 	          			</a></li>
 	          		</c:when>
@@ -111,7 +119,7 @@
 	          </c:forEach>
 	          
 	          <c:if test="${next}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminMainNoticeListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminManageUserPostListOk.ad?page=${endPage + 1}&currentTab=${currentTab}" class="next">&gt;</a>
 	          </c:if>
 	          
 	        </ul>

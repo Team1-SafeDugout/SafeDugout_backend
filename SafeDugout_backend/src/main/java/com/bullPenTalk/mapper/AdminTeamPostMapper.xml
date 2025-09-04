@@ -3,7 +3,7 @@
 
 <mapper namespace="adminTeamPost">
 	<!-- 팀 게시글 목록 조회 -->
-	<select id="listSelect" resultType="TeamPostDTO">
+	<select id="listSelect" resultType="TeamPostDTO" parameterType = "map">
 	<![CDATA[
 	SELECT *
 	FROM (
@@ -13,11 +13,15 @@
 	               P.POST_TITLE,
 	               P.POST_CONTENT,
 	               P.POST_DATE,
-	               M.MEMBER_ID
+	               M.MEMBER_ID,
+	               M.MEMBER_NUMBER,
+	               P.BOARD_ID,
+	               P.TEAM_NUMBER,
+	               TA.ATTACHMENT_PATH
 	        FROM TBL_POST P
 	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+	        LEFT JOIN TBL_ATTACHMENT TA ON P.POST_NUMBER = TA.POST_NUMBER
 	        WHERE P.BOARD_ID = 2
-	          AND P.TEAM_NUMBER = {teamNumber}
 	        ORDER BY P.POST_DATE DESC
 	    ) subquery
 	)
@@ -25,29 +29,17 @@
 	]]>
 	</select>
 	
-	<!-- 팀 게시글 상세조회 -->
-	<select id="detailSelect" resultType="TeamPostDTO">
-	SELECT P.POST_NUMBER,
-       P.POST_TITLE,
-       P.POST_CONTENT,
-       P.POST_DATE,
-       M.MEMBER_ID AS POST_WRITER,
-       C.COMMENT_NUMBER,
-       C.COMMENT_CONTENT,
-       NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE,
-       CM.MEMBER_ID AS COMMENT_WRITER,
-       A.ATTACHMENT_NUMBER,
-       A.ATTACHMENT_NAME,
-       A.ATTACHMENT_PATH
-	FROM TBL_POST P
-	JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER                
-	LEFT JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER              
-	LEFT JOIN TBL_MEMBER CM ON C.MEMBER_NUMBER = CM.MEMBER_NUMBER           
-	LEFT JOIN TBL_ATTACHMENT A ON P.POST_NUMBER = A.POST_NUMBER
-	WHERE P.POST_NUMBER = #{postNumber}                                  
-	  AND P.TEAM_NUMBER = #{teamNumber}                                 
-	ORDER BY C.COMMENT_DATE ASC, A.ATTACHMENT_NUMBER ASC
+	<!-- 팀 게시글 전체수 -->
+	<select id="total" resultType="int">
+		SELECT COUNT(P.POST_NUMBER)
+		FROM TBL_POST P
+		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+		LEFT JOIN TBL_ATTACHMENT TA ON P.POST_NUMBER = TA.POST_NUMBER
+		WHERE P.BOARD_ID = 2
 	</select>
+	
+	<!-- 팀 게시글 상세조회 -->
+
 	
 	<!-- 팀 게시글 삭제 -->
 	<delete id="delete" parameterType="int">
