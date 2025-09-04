@@ -146,6 +146,8 @@ public class MainOkController implements Execute {
 		request.setAttribute("sellList", sellList);
 
 		// 입문자 가이드 목록 조회
+		List<MainDTO> guideList = mainDAO.selectGuideList();
+		request.setAttribute("guideList", guideList);
 		
 		// path 값, redirect 여부 설정
 		result.setPath("/main.jsp");
