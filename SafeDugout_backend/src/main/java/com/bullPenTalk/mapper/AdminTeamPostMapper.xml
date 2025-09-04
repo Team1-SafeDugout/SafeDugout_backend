@@ -3,7 +3,7 @@
 
 <mapper namespace="adminTeamPost">
 	<!-- 팀 게시글 목록 조회 -->
-	<select id="listSelect" resultType="TeamPostDTO" parameterType = "map">
+	<select id="listSelect" resultType="AdminUserPostDTO" parameterType = "map">
 	<![CDATA[
 	SELECT *
 	FROM (
@@ -13,6 +13,7 @@
 	               P.POST_TITLE,
 	               P.POST_CONTENT,
 	               P.POST_DATE,
+	               P.POST_UPDATE,
 	               M.MEMBER_ID,
 	               M.MEMBER_NUMBER,
 	               P.BOARD_ID,

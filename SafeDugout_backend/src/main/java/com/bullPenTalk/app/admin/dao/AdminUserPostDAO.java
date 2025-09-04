@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.AdminUserPostDTO;
 import com.bullPenTalk.app.dto.FreePostDTO;
 import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.dto.TeamPostDTO;
@@ -18,7 +19,7 @@ public class AdminUserPostDAO {
 	}
 	
 //	팀 게시판 조회	
-	public List<TeamPostDTO> selectAllTeam(Map<String, Integer> pageMap) {
+	public List<AdminUserPostDTO> selectAllTeam(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("adminTeamPost.listSelect", pageMap);
 	}
 	
@@ -27,7 +28,7 @@ public class AdminUserPostDAO {
 	}
 	
 //	전체 게시판 조회	
-	public List<FreePostDTO> selectAllFree(Map<String, Integer> pageMap) {
+	public List<AdminUserPostDTO> selectAllFree(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("adminFreePost.listSelect", pageMap);
 	}
 	
@@ -36,7 +37,7 @@ public class AdminUserPostDAO {
 	}
 	
 //	모든 게시판 조회
-	public List<PostDTO> selectAll(Map<String, Integer> pageMap) {
+	public List<AdminUserPostDTO> selectAll(Map<String, Integer> pageMap) {
 		return sqlSession.selectList("adminFreePost.listSelectAll", pageMap);
 	}
 	
@@ -45,12 +46,12 @@ public class AdminUserPostDAO {
 	}
 	
 //	공통 작업	
-	public PostDTO selectDetail(int postNumber) {
-		return sqlSession.selectOne("",postNumber);
+	public AdminUserPostDTO selectDetail(int postNumber) {
+		return sqlSession.selectOne("adminFreePost.selectDetail", postNumber);
 	}
 	
 	public void delete(int postNumber) {
-		sqlSession.delete("", postNumber);
+		sqlSession.delete("adminFreePost.delete", postNumber);
 	}
 	
 }

@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminUserPostDAO;
-import com.bullPenTalk.app.dto.FreePostDTO;
-import com.bullPenTalk.app.dto.MainNoticePostDTO;
+import com.bullPenTalk.app.dto.AdminUserPostDTO;
 import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.dto.TeamPostDTO;
 
@@ -45,77 +44,44 @@ public class AdminPostListOkController implements Execute{
 		if(request.getParameter("currentTab") != null) {
 			currentTab = request.getParameter("currentTab");
 		}
-		
+		List<AdminUserPostDTO> boardList = null;
 		switch(currentTab) {
 		case "Free":
-			List<FreePostDTO> boardFreeList = adminUserPostDAO.selectAllFree(pageMap);
-			request.setAttribute("boardList", boardFreeList);
+			boardList = adminUserPostDAO.selectAllFree(pageMap);
+			request.setAttribute("boardList", boardList);
 			total = adminUserPostDAO.totalFree();
-			System.out.println("===========자유 글목록==============");
-			System.out.println(boardFreeList);
-			System.out.println("=========================");
-			
-			String acceptFree = request.getHeader("Accept");
-		    if (acceptFree != null && acceptFree.contains("application/json")) {
-		        response.setContentType("application/json;charset=UTF-8");
-
-		        Map<String, Object> data = new HashMap<>();
-		        data.put("posts", boardFreeList);
-
-		        // JSON 변환
-		        String json = new com.google.gson.Gson().toJson(data);
-		        response.getWriter().write(json);
-		        return null; // JSP forward 안 함
-		    }
 			break;
 			
 		case "Team":
-			List<TeamPostDTO> boardTeamList = adminUserPostDAO.selectAllTeam(pageMap);
-			request.setAttribute("boardList", boardTeamList);
+			boardList = adminUserPostDAO.selectAllTeam(pageMap);
+			request.setAttribute("boardList", boardList);
 			total = adminUserPostDAO.totalTeam();
-			System.out.println("===========팀 글목록==============");
-			System.out.println(boardTeamList);
-			System.out.println("=========================");
-			
-			String acceptTeam = request.getHeader("Accept");
-		    if (acceptTeam != null && acceptTeam.contains("application/json")) {
-		        response.setContentType("application/json;charset=UTF-8");
-
-		        Map<String, Object> data = new HashMap<>();
-		        data.put("posts", boardTeamList);
-
-		        // JSON 변환
-		        String json = new com.google.gson.Gson().toJson(data);
-		        response.getWriter().write(json);
-		        return null; // JSP forward 안 함
-		    }
 			break;
 			
 		case "all":
-			List<PostDTO> boardList = adminUserPostDAO.selectAll(pageMap);
+			boardList = adminUserPostDAO.selectAll(pageMap);
 			request.setAttribute("boardList", boardList);
 			total = adminUserPostDAO.total();
-			System.out.println("===========전체 글목록==============");
-			System.out.println(boardList);
-			System.out.println(total);
-			System.out.println("=========================");
-			
-			String acceptAll = request.getHeader("Accept");
-		    if (acceptAll != null && acceptAll.contains("application/json")) {
-		        response.setContentType("application/json;charset=UTF-8");
-
-		        Map<String, Object> data = new HashMap<>();
-		        data.put("posts", boardList);
-
-		        // JSON 변환
-		        String json = new com.google.gson.Gson().toJson(data);
-		        response.getWriter().write(json);
-		        return null; // JSP forward 안 함
-		    }
-			break;
+			break;			
 		}
 		
+		System.out.println("===========글목록==============");
+		System.out.println(boardList);
+		System.out.println(total);
+		System.out.println("=========================");
 		
+		String acceptAll = request.getHeader("Accept");
+	    if (acceptAll != null && acceptAll.contains("application/json")) {
+	        response.setContentType("application/json;charset=UTF-8");
+
+	        Map<String, Object> data = new HashMap<>();
+	        data.put("posts", boardList);
+
+	        // JSON 변환
+	        String json = new com.google.gson.Gson().toJson(data);
+	        response.getWriter().write(json);
+	        return null; // JSP forward 안 함
+	    }
 		
 //		request.setAttribute("boardList", boardList);
 		

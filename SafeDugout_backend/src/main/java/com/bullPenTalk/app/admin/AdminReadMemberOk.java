@@ -44,6 +44,7 @@ public class AdminReadMemberOk implements Execute{
 		Map<String, Integer> pageMap = new HashMap<>();	
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		pageMap.put("memberNumber", memberNumber);
 		
 		List<PostDTO> boardList = memberDAO.getPostsPage(pageMap);
 		request.setAttribute("boardList", boardList);
