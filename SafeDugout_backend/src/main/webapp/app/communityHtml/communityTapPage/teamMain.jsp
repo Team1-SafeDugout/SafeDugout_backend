@@ -88,18 +88,33 @@
       <section class="games">
         <h2>경기 일정</h2>
         <div class="game-schedule-group">
-          <h4>경기 일정</h4>
+          <h4>주중 경기</h4>
           <div class="game-schedule">
-          <c:forEach var="scheduleRow" items="${teamSchedule}">
-            <div class="gamebox">
-            	<div class="schedule-li-home"><c:out value="${scheduleRow.awayTeamName}"/></div>
+          <c:forEach var="scheduleWeekdaysRow" items="${teamScheduleWeekdays}">
+            <div class="game-box">
+            	<div class="schedule-li-home"><c:out value="${scheduleWeekdaysRow.awayTeamName}"/></div>
                 <div class="schedule-li-loc">
                   <div class="schedule-li-loc-text">
-                    <c:out value="${scheduleRow.stadiumName}"/>
+                    <c:out value="${scheduleWeekdaysRow.stadiumName}"/>
                   </div>
                 </div>
-                <div class="schedule-li-away"><c:out value="${scheduleRow.homeTeamName}"/></div>
-                <div class="schedule-li-time"><c:out value="${scheduleRow.scheduleDate}"/></div>
+                <div class="schedule-li-away"><c:out value="${scheduleWeekdaysRow.homeTeamName}"/></div>
+                <div class="schedule-li-time"><c:out value="${scheduleWeekdaysRow.scheduleDate}"/></div>
+            </div>
+          </c:forEach>
+          </div>
+          <h4>주말 경기</h4>
+          <div class="game-schedule">
+          <c:forEach var="scheduleWeekendsRow" items="${teamScheduleWeekends}">
+            <div class="game-box">
+            	<div class="schedule-li-home"><c:out value="${scheduleWeekendsRow.awayTeamName}"/></div>
+                <div class="schedule-li-loc">
+                  <div class="schedule-li-loc-text">
+                    <c:out value="${scheduleWeekendsRow.stadiumName}"/>
+                  </div>
+                </div>
+                <div class="schedule-li-away"><c:out value="${scheduleWeekendsRow.homeTeamName}"/></div>
+                <div class="schedule-li-time"><c:out value="${scheduleWeekendsRow.scheduleDate}"/></div>
             </div>
           </c:forEach>
           </div>

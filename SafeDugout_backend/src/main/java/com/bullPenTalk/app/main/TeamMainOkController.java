@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.dto.TeamMainDTO;
 import com.bullPenTalk.app.main.dao.TeamMainDAO;
 
@@ -164,9 +164,25 @@ public class TeamMainOkController implements Execute {
 				break;
 			}
 		}
-
+		
+		//주중 경기 리스트 생성 
+		List<TeamMainDTO> teamScheduleWeekdays = new ArrayList();
+		
+		//주말 경기 리스트 생성 
+		List<TeamMainDTO> teamScheduleWeekends = new ArrayList();
+		
+		//경기 일정 리스트를 주중, 주말로 분배 
+		for(TeamMainDTO schedule : teamSchedule) {
+			if(schedule.getScheduleDate().indexOf("토") != -1 || schedule.getScheduleDate().indexOf("일") != -1) {
+				teamScheduleWeekends.add(schedule);
+			}else {
+				teamScheduleWeekdays.add(schedule);
+			}
+		}
+		
 		// 일정표, 순위표 대입
-		request.setAttribute("teamSchedule", teamSchedule);
+		request.setAttribute("teamScheduleWeekdays", teamScheduleWeekdays);
+		request.setAttribute("teamScheduleWeekends", teamScheduleWeekends);
 		request.setAttribute("rankList", rankList);
 
 		// path 값, redirect 여부 설정

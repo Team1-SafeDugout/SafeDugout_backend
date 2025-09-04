@@ -3,17 +3,17 @@ package com.bullPenTalk.app.dto;
 import java.util.List;
 
 public class FreePostDTO {
-	private int postNumber; //게시글 번호
+	
+	private int postNumber; //게시글 번호	
+	private int memberNumber; //회원 번호
+	private String memberId; //회원 ID	
 	private String postTitle; //게시글 제목
 	private String postDate; //게시글 작성 날짜
 	private String postUpdate; //게시글 수정
-	private int memberNumber; //회원 번호
-	private String memberId; //회원 ID
 	private String postContent; //게시글 내용
 	private String postComment; // 게시글 댓글
 	private List<AttachmentDTO> atachment; // 파일
-	
-	
+
 	// get, set
 	public List<AttachmentDTO> getAtachment() {
 		return atachment;
@@ -21,6 +21,7 @@ public class FreePostDTO {
 	public void setAtachment(List<AttachmentDTO> atachment) {
 		this.atachment = atachment;
 	}
+
 	public String getPostComment() {
 		return postComment;
 	}
@@ -69,15 +70,13 @@ public class FreePostDTO {
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	
-	// toString 오버라이딩
+
+	// toString
 	@Override
 	public String toString() {
-		return "FreePostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postDate=" + postDate
-				+ ", postUpdate=" + postUpdate + ", memberNumber=" + memberNumber + ", memberId=" + memberId
-				+ ", postContent=" + postContent + ", postComment=" + postComment + "]";
+		return "FreePostDTO [postNumber=" + postNumber + ", memberNumber=" + memberNumber + ", memberId=" + memberId
+				+ ", postTitle=" + postTitle + ", postDate=" + postDate + ", postUpdate=" + postUpdate
+				+ ", postContent=" + postContent + ", postComment=" + postComment + ", atachment=" + atachment + "]";
 	}
-	
-
 	
 }

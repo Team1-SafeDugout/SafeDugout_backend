@@ -14,6 +14,7 @@ import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminUserPostDAO;
 import com.bullPenTalk.app.dto.FreePostDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
+import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.dto.TeamPostDTO;
 
 public class AdminPostListOkController implements Execute{
@@ -39,26 +40,88 @@ public class AdminPostListOkController implements Execute{
 		Map<String, Integer> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		int total = 0;
+		String currentTab = "all";
+		if(request.getParameter("currentTab") != null) {
+			currentTab = request.getParameter("currentTab");
+		}
 		
-		String currentTab = request.getParameter("currentTab");
 		switch(currentTab) {
 		case "Free":
-			List<FreePostDTO> boardFreeList = adminUserPostDAO.selectAllFree();
+			List<FreePostDTO> boardFreeList = adminUserPostDAO.selectAllFree(pageMap);
 			request.setAttribute("boardList", boardFreeList);
+			total = adminUserPostDAO.totalFree();
+			System.out.println("===========자유 글목록==============");
+			System.out.println(boardFreeList);
+			System.out.println("=========================");
+			
+			String acceptFree = request.getHeader("Accept");
+		    if (acceptFree != null && acceptFree.contains("application/json")) {
+		        response.setContentType("application/json;charset=UTF-8");
+
+		        Map<String, Object> data = new HashMap<>();
+		        data.put("posts", boardFreeList);
+
+		        // JSON 변환
+		        String json = new com.google.gson.Gson().toJson(data);
+		        response.getWriter().write(json);
+		        return null; // JSP forward 안 함
+		    }
 			break;
 			
 		case "Team":
-			List<TeamPostDTO> boardTeamList = adminUserPostDAO.selectAll();
-//			request.setAttribute("boardList", boardTeamListg);
+			List<TeamPostDTO> boardTeamList = adminUserPostDAO.selectAllTeam(pageMap);
+			request.setAttribute("boardList", boardTeamList);
+			total = adminUserPostDAO.totalTeam();
+			System.out.println("===========팀 글목록==============");
+			System.out.println(boardTeamList);
+			System.out.println("=========================");
+			
+			String acceptTeam = request.getHeader("Accept");
+		    if (acceptTeam != null && acceptTeam.contains("application/json")) {
+		        response.setContentType("application/json;charset=UTF-8");
+
+		        Map<String, Object> data = new HashMap<>();
+		        data.put("posts", boardTeamList);
+
+		        // JSON 변환
+		        String json = new com.google.gson.Gson().toJson(data);
+		        response.getWriter().write(json);
+		        return null; // JSP forward 안 함
+		    }
+			break;
+			
+		case "all":
+			List<PostDTO> boardList = adminUserPostDAO.selectAll(pageMap);
+			request.setAttribute("boardList", boardList);
+			total = adminUserPostDAO.total();
+			System.out.println("===========전체 글목록==============");
+			System.out.println(boardList);
+			System.out.println(total);
+			System.out.println("=========================");
+			
+			String acceptAll = request.getHeader("Accept");
+		    if (acceptAll != null && acceptAll.contains("application/json")) {
+		        response.setContentType("application/json;charset=UTF-8");
+
+		        Map<String, Object> data = new HashMap<>();
+		        data.put("posts", boardList);
+
+		        // JSON 변환
+		        String json = new com.google.gson.Gson().toJson(data);
+		        response.getWriter().write(json);
+		        return null; // JSP forward 안 함
+		    }
 			break;
 		}
+		
+		
 		
 //		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
-		int total = adminUserPostDAO.total();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
@@ -78,11 +141,11 @@ public class AdminPostListOkController implements Execute{
 	
 		System.out.println("====페이징정보 확인====");
 		System.out.println("pageMap : " + pageMap);
-		System.out.println("boardList : " + boardList);
+//		System.out.println("boardList : " + boardList);
 		System.out.println("startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
 		System.out.println("====================");
 	
-		result.setPath("/app/admin/adminMenu/adminManagePosts.jsp");
+		result.setPath("/app/admin/adminMenu/adminManageUserPosts.jsp");
 		result.setRedirect(false);
 
 		return result;
