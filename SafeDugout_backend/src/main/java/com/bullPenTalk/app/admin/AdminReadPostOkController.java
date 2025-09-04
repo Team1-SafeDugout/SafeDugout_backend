@@ -31,9 +31,9 @@ public class AdminReadPostOkController implements Execute{
 //			전체 커뮤니티
 			System.out.println("전체게시판 여는중");
 			FreePostDAO freePostDAO = new FreePostDAO();
-			FreePostDTO freePostDTO = freePostDAO.detailSelect(postNumber);
+//			FreePostDTO freePostDTO = freePostDAO.detailSelect(postNumber);
 			result.setPath("/app/admin/adminDetailMenu/adminFreeComunityUserPost.jsp");
-			request.setAttribute("freePostDTO", freePostDTO);
+//			request.setAttribute("freePostDTO", freePostDTO);
 			result.setRedirect(false);
 			break;
 			
