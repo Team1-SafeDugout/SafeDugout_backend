@@ -66,6 +66,7 @@ main {
   /* 테두리 */
   border-width: 5px;
   border: rgb(247, 247, 247) solid;
+  margin-bottom: 13px;
 }
 
 /* 팀순위 테이블 제목 */
@@ -113,7 +114,7 @@ main {
 .rank-table-teamlist-team {
   display: flex;
   width: 100%;
-  height: 40px;
+  height: 35px;
   background-color: white;
 
 }
@@ -163,6 +164,55 @@ main {
   width: 13%;
 }
 
+/* 입문가이드 목록 컨테이너 */
+.guide-list-container {
+  display: flex;
+  flex-direction: column;
+  /* 테두리 */
+  border-width: 5px;
+  border: rgb(247, 247, 247) solid;
+}
+
+/* 입문가이드 목록 전체 */
+.guide-list-all {
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* 입문가이드 리스트 */
+.guide-list-guide {
+  display: flex;
+  width: 100%;
+  height: 35px;
+  background-color: white;
+
+}
+
+/* 입문가이드 리스트 li */
+.guide-list-guide-li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 테두리 선 */
+  border-bottom: solid;
+  border-bottom-color: rgb(231, 230, 230);
+  border-bottom-width: 1px;
+}
+
+/* 입문가이드 목록 컬럼별 간격 */
+.guide-li-number{
+  width: 10%;
+}
+
+.guide-li-title{
+  width: 70%;
+}
+
+.guide-li-date{
+  width: 20%;
+}
 
 /* 경기 일정 & 최신 등록 상품 섹션 */
 .schedule-product-section {
