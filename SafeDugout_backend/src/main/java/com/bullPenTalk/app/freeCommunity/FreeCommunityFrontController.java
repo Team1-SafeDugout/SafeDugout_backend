@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
 
-/**
- * Servlet implementation class FreeCommunityFrontController
- */
-@WebServlet("/FreeCommunityFrontController")
+
 public class FreeCommunityFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,17 +44,20 @@ public class FreeCommunityFrontController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		
 		String target = request.getRequestURI().substring(request.getContextPath().length());
-		System.out.println("현재 경로");
+		System.out.println("현재 경로: " + target);
 		Result result = new Result();
 		
 		switch(target) {
 		case "/freeCommunity/freeCommunityList.fc":
 			System.out.println("전체 커뮤니티 게시글 목록 요청");
 			result = new FreeCommunityListController().execute(request, response);
-		case "/freeCommunity/freeCommunityListOK.fc" : 
+			break;
+			
+		case "/freeCommunity/freeCommunityListOk.fc" : 
 			System.out.println("전체 커뮤니티 게시글 목록 완료");
 			result = new FreeCommunityListOkController().execute(request, response);
 			break;	
+			
 		case "/freeCommunity/freeCommunityDetail.fc" :
 			System.out.println("전체 커뮤니티 게시글 상세페이지 요청");
 			result = new FreeCommunityDetailController().execute(request, response);
@@ -83,23 +83,34 @@ public class FreeCommunityFrontController extends HttpServlet {
 			result = new FreeCommunityDeleteOkController().execute(request, response);
 			break;
 			
-		case "/freeCommnuity/freeCommunityWrite.fc" :
+		case "/freeCommunity/freeCommunityWrite.fc" :
 			System.out.println("전체 커뮤니티 게시글 작성 요청");
 			result = new FreeCommunityWriteController().execute(request, response);
 			break;
+			
 		case "/freeCommunity/freeCommunityWriteOk.fc":	
 			System.out.println("전체 커뮤니티 게시글 작성 완료 요청");
 			result = new FreeCommunityWritingOkController().execute(request, response);
 			break;
+			
 		case "/freeCommunity/freeCommunityNoticeList.fc" :
-			
+			System.out.println("입문가이드 목록 요청");
+			result = new FreeCommunityNoitceListController().execute(request, response);
 			break;
-		case "/freeCommunity/freeCommunityNoticeDetail.fc":
 			
+		case "/freeCommunity/freeCommunityNoticeListOk.fc":
+			System.out.println("입문가이드 목록 완료 요청");
+			result = new FreeCommunityNoticeListOkController().execute(request, response);
+			break;
+			
+		case "/freeCommunity/freeCommunityNoticeDetail.fc":
+			System.out.println("입문가이드 상세페이지 요청");
+			result = new FreeCommunityNoticeDetailController().execute(request, response);
 			break;
 			
 		case "/freeCommunity/freeCommunityNoticeDetailOk.fc":
-			
+			System.out.println("입문가이드 상세페이지 완료");
+			result = new FreeCommunityNoticeDetailOkController().execute(request, response);
 			break;
 		}
 		

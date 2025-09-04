@@ -112,6 +112,8 @@
 		<mapper resource="com/bullPenTalk/mapper/AdminYoutubeMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/AttachmentMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/FreeCommentMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/FreeCommunityPostMapper.xml"/>
+		<mapper resource="com/bullPenTalk/mapper/FreeCommunityGuideMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/MainMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/MemberMapper.xml" />
 		<mapper resource="com/bullPenTalk/mapper/MyPageMapper.xml" />

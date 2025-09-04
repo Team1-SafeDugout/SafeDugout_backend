@@ -34,6 +34,7 @@ public class FreePostDAO {
         // selectKey로 DTO에 채워진 PK를 반환
         return dto.getPostNumber();
     }
+    
     // 게시글 삭제
     public void delete(int postNumber) {
         System.out.println("게시글 삭제 실행 : " + postNumber);

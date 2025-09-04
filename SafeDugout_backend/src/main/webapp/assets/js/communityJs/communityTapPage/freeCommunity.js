@@ -1,4 +1,4 @@
-// 자유 게시판 데이터 (각 글에 이동할 URL 포함)
+/*${pageContext.request.contextPath}// 자유 게시판 데이터 (각 글에 이동할 URL 포함)
 const freeBoardData = [
   { no: 1, title: "응원은 한화로", writer: "hanwha", date: "2025-08-12", link: "./freeCommunityDetail.html" },
   { no: 2, title: "응원은 lg로", writer: "lg", date: "2025-08-11", link: "./freeCommunityDetail.html" },
@@ -79,4 +79,4 @@ function addFreeGuideItems(data) {
 document.addEventListener("DOMContentLoaded", () => {
   addFreeBoardItems(freeBoardData);
   addFreeGuideItems(guideData);
-});
+});*/
