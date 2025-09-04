@@ -124,7 +124,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, 
 	postDate.style.textOverflow = "eclipse";
 
 	const postTitleLink = document.createElement('a');
-	postTitleLink.setAttribute("href", "/admin/adminReadMainNoticeOk.ad?noticePostNumber=" + postNumberParam + "&noticeTypeId=" + postTypeNum);
+	postTitleLink.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&boardId=" + postTypeNum);
 	postTitleLink.appendChild(postTitleText);
 
 	postNum.appendChild(postNumText);
@@ -135,7 +135,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, 
 
 	deleteBtn.addEventListener('click', function() {
 		if (window.confirm("정말 삭제하시겠습니까")) {
-			window.location.href =  contextPath + "/admin/adminDeleteNoticeOk.ad?noticePostNumber=" + postNumberParam + "&noticeTypeId=" + postTypeNum;
+			window.location.href =  contextPath + "/admin/adminDeletePostOk.ad?postNumber=" + postNumberParam + "&postTypeId=" + postTypeNum;
 		}
 	});
 

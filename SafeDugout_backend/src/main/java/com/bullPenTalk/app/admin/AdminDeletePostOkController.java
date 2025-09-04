@@ -11,6 +11,7 @@ import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminTeamNewsDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamSongDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamYoutubeDAO;
+import com.bullPenTalk.app.admin.dao.AdminUserPostDAO;
 
 public class AdminDeletePostOkController implements Execute {
 
@@ -26,11 +27,14 @@ public class AdminDeletePostOkController implements Execute {
 
 		switch(postType) {
 		case 1:
-//			전체 커뮤니티
-			break;
-			
+//			전체 커뮤니티			
 		case 2:
 //			팀 커뮤니티 
+			System.out.println("게시글 삭제중");
+			AdminUserPostDAO postDAO = new AdminUserPostDAO();
+			postDAO.delete(postNumber);
+			result.setPath("/admin/adminManageUserPostListOk.ad");
+			result.setRedirect(false);
 			break;
 			
 		case 3:
