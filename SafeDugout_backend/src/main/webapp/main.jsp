@@ -98,8 +98,8 @@
           <div class="guide-list-all">
           <c:forEach var="guideRow" items="${guideList}">
             <div class="guide-list-guide">
-              <li class="guide-list-guide-li guide-li-number"><a></a><c:out value="${guideRow.noticePostNumber}"/></a></li>
-              <li class="guide-list-guide-li guide-li-title"><c:out value="${guideRow.noticePostTitle}"/></li>
+              <li class="guide-list-guide-li guide-li-number"><c:out value="${guideRow.noticePostNumber}"/></li>
+              <li class="guide-list-guide-li guide-li-title"><a href=""><c:out value="${guideRow.noticePostTitle}"/></a></li>
               <li class="guide-list-guide-li guide-li-date"><c:out value="${guideRow.noticePostDate}"/></li>
             </div>
           </c:forEach>

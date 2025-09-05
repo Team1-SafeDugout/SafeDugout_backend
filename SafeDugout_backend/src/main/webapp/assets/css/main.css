@@ -189,6 +189,23 @@ main {
 
 }
 
+/* 입문가이드 리스트 a 태그 */
+.guide-list-guide a {
+  color: black;
+  flex: 1;
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 입문가이드 리스트 a 태그 호버 */
+.guide-list-guide a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* 입문가이드 리스트 li */
 .guide-list-guide-li {
   list-style: none;
