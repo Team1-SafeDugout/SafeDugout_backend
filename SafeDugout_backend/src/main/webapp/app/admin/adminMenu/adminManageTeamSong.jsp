@@ -21,6 +21,7 @@
             link: "${board.postLink}",
             date: "${board.postDate}"
         });
+    	console.log("${board.teamNumber}");
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
   </script>  

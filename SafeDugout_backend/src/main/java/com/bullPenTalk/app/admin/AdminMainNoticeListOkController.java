@@ -40,6 +40,8 @@ public class AdminMainNoticeListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
+		
+		
 		List<MainNoticePostDTO> boardList = adminMainNoticeDAO.select();
 		request.setAttribute("boardList", boardList);
 		

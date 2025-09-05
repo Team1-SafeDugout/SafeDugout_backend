@@ -9,15 +9,34 @@ public class TeamNoticePostDTO {
 	private String noticePostContent; // 팀공지글 내용
 	private String noticePostDate; // 작성날짜
 	private String noticePostUpdate; // 수정 날짜
+	private int attachmentNumber; // 
+    private String attachmentName;
+    private String attachmentPath;
 	
-	@Override
-	public String toString() {
-		return "TeamNoticePostDTO [noticePostNumber=" + noticePostNumber + ", noticeTypeId=" + noticeTypeId
-				+ ", adminNumber=" + adminNumber + ", teamNumber=" + teamNumber + ", noticePostTitle=" + noticePostTitle
-				+ ", noticePostContent=" + noticePostContent + ", noticePostDate=" + noticePostDate
-				+ ", noticePostUpdate=" + noticePostUpdate + "]";
+	public int getAttachmentNumber() {
+		return attachmentNumber;
 	}
-	
+
+	public void setAttachmentNumber(int attachmentNumber) {
+		this.attachmentNumber = attachmentNumber;
+	}
+
+	public String getAttachmentName() {
+		return attachmentName;
+	}
+
+	public void setAttachmentName(String attachmentName) {
+		this.attachmentName = attachmentName;
+	}
+
+	public String getAttachmentPath() {
+		return attachmentPath;
+	}
+
+	public void setAttachmentPath(String attachmentPath) {
+		this.attachmentPath = attachmentPath;
+	}
+
 	public int getNoticeTypeId() {
 		return noticeTypeId;
 	}
@@ -67,5 +86,14 @@ public class TeamNoticePostDTO {
 	}
 	public void setNoticePostUpdate(String noticePostUpdate) {
 		this.noticePostUpdate = noticePostUpdate;
+	}
+	
+	@Override
+	public String toString() {
+		return "TeamNoticePostDTO [noticePostNumber=" + noticePostNumber + ", noticeTypeId=" + noticeTypeId
+				+ ", adminNumber=" + adminNumber + ", teamNumber=" + teamNumber + ", noticePostTitle=" + noticePostTitle
+				+ ", noticePostContent=" + noticePostContent + ", noticePostDate=" + noticePostDate
+				+ ", noticePostUpdate=" + noticePostUpdate + ", attachmentNumber=" + attachmentNumber
+				+ ", attachmentName=" + attachmentName + ", attachmentPath=" + attachmentPath + "]";
 	}
 }
