@@ -15,7 +15,7 @@
 	                   TEAM_NUMBER,
 	                   JOURNALIST
 	            FROM TBL_POST
-	            WHERE BOARD_ID = 3
+	            WHERE POST_TYPE = 3
 	            AND TEAM_NUMBER = #{teamNumber}
 	            ORDER BY POST_DATE DESC
 	        ) subquery
@@ -53,13 +53,13 @@
 	           A.ATTACHMENT_PATH
 	    FROM TBL_POST p
 	    LEFT JOIN TBL_ATTACHMENT a ON p.POST_NUMBER = a.POST_NUMBER
-	    WHERE BOARD_ID = 3
+	    WHERE POST_TYPE = 3
 	</select>
 	
 	<select id = "total" resultType = "int">
 	SELECT COUNT(BOARD_ID)
 	FROM TBL_POST
-	WHERE BOARD_ID = 3
+	WHERE POST_TYPE = 3
 	</select>
 
 	
@@ -68,8 +68,8 @@
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE,POST_CONTENT, POST_DATE, POST_LINK, JOURNALIST)
-		VALUES(seq_post.nextval, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle},#{postContent}, sysdate, #{postLink} , #{journalist})
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, POST_TYPE, POST_TITLE,POST_CONTENT, POST_DATE, POST_LINK, JOURNALIST)
+		VALUES(seq_post.nextval, #{teamNumber}, #{adminNumber}, #{postType}, #{postTitle},#{postContent}, sysdate, #{postLink} , #{journalist})
 	</insert>
 	
 	<!-- 뉴스 삭제 -->

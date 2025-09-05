@@ -17,7 +17,7 @@
 	                   ADMIN_ID,
 	                   POST_CONTENT
 	            FROM TBL_POST
-	            WHERE BOARD_TYPE_ID IN (5, 6)
+	            WHERE POST_TYPE IN (5, 6)
 	              AND TEAM_NUMBER = #{teamNumber}
 	            ORDER BY POST_DATE DESC
 	        )subquery
@@ -38,7 +38,7 @@
 	                   BOARD_TYPE_ID,
 	                   ADMIN_ID
 	            FROM TBL_POST
-	            WHERE BOARD_TYPE_ID = 5
+	            WHERE POST_TYPE = 5
 	              AND TEAM_NUMBER = #{teamNumber}
 	            ORDER BY POST_DATE DESC
 	        )subquery
@@ -56,10 +56,10 @@
 	                   POST_TITLE,
 	                   POST_DATE,
 	                   TEAM_NUMBER,
-	                   BOARD_TYPE_ID,
+	                   POST_TYPE,
 	                   ADMIN_ID
 	            FROM TBL_POST
-	            WHERE BOARD_TYPE_ID = 6
+	            WHERE POST_TYPE = 6
 	              AND TEAM_NUMBER = #{teamNumber}
 	            ORDER BY POST_DATE DESC
 	        )subquery
@@ -68,15 +68,15 @@
 	</select>
 
 	<select id="selectAll" resultType = "SongPostDTO">
-		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
+		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, POST_TYPE, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
 		FROM TBL_POST
-		WHERE BOARD_ID = 5
+		WHERE POST_TYPE = 5
 	</select>
 	
 	<select id = "total" resultType = "int">
 		SELECT COUNT(POST_NUMBER)
 		FROM TBL_POST
-		WHERE BOARD_ID = 5
+		WHERE POST_TYPE = 5
 	</select>
 	
 	<!-- 팀 응원가 추가 -->
@@ -84,8 +84,8 @@
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTitle}, sysdate, #{postLink}, #{postContent})
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, POST_TYPE, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{postType}, #{postTitle}, sysdate, #{postLink}, #{postContent})
 	</insert>
 	
 	<!-- 선수 응원가 추가 -->
@@ -93,8 +93,8 @@
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{boardTypeId}, #{postTitle}, sysdate, #{postLink}, #{postContent})
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, POST_TYPE, POST_TITLE, POST_DATE, POST_LINK)
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminId}, #{postType}, #{postTitle}, sysdate, #{postLink}, #{postContent})
 	</insert>
 	
 	<!-- 응원가 삭제 -->
