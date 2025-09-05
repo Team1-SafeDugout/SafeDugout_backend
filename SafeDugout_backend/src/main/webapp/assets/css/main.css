@@ -164,6 +164,30 @@ main {
   width: 13%;
 }
 
+/* 입문가이드 목록 상단 div */
+.guide-list-container-top {
+  display: flex;
+  justify-content: right;
+  padding-right: 5px;
+  margin-bottom: 5px;
+}
+
+.guide-list-container-top a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.guide-list-container-top a:hover {
+  text-decoration: underline;
+}
+
+/* 입문가이드 제목 */
+.guide-list-container-title {
+  margin-bottom: 10px;
+
+}
+
 /* 입문가이드 목록 컨테이너 */
 .guide-list-container {
   display: flex;
@@ -392,6 +416,10 @@ main {
   color: black;
   text-decoration: none;
   font-size: 14px;
+}
+
+.product-used-text:hover {
+  text-decoration: underline;
 }
 
 /* 중고거래 목록 묶음 */

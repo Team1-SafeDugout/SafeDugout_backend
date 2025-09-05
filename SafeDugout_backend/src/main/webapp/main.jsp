@@ -92,7 +92,10 @@
         </div>
         
         <!-- 입문가이드 목록 제목 -->
-        <h2 class="rank-section-title">입문가이드</h2>
+        <h2 class="guide-list-container-title">입문가이드</h2>
+        <div class="guide-list-container-top">
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">더보기</a>
+        </div>
         <!-- 입문가이드 목록 공간 -->
         <div class="guide-list-container">
           <div class="guide-list-all">
