@@ -27,7 +27,6 @@
 		<typeAlias type="com.bullPenTalk.app.dto.PaymentDTO" alias="PaymentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AdminDTO" alias="AdminDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.AddressDTO" alias="AddressDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AttachmentDTO" alias="AttachmentDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.AttachmentTypeDTO" alias="AttachmentTypeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.BatterRecordDTO" alias="BatterRecordDTO"></typeAlias>
@@ -50,7 +49,7 @@
 		<typeAlias type="com.bullPenTalk.app.dto.NewsPostDTO" alias="NewsPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NewsDetailDTO" alias="NewsDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NoticePostDTO" alias="NoticePostDTO"></typeAlias>
-		<typeAlias type="com.bullPenTalk.app.dto.TeamNoticeDetailDTO" alias="TeamNoticeDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamNoticeDetailDTO" alias="TeamNoticeDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NoticeTypeDTO" alias="NoticeTypeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PitcherRecordDTO" alias="PitcherRecordDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PlayerDTO" alias="PlayerDTO"></typeAlias>
