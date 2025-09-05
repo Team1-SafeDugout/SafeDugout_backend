@@ -9,18 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 
-public class FreeCommunityListController implements Execute{
-
+public class FreeCommunityNoticeDetailController implements Execute{
+	
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Result result = new Result();
 		
-		result.setPath("/freeCommunity/freeCommunityListOk.fc");
+		result.setPath("/freeCommunity/freeCommunityNoticeDetailOk.fc");
 		result.setRedirect(false);
 		return result;
 	}
-
-
-
 }
