@@ -8,7 +8,7 @@
 	INSERT INTO TBL_NOTICE_POST 
 	(NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE)
 	VALUES
-	(seq_notice_POST.nextVal, #{noticeTypeId}, #{adminNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE)
+	(seq_notice_POST.nextVal, 3, #{adminNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE)
 </insert>
 
 <!-- 상세페이지 -->
@@ -18,24 +18,20 @@
 	       NP.NOTICE_POST_TITLE,
 	       NP.NOTICE_POST_CONTENT,
 	       NP.NOTICE_POST_DATE,
-	       NVL(NP.NOTICE_POST_UPDATE, NP.NOTICE_POST_DATE) AS LAST_UPDATE,
-	       A.ADMIN_NAME,
-	       AT.ATTACHMENT_NUMBER,
-	       AT.ATTACHMENT_NAME,
-	       AT.ATTACHMENT_PATH
+	       NVL(NP.NOTICE_POST_UPDATE, NP.NOTICE_POST_DATE) AS NOTICE_POST_UPDATE,
+	       NP.Admin_number
 	FROM TBL_NOTICE_POST NP
 	JOIN TBL_NOTICE_TYPE NT ON NP.NOTICE_TYPE_ID = NT.NOTICE_TYPE_ID
 	JOIN TBL_ADMIN A ON NP.ADMIN_NUMBER = A.ADMIN_NUMBER
-	LEFT JOIN TBL_ATTACHMENT AT ON NP.NOTICE_POST_NUMBER = AT.NOTICE_POST_NUMBER
 	WHERE NP.NOTICE_POST_NUMBER = #{noticePostNumber}
-	AND NT.NOTICE_TYPE = 'Starterguide'
+	AND NT.NOTICE_TYPE = 'StarterGuide'
 ]]>
 </select>
 
 <select id = "getTotal" resultType = "int">
 	SELECT COUNT(NOTICE_POST_NUMBER)
 	FROM TBL_NOTICE_POST
-	WHERE NOTICE_TYPE_ID = 2
+	WHERE NOTICE_TYPE_ID = 3
 </select>
 
 
@@ -47,14 +43,13 @@
 	    SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
 	        SELECT P.NOTICE_POST_NUMBER,
-	        	   P.NOTICE_TYPE_ID,
-	        	   p.ADMIN_NUMBER,
 	               P.NOTICE_POST_TITLE,
 	               P.NOTICE_POST_CONTENT,
 	               P.NOTICE_POST_DATE,
-	               P.NOTICE_POST_UPDATE
+	               P.NOTICE_POST_UPDATE,
+	               p.ADMIN_NUMBER
 	        FROM TBL_NOTICE_POST P
-	        WHERE P.NOTICE_TYPE_ID = 2
+	        WHERE P.NOTICE_TYPE_ID = 3
 	        ORDER BY P.NOTICE_POST_DATE DESC
 	    ) subquery
 	)
@@ -64,14 +59,13 @@
 
 <select id = "selectAll" resultType = "GuidePostDTO">
 	SELECT P.NOTICE_POST_NUMBER,
-		   P.NOTICE_TYPE_ID,
-		   p.ADMIN_NUMBER,
 	       P.NOTICE_POST_TITLE,
 	       P.NOTICE_POST_CONTENT,
 	       P.NOTICE_POST_DATE,
-	       P.NOTICE_POST_UPDATE
+	       P.NOTICE_POST_UPDATE,
+		   p.ADMIN_NUMBER   
 	FROM TBL_NOTICE_POST P
-	WHERE P.NOTICE_TYPE_ID = 2
+	WHERE P.NOTICE_TYPE_ID = 3
 </select>
 
 

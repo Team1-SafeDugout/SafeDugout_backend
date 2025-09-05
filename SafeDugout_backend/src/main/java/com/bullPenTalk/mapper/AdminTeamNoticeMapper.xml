@@ -8,7 +8,7 @@
 		INSERT INTO TBL_NOTICE_POST 
 		(NOTICE_POST_NUMBER, NOTICE_TYPE_ID, ADMIN_NUMBER, TEAM_NUMBER, NOTICE_POST_TITLE, NOTICE_POST_CONTENT, NOTICE_POST_DATE, NOTICE_POST_UPDATE)
 		VALUES
-		(seq_notice_POST.nextVal, #{noticeTypeId}, #{adminNumber}, #{teamNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE)
+		(seq_notice_POST.nextVal, 2, #{adminNumber}, #{teamNumber}, #{noticePostTitle}, #{noticePostContent}, SYSDATE, SYSDATE)
 	</insert>
 	
 	<!-- 상세페이지 조회 -->
@@ -19,10 +19,7 @@
 		       NP.NOTICE_POST_CONTENT,
 		       NP.NOTICE_POST_DATE,
 		       NVL(NP.NOTICE_POST_UPDATE, NP.NOTICE_POST_DATE) AS LAST_UPDATE,
-		       A.ADMIN_NAME,
-		       AT.ATTACHMENT_NUMBER,
-		       AT.ATTACHMENT_NAME,
-		       AT.ATTACHMENT_PATH
+		       np.admin_number
 		FROM TBL_NOTICE_POST NP
 		JOIN TBL_NOTICE_TYPE NT ON NP.NOTICE_TYPE_ID = NT.NOTICE_TYPE_ID
 		JOIN TBL_ADMIN A ON NP.ADMIN_NUMBER = A.ADMIN_NUMBER
@@ -45,7 +42,7 @@
 	               P.NOTICE_POST_CONTENT,
 	               P.NOTICE_POST_DATE
 	        FROM TBL_NOTICE_POST P
-	        WHERE P.NOTICE_TYPE_ID = 3
+	        WHERE P.NOTICE_TYPE_ID = 2
 	        ORDER BY P.NOTICE_POST_DATE DESC
 	    ) subquery
 	)
@@ -65,7 +62,7 @@
 		               P.NOTICE_POST_CONTENT,
 		               P.NOTICE_POST_DATE
 		        FROM TBL_NOTICE_POST P
-		        WHERE P.NOTICE_TYPE_ID = 3
+		        WHERE P.NOTICE_TYPE_ID = 2
 		          AND P.NOTICE_POST_TITLE LIKE '%' || #{postTitle} || '%'
 		        ORDER BY P.NOTICE_POST_DATE DESC
 		    ) subquery
