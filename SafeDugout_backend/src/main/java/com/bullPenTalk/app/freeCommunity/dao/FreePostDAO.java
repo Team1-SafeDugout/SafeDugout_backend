@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.bullPenTalk.app.dto.FreePostDTO;
+import com.bullPenTalk.app.dto.MemberDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class FreePostDAO {
@@ -65,5 +66,9 @@ public class FreePostDAO {
         }
 
         return writerNumber;
+    }
+    
+    public MemberDTO getMemberById(String memberId) {
+        return sqlSession.selectOne("member.getMemberById", memberId);
     }
 }

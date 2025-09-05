@@ -175,13 +175,14 @@
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(sell_post_number)
 		FROM tbl_sell_post
+		WHERE STATUS_ID = 1
 	</select>
 	
 	<!-- 팀 카테고리 총 갯수 -->
 	<select id="getTotalByTeamCategory" parameterType="map" resultType="int">
     SELECT COUNT(*)
     FROM TBL_SELL_POST
-    WHERE STATUS_ID = 0
+    WHERE STATUS_ID = 1
       AND TEAM_ID = #{teamId}
       AND CATEGORY_ID = #{categoryId}
 	</select>

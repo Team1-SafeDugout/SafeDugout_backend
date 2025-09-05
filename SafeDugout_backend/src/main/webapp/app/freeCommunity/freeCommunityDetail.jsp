@@ -1,79 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../assets/css/communityCss/communityTapPage/freeCommunityDetail.css">
-  <script defer src="./../../../assets/js/communityJs/communityTapPage/freeCommunityDetail.js"></script>
-  <script defer src="./../../assets/js/include.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamPostDetail.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/freeCommunityDetail.js"></script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/include.js"></script>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
-    <!-- 메인 컨테이너 -->
-    <div class="free-community-detail-container">
+    <div class="team-post-container">
       <!-- 게시글 -->
-      <section class="free-community-detail">
-        <div class="free-community-header">
-          <h2>제목</h2>
-          <!-- 수정 삭제 버튼 -->
+      <section class="team-post-detail">
+        <div class="team-post-header">
+          <h2>${community.postTitle}</h2>
           <div>
-            <button><a href="">수정</a></button>
-            <button type="button">삭제</button>
+            <!-- 수정 삭제 버튼 -->
+            <c:if test="${sessionScope.memberNumber == coumminty.memberNumber}">
+					<!-- 수정 버튼 -->
+					<button type="button" class="modify-btn"
+						data-board-number="${freePostDetail.postNumber}"
+						data-member-number="${sessionScope.memberNumber}">수정</button>
+					<!-- 삭제 버튼 -->
+					<button type="button" class="delete-btn"
+						data-board-number="${freePostDetail.postNumber}"
+						data-member-number="${sessionScope.memberNumber}">삭제</button>
+				</c:if>
           </div>
         </div>
-        <!-- 게시글 정보 -->
-        <div class="free-community-info">
-          <div class="free-community-num">글번호:<p>1</p></div>
-          <div class="free-community-writer">작성자ID:<p>pga0929</p></div>
-          <div class="free-community-date">작성일자:<p>250808</p></div>
+        <!-- 작성자 정보 -->
+        <div class="team-post-info">
+          <div class="team-post-num">글번호:<p><c:out value="${freePostDetail.postNumber}" /></p></div>
+          <div class="team-post-writer">작성자ID:<p><c:out value="${freePostDetail.memberNumber}" /></p></div>
+          <div class="team-post-date">작성일자:<p><c:out value="${freePostDetail.postDate}" /></p></div>
         </div>
-        <!-- 게시글 본문 -->
-        <article class="free-community-main">
-          <p>내용</p>
+        <!-- 본문 -->
+        <article class="team-post-main">
+          <p><c:out value="${freePostDetail.postContent}" /></p>
         </article>
-        <!-- 목록 버튼 -->
-        <a href="./freeCommunity.html"><button type="submit">목록</button></a>
+         <button type="button" class="list-btn"
+					data-boardNumber="${freePostDetail.postNumber}"
+					data-memberNumber="${sessionScope.memberNumber}">목록</button>
       </section>
       <!-- 댓글 -->
-      <section class="free-community-comment">
-        <div class="free-community-comment-header">
+      <section class="team-post-comment">
+        <div class="team-comment-header">
           <h2>댓글</h2>
         </div>
-        <!-- 댓글 리스트 -->
-        <ul class="free-community-comment-list">
-          <li class="free-community-comment-item">
-            <div class="free-community-comment-info">
-              <span class="free-community-comment-author">작성자 ID: user01</span>
-              <span class="free-community-comment-date">2025-08-08</span>
+        <ul class="team-comment-list">
+          <li class="comment-item">
+            <!-- 댓글 정보 -->
+            <div class="team-comment-info">
+              <span class="comment-author">작성자 ID: user01</span>
+              <span class="comment-date">2025-08-08</span>
             </div>
-            <p class="free-community--comment-text">댓글 내용</p>
-            <div class="free-community--comment-button">
-              <!-- 수정 삭제 버튼 -->
+            <!-- 댓글 내용 -->
+            <p class="team-comment-text">댓글 내용</p>
+            <div class="team-comment-button">
               <form action="">
-                <button type="button">수정</button>
-                <button type="button">삭제</button>
+                <!-- 수정 삭제 버튼 -->
+                <button type="submit">수정</button>
+                <button type="submit">삭제</button>
               </form>
             </div>
           </li>
+          <!-- 댓글 등록 시 들어올 공간 -->
         </ul>
-        <!-- 댓글 등록 -->
-        <div class="free-community--comment-area">
+        <div class="team-comment-area">
         <form action="" method="">
           <!-- 댓글 등록 공간 -->
           <textarea name="" id=""></textarea>
-          <!-- 댓글 등록 버튼 -->
-          <button type="button" class="team-btn-button">등록</button>
+          <button type="submit" class="team-btn-submit">등록</button>
         </form>
         </div>
       </section>
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
+  <script>
+	let memberNumber = "${sessionScope.memberNumber}";
+  </script>
 </body>
 </html>
 
