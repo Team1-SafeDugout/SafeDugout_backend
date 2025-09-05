@@ -15,11 +15,8 @@
                        P.POST_CONTENT,
                        P.POST_DATE,
                        P.POST_UPDATE,
-                       P.POST_LINK,
-                       P.JOURNALIST,
                        P.MEMBER_NUMBER,
                        P.TEAM_NUMBER,
-                       P.ADMIN_NUMBER,
                        P.POST_TYPE
                 FROM TBL_POST P
                 WHERE P.POST_TYPE = 1
@@ -87,7 +84,7 @@
 	<!-- 게시글 수정 -->
 	<update id="updatePost" parameterType="FreePostDTO">
 		UPDATE TBL_POST
-		SET POST_TITLE = #{postTitle),
+		SET POST_TITLE = #{postTitle},
 		POST_CONTENT = #{postContent},
 		POST_UPDATE = SYSDATE
 		WHERE POST_NUMBER = #{postNumber}

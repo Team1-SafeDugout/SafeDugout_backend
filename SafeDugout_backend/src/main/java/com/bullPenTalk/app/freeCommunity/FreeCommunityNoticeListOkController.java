@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.FreePostDTO;
-import com.bullPenTalk.app.freeCommunity.dao.FreePostDAO;
+import com.bullPenTalk.app.dto.GuidePostDTO;
+import com.bullPenTalk.app.freeCommunity.dao.GuidePostDAO;
 
-public class FreeCommunityListOkController implements Execute{
+public class FreeCommunityNoticeListOkController implements Execute{
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {	
+			throws ServletException, IOException {
 		System.out.println("selectList 요청 메소드 진입");
-		FreePostDAO freePostDAO = new FreePostDAO();
+		GuidePostDAO guidePostDAO = new GuidePostDAO();
 		Result result = new Result();
 		System.out.println("페이징 진입");
 		String temp = request.getParameter("page");
@@ -38,14 +38,14 @@ public class FreeCommunityListOkController implements Execute{
 		
 		
 		// 판매글 목록 조회
-		List<FreePostDTO> sellPostList = freePostDAO.selectList(pageMap);
-		request.setAttribute("sellPostList", sellPostList);
+		List<GuidePostDTO> guidePostList = guidePostDAO.selectList(pageMap);
+		request.setAttribute("sellPostList", guidePostList);
 		System.out.println("판매글 진입");
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
 
-		int total = freePostDAO.getTotal();
+		int total = guidePostDAO.getTotal();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
@@ -65,17 +65,16 @@ public class FreeCommunityListOkController implements Execute{
 
 		System.out.println("====페이징정보 확인====");
 		System.out.println("pageMap : " + pageMap);
-		System.out.println("sellPostList : " + sellPostList);
+		System.out.println("guidePostList : " + guidePostList);
 		System.out.println(
 				"startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
 		System.out.println("====================");
 
 		System.out.println("끝 진입");
-		result.setPath("/app/freeCommunity/freeCommuntyList.jsp");
+		result.setPath("/app/freeCommunity/freeCommunityGuideList.jsp");
 		result.setRedirect(false);
 		System.out.println("리턴 진입");
 		return result;
-
 	}
 
 }
