@@ -22,7 +22,7 @@ public class FreeCommunityWriteController implements Execute{
 		HttpSession session = request.getSession();
 		Integer memberNumber = (Integer)session.getAttribute("memberNumber");
 		String path = null;
-		
+		System.out.println("넘어온 memberId: " + memberNumber);
 		if(memberNumber == null) {
 			path = "/app/login/login.jsp";
 		}else {

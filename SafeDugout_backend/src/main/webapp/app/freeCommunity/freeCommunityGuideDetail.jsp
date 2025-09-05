@@ -45,5 +45,8 @@
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
+  <script>
+	let memberNumber = "${sessionScope.memberNumber}";
+  </script>
 </body>
 </html>

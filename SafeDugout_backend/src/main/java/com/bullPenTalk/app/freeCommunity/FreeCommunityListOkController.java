@@ -38,8 +38,8 @@ public class FreeCommunityListOkController implements Execute{
 		
 		
 		// 판매글 목록 조회
-		List<FreePostDTO> sellPostList = freePostDAO.selectList(pageMap);
-		request.setAttribute("sellPostList", sellPostList);
+		List<FreePostDTO> freePostList = freePostDAO.selectList(pageMap);
+		request.setAttribute("freePostList", freePostList);
 		System.out.println("판매글 진입");
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
@@ -65,7 +65,7 @@ public class FreeCommunityListOkController implements Execute{
 
 		System.out.println("====페이징정보 확인====");
 		System.out.println("pageMap : " + pageMap);
-		System.out.println("sellPostList : " + sellPostList);
+		System.out.println("freePostList : " + freePostList);
 		System.out.println(
 				"startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
 		System.out.println("====================");

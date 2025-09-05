@@ -43,7 +43,8 @@
 										<c:out value="${freeCommunity.postNumber}" />
 									</div>
 									<div>
-										<a> <c:out value="${freeCommunity.postTitle}" />
+										<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityDetail.fc?postNumber=${freeCommunity.postNumber}"> 
+											<c:out value="${freeCommunity.postTitle}" />
 										</a>
 									</div>
 									<div>

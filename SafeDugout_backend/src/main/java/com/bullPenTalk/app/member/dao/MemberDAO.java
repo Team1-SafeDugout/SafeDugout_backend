@@ -46,8 +46,8 @@ public class MemberDAO {
 	}
 	
 	public String getMemberNumber(int memberNumber) {
-		MemberDTO memberDTO = sqlSession.selectOne("member.select");
-		return memberDTO.getMemberId();
+	    MemberDTO memberDTO = sqlSession.selectOne("member.selectByNumber", memberNumber);
+	    return memberDTO != null ? memberDTO.getMemberId() : null;
 	}
 	
 	public String getMemberIdByNumber(int memberNumber) {
@@ -73,4 +73,5 @@ public class MemberDAO {
     public List<PostDTO> getPostsPage(Map<String, Integer> map){
     	return sqlSession.selectList("member.selectPostPage", map);
     }
+    
 }

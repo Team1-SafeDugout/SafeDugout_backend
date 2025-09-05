@@ -1,5 +1,6 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.Date;
 import java.util.List;
 
 public class FreePostDTO {
@@ -8,7 +9,7 @@ public class FreePostDTO {
 	private int memberNumber; //회원 번호
 	private String memberId; //회원 ID	
 	private String postTitle; //게시글 제목
-	private String postDate; //게시글 작성 날짜
+	private Date postDate; //게시글 작성 날짜
 	private String postUpdate; //게시글 수정
 	private String postContent; //게시글 내용
 	private String postComment; // 게시글 댓글
@@ -40,10 +41,10 @@ public class FreePostDTO {
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
-	public String getPostDate() {
+	public Date getPostDate() {
 		return postDate;
 	}
-	public void setPostDate(String postDate) {
+	public void setPostDate(Date postDate) {
 		this.postDate = postDate;
 	}
 	public String getPostUpdate() {
