@@ -18,8 +18,7 @@
     	posts.push({
             number: "${board.noticePostNumber}",
             title: "${board.noticePostTitle}",
-            date: "${board.noticePostDate}",
-            type: "${board.noticeTypeId}"
+            date: "${board.noticePostDate}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";

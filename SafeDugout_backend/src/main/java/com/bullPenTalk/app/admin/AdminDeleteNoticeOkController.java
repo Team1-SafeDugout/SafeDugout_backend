@@ -40,10 +40,16 @@ public class AdminDeleteNoticeOkController implements Execute{
 			if(teamNoticeDTO != null) adminTeamNoticeDAO.delete(postNumber);
 			break;
 		case 3:
+			System.out.println("가이드 삭제 진입");
 			result.setPath("/admin/adminManageFreeCommunityListOk.ad");
 			AdminGuideDAO adminGuideDAO = new AdminGuideDAO();
 			GuidePostDTO guideDTO = adminGuideDAO.selectDetail(postNumber);
-			if(guideDTO != null) adminGuideDAO.delete(postNumber);
+			System.out.println(postNumber);
+			System.out.println(guideDTO);
+			if(guideDTO != null) {				
+				System.out.println("가이드 삭제 완료");
+				adminGuideDAO.delete(postNumber);
+			}
 			break;
 		}
 		
