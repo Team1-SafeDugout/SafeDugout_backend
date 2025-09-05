@@ -92,7 +92,6 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			guidePost.setNoticePostDate(date);
 			guidePost.setNoticePostUpdate(upDate);
 			guidePost.setAdminNumber(adminNumber);
-			guidePost.setNoticeTypeId(boardNum);
 
 			guideDAO.insert(guidePost);
 			result.setPath("");

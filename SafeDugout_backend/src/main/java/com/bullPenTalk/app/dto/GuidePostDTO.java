@@ -4,21 +4,15 @@ import java.util.List;
 
 public class GuidePostDTO {
 	private int noticePostNumber; // 공지사항 게시글 번호
-	private int adminNumber; // 관리자 번호
+	
 	private String noticePostTitle; // 공지사항 게시글 제목
 	private String noticePostContent; // 공지사항 게시글 내용
 	private String noticePostDate; // 공지사항 게시 날짜
 	private String noticePostUpdate; // 공지사항 게시글 수정
-	private List<AttachmentDTO> attachment; 
-
-	// get, set
-	public List<AttachmentDTO> getAttachment() {
-		return attachment;
-	}
-
-	public void setAttachment(List<AttachmentDTO> attachment) {
-		this.attachment = attachment;
-	}
+	
+	private int adminNumber; // 관리자 이름
+	
+	private List<AttachmentDTO> attachment;
 
 	public int getNoticePostNumber() {
 		return noticePostNumber;
@@ -68,7 +62,14 @@ public class GuidePostDTO {
 		this.noticePostUpdate = noticePostUpdate;
 	}
 
-	// toString
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(List<AttachmentDTO> attachment) {
+		this.attachment = attachment;
+	}
+
 	@Override
 	public String toString() {
 		return "GuidePostDTO [noticePostNumber=" + noticePostNumber + ", adminNumber=" + adminNumber
@@ -76,6 +77,6 @@ public class GuidePostDTO {
 				+ ", noticePostDate=" + noticePostDate + ", noticePostUpdate=" + noticePostUpdate + ", attachment="
 				+ attachment + "]";
 	}
-
-
+	
+	
 }
