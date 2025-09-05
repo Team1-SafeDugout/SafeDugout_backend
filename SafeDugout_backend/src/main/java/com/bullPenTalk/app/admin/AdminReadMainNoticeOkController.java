@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.admin.dao.AdminMainNoticeDAO;
+import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
 
 public class AdminReadMainNoticeOkController implements Execute{
@@ -19,6 +22,7 @@ public class AdminReadMainNoticeOkController implements Execute{
 		Result result = new Result();
 		// 메인공지 가져오기
 		MainNoticePostDTO mainNoticeDTO = new MainNoticePostDTO();
+		AttachmentDAO attachmentDAO = new AttachmentDAO();
 		
 		// 메인공지 DAO 가져오기
 		AdminMainNoticeDAO adminMainNoticeDAO = new AdminMainNoticeDAO();
@@ -26,6 +30,11 @@ public class AdminReadMainNoticeOkController implements Execute{
 		int postType = Integer.parseInt(request.getParameter("noticeTypeId"));
 		
 		mainNoticeDTO = adminMainNoticeDAO.selectDetail(postNumber);
+		List<AttachmentDTO> attachment = attachmentDAO.selectByNoticePost(postNumber);
+		
+		for(int i = 0; i < attachment.size(); i++) {
+			System.out.println(attachment.get(i));
+		}
 		
 		System.out.println(mainNoticeDTO);
 		
@@ -35,16 +44,19 @@ public class AdminReadMainNoticeOkController implements Execute{
 			result.setRedirect(true);
 			return result;
 		}
+
+		mainNoticeDTO.setAttachment(attachment);
 		
+		result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
 		switch(postType) {
 		case 1:
-			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
+//			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
 			break;
 		case 2:
-			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
+//			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
 			break;
 		case 3:
-			result.setPath("/app/admin/adminDetailMenu/adminAddFreeCommunityGuideDetail.jsp");
+//			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
 			break;
 		}
 		

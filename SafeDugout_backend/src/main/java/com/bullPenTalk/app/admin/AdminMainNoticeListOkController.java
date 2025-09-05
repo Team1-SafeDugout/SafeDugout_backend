@@ -20,8 +20,6 @@ public class AdminMainNoticeListOkController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.println("일로들어옴");
-		
 		AdminMainNoticeDAO adminMainNoticeDAO = new AdminMainNoticeDAO();
 		Result result = new Result();
 		
@@ -39,6 +37,8 @@ public class AdminMainNoticeListOkController implements Execute{
 		Map<String, Integer> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		
+		
 		
 		List<MainNoticePostDTO> boardList = adminMainNoticeDAO.select();
 		request.setAttribute("boardList", boardList);
