@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="teamCommunityNoticeMapper">
 
@@ -23,7 +24,7 @@
 	
 	<!-- 팀 공지 사항 상세 조회 -->
 	
-	<select id="detailSelect" resultType="TeamNoticePostDTO" parameterType="int">
+	<select id="detailSelect" parameterType="int" resultType="TeamNoticePostDTO">
 	<![CDATA[ 
 	SELECT NP.NOTICE_POST_NUMBER,
 		       NP.NOTICE_POST_TITLE,

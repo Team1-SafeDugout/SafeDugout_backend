@@ -114,14 +114,13 @@ main {
 
 /* 상단 바 > 제목 텍스트 */
 .top-bar>.post-title {
-  text-align: center;
+  text-align: left;
 }
 
 /* 작성 일자 */
 .upload-date {
   width: 100px;
-  margin: 20px;
-  text-align: center;
+  margin-right: 5px;
 }
 
 /* 등록된 게시물이 없습니다 텍스트 */
