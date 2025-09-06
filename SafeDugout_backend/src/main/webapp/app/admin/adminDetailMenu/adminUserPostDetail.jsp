@@ -33,8 +33,8 @@
 				    	
 				<div class="post-content-container">
 					<c:choose>
-						<c:when test = "${!empty postDTO.attachmentPath}">
-							<img width = 100% height = 500px src= "/upload/product/${postDTO.attachmentPath}"/>
+						<c:when test = "${!empty postDTO.attachment[0].attachmentPath}">
+							<img width = 100% height = 500px src= "/upload/product/${postDTO.attachment[0].attachmentPath}"/>
 						</c:when>
 				  	</c:choose>
 					${postDTO.postContent}

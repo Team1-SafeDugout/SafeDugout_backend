@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class NewsPostDTO { // 뉴스글
 //	POST_NUMBER,
 //    POST_TITLE,
@@ -18,20 +20,25 @@ public class NewsPostDTO { // 뉴스글
 	private String postDate; // 작성일자
 	private int teamNumber; // 팀 번호
 	private String journalist; // 기자명
-	private String postLink; // 기사원문 링크
-	private int attachmentNumber; // 첨부파일 번호
-	private String attachmentName; // 첨부파일 이름
-	private String attachmentPath; // 첨부파일 경로
+	private String postLink; // 기사원문 링크	
 	private int adminNumber; // 어드민 번호
-	private int boardId; // 보드 번호
+	private int postType; // 보드 번호
+	private List<AttachmentDTO> attachment; 
 	
 	
 	
-	public int getBoardId() {
-		return boardId;
+	@Override
+	public String toString() {
+		return "NewsPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
+				+ ", postDate=" + postDate + ", teamNumber=" + teamNumber + ", journalist=" + journalist + ", postLink="
+				+ postLink + ", adminNumber=" + adminNumber + ", postType=" + postType + ", attachment=" + attachment
+				+ "]";
 	}
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
+	}
+	public void setAttachment(List<AttachmentDTO> attachment) {
+		this.attachment = attachment;
 	}
 	public int getAdminNumber() {
 		return adminNumber;
@@ -82,33 +89,13 @@ public class NewsPostDTO { // 뉴스글
 	public void setPostLink(String postLink) {
 		this.postLink = postLink;
 	}
-	public int getAttachmentNumber() {
-		return attachmentNumber;
+	
+	public int getPostType() {
+		return postType;
 	}
-	public void setAttachmentNumber(int attachmentNumber) {
-		this.attachmentNumber = attachmentNumber;
-	}
-	public String getAttachmentName() {
-		return attachmentName;
-	}
-	public void setAttachmentName(String attachmentName) {
-		this.attachmentName = attachmentName;
-	}
-	public String getAttachmentPath() {
-		return attachmentPath;
-	}
-	public void setAttachmentPath(String attachmentPath) {
-		this.attachmentPath = attachmentPath;
+	public void setPostType(int postType) {
+		this.postType = postType;
 	}
 	
 	
-	// toString
-	@Override
-	public String toString() {
-		return "NewsPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
-				+ ", postDate=" + postDate + ", teamNumber=" + teamNumber + ", journalist=" + journalist + ", postLink="
-				+ postLink + ", attachmentNumber=" + attachmentNumber + ", attachmentName=" + attachmentName
-				+ ", attachmentPath=" + attachmentPath + "]";
-	}
-
 }

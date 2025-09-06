@@ -19,7 +19,7 @@
             number: "${board.postNumber}",
             title: "${board.postTitle}",
             date: "${board.postDate}",
-            type: "${board.boardId}"
+            type: "${board.postType}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";

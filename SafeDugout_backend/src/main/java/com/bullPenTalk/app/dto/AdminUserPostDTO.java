@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.List;
+
 public class AdminUserPostDTO {
 	
 	private int postNumber; // 게시글 번호
@@ -11,19 +13,10 @@ public class AdminUserPostDTO {
 	private String memberId; //회원 ID	
 	private int memberNumber; // 게시글 작성자 회원 번호
 
-	private int boardId; // 게시판 종류
+	private int postType; // 게시판 종류
 	private int teamNumber; // 팀 번호
 	
-	private String attachmentPath; // 
-	
-
-	@Override
-	public String toString() {
-		return "AdminUserPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent="
-				+ postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate + ", memberId=" + memberId
-				+ ", memberNumber=" + memberNumber + ", boardId=" + boardId + ", teamNumber=" + teamNumber
-				+ ", attachmentPath=" + attachmentPath + "]";
-	}
+	private List<AttachmentDTO> attachment; 
 
 	public int getPostNumber() {
 		return postNumber;
@@ -81,14 +74,6 @@ public class AdminUserPostDTO {
 		this.memberNumber = memberNumber;
 	}
 
-	public int getBoardId() {
-		return boardId;
-	}
-
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
-	}
-
 	public int getTeamNumber() {
 		return teamNumber;
 	}
@@ -97,12 +82,30 @@ public class AdminUserPostDTO {
 		this.teamNumber = teamNumber;
 	}
 
-	public String getAttachmentPath() {
-		return attachmentPath;
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
 	}
 
-	public void setAttachmentPath(String attachmentPath) {
-		this.attachmentPath = attachmentPath;
+	public void setAttachment(List<AttachmentDTO> attachment) {
+		this.attachment = attachment;
 	}
 
+	public int getPostType() {
+		return postType;
+	}
+
+	public void setPostType(int postType) {
+		this.postType = postType;
+	}
+
+	@Override
+	public String toString() {
+		return "AdminUserPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent="
+				+ postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate + ", memberId=" + memberId
+				+ ", memberNumber=" + memberNumber + ", postType=" + postType + ", teamNumber=" + teamNumber
+				+ ", attachment=" + attachment + "]";
+	}
+	
+	
+	
 }

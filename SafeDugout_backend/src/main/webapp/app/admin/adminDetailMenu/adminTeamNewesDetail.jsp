@@ -38,8 +38,8 @@
           <div> 내용 </div>
           <div class="post-content">
           	<c:choose>
-				<c:when test = "${!empty newsDTO.attachmentName}">
-					<img width = 100% height = 500px src= "${newsDTO.attachmentPath}${newsDTO.attachmentName}"/>
+				<c:when test = "${!empty newsDTO.attachment[0].attachmentPath}">
+					<img width = 100% height = 500px src= "${newsDTO.attachment[0].attachmentPath}${newsDTO.attachment[0].attachmentName}"/>
 				</c:when>
 		  	</c:choose>
 		  	<c:out value= "${newsDTO.postContent}" />        	 
