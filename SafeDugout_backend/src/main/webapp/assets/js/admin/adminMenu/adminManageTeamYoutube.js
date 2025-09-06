@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	if (typeof posts !== 'undefined') {
 		posts.forEach(post => {
 			let teamName = "";
+			console.log(post.teamType);
 			switch (post.teamtype) {
 				case "1":
 					teamName = "두산 베어스";
@@ -45,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
 					teamName = "기타";
 					break;
 			}
+			console.log(teamName);
+			
 			addPost(post.number, teamName, post.title, post.link, post.date);
 		});
 	}

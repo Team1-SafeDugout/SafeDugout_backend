@@ -36,8 +36,8 @@
           <div> 내용 </div>
           <div class="post-content">
           	<c:choose>
-				<c:when test = "${!empty mainNotice.attachment}">
-					<%-- <img width = 100% height = 500px src= "${mainNotice.attachmentPath}${mainNotice.attachmentName}"/> --%>
+				<c:when test = "${!empty mainNotice.attachment[0].attachmentPath}">
+					<img width = 100% height = 500px src= "${mainNotice.attachment[0].attachmentPath}${mainNotice.attachment[0].attachmentName}"/>
 				</c:when>
 			</c:choose>
           	

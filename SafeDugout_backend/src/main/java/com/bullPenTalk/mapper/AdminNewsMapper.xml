@@ -31,12 +31,8 @@
 	           p.POST_DATE,
 	           p.TEAM_NUMBER,
 	           p.JOURNALIST,
-	           p.POST_LINK,
-	           a.ATTACHMENT_NUMBER,
-	           A.ATTACHMENT_NAME,
-	           A.ATTACHMENT_PATH
+	           p.POST_LINK
 	    FROM TBL_POST p
-	    LEFT JOIN TBL_ATTACHMENT a ON p.POST_NUMBER = a.POST_NUMBER
 	    WHERE p.POST_NUMBER = #{postNumber}
 	</select>
 	
@@ -47,12 +43,8 @@
 	           p.POST_DATE,
 	           p.TEAM_NUMBER,
 	           p.JOURNALIST,
-	           p.POST_LINK,
-	           a.ATTACHMENT_NUMBER,
-	           A.ATTACHMENT_NAME,
-	           A.ATTACHMENT_PATH
+	           p.POST_LINK
 	    FROM TBL_POST p
-	    LEFT JOIN TBL_ATTACHMENT a ON p.POST_NUMBER = a.POST_NUMBER
 	    WHERE POST_TYPE = 3
 	</select>
 	

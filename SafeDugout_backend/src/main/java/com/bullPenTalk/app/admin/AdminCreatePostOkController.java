@@ -87,8 +87,7 @@ public class AdminCreatePostOkController implements Execute{
 			newsPost.setJournalist(journalist);
 			newsPost.setAdminNumber(adminNumber);
 			newsPost.setPostLink(newsUrl);
-			newsPost.setAttachmentPath(uploadPath);
-			newsPost.setBoardId(boardNum);
+			newsPost.setPostType(boardNum);
 			
 			newsDAO.insert(newsPost);
 			result.setPath("/admin/adminManageTeamNewsListOk.ad");
@@ -102,7 +101,7 @@ public class AdminCreatePostOkController implements Execute{
 			String youtubeUrl = multipartRequest.getParameter("youtubeUrl");
 			title = multipartRequest.getParameter("youtubeTitle");
 			teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));
-			youtubePostDTO.setBoardId(boardNum);
+			youtubePostDTO.setPostType(boardNum);
 			youtubePostDTO.setPostContent("youtubeID");
 			youtubePostDTO.setPostTitle(title);
 			youtubePostDTO.setTeamNumber(teamNum);
@@ -126,7 +125,7 @@ public class AdminCreatePostOkController implements Execute{
 			songPostDTO.setPostTitle(title);
 			songPostDTO.setPostDate(date);
 			songPostDTO.setTeamNumber(teamNum);
-			songPostDTO.setBoardTypeId(boardNum);
+			songPostDTO.setPostType(boardNum);
 			songPostDTO.setAdminId(adminNumber);
 			songPostDTO.setPostLink(songUrl);
 			songPostDTO.setPostContent("song");
@@ -146,7 +145,7 @@ public class AdminCreatePostOkController implements Execute{
 			songPlayerPostDTO.setPostTitle(title);
 			songPlayerPostDTO.setPostDate(date);
 			songPlayerPostDTO.setTeamNumber(teamNum);
-			songPlayerPostDTO.setBoardTypeId(boardNum);
+			songPlayerPostDTO.setPostType(boardNum);
 			songPlayerPostDTO.setAdminId(adminNumber);
 			songPlayerPostDTO.setPostLink(songPlayerUrl);
 			songPlayerPostDTO.setPostContent("song");
@@ -187,6 +186,7 @@ public class AdminCreatePostOkController implements Execute{
 	
 	
 	int getTeamNumber(String teamName) {
+		
 		int teamNumber = 0;
 		switch(teamName) {
 		
@@ -230,6 +230,11 @@ public class AdminCreatePostOkController implements Execute{
 			teamNumber = 10;
 			break;
 		}
+		System.out.println("-----팀정보------");
+		System.out.println("팀이름" + teamName);
+		System.out.println("팀 번호" + teamNumber);
+		System.out.println("---------------");
+		
 		return teamNumber;
 	}
 }
