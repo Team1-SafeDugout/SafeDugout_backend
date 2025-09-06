@@ -17,7 +17,7 @@
 	               M.MEMBER_ID,
 	               M.MEMBER_NUMBER,
 	               P.BOARD_ID,
-	               P.TEAM_NUMBER,
+	               P.TEAM_NUMBER
 	        FROM TBL_POST P
 	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
 	        WHERE P.BOARD_ID = 2
