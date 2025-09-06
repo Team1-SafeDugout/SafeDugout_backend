@@ -47,4 +47,12 @@
 	    WHERE NOTICE_TYPE_ID = 3
 	</select>
 	
+	<!-- 메인페이지 조회 -->
+	<select id="selectLatestPosts" parameterType="int" resultType="GuidePostDTO">
+	    SELECT *
+	    FROM TBL_GUIDE_POST
+	    ORDER BY NOTICE_POST_DATE DESC
+	    FETCH FIRST #{count} ROWS ONLY
+	</select>
+	
 </mapper>
