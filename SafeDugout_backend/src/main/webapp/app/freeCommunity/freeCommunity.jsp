@@ -43,26 +43,27 @@
 							<div>작성일자</div>
 						</li>
 						<c:choose>
-							<c:when test="${not empty freePostList}">
-								<c:forEach var="freeCommunity" items="${freePostList}">
-									<li class="free-board-list">
-										<div>
-											<c:out value="${freeCommunity.postNumber}" />
-										</div>
-										<div>
-											<a> <c:out value="${freeCommunity.postTitle}" />
-											</a>
-										</div>
-										<div>
-											<c:out value="${freeCommunity.memberId}" />
-										</div>
-										<div>
-											<c:out value="${freeCommunity.postDate}" />
-										</div>
-									</li>
-								</c:forEach>
-							</c:when>
-						</c:choose>
+						<c:when test="${not empty freePostList}">
+							<c:forEach var="freeCommunity" items="${freePostList}">
+								<li class="free-board-list">
+									<div>
+										<c:out value="${freeCommunity.postNumber}" />
+									</div>
+									<div>
+										<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityDetail.fc?postNumber=${freeCommunity.postNumber}"> 
+											<c:out value="${freeCommunity.postTitle}" />
+										</a>
+									</div>
+									<div>
+										<c:out value="${freeCommunity.memberId}" />
+									</div>
+									<div>
+										<fmt:formatDate value="${freeCommunity.postDate}" pattern="yyyy-MM-dd" />
+									</div>
+								</li>
+							</c:forEach>
+						</c:when>
+					</c:choose>
 					</ul>
 				</div>
 			</section>
@@ -82,19 +83,21 @@
 						</li>
 						<!-- 입문자 가이드 추가 공간 -->
 						<c:choose>
-							<c:when test="${not empty freePostList}">
-								<c:forEach var="freeCommunity" items="${noticePostList}">
-									<li class="free-guide-list">
-										<div>
-											<c:out value="${freeCommunity.noticePostNumber}" />
-										</div>
-										<div>
-											<c:out value="${freeCommunity.noticePostTitle}" />
-										</div>
-									</li>
-								</c:forEach>
-							</c:when>
-						</c:choose>
+						<c:when test="${not empty goidePostList}">
+							<c:forEach var="notice" items="${goidePostList}">
+								<li class="free-guide-list-item">
+									<div class="free-guide-title">
+										<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${notice.noticePostNumber}">
+											<c:out value="${notice.noticePostTitle}" />
+										</a>
+									</div>
+									<div class="free-guide-date">
+										<fmt:formatDate value="${notice.noticePostDate}" pattern="yyyy-MM-dd" />
+									</div>
+								</li>
+							</c:forEach>
+						</c:when>
+					</c:choose>
 					</ul>
 				</div>
 			</section>

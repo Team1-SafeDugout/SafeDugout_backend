@@ -1,148 +1,170 @@
 @charset "UTF-8";
+
+/* ------------------- 기본 설정 ------------------- */
 * {
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* 컨테이너 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f8f8f8;
+}
+
+/* ------------------- 컨테이너 ------------------- */
 .team-post-container {
-  max-width: 1200px;      
+  max-width: 1200px;
   margin: 40px auto;
-  padding: 0 24px;        
+  padding: 0 24px;
 }
 
 .team-post-detail,
 .team-post-comment {
-  border: 1px solid white;
-  padding: 25px;
   background: #F5F5F5;
+  border: 1px solid #fff;
+  padding: 25px;
   margin-bottom: 30px;
 }
 
-/*게시글 헤더 */
+/* ------------------- 게시글 헤더 ------------------- */
 .team-post-header {
   display: flex;
-  justify-content: space-between; 
-  align-items: flex-start;       
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 15px;
   margin-bottom: 15px;
 }
 
 .team-post-header h2 {
   font-size: 24px;
-  margin: 0;
 }
 
-.team-post-header > div {   
+.team-post-header > div {
   display: flex;
   gap: 5px;
   align-items: center;
 }
 
-.team-post-info{
+.team-post-header div button a {
+  font-size: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+/* ------------------- 게시글 정보 ------------------- */
+.team-post-info {
   display: flex;
-  gap: 30px;              
-  align-items: center;     
-  flex-wrap: wrap;         
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
   margin-bottom: 20px;
   font-size: 14px;
 }
 
-
-.team-post-info div{
+.team-post-info div {
   display: flex;
   gap: 8px;
   align-items: center;
 }
-.team-post-header div button a{
-  color: black;
-  text-decoration: none;
-  font-size: 10px;
-}
-/*  내용 */
+
+/* ------------------- 게시글 내용 ------------------- */
 .team-post-main {
   padding: 22px 0;
-  background-color: white;
+  background-color: #fff;
   border-top: 1px solid #F5F5F5;
   border-bottom: 1px solid #F5F5F5;
   margin-bottom: 15px;
   line-height: 2;
 }
 
-.team-post-detail > button {
-  margin-top: 5px;
-}
-
-/* 댓글 영역 */
+/* ------------------- 댓글 영역 ------------------- */
 .team-comment-header h2 {
   font-size: 20px;
-  border-bottom: 1px solid black ;
+  border-bottom: 1px solid #000;
   margin-bottom: 5px;
 }
-.team-comment-list{
-  list-style-type: none;
+
+.team-comment-list {
+  list-style: none;
 }
 
-.comment-item { 
-  padding: 12px 0; 
-  border-bottom: 1px solid black; 
+.comment-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #000;
 }
 
-.team-comment-info{
+.team-comment-info {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 5px;
   font-size: 14px;
 }
 
-/* 수정,삭제 버튼 */
+/* ------------------- 버튼 공통 ------------------- */
 .team-comment-button button,
-.team-btn-submit {
+.team-btn-submit,
+.team-post-detail a button {
   padding: 5px 10px;
-  border: 1px solid black;
+  border: 1px solid #000;
   background: none;
   cursor: pointer;
-  line-height: 1;
+  font-size: 10px;
 }
-.team-post-detail a button{
-  padding: 10px 15px;
-  border: 1px solid black;
-  background: none;
-  cursor: pointer;
-  line-height: 1;
-}
-.team-comment-button{
-  margin-top: 8px;
+
+.team-comment-button {
   display: flex;
   gap: 8px;
+  margin-top: 8px;
 }
-.team-post-header button,
-.team-comment-button button{
-  font-size: 10px;
-  padding: 5px 10px;
-}
-.team-comment-button button:hover{
+
+.team-comment-button button:hover {
   text-decoration: underline;
 }
-/*댓글 입력 */
-.team-comment-area{
+
+/* 댓글 입력 영역 */
+.team-comment-area {
   display: flex;
   gap: 8px;
   align-items: flex-start;
   margin-top: 10px;
-  
-}
-.team-comment-area textarea{
-  max-width: 1000px;
-  min-width: 1000px;
-  user-select: none;
 }
 
+.team-comment-area textarea,
 .team-comment-area input {
+  width: 100%;
+  max-width: 1000px;
+  min-width: 0;
   padding: 8px;
   border: 1px solid #F5F5F5;
-  width: 1000px;
+  resize: vertical;
 }
 
+/* ------------------- 흰색 버튼 ------------------- */
+.free-guide-board-btn a,
+.modify-btn,
+.delete-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid #C0BFB8;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-right: 8px;
+}
+
+.free-guide-board-btn a:hover,
+.modify-btn:hover {
+  background-color: #F0F0F0;
+  border-color: #B0B0B0;
+}
+
+.delete-btn:hover {
+  background-color: #FFECEC;
+  border-color: #FFBABA;
+  color: #C00;
+}
