@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/footer.js"></script>
   <title>메인페이지</title>
 </head>
 
@@ -56,6 +57,9 @@
       <section class="rank-section">
         <!-- 팀순위 섹션 제목 -->
         <h2 class="rank-section-title">팀별 순위</h2>
+        <div class="rank-table-top">
+          <span class="diamond">◆&nbsp;</span> 경기일 오후 12시에 업데이트 됩니다.
+        </div>
         <!-- 팀 순위 테이블 -->
         <div class="rank-table">
           <!-- 팀순위 테이블 제목 -->
@@ -94,7 +98,7 @@
         <!-- 입문가이드 목록 제목 -->
         <h2 class="guide-list-container-title">입문가이드</h2>
         <div class="guide-list-container-top">
-          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">더보기</a>
+          <a href="${pageContext.request.contextPath}/main/mainAll.ma">더보기</a>
         </div>
         <!-- 입문가이드 목록 공간 -->
         <div class="guide-list-container">
@@ -115,6 +119,9 @@
         <section class="schedule-section">
           <!-- 경기 일정 섹션 제목 -->
           <h2 class="schedule-title">경기일정</h2>
+          <div class="rank-table-top">
+            <span class="diamond">◆&nbsp;</span> 경기일 오후 12시에 업데이트 됩니다.
+          </div>
           <!-- 경기 일정 테이블 -->
           <div class="schedule-table">
             <!-- 경기 일정 테이블 제목 -->
@@ -125,7 +132,11 @@
               <c:forEach var="scheduleRow" items="${schedule}">
               <div class="schedule-table-schedulelist-schedule">
                 <!-- 경기 일정 데이터 리스트 목록 -->
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-home"><c:out value="${scheduleRow.awayTeamName}"/></li>
+                <li class="schedule-table-schedulelist-schedule-list schedule-li-home">
+                  <div class="schedule-li-home-text">	
+                	<c:out value="${scheduleRow.awayTeamName}"/>
+                  </div>
+                </li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-loc">
                   <div class="schedule-li-loc-text">
                     <c:out value="${scheduleRow.stadiumName}"/>
@@ -156,19 +167,23 @@
             <div class="product-box-item">
               <!-- 중고 거래 이미지 -->
               <div class="product-box-item-imgdiv">
+                <a href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=allproduct&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
                 <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png" alt="" class="product-box-item-img">
+                </a>
               </div>
               <!-- 중고 거래 상품명 -->
               <div class="product-box-item-name">
-                <!-- [PRO-SPECS] 야구 대표팀 점퍼 --><c:out value="${sellPost.sellPostTitle}"/>
+                <a href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=allproduct&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
+                <!-- 상품명 텍스트 --><c:out value="${sellPost.sellPostTitle}"/>
+                </a>
               </div>
               <!-- 중고 거래 상품 판매가 -->
               <div class="product-box-item-price">
-                <!-- 판매가 : 249,000원 -->판매가 : <c:out value="${sellPost.pricePoint}"/>
+                <!-- 판매가 텍스트 -->판매가 : <c:out value="${sellPost.pricePoint}"/>
               </div>
               <!-- 중고 거래 상품 등록날짜 -->
               <div class="product-box-item-date">
-                <!-- 등록날짜 : 2025.08.05 -->등록날짜 : <c:out value="${sellPost.sellPostCreationDate}"/>
+                <!-- 등록날짜 텍스트 -->등록날짜 : <c:out value="${sellPost.sellPostCreationDate}"/>
               </div>
             </div>
             </c:forEach>
