@@ -37,10 +37,10 @@ public class FreeCommunityNoticeListOkController implements Execute{
 		pageMap.put("endRow", endRow);
 		
 		
-		// 판매글 목록 조회
+		// 입문가이드 목록 조회
 		List<GuidePostDTO> guidePostList = guidePostDAO.selectList(pageMap);
-		request.setAttribute("sellPostList", guidePostList);
-		System.out.println("판매글 진입");
+		request.setAttribute("goidePostList", guidePostList);
+		System.out.println("입문가이드 목록 조회");
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함

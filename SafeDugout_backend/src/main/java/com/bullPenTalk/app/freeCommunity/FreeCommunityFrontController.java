@@ -48,6 +48,11 @@ public class FreeCommunityFrontController extends HttpServlet {
 		Result result = new Result();
 		
 		switch(target) {
+		case "/freeCommunity/freeCommunitymain.fc" :
+			System.out.println("전체커뮤니티 메인페이지 요청");
+			result = new FreeCommunityMainListController().execute(request, response);
+			break;
+			
 		case "/freeCommunity/freeCommunityList.fc":
 			System.out.println("전체 커뮤니티 게시글 목록 요청");
 			result = new FreeCommunityListController().execute(request, response);
@@ -74,7 +79,7 @@ public class FreeCommunityFrontController extends HttpServlet {
 			break;
 			
 		case "/freeCommunity/freeCommunityUpdateOk.fc":
-			System.out.println("전체 커뮤니티 게시글 업테이트 완료");
+			System.out.println("전체 커뮤니티 게시글 업데이트 완료");
 			result = new FreeCommunityUpdateOkController().execute(request, response);
 			break;
 			

@@ -51,7 +51,7 @@
 										<c:out value="${freeCommunity.memberId}" />
 									</div>
 									<div>
-										<c:out value="${freeCommunity.postDate}" />
+										<fmt:formatDate value="${freeCommunity.postDate}" pattern="yyyy-MM-dd" />
 									</div>
 								</li>
 							</c:forEach>

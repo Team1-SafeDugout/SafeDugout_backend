@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="./../../assets/css/communityCss/communityTapPage/freeCommunityGuideDetail.css">
-  <script defer src="./../../assets/js/include.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/freeCommunityGuideDetail.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/include.js"></script>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
@@ -19,28 +22,20 @@
       <!-- 입문자 가이드 디테일 내용 헤더 -->
       <div class="free-guide-board-header">
         <span>제목: </span>
-        <p>[입문가이드] : 불펜토크 입문자 가이드 이용안내</p>
+        <p><c:out value="${noticePostDetail.noticePostTitle}" /></p>
       </div>
       <!-- 입문자 가이드 본문 -->
       <div class="free-guide-board-content">
-        <p>야구에 입문하시는 여러분 안녕하세요.</p>
-        <p>응원팀을 고르기 힘드시나요?</p>
-        <p>불펜토크가 응원팀을 고를 수 있게 도와 드립니다</p>
-        <p>저희가 준비한 입문자 가이드를 천천히 읽어보시고</p>
-        <p>응원팀을 정하여 팀커뮤니티에서 다른 회원분들과 함께</p>
-        <p>사이트를 이용하시길 바라며 다음 가이드는 각 팀들의 역사와 함께 찾아오겠습니다</p>
-      </div>
-      <!-- 이전 다음 글 버튼 -->
-      <div class="free-guide-board-btn">
-        <button type="button">이전글</button>
-        <button type="button">다음글</button>
+        <p><c:out value="${noticePostDetail.noticePostContent}" /></p>
       </div>
       <!-- 작성일자 -->
-      <div class="free-guide-date">2025.06.23</div>
+      <div class="free-guide-date">
+      	<fmt:formatDate value="${noticePostDetail.noticePostDate}" pattern="yyyy-MM-dd" />
+      </div>
 
       <!-- 목록버튼 -->
       <div class="free-guide-board-btn">
-        <a href="./freeCommunityGuideList.html">목록</a>
+        <a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeList.fc">목록</a>
       </div>
     </div>
   </main>

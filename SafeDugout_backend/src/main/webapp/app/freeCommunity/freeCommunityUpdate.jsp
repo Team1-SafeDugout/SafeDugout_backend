@@ -18,17 +18,25 @@
   <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <!-- 게시글 작성 컨테이너 -->
   <main class="team-post-container">
-	  <form action="${pageContext.request.contextPath}/freeCommunity/freeCommunityWriteOk.fc" 
+	  <form action="${pageContext.request.contextPath}/freeCommunity/freeCommunityUpdateOk.fc" 
 	  		method="post"
 	  		enctype="multipart/form-data">
-	    <h2 class="team-post-title">게시물 작성</h2>
+	    <h2 class="team-post-title">게시물 수정</h2>
+	    
+	    <!-- 게시글 번호 -->
+	    <input type="hidden" name="postNumber" value="${freePostDetail.postNumber}" />
+	
+	    <!-- 작성자 번호 -->
+	    <input type="hidden" name="memberNumber" value="${sessionScope.memberNumber}" />
+	    
 	    <div class="team-form-row">
 	      <!-- 게시글 제목 입력 -->
 	      <label class="team-label">제목:</label>
-	      <input type="text" class="team-input" placeholder="제목을 입력하세요" name="postTitle" required>
+	      <input type="text" class="team-input" value="${freePostDetail.postTitle}" name="postTitle" required>
 	    </div>
 	    <!-- 게시글 작성자 정보 입력 -->
 	    <input type="hidden" name="memberNumber" value="${sessionScope.memberNumber}" />
+		<input type="hidden" name="teamNumber" value="${sessionScope.teamNumber}" />
 	    <div class="team-form-row">
 	      <label class="team-label">작성자:</label>
 	      <c:out value="${memberId}" />	
@@ -37,7 +45,7 @@
 	      <div class="team-textarea-wrap">
 	        <!-- 본문 내용작성공간 -->
 	        <label class="team-label">내용작성</label>
-	        <textarea class="team-textarea" placeholder="내용을 입력하세요" name="postContent" required></textarea>
+	        <textarea class="team-textarea" name="postContent" required>${freePostDetail.postContent}</textarea>
 	      </div>
 	    </div>
 	    <!-- 파일 첨부 -->
