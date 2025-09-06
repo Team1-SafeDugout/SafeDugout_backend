@@ -1,4 +1,4 @@
-// 예시 데이터
+/*// 예시 데이터
 const guideData = [
   { id: 1, title: "입문자 가이드 1", date: "2025-08-12", link: "./freeCommunityGuideDetail.html" },
   { id: 2, title: "입문자 가이드 2", date: "2025-08-11", link: "./freeCommunityGuideDetail.html" },
@@ -38,3 +38,4 @@ function addGuideItems(data) {
 document.addEventListener("DOMContentLoaded", () => {
   addGuideItems(guideData);
 });
+*/

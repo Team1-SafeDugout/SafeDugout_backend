@@ -22,9 +22,11 @@ public class FreeCommunityNoticeDetailOkController implements Execute{
 			
 		// postNumber가 빈 문자열이거나 null인경우
 				String noticepostNumberStr = request.getParameter("noticePostNumber");
+				
+				System.out.println("공지사항 번호" + noticepostNumberStr);
 				if (noticepostNumberStr == null || noticepostNumberStr.trim().isEmpty()) {
 					System.out.println("noticePostNumber 값이 없습니다");
-					result.setPath("/app/freeCommunity/freeCommunityNoticeList.fc"); // 전체커뮤니티 입문 가이드 목록 페이지로 리다이렉트
+					result.setPath("/freeCommunity/freeCommunityNoticeList.fc"); // 전체커뮤니티 입문 가이드 목록 페이지로 리다이렉트
 					result.setRedirect(true);
 					return result;
 				}

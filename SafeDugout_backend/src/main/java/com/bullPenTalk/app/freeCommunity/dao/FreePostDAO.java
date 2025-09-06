@@ -55,10 +55,10 @@ public class FreePostDAO {
         return sqlSession.selectOne("freeCommunity.selectPostDetail", postNumber);
     }
     
- // 게시글 작성자 번호 조회
+    // 게시글 작성자 번호 조회
     public int getWriterNumber(int postNumber) {
         System.out.println("게시글 작성자 번호 조회 - postNumber: " + postNumber);
-        Integer writerNumber = sqlSession.selectOne("FreeCommunityPostMapper.getWriterNumber", postNumber);
+        Integer writerNumber = sqlSession.selectOne("freeCommunity.getWriterNumber", postNumber);
 
         if (writerNumber == null) {
             System.out.println("해당 게시글이 존재하지 않습니다. postNumber: " + postNumber);
@@ -68,7 +68,13 @@ public class FreePostDAO {
         return writerNumber;
     }
     
+    // 게시글 작성자 id조회
     public MemberDTO getMemberById(String memberId) {
         return sqlSession.selectOne("member.getMemberById", memberId);
+    }
+    
+    // 메인페이지 조회
+    public List<FreePostDTO> selectLatestPosts(int count) {
+        return sqlSession.selectList("FreeCommunityPostMapper.selectLatestPosts", count);
     }
 }

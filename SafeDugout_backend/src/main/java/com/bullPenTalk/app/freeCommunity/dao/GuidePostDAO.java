@@ -37,4 +37,8 @@ public class GuidePostDAO {
 	        return sqlSession.selectOne("guide.selectDetail", noitceNostNumber);
 	    }
 
+	    // 메인페이지 조회
+	    public List<GuidePostDTO> selectLatestPosts(int count) {
+	        return sqlSession.selectList("guide.selectLatestPosts", count);
+	    }
 }
