@@ -16,28 +16,29 @@ document.addEventListener("DOMContentLoaded", function() {
 					teamName = "두산 베어스";
 					break;
 				case "2":
-					teamName = "한화 이글스";
-					break;
-				case "3":
-					teamName = "KIA 타이거즈";
-					break;
-				case "4":
 					teamName = "LG 트윈스";
 					break;
+				case "3":	
+					teamName = "한화 이글스";
+					break;
+				case "4":
+					teamName = "삼성 라이온즈";
+					break;
 				case "5":
-					teamName = "NC 다이노스";
+					teamName = "SSG 랜더스";				
 					break;
 				case "6":
 					teamName = "KT 위즈";
 					break;
-				case "7":
-					teamName = "롯데 자이언츠";
+				case "7":					
+					teamName = "NC 다이노스";
 					break;
 				case "8":
-					teamName = "삼성 라이온즈";
+					teamName = "롯데 자이언츠";
+					
 					break;
 				case "9":
-					teamName = "SSG 랜더스";
+					teamName = "KIA 타이거즈";
 					break;
 				case "10":
 					teamName = "키움 히어로즈";

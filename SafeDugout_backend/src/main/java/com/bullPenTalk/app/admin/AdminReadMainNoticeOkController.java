@@ -33,10 +33,10 @@ public class AdminReadMainNoticeOkController implements Execute{
 		List<AttachmentDTO> attachment = attachmentDAO.selectByNoticePost(postNumber);
 		
 		for(int i = 0; i < attachment.size(); i++) {
+			System.out.println("찾음!!");
 			System.out.println(attachment.get(i));
 		}
-		
-		System.out.println(mainNoticeDTO);
+
 		
 		if(mainNoticeDTO == null) {
 			System.out.println("검색 실패");
@@ -44,23 +44,12 @@ public class AdminReadMainNoticeOkController implements Execute{
 			result.setRedirect(true);
 			return result;
 		}
-
+		
 		mainNoticeDTO.setAttachment(attachment);
+		request.setAttribute("mainNotice", mainNoticeDTO);
+		System.out.println(mainNoticeDTO);
 		
 		result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
-		switch(postType) {
-		case 1:
-//			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
-			break;
-		case 2:
-//			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
-			break;
-		case 3:
-//			result.setPath("/app/admin/adminDetailMenu/adminNoticePost.jsp");
-			break;
-		}
-		
-		request.setAttribute("mainNotice", mainNoticeDTO);
 		
 		result.setRedirect(false);		
 		
