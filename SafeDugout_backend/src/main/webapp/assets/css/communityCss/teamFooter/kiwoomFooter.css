@@ -13,4 +13,118 @@
   margin: 5px; 
   color: white;
   font-size: 14px;
+  text-decoration: underline;
+}
+
+#team-footer10 a:hover {
+  cursor: pointer;
+}
+
+/* 배경 어둡게 만드는 div */
+#overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  display: none; 
+}
+
+/* 모달 전체 */
+.modal-all-footer {
+  z-index: 200;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 모달창 닫는 버튼 */
+.modal-close-button-footer {
+  width: 550px;
+  display: flex;
+  justify-content: right;
+}
+
+/* 모달창 닫는 버튼 span 태그*/
+.modal-close-button-footer span{
+  margin-right: 5px;
+  margin-bottom: 3px;
+  color: #D9D9D9;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* 모달창 닫는 버튼 span 태그 hover*/
+.modal-close-button-footer span:hover{
+  cursor: pointer;
+}
+
+/* 모달창 박스 부분 */
+.modal-window-footer {
+  background-color: #efefef;
+  border-radius: 5px;
+  width: 550px;
+  height: 550px;
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 모달창 상단 */
+.term-top-footer {
+  width: 100%;
+  margin: 10px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 모달창 컨테이너 span */
+.term-container-footer span {
+  font-weight: 700;
+}
+
+/* 약관 텍스트 박스 */
+.term-text-box-footer {
+  background-color: white;
+  border: 1px solid black;
+  width: 525px;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+/* 모달창 버튼 컨테이너*/
+.modal-button-container-footer {
+  margin-top: 20px;
+}
+
+/* 닫기버튼 */
+.modal-button-close-footer {
+  border: 2px solid black;
+  background-color: #DCD6D0;
+  width: 120px;
+  height: 40px;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 40px;
+  text-align: center;
+}
+
+/* 모달창 버튼 컨테이너 a 태그 */
+.modal-button-container-footer a {
+  margin: 0px 10px;
+}
+
+/* 모달창 버튼 컨테이너 a 태그 호버 */
+.modal-button-container-footer a:hover {
+  cursor: pointer;
 }

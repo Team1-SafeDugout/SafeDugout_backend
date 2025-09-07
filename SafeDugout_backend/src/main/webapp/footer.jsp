@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 배경 어둡게 만드는 div -->
+  <div id="overlay"></div>
 <!-- 모달창 1 -->
-  <div class="modal-all" id="useTermModal">
+  <div class="modal-all-footer">
     <!-- 모달창 닫는 버튼 -->
-    <!-- <div class="modal-close-button">
+    <!-- <div class="modal-close-button-footer">
       <span>✕</span>
     </div> -->
     <!-- 모달창 박스 부분 -->
-    <div class="modal-window">
+    <div class="modal-window-footer">
       <!-- 모달창 상단 -->
-      <div class="term-top">
+      <div class="term-top-footer">
         <!-- 이용약관 텍스트 -->
         <span>이용약관</span>
       </div>
       <!-- 약관 텍스트 박스 -->
-      <div class="term-text-box">
+      <div class="term-text-box-footer">
         제 1 장 총칙<br>
         제 1 조 (목적)<br>
         본 약관은 (주)제이피 이노베이션(이하 “회사”라 합니다)이 운영하는 웹사이트 ‘어반런드렛’ (www.urbanlaunderette.com) (이하 “웹사이트”라 합니다)에서 제공하는 온라인
@@ -69,18 +71,18 @@
       </div>
     </div>
     <!-- 모달창 버튼 컨테이너 -->
-    <div class="modal-button-container">
+    <div class="modal-button-container-footer">
       <!-- 닫기버튼 a 태그 -->
       <a>
-        <div class="modal-button-close">닫기
+        <div class="modal-button-close-footer">닫기
         </div>
       </a>
     </div>
   </div>
-<!-- 전체 화면 -->
-<div class="full-screen">
+<!-- 푸터 -->
   <footer>
-    <p><span id="useTerm">이용약관</span></p>
+    <p><span class="useTerm-footer">이용약관</span></p>
     <p>대표 관리자 이메일 주소 : admin123@gmail.com</p>
   </footer>
-</div>
+<!-- js 파일 -->
+<script src="${pageContext.request.contextPath}/assets/js/footer.js"></script>

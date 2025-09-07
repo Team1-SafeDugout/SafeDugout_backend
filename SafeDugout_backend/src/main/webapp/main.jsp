@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/footer.js"></script>
   <title>메인페이지</title>
 </head>
 
@@ -193,6 +192,6 @@
     </section>
   </main>
     <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
-    <script src="${pageContext.request.contextPath}/assets/js/includeMain.js"></script>
+    <%-- <script src="${pageContext.request.contextPath}/assets/js/includeMain.js"></script> --%>
 </body>
 </html>

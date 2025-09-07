@@ -48,13 +48,28 @@ public class SelectMainDetailOkController implements Execute{
 		//전체 글 개수 가져오기
 		int total = mainDAO.getTotal();
 		//현재 항목 순서 가져오기 
-		int index = mainDAO.getIndex(noticePostNumber);
+		int index = mainDAO.getIndex(mainNoticePostDTO.getNoticePostNumber());
 		//이전글, 다음글 버튼 활성화 여부 
 		boolean prevPost = index > 1;
 		boolean nextPost = index < total; 
 		//이전글, 다음글 버튼 활성화 여부 속성에 저장 
 		request.setAttribute("prevPost", prevPost);
 		request.setAttribute("nextPost", nextPost);
+		//현재 글의 페이지 번호 계산 
+		//한 페이지당 글 수 
+		int rowCount = 10;
+		//페이지 번호 계산
+		int page = (int) Math.ceil(index / (double) rowCount);
+		//페이지 번호 속성에 저장 
+		request.setAttribute("page", page);
+		
+		System.out.println("=====글 순서, 이전글/다음글 방식, 이전글 활성화 여부, 다은글 활성화 여부, 페이지 번호 출력=====");
+		System.out.println(index);
+		System.out.println(prevNext);
+		System.out.println(prevPost);
+		System.out.println(nextPost);
+		System.out.println(page);
+		System.out.println("=====================");
 		
 		//path, redirect 여부 설정 
 		result.setPath("/app/mainNotice/mainNoticeDetail.jsp");

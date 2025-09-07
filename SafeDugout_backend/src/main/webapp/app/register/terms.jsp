@@ -180,7 +180,7 @@
           약관 동의
         </div>
         <!-- 폼 태그 -->
-        <form action="" method="get">
+        <form action="${pageContext.request.contextPath}/member/join.me" method="get" id="termsForm">
           <!-- 폼 박스 -->
           <div class="main-form-box">
             <!-- 약관 컨테이너 -->
@@ -222,7 +222,7 @@
                 </div>
               </button>
               <!-- 취소 버튼 -->
-              <a id="cancelBtn">
+              <a href="${pageContext.request.contextPath}/main.ma" id="cancelBtn">
                 <!-- 취소 텍스트 -->
                 <div class="main-button-cancel">취소
                 </div>
