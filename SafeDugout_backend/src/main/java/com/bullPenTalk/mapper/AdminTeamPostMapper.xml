@@ -16,11 +16,11 @@
 	               P.POST_UPDATE,
 	               M.MEMBER_ID,
 	               M.MEMBER_NUMBER,
-	               P.BOARD_ID,
+	               P.POST_TYPE,
 	               P.TEAM_NUMBER
 	        FROM TBL_POST P
 	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-	        WHERE P.BOARD_ID = 2
+	        WHERE P.POST_TYPE = 2
 	        ORDER BY P.POST_DATE DESC
 	    ) subquery
 	)
@@ -32,7 +32,7 @@
 	<select id="total" resultType="int">
 		SELECT COUNT(P.POST_NUMBER)
 		FROM TBL_POST P
-		WHERE P.BOARD_ID = 2
+		WHERE P.POST_TYPE = 2
 	</select>
 	
 	<!-- 팀 게시글 상세조회 -->
@@ -44,6 +44,6 @@
 		FROM TBL_POST
 		WHERE POST_NUMBER = #{postNumber}
   		AND TEAM_NUMBER = #{teamNumber}
-  		AND BOARD_ID = #{boardId}
+  		AND POST_TYPE = #{boardId}
 	</delete>
 </mapper>

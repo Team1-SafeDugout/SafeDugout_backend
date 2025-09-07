@@ -52,31 +52,14 @@
         <div class="team-comment-header">
           <h2>댓글</h2>
         </div>
-        <ul class="team-comment-list">
-          <li class="comment-item">
-            <!-- 댓글 정보 -->
-            <div class="team-comment-info">
-              <span class="comment-author">작성자 ID: user01</span>
-              <span class="comment-date">2025-08-08</span>
-            </div>
-            <!-- 댓글 내용 -->
-            <p class="team-comment-text">댓글 내용</p>
-            <div class="team-comment-button">
-              <form action="">
-                <!-- 수정 삭제 버튼 -->
-                <button type="submit">수정</button>
-                <button type="submit">삭제</button>
-              </form>
-            </div>
-          </li>
-          <!-- 댓글 등록 시 들어올 공간 -->
+        
+        <ul class="team-comment-list" id = "ul-li">
+        	
         </ul>
+        
         <div class="team-comment-area">
-        <form action="" method="">
-          <!-- 댓글 등록 공간 -->
-          <textarea name="" id=""></textarea>
-          <button type="submit" class="team-btn-submit">등록</button>
-        </form>
+        	<textarea name="" id="comment-content-area"></textarea>
+          	<button type="button" class="team-btn-submit" id = "add-comment">등록</button>
         </div>
       </section>
     </div>

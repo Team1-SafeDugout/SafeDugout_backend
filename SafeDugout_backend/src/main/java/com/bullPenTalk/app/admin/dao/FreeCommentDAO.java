@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -16,7 +17,7 @@ public class FreeCommentDAO {
 	
 	// 추가
 	
-	public void insert(CommentDTO commentDTO) {
+	public void insert(Map<String, String> commentDTO) {
 		sqlSession.insert("freeComment.insert", commentDTO);
 	}
 	
@@ -41,7 +42,7 @@ public class FreeCommentDAO {
 		return sqlSession.selectOne("freeComment.selectOne");
 	}
 	
-	public List<CommentDTO> selectAll(int boardNumber){
-		return sqlSession.selectList("freeComment.selectAll", boardNumber);
+	public List<CommentDTO> selectAll(Map<String, Integer> map){
+		return sqlSession.selectList("freeComment.selectAll", map);
 	}
 }
