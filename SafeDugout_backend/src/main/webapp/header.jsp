@@ -27,7 +27,7 @@
 							로그인</a>
 					</div>
 					<div class="register">
-						<a href="${pageContext.request.contextPath}/member/join.me">
+						<a href="${pageContext.request.contextPath}/member/terms.me">
 							<span>|</span> 회원가입</a>
 					</div>
 					<div class=""></div>

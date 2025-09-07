@@ -49,7 +49,7 @@
           </c:if>
         </div>
         <!-- 목록으로 버튼 -->
-        <div class="btn-to-list"><a href="${pageContext.request.contextPath}/main/selectMainListOk.ma"><button type="button">목록으로</button></a></div></div>
+        <div class="btn-to-list"><a href="${pageContext.request.contextPath}/main/selectMainListOk.ma?page=${page}"><button type="button">목록으로</button></a></div></div>
       <!-- 게시 일자 -->
       <div class="notice-date">
       	작성일 : 

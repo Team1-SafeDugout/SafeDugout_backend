@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			typeName = "기타";
 			break;
 			}
+			console.log(post.type);
 	addPost(post.number, post.title, post.date, typeName, post.type);
 	});
 	console.log(urlParams.get("currentTab"));
@@ -124,7 +125,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, 
 	postDate.style.textOverflow = "eclipse";
 
 	const postTitleLink = document.createElement('a');
-	postTitleLink.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&boardId=" + postTypeNum);
+	postTitleLink.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&postTypeId=" + postTypeNum);
 	postTitleLink.appendChild(postTitleText);
 
 	postNum.appendChild(postNumText);

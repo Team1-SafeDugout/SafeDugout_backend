@@ -28,7 +28,7 @@
 	</delete>
 
 	<!-- 댓글 조회 -->
-	<select id="select" resultType="CommentDTO">
+	<select id="select" resultType="CommentDTO" parameterType = "map">
 	<![CDATA[
 	SELECT *
 	FROM (
@@ -40,7 +40,7 @@
     	M.MEMBER_ID
 	FROM TBL_COMMENT C
 	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
-	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBERR
+	WHERE C.POST_NUMBER = #{postNumber}
 	ORDER BY C.COMMENT_DATE DESC;
 	)
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}

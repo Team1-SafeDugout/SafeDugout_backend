@@ -89,12 +89,12 @@ body {
   list-style: none;
 }
 
-.comment-item {
+.team-comment-list>li {
   padding: 12px 0;
   border-bottom: 1px solid #000;
 }
 
-.team-comment-info {
+.team-comment-list>li>div:first-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,8 +102,13 @@ body {
   font-size: 14px;
 }
 
+.team-comment-area{
+	display : flex;
+	flex-direction: column;
+}
+
 /* ------------------- 버튼 공통 ------------------- */
-.team-comment-button button,
+.team-comment-list>li>div:last-child button,
 .team-btn-submit,
 .team-post-detail a button {
   padding: 5px 10px;
@@ -119,7 +124,7 @@ body {
   margin-top: 8px;
 }
 
-.team-comment-button button:hover {
+.team-comment-list>li>div:last-child button:hover {
   text-decoration: underline;
 }
 
@@ -136,9 +141,11 @@ body {
   width: 100%;
   max-width: 1000px;
   min-width: 0;
+
   padding: 8px;
   border: 1px solid #F5F5F5;
-  resize: vertical;
+  
+  resize: none;
 }
 
 /* ------------------- 흰색 버튼 ------------------- */

@@ -77,4 +77,12 @@
 		<url-pattern>*.ad</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>Comment</servlet-name>
+		<servlet-class>com.bullPenTalk.app.reply.ReplyFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Comment</servlet-name>
+		<url-pattern>*.re</url-pattern>
+	</servlet-mapping>
 </web-app>
