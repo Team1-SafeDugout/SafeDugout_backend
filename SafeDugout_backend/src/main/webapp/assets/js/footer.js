@@ -1,33 +1,22 @@
 // 약관 버튼 
-const useTerm = document.getElementById('useTerm');
+const useTermFooter = document.getElementsByClassName('useTerm-footer')[0];
 // 약관 모달창
-const useTermModal = document.getElementById('useTermModal');
-// 모달창 버튼 컨테이너 
-const modalBtns = document.getElementsByClassName('modal-button-container')[0];
-// 전체 화면
-const fullScreen = document.getElementsByClassName('full-screen')[0];
+const useTermModalFooter = document.getElementsByClassName('modal-all-footer')[0];
+// 반투명하게 덮는 화면
+const overlay = document.getElementById('overlay');
 // 모달창 취소 버튼 
-const modalCloseBtnBtn = document.getElementsByClassName('modal-button-close')[0];
+const modalCloseBtnFooter = document.getElementsByClassName('modal-button-close-footer')[0];
 
-console.log(consentBtn);
+console.log(overlay);
 
 // 이벤트리스너
 // 이용약관 버튼 누를 시 동작
-useTerm.addEventListener('click', function () {
-  useTermModal.style.display = 'flex';
-  fullScreen.style.filter = 'brightness(0.5)';
-  fullScreen.style.zIndex = '150';
-  fullScreen.style.pointerEvents = 'none';
-  fullScreen.style.userSelect = 'none';
-  modalBtns.style.display = 'block';
+useTermFooter.addEventListener('click', function () {
+  useTermModalFooter.style.display = 'flex';
+  overlay.style.display = 'block';
 });
 // 모달창 취소 버튼 누를 시 동작 
-modalCloseBtn.addEventListener('click', function () {
-  useTermModal.style.display = 'none';
-  consentUsePIModal.style.display = 'none';
-  fullScreen.style.filter = 'none';
-  fullScreen.style.zIndex = 'auto';
-  fullScreen.style.pointerEvents = 'auto';
-  fullScreen.style.userSelect = 'auto';
-  modalBtns.style.display = 'none';
+modalCloseBtnFooter.addEventListener('click', function () {
+  useTermModalFooter.style.display = 'none';
+  overlay.style.display = 'none';
 });

@@ -18,9 +18,9 @@
 	        SELECT NOTICE_POST_NUMBER,
 	               NOTICE_POST_TITLE,
 	               TO_CHAR(NOTICE_POST_DATE, 'YYYY-MM-DD') AS NOTICE_POST_DATE
-	        FROM TBL_NOTICE_POST 
+	        FROM TBL_NOTICE_POST NP
 	        WHERE NOTICE_TYPE_ID = 1
-	        ORDER BY NOTICE_POST_DATE DESC
+	        ORDER BY NP.NOTICE_POST_DATE DESC
 	    ) subquery
 	)
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
@@ -68,50 +68,71 @@
 	<!-- 메인 공지사항 상세 조회 (이전글) -->
 	<select id="selectMainPrev" parameterType="int" resultType="MainNoticePostDTO">
 	<![CDATA[
-	SELECT notice_post_number, 
-			notice_post_title, 
-			notice_post_date, 
-			notice_post_update,
-			notice_post_content
-	FROM (SELECT rownum rn2, n.* FROM tbl_notice_post n)
-	WHERE rn2 = (SELECT rn - 1 FROM (
-		SELECT rownum rn, n2.notice_post_number
-		FROM tbl_notice_post n2
-		WHERE n2.notice_type_id = 1
-		order by n2.notice_post_number desc) subquery
-		WHERE subquery.notice_post_number = #{noticePostNumber}
-	)
+	SELECT SUBQUERY2.*
+	FROM (
+		SELECT ROWNUM RN2, NP.* FROM (
+			SELECT NP2.NOTICE_POST_NUMBER,
+					NP2.NOTICE_POST_TITLE,
+					TO_CHAR(NP2.NOTICE_POST_DATE, 'YYYY-MM-DD HH:MI') AS NOTICE_POST_DATE,
+					TO_CHAR(NP2.NOTICE_POST_UPDATE, 'YYYY-MM-DD HH:MI') AS NOTICE_POST_UPDATE,
+					NP2.NOTICE_POST_CONTENT
+			FROM TBL_NOTICE_POST NP2
+			WHERE NOTICE_TYPE_ID = 1
+			ORDER BY NP2.NOTICE_POST_DATE DESC
+		) NP
+	) SUBQUERY2
+	WHERE RN2 = (SELECT RN - 1 FROM (
+		SELECT ROWNUM RN, NOTICE_POST_NUMBER FROM (
+			SELECT NOTICE_POST_NUMBER
+			FROM TBL_NOTICE_POST 
+			WHERE NOTICE_TYPE_ID = 1
+			ORDER BY NOTICE_POST_DATE DESC
+		)
+	) SUBQUERY1
+	WHERE NOTICE_POST_NUMBER = #{noticePostNumber})
 	]]>
 	</select>
 	
 	<!-- 메인 공지사항 상세 조회 (다음글) -->
 	<select id="selectMainNext" parameterType="int" resultType="MainNoticePostDTO">
 	<![CDATA[
-	SELECT notice_post_number, 
-			notice_post_title, 
-			notice_post_date, 
-			notice_post_update,
-			notice_post_content
-	FROM (SELECT rownum rn2, n.* FROM tbl_notice_post n)
-	WHERE rn2 = (SELECT rn + 1 FROM (
-		SELECT rownum rn, n2.notice_post_number
-		FROM tbl_notice_post n2
-		WHERE n2.notice_type_id = 1
-		order by n2.notice_post_number desc) subquery
-		WHERE subquery.notice_post_number = #{noticePostNumber}
-	)
+	SELECT SUBQUERY2.*
+	FROM (
+		SELECT ROWNUM RN2, NP.* FROM (
+			SELECT NP2.NOTICE_POST_NUMBER,
+					NP2.NOTICE_POST_TITLE,
+					TO_CHAR(NP2.NOTICE_POST_DATE, 'YYYY-MM-DD HH:MI') AS NOTICE_POST_DATE,
+					TO_CHAR(NP2.NOTICE_POST_UPDATE, 'YYYY-MM-DD HH:MI') AS NOTICE_POST_UPDATE,
+					NP2.NOTICE_POST_CONTENT
+			FROM TBL_NOTICE_POST NP2
+			WHERE NOTICE_TYPE_ID = 1
+			ORDER BY NP2.NOTICE_POST_DATE DESC
+		) NP
+	) SUBQUERY2
+	WHERE RN2 = (SELECT RN + 1 FROM (
+		SELECT ROWNUM RN, NOTICE_POST_NUMBER FROM (
+			SELECT NOTICE_POST_NUMBER
+			FROM TBL_NOTICE_POST 
+			WHERE NOTICE_TYPE_ID = 1
+			ORDER BY NOTICE_POST_DATE DESC
+		)
+	) SUBQUERY1
+	WHERE NOTICE_POST_NUMBER = #{noticePostNumber})
 	]]>
 	</select>
 	
 	<!-- 현재 메인 공지사항 항목 순서 가져오기 -->
 	<select id="getMainIndex" parameterType="int" resultType="int">
 	<![CDATA[
-		SELECT rn FROM (
-			SELECT rownum rn, n2.notice_post_number
-			FROM tbl_notice_post n2
-			WHERE n2.notice_type_id = 1
-			order by n2.notice_post_number desc) subquery
-		WHERE subquery.notice_post_number = #{noticePostNumber}
+	SELECT rn FROM (
+		SELECT rownum rn, notice_post_number FROM (
+			SELECT notice_post_number
+			FROM tbl_notice_post 
+			WHERE notice_type_id = 1
+			order by notice_post_date DESC
+		)
+	) subquery 
+	WHERE notice_post_number = #{noticePostNumber}
 	]]>
 	</select>
 	
@@ -125,7 +146,7 @@
 	WHERE TRUNC(SC.SCHEDULE_DATE) - TRUNC(SYSDATE) = (
 		SELECT MIN(TRUNC(SCHEDULE_DATE) - TRUNC(SYSDATE))
 		FROM TBL_GAME_SCHEDULE
-		WHERE (SCHEDULE_DATE - SYSDATE) >= 0
+		WHERE (TRUNC(SCHEDULE_DATE) - TRUNC(SYSDATE)) >= 0
 	)
 	]]>
 	</select>
@@ -145,7 +166,7 @@
 	        FROM TBL_SELL_POST S
 	        LEFT OUTER JOIN TBL_ATTACHMENT A 
 	        ON S.SELL_POST_NUMBER = A.SELL_POST_NUMBER
-	        ORDER BY SELL_POST_CREATION_DATE DESC
+	        ORDER BY S.SELL_POST_CREATION_DATE DESC
 	    ) subquery
 	)
 	WHERE rnum <= 3
@@ -171,9 +192,9 @@
 	        SELECT NOTICE_POST_NUMBER,
 	               NOTICE_POST_TITLE,
 	               TO_CHAR(NOTICE_POST_DATE, 'YYYY-MM-DD') AS NOTICE_POST_DATE
-	        FROM TBL_NOTICE_POST 
+	        FROM TBL_NOTICE_POST NP
 	        WHERE NOTICE_TYPE_ID = 3
-	        ORDER BY NOTICE_POST_DATE DESC
+	        ORDER BY NP.NOTICE_POST_DATE DESC
 	    ) subquery
 	)
 	WHERE rnum <= 5
