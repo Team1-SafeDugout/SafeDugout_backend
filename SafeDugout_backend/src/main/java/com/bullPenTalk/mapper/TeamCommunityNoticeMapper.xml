@@ -45,4 +45,10 @@
 	]]>
 	</select>
 	
+	<!-- 공지사항 총 갯수 조회 -->
+	<select id="getTotalNotice" resultType="int">
+	    SELECT COUNT(NOTICE_POST_NUMBER)
+	    FROM TBL_NOTICE_POST
+	    WHERE TEAM_NUMBER = #{teamNumber}   
+	</select>
 </mapper>

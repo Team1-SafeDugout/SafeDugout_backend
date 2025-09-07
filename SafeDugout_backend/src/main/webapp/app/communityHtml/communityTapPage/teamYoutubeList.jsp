@@ -67,10 +67,10 @@
         </li>
         <!-- js로 유튜브 목록 추가 -->
         <c:choose>
-       		<c:when test="${not empty youtubeList}">
-        		<c:forEach var="youtube" items="${youtubeList}">
+       		<c:when test="${not empty postList}">
+        		<c:forEach var="youtube" items="${postList}">
 			        <li class="team-youtube-list-row">
-			        	<a href="${youtube.link}">
+			        	<a href="${youtube.postLink}">
 			          		<span><c:out value="${youtube.postNumber}" /></span>
 			          		<span><c:out value="${youtube.postTitle}" /></span>
 			          	</a>

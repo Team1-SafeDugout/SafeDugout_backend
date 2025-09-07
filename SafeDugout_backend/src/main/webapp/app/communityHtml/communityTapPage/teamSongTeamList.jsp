@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>불펜토크</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communitMainPage.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamSongTeamList.css">
   <c:choose>
   	<c:when test="${sessionScope.teamNumber == 1}">
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/doosanHeader.css">

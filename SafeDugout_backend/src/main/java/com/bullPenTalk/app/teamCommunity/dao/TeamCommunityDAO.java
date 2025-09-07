@@ -189,10 +189,16 @@ public class TeamCommunityDAO {
 	    return sqlSession.selectOne("teamCommunity.getTotalBoard", teamNumber);
 	}
 	
+	// 공지사항 총 개수 조회
+	public int getTotalNotice(int teamNumber) {
+	    System.out.println("팀별 공지사항 총 개수 조회 - getTotalNotice, teamNumber=" + teamNumber);
+	    return sqlSession.selectOne("teamCommunityNoticeMapper.getTotalNotice", teamNumber);
+	}
+	
 	// 뉴스글 총 개수 가져오기
 	public int getTotalNews(int teamNumber) {
-		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
-		return sqlSession.selectOne("teamCommunity.getTotalNews");
+	    System.out.println("게시글 총 개수 조회 - getTotalNews 실행, teamNumber=" + teamNumber);
+	    return sqlSession.selectOne("teamCommunity.getTotalNews", teamNumber);
 	}
 	
 	// 유튜브 총 개수 가져오기
