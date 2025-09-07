@@ -115,15 +115,18 @@
 	]]>
 	</select>
 	
-	<!-- 경기 일정 목록 조회 -->
+	<!-- 경기 일정 목록 조회(조회일자로부터 가장 가까운 일자의 경기) -->
 	<select id="selectSchedule" resultType="MainDTO">
 	<![CDATA[
-		select t1.team_name as away_team_name , st.stadium_name, t2.team_name as home_team_name, 
-		to_char(sc.schedule_date, 'HH:mi') as schedule_date
-		from tbl_game_schedule sc join tbl_stadium st on sc.home_team_number = st.team_number
-		join tbl_team t1 on sc.home_team_number = t1.team_number
-		join tbl_team t2 on sc.away_team_number = t2.team_number
-		WHERE trunc(sc.schedule_date) = trunc(sysdate)
+	SELECT T1.TEAM_NAME AS AWAY_TEAM_NAME , ST.STADIUM_NAME, T2.TEAM_NAME AS HOME_TEAM_NAME, TO_CHAR(SC.SCHEDULE_DATE, 'FMMM.FMDD(DY) HH:MI') AS SCHEDULE_DATE
+	FROM TBL_GAME_SCHEDULE SC JOIN TBL_STADIUM ST ON SC.HOME_TEAM_NUMBER = ST.TEAM_NUMBER
+	JOIN TBL_TEAM T1 ON SC.HOME_TEAM_NUMBER = T1.TEAM_NUMBER
+	JOIN TBL_TEAM T2 ON SC.AWAY_TEAM_NUMBER = T2.TEAM_NUMBER
+	WHERE TRUNC(SC.SCHEDULE_DATE) - TRUNC(SYSDATE) = (
+		SELECT MIN(TRUNC(SCHEDULE_DATE) - TRUNC(SYSDATE))
+		FROM TBL_GAME_SCHEDULE
+		WHERE (SCHEDULE_DATE - SYSDATE) >= 0
+	)
 	]]>
 	</select>
 	

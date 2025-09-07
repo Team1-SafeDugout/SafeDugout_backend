@@ -21,7 +21,7 @@ public class SongPostDTO {
 	private String postTitle; // 응원가 명
 	private String postDate; // 등록일자
 	private int teamNumber; // 대상 팀
-	private int boardTypeId; // 어느 보드에 저장될 
+	private int postType; // 어느 보드에 저장될 
 	private String postLink; // 응원가 URL
 	private int adminId; // 등록한 관리자 ID
 	private String postContent;
@@ -65,25 +65,25 @@ public class SongPostDTO {
 	public void setTeamNumber(int teamNumber) {
 		this.teamNumber = teamNumber;
 	}
-	public int getBoardTypeId() {
-		return boardTypeId;
-	}
-	public void setBoardTypeId(int boardTypeId) {
-		this.boardTypeId = boardTypeId;
-	}
 	public int getAdminId() {
 		return adminId;
 	}
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
-	
-	// toString
+	public int getPostType() {
+		return postType;
+	}
+	public void setPostType(int postType) {
+		this.postType = postType;
+	}
 	@Override
 	public String toString() {
 		return "SongPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postDate=" + postDate
-				+ ", teamNumber=" + teamNumber + ", boardTypeId=" + boardTypeId + ", adminId=" + adminId + "]";
+				+ ", teamNumber=" + teamNumber + ", postType=" + postType + ", postLink=" + postLink + ", adminId="
+				+ adminId + ", postContent=" + postContent + "]";
 	}
+	
 	
 	
 	

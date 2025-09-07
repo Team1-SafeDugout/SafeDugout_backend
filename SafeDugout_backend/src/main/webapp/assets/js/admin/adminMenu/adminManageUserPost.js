@@ -135,6 +135,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, 
 
 	deleteBtn.addEventListener('click', function() {
 		if (window.confirm("정말 삭제하시겠습니까")) {
+			console.log(contextPath + "/admin/adminDeletePostOk.ad?postNumber=" + postNumberParam + "&postTypeId=" + postTypeNum);
 			window.location.href =  contextPath + "/admin/adminDeletePostOk.ad?postNumber=" + postNumberParam + "&postTypeId=" + postTypeNum;
 		}
 	});

@@ -173,7 +173,9 @@ public class TeamMainOkController implements Execute {
 		
 		//경기 일정 리스트를 주중, 주말로 분배 
 		for(TeamMainDTO schedule : teamSchedule) {
-			if(schedule.getScheduleDate().indexOf("토") != -1 || schedule.getScheduleDate().indexOf("일") != -1) {
+			if(schedule.getScheduleDate().indexOf("금") != -1 
+					|| schedule.getScheduleDate().indexOf("토") != -1
+					|| schedule.getScheduleDate().indexOf("일") != -1) {
 				teamScheduleWeekends.add(schedule);
 			}else {
 				teamScheduleWeekdays.add(schedule);

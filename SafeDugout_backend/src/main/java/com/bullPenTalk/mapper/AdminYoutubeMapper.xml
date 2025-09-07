@@ -19,7 +19,7 @@
             FROM TBL_POST p
             JOIN TBL_TEAM t ON p.TEAM_NUMBER = t.TEAM_NUMBER
             JOIN TBL_ADMIN a ON p.ADMIN_NUMBER = a.ADMIN_NUMBER
-            WHERE p.BOARD_ID = 4
+            WHERE p.POST_TYPE = 4
               AND p.TEAM_NUMBER = #{teamNumber}
             ORDER BY p.POST_DATE DESC
         ) subquery
@@ -32,20 +32,20 @@
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
-		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{boardId}, #{postTitle}, sysdate, #{postLink}, #{postContent})
+		INSERT INTO TBL_POST (POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, POST_TYPE, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT)
+		VALUES(SEQ_POST.NEXTVAL, #{teamNumber}, #{adminNumber}, #{postType}, #{postTitle}, sysdate, #{postLink}, #{postContent})
 	</insert>
 	
 	<select id="selectAll" resultType = "YouTubePostDTO">
-		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, BOARD_ID, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
+		SELECT POST_NUMBER, TEAM_NUMBER, ADMIN_NUMBER, POST_TYPE, POST_TITLE, POST_DATE, POST_LINK, POST_CONTENT
 		FROM TBL_POST
-		WHERE BOARD_ID = 4
+		WHERE POST_TYPE = 4
 	</select>
 	
 	<select id = "total" resultType = "int">
 		SELECT COUNT(POST_NUMBER)
 		FROM TBL_POST
-		WHERE BOARD_ID = 4
+		WHERE POST_TYPE = 4
 	</select>
 	
 	<!-- 유튜브 삭제 -->

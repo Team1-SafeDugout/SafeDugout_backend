@@ -19,7 +19,7 @@ public class YoutubePostDTO {
 	private String postLink;	 // 유튜브 링크 
 	private int teamNumber; // 팀번호
 	private int adminNumber; // 작성한 어드민 번호
-	private int boardId; // 게시글 종류
+	private int postType; // 게시글 종류
 	
 	// get, set
 	public String getPostContent() {
@@ -52,12 +52,6 @@ public class YoutubePostDTO {
 	public void setAdminNumber(int adminNumber) {
 		this.adminNumber = adminNumber;
 	}
-	public int getBoardId() {
-		return boardId;
-	}
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
-	}
 	public String getPostTitle() {
 		return postTitle;
 	}
@@ -70,16 +64,19 @@ public class YoutubePostDTO {
 	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
-
-	// toString
+	public int getPostType() {
+		return postType;
+	}
+	public void setPostType(int postType) {
+		this.postType = postType;
+	}
 	@Override
 	public String toString() {
 		return "YoutubePostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postDate=" + postDate
 				+ ", postContent=" + postContent + ", postLink=" + postLink + ", teamNumber=" + teamNumber
-				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postlink=" + "]";
+				+ ", adminNumber=" + adminNumber + ", postType=" + postType + "]";
 	}
 
-	
 	
 	
 }
