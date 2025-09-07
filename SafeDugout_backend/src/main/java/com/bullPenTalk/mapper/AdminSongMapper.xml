@@ -19,7 +19,7 @@
 	            FROM TBL_POST
 	            WHERE POST_TYPE IN (5, 6)
 	              AND TEAM_NUMBER = #{teamNumber}
-	            ORDER BY POST_DATE DESC
+	            ORDER BY POST_NUMBER DESC
 	        )subquery
 	    )
 	    WHERE rnum BETWEEN #{startRow} AND #{endRow};

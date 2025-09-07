@@ -10,8 +10,18 @@ public class MainNoticePostDTO {
 	private String noticePostContent; //공지사항 게시글 내용
 	private String noticePostDate; // 공지사항 게시 날짜
 	private String noticePostUpdate; //공지사항 게시글 수정
+	private int noticeTypeId;
 
 	private List<AttachmentDTO> attachment;
+
+	
+	public int getNoticeTypeId() {
+		return noticeTypeId;
+	}
+
+	public void setNoticeTypeId(int noticeTypeId) {
+		this.noticeTypeId = noticeTypeId;
+	}
 
 	public int getNoticePostNumber() {
 		return noticePostNumber;
@@ -73,9 +83,10 @@ public class MainNoticePostDTO {
 	public String toString() {
 		return "MainNoticePostDTO [noticePostNumber=" + noticePostNumber + ", adminNumber=" + adminNumber
 				+ ", noticePostTitle=" + noticePostTitle + ", noticePostContent=" + noticePostContent
-				+ ", noticePostDate=" + noticePostDate + ", noticePostUpdate=" + noticePostUpdate + ", attachment="
-				+ attachment + "]";
+				+ ", noticePostDate=" + noticePostDate + ", noticePostUpdate=" + noticePostUpdate + ", noticeTypeId="
+				+ noticeTypeId + ", attachment=" + attachment + "]";
 	}
 
+	
 	
 }

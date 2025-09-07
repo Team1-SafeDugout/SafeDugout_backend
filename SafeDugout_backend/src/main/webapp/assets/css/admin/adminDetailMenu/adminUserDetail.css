@@ -169,3 +169,39 @@ main {
   background-color: #4D5061;
   color:white;
 }
+
+/* ========== 페이징 스타일 ========== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.pagination > ul {
+  display: flex;
+  list-style: none;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: rgb(255, 87, 87);
+  border-color: rgb(255, 87, 87);
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+}

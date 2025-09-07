@@ -1,6 +1,7 @@
 const userPosts = document.getElementById("list-ul");
 
 document.addEventListener("DOMContentLoaded", function() {
+	console.log("실행됨");
 	if (typeof posts !== 'undefined') {
 		posts.forEach(post => {
 			let typeName = "";
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function addposts(postNumberParam, postTitleParam, postTypeParam, postTypeInt){
+  console.log("실행됨" + postNumberParam);	
   const newPost = document.createElement('li');
 
   const postNum = document.createElement('div');
@@ -29,7 +31,7 @@ function addposts(postNumberParam, postTitleParam, postTypeParam, postTypeInt){
   const postType = document.createElement('div');
 
   const postURL = document.createElement('a');
-  postURL.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&boardId=" + postTypeInt);
+  postURL.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&postTypeId=" + postTypeInt);
 
   const numText = document.createTextNode(postNumberParam);
   const titleText = document.createTextNode(postTitleParam);

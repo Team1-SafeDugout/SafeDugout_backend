@@ -180,15 +180,6 @@
         WHERE MEMBER_NUMBER = #{memberNumber}
     </select>
     
-    <!-- 회원이 작성한 글 전체 목록 -->
-    <select id = "selectPosts" parameterType = "int" resultType = "PostDTO">
-    	SELECT TP.POST_NUMBER as postNumber, TP.POST_TITLE as postTitle ,  TBT.BOARD_TYPE_ID as boardId
-		FROM TBL_MEMBER TM
-		JOIN TBL_POST TP ON TM.MEMBER_NUMBER = TP.MEMBER_NUMBER
-		JOIN TBL_BOARD_TYPE tbt ON TP.BOARD_ID = tbt.BOARD_TYPE_ID
-		WHERE TM.MEMBER_NUMBER = #{memberNumber}
-    </select>
-    
     <!-- 회원이 작성한 글 페이지 네이션 -->
     <select id = "selectPostPage" parameterType = "map" resultType = "PostDTO">
     <![CDATA[
@@ -196,13 +187,19 @@
 	FROM (
 	    SELECT ROWNUM AS rnum, subquery.*
 	    FROM(
-	    SELECT TP.POST_NUMBER as postNumber, TP.POST_TITLE as postTitle , TBT.BOARD_TYPE_ID as boardId
-		FROM TBL_MEMBER TM
-		JOIN TBL_POST TP ON TP.MEMBER_NUMBER = #{memberNumber}
-		JOIN TBL_BOARD_TYPE tbt ON TP.BOARD_ID = tbt.BOARD_TYPE_ID
+	    SELECT TP.POST_NUMBER, TP.POST_TITLE , TP.POST_TYPE
+		FROM TBL_POST TP
+		WHERE (TP.POST_TYPE = 1 OR TP.POST_TYPE = 2) AND TP.MEMBER_NUMBER = #{memberNumber}
+		ORDER BY TP.POST_NUMBER DESC
 		) subquery
 	)
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	]]>	
+    </select>
+    
+    <select id = "getTotalPost" parameterType = "int" resultType = "int">
+    SELECT COUNT(TP.POST_NUMBER)
+    FROM TBL_POST TP
+	WHERE (TP.POST_TYPE = 1 OR TP.POST_TYPE = 2) AND TP.MEMBER_NUMBER = #{memberNumber}
     </select>
 </mapper>

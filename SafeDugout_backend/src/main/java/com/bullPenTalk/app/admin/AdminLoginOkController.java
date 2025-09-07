@@ -34,7 +34,7 @@ public class AdminLoginOkController implements Execute{
 		adminNumber = adminDAO.login(adminDTO);
 		
 		if(adminNumber != -1) {
-			path = "/admin/adminMainNoticeListOk.ad";
+			path = "/admin/adminMainNoticeListOk.ad?currentTab=all";
 			session.setAttribute("adminNumber", adminNumber);
 			session.setAttribute("adminInfo", adminDAO.takeInfo(adminNumber));
 			System.out.println("세션값 : " + adminNumber);

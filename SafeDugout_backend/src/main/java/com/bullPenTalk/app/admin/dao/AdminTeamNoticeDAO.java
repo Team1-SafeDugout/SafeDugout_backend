@@ -1,9 +1,11 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
 import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
@@ -16,20 +18,25 @@ public class AdminTeamNoticeDAO {
 	
 	// 추가
 	
-	public void insert(TeamNoticePostDTO teamPostDTO) {
+	public void insert(TeamNoticeDetailDTO teamPostDTO) {
 		sqlSession.insert("adminTeamNotice.insert", teamPostDTO);
 	}
 	
 	// 수정
 	
-	public void update(TeamNoticePostDTO teamPostDTO) {
+	public void update(TeamNoticeDetailDTO teamPostDTO) {
 		sqlSession.update("adminTeamNotice.update", teamPostDTO);
 	}
 	
 	// 조회
 	
-	public List<TeamNoticePostDTO> select() {
-		return sqlSession.selectList("adminTeamNotice.select");
+	public List<TeamNoticeDetailDTO> select(Map<String, Integer> map) {
+		return sqlSession.selectList("adminTeamNotice.select", map);
+	}
+	
+	// 전체 수
+	public int getTotal() {
+		return sqlSession.selectOne("adminTeamNotice.getTotal");
 	}
 	
 	// 삭제

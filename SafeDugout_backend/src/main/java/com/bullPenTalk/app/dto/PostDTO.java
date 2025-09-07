@@ -31,6 +31,14 @@ public class PostDTO { // 게시글 번호
 	private String postUpdate; // 수정일자
 	private String postLink; // 게시글 링크
 	private String journalist; // 기자이름
+	private int postType;
+	
+	public int getPostType() {
+		return postType;
+	}
+	public void setPostType(int postType) {
+		this.postType = postType;
+	}
 	public int getPostNumber() {
 		return postNumber;
 	}
@@ -97,15 +105,14 @@ public class PostDTO { // 게시글 번호
 	public void setJournalist(String journalist) {
 		this.journalist = journalist;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "PostDTO [postNumber=" + postNumber + ", memberNumber=" + memberNumber + ", teamNumber=" + teamNumber
 				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postTitle=" + postTitle
 				+ ", postContent=" + postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate
-				+ ", postLink=" + postLink + ", journalist=" + journalist + "]";
+				+ ", postLink=" + postLink + ", journalist=" + journalist + ", postType=" + postType + "]";
 	}
+	
 	
 
 }

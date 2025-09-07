@@ -1,14 +1,42 @@
+const form = document.getElementById("joinForm") || document.querySelector("form");
+const base = (form && form.dataset.contextPath) ? form.dataset.contextPath : ""; // ★ 전역 없이 읽기
+
 const postList = document.getElementById('list-ul');
+
+const currentTab = document.getElementById('currentTab');
+
+const urlParams = new URLSearchParams(window.location.search); // url 변수 읽기용
 
 
 document.addEventListener("DOMContentLoaded", function() {
 	if (typeof posts !== 'undefined') {
 		posts.forEach(post => {
 			let typeName = "";
-			addPost(post.number, post.title, post.date, "메인공지", 1);
+			switch (post.type) {
+				case "1":
+					typeName = "전체 공지";
+					break;
+				case "2":
+					typeName = "팀 공지";
+					break;
+				default:
+					typeName = "기타";
+					break;
+			}
+
+			addPost(post.number, post.title, post.date, typeName, post.type);
 		});
 	}
+	
+	currentTab.value = urlParams.get("currentTab");
 });
+
+currentTab.addEventListener('change', function(){
+	const selectedValue = currentTab.value;
+	console.log("▶ 선택된 카테고리:", selectedValue);
+	window.location.href =  contextPath + "/admin/adminMainNoticeListOk.ad?currentTab=" + currentTab.value;
+});
+
 
 function addPost(postNumberParam, postTitleParam, postDateParam, postTypeParam, postTypeNum) {
 	const newPost = document.createElement('li');

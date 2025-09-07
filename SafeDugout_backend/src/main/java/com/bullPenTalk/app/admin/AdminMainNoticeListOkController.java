@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.AdminMainNoticeDAO;
+import com.bullPenTalk.app.admin.dao.AdminTeamNoticeDAO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
+import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
 
 public class AdminMainNoticeListOkController implements Execute{
 
@@ -21,6 +23,8 @@ public class AdminMainNoticeListOkController implements Execute{
 			throws ServletException, IOException {
 		
 		AdminMainNoticeDAO adminMainNoticeDAO = new AdminMainNoticeDAO();
+		AdminTeamNoticeDAO adminTeamNoticeDAO = new AdminTeamNoticeDAO();
+		
 		Result result = new Result();
 		
 		// 페이지네이션
@@ -37,16 +41,38 @@ public class AdminMainNoticeListOkController implements Execute{
 		Map<String, Integer> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
+		int total = 0;
+		String currentTab = "all";
+		if(request.getParameter("currentTab") != null) {
+			currentTab = request.getParameter("currentTab");
+		}
+
 		
 		
+		switch(currentTab) {
+		case "Free":
+			List<MainNoticePostDTO> boardList = adminMainNoticeDAO.select(pageMap);
+			request.setAttribute("boardList", boardList);
+			total = adminMainNoticeDAO.getTotal();
+			break;
+			
+		case "Team":
+			List<TeamNoticeDetailDTO> teamBoardList = adminTeamNoticeDAO.select(pageMap);
+			request.setAttribute("boardList", teamBoardList);
+			total = adminTeamNoticeDAO.getTotal();
+			break;
+			
+		case "all":
+			List<MainNoticePostDTO> allBoardList = adminMainNoticeDAO.selectAll(pageMap);
+			request.setAttribute("boardList", allBoardList);
+			total = adminMainNoticeDAO.getTotalAll();
+			break;			
+		}
 		
-		List<MainNoticePostDTO> boardList = adminMainNoticeDAO.select();
-		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
 		// 실제 마지막 페이지 번호(realEndPage)를 계산함
-		int total = adminMainNoticeDAO.getTotal();
 		int realEndPage = (int) Math.ceil(total / (double) rowCount); // 실제 마지막 페이지(전체 게시글 기준으로 계산)
 		int endPage = (int) (Math.ceil(page / (double) pageCount) * pageCount); // 현재 페이지 그룹에서의 마지막 페이지
 		int startPage = endPage - (pageCount - 1); // 현재 페이지 그룹에서의 첫 페이지
@@ -57,18 +83,13 @@ public class AdminMainNoticeListOkController implements Execute{
 		// prev, next 버튼 활성화 여부 확인
 		boolean prev = startPage > 1;
 		boolean next = endPage < realEndPage;
+		
 	
 		request.setAttribute("page", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
-	
-		System.out.println("====페이징정보 확인====");
-		System.out.println("pageMap : " + pageMap);
-		System.out.println("boardList : " + boardList);
-		System.out.println("startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
-		System.out.println("====================");
 	
 		result.setPath("/app/admin/adminMenu/adminManagePosts.jsp");
 		result.setRedirect(false);
