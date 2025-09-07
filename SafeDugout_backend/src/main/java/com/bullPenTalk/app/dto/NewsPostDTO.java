@@ -24,15 +24,16 @@ public class NewsPostDTO { // 뉴스글
 	private int adminNumber; // 어드민 번호
 	private int postType; // 보드 번호
 	private List<AttachmentDTO> attachment; 
+	private String imgPath;
+	private String teamName;
 	
-	
-	
-	@Override
-	public String toString() {
-		return "NewsPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
-				+ ", postDate=" + postDate + ", teamNumber=" + teamNumber + ", journalist=" + journalist + ", postLink="
-				+ postLink + ", adminNumber=" + adminNumber + ", postType=" + postType + ", attachment=" + attachment
-				+ "]";
+
+	// get, set
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 	public List<AttachmentDTO> getAttachment() {
 		return attachment;
@@ -49,7 +50,6 @@ public class NewsPostDTO { // 뉴스글
 	public int getPostNumber() {
 		return postNumber;
 	}
-	// get, set
 	public void setPostNumber(int postNumber) {
 		this.postNumber = postNumber;
 	}
@@ -96,6 +96,20 @@ public class NewsPostDTO { // 뉴스글
 	public void setPostType(int postType) {
 		this.postType = postType;
 	}
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 	
+	//toString
+	@Override
+	public String toString() {
+		return "NewsPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
+				+ ", postDate=" + postDate + ", teamNumber=" + teamNumber + ", journalist=" + journalist + ", postLink="
+				+ postLink + ", adminNumber=" + adminNumber + ", postType=" + postType + ", attachment=" + attachment
+				+ ", imgPath=" + imgPath + ", teamName=" + teamName + "]";
+	}
 	
 }

@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
-import com.bullPenTalk.app.Attachment.dao.PostAttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
-import com.bullPenTalk.app.dto.PostAttachmentDTO;
 import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -27,7 +25,7 @@ public class UpdateOkController {
 		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
         PostDTO postDTO = new PostDTO();
         AttachmentDAO attachmentDAO = new AttachmentDAO();
-        PostAttachmentDAO postAttachmentDAO = new PostAttachmentDAO();
+        AttachmentDAO postAttachmentDAO = new AttachmentDAO();
         Result result = new Result();
 
         LocalDate today = LocalDate.now();
@@ -72,7 +70,7 @@ public class UpdateOkController {
                 
                 // 기존 파일 삭제
                 if (postNumber != 0) {
-                    List<AttachmentDTO> existingFiles = attachmentDAO.select(postNumber);
+                    List<AttachmentDTO> existingFiles = attachmentDAO.selectByPost(postNumber);
                     for (AttachmentDTO file : existingFiles) {
                     	File oldFile = new File(request.getSession().getServletContext().getRealPath("/") + file.getAttachmentPath());
                         if (oldFile.exists()) {
@@ -80,7 +78,7 @@ public class UpdateOkController {
                             oldFile.delete();
                         }
                     }
-                    attachmentDAO.delete(postNumber);
+                    attachmentDAO.deleteByPost(postNumber);
                     System.out.println("기존 파일 DB 삭제 완료");
                 }
 
@@ -104,13 +102,7 @@ public class UpdateOkController {
                     int attachmentNumber = attachmentDTO.getAttachmentNumber(); 
                     System.out.println("새로운 파일 DB 저장 완료: " + attachmentDTO);
 
-                    // 매핑 테이블에 insert
-                    PostAttachmentDTO postAttachmentDTO = new PostAttachmentDTO();
-                    postAttachmentDTO.setPostNumber(postNumber);
-                    postAttachmentDTO.setAttachmentNumber(attachmentDTO.getAttachmentNumber());
-                    postAttachmentDAO.insert(postAttachmentDTO);
-    				
-                    
+    				                 
                     isFileUpload = true; // 파일이 업로드되었음을 표시
                 } else {
                     System.out.println("업로드된 파일이 없습니다 (파일 선택하지 않음)");

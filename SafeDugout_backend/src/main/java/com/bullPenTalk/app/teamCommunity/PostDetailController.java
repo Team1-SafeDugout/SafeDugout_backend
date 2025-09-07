@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.Attachment.dao.PostAttachmentDAO;
+import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.PostDetailDTO;
@@ -19,55 +19,52 @@ public class PostDetailController {
 
 	// 게시판
 	public Result detailselect(String action, HttpServletRequest request, HttpServletResponse response) {
-		Result result = new Result();
+	    Result result = new Result();
 
-		// boardNumber가 빈 문자열이거나 null인경우
-		String postNumberStr = request.getParameter("postNumber");
-		if (postNumberStr == null || postNumberStr.trim().isEmpty()) {
-			System.out.println("sellPostNumber 값이 없습니다");
-			result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp"); // 커뮤니티 메인 페이지로 리다이렉트
-			result.setRedirect(true);
-			return result;
-		}
+	    String postNumberStr = request.getParameter("postNumber");
+	    if (postNumberStr == null || postNumberStr.trim().isEmpty()) {
+	        System.out.println("postNumber 값이 없습니다");
+	        result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+	        result.setRedirect(true);
+	        return result;
+	    }
 
-		int postNumber = Integer.parseInt(postNumberStr);
+	    int postNumber = Integer.parseInt(postNumberStr);
 
-		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
-		PostAttachmentDAO postattachmentDAO = new PostAttachmentDAO();
+	    Integer teamNumber = (Integer) request.getSession().getAttribute("teamNumber");
+	    if (teamNumber == null) {
+	        System.out.println("teamNumber 세션이 없습니다.");
+	        result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+	        result.setRedirect(true);
+	        return result;
+	    }
 
-		// DB에서 게시글 가져오기
-		PostDetailDTO postDetailDTO = teamCommunityDAO.postDetail(postNumber);
+	    TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
+	    AttachmentDAO attachmentDAO = new AttachmentDAO();
 
-//		 게시글이 존재하지 않을 경우 처리
-		if(postDetailDTO == null) {
-			System.out.println("존재하지 않는 게시글입니다. " + postNumber);
-			result.setPath("/app/trade/tradeMain.jsp");
-			result.setRedirect(true);
-			return result;
-		}
+	    // DTO에 postNumber와 teamNumber 세팅
+	    PostDetailDTO postDTO = new PostDetailDTO();
+	    postDTO.setPostNumber(postNumber);
+	    postDTO.setTeamNumber(teamNumber);
 
-		 //첨부파일 가져오기
-		List<AttachmentDTO> files = postattachmentDAO.select(postNumber);
-		System.out.println("======파일 확인======");
-		System.out.println(files);
-		System.out.println("===================");
-		
-		//첨부파일 붙이기
-		postDetailDTO.setAttachment(files);
-//		
-		//로그인한 사용자 번호 가져오기
-		Integer loginMemberNumber = (Integer) request.getSession().getAttribute("memberNumber");
-		System.out.println("로그인 한 멤버 번호 : " + loginMemberNumber);
-//		
-		//현재 게시글의 작성자 번호 가져오기
-		int boardWriterNumber = postDetailDTO.getMemberNumber();	
-		System.out.println("현재 게시글 작성자 번호 : " + boardWriterNumber);		
+	    // DB에서 게시글 가져오기
+	    PostDetailDTO postDetailDTO = teamCommunityDAO.postDetail(postDTO);
 
-		request.setAttribute("community", postDetailDTO);
-		result.setPath("/app/trade/productDetail.jsp");
-		result.setRedirect(false);
+	    if(postDetailDTO == null) {
+	        System.out.println("존재하지 않는 게시글입니다. " + postNumber);
+	        result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");
+	        result.setRedirect(true);
+	        return result;
+	    }
 
-		return result;
+	    // 첨부파일 가져오기
+	    List<AttachmentDTO> files = attachmentDAO.selectByPost(postNumber);
+	    postDetailDTO.setAttachment(files);
+
+	    request.setAttribute("community", postDetailDTO);
+	    result.setPath("/app/communityHtml/communityTapPage/teamPostDetail.jsp");
+	    result.setRedirect(false);
+	    return result;
 	}
 	
 	
@@ -88,7 +85,7 @@ public class PostDetailController {
 		int postNumber = Integer.parseInt(newspostNumberStr);
 
 		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
-		PostAttachmentDAO postattachmentDAO = new PostAttachmentDAO();
+		AttachmentDAO attachmentDAO = new AttachmentDAO();
 
 		// DB에서 게시글 가져오기
 		NewsDetailDTO newsPostDetailDTO = teamCommunityDAO.teamNewsDetail(postNumber);
@@ -102,7 +99,7 @@ public class PostDetailController {
 		}
 
 		 //첨부파일 가져오기
-		List<AttachmentDTO> files = postattachmentDAO.select(postNumber);
+		List<AttachmentDTO> files = attachmentDAO.selectByPost(postNumber);
 		System.out.println("======파일 확인======");
 		System.out.println(files);
 		System.out.println("===================");

@@ -21,6 +21,7 @@ import com.bullPenTalk.app.dto.TeamBatterRecordDTO;
 import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
 import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.bullPenTalk.app.dto.TeamPitcherRecordDTO;
+import com.bullPenTalk.app.dto.TeamPostDTO;
 import com.bullPenTalk.app.dto.TeamRecordDTO;
 import com.bullPenTalk.app.dto.YoutubePostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
@@ -33,16 +34,16 @@ public class TeamCommunityDAO {
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
-	// 게시판 목록 가져오기
-	public List<PostDTO> selectBoard(Map<String, Integer> pageMap){
-		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<PostDTO> list = sqlSession.selectList("teamCommunity.select", pageMap);
-		System.out.println("조회결과 : " + list);
-		return list;
+	// 게시판 조회
+	public List<TeamPostDTO> selectBoard(Map<String, Object> pageMap){
+	    System.out.println("팀별 자유게시판 조회 - selectTeamBoard 실행 : " + pageMap);
+	    List<TeamPostDTO> list = sqlSession.selectList("teamCommunity.selectTeamBoard", pageMap);
+	    System.out.println("조회결과 : " + list);
+	    return list;
 	}
 	
 	// 게시글 상세 페이지
-	public PostDetailDTO postDetail(int postNumber) {
+	public PostDetailDTO postDetail(PostDetailDTO postNumber) {
 		System.out.println("게시글 상세 페이지 조회(단건조회)");
 		return sqlSession.selectOne("teamCommunity.detailSelect", postNumber);
 	}
@@ -160,7 +161,7 @@ public class TeamCommunityDAO {
 	
 	
 	// 게시글 등록
-	public int insertPost(PostDTO postDTO) {
+	public int insertPost(TeamPostDTO postDTO) {
 		System.out.println("게시글 작성 - insertSellPost 메소드 실행 ");
 		int insert = sqlSession.insert("teamCommunity.insert", postDTO);
 		System.out.println(postDTO + "출력");
@@ -182,38 +183,44 @@ public class TeamCommunityDAO {
 		System.out.println("게시글 삭제 쿼리 실행 완료");
 	}
 	
-	// 게시글 총 개수 가져오기
-	public int getTotalBoard() {
-		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
-		return sqlSession.selectOne("teamCommunity.getTotalBoard");
+	// 게시글 총 개수 가져오기 
+	public int getTotalBoard(int teamNumber) {
+	    System.out.println("팀별 자유게시판 총 개수 조회 - getTotalBoard 실행, teamNumber=" + teamNumber);
+	    return sqlSession.selectOne("teamCommunity.getTotalBoard", teamNumber);
+	}
+	
+	// 공지사항 총 개수 조회
+	public int getTotalNotice(int teamNumber) {
+	    System.out.println("팀별 공지사항 총 개수 조회 - getTotalNotice, teamNumber=" + teamNumber);
+	    return sqlSession.selectOne("teamCommunityNoticeMapper.getTotalNotice", teamNumber);
 	}
 	
 	// 뉴스글 총 개수 가져오기
-	public int getTotalNews() {
-		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
-		return sqlSession.selectOne("teamCommunity.getTotalNews");
+	public int getTotalNews(int teamNumber) {
+	    System.out.println("게시글 총 개수 조회 - getTotalNews 실행, teamNumber=" + teamNumber);
+	    return sqlSession.selectOne("teamCommunity.getTotalNews", teamNumber);
 	}
 	
 	// 유튜브 총 개수 가져오기
-	public int getTotalYoutube() {
+	public int getTotalYoutube(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
 		return sqlSession.selectOne("teamCommunity.getTotalYoutube");
 	}
 	
 	// 응원가 총 개수 가져오기
-	public int getTotalSong() {
+	public int getTotalSong(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
 		return sqlSession.selectOne("teamCommunity.getTotalSong");
 	}
 	
 	// 팀 응원가 총 개수 가져오기
-	public int getTotalTeamSong() {
+	public int getTotalTeamSong(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
 		return sqlSession.selectOne("teamCommunity.getTotalTeamSong");
 	}
 	
 	// 응원가 총 개수 가져오기
-	public int getTotalPlayerSong() {
+	public int getTotalPlayerSong(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
 		return sqlSession.selectOne("teamCommunity.getTotalPlayerSong");
 	}

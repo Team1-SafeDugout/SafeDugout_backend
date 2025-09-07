@@ -69,7 +69,7 @@
 	    <!-- 게시글 작성자 정보 입력 -->
 	    <input type="hidden" name="memberNumber" value="${sessionScope.memberNumber}" />
 		<input type="hidden" name="teamNumber" value="${sessionScope.teamNumber}" />
-		<input type="hidden" name="boardId" value="2" />
+		<input type="hidden" name="postType" value="2" />
 	    <div class="team-form-row">
 	      <label class="team-label">작성자:</label>
 	      <c:out value="${memberId}" />	

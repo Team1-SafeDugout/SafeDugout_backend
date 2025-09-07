@@ -64,31 +64,28 @@
           <h2>${community.postTitle}</h2>
           <div>
             <!-- 수정 삭제 버튼 -->
-            <c:if test="${sessionScope.memberNumber == coumminty.memberNumber}">
-					<!-- 수정 버튼 -->
-					<button type="button" class="modify-btn"
-						data-board-number="${community.postNumber}"
-						data-member-number="${sessionScope.memberNumber}">수정</button>
-					<!-- 삭제 버튼 -->
-					<button type="button" class="delete-btn"
-						data-board-number="${board.postNumber}"
-						data-member-number="${sessionScope.memberNumber}">삭제</button>
-				</c:if>
+			<c:if test="${sessionScope.memberNumber == community.memberNumber}">
+			    <!-- 수정 버튼 -->
+			    <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=update&postNumber=${community.postNumber}" 
+			       class="modify-btn">수정</a>
+			    <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=delete&postNumber=${community.postNumber}"
+			       class="delete-btn">삭제</a>
+			</c:if>
           </div>
         </div>
         <!-- 작성자 정보 -->
         <div class="team-post-info">
           <div class="team-post-num">글번호:<p><c:out value="${community.postNumber}" /></p></div>
-          <div class="team-post-writer">작성자ID:<p><c:out value="${community.memberNumber}" /></p></div>
-          <div class="team-post-date">작성일자:<p><c:out value="${community.createdDate}" /></p></div>
+          <div class="team-post-writer">작성자ID:<p><c:out value="${community.memberId}" /></p></div>
+          <div class="team-post-date">작성일자:<p><fmt:formatDate value="${community.postDate}" pattern="yyyy-MM-dd HH:mm:ss" /></p></div>
         </div>
         <!-- 본문 -->
         <article class="team-post-main">
           <p><c:out value="${community.postContent}" /></p>
         </article>
-         <button type="button" class="list-btn"
-					data-boardNumber="${communtiy.postNumber}"
-					data-memberNumber="${sessionScope.memberNumber}">목록</button>
+		<div class="free-guide-board-btn">
+		    <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">목록</a>
+		</div>
       </section>
       <!-- 댓글 -->
       <section class="team-post-comment">

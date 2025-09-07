@@ -23,7 +23,7 @@ public class DeleteControllerOkController {
 	        int postNumber = Integer.parseInt(request.getParameter("postNumber"));
 
 	        // 첨부파일 조회 (서버 파일 삭제용)
-	        List<AttachmentDTO> attachments = attachmentDAO.select(postNumber);
+	        List<AttachmentDTO> attachments = attachmentDAO.selectByPost(postNumber);
 	        for (AttachmentDTO attachment : attachments) {
 	            File file = new File(request.getSession().getServletContext().getRealPath("/") + attachment.getAttachmentPath());
 	            if (file.exists()) {

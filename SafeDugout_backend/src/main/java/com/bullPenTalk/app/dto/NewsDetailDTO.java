@@ -3,24 +3,6 @@ package com.bullPenTalk.app.dto;
 import java.util.List;
 
 public class NewsDetailDTO {
-//	<select id="detailNewsSelect" parameterType="TeamPostDTO">
-//	<![CDATA[
-//	SELECT P.POST_NUMBER,
-//    P.POST_TITLE,
-//    P.POST_CONTENT,
-//    P.POST_DATE,
-//    p.JOURNALIST,
-//    A.ATTACHMENT_NUMBER,
-//    A.ATTACHMENT_NAME,
-//    A.ATTACHMENT_PATH
-//  	FROM TBL_POST P                                
-//	LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER    
-//	LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-//	WHERE P.POST_NUMBER = #{postNumber}                                  
-//  	AND P.TEAM_NUMBER = #{teamNumber}                                 
-//	ORDER BY A.ATTACHMENT_NUMBER ASC
-//	]]>
-//</select>
 	
 	private int postNumber;
 	private String postTitle;

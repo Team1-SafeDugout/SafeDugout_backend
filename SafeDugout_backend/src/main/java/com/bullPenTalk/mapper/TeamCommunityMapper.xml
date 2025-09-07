@@ -4,72 +4,84 @@
 <mapper namespace="teamCommunity">
 
 	<!-- 팀 게시글 목록 조회 -->
-	<select id="select" parameterType="map" resultType="TeamPostDTO">
-		<![CDATA[
-		SELECT P.POST_NUMBER, P.POST_TITLE, P.POST_CONTENT,	P.POST_DATE, M.MEMBER_NAME AS POST_WRITER
-		FROM TBL_POST P
-		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-		WHERE P.BOARD_ID = 2
-		AND P.TEAM_NUMBER = #{teamNumber}
-		ORDER BY P.POST_DATE DESC
-		]]>
+	<select id="selectTeamBoard" parameterType="map" resultType="TeamPostDTO">
+	    <![CDATA[
+	    SELECT * FROM (
+	        SELECT ROWNUM AS rnum, subquery.*
+	        FROM (
+	            SELECT 
+	                P.POST_NUMBER, 
+	                P.POST_TITLE, 
+	                M.MEMBER_ID,
+	                P.POST_DATE
+	            FROM TBL_POST P
+	            JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+	            WHERE P.POST_TYPE = 2
+	              AND P.TEAM_NUMBER = #{teamNumber}
+	            ORDER BY P.POST_DATE DESC
+	        ) subquery
+	    )
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	    ]]>
 	</select>
 
 	<!-- 게시글 작성 -->
-	<insert id="insert" parameterType="PostDTO">
+	<insert id="insert" parameterType="TeamPostDTO">
 		<selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
 			SELECT SEQ_POST.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_POST (POST_NUMBER, MEMBER_NUMBER, TEAM_NUMBER, BOARD_ID, POST_TITLE, POST_CONTENT, POST_DATE)
-    	 VALUES (#{postNumber}, #{memberNumber}, #{teamNumber}, #{boardId}, #{postTitle}, #{postContent}, sysdate)
+		INSERT INTO TBL_POST (POST_NUMBER, MEMBER_NUMBER, TEAM_NUMBER, POST_TITLE, POST_CONTENT, POST_DATE, POST_TYPE)
+    	 VALUES (#{postNumber}, #{memberNumber}, #{teamNumber}, #{postTitle}, #{postContent}, SYSDATE, #{postType})
 	</insert>
 
 	<!-- 팀 게시글 상세 조회 -->
-	<select id="detailSelect" parameterType="PostDetailDTO">
-		<![CDATA[
-		SELECT P.POST_NUMBER,
-	    P.POST_TITLE,
-	    P.POST_CONTENT,
-	    P.POST_DATE,
-	    M.MEMBER_ID AS POST_WRITER,
-	    C.COMMENT_NUMBER,
-	    C.COMMENT_CONTENT,
-	    NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE,
-	    CM.MEMBER_ID AS COMMENT_WRITER,
-	    A.ATTACHMENT_NUMBER,
-	    A.ATTACHMENT_NAME,
-	    A.ATTACHMENT_PATH
-	  	FROM TBL_POST P
-		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER                
-		LEFT JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER              
-		LEFT JOIN TBL_MEMBER CM ON C.MEMBER_NUMBER = CM.MEMBER_NUMBER         
-		LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER    
-		LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-		WHERE P.POST_NUMBER = #{postNumber}                                  
-	  	AND P.TEAM_NUMBER = #{teamNumber}                                 
-		ORDER BY C.COMMENT_DATE ASC, A.ATTACHMENT_NUMBER ASC
-		]]>
+	<select id="detailSelect" parameterType="PostDetailDTO" resultType="PostDetailDTO">
+	  <![CDATA[
+	  SELECT 
+	      P.POST_NUMBER,
+	      P.POST_TITLE,
+	      P.POST_CONTENT,
+	      P.POST_DATE,
+	      M.MEMBER_ID,
+	      C.COMMENT_NUMBER,
+	      C.COMMENT_CONTENT,
+	      NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE,
+	      CM.MEMBER_ID AS COMMENT_WRITER,
+	      A.ATTACHMENT_NUMBER,
+	      A.ATTACHMENT_NAME,
+	      A.ATTACHMENT_PATH
+	  FROM TBL_POST P
+	  JOIN TBL_MEMBER M
+	      ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+	  LEFT JOIN TBL_COMMENT C
+	      ON P.POST_NUMBER = C.POST_NUMBER
+	  LEFT JOIN TBL_MEMBER CM
+	      ON C.MEMBER_NUMBER = CM.MEMBER_NUMBER
+	  LEFT JOIN TBL_ATTACHMENT A
+	      ON P.POST_NUMBER = A.POST_NUMBER
+	  WHERE P.POST_NUMBER = #{postNumber}
+	    AND P.TEAM_NUMBER = #{teamNumber}
+	  ORDER BY 
+	      C.COMMENT_DATE ASC,
+	      A.ATTACHMENT_NUMBER ASC
+	  ]]>
 	</select>
 
 	<!-- 팀 뉴스글 상세 조회 -->
-	<select id="detailNewsSelect" parameterType="NewsDetailDTO">
-		<![CDATA[
-		SELECT P.POST_NUMBER,
-	    P.POST_TITLE,
-	    P.POST_CONTENT,
-	    P.POST_DATE,
-	    p.JOURNALIST,
-	    p.POST_LINK,
-	    A.ATTACHMENT_NUMBER,
-	    A.ATTACHMENT_NAME,
-	    A.ATTACHMENT_PATH
-	  	FROM TBL_POST P                                
-		LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER    
-		LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-		WHERE P.POST_NUMBER = #{postNumber}                                  
-	  	AND P.TEAM_NUMBER = #{teamNumber}                                 
-		ORDER BY A.ATTACHMENT_NUMBER ASC
-		]]>
+	<select id="detailNewsSelect" parameterType="map" resultType="NewsDetailDTO">
+	    SELECT P.POST_NUMBER,
+	           P.POST_TITLE,
+	           P.POST_CONTENT,
+	           P.POST_DATE,
+	           P.JOURNALIST,
+	           P.POST_LINK,
+	           A.ATTACHMENT_NUMBER,
+	           A.ATTACHMENT_NAME,
+	           A.ATTACHMENT_PATH
+	    FROM TBL_POST P
+	    LEFT JOIN TBL_ATTACHMENT A ON P.POST_NUMBER = A.POST_NUMBER
+	    WHERE P.POST_NUMBER = #{postNumber}
+	    ORDER BY A.ATTACHMENT_NUMBER ASC
 	</select>
 	
 	<!-- 게시글 삭제 -->
@@ -108,7 +120,7 @@
             FROM TBL_POST p
             JOIN TBL_TEAM t ON p.TEAM_NUMBER = t.TEAM_NUMBER
             JOIN TBL_ADMIN a ON p.ADMIN_NUMBER = a.ADMIN_NUMBER
-            WHERE p.BOARD_ID = 4
+            WHERE p.POST_TYPE = 4
             AND p.TEAM_NUMBER = #{teamNumber}
             ORDER BY p.POST_DATE DESC
         ) subquery
@@ -132,7 +144,7 @@
 	                   POST_LINK,
 	                   POST_CONTENT
 	            FROM TBL_POST
-	            WHERE BOARD_ID IN (5, 6)
+	            WHERE POST_TYPE IN (5, 6)
 	              AND TEAM_NUMBER = #{teamNumber}
 	            ORDER BY POST_DATE DESC
 	        )subquery
@@ -158,7 +170,7 @@
 		        FROM TBL_POST p
 		        JOIN TBL_TEAM t
 		          ON p.TEAM_NUMBER = t.TEAM_NUMBER
-		        WHERE p.BOARD_ID = 5
+		        WHERE p.POST_TYPE = 5
 		          AND p.TEAM_NUMBER = #{teamNumber}
 		        ORDER BY p.POST_DATE DESC
 		    ) subquery
@@ -184,7 +196,7 @@
 		        FROM TBL_POST p
 		        JOIN TBL_TEAM t
 		          ON p.TEAM_NUMBER = t.TEAM_NUMBER
-		        WHERE p.BOARD_ID = 6
+		        WHERE p.POST_TYPE = 6
 		          AND p.TEAM_NUMBER = #{teamNumber}
 		        ORDER BY p.POST_DATE DESC
 		    ) subquery
@@ -193,26 +205,36 @@
 		]]>
 	</select>
 		
-	<!-- 팀뉴스 목록 조회 -->
+	<!-- 뉴스 목록 조회 -->	
 	<select id="newsSelect" parameterType="map" resultType="NewsPostDTO">
-		<![CDATA[
-		  SELECT * FROM (
-	        SELECT ROWNUM AS rnum, subquery.*
-	        FROM (
-	            SELECT POST_NUMBER,
-	                   POST_TITLE,
-	                   POST_CONTENT,
-	                   POST_DATE,
-	                   TEAM_NUMBER,
-	                   JOURNALIST
-	            FROM TBL_POST
-	            WHERE BOARD_ID = 3
-	            AND TEAM_NUMBER = #{teamNumber}
-	            ORDER BY POST_DATE DESC
-	        ) subquery
-	    )WHERE rnum BETWEEN #{startRow} AND #{endRow}
-		]]>
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT subquery.*, ROWNUM AS rnum
+	    FROM (
+	        SELECT 
+	               P.POST_NUMBER,
+	               P.POST_TITLE,
+	               P.POST_CONTENT,
+	               P.POST_DATE,
+	               P.TEAM_NUMBER,
+	               T.TEAM_NAME AS TEAM_NAME,
+	               (SELECT A.ATTACHMENT_PATH 
+	                FROM TBL_ATTACHMENT A
+	                WHERE A.POST_NUMBER = P.POST_NUMBER
+	                AND ROWNUM = 1) AS IMG_PATH,
+	               P.JOURNALIST
+	        FROM TBL_POST P
+	        LEFT JOIN TBL_TEAM T ON P.TEAM_NUMBER = T.TEAM_NUMBER
+	        WHERE P.POST_TYPE = 3
+	          AND P.TEAM_NUMBER = #{teamNumber}
+	        ORDER BY P.POST_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
 	</select>
+
 
 
 	<!-- 팀 시즌 기록 목록 조회 -->
@@ -339,45 +361,52 @@
 	ORDER BY R.PITCHER_SEASON_YEAR DESC, P.PLAYER_NUMBER
 	</select>
 	
-	<!-- 게시판 총 갯수 -->
-	<select id="getTotalBoard" resultType="int">
-		SELECT COUNT(post_number)
-		FROM tbl_post
-		where board_id = 2
+	<!-- 게시글 총 갯수 -->
+	<select id="getTotalBoard" parameterType="int" resultType="int">
+	    SELECT COUNT(P.POST_NUMBER)
+	    FROM TBL_POST P
+	    WHERE P.POST_TYPE = 2
+	      AND P.TEAM_NUMBER = #{teamNumber}
 	</select>
+	
 	<!-- 뉴스 총 갯수  -->
 	<select id="getTotalNews" resultType="int">
-		SELECT COUNT(post_number)
-		FROM tbl_post
-		where board_id = 3
+		SELECT COUNT(P.POST_NUMBER)
+		FROM tbl_post p
+		where p.POST_TYPE = 3
+	      AND p.TEAM_NUMBER = #{teamNumber}
 	</select>
 	
 	<!-- 유튜브 총 갯수 -->
 	<select id="getTotalYoutube" resultType="int">
-		SELECT COUNT(post_number)
-		FROM tbl_post
-		where board_id = 4
+		SELECT COUNT(P.POST_NUMBER)
+		FROM tbl_post p
+		where p.POST_TYPE = 4
+	      AND p.TEAM_NUMBER = #{teamNumber}
 	</select>
 		
 	<!-- 팀응원가 총 갯수 -->
 	<select id="getTotalSong" resultType="int">
-		SELECT COUNT(post_number)
-		FROM tbl_post
-		where board_id IN(5, 6)
+		SELECT COUNT(P.POST_NUMBER)
+		FROM tbl_post p
+		where p.POST_TYPE IN(5, 6)
+	      AND p.TEAM_NUMBER = #{teamNumber}		
 	</select>	
 	
 	<!-- 팀응원가 총 갯수 -->
 	<select id="getTotalTeamSong" resultType="int">
-		SELECT COUNT(post_number)
-		FROM tbl_post
-		where board_id = 5
+		SELECT COUNT(P.POST_NUMBER)
+		FROM tbl_post p
+		where p.POST_TYPE = 5
+	      AND p.TEAM_NUMBER = #{teamNumber}		
 	</select>	
 	
 	<!-- 선수 응원가 총 갯수 -->
 	<select id="getTotalPlayerSong" resultType="int">
-		SELECT COUNT(post_number)
-		FROM tbl_post
-		where board_id = 6
+		SELECT COUNT(P.POST_NUMBER)
+		FROM tbl_post p
+		where p.POST_TYPE = 6
+	      AND p.TEAM_NUMBER = #{teamNumber}
 	</select>
 	
 	<!-- 경기장 정보 조회 -->
