@@ -172,3 +172,19 @@ li{
 	justify-content: center;
 	align-items: center;
 }
+
+/* ------------------------------------------------------- 방문자수 CSS ----------------------------------------------------- */
+.statistics-chart {
+    width: 80%;       /* 고정 너비 */
+    height: 80%;      /* 고정 높이 */
+    margin: 0 auto;     /* 가운데 정렬 */
+    padding: 20px;
+    background: #fff;   /* 배경색 */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px #4D5061;
+}
+
+.statistics-chart canvas {
+    width: 100% !important;
+    height: 100% !important;
+}

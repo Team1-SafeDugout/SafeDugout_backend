@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.admin.dao.AdminSellDAO;
+import com.bullPenTalk.app.admin.dao.AdminTradeDAO;
 
 public class AdminSiteStatisticsOkController implements Execute{
 
@@ -18,6 +20,13 @@ public class AdminSiteStatisticsOkController implements Execute{
 		Result result = new Result();
 		
 		result.setPath("/app/admin/adminMenu/adminSiteStatistics.jsp");
+		
+		AdminTradeDAO tradeList = new AdminTradeDAO();
+		AdminSellDAO sellList = new AdminSellDAO();
+		
+		request.setAttribute("sellPostNum", tradeList.getTotal());
+		request.setAttribute("tradePostNum", sellList.getTotal());
+		
 		result.setRedirect(false);
 
 		return result;

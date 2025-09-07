@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminMenu/adminSiteStatistics.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminSiteStatistics.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- 차트 그리기위한 라이브러리 js 에서 써야 하므로 js보다 위에 배치-->
+  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminSiteStatistics.js"></script>  
 </head>
 
 <body>
@@ -55,6 +56,9 @@
           <div class="statistics-name">
             방문자수
           </div>
+          <div class = "statistics-chart">
+          	<canvas id="visitorChart"></canvas>
+          </div>
         </section>
 
         <section class="trading-statistics">
@@ -63,7 +67,7 @@
               거래중인 글 수
             </div>
             <div>
-              50
+              ${tradePostNum}
             </div>
           </div>
 
@@ -72,7 +76,7 @@
               판매중인 글 수
             </div>
             <div>
-              50
+              ${sellPostNum}
             </div>
           </div>
         </section>
