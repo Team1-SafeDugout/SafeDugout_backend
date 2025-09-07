@@ -1,50 +1,40 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostDetailDTO {
 
-//	<!-- 팀 게시글 상세 조회 -->
-//	<select id="detailSelect" parameterType="TeamPostDTO">
-//		<![CDATA[
-//		SELECT P.POST_NUMBER,
-//	    P.POST_TITLE,
-//	    P.POST_CONTENT,
-//	    P.POST_DATE,
-//	    M.MEMBER_ID AS POST_WRITER,
-//	    C.COMMENT_NUMBER,
-//	    C.COMMENT_CONTENT,
-//	    NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE,
-//	    CM.MEMBER_ID AS COMMENT_WRITER,
-//	    A.ATTACHMENT_NUMBER,
-//	    A.ATTACHMENT_NAME,
-//	    A.ATTACHMENT_PATH
-//	  	FROM TBL_POST P
-//		JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER                
-//		LEFT JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER              
-//		LEFT JOIN TBL_MEMBER CM ON C.MEMBER_NUMBER = CM.MEMBER_NUMBER         
-//		LEFT JOIN TBL_POST_ATTACHMENT PA ON P.POST_NUMBER = PA.POST_NUMBER    
-//		LEFT JOIN TBL_ATTACHMENT A ON PA.ATTACHMENT_NUMBER = A.ATTACHMENT_NUMBER
-//		WHERE P.POST_NUMBER = #{postNumber}                                  
-//	  	AND P.TEAM_NUMBER = #{teamNumber}                                 
-//		ORDER BY C.COMMENT_DATE ASC, A.ATTACHMENT_NUMBER ASC
-//		]]>
-//	</select>
 	
 	private int postNumber;
 	private String postTitle;
 	private String postContent;
-	private String postDate;
+	private Date postDate;
+	private Date update;
 	private int memberNumber;
+	private String memberId;
 	private int commentNumber;
 	private String commentContent;
-	private String update;
 	private String commentMemberNumber;
+	private int teamNumber;
 	private List<AttachmentDTO> attachment;
 	
 	// get,set
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
 	public int getPostNumber() {
 		return postNumber;
+	}
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
 	}
 	public void setPostNumber(int postNumber) {
 		this.postNumber = postNumber;
@@ -61,10 +51,10 @@ public class PostDetailDTO {
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	public String getPostDate() {
+	public Date getPostDate() {
 		return postDate;
 	}
-	public void setPostDate(String postDate) {
+	public void setPostDate(Date postDate) {
 		this.postDate = postDate;
 	}
 	public int getMemberNumber() {
@@ -85,10 +75,10 @@ public class PostDetailDTO {
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
-	public String getUpdate() {
+	public Date getUpdate() {
 		return update;
 	}
-	public void setUpdate(String update) {
+	public void setUpdate(Date update) {
 		this.update = update;
 	}
 	public String getCommentMemberNumber() {
@@ -103,14 +93,16 @@ public class PostDetailDTO {
 	public void setAttachment(List<AttachmentDTO> attachment) {
 		this.attachment = attachment;
 	}
-	
+
 	// toString
 	@Override
 	public String toString() {
 		return "PostDetailDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
-				+ ", postDate=" + postDate + ", memberNumber=" + memberNumber + ", commentNumber=" + commentNumber
-				+ ", commentContent=" + commentContent + ", update=" + update + ", commentMemberNumber="
-				+ commentMemberNumber + ", attachment=" + attachment + "]";
+				+ ", postDate=" + postDate + ", update=" + update + ", memberNumber=" + memberNumber + ", memberId="
+				+ memberId + ", commentNumber=" + commentNumber + ", commentContent=" + commentContent
+				+ ", commentMemberNumber=" + commentMemberNumber + ", teamNumber=" + teamNumber + ", attachment="
+				+ attachment + "]";
 	}
+	
 	
 }

@@ -61,13 +61,6 @@
       <h2>팀뉴스</h2>
       <!-- 뉴스 박스 -->
       <ul id="team-news-box">
-      	
-        <li class="team-news-list">
-          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=newsdetail">
-            <span><img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt=""></span>
-            <span></span>
-          </a>
-        </li>
         <!-- 뉴스 추가 공간 -->
         <c:choose>
         	<c:when test="${not empty postList}">
