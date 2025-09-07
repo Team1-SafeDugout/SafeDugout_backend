@@ -86,7 +86,7 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			boardNum = 2;
 			GuidePostDTO guidePost = new GuidePostDTO();
 			AdminGuideDAO guideDAO = new AdminGuideDAO();
-
+			
 			guidePost.setNoticePostTitle(title);
 			guidePost.setNoticePostContent(content);
 			guidePost.setNoticePostDate(date);

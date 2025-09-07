@@ -19,22 +19,12 @@ public class ReplyDeleteOkController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		FreeCommentDAO freeDao = new FreeCommentDAO();
-		TeamCommentDAO teamDao = new TeamCommentDAO();
+
         Gson gson = new Gson();
-        
-        String replyCommunity = request.getParameter("replyCommnunity");
 
         try {
-            int replyNumber = Integer.parseInt(request.getParameter("replyNumber"));
-            switch(replyCommunity) {
-            case "free":
-            	freeDao.delete(replyNumber);
-            	break;
-            	
-            case "team":
-            	teamDao.delete(replyNumber);
-            	break;
-            }
+            int commentNumber = Integer.parseInt(request.getParameter("commentNumber"));
+            freeDao.delete(commentNumber);
 
             response.setContentType("application/json; charset=utf-8");
             PrintWriter out = response.getWriter();

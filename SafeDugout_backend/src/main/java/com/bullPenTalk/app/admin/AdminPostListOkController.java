@@ -44,6 +44,8 @@ public class AdminPostListOkController implements Execute{
 		if(request.getParameter("currentTab") != null) {
 			currentTab = request.getParameter("currentTab");
 		}
+		
+		
 		List<AdminUserPostDTO> boardList = null;
 		switch(currentTab) {
 		case "Free":
