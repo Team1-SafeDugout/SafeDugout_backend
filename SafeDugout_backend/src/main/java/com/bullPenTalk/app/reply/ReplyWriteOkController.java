@@ -2,6 +2,7 @@ package com.bullPenTalk.app.reply;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.admin.dao.FreeCommentDAO;
-import com.bullPenTalk.app.admin.dao.TeamCommentDAO;
 import com.bullPenTalk.app.dto.CommentDTO;
+import com.bullPenTalk.app.member.dao.MemberDAO;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -28,7 +29,7 @@ public class ReplyWriteOkController implements Execute {
 		
 		CommentDTO commentDTO = new CommentDTO();
 		FreeCommentDAO freeReplyDAO = new FreeCommentDAO();
-		TeamCommentDAO teamReplyDAO = new TeamCommentDAO();
+		MemberDAO memberDAO = new MemberDAO();
 		
 		System.out.println("세션에 저장된 멤버" + session.getAttribute("memberNumber"));
 
@@ -43,38 +44,32 @@ public class ReplyWriteOkController implements Execute {
 		JsonObject jsonObject = JsonParser.parseString(reader.lines().collect(Collectors.joining())).getAsJsonObject();
 
 		// 필수 파라미터 확인
-		if (!jsonObject.has("boardNumber") || !jsonObject.has("memberNumber") || !jsonObject.has("replyContent")) {
-			
+		if (!jsonObject.has("postNumber") || !jsonObject.has("memberNumber") || !jsonObject.has("commentContent")) {
+			System.out.println("필수 요소 없음");
 			response.setContentType("application/json; charset=utf-8");
 			response.getWriter().write(gson.toJson(Map.of("status", "fail", "message", "필수 데이터가 없습니다")));
 			return null;
 		}
-		
-		String replyCommunity = request.getParameter("replyCommnunity");
-		
-
 
 		// DTO 설정
-		commentDTO.setMemberNumber(jsonObject.get("memberNumber").getAsInt());
-		commentDTO.setPostNumber(jsonObject.get("boardNumber").getAsInt());
-		commentDTO.setCommentContent(jsonObject.get("replyContent").getAsString());
 		
+		String memberId = memberDAO.getMemberIdByNumber(jsonObject.get("memberNumber").getAsInt());
+		commentDTO.setMemberID(memberId);
 		System.out.println("commentDTO 확인 :" + commentDTO);
+		
+		commentDTO.setPostNumber(jsonObject.get("postNumber").getAsInt());
+		System.out.println("commentDTO 확인 :" + commentDTO);
+		
+		commentDTO.setCommentContent(jsonObject.get("commentContent").getAsString());
+		System.out.println("commentDTO 확인 :" + commentDTO);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("memberNumber", jsonObject.get("memberNumber").getAsInt() + "");
+		map.put("postNumber", jsonObject.get("postNumber").getAsInt() + "");
+		map.put("commentContent", jsonObject.get("commentContent").getAsString());
 
 		// DB 저장
-		
-		
-		switch(replyCommunity) {
-		case "free":
-			freeReplyDAO.insert(commentDTO);
-			System.out.println("댓글 작성완료 :" + commentDTO);
-			break;
-			
-		case "team":
-			teamReplyDAO.insert(commentDTO);
-			System.out.println("댓글 작성완료 :" + commentDTO);
-			break;		
-		}
+		freeReplyDAO.insert(map);
 
 		// JSON 응답
 		response.setContentType("application/json; charset=utf-8");

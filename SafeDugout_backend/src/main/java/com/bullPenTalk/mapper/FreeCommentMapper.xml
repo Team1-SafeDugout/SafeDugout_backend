@@ -5,10 +5,10 @@
 <mapper namespace="freeComment">
 
 	<!-- 댓글 추가 -->
-	<insert id="insert" parameterType="CommentDTO">
+	<insert id="insert" parameterType="map">
     <![CDATA[
         INSERT INTO TBL_COMMENT (COMMENT_NUMBER, MEMBER_NUMBER, POST_NUMBER, COMMENT_CONTENT, COMMENT_DATE, COMMENT_UPDATE)
-        VALUES (COMMENT_SEQ.NEXTVAL, #{memberNumber}, #{postNumber}, #{commentContent}, SYSDATE, SYSDATE)
+        VALUES (seq_comment.NEXTVAL, #{memberNumber}, #{postNumber}, #{commentContent}, SYSDATE, SYSDATE)
     ]]>
 	</insert>
 
@@ -17,18 +17,18 @@
 	UPDATE TBL_COMMENT
 	SET COMMENT_CONTENT = #{commentContent},
     COMMENT_UPDATE = SYSDATE
-	WHERE COMMENT_NUMBER = #{commentNumber};
+	WHERE COMMENT_NUMBER = #{commentNumber}
 	</update>
 
 	<!-- 댓글 삭제 -->
 	<!-- 번호 기준으로 삭제 -->
 	<delete id="delete" parameterType="int">
 	DELETE FROM TBL_COMMENT
-	WHERE COMMENT_NUMBER = #{commentNumber};
+	WHERE COMMENT_NUMBER = #{commentNumber}
 	</delete>
 
 	<!-- 댓글 조회 -->
-	<select id="select" resultType="CommentDTO">
+	<select id="select" resultType="CommentDTO" parameterType = "map">
 	<![CDATA[
 	SELECT *
 	FROM (
@@ -37,11 +37,12 @@
     	C.COMMENT_CONTENT,
     	C.COMMENT_DATE,
     	C.COMMENT_UPDATE,
-    	M.MEMBER_ID
+    	M.MEMBER_ID,
+    	M.MEMBER_NUMBER
 	FROM TBL_COMMENT C
 	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
-	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
-	ORDER BY C.COMMENT_DATE DESC;
+	WHERE C.POST_NUMBER = #{postNumber}
+	ORDER BY C.COMMENT_DATE DESC
 	)
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	]]>
@@ -54,11 +55,12 @@
     	C.COMMENT_CONTENT,
     	C.COMMENT_DATE,
     	C.COMMENT_UPDATE,
-    	M.MEMBER_ID
+    	M.MEMBER_ID,
+    	M.MEMBER_NUMBER
 	FROM TBL_COMMENT C
 	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
 	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
-	WHERE COMMENT_NUMBER = #{commentNumber}
+	WHERE C.COMMENT_NUMBER = #{commentNumber}
 	]]>
 	</select>
 	
@@ -69,11 +71,13 @@
     	C.COMMENT_CONTENT,
     	C.COMMENT_DATE,
     	C.COMMENT_UPDATE,
-    	M.MEMBER_ID
+    	M.MEMBER_ID,
+    	M.MEMBER_NUMBER
 	FROM TBL_COMMENT C
 	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
 	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
-	WHERE POST_NUMBER = #{postNumber}
+	WHERE C.POST_NUMBER = #{postNumber}
+	ORDER BY C.COMMENT_DATE DESC
 	]]>
 	</select>
 

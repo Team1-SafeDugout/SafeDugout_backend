@@ -1,32 +1,22 @@
 package com.bullPenTalk.app.dto;
 
 public class CommentDTO {
-//	CREATE TABLE TBL_COMMENT(
-//	COMMENT_NUMBER NUMBER,
-//	MEMBER_NUMBER NUMBER NOT NULL,
-//	POST_NUMBER NUMBER NOT NULL,
-//	COMMENT_CONTENT VARCHAR2(2000) NOT NULL,
-//	COMMENT_DATE DATE NOT NULL DEFAULT SYSDATE ,
-//	COMMENT_UPDATE DATE NOT NULL,
-//	CONSTRAINT PK_COMMENT PRIMARY KEY(COMMENT_NUMBER),
-//	CONSTRAINT FK_COMMENT_MEMBER FOREIGN KEY(MEMBER_NUMBER) REFERENCES TBL_MEMBER(MEMBER_NUMBER) ON DELETE CASCADE,
-//	CONSTRAINT FK_COMMENT_POST FOREIGN KEY(POST_NUMBER) REFERENCES TBL_POST(POST_NUMBER) ON DELETE CASCADE
-//	);
+//	C.COMMENT_NUMBER,
+//	C.COMMENT_CONTENT,
+//	C.COMMENT_DATE,
+//	C.COMMENT_UPDATE,
+//	M.MEMBER_ID
 
 	
-	private int commentNumber; // 댓글 번호
-	private int memberNumber; // 회원 번호
-	private int postNumber; // 게시글 번호 
+	private int commentNumber; // 댓글 번호 
 	private String commentContent; // 댓글 내용 
 	private String commentDate; // 작성 일자
 	private String commentUpdate; // 수정 일자
+	private String memberID;
+	private int postNumber;
+	private int memberNumber;
 	
-	public int getCommentNumber() {
-		return commentNumber;
-	}
-	public void setCommentNumber(int commentNumber) {
-		this.commentNumber = commentNumber;
-	}
+	
 	public int getMemberNumber() {
 		return memberNumber;
 	}
@@ -38,6 +28,12 @@ public class CommentDTO {
 	}
 	public void setPostNumber(int postNumber) {
 		this.postNumber = postNumber;
+	}
+	public int getCommentNumber() {
+		return commentNumber;
+	}
+	public void setCommentNumber(int commentNumber) {
+		this.commentNumber = commentNumber;
 	}
 	public String getCommentContent() {
 		return commentContent;
@@ -57,13 +53,19 @@ public class CommentDTO {
 	public void setCommentUpdate(String commentUpdate) {
 		this.commentUpdate = commentUpdate;
 	}
-	
+	public String getMemberID() {
+		return memberID;
+	}
+	public void setMemberID(String memberID) {
+		this.memberID = memberID;
+	}
 	@Override
 	public String toString() {
-		return "CommentDTO [commentNumber=" + commentNumber + ", memberNumber=" + memberNumber + ", postNumber="
-				+ postNumber + ", commentContent=" + commentContent + ", commentDate=" + commentDate
-				+ ", commentUpdate=" + commentUpdate + "]";
+		return "CommentDTO [commentNumber=" + commentNumber + ", commentContent=" + commentContent + ", commentDate="
+				+ commentDate + ", commentUpdate=" + commentUpdate + ", memberID=" + memberID + ", postNumber="
+				+ postNumber + ", memberNumber=" + memberNumber + "]";
 	}
 	
 
+	
 }
