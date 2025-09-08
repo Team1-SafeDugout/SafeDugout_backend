@@ -38,6 +38,10 @@ public class MyPageDAO {
 	public void deletePost(int postNumber) {
 		sqlSession.delete("myPage.deletePost", postNumber);
 	}
+	
+	public int getTotalPost(int memberNumber) {
+		return sqlSession.selectOne("myPage.getTotalPost", memberNumber);
+	}
 
 	// 댓글 조회
 	public List<MyPageCommentDTO> selectCommentList(Map<String, Integer> map) {

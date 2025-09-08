@@ -60,25 +60,34 @@
 		join tbl_board_type t on b.board_id = t.board_type_id 
 		where member_number = #{memberNumber} and board_type_id in(1, 2)
 	</select> -->
-	<select id="selectPostList" resultType="PostDTO">
+	<select id="selectPostList" resultType="PostDTO" parameterType = "int">
 		<![CDATA[
-		SELECT ROWNUM AS rnum, subquery.*
-	    FROM (
-	        SELECT P.POST_NUMBER,
-	               P.POST_TITLE,
-	               P.POST_CONTENT,
-	               P.POST_DATE,
-	               P.POST_UPDATE
-	        FROM TBL_POST P
-	        JOIN TBL_MEMBER B ON P.BOARD_ID = B.BOARD_NUMBER
-	        JOIN TBL_BOARD_TYPE T ON BOARD_ID = T.BOARD_TYPE_ID
-	        WHERE P.BOARD_ID IN (1, 2)
-	          AND P.MEMBER_NUMBER = #{teamNumber}
-	        ORDER BY P.POST_DATE DESC
-	    ) subquery
-	)
-	WHERE rnum BETWEEN #{startRow} AND #{endRow}
-	]]>
+		SELECT *
+		FROM (
+		    SELECT ROWNUM AS rnum, subquery.*
+		    FROM (
+		        SELECT P.POST_NUMBER,
+		        	   P.MEMBER_NUMBER,
+		        	   NVL(P.TEAM_NUMBER, 1) as teamNumber,
+		               P.POST_TITLE,
+		               P.POST_CONTENT,
+		               P.POST_DATE,
+		               P.POST_UPDATE,
+		               P.POST_TYPE
+		        FROM TBL_POST P
+		        WHERE P.POST_TYPE IN (1, 2) AND P.MEMBER_NUMBER = #{memberNumber}
+		    ) subquery
+		)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		]]>
+	</select>
+	
+	<!-- 게시글 전체 수 -->
+	
+	<select id = "getTotalPost" resultType = "int" parameterType = "int">
+		SELECT COUNT(P.POST_NUMBER)
+	    FROM TBL_POST P
+	    WHERE P.POST_TYPE IN (1, 2) AND P.MEMBER_NUMBER = #{memberNumber}
 	</select>
 	
 	<!-- 게시글 삭제 -->
@@ -103,7 +112,7 @@
 	               m.member_id,
 	               C.COMMENT_CONTENT,
 	               C.COMMENT_DATE,
-	               C.COMMENT_UPDATE
+	               C.COMMENT_UPDATE,
 	               C.COMMENT_NUMBER
 	        FROM TBL_POST P
 	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
