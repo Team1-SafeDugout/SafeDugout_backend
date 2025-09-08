@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "admin">
+	<!-- 로그인 -->
+	<select id="login" parameterType="AdminDTO" resultType="int">
+		select admin_number from tbl_admin
+		where admin_id = #{adminId} and admin_pw = #{adminPw}
+	</select>
+	
+	<!-- 정보 가져오기 -->
+	<select id="takeInfo" parameterType="int" resultType = "AdminDTO">
+		select admin_number, admin_id, admin_email
+		from tbl_admin
+		where admin_number = #{adminNumber}
+	</select>
+	
+	<select id = "getNumber" resultType = "int">
+		select admin_number
+		FROM TBL_ADMIN
+	</select>
+</mapper>

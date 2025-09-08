@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="trade">
+
+	<!-- 거래중인 목록 조회 -->
+	<select id="listSelect" parameterType="map" resultType="TradePostDTO">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS RN, subquery.*
+	    FROM (
+	        SELECT SP.SELL_POST_NUMBER,
+	               SP.SELL_POST_TITLE,
+	               SP.SELL_POST_CONTENT,
+	               SP.PRICE_POINT,
+	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
+	               M.MEMBER_ID AS Buyer_ID,
+	               TS.STATUS_NAME,
+	               A.ATTACHMENT_PATH AS IMAGE_PATH,
+	               A.ATTACHMENT_NAME
+	        FROM TBL_SELL_POST SP
+	        JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	        JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	        JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	        LEFT JOIN TBL_ATTACHMENT A 
+	          ON SP.SELL_POST_NUMBER = A.SELL_POST_NUMBER
+	        WHERE TS.STATUS_ID = '2'
+	        ORDER BY SP.SELL_POST_CREATION_DATE DESC
+	    ) subquery
+	)
+	WHERE RN BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+	
+	<!-- 거래중인 글 상세 조회 -->
+	<select id="selectSellPostDetail" parameterType="int" resultType="TradePostDTO">
+	<![CDATA[
+	SELECT SP.SELL_POST_NUMBER,
+	       SP.SELL_POST_TITLE,
+	       SP.SELL_POST_CONTENT,
+	       SP.PRICE_POINT,
+	       SP.TRADING_AREA,
+	       SP.SELL_POST_CREATION_DATE,
+	       NVL(SP.SELL_POST_UPDATE, SP.SELL_POST_CREATION_DATE) AS LAST_UPDATE,
+	       M.MEMBER_NUMBER,
+	       M.MEMBER_ID AS Buyer_ID,
+	       TS.STATUS_NAME,
+	       A.ATTACHMENT_NUMBER,
+	       A.ATTACHMENT_NAME,
+	       A.ATTACHMENT_PATH
+	FROM TBL_SELL_POST SP
+	JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	LEFT JOIN TBL_ATTACHMENT A ON SP.SELL_POST_NUMBER = A.SELL_POST_NUMBER
+	WHERE SP.SELL_POST_NUMBER = #{sellPostNumber}
+	]]>
+	</select>
+	
+	
+	<!-- 거래 테이블 등록 -->
+	<insert id="insert" parameterType="SellPostDTO">
+		<selectKey>
+			SELECT SEQ_TREAD_POST.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_TREAD_POST(tread_number, sell_post_number, status_number, buy_member, payment_date, complete_date)
+		values(#{treadNumber}, #{sellPostNumber}, #{statusNumber}, #{buyMember}, #{paymentDate}, #{completeDAte})
+	</insert>
+	
+	
+	<!-- 검색 결과 -->
+	<select id="searchList" parameterType="map" resultType="SellPostDTO">
+		<![CDATA[
+		  SELECT *
+		  FROM (
+		      SELECT ROWNUM AS rnum, SP.*
+		      FROM (
+		          SELECT SP.SELL_POST_NUMBER, SP.SELL_POST_TITLE, SP.SELL_POST_CONTENT,
+		                 SP.PRICE_POINT, SP.TRADING_AREA, SP.SELL_POST_CREATION_DATE
+		          FROM TBL_SELL_POST SP
+		          JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+		          JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+		          WHERE TS.STATUS_ID = 1
+		            AND SP.SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
+		          ORDER BY SP.SELL_POST_CREATION_DATE DESC
+		      ) SP
+		  )
+		  WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		]]>  
+	</select>
+	
+	
+
+	<!-- 검색 결과 총 개수 -->
+	<select id="getTotalSearch" parameterType="string" resultType="int">
+	    SELECT COUNT(*)
+	    FROM TBL_SELL_POST SP
+	    JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	    JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	    WHERE TS.STATUS_ID = 1
+	      AND SP.SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
+	</select>
+	
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="teamCommunityNoticeMapper">
+
+	<!-- 팀 공지 사항 목록 조회 -->
+	
+	<select id="select" parameterType="map" resultType="TeamNoticePostDTO">
+	<![CDATA[ 
+	SELECT * FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT P.NOTICE_POST_NUMBER,
+	               P.NOTICE_POST_TITLE,
+	               P.NOTICE_POST_CONTENT,
+	               P.NOTICE_POST_DATE
+	        FROM TBL_NOTICE_POST P
+	        WHERE P.NOTICE_TYPE_ID = 2
+	        ORDER BY P.NOTICE_POST_DATE DESC
+	    ) subquery
+	)WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+	
+	<!-- 팀 공지 사항 상세 조회 -->
+	
+	<select id="detailSelect" parameterType="int" resultType="TeamNoticePostDTO">
+	<![CDATA[ 
+	SELECT NP.NOTICE_POST_NUMBER,
+		       NP.NOTICE_POST_TITLE,
+		       NP.NOTICE_POST_CONTENT,
+		       NP.NOTICE_POST_DATE,
+		       NVL(NP.NOTICE_POST_UPDATE, NP.NOTICE_POST_DATE) AS LAST_UPDATE,
+		       A.ADMIN_NAME,
+		       AT.ATTACHMENT_NUMBER,
+		       AT.ATTACHMENT_NAME,
+		       AT.ATTACHMENT_PATH
+		FROM TBL_NOTICE_POST NP
+		JOIN TBL_NOTICE_TYPE NT ON NP.NOTICE_TYPE_ID = NT.NOTICE_TYPE_ID
+		JOIN TBL_ADMIN A ON NP.ADMIN_NUMBER = A.ADMIN_NUMBER
+		LEFT JOIN TBL_NOTICE_ATTACHMENT NA ON NP.NOTICE_POST_NUMBER = NA.NOTICE_POST_NUMBER
+		LEFT JOIN TBL_ATTACHMENT AT ON NA.ATTACHMENT_NUMBER = AT.ATTACHMENT_NUMBER
+		WHERE NP.NOTICE_POST_NUMBER = #{noticePostNumber}
+		AND NT.NOTICE_TYPE = 'teamcommunitynotice'
+	]]>
+	</select>
+	
+	<!-- 공지사항 총 갯수 조회 -->
+	<select id="getTotalNotice" resultType="int">
+	    SELECT COUNT(NOTICE_POST_NUMBER)
+	    FROM TBL_NOTICE_POST
+	    WHERE TEAM_NUMBER = #{teamNumber}   
+	</select>
+</mapper>

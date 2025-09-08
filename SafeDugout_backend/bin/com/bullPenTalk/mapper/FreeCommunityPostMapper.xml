@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="freeCommunity">
+
+	<!-- 게시글 목록 조회 -->
+	<select id="selectList" parameterType="map" resultType="FreePostDTO">
+	    <![CDATA[
+	    SELECT *
+	    FROM (
+	        SELECT ROWNUM AS RN, subquery.*
+	        FROM (
+	            SELECT P.POST_NUMBER,
+	                   P.POST_TITLE,
+	                   P.POST_CONTENT,
+	                   P.POST_DATE,
+	                   P.POST_UPDATE,
+	                   P.MEMBER_NUMBER,
+	                   M.MEMBER_ID AS MEMBER_ID,
+	                   P.TEAM_NUMBER,
+	                   P.POST_TYPE
+	            FROM TBL_POST P
+	            JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+	            WHERE P.POST_TYPE = 1
+	            ORDER BY P.POST_DATE DESC
+	        ) subquery
+	    )
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	    ]]>
+	</select>
+
+	<!-- 게시글 총 갯수 -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(post_number)
+		FROM tbl_post
+		WHERE post_type = 1
+	</select>
+	
+	<!-- 게시글 상세 조회 -->
+	<select id="selectPostDetail" parameterType="int" resultType="FreePostDTO">
+        <![CDATA[
+        SELECT P.POST_NUMBER,
+               P.POST_TITLE,
+               P.POST_CONTENT,
+               P.POST_DATE,
+               P.POST_UPDATE,
+               P.POST_LINK,
+               P.JOURNALIST,
+               P.MEMBER_NUMBER,
+               P.TEAM_NUMBER,
+               P.ADMIN_NUMBER,
+               P.POST_TYPE
+        FROM TBL_POST P
+        WHERE P.POST_NUMBER = #{postNumber}
+        ]]>
+	</select>
+
+	<!-- 게시글 댓글 조회 -->
+	<select id="selectCommentsByPost" parameterType="int" resultType="CommentDTO">
+        <![CDATA[
+        SELECT C.COMMENT_NUMBER,
+               C.MEMBER_NUMBER,
+               C.POST_NUMBER,
+               C.COMMENT_CONTENT,
+               C.COMMENT_DATE,
+               C.COMMENT_UPDATE,
+               M.MEMBER_ID AS MEMBER_NAME
+        FROM TBL_COMMENT C
+        JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+        WHERE C.POST_NUMBER = #{postNumber}
+        ORDER BY C.COMMENT_DATE ASC
+        ]]>
+	</select>
+
+	<!-- 게시글 등록 (글번호 반환) -->
+	<insert id="insert" parameterType="FreePostDTO">
+	  <!-- 새 글번호 미리 채번 -->
+	  <selectKey keyProperty="postNumber" resultType="int" order="BEFORE">
+	    SELECT SEQ_POST.NEXTVAL FROM DUAL
+	  </selectKey>	
+	  INSERT INTO TBL_POST (
+	      POST_NUMBER, MEMBER_NUMBER, POST_TITLE, POST_CONTENT, POST_DATE, POST_TYPE)
+	      VALUES (#{postNumber}, #{memberNumber}, #{postTitle}, #{postContent}, SYSDATE, 1)
+	</insert>
+
+	<!-- 게시글 수정 -->
+	<update id="updatePost" parameterType="FreePostDTO">
+		UPDATE TBL_POST
+		SET POST_TITLE = #{postTitle},
+		POST_CONTENT = #{postContent},
+		POST_UPDATE = SYSDATE
+		WHERE POST_NUMBER = #{postNumber}
+	</update>
+
+	<!-- 게시글 삭제 쿼리  -->
+	<delete id="deletePost" parameterType="int">
+		delete from tbl_post
+		where post_number = #{postNumber}
+	</delete>
+	
+	<!-- 게시글 작성자 번호 조회 -->
+	<select id="getWriterNumber" parameterType="int" resultType="int">
+	    SELECT MEMBER_NUMBER
+	    FROM TBL_POST
+	    WHERE POST_NUMBER = #{postNumber}
+	</select>
+
+	<!-- 메인페이지 조회 -->
+	<select id="selectLatestPosts" parameterType="int" resultType="FreePostDTO">
+	    SELECT *
+	    FROM TBL_FREE_POST
+	    ORDER BY POST_DATE DESC
+	    FETCH FIRST #{count} ROWS ONLY
+	</select>
+
+</mapper>

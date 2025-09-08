@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminSellPost">
+	<!--전체 게시글 조회 -->
+	<select id="selectList" resultType="SellPostDTO">
+	<![CDATA[
+	SELECT *
+	FROM 
+	(
+		SELECT ROWNUM AS rnum, subquery.*
+		FROM
+		(
+			SELECT SP.SELL_POST_NUMBER,
+		           SP.SELL_POST_TITLE,
+		           SP.PRICE_POINT,
+		           SP.TRADING_AREA,
+		           M.MEMBER_ID,
+		           TA.ATTACHMENT_PATH
+			FROM TBL_SELL_POST SP
+			JOIN TBL_MEMBER M
+			ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+			LEFT JOIN TBL_ATTACHMENT TA ON SP.SELL_POST_NUMBER = TA.SELL_POST_NUMBER
+			ORDER BY SELL_POST_NUMBER DESC
+		 ) subquery
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+
+
+
+	<select id="total" resultType="int">
+		SELECT COUNT(SELL_POST_NUMBER)
+		FROM TBL_SELL_POST
+	</select>
+
+	<select id="adminSelectList" resultType="AdminSellPostDTO">
+	<![CDATA[
+		SELECT
+		sp.SELL_POST_NUMBER,
+		tm.MEMBER_ID ,
+		tts.STATUS_NAME,
+		tc.CATEGORY_NAME,
+		td.DEALTYPE_NAME,
+		sp.PRICE_POINT,
+		sp.SELL_POST_TITLE,
+		sp.TRADING_AREA,
+		SP.SELL_POST_CREATION_DATE,
+		SP.SELL_POST_UPDATE,
+		sp.SELL_POST_CONTENT,
+		tt.TEAM_NAME ,
+		TA.ATTACHMENT_PATH
+		FROM TBL_SELL_POST SP
+		JOIN TBL_CATEGORY TC ON SP.CATEGORY_ID = TC.CATEGORY_ID
+		JOIN TBL_MEMBER tm ON sp.MEMBER_NUMBER = tm.MEMBER_NUMBER
+		JOIN TBL_TRADE_STATUS tts ON sp.STATUS_ID = tts.STATUS_ID
+		LEFT JOIN TBL_TEAM tt ON sp.TEAM_ID = tt.TEAM_NUMBER
+		LEFT JOIN TBL_ATTACHMENT TA ON SP.SELL_POST_NUMBER = TA.SELL_POST_NUMBER
+		JOIN TBL_DEALTYPE td ON sp.DEALTYPE_ID = td.DEALTYPE_ID
+	]]>
+	</select>
+
+	<select id="adminSelectDetail" resultType="AdminSellPostDTO" parameterType = "int">
+	<![CDATA[
+		SELECT
+		sp.SELL_POST_NUMBER,
+		tm.MEMBER_ID ,
+		tts.STATUS_NAME,
+		tc.CATEGORY_NAME,
+		td.DEALTYPE_NAME,
+		sp.PRICE_POINT,
+		sp.SELL_POST_TITLE,
+		sp.SELL_POST_CONTENT,
+		sp.TRADING_AREA,
+		SP.SELL_POST_CREATION_DATE,
+		SP.SELL_POST_UPDATE,
+		sp.SELL_POST_CONTENT,
+		tt.TEAM_NAME ,
+		TA.ATTACHMENT_PATH
+		FROM TBL_SELL_POST SP
+		JOIN TBL_CATEGORY TC ON SP.CATEGORY_ID = TC.CATEGORY_ID
+		JOIN TBL_MEMBER tm ON sp.MEMBER_NUMBER = tm.MEMBER_NUMBER
+		JOIN TBL_TRADE_STATUS tts ON sp.STATUS_ID = tts.STATUS_ID
+		LEFT JOIN TBL_TEAM tt ON sp.TEAM_ID = tt.TEAM_NUMBER
+		LEFT JOIN TBL_ATTACHMENT TA ON SP.SELL_POST_NUMBER = TA.SELL_POST_NUMBER
+		JOIN TBL_DEALTYPE td ON sp.DEALTYPE_ID = td.DEALTYPE_ID
+		WHERE sp.SELL_POST_NUMBER = #{postNumber}
+	]]>
+	</select>
+
+	<!-- 판매글 삭제 쿼리 -->
+	<delete id="delete" parameterType="int">
+		delete from tbl_sell_post
+		where sell_post_number = #{sellPostNumber}
+	</delete>
+</mapper>

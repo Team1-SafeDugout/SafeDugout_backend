@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="freeComment">
+
+	<!-- 댓글 추가 -->
+	<insert id="insert" parameterType="map">
+    <![CDATA[
+        INSERT INTO TBL_COMMENT (COMMENT_NUMBER, MEMBER_NUMBER, POST_NUMBER, COMMENT_CONTENT, COMMENT_DATE, COMMENT_UPDATE)
+        VALUES (seq_comment.NEXTVAL, #{memberNumber}, #{postNumber}, #{commentContent}, SYSDATE, SYSDATE)
+    ]]>
+	</insert>
+
+	<!-- 댓글 수정 -->
+	<update id="update" parameterType="CommentDTO">
+	UPDATE TBL_COMMENT
+	SET COMMENT_CONTENT = #{commentContent},
+    COMMENT_UPDATE = SYSDATE
+	WHERE COMMENT_NUMBER = #{commentNumber}
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<!-- 번호 기준으로 삭제 -->
+	<delete id="delete" parameterType="int">
+	DELETE FROM TBL_COMMENT
+	WHERE COMMENT_NUMBER = #{commentNumber}
+	</delete>
+
+	<!-- 댓글 조회 -->
+	<select id="select" resultType="CommentDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	SELECT 
+    	C.COMMENT_NUMBER,
+    	C.COMMENT_CONTENT,
+    	C.COMMENT_DATE,
+    	C.COMMENT_UPDATE,
+    	M.MEMBER_ID,
+    	M.MEMBER_NUMBER
+	FROM TBL_COMMENT C
+	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+	WHERE C.POST_NUMBER = #{postNumber}
+	ORDER BY C.COMMENT_DATE DESC
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+	
+	<select id = "selectOne" resultType = "CommentDTO" parameterType = "int">
+	<![CDATA[
+	SELECT 
+    	C.COMMENT_NUMBER,
+    	C.COMMENT_CONTENT,
+    	C.COMMENT_DATE,
+    	C.COMMENT_UPDATE,
+    	M.MEMBER_ID,
+    	M.MEMBER_NUMBER
+	FROM TBL_COMMENT C
+	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
+	WHERE C.COMMENT_NUMBER = #{commentNumber}
+	]]>
+	</select>
+	
+	<select id = "selectAll" resultType = "CommentDTO" parameterType = "int">
+	<![CDATA[
+	SELECT 
+    	C.COMMENT_NUMBER,
+    	C.COMMENT_CONTENT,
+    	C.COMMENT_DATE,
+    	C.COMMENT_UPDATE,
+    	M.MEMBER_ID,
+    	M.MEMBER_NUMBER
+	FROM TBL_COMMENT C
+	JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+	JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
+	WHERE C.POST_NUMBER = #{postNumber}
+	ORDER BY C.COMMENT_DATE DESC
+	]]>
+	</select>
+
+</mapper>
+
+
+
