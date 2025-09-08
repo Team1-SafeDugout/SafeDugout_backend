@@ -60,9 +60,9 @@
           </div>
           <!-- 기타 버튼(아이디 찾기/비밀번호 찾기/회원가입) -->
           <div class="main-etc-button">
-            <a href="${pageContext.request.contextPath}/findId/findIdInput.jsp">아이디 찾기</a>
+            <a href="${pageContext.request.contextPath}/member/findId.me">아이디 찾기</a>
             <h> | </h>
-            <a href="${pageContext.request.contextPath}/findPw/findPwInput.jsp">비밀번호 찾기</a>
+            <a href="${pageContext.request.contextPath}/member/findPw.me">비밀번호 찾기</a>
             <h> | </h>
             <a href="/member/terms.me">회원가입</a>
           </div>

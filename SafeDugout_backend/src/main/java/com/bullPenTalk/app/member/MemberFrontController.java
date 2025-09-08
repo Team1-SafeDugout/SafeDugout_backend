@@ -89,9 +89,13 @@ public class MemberFrontController extends HttpServlet {
 			break;
 			
 		case "/member/findId.me":
+			System.out.println("아이디 찾기 이동");
+			request.getRequestDispatcher("/app/findId/findIdInput.jsp").forward(request, response);
 			break;
 			
 		case "/member/findPw.me":
+			System.out.println("비밀번호 찾기 이동");
+			request.getRequestDispatcher("/app/findPw/findPwInput.jsp").forward(request, response);
 			break;
 			
 		case "/member/verifyCode.me":
