@@ -37,7 +37,7 @@ public class AdminGuideListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<GuidePostDTO> boardList = adminGuideDAO.select();
+		List<GuidePostDTO> boardList = adminGuideDAO.select(pageMap);
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정
