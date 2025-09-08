@@ -2,7 +2,6 @@ package com.bullPenTalk.app.trade;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,10 @@ import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
 
 public class DeleteOkController {
 
-    public void deleteSellPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public Result deleteSellPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SellPostDAO sellPostDAO = new SellPostDAO();
         AttachmentDAO attachmentDAO = new AttachmentDAO();
+        Result result = new Result();
 
         try {
             int sellPostNumber = Integer.parseInt(request.getParameter("sellPostNumber"));
@@ -45,8 +45,9 @@ public class DeleteOkController {
             sellPostDAO.delete(sellPostNumber);
             System.out.println("판매글 삭제 완료: " + sellPostNumber);
 
-            // 삭제 성공 → status 전달
-            response.sendRedirect(request.getContextPath() + "/trade/tradeMain.tr?status=deleted");
+            // 삭제 성공
+            result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");
+            result.setRedirect(false);
 
         } catch (NumberFormatException e) {
             e.printStackTrace();

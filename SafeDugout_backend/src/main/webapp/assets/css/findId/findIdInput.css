@@ -124,8 +124,7 @@ body {
 
 /* 다음, 취소 버튼 */
 .main-button-container {
-  position: absolute;
-  bottom: 205px;
+  margin-top: 50px;
 }
 
 .main-button-container button {
