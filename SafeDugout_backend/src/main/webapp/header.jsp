@@ -54,7 +54,7 @@
 						<span>|</span> 로그아웃</a>
 					</div>
 					<div class="mypage">
-						<a href="${pageContext.request.contextPath}/app/myPostList/myPostList.jsp">
+						<a href="${pageContext.request.contextPath}/myPage/postList.mp">
 						<img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt=""></a>
 					</div>
 				</div>

@@ -3,7 +3,7 @@
 <mapper namespace="adminNews">
 
 	<!-- 뉴스 목록 조회 -->
-	<select id="listSelect" resultType="NewsPostDTO">
+	<select id="listSelect" resultType="NewsPostDTO" parameterType = "map">
 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, subquery.*

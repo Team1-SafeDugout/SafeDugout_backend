@@ -52,6 +52,8 @@ public class MyPageFrontController extends HttpServlet {
 		switch(target) {
 		// 리스트 불러오기
 		case "/myPage/postList.mp":
+			System.out.println("게시글 목록 진입 중");
+			result = new MyPagePostListOkController().execute(request, response);
 			break;
 			
 		case "/myPage/commentList.mp":
@@ -72,6 +74,14 @@ public class MyPageFrontController extends HttpServlet {
 			
 		case "/myPage/pointCharge.mp":
 			break;
+		}
+		
+		if (result != null) {
+			if (result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+			} else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
 		}
 	}
 }

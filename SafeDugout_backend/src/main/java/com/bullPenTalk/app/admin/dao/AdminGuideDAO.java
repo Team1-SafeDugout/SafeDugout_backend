@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -29,8 +30,8 @@ public class AdminGuideDAO {
 	
 	// 조회
 	
-	public List<GuidePostDTO> select() {
-		List<GuidePostDTO> newList = sqlSession.selectList("adminGuide.selectAll");
+	public List<GuidePostDTO> select(Map<String, Integer> map) {
+		List<GuidePostDTO> newList = sqlSession.selectList("adminGuide.selectAll", map);
 		return newList;
 	}
 	

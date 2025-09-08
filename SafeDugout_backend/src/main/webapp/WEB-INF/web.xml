@@ -34,7 +34,7 @@
 	
 	<servlet>
 		<servlet-name>MyPage</servlet-name>
-		<servlet-class>com.bullPenTalk.app.mypage.MyPageFrontController</servlet-class>
+		<servlet-class>com.bullPenTalk.app.myPage.MyPageFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MyPage</servlet-name>

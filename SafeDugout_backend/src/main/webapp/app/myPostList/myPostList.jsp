@@ -7,14 +7,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>내가 쓴 게시글</title>
-  <link rel="stylesheet" href="/webapp/assets/css/myPostList/myPostList.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/myPostList/myPostList.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/myPage/myPostList.js"></script>
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
       <section class="sidebar">
@@ -130,8 +130,7 @@
       </section>
     </div>
   </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 
 </html>
