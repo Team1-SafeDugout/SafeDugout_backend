@@ -97,7 +97,7 @@
         <!-- 입문가이드 목록 제목 -->
         <h2 class="guide-list-container-title">입문가이드</h2>
         <div class="guide-list-container-top">
-          <a href="${pageContext.request.contextPath}/main/mainAll.ma">더보기</a>
+          <a href="${pageContext.request.contextPath}/freeCommunity/freeCommunitymain.fc">더보기</a>
         </div>
         <!-- 입문가이드 목록 공간 -->
         <div class="guide-list-container">
@@ -105,7 +105,7 @@
           <c:forEach var="guideRow" items="${guideList}">
             <div class="guide-list-guide">
               <li class="guide-list-guide-li guide-li-number"><c:out value="${guideRow.noticePostNumber}"/></li>
-              <li class="guide-list-guide-li guide-li-title"><a href=""><c:out value="${guideRow.noticePostTitle}"/></a></li>
+              <li class="guide-list-guide-li guide-li-title"><a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${guideRow.noticePostNumber}"><c:out value="${guideRow.noticePostTitle}"/></a></li>
               <li class="guide-list-guide-li guide-li-date"><c:out value="${guideRow.noticePostDate}"/></li>
             </div>
           </c:forEach>

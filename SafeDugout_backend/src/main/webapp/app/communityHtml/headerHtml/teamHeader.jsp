@@ -57,7 +57,7 @@
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=playersong">선수 응원가</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">게시판</a></li>
         <li><a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">굿즈거래</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium">경기장</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium&teamNumber=${sessionScope.teamNumber}">경기장</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀뉴스</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">공지사항</a></li>
         <li class="nav-search">

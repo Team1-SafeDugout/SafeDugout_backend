@@ -17,14 +17,14 @@
 	UPDATE TBL_COMMENT
 	SET COMMENT_CONTENT = #{commentContent},
     COMMENT_UPDATE = SYSDATE
-	WHERE COMMENT_NUMBER = #{commentNumber};
+	WHERE COMMENT_NUMBER = #{commentNumber}
 	</update>
 
 	<!-- 댓글 삭제 -->
 	<!-- 번호 기준으로 삭제 -->
 	<delete id="delete" parameterType="int">
 	DELETE FROM TBL_COMMENT
-	WHERE COMMENT_NUMBER = #{commentNumber};
+	WHERE COMMENT_NUMBER = #{commentNumber}
 	</delete>
 
 	<!-- 댓글 조회 -->
