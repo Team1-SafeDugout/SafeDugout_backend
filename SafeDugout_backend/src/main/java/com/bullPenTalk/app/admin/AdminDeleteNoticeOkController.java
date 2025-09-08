@@ -13,7 +13,7 @@ import com.bullPenTalk.app.admin.dao.AdminMainNoticeDAO;
 import com.bullPenTalk.app.admin.dao.AdminTeamNoticeDAO;
 import com.bullPenTalk.app.dto.GuidePostDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
-import com.bullPenTalk.app.dto.TeamNoticePostDTO;
+import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
 
 public class AdminDeleteNoticeOkController implements Execute{
 
@@ -36,7 +36,7 @@ public class AdminDeleteNoticeOkController implements Execute{
 		case 2:
 			result.setPath("/admin/adminMainNoticeListOk.ad");
 			AdminTeamNoticeDAO adminTeamNoticeDAO = new AdminTeamNoticeDAO();
-			TeamNoticePostDTO teamNoticeDTO = adminTeamNoticeDAO.selectDetail(postNumber);
+			TeamNoticeDetailDTO teamNoticeDTO = adminTeamNoticeDAO.selectDetail(postNumber);
 			if(teamNoticeDTO != null) adminTeamNoticeDAO.delete(postNumber);
 			break;
 		case 3:

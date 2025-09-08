@@ -72,26 +72,26 @@
 	]]>
 	</select>
 	
-	<!-- 목록 검색 -->
-	<select id = "selectFilter" parameterType = "string" resultType = "MainNoticePostDTO">
-	<![CDATA[
-		SELECT *
-		FROM (
-	    	SELECT ROWNUM AS rnum, subquery.*
-	    	FROM (
-	        	SELECT P.NOTICE_POST_NUMBER,
-	        	       P.NOTICE_POST_TITLE,
-	        	       P.NOTICE_POST_CONTENT,
-	        	       P.NOTICE_POST_DATE
-	        	FROM TBL_NOTICE_POST P
-	        	WHERE P.NOTICE_TYPE_ID = 1
-	          	AND P.NOTICE_POST_TITLE LIKE '%' || #{postTitle} || '%'
-	        	ORDER BY P.NOTICE_POST_DATE DESC
-	    	) subquery
-		)
-		WHERE rnum BETWEEN #{startRow} AND #{endRow}
-	]]>
-	</select>
+		<!-- 목록 검색 -->
+<!-- 	<select id = "selectFilter" parameterType = "string" resultType = "MainNoticePostDTO"> -->
+<!-- 	<![CDATA[ -->
+<!-- 		SELECT * -->
+<!-- 		FROM ( -->
+<!-- 	    	SELECT ROWNUM AS rnum, subquery.* -->
+<!-- 	    	FROM ( -->
+<!-- 	        	SELECT P.NOTICE_POST_NUMBER, -->
+<!-- 	        	       P.NOTICE_POST_TITLE, -->
+<!-- 	        	       P.NOTICE_POST_CONTENT, -->
+<!-- 	        	       P.NOTICE_POST_DATE -->
+<!-- 	        	FROM TBL_NOTICE_POST P -->
+<!-- 	        	WHERE P.NOTICE_TYPE_ID = 1 -->
+<!-- 	          	AND P.NOTICE_POST_TITLE LIKE '%' || #{postTitle} || '%' -->
+<!-- 	        	ORDER BY P.NOTICE_POST_DATE DESC -->
+<!-- 	    	) subquery -->
+<!-- 		) -->
+<!-- 		WHERE rnum BETWEEN #{startRow} AND #{endRow} -->
+<!-- 	]]> -->
+<!-- 	</select> -->
 	
 	<!-- 수정 -->
 	<update id = "update" parameterType = "MainNoticePostDTO">

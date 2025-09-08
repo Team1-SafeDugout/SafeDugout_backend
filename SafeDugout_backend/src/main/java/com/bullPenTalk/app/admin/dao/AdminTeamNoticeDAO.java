@@ -49,7 +49,7 @@ public class AdminTeamNoticeDAO {
 		return sqlSession.selectList("adminTeamNotice.selectFilter", postName);
 	}
 	
-	public TeamNoticePostDTO selectDetail(int noticePostNumber) {
-		return sqlSession.selectOne("adminTeamNotice.selectFilter", noticePostNumber);
+	public TeamNoticeDetailDTO selectDetail(int noticePostNumber) {
+		return sqlSession.selectOne("adminTeamNotice.selectDetail", noticePostNumber);
 	}
 }
