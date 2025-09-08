@@ -92,33 +92,83 @@ ul{
   background-color: #dcd6d04f;
 }
 /* 입문자 가이드 */
-/* 입문자 가이드 행 공통 */
-.free-guide-header,
-.free-guide-list {
-  display: flex;
-  align-items: center;
+/* 입문가이드 컨테이너 기본 스타일 */
+.free-guide-list-container {
+  width: 1200px;
+  min-height: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* 입문가이드 제목 h2 */
+.free-guide-list-container > h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* 리스트 박스 내 ul 스타일 */
+.free-guide-list-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+
+/* 리스트 헤더 li */
+.free-guide-list-header {
+  background-color: #DCD6D0;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 20px;
   border-bottom: 1px solid #ddd;
-  padding: 8px 0;
 }
 
-.free-guide-header div:nth-child(1),
-.free-guide-list div:nth-child(1) {
-  width: 80px;       
-  text-align: center;  
+/* 개별 리스트 아이템 */
+.free-guide-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
-.free-guide-header div:nth-child(2),
-.free-guide-list div:nth-child(2) {
-  flex: 1;           
-  text-align: center; 
+/* 호버 시 배경색 변화 */
+.free-guide-list-item:hover {
+  background-color: #c6c7c7;
+}
+
+/* 제목 영역 */
+.free-guide-title a {
   color: black;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  display: inline-block;
 }
 
+/* 제목 링크 호버 효과 */
+.free-guide-title a:hover {
+  text-decoration: underline;
+}
 
-
-.free-board-list div> a,
-.free-guide-list div> a{
-
-  color: black;
+/* 날짜 영역 */
+.free-guide-date {
+  color: #878787;
+  font-size: 14px;
+  margin-top: 6px;
+  white-space: nowrap;
 }

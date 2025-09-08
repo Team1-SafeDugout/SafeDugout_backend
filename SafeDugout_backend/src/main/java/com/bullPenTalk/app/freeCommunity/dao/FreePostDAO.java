@@ -75,6 +75,6 @@ public class FreePostDAO {
     
     // 메인페이지 조회
     public List<FreePostDTO> selectLatestPosts(int count) {
-        return sqlSession.selectList("FreeCommunityPostMapper.selectLatestPosts", count);
+        return sqlSession.selectList("freeCommunity.selectMain", count);
     }
 }

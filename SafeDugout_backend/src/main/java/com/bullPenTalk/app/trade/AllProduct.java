@@ -43,7 +43,7 @@ public class AllProduct implements TradeService{
 			break;
 		case "deletepostok":
 			DeleteOkController delete = new DeleteOkController();
-			delete.deleteSellPost(request, response);
+			result = delete.deleteSellPost(request, response);
 			break;
 		}
 

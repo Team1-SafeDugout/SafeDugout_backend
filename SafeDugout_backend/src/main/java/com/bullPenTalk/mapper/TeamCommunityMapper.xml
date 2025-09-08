@@ -444,7 +444,7 @@
 	    FOOD_TIP,
 	    STADIUM_NUMBER
 	FROM TBL_STADIUM_FOOD
-	WHERE TEAM_NUMBER = #{stadiumNumber}
+	WHERE STADIUM_NUMBER = #{stadiumNumber}
 	</select>
 	
 	<!-- 게임 일정 조회 -->

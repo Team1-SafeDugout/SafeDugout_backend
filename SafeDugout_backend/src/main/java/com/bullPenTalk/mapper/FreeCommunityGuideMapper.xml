@@ -49,10 +49,14 @@
 	
 	<!-- 메인페이지 조회 -->
 	<select id="selectLatestPosts" parameterType="int" resultType="GuidePostDTO">
-	    SELECT *
-	    FROM TBL_GUIDE_POST
-	    ORDER BY NOTICE_POST_DATE DESC
-	    FETCH FIRST #{count} ROWS ONLY
+	    <![CDATA[
+	    SELECT P.NOTICE_POST_NUMBER,
+	           P.NOTICE_POST_TITLE,
+	           P.NOTICE_POST_CONTENT,
+	           P.NOTICE_POST_DATE
+	    FROM TBL_NOTICE_POST P
+	    WHERE P.NOTICE_TYPE_ID = 3
+	    ORDER BY P.NOTICE_POST_DATE DESC
+	    ]]>
 	</select>
-	
 </mapper>

@@ -106,11 +106,21 @@
 	</select>
 
 	<!-- 메인페이지 조회 -->
-	<select id="selectLatestPosts" parameterType="int" resultType="FreePostDTO">
-	    SELECT *
-	    FROM TBL_FREE_POST
-	    ORDER BY POST_DATE DESC
-	    FETCH FIRST #{count} ROWS ONLY
+	<select id="selectMain" parameterType="int" resultType="FreePostDTO">
+	    <![CDATA[
+	    SELECT P.POST_NUMBER,
+	           P.POST_TITLE,
+	           P.POST_CONTENT,
+	           P.POST_DATE,
+	           P.POST_UPDATE,
+	           P.MEMBER_NUMBER,
+	           M.MEMBER_ID AS MEMBER_ID,
+	           P.TEAM_NUMBER,
+	           P.POST_TYPE
+	    FROM TBL_POST P
+	    JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
+	    WHERE P.POST_TYPE = 1
+	    ORDER BY P.POST_DATE DESC
+	    ]]>
 	</select>
-
 </mapper>

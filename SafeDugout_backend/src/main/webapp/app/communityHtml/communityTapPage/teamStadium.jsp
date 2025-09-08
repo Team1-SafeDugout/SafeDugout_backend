@@ -66,34 +66,34 @@
       <div>
         <c:choose>
 	      <c:when test="${sessionScope.teamNumber == 1}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/doosanStadium.jpg" alt="두산 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/doosanStadium.webp" alt="두산 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 2}">
 	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lgStadium.jpg" alt="lg 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 3}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/hanwhaStadium.jpg" alt="한화 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/hanwhaStadium.webp" alt="한화 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 4}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/samsungStadium.jpg" alt="삼성 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/samsungStadium.png" alt="삼성 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 5}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ssgStadium.jpg" alt="ssg 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ssgStadium.webp" alt="ssg 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 6}">
 	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ktStadium.jpg" alt="kt 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 7}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ncStadium.jpg" alt="nc 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/ncStadium.webp" alt="nc 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 8}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lotteStadium.jpg" alt="롯데 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/lotteStadium.webp" alt="롯데 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 9}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiaStadium.jpg" alt="kia 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiaStadium.webp" alt="kia 경기장">
 	      </c:when>
 	      <c:when test="${sessionScope.teamNumber == 10}">
-	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiwoomStadium.jpg" alt="키움 경기장">
+	        <img src="${pageContext.request.contextPath}/assets/img/stadium/kiwoomStadium.webp" alt="키움 경기장">
 	      </c:when>	      	      	      	      	      	      	      	      
 	    </c:choose>  
       </div>
