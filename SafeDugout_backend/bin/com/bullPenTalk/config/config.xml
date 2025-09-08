@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 카멜 케이스 매핑 설정 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<!-- 쿼리 결과 필드가 null인 경우 누락되지 않도록 설정 -->
+		<setting name="callSettersOnNulls" value="true" />
+
+		<!-- 쿼리에 보내는 파라미터가 null인 경우 오류가 발생하는 것을 방지 설정 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<!-- DTO 별칭 설정 추후 추가 -->
+	<!-- 
+	<typeAliases>
+		<typeAlias type="com.example.app.dto.MemberDTO"
+			alias="MemberDTO"></typeAlias>
+	</typeAliases> 
+	-->
+	<typeAliases>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminUserPostDTO" alias = "AdminUserPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminTradeListDTO" alias="AdminTradeListDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminSellPostDTO" alias="AdminSellPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PointPaymentDTO" alias="PointPaymentDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PaymentDTO" alias="PaymentDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MemberDTO" alias="MemberDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AdminDTO" alias="AdminDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AttachmentDTO" alias="AttachmentDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AttachmentTypeDTO" alias="AttachmentTypeDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.BatterRecordDTO" alias="BatterRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.BoardTypeDTO" alias="BoardTypeDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.ChampionshipRecordDTO" alias="ChampionshipRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.CommentDTO" alias="CommentDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.DeffenseBaseRecordDTO" alias="DeffenseBaseRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.FreePostDTO" alias="FreePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.GameScheduleByNameDTO" alias="GameScheduleByNameDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.GameScheduleDTO" alias="GameScheduleDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.GuidePostDTO" alias="GuidePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MainDTO" alias="MainDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MainNoticePostDTO" alias="MainNoticePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.AddressDTO" alias="AddressDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MatchResultDTO" alias="MatchResultDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MemberAddressDTO" alias="MemberAddressDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MemberPostDTO" alias="MemberPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MyPageCommentDTO" alias="MyPageCommentDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.MyPageTradeListDTO" alias="MyPageTradeListDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.NewsPostDTO" alias="NewsPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.NewsDetailDTO" alias="NewsDetailDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.NoticePostDTO" alias="NoticePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamNoticeDetailDTO" alias="TeamNoticeDetailDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.NoticeTypeDTO" alias="NoticeTypeDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PitcherRecordDTO" alias="PitcherRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PlayerDTO" alias="PlayerDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PointChargeRecordDTO" alias="PointChargeRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PostDTO" alias="PostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.PostDetailDTO" alias="PostDetailDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.SellPostDTO" alias="SellPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.SellPostDetailDTO" alias="SellPostDetailDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.SongPostDTO" alias="SongPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.StadiumDTO" alias="StadiumDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.StadiumDetailDTO" alias="StadiumDetailDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.StadiumFoodDTO" alias="StadiumFoodDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.StadiumTicketDTO" alias="StadiumTicketDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.StatisticsDTO" alias="StatisticsDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamAdminPostDTO" alias="TeamAdminPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamBatterRecordDTO" alias="TeamBatterRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamDTO" alias="TeamDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamNoticePostDTO" alias="TeamNoticePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamPitcherRecordDTO" alias="TeamPitcherRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamPostDTO" alias="TeamPostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamRankDTO" alias="TeamRankDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamRecordDTO" alias="TeamRecordDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TradePostDTO" alias="TradePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.UpdateMemberDTO" alias="UpdateMemberDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.YoutubePostDTO" alias="YoutubePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.TeamMainDTO" alias="TeamMainDTO"></typeAlias>
+	</typeAliases>
+
+	<environments default="oracle">
+		<environment id="oracle">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521/xe" />
+				<property name="username" value="safeDugout" />
+				<property name="password" value="bullPen9925" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- mapper.xml 추후 추가 -->
+	<!-- 
+	<mappers>
+		<mapper resource="com/example/mapper/MemberMapper.xml" />
+	</mappers> 
+	-->
+	<mappers>
+		<mapper resource="com/bullPenTalk/mapper/PaymentMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/Admin.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminFreePostMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminGuideMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminMainNoticeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminNewsMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminSellPostMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminSongMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminTeamNoticeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminTeamPostMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminTradeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AdminYoutubeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/AttachmentMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/FreeCommentMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/FreeCommunityPostMapper.xml"/>
+		<mapper resource="com/bullPenTalk/mapper/FreeCommunityGuideMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/MainMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/MemberMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/MyPageMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/SellMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TeamCommunityMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TeamCommunityNoticeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TeamCommentMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TradeMapper.xml" />
+		<mapper resource="com/bullPenTalk/mapper/TeamMainMapper.xml" />
+	</mappers>
+	
+</configuration>
+
+
+
+
+
+
+

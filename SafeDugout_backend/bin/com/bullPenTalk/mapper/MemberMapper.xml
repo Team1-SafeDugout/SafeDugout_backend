@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "member">
+	<!-- 로그인 -->
+	<select id="login" parameterType="MemberDTO" resultType="int">
+		select member_number from tbl_member
+		where member_id = #{memberId} and member_pw = #{memberPw}
+	</select>
+	
+	
+	<!-- 회원가입 -->
+	<insert id = "join" parameterType = "MemberDTO">
+		INSERT INTO TBL_MEMBER (MEMBER_NUMBER,MEMBER_NAME,MEMBER_PHONE,MEMBER_ID,MEMBER_PW,MEMBER_EMAIL,MEMBER_MY_TEAM,MEMBER_POINT,MEMBER_JOIN_DATE,MEMBER_POSTAL_CODE)
+		VALUES (seq_member.nextval, #{memberName}, #{memberPhone}, #{memberId}, #{memberPw}, #{memberEmail}, #{memberMyTeam}, #{memberPoint}, SYSDATE, #{memberPostalCode})
+	</insert>
+	
+	
+	<!-- 아이디 중복 확인 -->
+	<select id = "checkId" parameterType = "string" resultType = "int">
+		select Count(member_number) from tbl_member
+		where member_id = #{memberId}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id = "findId" parameterType = "MemberDTO" resultType = "string">
+		select member_name from tbl_member
+		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
+	</select>
+	
+	<select id="selectByNumber" parameterType="int" resultType="MemberDTO">
+	    SELECT MEMBER_ID, MEMBER_NUMBER, MEMBER_NAME, MEMBER_EMAIL
+	    FROM TBL_MEMBER
+	    WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
+	
+	<!-- 탈퇴시 비밀번호 검사 -->
+	<select id = "checkPw" parameterType = "MemberDTO" resultType = "int">
+		select Count(member_number) from tbl_member
+		where member_id = #{memberId} AND member_pw = #{memberPw}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id = "findPw" parameterType = "MemberDTO" resultType = "string">
+		select Count(member_number) from tbl_member
+		where member_id = #{memberId} and member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
+	</select>
+	
+	
+	<!-- 비밀번호 찾기 이후 비밀번호 변경 -->
+	<update id="changePw" parameterType = "MemberDTO">
+		UPDATE TBL_MEMBER 
+		SET MEMBER_PW =  #{memberPw}
+		WHERE MEMBER_ID =  #{memberId}
+	</update>
+	
+	
+	<!-- 회원 전체 목록 -->
+	<select id ="selectAll" resultType = "MemberDTO">
+		SELECT MEMBER_NUMBER,MEMBER_NAME,MEMBER_PHONE,MEMBER_ID,MEMBER_PW,MEMBER_EMAIL,MEMBER_MY_TEAM,MEMBER_POINT,MEMBER_JOIN_DATE,MEMBER_POSTAL_CODE
+	    FROM TBL_MEMBER
+	</select>
+	
+		<!-- 전체 회원 수 -->
+	<select id = "getTotal" resultType = "int">
+		select COUNT(MEMBER_NUMBER)
+		FROM TBL_MEMBER
+	</select>
+	
+	<!-- 회원 조회 -->
+	<select id ="select" resultType = "MemberDTO" parameterType = "int">
+	SELECT MEMBER_NUMBER,MEMBER_NAME,MEMBER_PHONE,MEMBER_ID,MEMBER_PW,MEMBER_EMAIL,MEMBER_MY_TEAM,MEMBER_POINT,MEMBER_JOIN_DATE,MEMBER_POSTAL_CODE
+	FROM TBL_MEMBER
+	WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
+	
+	<!-- 회원 마이팀 조회 -->
+	<select id = "selectMyTeam" resultType = "string" parameterType = "int">
+	SELECT TT.TEAM_NAME
+	FROM TBL_MEMBER TM
+	JOIN TBL_TEAM TT ON TM.MEMBER_MY_TEAM = TT.TEAM_NUMBER
+	WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
+	
+	<!-- 회원 목록 -->
+	<select id ="listSelect" resultType = "MemberDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL
+	        FROM TBL_MEMBER
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>
+	</select>
+	
+
+	
+	<!-- 회원이 작성한 글 목록 -->
+	<select id ="postListSelect" resultType = "SellPostDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT POST_TITLE,
+				   POST_CONTENT,
+				   POST_DATE,
+				   POST_UPDATE,
+				   MEMBER_NUMBER
+	        FROM TBL_POST
+	        WHERE MEMBER_NUMBER = #{memberNumber}
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
+	]]>
+	</select>
+	
+	<!-- 회원이 판매중인 글 목록 -->
+	<select id ="sellPostListSelect" resultType = "SellPostDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT SP.SELL_POST_NUMBER,
+	               SP.SELL_POST_TITLE,
+	               SP.SELL_POST_CONTENT,
+	               SP.PRICE_POINT,
+	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
+	               M.MEMBER_ID AS Buyer_ID,
+	               TS.STATUS_NAME
+	        FROM TBL_SELL_POST SP
+	        JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	        JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	        JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	        WHERE TS.STATUS_ID = 'SELL' AND M.MEMBER_NUMBER = #{memberNumber}
+	        ORDER BY SP.SELL_POST_CREATION_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
+	]]>
+	</select>
+	
+	<!-- 회원이 거래중인 글 목록 -->
+	<select id ="tradePostListSelect" resultType = "SellPostDTO" parameterType = "map">
+	<![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM (
+	        SELECT SP.SELL_POST_NUMBER,
+	               SP.SELL_POST_TITLE,
+	               SP.SELL_POST_CONTENT,
+	               SP.PRICE_POINT,
+	               SP.TRADING_AREA,
+	               SP.SELL_POST_CREATION_DATE,
+	               M.MEMBER_ID AS Buyer_ID,
+	               TS.STATUS_NAME
+	        FROM TBL_SELL_POST SP
+	        JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	        JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER = TP.SELL_POST_NUMBER
+	        JOIN TBL_TRADE_STATUS TS ON TP.STATUS_NUMBER = TS.STATUS_ID
+	        WHERE TS.STATUS_ID = 'SOLD' AND M.MEMBER_NUMBER = #{memberNumber}
+	        ORDER BY SP.SELL_POST_CREATION_DATE DESC
+	    ) subquery
+	)
+	WHERE rnum BETWEEN #{pagination.startRow} AND #{pagination.endRow}
+	]]>
+	</select>
+	
+	
+	<!-- 회원 포인트 조회 -->
+    <select id="getMemberPoint" parameterType="int" resultType="int">
+        SELECT MEMBER_POINT
+        FROM TBL_MEMBER
+        WHERE MEMBER_NUMBER = #{memberNumber}
+    </select>
+    
+    <!-- 회원이 작성한 글 페이지 네이션 -->
+    <select id = "selectPostPage" parameterType = "map" resultType = "PostDTO">
+    <![CDATA[
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS rnum, subquery.*
+	    FROM(
+	    SELECT TP.POST_NUMBER, TP.POST_TITLE , TP.POST_TYPE
+		FROM TBL_POST TP
+		WHERE (TP.POST_TYPE = 1 OR TP.POST_TYPE = 2) AND TP.MEMBER_NUMBER = #{memberNumber}
+		ORDER BY TP.POST_NUMBER DESC
+		) subquery
+	)
+	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	]]>	
+    </select>
+    
+    <select id = "getTotalPost" parameterType = "int" resultType = "int">
+    SELECT COUNT(TP.POST_NUMBER)
+    FROM TBL_POST TP
+	WHERE (TP.POST_TYPE = 1 OR TP.POST_TYPE = 2) AND TP.MEMBER_NUMBER = #{memberNumber}
+    </select>
+    
+    <!-- 사용자 팀번호 반환 -->
+    <select id = "getTeamNumber" parameterType = "int" resultType = "int">
+    SELECT M.TEAM_NUMBER
+    FROM TBL_MEMBER M
+    WHERE M.MEMBER_NUMBER = #{memberNumber}
+    </select>
+    
+    
+</mapper>
