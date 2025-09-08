@@ -11,48 +11,43 @@ import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.sellPost.dao.SellPostDAO;
+import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
 
 public class DeleteOkController {
 
-    public Result deleteSellPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        SellPostDAO sellPostDAO = new SellPostDAO();
-        AttachmentDAO attachmentDAO = new AttachmentDAO();
-        Result result = new Result();
+	public Result deleteSellPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        try {
-            int sellPostNumber = Integer.parseInt(request.getParameter("sellPostNumber"));
+		SellPostDAO sellPostDAO = new SellPostDAO();
+		AttachmentDAO attachmentDAO = new AttachmentDAO();
+		Result result = new Result();
 
-            // 권한 체크
-            int sessionMember = (Integer) request.getSession().getAttribute("memberNumber");
-            int postWriter = sellPostDAO.getWriter(sellPostNumber);
+		try {
+			int postNumber = Integer.parseInt(request.getParameter("sellPostNumber"));
 
-            if (sessionMember != postWriter) {
-                response.sendRedirect(request.getContextPath() + "/trade/tradeMain.tr?status=noAuth");
-                return;
-            }
+			// 첨부파일 조회 (서버 파일 삭제용)
+			List<AttachmentDTO> attachments = attachmentDAO.selectByPost(postNumber);
+			for (AttachmentDTO attachment : attachments) {
+				File file = new File(
+						request.getSession().getServletContext().getRealPath("/") + attachment.getAttachmentPath());
+				if (file.exists()) {
+					file.delete();
+					System.out.println("파일 삭제: " + file.getAbsolutePath());
+				}
+			}
 
-            // 첨부파일 삭제
-            List<AttachmentDTO> attachments = attachmentDAO.selectBySellPost(sellPostNumber);
-            for (AttachmentDTO attachment : attachments) {
-                File file = new File(
-                        request.getSession().getServletContext().getRealPath("/") + attachment.getAttachmentPath());
-                if (file.exists() && !file.delete()) {
-                    System.out.println("파일 삭제 실패: " + file.getAbsolutePath());
-                }
-            }
+			// 판매글 삭제 (DB에서 첨부파일, 매핑 자동 삭제)
+			sellPostDAO.delete(postNumber);
+			System.out.println("판매글 삭제 완료: " + postNumber);
 
-            // DB에서 판매글 삭제
-            sellPostDAO.delete(sellPostNumber);
-            System.out.println("판매글 삭제 완료: " + sellPostNumber);
+			result.setPath("/trade/SellPostFrontController2.tr?category=allporduct&action=list");
+			result.setRedirect(true);
 
-            // 삭제 성공
-            result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");
-            result.setRedirect(false);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			return null;
+		}
 
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/trade/tradeMain.tr?status=error");
-        }
-    }
+		return result;
+	}
+
 }
-

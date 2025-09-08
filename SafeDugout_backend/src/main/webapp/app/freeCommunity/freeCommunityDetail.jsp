@@ -10,12 +10,11 @@
   <title>불펜토크</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamPostDetail.css">
   <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/freeCommunityDetail.js"></script>
-  <script defer src="${pageContext.request.contextPath}/assets/js/include.js"></script>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
 </head>
 <body>
-  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
+  <jsp:include page="/header.jsp" />
   <main>
     <div class="team-post-container">
       <!-- 게시글 -->
@@ -64,7 +63,7 @@
       </section>
     </div>
   </main>
-  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
+  <jsp:include page="/footer.jsp" />
   <script>
 	let memberNumber = "${sessionScope.memberNumber}";
   </script>

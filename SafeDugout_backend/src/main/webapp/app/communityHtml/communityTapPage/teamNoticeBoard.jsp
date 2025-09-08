@@ -71,7 +71,7 @@
         <c:choose>
 			<c:when test="${not empty noticePostList}">
 				<c:forEach var="notice" items="${noticePostList}">
-					<li class="free-guide-list-item">
+					<li class="team-notice-list-item">
 						<div class="notice-title">
 							<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${notice.noticePostNumber}">
 								<c:out value="${notice.noticePostTitle}" />

@@ -1,62 +1,97 @@
 @charset "UTF-8";
-*{
+/* ================== 전체 초기화 ================== */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* 전체 영역 */
+
+/* ================== 컨테이너 ================== */
 .team-song-list-player {
-  width: 80%;
+  width: 1200px;
   margin: 40px auto;
+  min-height: 800px;
+  padding: 0 20px;
 }
 
-/* 제목 */
-.team-song-list-player h2 {
-  text-align: center;
+/* 제목 h2 */
+.team-song-list-player > h2 {
+  text-align: left;
   margin-bottom: 20px;
   font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 6px;
 }
 
-
-/* 리스트 전체 */
+/* ================== 리스트 전체 ================== */
 #team-song-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-collapse: collapse;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fafafa;
 }
 
-/* 헤더 */
+/* 리스트 헤더 */
 .team-song-list-header {
   display: flex;
-  color: black;
-  font-weight: bold;
-  padding: 12px 0;
-  border: 1px solid #ccc;
+  align-items: center;
+  background-color: #e0e0e0;
+  font-weight: 700;
+  padding: 14px 20px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
 }
 
-.team-song-num{
-  /* flex: 1; */
-  text-align: left;
-  color: black;
-  margin-left: 20px;
+/* 컬럼별 너비 */
+.team-song-num {
+  width: 80px;
+  text-align: center;
 }
+
 .team-song-title {
   flex: 1;
-  color: black;
   text-align: center;
+  padding-left: 10px;
 }
 
-/* 각 행 */
+/* ================== 개별 리스트 아이템 ================== */
 .team-song-list-row {
   display: flex;
-  border: 1px solid #ccc;
-  border-top: none;
-  padding: 12px 0;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.team-song-list-row span {
-  flex: 1;
+.team-song-list-row:hover {
+  background-color: #c6c7c7;
+}
+
+/* 컬럼 텍스트 */
+.team-song-list-row .team-song-num {
   text-align: center;
-  color: #333;
+}
+
+.team-song-list-row .team-song-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  text-align: center;
+}
+
+.team-song-list-row .team-song-title a {
+  text-decoration: none;
+  color: black;
+}
+
+.team-song-list-row .team-song-title a:hover {
+  text-decoration: underline;
 }
