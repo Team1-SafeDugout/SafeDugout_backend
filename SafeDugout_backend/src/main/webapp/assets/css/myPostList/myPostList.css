@@ -1,69 +1,81 @@
+@charset "UTF-8";
 /* 기본 설정 */
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #f0ece7;
+    background-color: white;
     margin: 0;
     padding: 0;
     color: #333;
 }
 
-/* 헤더 */
-header {
-    background-color: #d9cfc3;
-    padding: 10px 20px;
+/* 전체 컨테이너 */
+.main-full {
+    width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-}
-
-header .logo {
-    font-weight: bold;
-    color: #c0392b;
-    font-size: 20px;
-}
-
-header .user-info {
-    font-size: 14px;
 }
 
 /* 왼쪽 사이드 메뉴 */
 .sidebar {
-    width: 200px;
-    background-color: #f7f3ef;
+    width: 12%;
+    background-color: white;
     padding: 20px;
+    padding-top: 33px;
     box-shadow: 1px 0 5px rgba(0,0,0,0.1);
     height: 100vh;
 }
 
+.sidebar ul {
+    list-style: none;
+}
+
 .sidebar h2 {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-.sidebar button {
+.sidebar a {
     display: block;
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #ddd;
+    background-color: #EFEFEF;
     border: none;
     cursor: pointer;
+    color: black;
+    text-decoration: none;
     text-align: left;
     font-size: 14px;
 }
 
-.sidebar button:hover {
+.sidebar a:hover {
     background-color: #bbb;
 }
 
 /* 메인 컨텐츠 */
-.main {
-    margin-left: 220px;
+.main-content {
+    width: 50%;
     padding: 20px;
 }
 
-/* 게시글 테이블 */
-.board-table {
+.main-content h3 {
+    /* font-size: 18px; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* 메인 박스 */
+.content-box{
+    background-color: #EFEFEF;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 게시글 목록 */
+.post-list {
     width: 100%;
     border-collapse: collapse;
     background-color: #fff;
@@ -71,69 +83,159 @@ header .user-info {
     margin-top: 20px;
 }
 
-.board-table th, .board-table td {
-    padding: 10px;
-    text-align: center;
+.post-list-top, .post-list-row {
     border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-list-top div, .post-list-row div {
+    padding: 10px;
     font-size: 14px;
 }
 
-.board-table th {
-    background-color: #eee;
+.post-list-top {
+    background-color: #DCD6D0;
 }
 
-.board-table td button {
-    padding: 5px 10px;
+.post-list-top button {
+    background: transparent;
+    border: none;
+}
+
+.post-list-row button {
+    /* padding: 5px 10px; */
     background-color: #ccc;
     border: none;
     cursor: pointer;
 }
 
-.board-table td button:hover {
+.post-list-row button:hover {
     background-color: #999;
+}
+
+.post-list-number {
+    width: 10%;
+    text-align: center;
+}
+
+.post-list-title {
+    width: 50%;
+    text-align: left;
+}
+
+.post-list-title a {
+    color: black;
+    flex: 1;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.post-list-title a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.post-list-date {
+    width: 10%;
+    text-align: left;
+}
+
+.post-list-delete {
+    width: 12%;
+}
+
+/* 게시글 작성 버튼 */
+.write-post {
+    display: flex;
+    justify-content: end;
+}
+
+.write-post a{
+    margin-right: 10px;
+    color: black;
+    text-decoration: none;
 }
 
 /* 페이지네이션 */
 .pagination {
     margin-top: 15px;
+    display: flex;
+    align-items: center;
     text-align: center;
 }
 
-.pagination button {
-    padding: 5px 10px;
-    margin: 0 3px;
-    background-color: #ddd;
-    border: none;
-    cursor: pointer;
+.pagination ul {
+    display: flex;
+    list-style: none;
 }
 
-.pagination button:hover {
+.pagination a {
+    padding: 5px 10px;
+    margin: 0 3px;
+    background-color: #F5F5F5;
+    border: none;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.pagination a:hover {
     background-color: #bbb;
 }
 
 /* 포인트 박스 */
 .point-box {
-    position: absolute;
-    top: 100px;
-    right: 30px;
-    background-color: #f7f3ef;
+    background-color: #EFEFEF;
     border: 1px solid #aaa;
+    width: 15%;
+    height: 200px;
     padding: 20px;
-    width: 150px;
+    margin-top: 87px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     font-size: 14px;
 }
 
-.point-box .charge-btn {
+.my-point-text {
+    width: 100%;
+    text-align: left;
+}
+
+.my-point-value {
+    width: 80%;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+}
+
+.point-box a {
+    color: black;
+}
+
+.charge-list-btn {
+    margin-bottom: 10px;
+}
+
+.charge-btn {
     display: inline-block;
     margin-top: 10px;
-    background-color: #ddd;
+    background-color: #DCD6D0;
     padding: 10px;
     border-radius: 50%;
     font-weight: bold;
-    cursor: pointer;
+    text-decoration: none;
 }
 
-.point-box .charge-btn:hover {
+.charge-btn:hover {
     background-color: #bbb;
 }

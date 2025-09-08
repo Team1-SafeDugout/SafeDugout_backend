@@ -11,10 +11,10 @@ body {
 /* 전체 컨테이너 */
 .main-full {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 /* 왼쪽 사이드 메뉴 */
@@ -68,11 +68,11 @@ body {
 /* 메인 박스 */
 .content-box{
     background-color: #EFEFEF;
-    height: 70%;
+    height: 35%;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     position: relative;
 }
@@ -81,126 +81,36 @@ body {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 24px;
+  text-align: center;
 }
 
-/* 게시글 목록 */
-.post-list {
-    background-color: #EFEFEF;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-    width: 100%;
-}
-
-.post-list-top, .post-list-row {
-  background-color: white;
-    border-bottom: 1px solid #ddd;
+/* 컨텐트 */
+.box-content {
+    width: 60%;
     display: flex;
     justify-content: space-between;
 }
 
-.post-list-top {
-    background-color: #DCD6D0;
+.box-content form {
+  position: relative;
 }
 
-.post-list-top button {
-    background: transparent;
-    border: none;
+.box-content form > span {
+  position: absolute;
+  top: -15px;
+  font-size: 10px;
+  color: red;
 }
 
-.post-list-row {
-  height: 145px;
-}
-
-.post-list-row>div {
-    font-size: 14px;
-}
-
-.product-list-img {
-  padding: 10px;
-}
-
-.product-list-img img {
-  width: 130px;
-  height: 130px;
-}
-
-.product-list-info-middle {
-  padding: 15px;
-  width: 35%;
-}
-
-.product-list-info-right {
-  padding: 15px;
-  width: 27%;
-}
-
-.product-list-info-middle > div, .product-list-info-right > div {
-  margin-bottom: 8px;
-}
-
-.product-list-title {
+/* 버튼 컨테이너*/
+.button-container {
   width: 100%;
   display: flex;
-  justify-content: space-between; 
-}
-
-.product-list-title a{
-  color: black;
-  flex: 1;
-  text-decoration: none;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.product-list-title a:hover{
-  text-decoration: underline;
-}
-
-.product-list-deal-type {
-  width: 75%;
-  display: flex;
-  justify-content: space-between; 
-}
-
-.product-list-seller {
-  width: 75%;
-  display: flex;
-  justify-content: space-between; 
-}
-
-.product-list-minus-point {
-  text-align: right;
-}
-
-.product-list-remain-point {
-  width: 100%;
-  display: flex;
-  justify-content: space-between; 
-}
-
-.product-list-buy-date {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.product-list-complete-date {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* 판매글 버튼 컨테이너*/
-.product-list-button-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  justify-content: end;
 }
 
 /* 확인 버튼 */
-.product-list-button-confirm {
+.button-confirm {
   border: 1px solid #ccc;
   background-color: #DCD6D0;
   width: 120px;
@@ -213,13 +123,13 @@ body {
   text-align: center;
 }
 
-/* 판매글 버튼 컨테이너 a 태그 */
-.product-list-button-container a {
+/* 버튼 컨테이너 a 태그 */
+.button-container a {
 
 }
 
-/* 판매글 버튼 컨테이너 a 태그 호버 */
-.product-list-button-container a:hover {
+/* 버튼 컨테이너 a 태그 호버 */
+.button-container a:hover {
   cursor: pointer;
 }
 
