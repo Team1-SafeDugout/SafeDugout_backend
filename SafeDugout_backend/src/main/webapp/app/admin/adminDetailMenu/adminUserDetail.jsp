@@ -17,7 +17,7 @@
     	posts.push({
             number: "${board.postNumber}",
             title: "${board.postTitle}",
-            type: "${board.boardId}"
+            type: "${board.postType}"
         });
     </c:forEach>
     const contextPath = "${pageContext.request.contextPath}";
@@ -74,13 +74,13 @@
 	        <ul>
 	          
 	          <c:if test="${prev}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminReadMemberOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminReadMemberOk.ad?memberNumber=${memberDetail.memberNumber}&page=${startPage - 1}" class="prev">&lt;</a></li>
 	          </c:if>
 	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
 	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
 	          	<c:choose>
 	          		<c:when test="${!(i == page) }">
-	          			<li><a href="${pageContext.request.contextPath}/admin/adminReadMemberOk.ad?page=${i}">
+	          			<li><a href="${pageContext.request.contextPath}/admin/adminReadMemberOk.ad?memberNumber=${memberDetail.memberNumber}&page=${i}">
 	          				<c:out value="${i}" />
 	          			</a></li>
 	          		</c:when>
@@ -93,7 +93,7 @@
 	          </c:forEach>
 	          
 	          <c:if test="${next}">
-	          	<li><a href="${pageContext.request.contextPath}/admin/adminReadMemberOk.ad?page=${endPage + 1}" class="next">&gt;</a>
+	          	<li><a href="${pageContext.request.contextPath}/admin/adminReadMemberOk.ad?memberNumber=${memberDetail.memberNumber}&page=${endPage + 1}" class="next">&gt;</a>
 	          </c:if>
 	          
 	        </ul>

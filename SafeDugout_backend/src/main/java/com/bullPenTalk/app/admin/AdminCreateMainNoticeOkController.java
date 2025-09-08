@@ -20,6 +20,7 @@ import com.bullPenTalk.app.dto.AdminDTO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.GuidePostDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
+import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
 import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -83,7 +84,7 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			break;
 
 		case "guide":
-			boardNum = 2;
+			boardNum = 3;
 			GuidePostDTO guidePost = new GuidePostDTO();
 			AdminGuideDAO guideDAO = new AdminGuideDAO();
 			
@@ -98,8 +99,8 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			break;
 
 		case "team":
-			boardNum = 3;
-			TeamNoticePostDTO teamPost = new TeamNoticePostDTO();
+			boardNum = 2;
+			TeamNoticeDetailDTO teamPost = new TeamNoticeDetailDTO();
 			AdminTeamNoticeDAO teamDAO = new AdminTeamNoticeDAO();
 
 			int teamNum = getTeamNumber(multipartRequest.getParameter("team-categories"));

@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -26,10 +27,14 @@ public class AdminMainNoticeDAO {
 		sqlSession.update("adminMainNotice.update", mainPostDTO);
 	}
 	
+	// 팀공지 전체공지 모두 조회
+	public List<MainNoticePostDTO> selectAll(Map<String, Integer> map) {
+		return sqlSession.selectList("adminMainNotice.selectAll", map);
+	}
 	// 조회(전부)
 	
-	public List<MainNoticePostDTO> select() {
-		return sqlSession.selectList("adminMainNotice.selectAll");
+	public List<MainNoticePostDTO> select(Map<String, Integer> map) {
+		return sqlSession.selectList("adminMainNotice.select", map);
 	}
 	
 	// 삭제
@@ -49,5 +54,9 @@ public class AdminMainNoticeDAO {
 	
 	public int getTotal() {
 		return sqlSession.selectOne("adminMainNotice.total");
+	}
+	
+	public int getTotalAll() {
+		return sqlSession.selectOne("adminMainNotice.totalAll");
 	}
 }

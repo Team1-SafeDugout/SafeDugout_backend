@@ -48,7 +48,8 @@ public class AdminFrontController extends HttpServlet {
 		
 		switch(target) {
 		case "/admin/adminLogin.ad":
-			request.getRequestDispatcher("/app/admin/login/adminLogin.jsp").forward(request, response);
+			result.setRedirect(true); //세션에 저장된 값은 유지
+			result.setPath("/app/admin/login/adminLogin.jsp");
 			break;
 		case "/admin/adminLoginOk.ad":
 			System.out.println("로그인 진입");

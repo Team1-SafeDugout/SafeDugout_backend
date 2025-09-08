@@ -49,7 +49,7 @@
 	</select>
 	
 	<select id = "total" resultType = "int">
-	SELECT COUNT(BOARD_ID)
+	SELECT COUNT(POST_TYPE)
 	FROM TBL_POST
 	WHERE POST_TYPE = 3
 	</select>

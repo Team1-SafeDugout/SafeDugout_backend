@@ -66,8 +66,8 @@ public class MemberDAO {
     }
     
     // 유저가 쓴 글 목록 조회
-    public List<PostDTO> getPosts(int memberNumber) {
-    	return sqlSession.selectList("member.selectPosts", memberNumber);
+    public int getTotal(int memberNumber) {
+    	return sqlSession.selectOne("member.getTotalPost", memberNumber);
     }
     
     public List<PostDTO> getPostsPage(Map<String, Integer> map){

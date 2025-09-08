@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>불펜토크 관리자</title>
+  <title>불펜 토크 관리자 페이지</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/login/adminlogin.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
@@ -21,7 +22,7 @@
       <form action="${pageContext.request.contextPath}/admin/adminLoginOk.ad" method="post">
         <div class="main-form-box">
           <div class="main-input-message">
-            아이디
+          아이디
           </div>
           <div class="main-input-blank">
             <input type="text" name="adminId" placeholder="아이디" id = "id" required>

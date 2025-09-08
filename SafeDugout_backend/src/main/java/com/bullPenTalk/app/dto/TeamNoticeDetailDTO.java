@@ -6,11 +6,12 @@ public class TeamNoticeDetailDTO {
 	
 	private int noticePostNumber;
 	private int adminNumber; // 관리자 이름
-	
+	private int teamNumber;
 	private String noticePostTitle;
 	private String noticePostContent;
 	private String noticePostDate;
 	private String noticePostUpdate;
+	private int noticeTypeId;
 
 	private List<AttachmentDTO> attachment;
 
@@ -28,6 +29,14 @@ public class TeamNoticeDetailDTO {
 
 	public void setAdminNumber(int adminNumber) {
 		this.adminNumber = adminNumber;
+	}
+
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
 	}
 
 	public String getNoticePostTitle() {
@@ -62,6 +71,14 @@ public class TeamNoticeDetailDTO {
 		this.noticePostUpdate = noticePostUpdate;
 	}
 
+	public int getNoticeTypeId() {
+		return noticeTypeId;
+	}
+
+	public void setNoticeTypeId(int noticeTypeId) {
+		this.noticeTypeId = noticeTypeId;
+	}
+
 	public List<AttachmentDTO> getAttachment() {
 		return attachment;
 	}
@@ -73,8 +90,11 @@ public class TeamNoticeDetailDTO {
 	@Override
 	public String toString() {
 		return "TeamNoticeDetailDTO [noticePostNumber=" + noticePostNumber + ", adminNumber=" + adminNumber
-				+ ", noticePostTitle=" + noticePostTitle + ", noticePostContent=" + noticePostContent
-				+ ", noticePostDate=" + noticePostDate + ", noticePostUpdate=" + noticePostUpdate + ", attachment="
-				+ attachment + "]";
-	}	
+				+ ", teamNumber=" + teamNumber + ", noticePostTitle=" + noticePostTitle + ", noticePostContent="
+				+ noticePostContent + ", noticePostDate=" + noticePostDate + ", noticePostUpdate=" + noticePostUpdate
+				+ ", noticeTypeId=" + noticeTypeId + ", attachment=" + attachment + "]";
+	}
+
+	
+	
 }

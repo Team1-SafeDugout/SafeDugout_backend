@@ -69,7 +69,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam, postTeamName){
 	postDate.style.textOverflow = "eclipse";
 
 	const postTitleLink = document.createElement('a');
-	postTitleLink.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&boardId=3");
+	postTitleLink.setAttribute("href", "/admin/adminReadPostOk.ad?postNumber=" + postNumberParam + "&postTypeId=3");
 	postTitleLink.appendChild(postTitleText);
 
 	postNum.appendChild(postNumText);
