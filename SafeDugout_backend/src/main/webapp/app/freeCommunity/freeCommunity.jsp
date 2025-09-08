@@ -75,30 +75,29 @@
 					<div class="free-guide-more">
 						<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeList.fc">더보기</a>
 					</div>
-					<ul id="free-guide-content">
-						<!-- 입문자 가이드 리스트 헤더 -->
-						<li class="free-guide-header">
-							<div>글번호</div>
-							<div>제목</div>
-						</li>
-						<!-- 입문자 가이드 추가 공간 -->
-						<c:choose>
-						<c:when test="${not empty goidePostList}">
-							<c:forEach var="notice" items="${goidePostList}">
-								<li class="free-guide-list-item">
-									<div class="free-guide-title">
-										<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${notice.noticePostNumber}">
-											<c:out value="${notice.noticePostTitle}" />
-										</a>
-									</div>
-									<div class="free-guide-date">
-										<fmt:formatDate value="${notice.noticePostDate}" pattern="yyyy-MM-dd" />
-									</div>
-								</li>
-							</c:forEach>
-						</c:when>
-					</c:choose>
-					</ul>
+					<div class="free-guide-list-box">
+						<ul id="free-guide-list">
+							<li class="free-guide-list-header">
+								<div class="free-guide-title">가이드 목록</div>
+							</li>
+							<c:choose>
+								<c:when test="${not empty guidePostList}">
+									<c:forEach var="notice" items="${guidePostList}">
+										<li class="free-guide-list-item">
+											<div class="free-guide-title">
+												<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${notice.noticePostNumber}">
+													<c:out value="${notice.noticePostTitle}" />
+												</a>
+											</div>
+											<div class="free-guide-date">
+												<fmt:formatDate value="${notice.noticePostDate}" pattern="yyyy-MM-dd" />
+											</div>
+										</li>
+									</c:forEach>
+								</c:when>
+							</c:choose>
+						</ul>							
+					</div>
 				</div>
 			</section>
 		</div>

@@ -28,16 +28,18 @@ public class FreeCommunityMainListController implements Execute{
 
 	        // 최신 자유게시판 글 10개 조회
 	        List<FreePostDTO> freePostList = freePostDAO.selectLatestPosts(10);
+	        freePostList = freePostList.stream().limit(3).toList();
 	        request.setAttribute("freePostList", freePostList);
 	        System.out.println("자유게시판 최신 10개: " + freePostList.size());
 
 	        // 최신 입문가이드 글 5개 조회
-	        List<GuidePostDTO> guidePostList = guidePostDAO.selectLatestPosts(5);
-	        request.setAttribute("goidePostList", guidePostList);
+	        List<GuidePostDTO> guidePostList = guidePostDAO.selectLatestPosts(10); 
+	        guidePostList = guidePostList.stream().limit(3).toList(); // 3개만
+	        request.setAttribute("guidePostList", guidePostList);
 	        System.out.println("입문가이드 최신 5개: " + guidePostList.size());
 
 	        // JSP 경로
-	        result.setPath("/app/freeCommunity/freeCommunityMain.jsp"); // 메인페이지 JSP
+	        result.setPath("/app/freeCommunity/freeCommunity.jsp"); // 메인페이지 JSP
 	        result.setRedirect(false);
 
 	        return result;

@@ -418,7 +418,7 @@
 	    STADIUM_ADDRESS,
 	    TEAM_NUMBER
 	FROM TBL_STADIUM
-	WHERE TEAM_NUMBER = #{teamNumber};
+	WHERE TEAM_NUMBER = #{teamNumber}
 	</select>
 	
 	<!-- 경기장 티켓 조회 -->
@@ -432,7 +432,7 @@
 	    WEEKEND_PRICE,
 	    RESERVATION_SITE
 	FROM TBL_STADIUM_TICKET
-	WHERE TEAM_NUMBER = #{stadiumNumber};
+	WHERE TEAM_NUMBER = #{stadiumNumber}
 	</select>
 	
 	<!-- 경기장 먹거리 조회 -->
@@ -444,7 +444,7 @@
 	    FOOD_TIP,
 	    STADIUM_NUMBER
 	FROM TBL_STADIUM_FOOD
-	WHERE TEAM_NUMBER = #{stadiumNumber};
+	WHERE TEAM_NUMBER = #{stadiumNumber}
 	</select>
 	
 	<!-- 게임 일정 조회 -->
@@ -467,7 +467,7 @@
 	WHERE
 	    gs.HOME_TEAM_NUMBER = #{teamNumber} OR gs.AWAY_TEAM_NUMBER = #{teamNumber}
 	ORDER BY
-	    gs.SCHEDULE_DATE;	
+	    gs.SCHEDULE_DATE
 	</select>
 	
 	<!-- 게시글 작성자 번호 조회 -->
