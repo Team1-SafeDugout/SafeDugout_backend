@@ -1,10 +1,10 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
@@ -23,8 +23,8 @@ public class AdminTeamNewsDAO {
 	
 	// 조회(전부)
 	
-	public List<NewsPostDTO> select() {
-		return sqlSession.selectList("adminNews.selectAll");
+	public List<NewsPostDTO> select(Map<String, Integer> pageMap) {
+		return sqlSession.selectList("adminNews.listSelect", pageMap);
 	}
 	
 	// 삭제

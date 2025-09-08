@@ -202,4 +202,13 @@
     FROM TBL_POST TP
 	WHERE (TP.POST_TYPE = 1 OR TP.POST_TYPE = 2) AND TP.MEMBER_NUMBER = #{memberNumber}
     </select>
+    
+    <!-- 사용자 팀번호 반환 -->
+    <select id = "getTeamNumber" parameterType = "int" resultType = "int">
+    SELECT M.TEAM_NUMBER
+    FROM TBL_MEMBER M
+    WHERE M.MEMBER_NUMBER = #{memberNumber}
+    </select>
+    
+    
 </mapper>

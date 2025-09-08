@@ -74,4 +74,12 @@ public class MemberDAO {
     	return sqlSession.selectList("member.selectPostPage", map);
     }
     
+    // 유저가 응원중인 팀 반환
+    public int getTeamNumber(int memberNumber) {
+    	if(sqlSession.selectOne("member.getTeamNumber", memberNumber) != null) {
+    		return sqlSession.selectOne("member.getTeamNumber", memberNumber); 
+    	}
+    	return 0;
+    }
+    
 }
