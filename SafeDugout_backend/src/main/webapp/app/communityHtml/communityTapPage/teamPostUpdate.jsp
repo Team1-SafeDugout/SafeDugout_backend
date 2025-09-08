@@ -57,15 +57,22 @@
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <!-- 게시글 작성 컨테이너 -->
   <main class="team-post-container">
-	  <form action="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=writeok" 
+	  <form action="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=updateok" 
 	  		method="post"
 	  		enctype="multipart/form-data">
-	    <h2 class="team-post-title">게시물 작성</h2>
+	  		
+	    <!-- 게시글 번호 -->
+	    <input type="hidden" name="postNumber" value="${postDetail.postNumber}" />
+	
+	    <!-- 작성자 번호 -->
+	    <input type="hidden" name="memberNumber" value="${sessionScope.memberNumber}" />
+	    	
+	    <h2 class="team-post-title">게시물 수정</h2>
 	    <div class="team-form-row">
 	      <!-- 게시글 제목 입력 -->
 	      <label class="team-label">제목:</label>
 	       <input type="text" class="team-input" placeholder="제목을 입력하세요" 
-               name="postTitle" value="${postDTO.postTitle}" required />
+               name="postTitle" value="${postDetail.postTitle}" required />
 	    </div>
 	    <!-- 게시글 작성자 정보 입력 -->
 	    <input type="hidden" name="memberNumber" value="${sessionScope.memberNumber}" />
@@ -80,7 +87,7 @@
 	        <!-- 본문 내용작성공간 -->
 	        <label class="team-label">내용작성</label>
 	          <textarea class="team-textarea" placeholder="내용을 입력하세요" 
-                    name="postContent" required>${postDTO.postContent}</textarea>
+                    name="postContent" required>${postDetail.postContent}</textarea>
 	      </div>
 	    </div>
 	    <!-- 파일 첨부 -->

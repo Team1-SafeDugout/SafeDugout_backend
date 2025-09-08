@@ -62,20 +62,20 @@
       <h2 class="team-complete-title">게시글을 등록 하셨습니다.</h2>
       <!-- 게시글 등록 내용 -->
       <div class="team-complete-content">
-        <p>게시글 제목 :  <c:out value="${coummnunity.postTitle}" /></p>
-        <p class="team-sub-text">작성 일자 :<c:out value="${coummnunity.postDate}" /></p>
-        <p class="team-sub-text">작성자 : <c:out value="${coummnunity.memberId}" /></p>
+        <p>게시글 제목 :  <c:out value="${coummunity.postTitle}" /></p>
+        <p class="team-sub-text">작성 일자 :<fmt:formatDate value="${community.postDate}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+        <p class="team-sub-text">작성자 : <c:out value="${coummunity.memberId}" /></p>
         <div class="team-post-body">
 			<p>
-				 <c:out value="${coummnunity.postContent}" />
+				 <c:out value="${coummunity.postContent}" />
 			</p>
         </div>
       </div>
     </div>
     <!-- 확인 버튼 -->
     <div class="team-btn-wrap">
-      <form action="">
-        <button class="team-confirm-btn" onclick="location.href='./teamPostDetail.html'">확인</button>
+      <form action="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist" method="get">
+        <button class="team-confirm-btn" >확인</button>
       </form>
     </div>
   </main>

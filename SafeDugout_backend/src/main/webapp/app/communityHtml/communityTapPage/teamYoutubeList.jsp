@@ -70,8 +70,8 @@
        		<c:when test="${not empty postList}">
         		<c:forEach var="youtube" items="${postList}">
 			        <li class="team-youtube-list-row">
-			        	<a href="${youtube.postLink}">
 			          		<span><c:out value="${youtube.postNumber}" /></span>
+			        	<a href="${youtube.postLink}">
 			          		<span><c:out value="${youtube.postTitle}" /></span>
 			          	</a>
 			        </li>

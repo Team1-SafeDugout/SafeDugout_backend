@@ -36,7 +36,7 @@ public class DeleteControllerOkController {
 	        teamCommunityDAO.delete(postNumber);
 	        System.out.println("판매글 삭제 완료: " + postNumber);
 
-	        result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");
+	        result.setPath("/community/TeamCommunityFrontController.tc?category=board&action=postList");
 	        result.setRedirect(true);
 
 	    } catch (NumberFormatException e) {
