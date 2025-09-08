@@ -56,23 +56,45 @@ public class MyPageFrontController extends HttpServlet {
 			result = new MyPagePostListOkController().execute(request, response);
 			break;
 			
+		case "/myPage/deletePost.mp":
+			System.out.println("게시글 삭제 중");
+			result = new MyPageDeletePostOkController().execute(request, response);
+			break;
+			
 		case "/myPage/commentList.mp":
+			System.out.println("댓글 목록 진입 중");
+			result = new MyPageCommentListOkController().execute(request, response);
+			break;
+			
+		case "/myPage/deleteComment.mp":
+			System.out.println("댓글 삭제 중");
+			result = new MyPageDeleteCommentOkController().execute(request, response);
 			break;
 		
 		case "/myPage/tradeList.mp":
+			System.out.println("거래 중 목록 진입 중");
+			result = new MyPageTradeListOkController().execute(request, response);
 			break;
 		
 		case "/myPage/sellList.mp":
+			System.out.println("판매 중 목록 진입 중");
+			result = new MyPageSellListOkController().execute(request, response);
 			break;
 			
 		// 메뉴 오픈
 		case "/myPage/changeInfo.mp":
+			System.out.println("정보 수정 진입 중");
+			result = new MyPageChangeInfoController().execute(request, response);
 			break;
 			
 		case "/myPage/unSubscribe.mp":
+			System.out.println("회원 탈퇴 진입 중");
+			result = new MyPageUnSubcribeController().execute(request, response);
 			break;
 			
 		case "/myPage/pointCharge.mp":
+			System.out.println("충전 목록 진입 중");
+			result = new MyPagePoinChargeListOkController().execute(request, response);
 			break;
 		}
 		

@@ -67,6 +67,7 @@ body {
 
 /* 메인 박스 */
 .content-box{
+	width : 100%;
     background-color: #EFEFEF;
     padding: 20px;
     display: flex;
@@ -96,6 +97,7 @@ body {
 
 .comment-list-top {
     background-color: #DCD6D0;
+    width : 100%;
 }
 
 .comment-list-top button {

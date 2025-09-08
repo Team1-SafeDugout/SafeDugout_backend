@@ -10,7 +10,20 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/myPostList/myPostList.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <script defer src="${pageContext.request.contextPath}/assets/js/myPage/myPostList.js"></script>
+  <script>
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+            number: "${board.postNumber}",
+            title: "${board.postTitle}",
+            date: "${board.postDate}",
+            type: "${board.postType}",
+            team : "${board.teamNumber}"
+        });
+    </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/myPostList/myPostList.js"></script>
 </head>
 
 <body>
@@ -21,12 +34,12 @@
         <h2>MY페이지</h2>
         <div>
           <ul>
-            <li class="sidebar-button post"> <a href="./myPostList.html"> 내가 쓴 게시글</a> </li>
-            <li class="sidebar-button commet"> <a href="./../myCommentList/myCommetList.html"> 내가 쓴 댓글</a> </li>
-            <li class="sidebar-button buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-            <li class="sidebar-button sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-            <li class="sidebar-button member-update"> <a href="./../memberInformation/informationInput.html"> 회원 정보 수정</a></li>
-            <li class="sidebar-button member-quit"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a></li>
+            <li class="sidebar-button post"> <a href="${pageContext.request.contextPath}/myPage/postList.mp"> 내가 쓴 게시글</a> </li>
+            <li class="sidebar-button commet"> <a href="${pageContext.request.contextPath}/myPage/commentList.mp"> 내가 쓴 댓글</a> </li>
+            <li class="sidebar-button buy"> <a href="${pageContext.request.contextPath}/myPage/tradeList.mp"> 구매 내역</a> </li>
+            <li class="sidebar-button sell"> <a href="${pageContext.request.contextPath}/myPage/sellList.mp"> 판매 내역</a> </li>
+            <li class="sidebar-button member-update"> <a href="${pageContext.request.contextPath}/myPage/changeInfo.mp"> 회원 정보 수정</a></li>
+            <li class="sidebar-button member-quit"> <a href="${pageContext.request.contextPath}/myPage/unSubscribe.mp"> 회원 탈퇴</a></li>
           </ul>
         </div>
       </section>
@@ -34,88 +47,56 @@
       <section class="main-content">
         <h3>내가 쓴 게시글</h3>
         <div class="content-box">
-          <div class="post-list">
-            <li class="post-list-top">
-              <div class="post-list-number">글 번호</div>
-              <div class="post-list-title">제목</div>
-              <div class="post-list-date">작성 일자</div>
-              <button type="button" class="post-list-delete"></button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">1</div>
-              <div class="post-list-title"><a href="">제목예시1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">2</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">3</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">4</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">5</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">6</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">7</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">8</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">9</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">10</div>
-              <div class="post-list-title"><a href="">제목예시1</a></div>
-              <div class="post-list-date">2025.01.01</div>
-              <button type="button" class="post-list-delete">삭제하기</button>
-            </li>
-            <div class="write-post">
-              <a href="./../communityHtml/communityTapPage/teamPostWriting.html">+ 전체 게시글 작성</a>
-              <a href="./../communityHtml/communityTapPage/teamPostWriting.html">+ 팀 게시글 작성</a>
-            </div>
+	      <div class="post-list-top">
+	          <div class="post-list-number">글 번호</div>
+	          <div class="post-list-title">제목</div>
+	          <div class="post-list-date">작성 일자</div>
+	          <div class="post-list-date">게시판</div>
+	          <button type="button" class="post-list-delete"></button>
+	      </div>
+          <ul class="post-list" id = "ul-li">
+
+            
+            <c:choose>
+				<c:when test="${empty boardList}">
+					<div>
+   						<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
+   					</div>
+				</c:when>
+			</c:choose>
+            
+          </ul>
+          <div class="write-post">
+              <a href="">+ 전체 게시글 작성</a>
+              <a href="">+ 팀 게시글 작성</a>
           </div>
-          <div class="pagination">
-            <a href="">◁</a>
-            <ul id="numberlist-ul">
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-            </ul>
-            <a href="">▷</a>
+          <div class="pagination">           
+	        <ul id="numberlist-ul">
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/postList.mp?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/myPage/postList.mp?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/postList.mp?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul>            
           </div>
         </div>
       </section>
@@ -125,8 +106,8 @@
         <div class="my-point-value">
           <span>20000</span><span>P</span>
         </div>
-        <a href="./../pointRecharge/pointList.html" class="charge-list-btn">포인트 충전 내역 보기</a>
-        <a href="./../trade/pointBuy.html" class="charge-btn">충전</a>
+        <a href="${pageContext.request.contextPath}/myPage/pointCharge.mp" class="charge-list-btn">포인트 충전 내역 보기</a>
+        <a href="${pageContext.request.contextPath}/trade/sellPostFrontController2.tr?category=buy&action=charging" class="charge-btn">충전</a>
       </section>
     </div>
   </main>

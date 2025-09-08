@@ -24,7 +24,6 @@ public class PostDTO { // 게시글 번호
 	private int memberNumber; // 회원 번호(게시글 작성자)
 	private int teamNumber; // 팀번호
 	private int adminNumber; // 관리자 번호
-	private int boardId; // 게시판 종류 id
 	private String postTitle; // 게시글 제목
 	private String postContent; // 게시글 내용
 	private String postDate; // 작성일자
@@ -62,12 +61,6 @@ public class PostDTO { // 게시글 번호
 	}
 	public void setAdminNumber(int adminNumber) {
 		this.adminNumber = adminNumber;
-	}
-	public int getBoardId() {
-		return boardId;
-	}
-	public void setBoardId(int boardId) {
-		this.boardId = boardId;
 	}
 	public String getPostTitle() {
 		return postTitle;
@@ -108,7 +101,7 @@ public class PostDTO { // 게시글 번호
 	@Override
 	public String toString() {
 		return "PostDTO [postNumber=" + postNumber + ", memberNumber=" + memberNumber + ", teamNumber=" + teamNumber
-				+ ", adminNumber=" + adminNumber + ", boardId=" + boardId + ", postTitle=" + postTitle
+				+ ", adminNumber=" + adminNumber + ", postTitle=" + postTitle
 				+ ", postContent=" + postContent + ", postDate=" + postDate + ", postUpdate=" + postUpdate
 				+ ", postLink=" + postLink + ", journalist=" + journalist + ", postType=" + postType + "]";
 	}

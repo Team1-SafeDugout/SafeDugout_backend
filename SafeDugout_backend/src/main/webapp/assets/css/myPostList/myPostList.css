@@ -84,7 +84,7 @@ body {
 }
 
 .post-list-top, .post-list-row {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; 
     display: flex;
     justify-content: space-between;
 }
@@ -96,6 +96,7 @@ body {
 
 .post-list-top {
     background-color: #DCD6D0;
+    width: 100%;
 }
 
 .post-list-top button {
@@ -150,6 +151,7 @@ body {
 
 /* 게시글 작성 버튼 */
 .write-post {
+	width:100%;
     display: flex;
     justify-content: end;
 }

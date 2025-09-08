@@ -9,24 +9,38 @@
   <title>내가 쓴 댓글</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/myCommentList/myCommetList.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script>
+    let comments = [];
+    <c:forEach var="comment" items="${commentList}">
+    	comments.push({
+            number: "${comment.postNumber}",
+            title : "${comment.postTitle}",
+            author: "${comment.postAuthor}",
+            content: "${comment.commentContent}",
+            date: "${comment.commentDate}",
+            commentNumber : "${comment.commentNumber}"
+        });
+    </c:forEach>
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>
+  <script defer src = "${pageContext.request.contextPath}/assets/js/myCommentList/myCommetList.js"></script>
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
       <section class="sidebar">
         <h2>MY페이지</h2>
         <div>
           <ul>
-            <li class="sidebar-button post"> <a href="./myPostList.html"> 내가 쓴 게시글</a> </li>
-            <li class="sidebar-button commet"> <a href="./../myCommentList/myCommetList.html"> 내가 쓴 댓글</a> </li>
-            <li class="sidebar-button buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-            <li class="sidebar-button sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-            <li class="sidebar-button member-update"> <a href="./../memberInformation/informationInput.html"> 회원 정보 수정</a></li>
-            <li class="sidebar-button member-quit"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a></li>
+            <li class="sidebar-button post"> <a href="${pageContext.request.contextPath}/myPage/postList.mp"> 내가 쓴 게시글</a> </li>
+            <li class="sidebar-button commet"> <a href="${pageContext.request.contextPath}/myPage/commentList.mp"> 내가 쓴 댓글</a> </li>
+            <li class="sidebar-button buy"> <a href="${pageContext.request.contextPath}/myPage/tradeList.mp"> 구매 내역</a> </li>
+            <li class="sidebar-button sell"> <a href="${pageContext.request.contextPath}/myPage/sellList.mp"> 판매 내역</a> </li>
+            <li class="sidebar-button member-update"> <a href="${pageContext.request.contextPath}/myPage/changeInfo.mp"> 회원 정보 수정</a></li>
+            <li class="sidebar-button member-quit"> <a href="${pageContext.request.contextPath}/myPage/unSubscribe.mp"> 회원 탈퇴</a></li>
           </ul>
         </div>
       </section>
@@ -34,95 +48,49 @@
       <section class="main-content">
         <h3>내가 쓴 댓글</h3>
         <div class="content-box">
-          <div class="comment-list">
-            <li class="comment-list-top">
-              <div class="post-title">게시글 제목</div>
-              <div class="post-writer">작성자 ID</div>
-              <div class="comment-list-title">작성 내용</div>
-              <div class="comment-list-date">작성 일자</div>
-              <button type="button" class="comment-list-delete"></button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title"><a href="">제목예시1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
-            <li class="comment-list-row">
-              <div class="post-title">제목예시1</div>
-              <div class="post-writer">1</div>
-              <div class="comment-list-title"><a href="">작성 내용 예시1</a></div>
-              <div class="comment-list-date">2025.01.01</div>
-              <button type="button" class="comment-list-delete">삭제하기</button>
-            </li>
+          <div class="comment-list-top">
+            <div class="post-title">게시글 제목</div>
+            <div class="post-writer">작성자 ID</div>
+            <div class="comment-list-title">작성 내용</div>
+            <div class="comment-list-date">작성 일자</div>
+            <button type="button" class="comment-list-delete"></button>
           </div>
+          <ul class="comment-list" id = "ul-li">
+            <c:choose>
+				<c:when test="${empty commentList}">
+					<div>
+   						<div colspan="5" align="center">작성한 댓글이 없습니다.</div>
+   					</div>
+				</c:when>
+			</c:choose>                      
+          </ul>
           <div class="pagination">
-            <a href="">◁</a>
-            <ul id="numberlist-ul">
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-            </ul>
-            <a href="">▷</a>
+	        <ul id="numberlist-ul">
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/postList.mp?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/myPage/postList.mp?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/postList.mp?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul> 
           </div>
         </div>
       </section>
@@ -137,8 +105,7 @@
       </section>
     </div>
   </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 
 </html>

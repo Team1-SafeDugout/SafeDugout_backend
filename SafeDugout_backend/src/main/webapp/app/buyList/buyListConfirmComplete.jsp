@@ -7,27 +7,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>구매 확정 완료 화면</title>
-  <link rel="stylesheet" href="./../../assets/css/buyList/buyListConfirmComplete.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyListConfirmComplete.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
       <section class="sidebar">
         <h2>MY페이지</h2>
         <div>
           <ul>
-            <li class="sidebar-button post"> <a href="./myPostList.html"> 내가 쓴 게시글</a> </li>
-            <li class="sidebar-button commet"> <a href="./../myCommentList/myCommetList.html"> 내가 쓴 댓글</a> </li>
-            <li class="sidebar-button buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-            <li class="sidebar-button sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-            <li class="sidebar-button member-update"> <a href="./../memberInformation/informationInput.html"> 회원 정보
-                수정</a></li>
-            <li class="sidebar-button member-quit"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a></li>
+            <li class="sidebar-button post"> <a href="${pageContext.request.contextPath}/myPage/postList.mp"> 내가 쓴 게시글</a> </li>
+            <li class="sidebar-button commet"> <a href="${pageContext.request.contextPath}/myPage/commentList.mp"> 내가 쓴 댓글</a> </li>
+            <li class="sidebar-button buy"> <a href="${pageContext.request.contextPath}/myPage/tradeList.mp"> 구매 내역</a> </li>
+            <li class="sidebar-button sell"> <a href="${pageContext.request.contextPath}/myPage/sellList.mp"> 판매 내역</a> </li>
+            <li class="sidebar-button member-update"> <a href="${pageContext.request.contextPath}/myPage/changeInfo.mp"> 회원 정보 수정</a></li>
+            <li class="sidebar-button member-quit"> <a href="${pageContext.request.contextPath}/myPage/unSubscribe.mp"> 회원 탈퇴</a></li>
           </ul>
         </div>
       </section>
@@ -86,52 +84,6 @@
     </div>
   </main>
   <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
-
-<!-- <body>
-  <div id="header"></div>
-  <main>
-
-    <section class="buy-complete">
-      <h2>MY페이지</h2>
-      <div>
-        <ul>
-          <li class="post"> <a href="./../myPostList/myPostList.html"> 내가 쓴 게시글</a> </li>
-          <li class="commet"> <a href="./../myCommentList/"> 내가 쓴 댓글</a> </li>
-          <li class="buy"> <a href="./buyList.html"> 구매 내역</a> </li>
-          <li class="sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-          <li class="member-"> <a href="./../memberInformation/informationInput.html"> 회원 정보 수정</a> </li>
-          <li class="sidebar-elements"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a> </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="buy-complete">
-      <h3>구매 확정 되었습니다.</h3>
-      <section>
-        <img src="./../../assets/img/tradeImg/b.png" alt="">
-        <div class="left">
-          <li>제목 : 야구대표팀 모자팝니다!</li>
-          <li>거래 방식 : 직거래</li>
-          <li>상품 이름 : 야구대표팀 모자</li>
-          <li>판매자 ID : th******</li>
-        </div>
-        <div class="right">
-          <li>가격 : 포인트</li>
-          <li>잔여 포인트 : 포인트</li>
-          <button type="button">확인</button>
-        </div>
-      </section>
-    </section>
-
-    <section class="my-point">내 포인트 P</section>
-    <a href="./../pointRecharge/pointList.html">포인트 충전 내역 보기</a>
-    <a href="./../trade/pointBuy.html">충전</a>
-    </section>
-  </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
-</body> -->
-
 </html>
