@@ -11,7 +11,6 @@ import com.bullPenTalk.app.dto.GameScheduleDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.app.dto.PitcherRecordDTO;
-import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.dto.PostDetailDTO;
 import com.bullPenTalk.app.dto.SongPostDTO;
 import com.bullPenTalk.app.dto.StadiumDTO;
@@ -167,19 +166,20 @@ public class TeamCommunityDAO {
 		System.out.println(postDTO + "출력");
 		System.out.println(postDTO.getPostContent() + "출력 === ");
 		System.out.println("insert 결과 : " + insert);
-		System.out.println("생성된 SellPostNumber : " + postDTO.getPostNumber());
+		System.out.println("생성된 postNumber : " + postDTO.getPostNumber());
 		return postDTO.getPostNumber();
 	}
 	
-	// 게시글 수정
-	public void update(PostDTO PostDTO) {
-		sqlSession.update("teamCommunity.update", PostDTO);
-	}
+	  // 게시글 수정
+    public void update(TeamPostDTO teamPostDTO) {
+        sqlSession.update("teamCommunity.updatePost", teamPostDTO);
+        System.out.println("게시글 수정 완료: " + teamPostDTO);
+    }
 	
 	// 게시글 삭제
 	public void delete(int PostNumber) {
 		System.out.println("게시글 삭제 실행 : " + PostNumber);
-		sqlSession.delete("TeamCommunity.delete", PostNumber);
+		sqlSession.delete("teamCommunity.delete", PostNumber);
 		System.out.println("게시글 삭제 쿼리 실행 완료");
 	}
 	
@@ -257,5 +257,17 @@ public class TeamCommunityDAO {
 		return list;
 	}
 	
+    // 게시글 작성자 번호 조회
+    public int getWriterNumber(int postNumber) {
+        System.out.println("게시글 작성자 번호 조회 - postNumber: " + postNumber);
+        Integer writerNumber = sqlSession.selectOne("freeCommunity.getWriterNumber", postNumber);
+
+        if (writerNumber == null) {
+            System.out.println("해당 게시글이 존재하지 않습니다. postNumber: " + postNumber);
+            return -1; // 없는 게시글일 경우 -1 반환
+        }
+
+        return writerNumber;
+    }
 	
 }

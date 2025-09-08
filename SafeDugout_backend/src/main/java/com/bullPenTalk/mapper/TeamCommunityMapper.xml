@@ -43,6 +43,7 @@
 	      P.POST_CONTENT,
 	      P.POST_DATE,
 	      M.MEMBER_ID,
+	      M.MEMBER_NUMBER,
 	      C.COMMENT_NUMBER,
 	      C.COMMENT_CONTENT,
 	      NVL(C.COMMENT_UPDATE, C.COMMENT_DATE) AS COMMENT_LAST_UPDATE,
@@ -89,17 +90,17 @@
 		delete from tbl_post
 		where
 		post_number = #{postNumber}
-		AND TEAM_NUMBER =#{teamNumber}
 	</delete>
 
 
 
-	<!-- 게시글 수정쿼리 -->
-	<update id="update" parameterType="TeamPostDTO">
-		UPDATE tbl_post SET
-		post_title = #{postTitle}, post_content = #{postContent},
-		post_update = #{postUpdate}
-		where post_number = #{postNumber}
+	<!-- 게시글 수정 -->
+	<update id="updatePost" parameterType="TeamPostDTO">
+		UPDATE TBL_POST
+		SET POST_TITLE = #{postTitle},
+		POST_CONTENT = #{postContent},
+		POST_UPDATE = SYSDATE
+		WHERE POST_NUMBER = #{postNumber}
 	</update>
 
 
@@ -469,4 +470,10 @@
 	    gs.SCHEDULE_DATE;	
 	</select>
 	
+	<!-- 게시글 작성자 번호 조회 -->
+	<select id="getWriterNumber" parameterType="int" resultType="int">
+	    SELECT MEMBER_NUMBER
+	    FROM TBL_POST
+	    WHERE POST_NUMBER = #{postNumber}
+	</select>
 </mapper>

@@ -3,7 +3,7 @@ package com.bullPenTalk.app.teamCommunity;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,115 +11,119 @@ import javax.servlet.http.HttpServletResponse;
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
 import com.bullPenTalk.app.dto.AttachmentDTO;
-import com.bullPenTalk.app.dto.PostDTO;
+import com.bullPenTalk.app.dto.TeamPostDTO;
 import com.bullPenTalk.app.teamCommunity.dao.TeamCommunityDAO;
+import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.oreilly.servlet.multipart.FilePart;
-import com.oreilly.servlet.multipart.MultipartParser;
-import com.oreilly.servlet.multipart.ParamPart;
-import com.oreilly.servlet.multipart.Part;
 
 public class UpdateOkController {
 
 	public Result updateOk(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
-        PostDTO postDTO = new PostDTO();
-        AttachmentDAO attachmentDAO = new AttachmentDAO();
-        AttachmentDAO postAttachmentDAO = new AttachmentDAO();
+
         Result result = new Result();
+        TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
+        AttachmentDAO attachmentDAO = new AttachmentDAO();
 
-        LocalDate today = LocalDate.now();
-		final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("/") + "upload/";
-		String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
-		String uploadPath = UPLOAD_PATH + subPath;
-		final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
-
-        // MultipartParser 실행
-        MultipartParser parser = new MultipartParser(request, FILE_SIZE);
-        parser.setEncoding("utf-8");
-        System.out.println("MultipartParser 초기화 완료");
-
-        int postNumber = 0;
-        boolean isFileUpload = false;
-
-        // 파일, 텍스트 데이터 처리
-        Part part;
-        while ((part = parser.readNextPart()) != null) {
-            System.out.println("Part: " + part.getClass().getSimpleName());
-
-            if (part.isParam()) {
-                // 텍스트 파라미터 처리
-                ParamPart paramPart = (ParamPart) part;
-                String paramName = paramPart.getName();
-                String paramValue = paramPart.getStringValue();
-
-                System.out.println("파라미터: " + paramName + " = " + paramValue);
-
-                if ("sellPostNumber".equals(paramName)) {
-                	postNumber = Integer.parseInt(paramValue);
-                	postDTO.setPostNumber(postNumber);
-                } else if ("boardTitle".equals(paramName)) {
-                	postDTO.setPostTitle(paramValue);
-                } else if ("boardContent".equals(paramName)) {
-                	postDTO.setPostContent(paramValue);
-                }
-            } else if (part.isFile() && !isFileUpload) {
-                FilePart filePart = (FilePart) part;
-                filePart.setRenamePolicy(new DefaultFileRenamePolicy());
-                String fileOriginalName = filePart.getFileName();
-                
-                // 기존 파일 삭제
-                if (postNumber != 0) {
-                    List<AttachmentDTO> existingFiles = attachmentDAO.selectByPost(postNumber);
-                    for (AttachmentDTO file : existingFiles) {
-                    	File oldFile = new File(request.getSession().getServletContext().getRealPath("/") + file.getAttachmentPath());
-                        if (oldFile.exists()) {
-                            System.out.println("기존 파일 삭제: " + oldFile.getAbsolutePath());
-                            oldFile.delete();
-                        }
-                    }
-                    attachmentDAO.deleteByPost(postNumber);
-                    System.out.println("기존 파일 DB 삭제 완료");
-                }
-
-                if (fileOriginalName != null) {
-                    String newFileName = System.currentTimeMillis() + "_" + fileOriginalName;
-                    File newFile = new File(uploadPath, newFileName);
-                    filePart.writeTo(newFile);
-
-                    if (newFile.exists()) {
-                        System.out.println("새로운 파일 저장 완료: " + newFile.getAbsolutePath());
-                    } else {
-                        System.out.println("새로운 파일 저장 실패: " + newFile.getAbsolutePath());
-                    }
-
-                    // DB 저장
-                    AttachmentDTO attachmentDTO = new AttachmentDTO();
-                    attachmentDTO.setAttachmentPath(subPath + newFileName);
-                    attachmentDTO.setAttachmentName(fileOriginalName); // 원본 파일명
-                    attachmentDTO.setAttachmentTypeId(1);
-                    attachmentDAO.insert(attachmentDTO);
-                    int attachmentNumber = attachmentDTO.getAttachmentNumber(); 
-                    System.out.println("새로운 파일 DB 저장 완료: " + attachmentDTO);
-
-    				                 
-                    isFileUpload = true; // 파일이 업로드되었음을 표시
-                } else {
-                    System.out.println("업로드된 파일이 없습니다 (파일 선택하지 않음)");
-                }
-            }
+        // ------------------------------
+        // 1. 로그인 체크
+        // ------------------------------
+        Integer memberNumber = (Integer) request.getSession().getAttribute("memberNumber");
+        if (memberNumber == null) {
+            System.out.println("오류 : 로그인된 사용자가 없습니다");
+            result.setPath("/member/login.me");
+            result.setRedirect(true);
+            return result;
         }
 
-        // 게시글 업데이트 실행
-        postDTO.setMemberNumber((Integer) request.getSession().getAttribute("memberNumber"));
-        teamCommunityDAO.update(postDTO);
-        System.out.println("게시글 수정 완료");
+        // ------------------------------
+        // 2. 업로드 경로 설정
+        // ------------------------------
+        LocalDate today = LocalDate.now();
+        String uploadBasePath = request.getSession().getServletContext().getRealPath("/upload/teamCommunity/");
+        String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
+        String uploadPath = uploadBasePath + subPath;
 
-        //수정 완료 후 리스트 페이지로 이동
-        result.setPath("/app/communityHtml/communityTapPage/teamBoard.tc");
+        final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) uploadDir.mkdirs();
+
+        // ------------------------------
+        // 3. MultipartRequest 생성
+        // ------------------------------
+        MultipartRequest multipartRequest = new MultipartRequest(
+                request,
+                uploadPath,
+                FILE_SIZE,
+                "utf-8",
+                new DefaultFileRenamePolicy()
+        );
+
+        // ------------------------------
+        // 4. 게시글 정보 세팅
+        // ------------------------------
+        String postTitle = multipartRequest.getParameter("postTitle");
+        String postContent = multipartRequest.getParameter("postContent");
+        String postNumberStr = multipartRequest.getParameter("postNumber");
+
+        if (postNumberStr == null || postNumberStr.isEmpty()) {
+            System.out.println("오류: 게시글 번호가 넘어오지 않았습니다.");
+            result.setPath("/community/TeamCommunityFrontController.tc?category=board&action=postList");
+            result.setRedirect(true);
+            return result;
+        }
+
+        int postNumber = Integer.parseInt(postNumberStr);
+
+        // 작성자 확인
+        int writerNumber = teamCommunityDAO.getWriterNumber(postNumber);
+        if (writerNumber != memberNumber) {
+            System.out.println("오류: 수정 권한 없음 - 로그인:" + memberNumber + ", 작성자:" + writerNumber);
+            result.setPath("/community/TeamCommunityFrontController.tc?category=board&action=postList");
+            result.setRedirect(true);
+            return result;
+        }
+
+        TeamPostDTO teamPostDTO = new TeamPostDTO();
+        teamPostDTO.setPostNumber(postNumber);
+        teamPostDTO.setPostTitle(postTitle);
+        teamPostDTO.setPostContent(postContent);
+
+        // ------------------------------
+        // 5. 게시글 업데이트
+        // ------------------------------
+        teamCommunityDAO.update(teamPostDTO);
+
+        // ------------------------------
+        // 6. 첨부파일 처리
+        // ------------------------------
+        Enumeration<String> fileNames = multipartRequest.getFileNames();
+
+        while (fileNames.hasMoreElements()) {
+            String name = fileNames.nextElement();
+            String fileSystemName = multipartRequest.getFilesystemName(name);
+            String fileOriginalName = multipartRequest.getOriginalFileName(name);
+
+            if (fileSystemName == null) continue;
+
+            AttachmentDTO attachmentDTO = new AttachmentDTO();
+            String dbPath = subPath + fileSystemName;
+
+            attachmentDTO.setAttachmentPath(dbPath);
+            attachmentDTO.setAttachmentName(fileOriginalName);
+            attachmentDTO.setAttachmentTypeId(2); 
+            attachmentDTO.setPostNumber(postNumber);
+
+            attachmentDAO.insert(attachmentDTO);
+        }
+
+        // ------------------------------
+        // 7. 수정 완료 후 상세보기 페이지 이동
+        // ------------------------------
+        result.setPath("/community/TeamCommunityFrontController.tc?category=board&action=postList");
         result.setRedirect(true);
         return result;
+    }
 		
 
-	}
+	
 }

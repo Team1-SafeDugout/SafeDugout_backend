@@ -42,6 +42,7 @@
   line-height: 2;
   font-size: 14px;
   color: black;
+  border-bottom: 1px solid #ccc;
 }
 
 .team-news-page {
