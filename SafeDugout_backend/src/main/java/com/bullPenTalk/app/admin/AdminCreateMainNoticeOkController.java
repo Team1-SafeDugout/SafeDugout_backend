@@ -90,7 +90,6 @@ public class AdminCreateMainNoticeOkController implements Execute {
 			
 			guidePost.setNoticePostTitle(title);
 			guidePost.setNoticePostContent(content);
-			guidePost.setNoticePostDate(date);
 			guidePost.setNoticePostUpdate(upDate);
 			guidePost.setAdminNumber(adminNumber);
 

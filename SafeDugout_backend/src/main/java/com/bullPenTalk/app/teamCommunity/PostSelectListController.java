@@ -119,7 +119,7 @@ public class PostSelectListController {
 
 	    // 공지사항 목록 조회
 	    List<TeamNoticePostDTO> PostList = teamCommunityDAO.selectNotice(pageMap);
-	    request.setAttribute("PostList", PostList);
+	    request.setAttribute("noticePostList", PostList);
 
 	    // 전체 게시글 개수 조회
 	    int total = teamCommunityDAO.getTotalNotice(teamNumber);

@@ -1,5 +1,7 @@
 package com.bullPenTalk.app.dto;
 
+import java.util.Date;
+
 public class TeamNoticePostDTO {
 	private int noticePostNumber; // 공지글 번호
 	private int noticeTypeId; // 팀 공지글 번호 =  2
@@ -7,7 +9,7 @@ public class TeamNoticePostDTO {
 	private int teamNumber; // 팀 번호
 	private String noticePostTitle; // 팀공지글 제목
 	private String noticePostContent; // 팀공지글 내용
-	private String noticePostDate; // 작성날짜
+	private Date noticePostDate; // 작성날짜
 	private String noticePostUpdate; // 수정 날짜
 	private int attachmentNumber; // 
     private String attachmentName;
@@ -75,10 +77,10 @@ public class TeamNoticePostDTO {
 	public void setNoticePostContent(String noticePostContent) {
 		this.noticePostContent = noticePostContent;
 	}
-	public String getNoticePostDate() {
+	public Date getNoticePostDate() {
 		return noticePostDate;
 	}
-	public void setNoticePostDate(String noticePostDate) {
+	public void setNoticePostDate(Date noticePostDate) {
 		this.noticePostDate = noticePostDate;
 	}
 	public String getNoticePostUpdate() {
