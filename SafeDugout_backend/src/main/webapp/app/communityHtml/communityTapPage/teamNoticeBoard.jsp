@@ -67,7 +67,23 @@
         <li class="team-notice-header">
           <div class="center-text">공지 목록</div>
         </li>
-        <!-- 공지 목록 추가js -->
+        <!-- 공지 목록 추가 -->
+        <c:choose>
+			<c:when test="${not empty noticePostList}">
+				<c:forEach var="notice" items="${noticePostList}">
+					<li class="free-guide-list-item">
+						<div class="notice-title">
+							<a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${notice.noticePostNumber}">
+								<c:out value="${notice.noticePostTitle}" />
+							</a>
+						</div>
+						<div class="notice-date">
+							<fmt:formatDate value="${notice.noticePostDate}" pattern="yyyy-MM-dd" />
+						</div>
+					</li>
+				</c:forEach>
+			</c:when>
+		</c:choose>
       </ul>
     </div>
     </div>

@@ -102,3 +102,4 @@ src/main/resources/application-local.properties
 # Example configs should be committed
 !src/main/resources/application-example.yml
 !src/main/resources/application-example.properties
+/bin/
