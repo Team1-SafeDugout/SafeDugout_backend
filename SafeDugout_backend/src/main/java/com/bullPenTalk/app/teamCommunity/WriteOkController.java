@@ -94,7 +94,7 @@ public class WriteOkController {
                 attachmentDTO.setAttachmentName(fileOriginalName);
                 attachmentDTO.setAttachmentTypeId(1); // 이미지
                 attachmentDTO.setPostNumber(postNumber); // 게시글 번호 연결
-                attachmentDAO.insert(attachmentDTO);
+                attachmentDAO.insertPostAttachment(attachmentDTO);
 
                 int attachmentNumber = attachmentDTO.getAttachmentNumber();
                 System.out.println("생성된 첨부파일 번호 : " + attachmentNumber);
@@ -105,7 +105,7 @@ public class WriteOkController {
             return null;
         }
 
-        result.setPath("/app/communityHtml/communityTapPage/teamBoardComplete.jsp");
+        result.setPath("/community/TeamCommunityFrontController.tc?category=board&action=postList");
         result.setRedirect(false);
         System.out.println("리턴진입");
         return result;

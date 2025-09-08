@@ -61,6 +61,10 @@ public class PostDetailController {
 	    List<AttachmentDTO> files = attachmentDAO.selectByPost(postNumber);
 	    postDetailDTO.setAttachment(files);
 
+		//현재 게시글의 작성자 번호 가져오기
+		int boardWriterNumber = postDTO.getMemberNumber();	
+		System.out.println("현재 게시글 작성자 번호 : " + boardWriterNumber);	
+		
 	    request.setAttribute("community", postDetailDTO);
 	    result.setPath("/app/communityHtml/communityTapPage/teamPostDetail.jsp");
 	    result.setRedirect(false);

@@ -114,7 +114,7 @@ public class FreeCommunityUpdateOkController implements Execute {
 
             attachmentDTO.setAttachmentPath(dbPath);
             attachmentDTO.setAttachmentName(fileOriginalName);
-            attachmentDTO.setAttachmentTypeId(2); // 자유게시판
+            attachmentDTO.setAttachmentTypeId(1); // 자유게시판
             attachmentDTO.setPostNumber(postNumber);
 
             attachmentDAO.insert(attachmentDTO);
