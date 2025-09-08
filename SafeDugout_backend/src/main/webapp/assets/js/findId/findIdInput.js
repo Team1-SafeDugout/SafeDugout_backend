@@ -1,5 +1,7 @@
 // 확인 버튼 
 const okBtn = document.getElementById('okBtn');
+// 인증 번호 발송 버튼 
+const sendCode = document.querySelector('.main-input-list:nth-child(3) button');
 // 인증 버튼
 const authenticate = document.querySelector('.main-input-list:nth-child(4) button');
 
