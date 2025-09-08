@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/trade/productDetailBuyer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+
 </head>
 
 <body>
@@ -26,10 +27,10 @@
 			        작성자: <c:out value="${sellPostDetail.memberId}" />
 			    </div>
 			    <!-- 삭제 버튼: 로그인한 멤버와 작성자 번호가 같으면 표시 -->
-			    <form action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=allproduct&action=deletepostok"  method="post">  
+			    <form id="deleteForm" action="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=allproduct&action=deletepostok"  method="post">  
 			    	<input type="hidden" name="sellPostNumber" value="${sellPostDetail.sellPostNumber}">         
 				    <c:if test="${sellPostDetail.memberNumber != null and sessionScope.memberNumber != null and sellPostDetail.memberNumber.toString() == sessionScope.memberNumber.toString()}">	        
-				        <button class="post-button-delete" >
+				        <button id="deleteButton" class="post-button-delete" >
 				            삭제하기
 				        </button>
 				    </c:if>
@@ -132,5 +133,6 @@
     <script >
     	let memberNumber = "${sessionScope.memberNumber}";
     </script>
+   <script src="${pageContext.request.contextPath}/assets/js/trade/productDetail.js"></script>
 </body>
 </html>

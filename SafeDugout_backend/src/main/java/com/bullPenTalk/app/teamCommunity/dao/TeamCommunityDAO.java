@@ -236,7 +236,7 @@ public class TeamCommunityDAO {
     // 경기장 번호로 티켓 정보 조회
     public List<StadiumTicketDTO> selectTicket(int stadiumNumber) {
         System.out.println("DAO: selectTicket 실행 - stadiumNumber : " + stadiumNumber);
-        List<StadiumTicketDTO> tickets = sqlSession.selectList("TeamCommunity.selectTicket", stadiumNumber);
+        List<StadiumTicketDTO> tickets = sqlSession.selectList("teamCommunity.selectTicket", stadiumNumber);
         System.out.println("조회 결과: " + tickets);
         return tickets;
     }
@@ -244,7 +244,7 @@ public class TeamCommunityDAO {
     // 경기장 번호로 먹거리 정보 조회
     public List<StadiumFoodDTO> selectFood(int stadiumNumber) {
         System.out.println("DAO: selectFood 실행 - stadiumNumber : " + stadiumNumber);
-        List<StadiumFoodDTO> foods = sqlSession.selectList("TeamCommunity.selectFood", stadiumNumber);
+        List<StadiumFoodDTO> foods = sqlSession.selectList("teamCommunity.selectFood", stadiumNumber);
         System.out.println("조회 결과: " + foods);
         return foods;
     }
@@ -252,7 +252,7 @@ public class TeamCommunityDAO {
 	// 경기 일정 조회
 	public List<GameScheduleDTO> selectGame(Map<String, Integer> pageMap){
 		System.out.println("모든 게시글 조회하기 - selectList 메소드 실행 : " + pageMap);
-		List<GameScheduleDTO> list = sqlSession.selectList("TeamCommunity.selectGame", pageMap);
+		List<GameScheduleDTO> list = sqlSession.selectList("teamCommunity.selectGame", pageMap);
 		System.out.println("조회결과 : " + list);
 		return list;
 	}
