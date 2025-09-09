@@ -88,9 +88,9 @@ main {
 .rank-table-title {
   height: 40px;
   padding-left: 12px;
-  background-color: rgb(231, 54, 107);
+  background-color: #DCD6D0;
   /* 폰트 */
-  color: white;
+  color: black;
   font-weight: bold;
   /* 배경테두리 */
   border-top-left-radius: 6px;
@@ -316,9 +316,9 @@ main {
 .schedule-table-title {
   height: 42px;
   padding-left: 12px;
-  background-color: rgb(231, 54, 107);
+  background-color: #DCD6D0;
   /* 폰트 */
-  color: white;
+  color: black;
   font-weight: bold;
   /* 배경테두리 */
   border-top-left-radius: 6px;
