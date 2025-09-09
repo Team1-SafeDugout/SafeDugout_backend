@@ -2,32 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="myPage">
 
-	<!-- <![CDATA[
-	SELECT *
-	FROM (
-	    SELECT ROWNUM AS rnum, subquery.*
-	    FROM (
-	        SELECT P.POST_NUMBER,
-	               P.POST_TITLE,
-	               P.POST_CONTENT,
-	               P.POST_DATE,
-	               M.MEMBER_ID
-	        FROM TBL_POST P
-	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-	        WHERE P.BOARD_ID = 2
-	          AND P.TEAM_NUMBER = {teamNumber}
-	        ORDER BY P.POST_DATE DESC
-	    ) subquery
-	)
-	WHERE rnum BETWEEN #{startRow} AND #{endRow}
-	]]> -->
 	
 	<!-- 포인트 충전 내역 조회 -->
-	<!-- <select id="selectPoint" parameterType="int" resultType="PointChargeRecordDTO">
-		select charge_point, after_charge_point, charge_date
-		from tbl_point_charge_record
-		where member_number = #{memberNumber};
-	</select> -->
 	<select id="selectPoint" resultType="pointChargeRecordDTO">
 	<![CDATA[
 	SELECT *
@@ -54,12 +30,6 @@
 	</update>
 	
 	<!-- 게시글 조회 -->
-	<!-- <select id="selectPostList" parameterType="int" resultType="PostDTO">
-		select post_number, post_title, post_date, post_update
-		from tbl_post p join tbl_board b on p.board_id = b.board_number
-		join tbl_board_type t on b.board_id = t.board_type_id 
-		where member_number = #{memberNumber} and board_type_id in(1, 2)
-	</select> -->
 	<select id="selectPostList" resultType="PostDTO" parameterType = "int">
 		<![CDATA[
 		SELECT *
@@ -68,22 +38,25 @@
 		    FROM (
 		        SELECT P.POST_NUMBER,
 		        	   P.MEMBER_NUMBER,
-		        	   NVL(P.TEAM_NUMBER, 1) as teamNumber,
+		        	   NVL(P.TEAM_NUMBER, 0) as teamNumber,
+		        	   NVL(P.ADMIN_NUMBER,0) as adminNumber,
 		               P.POST_TITLE,
 		               P.POST_CONTENT,
 		               P.POST_DATE,
 		               P.POST_UPDATE,
+		               NVL(P.POST_LINK, 'NONE') as postLink,
+		               NVL(P.journalist, 'NONE') as journalist,
 		               P.POST_TYPE
 		        FROM TBL_POST P
-		        WHERE P.POST_TYPE IN (1, 2) AND P.MEMBER_NUMBER = #{memberNumber}
+		        WHERE (P.POST_TYPE = 1 OR P.POST_TYPE = 2) AND P.MEMBER_NUMBER = #{memberNumber}
+		        ORDER BY P.POST_DATE DESC
 		    ) subquery
 		)
 		WHERE rnum BETWEEN #{startRow} AND #{endRow}
 		]]>
 	</select>
 	
-	<!-- 게시글 전체 수 -->
-	
+	<!-- 게시글 전체 수 -->	
 	<select id = "getTotalPost" resultType = "int" parameterType = "int">
 		SELECT COUNT(P.POST_NUMBER)
 	    FROM TBL_POST P
@@ -97,32 +70,42 @@
 	</delete>
 	
 	<!-- 댓글 조회 -->
-	<!-- <select id="selectCommentList" parameterType="int" resultType="MyPageCommentDTO">
-		select p.post_title, m.member_id, c.comment_content, c.comment_date, c.comment_update, c.comment_number
-		from tbl_post p join tbl_member m on p.member_number = m.member_number
-		join tbl_comment c on p.post_number = c.post_number
-		where c.member_number = #{memberNumber}
-	</select> -->
-
-		<select id="sleectPostList" resultType="PostDTO">
+	<select id="selectCommentList" resultType="CommentDTO" parameterType = "map" >
 		<![CDATA[
-		SELECT ROWNUM AS rnum, subquery.*
-	    FROM (
-	        SELECT p.post_title,
-	               m.member_id,
-	               C.COMMENT_CONTENT,
-	               C.COMMENT_DATE,
-	               C.COMMENT_UPDATE,
-	               C.COMMENT_NUMBER
-	        FROM TBL_POST P
-	        JOIN TBL_MEMBER M ON P.MEMBER_NUMBER = M.MEMBER_NUMBER
-	        JOIN TBL_COMMENT C ON P.POST_NUMBER = C.POST_NUMBER
-	        WHERE P.BOARD_ID IN (1, 2) AND C.MEMBER_NUMBER = #{memberNumber}
-	        ORDER BY P.COMMNET_DATE DESC
-	    ) subquery
-	)
-	WHERE rnum BETWEEN #{startRow} AND #{endRow}
-	]]>
+		SELECT *
+		FROM (
+		    SELECT ROWNUM AS rnum, subquery.*
+		    FROM (
+		        SELECT C.COMMENT_NUMBER,
+		        	   C.COMMENT_CONTENT,
+		        	   C.COMMENT_DATE,
+		        	   C.COMMENT_UPDATE,
+		        	   M.MEMBER_ID,
+		        	   C.POST_NUMBER,
+		        	   C.MEMBER_NUMBER,
+		        	   P.POST_TITLE,
+		        	   (
+		        	   	SELECT PM.MEMBER_ID
+		        	   	FROM TBL_MEMBER PM
+		        	   	JOIN TBL_POST PP ON PP.MEMBER_NUMBER = PM.MEMBER_NUMBER 
+		        	   	WHERE P.POST_NUMBER = PP.POST_NUMBER
+		        	   ) as postAuthor
+		        FROM TBL_COMMENT C
+		        JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
+		        JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER
+		        WHERE C.MEMBER_NUMBER = #{memberNumber}
+		        ORDER BY C.COMMENT_DATE DESC
+		    ) subquery
+		)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		]]>
+	</select>
+	
+	<!-- 댓글 전체 수 -->
+	<select id = "getTotalComment" resultType = "int" parameterType = "int">
+		SELECT COUNT(C.COMMENT_NUMBER)
+		FROM TBL_COMMENT C
+		WHERE C.MEMBER_NUMBER = #{memberNumber}
 	</select>
 	
 	<!-- 댓글 삭제 -->
