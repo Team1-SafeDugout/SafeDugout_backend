@@ -47,7 +47,7 @@
               <!-- 입력 박스 -->
               <div class="main-input-box">
                 <!-- 입력 오류 메시지 -->
-                <div class="main-error-message"><span>* 등록되지 않은 이름입니다.</span><span>* 필수 입력값입니다.</span></div>
+                <div class="main-error-message"></div>
                 <!-- 입력 input -->
                 <input type="text" placeholder="이름을 입력하세요" id="userName">
               </div>
@@ -55,14 +55,14 @@
             <div class="main-input-list">
               <div class="main-input-name">이메일</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 등록되지 않은 이메일입니다.</span><span>* 필수 입력값입니다.</span></div>
+                <div class="main-error-message"></div>
                 <input type="email" placeholder="이메일을 입력하세요" id="email">
               </div>
             </div>
             <div class="main-input-list">
               <div class="main-input-name">핸드폰 번호</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 등록되지 않은 번호입니다.</span><span>* 필수 입력값입니다.</span></div>
+                <div class="main-error-message"></div>
                 <input type="text" placeholder="핸드폰 번호를 입력하세요" id="phoneNumber">
                 <button type="button">인증 번호 발송</button>
               </div>
@@ -70,8 +70,7 @@
             <div class="main-input-list">
               <div class="main-input-name">인증번호 입력</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 인증번호가 일치하지 않거나 인증번호 확인이 되지 않았습니다.
-                    인증번호 발송 후 인증 버튼을 눌러주세요.</span></div>
+                <div class="main-error-message"></div>
                 <input type="text" placeholder="인증 번호 입력" id="code">
                 <button type="button">인증</button>
               </div>
