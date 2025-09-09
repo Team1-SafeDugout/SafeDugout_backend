@@ -47,6 +47,11 @@ public class MyPageDAO {
 	public List<MyPageCommentDTO> selectCommentList(Map<String, Integer> map) {
 		return sqlSession.selectList("myPage.selectCommentList", map);
 	}
+	
+	// 댓글 전체 수
+	public int getTotalComment(int memberNumber) {
+		return sqlSession.selectOne("myPage.getTotalComment", memberNumber);
+	}
 
 	// 댓글 삭제
 	public void deleteComment(int commentNumber) {

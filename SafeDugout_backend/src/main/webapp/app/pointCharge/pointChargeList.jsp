@@ -7,26 +7,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>포인트 충전 내역</title>
-  <link rel="stylesheet" href="/webapp/assets/css/pointCharge/pointChargeList.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/pointCharge/pointChargeList.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
       <section class="sidebar">
         <h2>MY페이지</h2>
         <div>
           <ul>
-            <li class="sidebar-button post"> <a href="./myPostList.html"> 내가 쓴 게시글</a> </li>
-            <li class="sidebar-button commet"> <a href="./../myCommentList/myCommetList.html"> 내가 쓴 댓글</a> </li>
-            <li class="sidebar-button buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-            <li class="sidebar-button sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-            <li class="sidebar-button member-update"> <a href="./../memberInformation/informationInput.html"> 회원 정보 수정</a></li>
-            <li class="sidebar-button member-quit"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a></li>
+            <li class="sidebar-button post"> <a href="${pageContext.request.contextPath}/myPage/postList.mp"> 내가 쓴 게시글</a> </li>
+            <li class="sidebar-button commet"> <a href="${pageContext.request.contextPath}/myPage/commentList.mp"> 내가 쓴 댓글</a> </li>
+            <li class="sidebar-button buy"> <a href="${pageContext.request.contextPath}/myPage/tradeList.mp"> 구매 내역</a> </li>
+            <li class="sidebar-button sell"> <a href="${pageContext.request.contextPath}/myPage/sellList.mp"> 판매 내역</a> </li>
+            <li class="sidebar-button member-update"> <a href="${pageContext.request.contextPath}/myPage/changeInfo.mp"> 회원 정보 수정</a></li>
+            <li class="sidebar-button member-quit"> <a href="${pageContext.request.contextPath}/myPage/unSubscribe.mp"> 회원 탈퇴</a></li>
           </ul>
         </div>
       </section>
@@ -90,87 +89,6 @@
       </section>
     </div>
   </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
-
-<!-- <body>
-  <div id="header"></div>
-  <main>
-
-    <section class="buyList">
-      <h2>MY페이지</h2>
-      <div>
-        <ul>
-          <li class="post"> <a href="./../myPostList/myPostList.html"> 내가 쓴 게시글</a> </li>
-          <li class="commet"> <a href="./../myCommentList/"> 내가 쓴 댓글</a> </li>
-          <li class="buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-          <li class="sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-          <li class="member-"> <a href="./../memberInformation/informationInput.html"> 회원 정보 수정</a> </li>
-          <li class="sidebar-elements"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a> </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="pointRecharge-list">
-      <h3>포인트 충전 내역</h3>
-      <section>
-        <div class="list-name">
-          <li>충전 금액</li>
-          <li>충전 후 포인트</li>
-          <li>충전 날짜</li>
-        </div>
-      </section>
-
-      <section class="point-list">
-        <div class="point-listnumber">
-          <li>10포인트</li>
-          <li>10포인트</li>
-          <li>2025.03.21</li>
-        </div>
-        <div class="point-listnumber">
-          <li>10포인트</li>
-          <li>20포인트</li>
-          <li>2025.03.22</li>
-        </div>
-        <div class="point-listnumber">
-          <li>10포인트</li>
-          <li>30포인트</li>
-          <li>2025.03.23</li>
-        </div>
-        <div class="point-listnumber">
-          <li>10포인트</li>
-          <li>40포인트</li>
-          <li>2025.03.24</li>
-        </div>
-      </section>
-
-      <div class="postlist-pagenumber">
-        <form action="" method="get">
-          <button type="button" id="left-button"> ◁ </button>
-          <ul id="numberlist-ul">
-            <li><a>1</a></li>
-            <li><a>2</a></li>
-            <li><a>3</a></li>
-            <li><a>4</a></li>
-            <li><a>5</a></li>
-          </ul>
-          <button type="button" id="right-button"> ▷ </button>
-        </form>
-      </div>
-
-
-
-
-    </section>
-
-    <section class="my-point">내 포인트 P</section>
-    <a href="./../pointRecharge/pointList.html">포인트 충전 내역 보기</a>
-    <a href="./../trade/pointBuy.html">충전</a>
-    </section>
-  </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
-</body> -->
-
 </html>

@@ -7,28 +7,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원정보 수정 페이지</title>
-  <link rel="stylesheet" href="/webapp/assets/css/memberUpdate/inputInformation.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
-  <script defer src="./../../assets/js/memberInformation/informationInput.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberUpdate/inputInformation.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/memberInformation/informationInput.js"></script>
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
       <section class="sidebar">
         <h2>MY페이지</h2>
         <div>
           <ul>
-            <li class="sidebar-button post"> <a href="./myPostList.html"> 내가 쓴 게시글</a> </li>
-            <li class="sidebar-button commet"> <a href="./../myCommentList/myCommetList.html"> 내가 쓴 댓글</a> </li>
-            <li class="sidebar-button buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-            <li class="sidebar-button sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-            <li class="sidebar-button member-update"> <a href="./../memberInformation/informationInput.html"> 회원 정보
-                수정</a></li>
-            <li class="sidebar-button member-quit"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a></li>
+            <li class="sidebar-button post"> <a href="${pageContext.request.contextPath}/myPage/postList.mp"> 내가 쓴 게시글</a> </li>
+            <li class="sidebar-button commet"> <a href="${pageContext.request.contextPath}/myPage/commentList.mp"> 내가 쓴 댓글</a> </li>
+            <li class="sidebar-button buy"> <a href="${pageContext.request.contextPath}/myPage/tradeList.mp"> 구매 내역</a> </li>
+            <li class="sidebar-button sell"> <a href="${pageContext.request.contextPath}/myPage/sellList.mp"> 판매 내역</a> </li>
+            <li class="sidebar-button member-update"> <a href="${pageContext.request.contextPath}/myPage/changeInfo.mp"> 회원 정보 수정</a></li>
+            <li class="sidebar-button member-quit"> <a href="${pageContext.request.contextPath}/myPage/unSubscribe.mp"> 회원 탈퇴</a></li>
           </ul>
         </div>
       </section>
@@ -171,8 +169,7 @@
       </section>
     </div>
   </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
 
 </html>

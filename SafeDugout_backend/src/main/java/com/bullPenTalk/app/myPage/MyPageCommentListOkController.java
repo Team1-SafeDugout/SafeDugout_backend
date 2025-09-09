@@ -2,7 +2,6 @@ package com.bullPenTalk.app.myPage;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,46 +10,39 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.app.myPage.dao.MyPageDAO;
 
-public class MyPagePostListOkController implements Execute {
+public class MyPageCommentListOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		Result result = new Result();
-		MyPageDAO myPageDAO = new MyPageDAO();
-		int memberNumber = Integer.parseInt(request.getSession().getAttribute("memberNumber").toString());
-		System.out.println(memberNumber);
-		
 		
 		// 페이지네이션
 		String temp = request.getParameter("page");
+		int memberNumber = Integer.parseInt(request.getSession().getAttribute("memberNumber").toString());
+		
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
 		int rowCount = 10; // 한 페이지당 게시글 수
 		int pageCount = 5; // 페이지 버튼 수
-
+	
 		// 페이징 처리
 		int startRow = (page - 1) * rowCount + 1; // 시작행(1, 11, 21, ..)
 		int endRow = startRow + rowCount - 1; // 끝 행(10, 20, 30, ..)
-
+	
 		// 시작과 행과 끝행 맵으로 정리 [(startRow,1), (endRow,2)]... 이런식으로 가게됨
 		Map<String, Integer> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		pageMap.put("memberNumber", memberNumber);
 		int total = 0;
-		String currentTab = "all";
-		if(request.getParameter("currentTab") != null) {
-			currentTab = request.getParameter("currentTab");
-		}
 		
-		List<PostDTO> boardList = myPageDAO.selectPostList(pageMap);
-		total = myPageDAO.getTotalPost(memberNumber);
-		request.setAttribute("boardList", boardList);
+		MyPageDAO myPageDAO = new MyPageDAO();
+		total = myPageDAO.getTotalComment(memberNumber);
+		request.setAttribute("commentList", myPageDAO.selectCommentList(pageMap));
 		
+		System.out.println(myPageDAO.selectCommentList(pageMap));
 		
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회
@@ -73,8 +65,8 @@ public class MyPagePostListOkController implements Execute {
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
 		
+		result.setPath("/app/mycommentlist/myCommetList.jsp");
 		result.setRedirect(false);
-		result.setPath("/app/myPostList/myPostList.jsp");
 		
 		return result;
 	}

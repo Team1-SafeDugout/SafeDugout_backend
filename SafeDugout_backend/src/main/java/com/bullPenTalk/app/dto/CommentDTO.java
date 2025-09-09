@@ -12,11 +12,26 @@ public class CommentDTO {
 	private String commentContent; // 댓글 내용 
 	private String commentDate; // 작성 일자
 	private String commentUpdate; // 수정 일자
-	private String memberID;
-	private int postNumber;
-	private int memberNumber;
+	private String memberID; // 작성자 ID
+	private int postNumber; // 작성한 글 번호
+	private int memberNumber; // 작성자 번호
+	private String postTitle;	// 댓글 작성한 글 제목
+	private String postAuthor;  // 댓글 작성한 글 작가
 	
 	
+	
+	public String getPostTitle() {
+		return postTitle;
+	}
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
+	public String getPostAuthor() {
+		return postAuthor;
+	}
+	public void setPostAuthor(String postAuthor) {
+		this.postAuthor = postAuthor;
+	}
 	public int getMemberNumber() {
 		return memberNumber;
 	}
@@ -63,9 +78,11 @@ public class CommentDTO {
 	public String toString() {
 		return "CommentDTO [commentNumber=" + commentNumber + ", commentContent=" + commentContent + ", commentDate="
 				+ commentDate + ", commentUpdate=" + commentUpdate + ", memberID=" + memberID + ", postNumber="
-				+ postNumber + ", memberNumber=" + memberNumber + "]";
+				+ postNumber + ", memberNumber=" + memberNumber + ", postTitle=" + postTitle + ", postAuthor="
+				+ postAuthor + "]";
 	}
 	
+	 
 
 	
 }

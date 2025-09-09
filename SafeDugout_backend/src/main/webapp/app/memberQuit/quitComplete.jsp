@@ -7,14 +7,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원 탈퇴 완료</title>
-  <link rel="stylesheet" href="/webapp/assets/css/memberQuit/quitComplete.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberQuit/quitComplete.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
 
@@ -36,21 +35,6 @@
     </div>
   </main>
   <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
-
-<!-- <body>
-  <div id="header"></div>
-  <main>
-
-    <section class="member-Password">
-      <h3>탈퇴 되었습니다.</h3>
-      <button type="button">확인</button>
-    </section>
-
-  </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
-</body> -->
-
 </html>
