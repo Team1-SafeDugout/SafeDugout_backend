@@ -7,27 +7,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>구매 내역</title>
-  <link rel="stylesheet" href="./../../assets/css/buyList/buyList.css">
-  <link rel="stylesheet" href="/webapp/assets/css/footer.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerLogin.css">
-  <link rel="stylesheet" href="/webapp/assets/css/headerNoLogin.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyList.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 </head>
 
 <body>
-  <div id="header"></div>
+  <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
     <div class="main-full">
       <section class="sidebar">
         <h2>MY페이지</h2>
         <div>
           <ul>
-            <li class="sidebar-button post"> <a href="./myPostList.html"> 내가 쓴 게시글</a> </li>
-            <li class="sidebar-button commet"> <a href="./../myCommentList/myCommetList.html"> 내가 쓴 댓글</a> </li>
-            <li class="sidebar-button buy"> <a href="./../buyList/buyList.html"> 구매 내역</a> </li>
-            <li class="sidebar-button sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-            <li class="sidebar-button member-update"> <a href="./../memberInformation/informationInput.html"> 회원 정보
-                수정</a></li>
-            <li class="sidebar-button member-quit"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a></li>
+            <li class="sidebar-button post"> <a href="${pageContext.request.contextPath}/myPage/postList.mp"> 내가 쓴 게시글</a> </li>
+            <li class="sidebar-button commet"> <a href="${pageContext.request.contextPath}/myPage/commentList.mp"> 내가 쓴 댓글</a> </li>
+            <li class="sidebar-button buy"> <a href="${pageContext.request.contextPath}/myPage/tradeList.mp"> 구매 내역</a> </li>
+            <li class="sidebar-button sell"> <a href="${pageContext.request.contextPath}/myPage/sellList.mp"> 판매 내역</a> </li>
+            <li class="sidebar-button member-update"> <a href="${pageContext.request.contextPath}/myPage/changeInfo.mp"> 회원 정보 수정</a></li>
+            <li class="sidebar-button member-quit"> <a href="${pageContext.request.contextPath}/myPage/unSubscribe.mp"> 회원 탈퇴</a></li>
           </ul>
         </div>
       </section>
@@ -199,140 +197,6 @@
       </section>
     </div>
   </main>
-  <!-- 배경 어둡게 만드는 div -->
-      <!-- <div id="overlay"></div>
-      <div class="content-box-modal">
-        <h3>구매 확정 되었습니다.</h3>
-        <div class="post-list-modal">
-          <li class="post-list-row-modal-product-title">
-            <span>상품 이름 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>따끈따끈한 글로브 입니다</span>
-          </li>
-          <li class="post-list-row-modal-product-content">
-            <span>상품 설명 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>따근따근한 글로브, 상태 양호, 착용감 좋음</span>
-          </li>
-          <li class="post-list-row-modal">
-            <span>거래 방식 :</span> <span>배송</span>
-          </li>
-          <li class="post-list-row-modal">
-            <span>거래 희망 지역 :</span> <span>인천</span>
-          </li>
-          <li class="post-list-row-modal">
-            <span>판매자 ID :</span> <span>sfeq8474</span>
-          </li>
-          <li class="post-list-row-modal-product-price">
-            <div class="product-price">
-              <span>상품 가격 :</span> <span>1000000 포인트</span>
-            </div>
-          </li>
-        </div>
-        <div class="product-list-button-container-modal"> -->
-          <!-- 확인 버튼 -->
-          <!-- <a>
-            <div class="product-list-button-confirm-modal">확인
-            </div>
-          </a> -->
-          <!-- 취소 버튼 -->
-          <!-- <a>
-            <div class="product-list-button-cancel-modal">취소
-            </div>
-          </a>
-        </div>
-      </div> -->
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/myPageInclude.js"></script>
+  <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
 </body>
-
-<!-- <body>
-  <div id="header"></div>
-  <main>
-
-    <section class="buyList">
-      <h2>MY페이지</h2>
-      <div>
-        <ul>
-          <li class="post"> <a href="./../myPostList/myPostList.html"> 내가 쓴 게시글</a> </li>
-          <li class="commet"> <a href="./../myCommentList/"> 내가 쓴 댓글</a> </li>
-          <li class="buy"> <a href="./buyList.html"> 구매 내역</a> </li>
-          <li class="sell"> <a href="./../sellList/sellList.html"> 판매 내역</a> </li>
-          <li class="member-"> <a href="./../memberInformation/informationInput.html"> 회원 정보 수정</a> </li>
-          <li class="sidebar-elements"> <a href="./../memberWithDrawal/memberPassword.html"> 회원 탈퇴</a> </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="mybuy-list">
-      <h3>구매 내역</h3>
-      <section>
-        <img src="./../../assets/img/tradeImg/a.png" alt="">
-        <div class="left">
-          <li>제목 : 야구대표팀 점퍼</li>
-          <li>거래 방식 : 직거래</li>
-          <li>판매자 ID : th******</li>
-        </div>
-        <div class="right">
-          <li>가격 : 포인트</li>
-          <li>잔여 포인트 : 포인트</li>
-          <li>구매 일자 : 2025-08-23</li>
-          <button type="button">구매 확정</button>
-          <button type="button">구매 취소</button>
-        </div>
-      </section>
-      <section>
-        <img src="./../../assets/img/tradeImg/b.png" alt="">
-        <div class="left">
-          <li>제목 : 야구대표팀 모자</li>
-          <li>거래 방식 : 직거래</li>
-          <li>판매자 ID : th******</li>
-        </div>
-        <div class="right">
-          <li>가격 : 포인트</li>
-          <li>잔여 포인트 : 포인트</li>
-          <li>구매 일자 : 2025-08-23</li>
-          <li>확정 일자 : 2025-08-23</li>
-          <button type="button">구매 확정</button>
-          <button type="button">구매 취소</button>
-        </div>
-      </section>
-      <section>
-        <img src="./../../assets/img/tradeImg/c.png" alt="">
-        <div class="left">
-          <li>제목 : 카카오프렌즈 무릎담요</li>
-          <li>거래 방식 : 직거래</li>
-          <li>판매자 ID : th******</li>
-        </div>
-        <div class="right">
-          <li>가격 : 포인트</li>
-          <li>잔여 포인트 : 포인트</li>
-          <li>구매 일자 : 2025-08-23</li>
-          <li>확정 일자 : 2025-08-23</li>
-        </div>
-      </section>
-
-
-      <div class="postlist-pagenumber">
-        <form action="" method="get">
-          <button type="button" id="left-button"> ◁ </button>
-          <ul id="numberlist-ul">
-            <li><a>1</a></li>
-            <li><a>2</a></li>
-            <li><a>3</a></li>
-            <li><a>4</a></li>
-            <li><a>5</a></li>
-          </ul>
-          <button type="button" id="right-button"> ▷ </button>
-        </form>
-      </div>
-
-
-    </section>
-
-    <section class="my-point">내 포인트 P</section>
-    <a href="./../pointRecharge/pointList.html">포인트 충전 내역 보기</a>
-    <a href="./../trade/pointBuy.html">충전</a>
-    </section>
-  </main>
-  <div id="footer"></div>
-  <script src="/webapp/assets/js/include.js"></script>
-</body> -->
-
 </html>
