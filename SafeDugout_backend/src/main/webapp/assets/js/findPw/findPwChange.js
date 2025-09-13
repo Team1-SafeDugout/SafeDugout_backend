@@ -2,9 +2,13 @@
 const okBtn = document.getElementById('okBtn');
 
 // 입력 필수값 
+// 비밀번호
 const pw = document.getElementById("pw");
 // 재입력 비밀번호
 const rePw = document.getElementById("rePw");
+
+// 폼 선택
+const form = document.getElementById("pwForm");
 
 // 비밀번호 유효성 검사 (영문, 숫자, 특수문자 조합, 각자 1글자 이상 포함, 8자 이상)
 function checkPwValid(pw) {
@@ -21,6 +25,8 @@ function checkPwSame(pw, rePw) {
   }
 }
 
+
+
 // 모든 오류 메시지 
 const errorMessage = document.querySelectorAll('.main-error-message span');
 // 필수 입력값 누락 메시지 
@@ -29,6 +35,11 @@ const inputMissingMessage = document.querySelector('.main-input-list:first-child
 const invalidPwMessage = document.querySelector('.main-input-list:first-child span:nth-child(1)');
 // 비밀번호 불일치 메시지
 const pwMismatchMessage = document.querySelector('.main-input-list:last-child span:nth-child(1)');
+
+// form에서 submit 막기 
+form.addEventListener('submit', event => {
+  event.preventDefault();
+})
 
 // 확인 버튼 누를 시 동작 
 okBtn.addEventListener('click', function () {
@@ -65,6 +76,6 @@ okBtn.addEventListener('click', function () {
 
   // 모든 입력값이 유효하면 비밀번호 재설정 페이지로 이동
   if (isValidAll === true) {
-    location.href = "./findPwChangeResult.html";
+    form.submit();
   }
 });
