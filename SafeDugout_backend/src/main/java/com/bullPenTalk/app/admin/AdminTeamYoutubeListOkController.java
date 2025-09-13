@@ -37,7 +37,7 @@ public class AdminTeamYoutubeListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<YoutubePostDTO> boardList = adminTeamYoutubeDAO.select();
+		List<YoutubePostDTO> boardList = adminTeamYoutubeDAO.select(pageMap);
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정

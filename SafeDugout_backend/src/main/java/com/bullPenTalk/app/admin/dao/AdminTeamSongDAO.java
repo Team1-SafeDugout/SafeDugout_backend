@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -28,8 +29,8 @@ public class AdminTeamSongDAO {
 	
 	// 조회(전부)
 	
-	public List<SongPostDTO> select() {
-		return sqlSession.selectList("adminSong.selectAll");
+	public List<SongPostDTO> select(Map<String, Integer> map) {
+		return sqlSession.selectList("adminSong.listSelectAll", map);
 	}
 	
 	// 삭제
