@@ -122,7 +122,7 @@
   
   <section class="section-modal" id="section-modal">
     <div class="modal-background"></div>
-    <form action="/admin/adminCreatePostOk.ad?boardCategory=teamCheeringsong" method="post" id="modal-form" enctype="multipart/form-data">
+    <form method="post" id="modal-form" enctype="multipart/form-data">
 
       <div class="modal-input-text">
         <label for='song-title'> 응원가명 : </label>

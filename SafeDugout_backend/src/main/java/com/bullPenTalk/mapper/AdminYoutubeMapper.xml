@@ -3,7 +3,7 @@
 
 <mapper namespace="adminYoutube">
 	<!-- 유튜브 목록 조회 -->
-	<select id="listSelect" resultType="YouTubePostDTO">
+	<select id="listSelect" resultType="YouTubePostDTO" parameterType = "map">
     SELECT *
     FROM (
         SELECT ROWNUM AS rnum, subquery.*
@@ -20,7 +20,6 @@
             JOIN TBL_TEAM t ON p.TEAM_NUMBER = t.TEAM_NUMBER
             JOIN TBL_ADMIN a ON p.ADMIN_NUMBER = a.ADMIN_NUMBER
             WHERE p.POST_TYPE = 4
-              AND p.TEAM_NUMBER = #{teamNumber}
             ORDER BY p.POST_DATE DESC
         ) subquery
     )

@@ -134,7 +134,7 @@ public class AdminCreatePostOkController implements Execute{
 			result.setPath("/admin/adminManageTeamSongListOk.ad");
 			break;
 			
-		case "playercheeringsong":
+		case "playerCheeringsong":
 			boardNum = 6;
 			
 			SongPostDTO songPlayerPostDTO = new SongPostDTO();
