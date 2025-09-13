@@ -23,21 +23,16 @@ body {
   font-weight: 700;
 }
 
-/* 폼 태그 */
-.main-container form {
-  margin: 0px auto;
-}
-
 /* 메시지 박스 */
 .main-message-container {
   background-color: #efefef;
   width: 700px;
-  height: 300px;
+  height: 190px;
   padding: 25px 0px;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 /* 결과 메시지 */
@@ -45,13 +40,12 @@ body {
   width: 600px;
   font-size: 24px;
   font-weight: 700;
-  margin: 15px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 /* 버튼 컨테이너 */
 .main-button-container {
-  position: absolute;
-  bottom: 50px;
+  margin-top: 70px;
 }
 
 /* 로그인 버튼 */
