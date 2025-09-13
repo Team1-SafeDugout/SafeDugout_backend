@@ -120,8 +120,7 @@ body {
 
 /* 버튼 컨테이너 */
 .main-button-container {
-  position: absolute;
-  bottom: 205px;
+  margin-top: 70px;
 }
 
 /* 버튼 컨테이너 button 태그 */
