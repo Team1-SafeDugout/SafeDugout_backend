@@ -8,10 +8,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원정보 입력 페이지(비밀번호찾기)</title>
-  <link rel="stylesheet" href="./../../assets/css/findPw/findPwInput.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/findPw/findPwInput.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/findPw/findPwInput.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/findPw/findPwInput.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -49,7 +49,7 @@
               <!-- 오른쪽 네모칸 -->
               <div class="main-input-box">
                 <!-- 입력 오류 메시지 -->
-                <div class="main-error-message"><span>* 등록되지 않은 이름입니다.</span><span>* 필수 입력값입니다.</div>
+                <div class="main-error-message"></div>
                 <!-- 입력칸 -->
                 <input type="text" placeholder="이름을 입력하세요" id="userName">
               </div>
@@ -57,21 +57,21 @@
             <div class="main-input-list">
               <div class="main-input-name">아이디</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 등록되지 않은 아이디입니다.</span><span>* 필수 입력값입니다.</span></div>
+                <div class="main-error-message"><span></div>
                 <input type="text" placeholder="아이디를 입력하세요" id="id">
               </div>
             </div>
             <div class="main-input-list">
               <div class="main-input-name">이메일</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 등록되지 않은 이메일입니다.</span><span>* 필수 입력값입니다.</span></div>
+                <div class="main-error-message"></div>
                 <input type="email" placeholder="이메일을 입력하세요" id="email">
               </div>
             </div>
             <div class="main-input-list">
               <div class="main-input-name">핸드폰 번호</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 등록되지 않은 번호입니다.</span><span>* 필수 입력값입니다.</span></div>
+                <div class="main-error-message"></div>
                 <input type="text" placeholder="핸드폰 번호를 입력하세요" id="phoneNumber">
                 <button type="button" id="sendCode">인증 번호 발송</button>
               </div>
@@ -79,13 +79,14 @@
             <div class="main-input-list">
               <div class="main-input-name">인증번호 입력</div>
               <div class="main-input-box">
-                <div class="main-error-message"><span>* 인증 번호 불일치</span></div>
+                <div class="main-error-message"></div>
                 <input type="text" placeholder="인증 번호 입력" id="code">
                 <!-- 오른쪽 네모칸 인증 버튼 -->
                 <button type="button" id="authenticate">인증</button>
               </div>
             </div>
           </div>
+          <div class="find-fail-message">입력하신 정보로 계정을 찾을 수 없습니다.</div>
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
             <!-- 확인 버튼 -->

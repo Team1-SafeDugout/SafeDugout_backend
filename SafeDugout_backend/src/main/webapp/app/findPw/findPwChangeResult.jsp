@@ -8,10 +8,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>비밀번호 재설정 완료</title>
-  <link rel="stylesheet" href="./../../assets/css/findPw/findPwChangeResult.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/findPw/findPwChangeResult.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <link rel="stylesheet" href="./../../assets/css/footer.css">
-  <script defer src="./../../assets/js/findPw/findPwChangeResult.js"></script>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
+  <script defer src="${pageContext.request.contextPath}/assets/js/findPw/findPwChangeResult.js"></script>
 </head>
 
 <!-- 바디 -->
@@ -30,8 +30,6 @@
       <div class="main-small-title">
 
       </div>
-      <!-- 폼 태그 -->
-      <form action="" method="post">
         <!-- 메시지 박스 -->
         <div class="main-message-container">
           <!-- 결과 메시지 -->
@@ -39,17 +37,16 @@
             비밀번호 변경이 완료되었습니다. <br><br>
             다시 로그인 해주세요.
           </div>
-          <!-- 버튼 컨테이너 -->
-          <div class="main-button-container">
-            <!-- 버튼 컨테이너 a 태그 -->
-            <a href="./../login/login.html">
-              <!-- 로그인 버튼 -->
-              <div class="main-button-next">로그인
-              </div>
-            </a>
-          </div>
         </div>
-      </form>
+        <!-- 버튼 컨테이너 -->
+         <div class="main-button-container">
+           <!-- 버튼 컨테이너 a 태그 -->
+           <a href="${pageContext.request.contextPath}/member/login.me">
+             <!-- 로그인 버튼 -->
+             <div class="main-button-next">로그인
+             </div>
+           </a>
+         </div>
     </div>
   </main>
   <!-- 푸터 -->

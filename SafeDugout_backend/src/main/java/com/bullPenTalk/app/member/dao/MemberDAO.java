@@ -34,8 +34,14 @@ public class MemberDAO {
 		return (Integer) sqlSession.selectOne("member.checkId", memberId) < 1;
 	}
 	
-	public String findId(MemberDTO memberDTO) {
-		return sqlSession.selectOne("member.findId", memberDTO);
+	public int findNumber(MemberDTO memberDTO) {
+		Integer memberNumber = sqlSession.selectOne("member.findNumber", memberDTO);
+		return memberNumber == null ? -1 : memberNumber;
+	}
+	
+	public int findNumberWithId(MemberDTO memberDTO) {
+		Integer memberNumber = sqlSession.selectOne("member.findNumberWithId", memberDTO);
+		return memberNumber == null ? -1 : memberNumber;
 	}
 	
 	public void setPw(String memberId, String memberPw) {
@@ -80,6 +86,36 @@ public class MemberDAO {
     		return sqlSession.selectOne("member.getTeamNumber", memberNumber); 
     	}
     	return 0;
+    }
+    
+    // 이름 등록 여부 검사 
+    public int checkNameRegistered(String inputName) {
+    	return sqlSession.selectOne("member.checkNameRegistered", inputName);
+    }
+    
+    // 아이디 등록 여부 검사 
+    public int checkIdRegistered(String inputId) {
+    	return sqlSession.selectOne("member.checkIdRegistered", inputId);
+    }
+    
+    // 이메일 등록 여부 검사 
+    public int checkEmailRegistered(String inputEmail) {
+    	return sqlSession.selectOne("member.checkEmailRegistered", inputEmail);
+    }
+    
+    // 전화번호 등록 여부 검사 
+    public int checkPhoneRegistered(String inputPhone) {
+    	return sqlSession.selectOne("member.checkPhoneRegistered", inputPhone);
+    }
+    
+    // 아이디로 가입 날짜 조회 
+    public String getRegisterDate(String memberId) {
+    	return sqlSession.selectOne("member.getRegisterDate", memberId);
+    }
+    
+    // 비밀번호 변경 
+    public int updatePw(MemberDTO memberDTO) {
+    	return sqlSession.update("member.updatePw", memberDTO);
     }
     
 }

@@ -76,6 +76,7 @@
               </div>
             </div>
           </div>
+          <div class="find-fail-message">입력하신 정보로 아이디를 찾을 수 없습니다.</div>
           <!-- 버튼 컨테이너 -->
           <div class="main-button-container">
             <!-- 확인 버튼 -->
@@ -85,11 +86,6 @@
           </div>
         </div>
       </form>
-
-
-
-
-
     </div>
   </main>
   <!-- 푸터 -->
