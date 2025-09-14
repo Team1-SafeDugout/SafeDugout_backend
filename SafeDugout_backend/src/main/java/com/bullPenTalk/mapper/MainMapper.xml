@@ -28,7 +28,7 @@
 	</select>
 	
 	<!-- 메인 공지사항 최신 항목(제목) 가져오기 -->
-	<select id="getRecent" resultType="MainNoticePostDTO">
+	<select id="getRecent" resultType="string">
 		SELECT * FROM 
 		(SELECT NOTICE_POST_TITLE
 		FROM TBL_NOTICE_POST

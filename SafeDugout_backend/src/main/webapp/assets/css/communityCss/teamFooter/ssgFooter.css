@@ -1,23 +1,121 @@
 @charset "UTF-8";
 #team-footer5{
-  display: flex;
-  flex-direction: column;
-  background-color: #ED1C24;
-  min-height: 100px;
   width: 100%;
+  min-height: 100px;
+  padding: 30px 0px;
+  display: flex;
+  justify-content: center;
   position: fiexd;
   bottom: 0px;
-}
-
-#team-footer5 a{
-  margin: 5px; 
-  color: white;
   font-size: 14px;
-  text-decoration: underline;
+  font-weight: 300;
+  color: white;
+  box-sizing: border-box;
+  background-color: #ED1C24;
 }
 
-#team-footer5 a:hover {
-  cursor: pointer;
+#team-footer5 a {
+  color: white;
+  text-decoration: none;
+}
+
+#team-footer5 p:nth-child(1) {
+	margin-bottom: 10px;
+}
+
+.service-name {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+
+.useTerm-footer,
+.piPolicy-footer {
+	font-weight: 400;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.tradePolicy-footer {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.footer-left {
+	width: 350px;
+	border-right: 1px solid white;
+}
+
+.footer-right {
+	margin-left: 30px; 
+}
+
+.footer-page-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.footer-team-menu {
+	width: 700px;
+	display: flex;
+}
+
+.footer-team-menu span {
+	margin-right: 15px;
+}
+
+.footer-team-menu span:last-child {
+	margin-right: 0px; 
+}
+
+
+.footer-team-link {
+	width: 700px;
+	margin: 5px 0px;
+	display: flex;
+}
+
+.footer-team-link a {
+	margin-right: 17px; 
+	display: flex; 
+	align-items: center;
+}
+
+.footer-team-link img {
+	width: 30px;
+	height: 30px;
+}
+
+.footer-team-link a:last-child {
+	margin-right: 0px; 
+}
+
+#footer-team-home a {
+	text-decoration: underline;
+}
+
+.footer-right-bottom {
+	margin-top: 10px;
+}
+
+.footer-right-bottom img {
+	width: 30px;
+	height: 30px;
+	filter: brightness(0) invert(1);
+}
+
+.footer-page-title-container {
+	width: 700px;
+	margin-bottom: 5px;
+	display: flex; 
+	justify-content: space-between;
+	align
+}
+
+.footer-page-title-container > div,
+.footer-page-title-container a {
+	display: flex; 
+	align-items: center;
 }
 
 /* 배경 어둡게 만드는 div */
@@ -32,8 +130,10 @@
   display: none; 
 }
 
-/* 모달 전체 */
-.modal-all-footer {
+/* 모달 */
+.modal-useterm-footer,
+.modal-pipolicy-footer,
+.modal-tradepolicy-footer {
   z-index: 200;
   left: 50%;
   top: 50%;

@@ -16,8 +16,10 @@
   display: none; 
 }
 
-/* 모달 전체 */
-.modal-all-footer {
+/* 모달 */
+.modal-useterm-footer,
+.modal-pipolicy-footer,
+.modal-tradepolicy-footer {
   z-index: 200;
   left: 50%;
   top: 50%;
@@ -114,22 +116,93 @@
 }
 
 footer {
-	height: 100px;
+	min-height: 100px;
 	width: 100%;
-	padding-left: 50px;
+	padding: 30px 0px;
 	background-color: #DCD6D0;
-	align-content: end;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
-	
-}
-
-footer span {
-	text-decoration: underline;
 	color: black;
+	font-size: 14px;
+	font-weight: 300;
+	box-sizing: border-box;
 }
 
-footer span:hover {
+footer p:nth-child(1) {
+	margin-bottom: 10px;
+}
+
+.service-name {
+	font-size: 16px;
+	font-weight: 700;
+}
+
+
+.useTerm-footer,
+.piPolicy-footer {
+	font-weight: 400;
+	text-decoration: underline;
 	cursor: pointer;
+}
+
+.tradePolicy-footer {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.footer-left {
+	width: 350px;
+	border-right: 1px solid black;
+}
+
+.footer-right {
+	margin-left: 30px; 
+}
+
+.footer-page-title {
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.footer-team-link {
+	width: 700px;
+	display: flex;
+}
+
+.footer-team-link a {
+	margin-right: 17px; 
+	display: flex; 
+	align-items: center;
+}
+
+.footer-team-link img {
+	width: 30px;
+	height: 30px;
+}
+
+.footer-team-link a:last-child {
+	margin-right: 0px; 
+}
+
+.footer-right-bottom {
+	margin-top: 10px;
+}
+
+.footer-right-bottom img {
+	width: 30px;
+	height: 30px;
+}
+
+.footer-page-title-container {
+	width: 700px;
+	margin-bottom: 5px;
+	display: flex; 
+	justify-content: space-between;
+	align
+}
+
+.footer-page-title-container > div,
+.footer-page-title-container a {
+	display: flex; 
+	align-items: center;
 }

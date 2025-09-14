@@ -47,6 +47,14 @@
   position: relative;
 }
 
+.main-notice {
+	text-decoration: none;
+}
+
+.main-notice:hover {
+	text-decoration: underline;
+}
+
 /* 헤더 하단 네비 */
 .bottom-header {
   float: right;

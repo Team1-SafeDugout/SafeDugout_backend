@@ -19,8 +19,13 @@
 							<c:out value="${recentGuideTitle}"/></a>
 					</div> --%>
 					<div class="notice">
-						<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
-							<c:out value="${recentMainTitle}"/></a>
+						[전체공지]&nbsp<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
+							<%-- <c:out value="${recentMainTitle}"/> --%></a>
+					</div>
+					<div class="trade-logo">
+						<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">
+							<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeMainLogo.png" alt="중고거래 로고">
+						</a>
 					</div>
 					<div class="login">
 						<a href="${pageContext.request.contextPath}/member/login.me">
@@ -40,11 +45,14 @@
 							<c:out value="${recentGuideTitle}"/></a>
 					</div> --%>
 					<div class="notice">
-						<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
-							<c:out value="${recentMainTitle}"/></a>
+						[전체공지]&nbsp<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma">
+							<%-- <c:out value="${recentMainTitle}"/> --%></a>
 					</div>
 					<div class="trade-logo">
-						<a  href="${pageContext.request.contextPath}/app/trade/productRegister.jsp">
+						<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">
+							<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeMainLogo.png" alt="중고거래 로고">
+						</a>
+						<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
 							<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
 						</a>
 					</div>
@@ -62,4 +70,5 @@
 		</c:choose>
 	</div>
 </header>
-
+<!-- js 파일 -->
+<script src="${pageContext.request.contextPath}/assets/js/header.js"></script>
