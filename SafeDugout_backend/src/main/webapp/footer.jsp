@@ -3,7 +3,7 @@
 <!-- 배경 어둡게 만드는 div -->
   <div id="overlay"></div>
 <!-- 모달창 1 -->
-  <div class="modal-all-footer">
+  <div class="modal-useterm-footer">
     <!-- 모달창 닫는 버튼 -->
     <!-- <div class="modal-close-button-footer">
       <span>✕</span>
@@ -79,10 +79,163 @@
       </a>
     </div>
   </div>
+ <!-- 모달창 2 -->
+  <div class="modal-pipolicy-footer">
+    <!-- 모달창 닫는 버튼 -->
+    <!-- <div class="modal-close-button-footer">
+      <span>✕</span>
+    </div> -->
+    <!-- 모달창 박스 부분 -->
+    <div class="modal-window-footer">
+      <!-- 모달창 상단 -->
+      <div class="term-top-footer">
+        <!-- 이용약관 텍스트 -->
+        <span>개인정보처리방침</span>
+      </div>
+      <!-- 약관 텍스트 박스 -->
+      <div class="term-text-box-footer">
+          부정 이용 방지(사기, 스팸, 불법 게시물 차단 등) <br><br>
+
+      개인정보 보유 및 이용 기간<br><br>
+
+      회원 탈퇴하면 30일 이내에 데이터 완전히 삭제<br><br>
+
+      법령에 따라 보관이 필요한 경우, 정해진 기간 동안 보관<br><br>
+
+      계약·청약 철회 기록: 5년<br><br>
+
+      결제·재화 공급 기록: 5년<br><br>
+
+      소비자 불만·분쟁 처리 기록: 3년<br><br>
+
+      접속 기록: 3개월<br><br>
+
+      개인정보 제3자 제공<br><br>
+
+      원칙적으로 개인정보를 제3자에게 제공하지 않음<br><br>
+
+      다만, 법령상 요청이 있거나 서비스 운영상 꼭 필요한 경우(예: 택배사 배송 정보 제공)는 사전 안내 후 동의 받음<br><br>
+
+      개인정보 처리 위탁<br><br>
+
+      서버 호스팅, 결제 처리, 문자/이메일 발송 등의 업무를 외부 업체에 맡길 수 있음<br><br>
+
+      위탁 시 계약을 통해 개인정보 안전 관리 의무를 부과하고 관리·감독함<br><br>
+
+      동의 거부 권리 및 불이익 안내<br><br>
+
+      개인정보 제공에 동의하지 않아도 회원 가입은 가능<br><br>
+
+      다만, 필수 항목에 동의하지 않으면 일부 서비스(포인트 충전·사용, 굿즈 거래, 댓글 작성 등) 이용이 제한될 수 있음
+      </div>
+    </div>
+    <!-- 모달창 버튼 컨테이너 -->
+    <div class="modal-button-container-footer">
+      <!-- 닫기버튼 a 태그 -->
+      <a>
+        <div class="modal-button-close-footer">닫기
+        </div>
+      </a>
+    </div>
+  </div>
+ <!-- 모달창 3 -->
+  <div class="modal-tradepolicy-footer">
+    <!-- 모달창 닫는 버튼 -->
+    <!-- <div class="modal-close-button-footer">
+      <span>✕</span>
+    </div> -->
+    <!-- 모달창 박스 부분 -->
+    <div class="modal-window-footer">
+      <!-- 모달창 상단 -->
+      <div class="term-top-footer">
+        <!-- 이용약관 텍스트 -->
+        <span>중고거래 운영 방침</span>
+      </div>
+      <!-- 약관 텍스트 박스 -->
+      <div class="term-text-box-footer">
+        
+      </div>
+    </div>
+    <!-- 모달창 버튼 컨테이너 -->
+    <div class="modal-button-container-footer">
+      <!-- 닫기버튼 a 태그 -->
+      <a>
+        <div class="modal-button-close-footer">닫기
+        </div>
+      </a>
+    </div>
+  </div>
 <!-- 푸터 -->
   <footer>
-    <p><span class="useTerm-footer">이용약관</span></p>
-    <p>대표 관리자 이메일 주소 : admin123@gmail.com</p>
+  <div class="footer-left">
+  	<p><span class="service-name">불펜토크 BULLPENTALK</span></p>
+    <p><span class="useTerm-footer">이용약관</span>&nbsp•&nbsp<span class="piPolicy-footer">개인정보처리방침</span></p>
+    <p>대표 관리자 이메일 주소 : admin1234@gmail.com</p>
+    <p><span class="tradePolicy-footer">중고거래 운영 방침</span></p>
+  </div>
+  <div class="footer-right">
+  	<p><span class="footer-page-title">팀 커뮤니티</span></p>
+  	<p class="footer-team-link">
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=3">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/hanwha.png" alt="">한화
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=2">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/lg.png" alt="">LG
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=8">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/lotte.png" alt="">롯데
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=5">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/ssg.png" alt="">SSG
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=9">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/kia.png" alt="">KIA
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=6">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/kt.png" alt="">KT
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=7">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/nc.png" alt="">NC
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=4">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/samsung.png" alt="">삼성
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=1">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/doosan.png" alt="">두산
+  		</a>
+  		<a href="${pageContext.request.contextPath}/main/mainTeam.ma?teamNumber=10">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/kiwoom.png" alt="">키움
+  		</a>
+  	</p>
+  	<div class="footer-right-bottom">
+  		<div class="footer-page-title-container">
+  		<div>
+  			<span class="footer-page-title">전체 커뮤니티</span>
+  		</div>
+  		<div>
+  			<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeMainLogo.png" alt="중고거래 로고">
+			<span class="footer-page-title">중고거래</span>
+			</a>
+		</div>
+  		<div>
+  			<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
+			<span class="footer-page-title">상품 등록</span>
+			</a>
+		</div>
+  		<div>
+  			<a href="${pageContext.request.contextPath}/myPage/postList.mp">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="">
+			<span class="footer-page-title">마이페이지</span>
+			</a>
+		</div>
+		</div>
+		<p><a href="${pageContext.request.contextPath}/freeCommunity/freeCommunitymain.fc"><span class="free-community-main">• 전체 커뮤니티 메인</span></a></p>
+  		<p><a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityList.fc"><span class="free-community-board">• 자유 게시판</span></a></p>
+  		<p><a href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeList.fc"><span class="free-community-guide">• 입문자 가이드</span></a></p>
+  	</div>
+  </div>
   </footer>
 <!-- js 파일 -->
 <script src="${pageContext.request.contextPath}/assets/js/footer.js"></script>

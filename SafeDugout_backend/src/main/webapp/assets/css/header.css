@@ -92,6 +92,10 @@ a{
 }
 
 .notice a {
+	text-decoration: none;
+}
+
+.notice a:hover {
 	text-decoration: underline;
 }
 

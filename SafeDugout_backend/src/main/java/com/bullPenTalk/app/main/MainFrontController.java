@@ -55,31 +55,20 @@ public class MainFrontController extends HttpServlet {
 				
 		//MainDAO 객체 생성
 		MainDAO mainDAO = new MainDAO();
-		
-		//헤더에서 띄울 최신 공지 저장
-		MainNoticePostDTO recentMainNotice = mainDAO.getRecent();
-		if(recentMainNotice != null) {
-			request.setAttribute("recentMainTitle", recentMainNotice.getNoticePostTitle());
-		}else {
-			request.setAttribute("recentMainTitle", "[메인공지]");
-		}
 
-		GuidePostDTO recentGuide = mainDAO.getRecentGuide();
-		if(recentGuide != null) {
-			request.setAttribute("recentGuideTitle", recentGuide.getNoticePostTitle());
-		}else {
-			request.setAttribute("recentGuideTitle", "[입문가이드]");
-		}
-		
-		//팀 번호가 있을 경우 실행 
-		if(request.getParameter("teamNumber") != null) {
-			System.out.println("팀 번호 전송됨");
-			session.setAttribute("teamNumber", request.getParameter("teamNumber"));
-		}else {
-			
-		}
+//		GuidePostDTO recentGuide = mainDAO.getRecentGuide();
+//		if(recentGuide != null) {
+//			request.setAttribute("recentGuideTitle", recentGuide.getNoticePostTitle());
+//		}else {
+//			request.setAttribute("recentGuideTitle", "[입문가이드]");
+//		}
 		
 		switch (target) {
+		case "/header.ma":
+			System.out.println("헤더 처리 요청");
+			result = new HeaderOkController().execute(request, response);
+			System.out.println("헤더 처리 완료");
+			break;
 		case "/main.ma":
 			System.out.println("메인 페이지 처리 요청");
 			//로그인한 회원 회원번호 저장 
@@ -100,6 +89,7 @@ public class MainFrontController extends HttpServlet {
 			System.out.println("팀 번호 : " + session.getAttribute("teamNumber"));
 			result = new TeamMainOkController().execute(request, response);
 			System.out.println("팀 커뮤니티 메인페이지 처리 완료");
+			System.out.println("팀 번호 : " + session.getAttribute("teamNumber"));
 			break;
 		case "/main/mainAll.ma":
 			System.out.println("전체 커뮤니티 메인 페이지 처리 요청");
