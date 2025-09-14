@@ -75,6 +75,15 @@ public class MyPageFrontController extends HttpServlet {
 			System.out.println("거래 중 목록 진입 중");
 			result = new MyPageTradeListOkController().execute(request, response);
 			break;
+			
+		case "/myPage/confirmTrade.mp":
+			System.out.println("거래 중 목록 확정 진입 중");
+			break;
+			
+		case "/myPage/cancleTrade.mp":
+			System.out.println("거래 중 목록 취소 진입 중");
+			result = new MyPageCancleTradeController().execute(request, response);
+			break;
 		
 		case "/myPage/sellList.mp":
 			System.out.println("판매 중 목록 진입 중");

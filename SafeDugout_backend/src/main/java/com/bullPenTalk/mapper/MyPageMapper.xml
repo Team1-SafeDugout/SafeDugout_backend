@@ -164,8 +164,15 @@
 	
 	<delete id="cancelTradeDelete" parameterType="int">
 		delete from tbl_trade_post 
-		where trade_number = #{tradeNumber}
+		where sell_post_number = #{sellPostNumber}
 	</delete>
+	
+	<!-- 구매글 전체 수 -->
+	<select id = "getTotalTrade" parameterType = "int" resultType = "int">
+		SELECT COUNT(P.TRADE_NUMBER)
+		FROM TBL_TRADE_POST P
+		WHERE P.BUY_MEMBER = #{memberNumber} AND (STATUS_NUMBER = 2)
+	</select>
 	
 	<!-- 판매 목록 조회 -->
 	<select id="selectSellList" resultType="MyPageTradeListDTO" parameterType = "map">

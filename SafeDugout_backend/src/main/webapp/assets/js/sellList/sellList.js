@@ -130,7 +130,8 @@ document.addEventListener('DOMContentLoaded', function(){
               </div>
             </li>*/
 
-function addPost(imgSourceParam, titleParam, dealTypeParam, tradeStatusParam, addDateParam, pointChangeParam, pointLeftParam, buyDateParam, confirmDateParam, postNumber){
+function addPost
+(imgSourceParam, titleParam, dealTypeParam, tradeStatusParam, addDateParam, pointChangeParam, pointLeftParam, buyDateParam, confirmDateParam, postNumber){
 	const newPost = document.createElement('li');
 	newPost.classList.add("post-list-row");
 

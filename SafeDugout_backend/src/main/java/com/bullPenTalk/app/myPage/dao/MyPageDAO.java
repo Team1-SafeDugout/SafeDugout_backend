@@ -62,6 +62,11 @@ public class MyPageDAO {
 	public List<MyPageTradeListDTO> selectTradeList(Map<String, Integer> map) {
 		return sqlSession.selectList("myPage.selectTradeList", map);
 	}
+	
+	// 구매 목록 전체
+	public int getTotalTrade(int memberNumber) {
+		return sqlSession.selectOne("myPage.getTotalTrade", memberNumber);
+	}
 
 	// 구매 확정
 	public void completeTrade(int tradeNumber) {
@@ -74,8 +79,8 @@ public class MyPageDAO {
 	}
 
 	// 구매 취소(거래글 테이블에서 삭제)
-	public void cancelTradeDelete(int tradeNumber) {
-		sqlSession.delete("myPage.cancelTradeDelete", tradeNumber);
+	public void cancelTradeDelete(int sellPostNumber) {
+		sqlSession.delete("myPage.cancelTradeDelete", sellPostNumber);
 	}
 
 	// 판매 목록 조회

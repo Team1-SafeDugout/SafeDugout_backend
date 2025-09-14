@@ -8,8 +8,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>구매 내역</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyList.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/buyList/buyListConfirm.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script>
+  /* imgSourceParam, titleParam, dealTypeParam, tradeStatusParam, addDateParam, pointChangeParam, pointLeftParam, buyDateParam, confirmDateParam, postNumber */
+    let posts = [];
+    <c:forEach var="board" items="${boardList}">
+    	posts.push({
+            imgSource: "${board.attachment[0].attachmentPath}",
+            title: "${board.title}",
+            dealType: "${board.dealType}",
+            tradeStatus: "${board.tradeStatus}",
+            pointChange : "${board.pricePoint}",
+            pointLeft : "${board.pricePoint}",
+            buyDate : "${board.buyDate}",
+            confirmDate : "${board.confirmDate}",
+            postNumber : "${board.sellPostNumber}",
+            seller : "${board.sellerMemberId}"
+        });
+    </c:forEach>
+    console.log(posts);
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/buyList/buyList.js"></script>
 </head>
 
 <body>
@@ -33,156 +55,42 @@
       <section class="main-content">
         <h3>구매 내역</h3>
         <div class="content-box">
-          <div class="post-list">
-            <li class="post-list-row">
-              <div class="product-list-img">
-                <a href="">
-                  <img src="/webapp/assets/img/communityImg/tradeLogo.png" alt="">
-                </a>
-              </div>
-              <div class="product-list-info-middle">
-                <div class="product-list-title">
-                  글 제목 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">따끈따끈한 글로브 입니다</a>
-                </div>
-                <div class="product-list-deal-type">
-                  <span>거래 방식 :</span> <span>배송</span>
-                </div>
-                <div class="product-list-seller">
-                  <span>판매자 ID :</span> <span>sfeq8474</span>
-                </div>
-              </div>
-              <div class="product-list-info-right">
-                <div class="product-list-minus-point">- 1000000 포인트</div>
-                <div class="product-list-remain-point">
-                  <span>잔여 포인트 :</span> <span>1000000 포인트</span>
-                </div>
-                <div class="product-list-buy-date">
-                  <span>구매 일자 :</span> <span>2025-09-04</span>
-                </div>
-                <div class="product-list-button-container">
-                  <!-- 구매 확정 버튼 -->
-                  <a>
-                    <div class="product-list-button-complete">구매 확정
-                    </div>
-                  </a>
-                  <!-- 구매 취소 버튼 -->
-                  <a>
-                    <div class="product-list-button-cancel">구매 취소
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li class="post-list-row">
-              <div class="product-list-img">
-                <a href="">
-                  <img src="/webapp/assets/img/communityImg/tradeLogo.png" alt="">
-                </a>
-              </div>
-              <div class="product-list-info-middle">
-                <div class="product-list-title">
-                  글 제목 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">따끈따끈한 글로브 입니다!!</a>
-                </div>
-                <div class="product-list-deal-type">
-                  <span>거래 방식 :</span> <span>배송</span>
-                </div>
-                <div class="product-list-seller">
-                  <span>판매자 ID :</span> <span>sen2584</span>
-                </div>
-              </div>
-              <div class="product-list-info-right">
-                <div class="product-list-minus-point">- 1000000 포인트</div>
-                <div class="product-list-remain-point">
-                  <span>잔여 포인트 :</span> <span>1000000 포인트</span>
-                </div>
-                <div class="product-list-buy-date">
-                  <span>구매 일자 :</span> <span>2025-09-03</span>
-                </div>
-                <div class="product-list-complete-date">
-                  <span>확정 일자 :</span> <span>2025-09-05</span>
-                </div>
-              </div>
-            </li>
-            <li class="post-list-row">
-              <div class="product-list-img">
-                <a href="">
-                  <img src="/webapp/assets/img/communityImg/tradeLogo.png" alt="">
-                </a>
-              </div>
-              <div class="product-list-info-middle">
-                <div class="product-list-title">
-                  글 제목 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">따끈따끈한 글로브 입니다!!</a>
-                </div>
-                <div class="product-list-deal-type">
-                  <span>거래 방식 :</span> <span>배송</span>
-                </div>
-                <div class="product-list-seller">
-                  <span>판매자 ID :</span> <span>grss47721</span>
-                </div>
-              </div>
-              <div class="product-list-info-right">
-                <div class="product-list-minus-point">- 1000000 포인트</div>
-                <div class="product-list-remain-point">
-                  <span>잔여 포인트 :</span> <span>1000000 포인트</span>
-                </div>
-                <div class="product-list-buy-date">
-                  <span>구매 일자 :</span> <span>2025-09-02</span>
-                </div>
-                <div class="product-list-button-container">
-                  <!-- 구매 확정 버튼 -->
-                  <a>
-                    <div class="product-list-button-complete">구매 확정
-                    </div>
-                  </a>
-                  <!-- 구매 취소 버튼 -->
-                  <a>
-                    <div class="product-list-button-cancel">구매 취소
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li class="post-list-row">
-              <div class="product-list-img">
-                <a href="">
-                  <img src="/webapp/assets/img/communityImg/tradeLogo.png" alt="">
-                </a>
-              </div>
-              <div class="product-list-info-middle">
-                <div class="product-list-title">
-                  글 제목 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">따끈따끈한 글로브 입니다!!</a>
-                </div>
-                <div class="product-list-deal-type">
-                  <span>거래 방식 :</span> <span>배송</span>
-                </div>
-                <div class="product-list-seller">
-                  <span>판매자 ID :</span> <span>shgasae513</span>
-                </div>
-              </div>
-              <div class="product-list-info-right">
-                <div class="product-list-minus-point">- 1000000 포인트</div>
-                <div class="product-list-remain-point">
-                  <span>잔여 포인트 :</span> <span>1000000 포인트</span>
-                </div>
-                <div class="product-list-buy-date">
-                  <span>구매 일자 :</span> <span>2025-09-01</span>
-                </div>
-                <div class="product-list-complete-date">
-                  <span>확정 일자 :</span> <span>2025-09-05</span>
-                </div>
-              </div>
-            </li>
-          </div>
+          <ul class="post-list" id = "ul-li">
+            <c:choose>
+				<c:when test="${empty boardList}">
+					<div>
+   						<div colspan="5" align="center">구매한 물품이 없습니다.</div>
+   					</div>
+				</c:when>
+			</c:choose>                 
+          </ul>
           <div class="pagination">
-            <a href="">◁</a>
-            <ul id="numberlist-ul">
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-            </ul>
-            <a href="">▷</a>
+	        <ul id="numberlist-ul">
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/tradeList.mp?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/myPage/tradeList.mp?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/tradeList.mp?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul> 
           </div>
         </div>
       </section>
@@ -195,6 +103,46 @@
         <a href="./../pointRecharge/pointList.html" class="charge-list-btn">포인트 충전 내역 보기</a>
         <a href="./../trade/pointBuy.html" class="charge-btn">충전</a>
       </section>
+      
+      <div id="buy-overlay"></div>
+      <div class="content-box-modal" id = "buy-modal">
+        <h3>구매 확정 되었습니다.</h3>
+        <ul class="post-list-modal">
+          <li class="post-list-row-modal-product-title">
+            <span>상품 이름 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>따끈따끈한 글로브 입니다</span>
+          </li>
+          <li class="post-list-row-modal-product-content">
+            <span>상품 설명 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>따근따근한 글로브, 상태 양호, 착용감 좋음</span>
+          </li>
+          <li class="post-list-row-modal">
+            <span>거래 방식 :</span> <span>배송</span>
+          </li>
+          <li class="post-list-row-modal">
+            <span>거래 희망 지역 :</span> <span>인천</span>
+          </li>
+          <li class="post-list-row-modal">
+            <span>판매자 ID :</span> <span>sfeq8474</span>
+          </li>
+          <li class="post-list-row-modal-product-price">
+            <div class="product-price">
+              <span>상품 가격 :</span> <span>1000000 포인트</span>
+            </div>
+          </li>
+        </ul>
+        <div class="product-list-button-container-modal">
+          <!-- 확인 버튼 -->
+          <a>
+            <div class="product-list-button-confirm-modal" id = "confirm-trade-button">확인
+            </div>
+          </a>
+          <!-- 취소 버튼 -->
+          <a>
+            <div class="product-list-button-cancel-modal" id = "close-modal-button">취소
+            </div>
+          </a>
+        </div>
+      </div>
+      
     </div>
   </main>
   <jsp:include page="${pageContext.request.contextPath}/footer.jsp" />
