@@ -43,6 +43,9 @@ public class TeamMainOkController implements Execute {
 		// session에 팀별 값(팀 번호) 저장
 		session.setAttribute("teamNumber", teamNumber);
 
+		// session 만료 시간 조회 
+		System.out.println(session.getMaxInactiveInterval());
+		
 		// 팀 뉴스 목록 조회
 		List<TeamMainDTO> newsList = teamMainDAO.selectNewsList(teamNumber);
 		System.out.println(newsList);
