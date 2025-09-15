@@ -172,23 +172,10 @@ function addPost
 const confirmTradeButton = document.getElementById("confirm-trade-button");*/
 /* 모달창 */
 function openModal(){
+	
 	modalBack.style.display = "block";
-	buyModal.style.display = "flex";
-	
 	getProductInfo(currentPost);
-	
 
-	
-	closeModalButton = document.getElementById("close-modal-button");
-	confirmTradeButton = document.getElementById("confirm-trade-button");
-	
-	closeModalButton.addEventListener("click", function(){
-		closeModal();
-	});
-	
-	confirmTradeButton.addEventListener("click",function(){
-		confrirmTrade();
-	});
 
 }
 
@@ -197,8 +184,33 @@ function closeModal(){
 	buyModal.style.display = "none";
 }
 
-function confrirmTrade(){
-	window.location.href = contextPath +"/myPage/confirmTrade.mp?tradePost=" +  currentPost;
+function confrirmTrade(sellPostNumber){
+/*	window.location.href = contextPath +"/myPage/confirmTrade.mp?tradePost=" +  currentPost; */
+	fetch(`${base}/myPage/confirmTrade.mp?sellPostNumber=${encodeURIComponent(sellPostNumber)}`, {
+		headers: {
+			"X-Requested-With": "XMLHttpRequest" 
+			,"Accept": "text/plain" 
+		}
+	})
+		.then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+		.then(data => {
+			if(data){
+				if (data === "성공") {
+					/*이동용 모달*/
+					alert("구매 확정하였습니다");
+					window.location.href = contextPath +"/myPage/tradeList.mp";
+				}
+
+				else{
+					alert("구매 확정에 실패하였습니다");
+					closeModal();
+				}				
+			} 
+		})
+		.catch(() => {
+			alert("거래페이지를 불러오기 실패했습니다");
+			closeModal();
+		});
 }
 
 function getProductInfo(sellPostNumber){
@@ -213,6 +225,8 @@ function getProductInfo(sellPostNumber){
 		.then(data => {
 			if (data) {
 				console.log("이거 나왔어! :: " + data);
+				
+				buyModal.style.display = "flex";
 				buyModal.innerHTML = `
 				<h3>구매 할 물품.</h3>
 				<ul class="post-list-modal">
@@ -220,7 +234,7 @@ function getProductInfo(sellPostNumber){
 				    <span>상품 이름 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>${data.title}</span>
 				  </li>
 				  <li class="post-list-row-modal-product-content">
-				    <span>상품 설명 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>${data.content}</span>
+				    <span>상품 설명 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>${data.sellPostContent}</span>
 				  </li>
 				  <li class="post-list-row-modal">
 				    <span>거래 방식 :</span> <span>배송</span>
@@ -251,6 +265,17 @@ function getProductInfo(sellPostNumber){
 				</div>	
 				`;
 				
+				closeModalButton = document.getElementById("close-modal-button");
+				confirmTradeButton = document.getElementById("confirm-trade-button");
+
+				closeModalButton.addEventListener("click", function(){
+					closeModal();
+				});
+
+				confirmTradeButton.addEventListener("click",function(){
+					confrirmTrade(sellPostNumber);
+				});
+				
 			} else {
 				console.log("상품이 없어");
 				console.log("이거 나왔어! :: " + data.title);
@@ -258,7 +283,8 @@ function getProductInfo(sellPostNumber){
 			}
 		})
 		.catch(() => {
-			
+			alert("거래페이지를 불러오기 실패했습니다");
+			closeModal();
 		});
 }
 

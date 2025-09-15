@@ -74,40 +74,43 @@ public class MyPageDAO {
 	}
 
 	// 구매 확정
-	public bool completeTrade(int tradeNumber, int sellPostNumber,int buyMember, int sellMember) {
+	public boolean completeTrade(int sellPostNumber) {
 		SqlSession completeSession = MyBatisConfig.getSqlSessionFactory().openSession(false);
 		try {
 			// 판매자에게 입금
-			
+			System.out.println("여기까지는 왔어영");
 			/*if 문으로 판매자가 존재하는지 확인
 			 * sellpost 에 있는 가격을 판매가자에게 입금
 			 * */
-			Map<String, Integer> pointCheckMapper;
-			pointCheckMapper.put("memberNumber", sellMember);
-			pointCheckMapper.put("sellPostNumber", sellPostNumber);
-			completeSession.update("myPage.givePoint", pointCheckMapper);
-			
+			completeSession.update("myPage.givePoint", sellPostNumber);
+			System.out.println("돈입금 성공");
 			// sellPost 구매 완료 처리
-			if()
 			completeSession.update("myPage.completeSell",sellPostNumber);
 			/* sellpost 를 구매 완료 status id = 3 으로 처리
 			 * */
-			
+			System.out.println("sellpost 변경 완료");
 			// tradePost 구매 완료 처리
-			completeSession.update("myPage.completeTrade", tradeNumber);
+			completeSession.update("myPage.completeTrade", sellPostNumber);
 			/* tradepost 를 구매환료 처리 status id =3 으로 처리
 			 * */
-			
+			System.out.println("tradepost 변경 성공");
+			// Transaction 구매 완료 처리
+			completeSession.update("myPage.completeTransaction", sellPostNumber);
+			/* Transaction 를 구매환료 처리 TRANSACTION_STATUS =3 으로 처리
+			 * */
+			System.out.println("transaction 변경 성공");
 			// 위 내용요 모두 완료 될 경우 commit
 			completeSession.commit();
 			return true;
 		}catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("거래가 완전히 끝나지 않았습니다");
 			completeSession.rollback();
 			return false;
 		}	
 	}
 
+	// 여기도 트랜잭션 처리해야 할듯
 	// 구매 취소(거래 상태 변경)
 	public void cancelTradeUpdate(int sellPostNumber) {
 		sqlSession.update("myPage.cancelTradeUpdate", sellPostNumber);
@@ -141,5 +144,10 @@ public class MyPageDAO {
 	// 회원 탈퇴
 	public void quit(int memberNumber) {
 		sqlSession.delete("myPage.quit", memberNumber);
+	}
+	
+	// 회원 포인트 조회
+	public int getMemberPoint(int memberNumber) {
+		return sqlSession.selectOne("myPage.getMemberPoint", memberNumber); 
 	}
 }
