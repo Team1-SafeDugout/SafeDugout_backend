@@ -26,7 +26,7 @@ public class RecordSelectController {
 	        String teamNumberStr = request.getParameter("teamNumber");
 	        if (teamNumberStr == null || teamNumberStr.trim().isEmpty()) {
 	            System.out.println("teamNumber 값이 없습니다");
-	            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+	            result.setPath("/app/communityHtml/communityTapPage/teamMain.jsp");
 	            result.setRedirect(true);
 	            return result;
 	        }
@@ -47,7 +47,7 @@ public class RecordSelectController {
 	        // 조회결과 없으면 메인페이지로 이동
 	        if (teamRecords.isEmpty() && pitcherRecords.isEmpty() && batterRecords.isEmpty() && defenseRecords.isEmpty()) {
 	            System.out.println("해당 팀의 기록이 없습니다");
-	            result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+	            result.setPath("/app/communityHtml/communityTapPage/teamStats.jsp");
 	            result.setRedirect(true);
 	            return result;
 	        }
@@ -71,7 +71,7 @@ public class RecordSelectController {
 		    String playerIdStr = request.getParameter("playerId");
 		    if (playerIdStr == null || playerIdStr.trim().isEmpty()) {
 		        System.out.println("playerId 값이 없습니다");
-		        result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+		        result.setPath("/app/communityHtml/communityTapPage/teamPlayerStats.jsp");
 		        result.setRedirect(true);
 		        return result;
 		    }
@@ -88,7 +88,7 @@ public class RecordSelectController {
 		     
 		    if (batterRecords.isEmpty() && pitcherRecords.isEmpty()) {
 		        System.out.println("해당 선수의 기록이 없습니다");
-		        result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
+		        result.setPath("/app/communityHtml/communityTapPage/teamPlayerStats.jsp");
 		        result.setRedirect(true);
 		        return result;
 		    }
@@ -97,7 +97,7 @@ public class RecordSelectController {
 		    request.setAttribute("pitcherRecords", pitcherRecords);
 		    request.setAttribute("playerId", playerId);
 
-		    result.setPath("/app/communityHtml/communityTapPage/playerRecord.jsp");
+		    result.setPath("/app/communityHtml/communityTapPage/playerStats.jsp");
 		    result.setRedirect(false);
 		    return result;
 		}

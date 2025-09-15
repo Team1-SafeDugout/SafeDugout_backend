@@ -150,7 +150,7 @@ public class AdminCreatePostOkController implements Execute{
 			songPlayerPostDTO.setPostLink(songPlayerUrl);
 			songPlayerPostDTO.setPostContent("song");
 			
-			songPlayerPostDAO.insert(songPlayerPostDTO);
+			songPlayerPostDAO.insertPlayer(songPlayerPostDTO);
 			result.setPath("/admin/adminManageTeamSongListOk.ad");
 			
 			break;

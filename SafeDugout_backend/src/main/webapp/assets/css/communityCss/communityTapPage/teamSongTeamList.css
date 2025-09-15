@@ -95,3 +95,44 @@
 .team-song-list-row .team-song-title a:hover {
   text-decoration: underline;
 }
+
+/* ========== 페이지 네이션 ========== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.pagination > ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination ul li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: #ff5757;
+  border-color: #ff5757;
+  color: #fff;
+}
+
+.pagination .active {
+  background-color: #333;
+  border-color: #333;
+  color: #fff;
+  pointer-events: none;
+}
