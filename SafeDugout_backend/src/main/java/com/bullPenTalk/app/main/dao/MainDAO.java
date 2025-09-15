@@ -38,9 +38,11 @@ public class MainDAO {
 	}
 	
 	//메인 공지사항 최신 제목 가져오기
-	public MainNoticePostDTO getRecent() {
+	public String getRecent() {
 		System.out.println("getRecent 메소드 실행");
-		return sqlSession.selectOne("main.getRecent");
+		String recentTitle = sqlSession.selectOne("main.getRecent");
+		System.out.println("getRecent 메소드 실행 완료");
+		return recentTitle;
 	}
 	
 	//입문가이드 최신 제목 가져오기

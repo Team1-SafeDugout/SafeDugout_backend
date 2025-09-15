@@ -37,7 +37,7 @@ public class AdminTeamSongListOkController implements Execute{
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 		
-		List<SongPostDTO> boardList = adminTeamSongDAO.select();
+		List<SongPostDTO> boardList = adminTeamSongDAO.select(pageMap);
 		request.setAttribute("boardList", boardList);
 		
 		// 페이징 정보 설정

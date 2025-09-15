@@ -1,60 +1,149 @@
 package com.bullPenTalk.app.dto;
 
+import java.sql.Date;
+import java.util.List;
+
 public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 	
-	private int sellPostNumber; // 판매글 번호
-	private String sellPostTitle; // 판매글 제목
-	private int dealtypeId; // 판매글 거래방식 id(택배, 직거래)
-	private String memberId;  // 판매자 id
-	private int statusId; // 거래상태 id (판매전 , 판매후, 구매확정)
-	private int pricePoint; // 가격
-	private String paymentDate; // 결제일자
-	private String completeDate; // 구매 확정일자
+	private String title;	// 글제목
+	private String dealType; // 거래 방식
+	private String tradeStatus; // 거래 상태
 	
-	// get, set
-	public String getSellPostTitle() {
-		return sellPostTitle;
+	private String pricePoint; // 가격
+	
+	private Date addDate; // 
+	private Date buyDate;
+	private Date confirmDate;
+	
+	private int sellerMemberNumber;
+	private String sellerMemberId;
+	
+	private int buyerMemberNumber;
+	private String buyerMemberId;
+	
+	private int sellPostNumber;
+	private int tradePostNumber;
+	
+	private List<AttachmentDTO> attachment;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setSellPostTitle(String sellPostTitle) {
-		this.sellPostTitle = sellPostTitle;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public int getDealtypeId() {
-		return dealtypeId;
+
+	public String getDealType() {
+		return dealType;
 	}
-	public void setDealtypeId(int dealtypeId) {
-		this.dealtypeId = dealtypeId;
+
+	public void setDealType(String dealType) {
+		this.dealType = dealType;
 	}
-	public String getMemberId() {
-		return memberId;
+
+	public String getTradeStatus() {
+		return tradeStatus;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+
+	public void setTradeStatus(String tradeStatus) {
+		this.tradeStatus = tradeStatus;
 	}
-	public int getPricePoint() {
+
+	public String getPricePoint() {
 		return pricePoint;
 	}
-	public void setPricePoint(int pricePoint) {
+
+	public void setPricePoint(String pricePoint) {
 		this.pricePoint = pricePoint;
 	}
-	public String getPaymentDate() {
-		return paymentDate;
+
+	public Date getAddDate() {
+		return addDate;
 	}
-	public void setPaymentDate(String paymentDate) {
-		this.paymentDate = paymentDate;
+
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
 	}
-	public String getCompleteDate() {
-		return completeDate;
+
+	public Date getBuyDate() {
+		return buyDate;
 	}
-	public void setCompleteDate(String completeDate) {
-		this.completeDate = completeDate;
+
+	public void setBuyDate(Date buyDate) {
+		this.buyDate = buyDate;
 	}
-	
-	// toString
+
+	public Date getConfirmDate() {
+		return confirmDate;
+	}
+
+	public void setConfirmDate(Date confirmDate) {
+		this.confirmDate = confirmDate;
+	}
+
+	public int getSellerMemberNumber() {
+		return sellerMemberNumber;
+	}
+
+	public void setSellerMemberNumber(int sellerMemberNumber) {
+		this.sellerMemberNumber = sellerMemberNumber;
+	}
+
+	public String getSellerMemberId() {
+		return sellerMemberId;
+	}
+
+	public void setSellerMemberId(String sellerMemberId) {
+		this.sellerMemberId = sellerMemberId;
+	}
+
+	public int getBuyerMemberNumber() {
+		return buyerMemberNumber;
+	}
+
+	public void setBuyerMemberNumber(int buyerMemberNumber) {
+		this.buyerMemberNumber = buyerMemberNumber;
+	}
+
+	public String getBuyerMemberId() {
+		return buyerMemberId;
+	}
+
+	public void setBuyerMemberId(String buyerMemberId) {
+		this.buyerMemberId = buyerMemberId;
+	}
+
+	public int getSellPostNumber() {
+		return sellPostNumber;
+	}
+
+	public void setSellPostNumber(int sellPostNumber) {
+		this.sellPostNumber = sellPostNumber;
+	}
+
+	public int getTradePostNumber() {
+		return tradePostNumber;
+	}
+
+	public void setTradePostNumber(int tradePostNumber) {
+		this.tradePostNumber = tradePostNumber;
+	}
+
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(List<AttachmentDTO> attachment) {
+		this.attachment = attachment;
+	}
+
 	@Override
 	public String toString() {
-		return "MyPageTradeListDTO [sellPostTitle=" + sellPostTitle + ", dealtypeId=" + dealtypeId + ", memberId="
-				+ memberId + ", statusNumber=" + ", pricePoint=" + pricePoint + ", paymentDate="
-				+ paymentDate + ", completeDate=" + completeDate + "]";
-	} 
-	
+		return "MyPageProductInfoDTO [title=" + title + ", dealType=" + dealType + ", tradeStatus=" + tradeStatus
+				+ ", pricePoint=" + pricePoint + ", addDate=" + addDate + ", buyDate=" + buyDate + ", confirmDate="
+				+ confirmDate + ", sellerMemberNumber=" + sellerMemberNumber + ", sellerMemberId=" + sellerMemberId
+				+ ", buyerMemberNumber=" + buyerMemberNumber + ", buyerMemberId=" + buyerMemberId + ", sellPostNumber="
+				+ sellPostNumber + ", tradePostNumber=" + tradePostNumber + ", attachment=" + attachment + "]";
+	}
 }

@@ -6,7 +6,21 @@ const modalForm = document.getElementById("modal-form");
 
 const postList = document.getElementById('list-ul');
 
+const addButton = document.getElementById("save-button");
+
 var addOn = false;
+
+modalForm.addEventListener("submit", function(event) {
+  const selected = document.querySelector('input[name="team-player"]:checked');
+
+  if (selected) {
+    if (selected.value === "team") {
+      this.action = "/admin/adminCreatePostOk.ad?boardCategory=teamCheeringsong";	  
+    } else if (selected.value === "player") {
+      this.action = "/admin/adminCreatePostOk.ad?boardCategory=playerCheeringsong";
+    }
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function() {
 	if (typeof posts !== 'undefined') {

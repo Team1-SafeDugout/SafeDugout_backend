@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.admin.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -28,8 +29,8 @@ public class AdminTeamYoutubeDAO {
 	
 	// 조회(전부)
 	
-	public List<YoutubePostDTO> select() {
-		return sqlSession.selectList("adminYoutube.selectAll");
+	public List<YoutubePostDTO> select(Map<String, Integer> map) {
+		return sqlSession.selectList("adminYoutube.listSelect", map);
 	}
 	
 	

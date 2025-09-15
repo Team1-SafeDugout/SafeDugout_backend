@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,21 +36,21 @@
         <div class="main-message-container">
           <!-- 결과 메시지 -->
           <div class="main-result-message">
-            • 가입하신 아이디는 <span>thd****</span> 입니다. <br><br>
-            • 가입 일자 : 2025 - 08 - 03
+            • 가입하신 아이디는 <span><c:out value="${afterMemberId}" /><!-- thd**** --></span> 입니다. <br><br>
+            • 가입 일자 : <c:out value="${registerDate}" /><!-- 2025 - 08 - 03 -->
           </div>
         </div>
       </form>
       <!-- 버튼 컨테이너 -->
       <div class="main-button-container">
         <!-- 메인페이지 버튼 a 태그 -->
-        <a href="./../../mainNoLogin.html">
+        <a href="${pageContext.request.contextPath}/main.ma">
           <!-- 메인페이지 텍스트 -->
           <div class="main-button-next">메인페이지
           </div>
         </a>
         <!-- 로그인 버튼 a 태그 -->
-        <a href="./../login/login.html">
+        <a href="${pageContext.request.contextPath}/member/login.me">
           <!-- 로그인 텍스트 -->
           <div class="main-button-cancel">로그인
           </div>

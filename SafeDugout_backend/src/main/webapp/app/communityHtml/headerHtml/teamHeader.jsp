@@ -39,8 +39,8 @@
       </a>
     </div>
     <div class="team-right-link">
-      <a href="${pageContext.request.contextPath}/main/selectMainListOk.ma" class="main-notice">
-      <c:out value="${recentMainTitle}"/>
+      [전체공지]<a href="${pageContext.request.contextPath}/main/selectMainListOk.ma" class="main-notice">
+      <%-- <c:out value="${recentMainTitle}"/> --%>
       </a>
       <a href="${pageContext.request.contextPath}/main.ma" class="main-logo">
         <img src="${pageContext.request.contextPath}/assets/img/communityImg/icoBall.png" alt="메인페이지 로고">
@@ -58,7 +58,7 @@
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist">게시판</a></li>
         <li><a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">굿즈거래</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium&teamNumber=${sessionScope.teamNumber}">경기장</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀뉴스</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀 뉴스</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">공지사항</a></li>
         <li class="nav-search">
           <form action="" method="get">
@@ -84,3 +84,5 @@
     </nav>
   </div>
 </header>
+<!-- js 파일 -->
+<script src="${pageContext.request.contextPath}/assets/js/teamHeader.js"></script>

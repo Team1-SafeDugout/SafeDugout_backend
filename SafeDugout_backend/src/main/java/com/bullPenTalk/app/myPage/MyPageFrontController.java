@@ -81,6 +81,11 @@ public class MyPageFrontController extends HttpServlet {
 			result = new MyPageSellListOkController().execute(request, response);
 			break;
 			
+		case "/myPage/deleteSell.mp":
+			System.out.println("판매 목록 제거 진입 중");
+			result = new MyPageDeleteSellOkController().execute(request, response);
+			break;
+			
 		// 메뉴 오픈
 		case "/myPage/changeInfo.mp":
 			System.out.println("정보 수정 진입 중");
