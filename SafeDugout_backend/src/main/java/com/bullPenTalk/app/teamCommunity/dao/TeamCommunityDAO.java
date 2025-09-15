@@ -204,7 +204,7 @@ public class TeamCommunityDAO {
 	// 유튜브 총 개수 가져오기
 	public int getTotalYoutube(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
-		return sqlSession.selectOne("teamCommunity.getTotalYoutube");
+		return sqlSession.selectOne("teamCommunity.getTotalYoutube", teamNumber);
 	}
 	
 	// 응원가 총 개수 가져오기
@@ -216,13 +216,13 @@ public class TeamCommunityDAO {
 	// 팀 응원가 총 개수 가져오기
 	public int getTotalTeamSong(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
-		return sqlSession.selectOne("teamCommunity.getTotalTeamSong");
+		return sqlSession.selectOne("teamCommunity.getTotalTeamSong", teamNumber );
 	}
 	
-	// 응원가 총 개수 가져오기
+	//선수 응원가 총 개수 가져오기
 	public int getTotalPlayerSong(int teamNumber) {
 		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
-		return sqlSession.selectOne("teamCommunity.getTotalPlayerSong");
+		return sqlSession.selectOne("teamCommunity.getTotalPlayerSong", teamNumber);
 	}
 	
     // 팀 번호로 경기장 정보 조회

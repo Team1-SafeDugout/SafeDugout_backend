@@ -21,11 +21,48 @@
 		where member_id = #{memberId}
 	</select>
 	
-	<!-- 아이디 찾기 -->
-	<select id = "findId" parameterType = "MemberDTO" resultType = "string">
-		select member_name from tbl_member
+	<!-- 아이디 찾기(회원번호 조회) -->
+	<select id = "findNumber" parameterType = "MemberDTO" resultType = "int">
+		select member_number from tbl_member
 		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
 	</select>
+	
+	<!-- 비밀번호 찾기(회원번호 조회) -->
+	<select id = "findNumberWithId" parameterType = "MemberDTO" resultType = "int">
+		select member_number from tbl_member
+		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
+		AND member_id = #{memberId}
+	</select>
+	
+	<!-- 이름 등록여부 -->
+	<select id = "checkNameRegistered" parameterType = "string" resultType = "int">
+		SELECT COUNT(MEMBER_NAME) FROM TBL_MEMBER WHERE MEMBER_NAME = #{inputName}
+	</select>
+	
+	<!-- 아이디 등록여부 -->
+	<select id = "checkIdRegistered" parameterType = "string" resultType = "int">
+		SELECT COUNT(MEMBER_ID) FROM TBL_MEMBER WHERE MEMBER_ID = #{inputId}
+	</select>
+	
+	<!-- 이메일 등록여부 -->
+	<select id = "checkEmailRegistered" parameterType = "string" resultType = "int">
+		SELECT COUNT(MEMBER_EMAIL) FROM TBL_MEMBER WHERE MEMBER_EMAIL = #{inputEmail}
+	</select>
+	
+	<!-- 전화번호 등록여부 -->
+	<select id = "checkPhoneRegistered" parameterType = "string" resultType = "int">
+		SELECT COUNT(MEMBER_PHONE) FROM TBL_MEMBER WHERE MEMBER_PHONE = #{inputPhone}
+	</select>
+	
+	<!-- 가입 날짜 조회 -->
+	<select id="getRegisterDate" parameterType = "string" resultType = "string">
+		SELECT TO_CHAR(MEMBER_JOIN_DATE, 'YYYY.MM.DD. HH:MI') FROM TBL_MEMBER WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePw" parameterType = "memberDTO">
+		UPDATE TBL_MEMBER SET MEMBER_PW = #{memberPw} WHERE MEMBER_NUMBER = #{memberNumber}
+	</update>
 	
 	<select id="selectByNumber" parameterType="int" resultType="MemberDTO">
 	    SELECT MEMBER_ID, MEMBER_NUMBER, MEMBER_NAME, MEMBER_EMAIL

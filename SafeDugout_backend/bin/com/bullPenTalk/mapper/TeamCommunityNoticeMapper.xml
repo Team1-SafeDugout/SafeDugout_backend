@@ -16,6 +16,7 @@
 	               P.NOTICE_POST_DATE
 	        FROM TBL_NOTICE_POST P
 	        WHERE P.NOTICE_TYPE_ID = 2
+	          AND P.TEAM_NUMBER = #{teamNumber}
 	        ORDER BY P.NOTICE_POST_DATE DESC
 	    ) subquery
 	)WHERE rnum BETWEEN #{startRow} AND #{endRow}
@@ -49,6 +50,7 @@
 	<select id="getTotalNotice" resultType="int">
 	    SELECT COUNT(NOTICE_POST_NUMBER)
 	    FROM TBL_NOTICE_POST
-	    WHERE TEAM_NUMBER = #{teamNumber}   
+	    WHERE NOTICE_TYPE_ID = 2
+	    AND TEAM_NUMBER = #{teamNumber}   
 	</select>
 </mapper>

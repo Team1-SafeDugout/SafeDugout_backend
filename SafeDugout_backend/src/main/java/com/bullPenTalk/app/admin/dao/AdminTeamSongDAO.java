@@ -21,6 +21,10 @@ public class AdminTeamSongDAO {
 		sqlSession.insert("adminSong.teamInsert", songPostDTO);
 	}
 	
+	public void insertPlayer(SongPostDTO songPostDTO) {
+		sqlSession.insert("adminSong.playerInsert", songPostDTO);
+	}
+	
 	// 수정
 	
 	public void update(SongPostDTO songPostDTO) {
