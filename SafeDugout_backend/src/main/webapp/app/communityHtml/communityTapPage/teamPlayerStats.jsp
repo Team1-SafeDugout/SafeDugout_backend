@@ -90,6 +90,7 @@
       </div>
       <div class="team-stats-data">
         <!-- 투수 데이터 들어갈 공간 -->
+        
       </div>
     </div>
     <!-- 타자 기록 표 -->
