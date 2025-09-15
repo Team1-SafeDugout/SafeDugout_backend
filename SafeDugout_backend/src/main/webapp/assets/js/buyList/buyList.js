@@ -1,3 +1,6 @@
+const form = document.getElementById("joinForm") || document.querySelector("form");
+const base = (form && form.dataset.contextPath) ? form.dataset.contextPath : ""; // ★ 전역 없이 읽기
+
 const postList = document.getElementById("ul-li");
 const buyModal = document.getElementById("buy-modal");
 const modalBack = document.getElementById("buy-overlay");
@@ -171,43 +174,10 @@ const confirmTradeButton = document.getElementById("confirm-trade-button");*/
 function openModal(){
 	modalBack.style.display = "block";
 	buyModal.style.display = "flex";
-	buyModal.innerHTML = `
-	<h3>구매 할 물품.</h3>
-	<ul class="post-list-modal">
-	  <li class="post-list-row-modal-product-title">
-	    <span>상품 이름 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>따끈따끈한 글로브 입니다</span>
-	  </li>
-	  <li class="post-list-row-modal-product-content">
-	    <span>상품 설명 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>따근따근한 글로브, 상태 양호, 착용감 좋음</span>
-	  </li>
-	  <li class="post-list-row-modal">
-	    <span>거래 방식 :</span> <span>배송</span>
-	  </li>
-	  <li class="post-list-row-modal">
-	    <span>거래 희망 지역 :</span> <span>인천</span>
-	  </li>
-	  <li class="post-list-row-modal">
-	    <span>판매자 ID :</span> <span>sfeq8474</span>
-	  </li>
-	  <li class="post-list-row-modal-product-price">
-	    <div class="product-price">
-	      <span>상품 가격 :</span> <span>1000000 포인트</span>
-	    </div>
-	  </li>
-	</ul>
-	<div class="product-list-button-container-modal">
-	  <!-- 확인 버튼 -->
-	  <a>
-	    <div class="product-list-button-confirm-modal" id = "confirm-trade-button">확인
-	    </div>
-	  </a>
-	  <!-- 취소 버튼 -->
-	  <a>
-	    <div class="product-list-button-cancel-modal" id = "close-modal-button">취소
-	    </div>
-	  </a>
-	</div>	
-	`;
+	
+	getProductInfo(currentPost);
+	
+
 	
 	closeModalButton = document.getElementById("close-modal-button");
 	confirmTradeButton = document.getElementById("confirm-trade-button");
@@ -231,8 +201,65 @@ function confrirmTrade(){
 	window.location.href = contextPath +"/myPage/confirmTrade.mp?tradePost=" +  currentPost;
 }
 
-function getProductInfo(productNumber){
-	fetch()
+function getProductInfo(sellPostNumber){
+	
+	fetch(`${base}/myPage/openModal.mp?sellPostNumber=${encodeURIComponent(sellPostNumber)}`, {
+		headers: {
+			"X-Requested-With": "XMLHttpRequest" 
+			,"Accept": "application/json" 
+		}
+	})
+		.then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+		.then(data => {
+			if (data) {
+				console.log("이거 나왔어! :: " + data);
+				buyModal.innerHTML = `
+				<h3>구매 할 물품.</h3>
+				<ul class="post-list-modal">
+				  <li class="post-list-row-modal-product-title">
+				    <span>상품 이름 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>${data.title}</span>
+				  </li>
+				  <li class="post-list-row-modal-product-content">
+				    <span>상품 설명 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> <span>${data.content}</span>
+				  </li>
+				  <li class="post-list-row-modal">
+				    <span>거래 방식 :</span> <span>배송</span>
+				  </li>
+				  <li class="post-list-row-modal">
+				    <span>거래 희망 지역 :</span> <span>인천</span>
+				  </li>
+				  <li class="post-list-row-modal">
+				    <span>판매자 ID :</span> <span>sfeq8474</span>
+				  </li>
+				  <li class="post-list-row-modal-product-price">
+				    <div class="product-price">
+				      <span>상품 가격 :</span> <span>1000000 포인트</span>
+				    </div>
+				  </li>
+				</ul>
+				<div class="product-list-button-container-modal">
+				  <!-- 확인 버튼 -->
+				  <a>
+				    <div class="product-list-button-confirm-modal" id = "confirm-trade-button">확인
+				    </div>
+				  </a>
+				  <!-- 취소 버튼 -->
+				  <a>
+				    <div class="product-list-button-cancel-modal" id = "close-modal-button">취소
+				    </div>
+				  </a>
+				</div>	
+				`;
+				
+			} else {
+				console.log("상품이 없어");
+				console.log("이거 나왔어! :: " + data.title);
+				closeModal();
+			}
+		})
+		.catch(() => {
+			
+		});
 }
 
 // 구매확정 전

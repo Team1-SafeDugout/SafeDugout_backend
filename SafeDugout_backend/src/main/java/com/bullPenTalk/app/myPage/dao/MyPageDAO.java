@@ -63,14 +63,49 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPage.selectTradeList", map);
 	}
 	
+	// 구매 하나 선택
+	public MyPageTradeListDTO selectDetailTrade(int sellPostNumber) {
+		return sqlSession.selectOne("myPage.selectDetailTrade", sellPostNumber);
+	}
+	
 	// 구매 목록 전체
 	public int getTotalTrade(int memberNumber) {
 		return sqlSession.selectOne("myPage.getTotalTrade", memberNumber);
 	}
 
 	// 구매 확정
-	public void completeTrade(int tradeNumber) {
-		sqlSession.update("myPage.completeTrade", tradeNumber);
+	public bool completeTrade(int tradeNumber, int sellPostNumber,int buyMember, int sellMember) {
+		SqlSession completeSession = MyBatisConfig.getSqlSessionFactory().openSession(false);
+		try {
+			// 판매자에게 입금
+			
+			/*if 문으로 판매자가 존재하는지 확인
+			 * sellpost 에 있는 가격을 판매가자에게 입금
+			 * */
+			Map<String, Integer> pointCheckMapper;
+			pointCheckMapper.put("memberNumber", sellMember);
+			pointCheckMapper.put("sellPostNumber", sellPostNumber);
+			completeSession.update("myPage.givePoint", pointCheckMapper);
+			
+			// sellPost 구매 완료 처리
+			if()
+			completeSession.update("myPage.completeSell",sellPostNumber);
+			/* sellpost 를 구매 완료 status id = 3 으로 처리
+			 * */
+			
+			// tradePost 구매 완료 처리
+			completeSession.update("myPage.completeTrade", tradeNumber);
+			/* tradepost 를 구매환료 처리 status id =3 으로 처리
+			 * */
+			
+			// 위 내용요 모두 완료 될 경우 commit
+			completeSession.commit();
+			return true;
+		}catch (Exception e) {
+			// TODO: handle exception
+			completeSession.rollback();
+			return false;
+		}	
 	}
 
 	// 구매 취소(거래 상태 변경)
