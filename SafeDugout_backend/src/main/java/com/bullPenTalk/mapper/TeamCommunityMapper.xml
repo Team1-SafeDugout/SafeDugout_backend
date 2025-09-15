@@ -191,7 +191,6 @@
 		               p.POST_DATE,
 		               p.TEAM_NUMBER,
 		               t.TEAM_NAME,
-		               p.BOARD_ID,
 		               p.POST_LINK,
 		               p.POST_CONTENT
 		        FROM TBL_POST p

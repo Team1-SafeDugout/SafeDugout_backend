@@ -18,9 +18,13 @@ public class Record implements CommunityService{
 		RecordSelectController select = new RecordSelectController();
 		
 		switch(action) {
-		case "teamRecord" :
+		case "teamrecord" :
+			result = select.teamRecordselect(action, request, response);
+			break;
 			
-		case "playerRecord" :
+		case "playerrecord" :
+			result = select.playerRecordSelect(action, request, response);
+			break;
 			
 		default :
             System.out.println("알 수 없는 액션입니다: " + action);
@@ -28,6 +32,15 @@ public class Record implements CommunityService{
             result.setRedirect(true);
             break;
 		
+		}
+		
+		if (result != null) {
+			if (result.isRedirect()) {
+				response.sendRedirect(result.getPath());
+			} else {
+				request.getRequestDispatcher(result.getPath()).forward(request, response);
+			}
+
 		}
 		
 	}

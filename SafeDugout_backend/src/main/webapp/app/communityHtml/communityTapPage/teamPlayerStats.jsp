@@ -51,7 +51,7 @@
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ssgFooter.css">
   	</c:when>
   </c:choose>
-  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamPlayerStats.js"></script> --%>
+  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamPlayerStats.js"></script>
   <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script> --%>
 </head>
 <body>
@@ -90,6 +90,7 @@
       </div>
       <div class="team-stats-data">
         <!-- 투수 데이터 들어갈 공간 -->
+        
       </div>
     </div>
     <!-- 타자 기록 표 -->

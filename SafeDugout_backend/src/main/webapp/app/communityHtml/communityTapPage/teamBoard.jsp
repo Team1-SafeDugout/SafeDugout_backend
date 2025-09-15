@@ -76,37 +76,37 @@
       </div>
 
       <!-- 게시글 리스트 -->
-			<ul class="team-board-content">
-				<li class="team-board-header">
-					<div>글번호</div>
-					<div>제목</div>
-					<div>작성자</div>
-					<div>작성일자</div>
-				</li>
+		<ul class="team-board-content">
+			<li class="team-board-header">
+				<div>글번호</div>
+				<div>제목</div>
+				<div>작성자</div>
+				<div>작성일자</div>
+			</li>
+	
+			<c:if test="${not empty postList}">
+				<c:forEach var="community" items="${postList}">
+					<li class="team-board-list">
+						<div>
+							<c:out value="${community.postNumber}" />
+						</div>
+						<div>
+							<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=detail&postNumber=${community.postNumber}">
+								<c:out value="${community.postTitle}" />
+							</a>
+						</div>
+						<div>
+							<c:out value="${community.memberId}" />
+						</div>
+						<div>
+							<c:out value="${community.postDate}" />
+						</div>
+					</li>
+				</c:forEach>
+			</c:if>
+		</ul>
 
-				<c:if test="${not empty postList}">
-					<c:forEach var="community" items="${postList}">
-						<li class="team-board-list">
-							<div>
-								<c:out value="${community.postNumber}" />
-							</div>
-							<div>
-								<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=detail&postNumber=${community.postNumber}">
-									<c:out value="${community.postTitle}" />
-								</a>
-							</div>
-							<div>
-								<c:out value="${community.memberId}" />
-							</div>
-							<div>
-								<c:out value="${community.postDate}" />
-							</div>
-						</li>
-					</c:forEach>
-				</c:if>
-			</ul>
-
-			<!-- 페이지네이션 -->
+	  <!-- 페이지네이션 -->
       <div class="pagination">
         <ul>
           <c:if test="${prev}">

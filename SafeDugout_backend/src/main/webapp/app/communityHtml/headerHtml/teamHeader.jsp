@@ -50,8 +50,8 @@
   <div class="bottom-header">
     <nav>
       <ul class="team-menu">
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=teamRecord">팀 기록</a></li>
-        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=playerRecord">선수 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=teamRecord&teamNumber=${sessionScope.teamNumber}">팀 기록</a></li>
+        <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=record&action=playerRecord&teamNumber=${sessionScope.teamNumber}">선수 기록</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=youtube&action=youtube">팀 유튜브</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=teamsong">팀 응원가</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=song&action=playersong">선수 응원가</a></li>

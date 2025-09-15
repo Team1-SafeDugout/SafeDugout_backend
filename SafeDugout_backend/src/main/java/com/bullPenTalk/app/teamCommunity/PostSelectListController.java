@@ -294,7 +294,7 @@ public class PostSelectListController {
 
 	    // 선수 응원가 목록 조회
 	    List<SongPostDTO> PostList = teamCommunityDAO.selectPlayerSong(pageMap);
-	    request.setAttribute("PostList", PostList);
+	    request.setAttribute("postList", PostList);
 
 	    // 총 게시글 수 조회
 	    int total = teamCommunityDAO.getTotalPlayerSong(teamNumber);
@@ -345,7 +345,7 @@ public class PostSelectListController {
 
 	    // 팀 응원가 목록 조회
 	    List<SongPostDTO> PostList = teamCommunityDAO.selectTeamSong(pageMap);
-	    request.setAttribute("PostList", PostList);
+	    request.setAttribute("postList", PostList);
 
 	    // 총 게시글 수 조회
 	    int total = teamCommunityDAO.getTotalTeamSong(teamNumber);
