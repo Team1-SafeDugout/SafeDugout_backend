@@ -25,6 +25,7 @@
     const contextPath = "${pageContext.request.contextPath}";
   </script>
   <script defer src = "${pageContext.request.contextPath}/assets/js/myCommentList/myCommetList.js"></script>
+  <script defer src = "${pageContext.request.contextPath}/assets/js/myPostList/getPoint.js"></script>
 </head>
 
 <body>
@@ -97,7 +98,7 @@
 
       <section class="point-box">
         <div class="my-point-text">내 포인트</div>
-        <div class="my-point-value">
+        <div class="my-point-value" id = "my-point">
           <span>20000</span><span>P</span>
         </div>
         <a href="./../pointRecharge/pointList.html" class="charge-list-btn">포인트 충전 내역 보기</a>

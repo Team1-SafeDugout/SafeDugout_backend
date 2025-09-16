@@ -24,7 +24,19 @@ public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 	private int sellPostNumber;
 	private int tradePostNumber;
 	
+	private String sellPostContent;
+	
 	private List<AttachmentDTO> attachment;
+	
+	public String getSellPostContent() {
+		return sellPostContent;
+	}
+
+	public void setSellPostContent(String sellPostContent) {
+		this.sellPostContent = sellPostContent;
+	}
+
+	
 
 	public String getTitle() {
 		return title;
@@ -140,10 +152,13 @@ public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 
 	@Override
 	public String toString() {
-		return "MyPageProductInfoDTO [title=" + title + ", dealType=" + dealType + ", tradeStatus=" + tradeStatus
+		return "MyPageTradeListDTO [title=" + title + ", dealType=" + dealType + ", tradeStatus=" + tradeStatus
 				+ ", pricePoint=" + pricePoint + ", addDate=" + addDate + ", buyDate=" + buyDate + ", confirmDate="
 				+ confirmDate + ", sellerMemberNumber=" + sellerMemberNumber + ", sellerMemberId=" + sellerMemberId
 				+ ", buyerMemberNumber=" + buyerMemberNumber + ", buyerMemberId=" + buyerMemberId + ", sellPostNumber="
-				+ sellPostNumber + ", tradePostNumber=" + tradePostNumber + ", attachment=" + attachment + "]";
+				+ sellPostNumber + ", tradePostNumber=" + tradePostNumber + ", sellPostContent=" + sellPostContent
+				+ ", attachment=" + attachment + "]";
 	}
+
+	
 }
