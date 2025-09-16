@@ -60,27 +60,34 @@
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium&teamNumber=${sessionScope.teamNumber}">경기장</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=news">팀 뉴스</a></li>
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">공지사항</a></li>
-        <li class="nav-search">
+      </ul>
+      <div class="nav-search">
           <form action="" method="get">
             <input type="text" placeholder="검색">
             <button>
               <img src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="검색">
             </button>
           </form>
-        </li>
-        <li class="mypage">
+      </div>
+      <div class="nav-right">
+        	<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">
+        	<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeMainLogo.png" alt="중고거래 로고">
+        	</a>
         	<c:choose>
         	<c:when test="${empty sessionScope.memberNumber}">
         	<a href="${pageContext.request.contextPath}/member/login.me">로그인</a>
         	</c:when>
         	<c:otherwise>
+        	<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
+        	<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="상품 등록 로고">
+        	</a>
           	<a href="${pageContext.request.contextPath}/app/mypostlist/myPostList.jsp">
             <img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="마이페이지">
           	</a>
+          	<a href="${pageContext.request.contextPath}/member/logOutOk.me">로그아웃</a>
           	</c:otherwise>
           	</c:choose>
-        </li>
-      </ul>
+      </div>
     </nav>
   </div>
 </header>

@@ -220,13 +220,13 @@
 		</div>
   		<div>
   			<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
-  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="상품 등록 로고">
 			<span class="footer-page-title">상품 등록</span>
 			</a>
 		</div>
   		<div>
   			<a href="${pageContext.request.contextPath}/myPage/postList.mp">
-  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="">
+  			<img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="마이페이지 로고">
 			<span class="footer-page-title">마이페이지</span>
 			</a>
 		</div>
