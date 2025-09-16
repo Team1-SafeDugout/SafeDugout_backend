@@ -75,6 +75,21 @@ public class MyPageFrontController extends HttpServlet {
 			System.out.println("거래 중 목록 진입 중");
 			result = new MyPageTradeListOkController().execute(request, response);
 			break;
+			
+		case "/myPage/confirmTrade.mp":
+			System.out.println("거래 중 목록 확정 진입 중");
+			result = new MyPageConfirmTradeController().execute(request, response);
+			break;
+			
+		case "/myPage/cancleTrade.mp":
+			System.out.println("거래 중 목록 취소 진입 중");
+			result = new MyPageCancleTradeController().execute(request, response);
+			break;
+			
+		case "/myPage/openModal.mp":
+			System.out.println("거래중 모달 오픈");
+			result = new MyPageOpenModalController().execute(request, response);
+			break;
 		
 		case "/myPage/sellList.mp":
 			System.out.println("판매 중 목록 진입 중");
@@ -100,6 +115,11 @@ public class MyPageFrontController extends HttpServlet {
 		case "/myPage/pointCharge.mp":
 			System.out.println("충전 목록 진입 중");
 			result = new MyPagePoinChargeListOkController().execute(request, response);
+			break;
+			
+		case "/myPage/getPoint.mp":
+			System.out.println("멤버 포인트 조회");
+			result = new MyPageGetCurrentPoint().execute(request, response);
 			break;
 		}
 		
