@@ -112,9 +112,34 @@ public class MyPageFrontController extends HttpServlet {
 			result = new MyPageChangeInfoController().execute(request, response);
 			break;
 			
+		case "/myPage/InputInfo.mp":
+			System.out.println("정보 수정 입력 진입 중");
+			result = new MyPageInputInfoController().execute(request, response);
+			break;
+			
 		case "/myPage/unSubscribe.mp":
 			System.out.println("회원 탈퇴 진입 중");
 			result = new MyPageUnSubcribeController().execute(request, response);
+			break;
+			
+		case "/myPage/InputReason.mp":
+			System.out.println("탈퇴 이유 진입 중");
+			result = new MyPageInputReasonController().execute(request, response);
+			break;
+			
+		case "/myPage/unsubcribeComplete.mp":
+			System.out.println("탈퇴ㅏ 조건 확인중");
+			result = new MyPageUnsubscribeCompleteController().execute(request, response);
+			break;
+		
+		case "/myPage/unsubcribeSuccess.mp":
+			System.out.println("탈퇴 성공 진입 중");
+			result = new MyPageUnsubscribeCompleteOkController().execute(request, response);
+			break;
+			
+		case "/myPage/unsubcribeFail.mp":
+			System.out.println("탈퇴 실패 진입 중");
+			result = new MyPageUnsubscribeCompleteController().execute(request, response);
 			break;
 			
 		case "/myPage/pointCharge.mp":

@@ -165,12 +165,20 @@ public class MyPageDAO {
 	}
 
 	// 회원 탈퇴
-	public void quit(int memberNumber) {
+	public boolean quit(int memberNumber) {
+		System.out.println((int)sqlSession.selectOne("myPage.checkTrade", memberNumber));
+		if((int)sqlSession.selectOne("myPage.checkTrade", memberNumber) > 0) return false;
 		sqlSession.delete("myPage.quit", memberNumber);
+		return true;
 	}
 	
 	// 회원 포인트 조회
 	public int getMemberPoint(int memberNumber) {
 		return sqlSession.selectOne("myPage.getMemberPoint", memberNumber); 
+	}
+	
+	// 회원 비밀번호 조회
+	public String getMemberPw(int memberNumber) {
+		return sqlSession.selectOne("member.findPwWithNumber", memberNumber);
 	}
 }
