@@ -219,7 +219,7 @@ function confrirmTrade(sellPostNumber){
 				if (data === "성공") {
 					/*이동용 모달*/
 					alert("구매 확정하였습니다");
-					window.location.href = contextPath +"/myPage/tradeList.mp";
+					window.location.href = contextPath +"/myPage/tradeComplete.mp?sellPostNumber=" + sellPostNumber;
 				}
 
 				else{

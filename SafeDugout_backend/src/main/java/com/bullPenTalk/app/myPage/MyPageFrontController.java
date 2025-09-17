@@ -90,6 +90,11 @@ public class MyPageFrontController extends HttpServlet {
 			System.out.println("거래중 모달 오픈");
 			result = new MyPageOpenModalController().execute(request, response);
 			break;
+			
+		case "/myPage/tradeComplete.mp":
+			System.out.println("거래 완료");
+			result = new MyPageComfirmCompleteController().execute(request, response);
+			break;
 		
 		case "/myPage/sellList.mp":
 			System.out.println("판매 중 목록 진입 중");

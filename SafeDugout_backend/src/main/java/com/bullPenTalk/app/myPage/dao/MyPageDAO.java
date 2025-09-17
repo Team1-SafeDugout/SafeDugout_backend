@@ -118,6 +118,10 @@ public class MyPageDAO {
 			cancleSession.update("myPage.canclePoint", sellPostNumber);
 			System.out.println("황불완료");
 			
+			// 셀포스트에 있는 status id 1 로변경
+			cancleSession.update("myPage.cancleTradeUpdate", sellPostNumber);
+			System.out.println("tbl sellpost 변경 완료");
+			
 			// trade post 에 있는 디비 삭제
 			cancleSession.delete("myPage.cancleTradeDelete", sellPostNumber);
 			System.out.println("tbl trade 삭제 완료");
@@ -126,20 +130,18 @@ public class MyPageDAO {
 			cancleSession.delete("myPage.cancleTradeSaction",sellPostNumber);
 			System.out.println("tbl transaction 삭제 완료");
 			
-			// 셀포스트에 있는 status id 1 로변경
-			cancleSession.update("myPage.cancelTradeUpdate", sellPostNumber);
-			System.out.println("tbl sellpost 변경 완료");
+
 			
 			// 모두 완료 되면 커밋
 			cancleSession.commit();
 			System.out.println("거래 취소 완료");
+			return true;
 			
 		} catch(Exception e) {
 			System.out.println("거래가 완전히 끝나지 않았습니다");
 			cancleSession.rollback();
 			return false;
 		}
-		return false;
 	}
 
 	// 판매 목록 조회
