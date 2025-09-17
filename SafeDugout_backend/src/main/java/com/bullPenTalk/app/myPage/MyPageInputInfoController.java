@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.member.dao.MemberDAO;
 import com.bullPenTalk.app.myPage.dao.MyPageDAO;
 
 public class MyPageInputInfoController implements Execute{
@@ -28,6 +29,8 @@ public class MyPageInputInfoController implements Execute{
 		String memberPw = myPageDao.getMemberPw(memberNumber);
 		
 		if(memberPw.equals(inputPw)) {
+			MemberDAO memberDAO = new MemberDAO();
+			request.setAttribute("memberInfo", memberDAO.getMember(memberNumber));
 			result.setPath("/app/memberUpdate/inputInformation.jsp");
 			result.setRedirect(false);
 		}

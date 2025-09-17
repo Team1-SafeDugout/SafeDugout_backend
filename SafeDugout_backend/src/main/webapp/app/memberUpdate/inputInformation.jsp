@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberUpdate/inputInformation.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script defer src="${pageContext.request.contextPath}/assets/js/memberInformation/informationInput.js"></script>
 </head>
 
@@ -36,99 +37,99 @@
         <form action="" method="post">
           <div class="main-form-box">
             <ul>
+            <!-- 1번쨰 : 이름 -->
               <li>
                 <div class="main-input-list">
                   <div class="main-input-list-text">이름</div>
-                  <input type="text" placeholder="이태호" readonly style="pointer-events: none">
+                  <input type="text" placeholder="${memberInfo.memberName}" readonly style="pointer-events: none">
                 </div>
               </li>
 
               <li>
                 <div class="main-input-list">
                   <div class="main-input-list-text">아이디</div>
-                  <input type="text" placeholder="th3179" readonly style="pointer-events: none">
+                  <input type="text" placeholder="${memberInfo.memberId}" readonly style="pointer-events: none">
                 </div>
               </li>
-
+			<!-- 3번쨰 : 비밀번호 -->
               <li>
-                <div class="main-input-error-message"><span>* 필수 입력 값입니다.</span><span>* 비밀번호가 유효하지 않습니다.</span></div>
+                <div class="main-input-error-message"> <span>* 비밀번호가 유효하지 않습니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">비밀번호</div>
-                  <input type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" readonly style="pointer-events: none">
+                  <input id = "pw" type="password" placeholder="${memberInfo.memberPw}" readonly style="pointer-events: none">
                   <div class="change-btn">
-                    <a href="#">수정하기</a>
-                    <span>&nbsp&nbsp|&nbsp&nbsp</span>
-                    <a href="#">완료</a>
+                    <a class = "edit-button" href="#">수정하기</a>
+                    <a class = "confirm-button" href="#">완료</a>
                   </div>
                 </div>
               </li>
-              <li>
-                <div class="main-input-error-message"><span>* 비밀번호가 일치하지 않습니다.</span></div>
+              
+              <!-- 4번쨰 : 비밀번호 일치 -->
+              <li id = "re-pw">
+                <div class="main-input-error-message"> <span>* 비밀번호가 일치하지 않습니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">비밀번호 확인</div>
-                  <input type="password" placeholder="비밀번호를 재입력하세요">
+                  <input id = "rePw" type="password" placeholder="비밀번호를 재입력하세요">
                 </div>
               </li>
-
+              
+              
+			<!-- 5번쨰 : 핸드폰 번호 -->
               <li>
-                <div class="main-input-error-message"><span>* 필수 입력 값입니다.</span></div>
+                <div class="main-input-error-message"> <span>* 필수 입력 값입니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">핸드폰 번호</div>
-                  <input type="text" placeholder="핸드폰 번호를 입력하세요" readonly style="pointer-events: none">
-                  <button type="button">인증번호 발송</button>
+                  <input id  = "phoneNumber" type="text" placeholder="${memberInfo.memberPhone}" readonly style="pointer-events: none">
+                  <button id = "validate-button" type="button">인증번호 발송</button>
                   <div class="change-btn">
-                    <a href="#">수정하기</a>
-                    <span>&nbsp&nbsp|&nbsp&nbsp</span>
-                    <a href="#">완료</a>
+                    <a class = "edit-button" href="#">수정하기</a>
+                    <a class = "confirm-button" href="#">완료</a>
                   </div>
                 </div>
               </li>
-              <li>
-                <div class="main-input-error-message"><span>* 인증번호가 불일치합니다.</span></div>
+              
+              <!-- 6번쨰 : 인증번호 -->
+              <li id = "validate-phone">
+                <div class="main-input-error-message"> <span>* 인증번호가 불일치합니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">인증 번호 입력</div>
-                  <input type="text" placeholder="인증 번호 입력">
+                  <input id = "code" type="text" placeholder="인증 번호 입력">
                   <button type="button">인증</button>
                 </div>
               </li>
 
+				<!-- 7번쨰 : 이메일 -->
               <li>
-                <div class="main-input-error-message"><span>* 필수 입력 값입니다.</span></div>
+                <div class="main-input-error-message"> <span>* 필수 입력 값입니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">이메일</div>
-                  <input type="email" placeholder="이메일을 입력하세요" readonly style="pointer-events: none">
+                  <input id = "email" type="email" placeholder="${memberInfo.memberEmail}" readonly style="pointer-events: none">
                   <div class="main-input-email-at"></div>
                   <div class="change-btn">
-                    <a href="#">수정하기</a>
-                    <span>&nbsp&nbsp|&nbsp&nbsp</span>
-                    <a href="#">완료</a>
+                    <a class = "edit-button" href="#">수정하기</a>
+                    <a class = "confirm-button" href="#">완료</a>
                   </div>
                 </div>
               </li>
+              
+              <!-- 8번쨰 : 우편번호 -->
               <li>
                 <div class="main-input-list-optional">
                   <div class="main-input-list-text">주소</div>
-                  <input type="text" readonly style="pointer-events: none">
-                  <button type="button">우편번호</button>
+                  <input id = "postalCode" type="text" placeholder="${memberInfo.memberPostalCode}" readonly style="pointer-events: none">
+                  <button id = "searchPostcodeBtn" type="button">우편번호</button>
                   <div class="change-btn">
-                    <a href="#">수정하기</a>
-                    <span>&nbsp&nbsp|&nbsp&nbsp</span>
-                    <a href="#">완료</a>
+                    <a class = "edit-button" href="#">수정하기</a>
+                    <a class = "confirm-button" href="#">완료</a>
                   </div>
                 </div>
-                <div class="main-input-address">
-                  <div class="main-input-list-text"></div>
-                  <input type="text" placeholder="주소를 입력하세요" readonly style="pointer-events: none">
-                </div>
-                <div class="main-input-address">
-                  <div class="main-input-list-text"></div>
-                  <input type="text" placeholder="상세 주소를 입력하세요" readonly style="pointer-events: none">
-                </div>
               </li>
+              
+              <!-- 9번쨰 : 마이팀 -->
               <li>
                 <div class="main-input-list-optional">
                   <div class="main-input-list-text">MY팀</div>
-                  <select name="" id="" placeholder="MY팀을 선택하세요" readonly style="pointer-events: none">
+                  <select name="" id="myTeam" placeholder="${memberInfo.memberMyTeam}" readonly style="pointer-events: none">
                     <option value="삼성 라이온즈">MY팀을 선택하세요(미정)</option>
                     <option value="삼성 라이온즈">삼성 라이온즈</option>
                     <option value="LG 트윈스">LG 트윈스</option>
@@ -142,17 +143,15 @@
                     <option value="한화 이글스">한화 이글스</option>
                   </select>
                   <div class="change-btn">
-                    <a href="#">수정하기</a>
-                    <span>&nbsp&nbsp|&nbsp&nbsp</span>
-                    <a href="#">완료</a>
+                    <a class = "edit-button" href="#">수정하기</a>
+                    <a class = "confirm-button" href="#">완료</a>
                   </div>
                 </div>
               </li>
             </ul>
             <div class="main-button-container">
-              <button type="button">
-                <div class="main-button-next">수정 완료
-                </div>
+              <button type="submit" id = "save-button">
+                <div class="main-button-next">수정 완료 </div>
               </button>
             </div>
           </div>
