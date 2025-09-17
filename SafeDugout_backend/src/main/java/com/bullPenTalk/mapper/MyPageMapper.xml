@@ -171,9 +171,9 @@
 	
 	<!-- 구매 취소 -->
 	<update id="cancleTradeUpdate" parameterType="int">
-		update tbl_sell_post
-		set status_id = 1
-		where sell_post_number = #{sellPostNumber}
+		UPDATE TBL_SELL_POST
+		SET STATUS_ID = 1
+		WHERE SELL_POST_NUMBER = #{sellPostNumber}
 	</update>
 	
 	<delete id="cancleTradeDelete" parameterType="int">
@@ -249,7 +249,7 @@
 		SELECT MEMBER_FROM
 		FROM TBL_POINT_TRANSACTION tpt 
 		WHERE tpt.SELL_POST_NUMBER = #{sellPostNumber}
-	);
+	)
 	</update>
 	
 	<!-- 판매 목록 조회 -->

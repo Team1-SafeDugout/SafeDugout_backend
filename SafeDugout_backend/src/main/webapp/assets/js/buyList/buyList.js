@@ -116,11 +116,32 @@ function addPost
 
 		cancleButton.addEventListener("click", function () {
 			if (confirm("삭제하시겠습니까?")) {
-				alert("삭제되었습니다.");
-				window.location.href =  
-				contextPath + 
-				"/myPage/cancleTrade.mp?" + 
-				"postNumber=" + postNumber;
+				/*비동기 처리 시작*/
+				fetch(`/myPage/cancleTrade.mp?postNumber=${encodeURIComponent(postNumber)}`, {
+					headers: {
+						"X-Requested-With": "XMLHttpRequest" 
+						,"Accept": "text/plain" 
+					}
+				})
+					.then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+					.then(data => {
+						if(data){
+							if (data === "성공") {
+								/*이동용 모달*/
+								alert("취소 되었습니다");
+								window.location.href = contextPath +"/myPage/tradeList.mp";
+							}
+
+							else{
+								alert("취소 중 오류가 발생했습니다");
+								closeModal();
+							}				
+						} 
+					})
+					.catch(() => {
+						alert("거래페이지를 불러오기 실패했습니다");
+						closeModal();
+					});				
 			}
 		});			
 	}
