@@ -118,6 +118,14 @@
 	align-items: center;
 }
 
+.footer-trade-write-nologin {
+	cursor: pointer;
+}
+
+.footer-mypage-nologin {
+	cursor: pointer;
+}
+
 /* 배경 어둡게 만드는 div */
 #overlay {
   background-color: rgba(0, 0, 0, 0.5);

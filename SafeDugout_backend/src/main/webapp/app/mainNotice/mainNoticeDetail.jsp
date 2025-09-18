@@ -33,6 +33,13 @@
       </div>
       <!-- 공지사항 내용 -->
       <div class="notice-board-content">
+      	<c:if test="${not empty attachmentList}">
+      	<c:forEach var="img" items="${attachmentList}">
+      		<div class="notice-board-content-img">
+      		<img src="${pageContext.request.contextPath}${img.getAttachmentPath()}${img.getAttachmentName()}" alt="">
+      		</div>
+      	</c:forEach>
+      	</c:if>
       	<p><c:out value="${mainNoticePost.getNoticePostContent()}" /></p>
       </div>
       <!-- 버튼 컨테이너 -->

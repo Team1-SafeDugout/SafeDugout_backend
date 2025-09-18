@@ -58,7 +58,7 @@
 					</div>
 					<div class="welcome"><span><c:out value="${sessionScope.memberName}" /></span>님 환영합니다.</div>
 					<div class="logout">
-						<a href="${pageContext.request.contextPath}/member/logOutOk.me">
+						<a href="${pageContext.request.contextPath}/member/logOutOk.me?curPage=main">
 						<span>|</span> 로그아웃</a>
 					</div>
 					<div class="mypage">

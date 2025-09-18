@@ -14,8 +14,13 @@ const tradePolicyModalFooter = document.getElementsByClassName('modal-tradepolic
 const overlay = document.getElementById('overlay');
 // 모달창 취소 버튼 
 const modalCloseBtnFooter = document.querySelectorAll('.modal-button-close-footer');
+// 푸터 상품 등록 버튼
+const footerTradeWrite = document.querySelector('.footer-trade-write-nologin');
+// 푸터 마이페이지 버튼
+const footerMypage = document.querySelector('.footer-mypage-nologin');
 
-console.log(overlay);
+console.log(footerTradeWrite);
+console.log(footerMypage);
 
 // 이벤트리스너
 // 이용약관 버튼 누를 시 동작
@@ -42,8 +47,23 @@ modalCloseBtnFooter.forEach(btn => {
     overlay.style.display = 'none';
   });
 });
+// 푸터 상품 등록 버튼 누를 시 동작 
+if(footerTradeWrite) {
+  footerTradeWrite.addEventListener('click', function() {
+    if(confirm('로그인이 필요합니다. 로그인 하시겠습니까?')){
+      location.href = "/member/login.me"
+    }else{
 
-modalCloseBtnFooter.addEventListener('click', function () {
-  useTermModalFooter.style.display = 'none';
-  overlay.style.display = 'none';
-});
+    }
+  });
+}
+// 푸터 마이페이지 버튼 누를 시 동작 
+if(footerMypage) {
+  footerMypage.addEventListener('click', function() {
+    if(confirm('로그인이 필요합니다. 로그인 하시겠습니까?')){
+      location.href = '/member/login.me'
+    }else{
+
+    }
+  });
+}

@@ -67,7 +67,11 @@
         <ul class="news-list">
           <!-- 뉴스리스트 들어갈 공간 -->
           <c:forEach var="newsRow" items="${newsList}">
-          	<li><a href=""><c:out value="${newsRow.newsPostTitle}"/></a></li>
+          	<li>
+          	<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=newsdetail&postNumber=${newsRow.newsPostNumber}">
+          	<c:out value="${newsRow.newsPostTitle}"/>
+          	</a>
+          	</li>
           </c:forEach>
         </ul>
       </section>
@@ -129,7 +133,7 @@
         <ul class="team-board-list">
         	<c:forEach var="postRow" items="${postList}">
 			<li>
-			<a href="">
+			<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=detail&postNumber=${postRow.postNumber}">
 			<span><c:out value="${postRow.getPostNumber()} | "/></span>
 			<span><c:out value="${postRow.getMemberId()} | "/></span>
 			<span><c:out value="${postRow.getPostTitle()} | "/></span>
@@ -143,7 +147,7 @@
       <section class="stadium">
         <div class="top-section">
           <h2>경기장 정보</h2>
-          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium">더보기</a>
+          <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=stadium&action=stadium&teamNumber=${sessionScope.teamNumber}">더보기</a>
         </div>
         <div class="stadium-img">
         <c:choose>

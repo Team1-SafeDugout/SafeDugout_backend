@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.GuidePostDTO;
 import com.bullPenTalk.app.dto.MainDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
@@ -76,6 +77,11 @@ public class MainDAO {
 	//메인 공지사항 상세 조회 (다음글) 
 	public MainNoticePostDTO selectMainNext(int noticePostNumber) {
 		return sqlSession.selectOne("main.selectMainNext", noticePostNumber);
+	}
+	
+	//메인 공지사항 상세 조회 (첨부파일 가져오기)
+	public List<AttachmentDTO> selectMainNoticeAttachment(int noticePostNumber) {
+		return sqlSession.selectList("main.selectMainNoticeAttachment", noticePostNumber);
 	}
 	
 	//경기 일정 목록 조회
