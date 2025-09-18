@@ -16,8 +16,6 @@ public class MyPageUnSubcribeController implements Execute{
 			throws ServletException, IOException {
 		Result result = new Result();
 		
-		
-		
 		result.setPath("/app/memberQuit/quitInputPassword.jsp");
 		result.setRedirect(false);
 		

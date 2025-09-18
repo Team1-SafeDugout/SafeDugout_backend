@@ -67,6 +67,7 @@
             <a href="/member/terms.me">회원가입</a>
           </div>
         </div>
+        <input type="hidden" id="originPage" name="originPage">
       </form>
     </div>
   </main>

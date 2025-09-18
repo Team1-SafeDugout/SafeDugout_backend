@@ -81,10 +81,10 @@
         	<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
         	<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="상품 등록 로고">
         	</a>
-          	<a href="${pageContext.request.contextPath}/app/mypostlist/myPostList.jsp">
+          	<a href="${pageContext.request.contextPath}/myPage/postList.mp">
             <img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="마이페이지">
           	</a>
-          	<a href="${pageContext.request.contextPath}/member/logOutOk.me">로그아웃</a>
+          	<a href="${pageContext.request.contextPath}/member/logOutOk.me?curPage=mainTeam">로그아웃</a>
           	</c:otherwise>
           	</c:choose>
       </div>

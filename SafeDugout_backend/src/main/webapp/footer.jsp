@@ -219,13 +219,27 @@
 			</a>
 		</div>
   		<div>
-  			<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
+  			<c:choose>
+  			<c:when test="${not empty sessionScope.memberNumber}">
+  				<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr?category=tradewirte&action=write">
+  			</c:when>
+  			<c:otherwise>
+  				<a class="footer-trade-write-nologin">
+  			</c:otherwise>
+  			</c:choose>
   			<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeLogo.png" alt="상품 등록 로고">
 			<span class="footer-page-title">상품 등록</span>
 			</a>
 		</div>
   		<div>
-  			<a href="${pageContext.request.contextPath}/myPage/postList.mp">
+  			<c:choose>
+  			<c:when test="${not empty sessionScope.memberNumber}">
+  				<a href="${pageContext.request.contextPath}/myPage/postList.mp">
+  			</c:when>
+  			<c:otherwise>
+  				<a class="footer-mypage-nologin">
+  			</c:otherwise>
+  			</c:choose>
   			<img src="${pageContext.request.contextPath}/assets/img/communityImg/icoMypage.png" alt="마이페이지 로고">
 			<span class="footer-page-title">마이페이지</span>
 			</a>

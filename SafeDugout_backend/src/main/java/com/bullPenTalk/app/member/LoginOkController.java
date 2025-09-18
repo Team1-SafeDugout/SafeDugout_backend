@@ -1,6 +1,8 @@
 package com.bullPenTalk.app.member;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +39,22 @@ public class LoginOkController implements Execute{
 		
 		if(memberNumber != -1) {
 			path = "/main.ma";
+			// 이전 페이지가 있다면 URI 저장
+			String originPage = request.getParameter("originPage");
+			System.out.println(originPage);
+			if(!originPage.equals("")) {
+				try {
+					// URI와 쿼리스트링 조합으로 변환
+					URI originPageURI = new URI(originPage);
+					String query = originPageURI.getQuery();
+					originPage = originPageURI.getPath() + (query != null ? "?" + query : "");
+					path = originPage;
+					System.out.println(path);
+				} catch (URISyntaxException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			session.setAttribute("memberNumber", memberNumber);
 			session.setAttribute("memberId", memberId);
 			System.out.println("세션값 : " + memberNumber);
@@ -52,6 +70,7 @@ public class LoginOkController implements Execute{
 //				cookie.setPath(cookiePath);
 //				response.addCookie(cookie);
 //			}
+			
 			
 		}else {
 			path = "/member/login.me?login=fail";
