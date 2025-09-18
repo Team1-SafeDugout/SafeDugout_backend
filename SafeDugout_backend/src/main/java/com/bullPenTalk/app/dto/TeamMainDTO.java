@@ -10,6 +10,7 @@ public class TeamMainDTO {
 	private String scheduleDate; // 경기 날짜
 	//팀 뉴스 목록
 	private String newsPostTitle; //팀 뉴스 제목	
+	private int newsPostNumber; //팀 뉴스 제목	
 	//팀 게시글 목록
 	private int postNumber; //팀 게시글 번호
 	private String postTitle; //팀 게시글 제목	
@@ -148,16 +149,23 @@ public class TeamMainDTO {
 	public void setTeamGB(double teamGB) {
 		this.teamGB = teamGB;
 	}
+	public int getNewsPostNumber() {
+		return newsPostNumber;
+	}
+	public void setNewsPostNumber(int newsPostNumber) {
+		this.newsPostNumber = newsPostNumber;
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "TeamMainDTO [gameId=" + gameId + ", homeTeamName=" + homeTeamName + ", stadiumName=" + stadiumName
 				+ ", awayTeamName=" + awayTeamName + ", scheduleDate=" + scheduleDate + ", newsPostTitle="
-				+ newsPostTitle + ", postNumber=" + postNumber + ", postTitle=" + postTitle + ", memberId=" + memberId
-				+ ", postDate=" + postDate + ", attachmentPath=" + attachmentPath + ", postLink=" + postLink
-				+ ", teamRank=" + teamRank + ", teamName=" + teamName + ", gameCount=" + gameCount + ", teamWin="
-				+ teamWin + ", teamDraw=" + teamDraw + ", teamLose=" + teamLose + ", teamWinRate=" + teamWinRate
-				+ ", teamGB=" + teamGB + "]";
+				+ newsPostTitle + ", newsPostNumber=" + newsPostNumber + ", postNumber=" + postNumber + ", postTitle="
+				+ postTitle + ", memberId=" + memberId + ", postDate=" + postDate + ", attachmentPath=" + attachmentPath
+				+ ", postLink=" + postLink + ", teamRank=" + teamRank + ", teamName=" + teamName + ", gameCount="
+				+ gameCount + ", teamWin=" + teamWin + ", teamDraw=" + teamDraw + ", teamLose=" + teamLose
+				+ ", teamWinRate=" + teamWinRate + ", teamGB=" + teamGB + "]";
 	}
 	
 }

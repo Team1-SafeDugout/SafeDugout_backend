@@ -1,6 +1,7 @@
 package com.bullPenTalk.app.main;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.main.dao.MainDAO;
 
@@ -30,7 +32,7 @@ public class SelectMainDetailOkController implements Execute{
 		//이전글, 다음글 조회 방식 변수에 저장 
 		String prevNext = request.getParameter("prevNext");
 		//DTO 객체 선언
-		MainNoticePostDTO mainNoticePostDTO;
+		MainNoticePostDTO mainNoticePostDTO; 
 		//조회 방식에 맞게 MainDAO의 공지사항 상세 조회 메소드 호출
 		if(prevNext != null) {
 			if(prevNext.equals("prev")) {
@@ -43,8 +45,13 @@ public class SelectMainDetailOkController implements Execute{
 		}else {
 			mainNoticePostDTO = mainDAO.selectMainDetail(noticePostNumber);
 		}
+		//조회한 공지사항 DTO의 번호로 첨부파일 조회하기 
+		int realNoticeNumber = mainNoticePostDTO.getNoticePostNumber();
+		List<AttachmentDTO> attachmentList = mainDAO.selectMainNoticeAttachment(realNoticeNumber);
 		//request에 DTO 대입
 		request.setAttribute("mainNoticePost", mainNoticePostDTO);
+		request.setAttribute("attachmentList", attachmentList);
+		System.out.println("첨부파일 목록 : " + attachmentList);
 		//전체 글 개수 가져오기
 		int total = mainDAO.getTotal();
 		//현재 항목 순서 가져오기 
