@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script defer src="${pageContext.request.contextPath}/assets/js/memberInformation/informationInput.js"></script>
+
 </head>
 
 <body>
@@ -34,21 +35,21 @@
 
       <section class="main-content">
         <h3>회원 정보 입력</h3>
-        <form action="" method="post">
+        <form action="/myPage/chageInfo.mp" method="post" novalidate onsubmit="return validateForm()">
           <div class="main-form-box">
             <ul>
             <!-- 1번쨰 : 이름 -->
               <li>
                 <div class="main-input-list">
                   <div class="main-input-list-text">이름</div>
-                  <input type="text" placeholder="${memberInfo.memberName}" readonly style="pointer-events: none">
+                  <input type="text" placeholder="${memberInfo.memberName}" readonly style="pointer-events: none" value = "${memberInfo.memberName}">
                 </div>
               </li>
 
               <li>
                 <div class="main-input-list">
                   <div class="main-input-list-text">아이디</div>
-                  <input type="text" placeholder="${memberInfo.memberId}" readonly style="pointer-events: none">
+                  <input type="text" placeholder="${memberInfo.memberId}" readonly style="pointer-events: none" value = "${memberInfo.memberId}">
                 </div>
               </li>
 			<!-- 3번쨰 : 비밀번호 -->
@@ -56,7 +57,7 @@
                 <div class="main-input-error-message"> <span>* 비밀번호가 유효하지 않습니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">비밀번호</div>
-                  <input id = "pw" type="password" placeholder="${memberInfo.memberPw}" readonly style="pointer-events: none">
+                  <input id = "pw" type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" readonly style="pointer-events: none" value = "${memberInfo.memberPw}">
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
                     <a class = "confirm-button" href="#">완료</a>
@@ -79,7 +80,7 @@
                 <div class="main-input-error-message"> <span>* 필수 입력 값입니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">핸드폰 번호</div>
-                  <input id  = "phoneNumber" type="text" placeholder="${memberInfo.memberPhone}" readonly style="pointer-events: none">
+                  <input id  = "phoneNumber" type="text" placeholder="핸드폰 번호를 입력하세요" readonly style="pointer-events: none" value ="${memberInfo.memberPhone}">
                   <button id = "validate-button" type="button">인증번호 발송</button>
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
@@ -94,7 +95,7 @@
                 <div class="main-input-list">
                   <div class="main-input-list-text">인증 번호 입력</div>
                   <input id = "code" type="text" placeholder="인증 번호 입력">
-                  <button type="button">인증</button>
+                  <button type="button" id = "phoneVeriButton">인증</button>
                 </div>
               </li>
 
@@ -103,7 +104,7 @@
                 <div class="main-input-error-message"> <span>* 필수 입력 값입니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">이메일</div>
-                  <input id = "email" type="email" placeholder="${memberInfo.memberEmail}" readonly style="pointer-events: none">
+                  <input id = "email" type="email" placeholder="이메일을 입력하세요" readonly style="pointer-events: none" value="${memberInfo.memberEmail}">
                   <div class="main-input-email-at"></div>
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
@@ -116,7 +117,7 @@
               <li>
                 <div class="main-input-list-optional">
                   <div class="main-input-list-text">주소</div>
-                  <input id = "postalCode" type="text" placeholder="${memberInfo.memberPostalCode}" readonly style="pointer-events: none">
+                  <input id = "postalCode" type="text" readonly style="pointer-events: none" value="${memberInfo.memberPostalCode}">
                   <button id = "searchPostcodeBtn" type="button">우편번호</button>
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
@@ -129,8 +130,8 @@
               <li>
                 <div class="main-input-list-optional">
                   <div class="main-input-list-text">MY팀</div>
-                  <select name="" id="myTeam" placeholder="${memberInfo.memberMyTeam}" readonly style="pointer-events: none">
-                    <option value="삼성 라이온즈">MY팀을 선택하세요(미정)</option>
+                  <select name="myTeam" id="myTeam" style="pointer-events: none">
+                    <option value="0">MY팀을 선택하세요(미정)</option>
                     <option value="삼성 라이온즈">삼성 라이온즈</option>
                     <option value="LG 트윈스">LG 트윈스</option>
                     <option value="두산 베어스">두산 베어스</option>
@@ -147,6 +148,48 @@
                     <a class = "confirm-button" href="#">완료</a>
                   </div>
                 </div>
+                 	<script>
+					  const teamParam = "${memberInfo.memberMyTeam}";
+					  console.log(teamParam);
+					  let teamName = "";
+					  switch (teamParam) {
+							case "1":
+								teamName = "두산 베어스";
+								break;
+							case "2":
+								teamName = "LG 트윈스";
+								break;
+							case "3":	
+								teamName = "한화 이글스";
+								break;
+							case "4":
+								teamName = "삼성 라이온즈";
+								break;
+							case "5":
+								teamName = "SSG 랜더스";		
+								break;
+							case "6":
+								teamName = "KT 위즈";
+								break;
+							case "7":			
+								teamName = "NC 다이노스";
+								break;
+							case "8":
+								teamName = "롯데 자이언츠";			
+								break;
+							case "9":
+								teamName = "KIA 타이거즈";
+								break;
+							case "10":
+								teamName = "키움 히어로즈";
+								break;
+							default:
+								teamName = "0";
+								break;
+						}
+					  console.log(teamName);
+					  document.getElementById("myTeam").value = teamName;
+					</script> 
               </li>
             </ul>
             <div class="main-button-container">
