@@ -121,6 +121,14 @@
 	]]>
 	</select>
 	
+	<!-- 메인 공지사항 상세 조회 (첨부파일 가져오기) -->
+	<select id="selectMainNoticeAttachment" parameterType="int" resultType="AttachmentDTO">
+	<![CDATA[
+	SELECT * FROM TBL_ATTACHMENT 
+	WHERE NOTICE_POST_NUMBER = #{noticePostNumber}
+	]]>
+	</select>
+	
 	<!-- 현재 메인 공지사항 항목 순서 가져오기 -->
 	<select id="getMainIndex" parameterType="int" resultType="int">
 	<![CDATA[

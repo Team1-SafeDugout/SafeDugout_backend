@@ -27,11 +27,18 @@
 		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
 	</select>
 	
-	<!-- 비밀번호 찾기(회원번호 조회) -->
+	<!-- 아이디로 비밀번호 조회 -->
 	<select id = "findNumberWithId" parameterType = "MemberDTO" resultType = "int">
 		select member_number from tbl_member
 		where member_email = #{memberEmail} AND member_name = #{memberName} AND  member_phone = #{memberPhone}
 		AND member_id = #{memberId}
+	</select>
+	
+	<!-- 회원 번호로 비밀번호 조회 -->
+	<select id = "findPwWithNumber" parameterType= "int" resultType = "String">
+		select MEMBER_PW
+		FROM TBL_MEMBER
+		WHERE MEMBER_NUMBER = #{memberNumber}
 	</select>
 	
 	<!-- 이름 등록여부 -->

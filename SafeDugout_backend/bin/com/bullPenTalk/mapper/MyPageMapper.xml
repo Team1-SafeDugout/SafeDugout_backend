@@ -316,6 +316,16 @@
 		where member_number = #{memberNumber}
 	</delete>
 	
+	<!-- 탈퇴 시 거래글 확인 -->
+	<select id = "checkTrade" parameterType="int" resultType = "int">
+		SELECT COUNT(tsp.SELL_POST_NUMBER) + COUNT(ttp.SELL_POST_NUMBER) 거래글
+		FROM TBL_MEMBER tm
+		LEFT JOIN TBL_SELL_POST tsp ON tsp.MEMBER_NUMBER = tm.MEMBER_NUMBER
+		LEFT JOIN TBL_TRADE_POST ttp ON ttp.BUY_MEMBER = tm.MEMBER_NUMBER 
+		WHERE tm.MEMBER_NUMBER = #{memberNumber}
+		AND (tsp.STATUS_ID = 2 OR ttp.STATUS_NUMBER = 2)
+	</select>
+	
 	<!-- 멤버 포인트 조회 -->
 	<select id = "getMemberPoint" parameterType="int" resultType="int">
 		SELECT MEMBER_POINT
