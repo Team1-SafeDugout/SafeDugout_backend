@@ -264,3 +264,21 @@ body {
 .charge-btn:hover {
     background-color: #bbb;
 }
+
+/* 완료 버튼 안보이게*/
+.confirm-button{
+	display : none;
+}
+
+/* 에러 문구 안보이게 */
+.main-input-error-message{
+	display : none;
+}
+
+/* 미리 보이면 안되는 것들 처리*/
+.main-form-box > ul > li:nth-child(4),
+.main-form-box > ul > li:nth-child(6),
+#validate-button,
+#searchPostcodeBtn{
+	display : none;
+}

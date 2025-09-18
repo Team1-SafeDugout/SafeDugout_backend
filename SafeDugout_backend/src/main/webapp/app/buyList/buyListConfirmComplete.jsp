@@ -38,34 +38,34 @@
             <li class="post-list-row">
               <div class="product-list-img">
                 <a href="">
-                  <img src="/webapp/assets/img/communityImg/tradeLogo.png" alt="">
+                  <img src=${sellPost.attachment[0].attachmentPath} alt="">
                 </a>
               </div>
               <div class="product-list-info-middle">
                 <div class="product-list-title">
-                  글 제목 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">따끈따끈한 글로브 입니다</a>
+                  글 제목 :&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">${sellPost.title}</a>
                 </div>
                 <div class="product-list-deal-type">
-                  <span>거래 방식 :</span> <span>배송</span>
+                  <span>거래 방식 :</span> <span>${sellPost.dealType}</span>
                 </div>
                 <div class="product-list-seller">
-                  <span>판매자 ID :</span> <span>sfeq8474</span>
+                  <span>판매자 ID :</span> <span>${sellPost.sellerMemberId}</span>
                 </div>
               </div>
               <div class="product-list-info-right">
-                <div class="product-list-minus-point">- 1000000 포인트</div>
+                <div class="product-list-minus-point"></div>
                 <div class="product-list-remain-point">
-                  <span>잔여 포인트 :</span> <span>1000000 포인트</span>
+                  <span>사용 포인트 :</span> <span>${sellPost.pricePoint} 포인트</span>
                 </div>
                 <div class="product-list-buy-date">
-                  <span>구매 일자 :</span> <span>2025-09-04</span>
+                  <span>구매 일자 :</span> <span>${sellPost.confirmDate}</span>
                 </div>
               </div>
             </li>
           </div>
           <div class="product-list-button-container">
             <!-- 확인 버튼 -->
-            <a>
+            <a href = "/myPage/tradeList.mp">
               <div class="product-list-button-confirm">확인
               </div>
             </a>
