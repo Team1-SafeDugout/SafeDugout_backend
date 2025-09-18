@@ -25,12 +25,15 @@
 
 	<!-- 검색 폼 -->
 	<div class="search-container">
-	    <form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
-	        <input type="hidden" name="category" value="search">
-	        <input type="hidden" name="action" value="search">
-	        <input type="text" name="searchWord" placeholder="검색어를 입력해주세요" value="${searchWord != null ? searchWord : ''}">
-	        <button type="submit">검색</button>
-	    </form>
+		<form
+			action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr"
+			method="get">
+			<input type="hidden" name="category" value="search"> <input
+				type="hidden" name="action" value="search"> <input
+				type="text" name="searchWord" placeholder="검색어를 입력해주세요"
+				value="${searchWord != null ? searchWord : ''}">
+			<button type="submit">검색</button>
+		</form>
 	</div>
 
 	<!-- 메인 -->
@@ -128,8 +131,7 @@
 									href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=allproduct&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
 									<c:choose>
 										<c:when test="${not empty sellPost.imagePath}">
-											<img
-												src="/upload/product/${file.attachmentPath}"
+											<img src="/upload/product/${sellPost.imagePath}"
 												alt="${sellPost.sellPostTitle}"
 												onerror="this.src='${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png'">
 										</c:when>

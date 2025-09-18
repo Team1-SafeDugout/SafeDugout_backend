@@ -37,15 +37,18 @@ public class WriteOkController {
 
             // 파일 업로드 환경 설정
             LocalDate today = LocalDate.now();
-            final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("/") + "upload/";
-            String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
-            String uploadPath = UPLOAD_PATH + subPath;
+            // 파일 업로드 환경 설정
+            // 1. 웹 서버의 실제 경로(절대 경로)를 가져옵니다.
+            String realPath = request.getSession().getServletContext().getRealPath("/");
+            // 2. 파일을 저장할 실제 경로를 만듭니다. (절대 경로)
+            // File.separator를 사용하여 OS에 관계없이 올바른 경로 구분자를 사용합니다.
+            String uploadPath = realPath + "assets" + File.separator + "upload" + File.separator;
             final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
 
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();
-                System.out.println("업로드 폴더 생성 완료: " + uploadPath);
+                System.out.println("업로드 폴더: " + uploadPath);
             }
 
             // MultipartRequest로 데이터 파싱
@@ -90,7 +93,7 @@ public class WriteOkController {
                 if (fileSystemName == null) continue; // 업로드 안된 필드 무시
 
                 AttachmentDTO attachmentDTO = new AttachmentDTO();
-                attachmentDTO.setAttachmentPath(subPath + fileSystemName);
+                attachmentDTO.setAttachmentPath(uploadPath + fileSystemName);
                 attachmentDTO.setAttachmentName(fileOriginalName);
                 attachmentDTO.setAttachmentTypeId(1); // 이미지
                 attachmentDTO.setPostNumber(postNumber); // 게시글 번호 연결

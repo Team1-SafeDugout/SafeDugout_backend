@@ -4,30 +4,35 @@
 <mapper namespace="sell">
 	<!-- 판매글 목록 조회 -->
 	<select id="selectList" resultType="SellPostDTO">
-    <![CDATA[
-    SELECT *
-    FROM (
-        SELECT ROWNUM AS RN, subquery.*
-        FROM (
-            SELECT SP.SELL_POST_NUMBER,
-                   SP.SELL_POST_TITLE,
-                   SP.PRICE_POINT,
-                   SP.TRADING_AREA,
-                   SP.SELL_POST_CREATION_DATE,
-                   M.MEMBER_ID AS SELLER_ID,
-                   AT.ATTACHMENT_PATH AS IMAGE_PATH
-            FROM TBL_SELL_POST SP
-            JOIN TBL_MEMBER M
-              ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
-            LEFT JOIN TBL_ATTACHMENT AT
-              ON SP.SELL_POST_NUMBER = AT.SELL_POST_NUMBER
-            WHERE SP.STATUS_ID = 1
-            ORDER BY SP.SELL_POST_NUMBER DESC
-        ) subquery
-    )
-    WHERE RN BETWEEN #{startRow} AND #{endRow}
-    ]]>
-    </select>
+	    <![CDATA[
+	    SELECT *
+	    FROM (
+	        SELECT ROWNUM AS RN, subquery.*
+	        FROM (
+	            SELECT SP.SELL_POST_NUMBER,
+	                   SP.SELL_POST_TITLE,
+	                   SP.PRICE_POINT,
+	                   SP.TRADING_AREA,
+	                   SP.SELL_POST_CREATION_DATE,
+	                   M.MEMBER_ID AS SELLER_ID,
+	                   (SELECT ATTACHMENT_PATH
+	                      FROM (
+	                           SELECT ATTACHMENT_PATH,
+	                                  ROW_NUMBER() OVER(PARTITION BY SELL_POST_NUMBER ORDER BY ATTACHMENT_NUMBER) AS RN
+	                           FROM TBL_ATTACHMENT
+	                           WHERE SELL_POST_NUMBER = SP.SELL_POST_NUMBER
+	                      )
+	                      WHERE RN = 1
+	                   ) AS imagePath
+	            FROM TBL_SELL_POST SP
+	            JOIN TBL_MEMBER M ON SP.MEMBER_NUMBER = M.MEMBER_NUMBER
+	            WHERE SP.STATUS_ID = 1
+	            ORDER BY SP.SELL_POST_NUMBER DESC
+	        ) subquery
+	    )
+	    WHERE RN BETWEEN #{startRow} AND #{endRow}
+	    ]]>
+	</select>
 
 	
 	<!-- 특정 팀 물품 조회 -->

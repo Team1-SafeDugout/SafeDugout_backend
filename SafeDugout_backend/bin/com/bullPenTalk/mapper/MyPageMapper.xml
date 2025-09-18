@@ -152,19 +152,38 @@
 	<update id="completeTrade" parameterType="int">
 		update tbl_trade_post 
 		set status_number = 3
-		where trade_number = #{tradeNumber}
+		where SELL_POST_NUMBER = #{sellPostNumber}
+	</update>
+	
+	<!-- 구매 확정 Sell -->
+	<update id = "completeSell" parameterType="int">
+		UPDATE TBL_SELL_POST
+		SET STATUS_ID = 3
+		WHERE SELL_POST_NUMBER = #{sellPostNumber}
+	</update>
+	
+	<!-- 구매 확정 transaction -->
+	<update id = "completeTransaction" parameterType = "int">
+		update TBL_POINT_TRANSACTION
+		set TRANSACTION_STATUS = 3
+		WHERE SELL_POST_NUMBER = #{sellPostNumber}
 	</update>
 	
 	<!-- 구매 취소 -->
-	<update id="cancelTradeUpdate" parameterType="int">
+	<update id="cancleTradeUpdate" parameterType="int">
 		update tbl_sell_post
 		set status_id = 1
 		where sell_post_number = #{sellPostNumber}
 	</update>
 	
-	<delete id="cancelTradeDelete" parameterType="int">
+	<delete id="cancleTradeDelete" parameterType="int">
 		delete from tbl_trade_post 
 		where sell_post_number = #{sellPostNumber}
+	</delete>
+	
+	<delete id = "cancleTradeSaction" parameterType = "int">
+		delete from TBL_POINT_TRANSACTION
+		WHERE SELL_POST_NUMBER = #{sellPostNumber}
 	</delete>
 	
 	<!-- 구매글 전체 수 -->
@@ -174,30 +193,64 @@
 		WHERE P.BUY_MEMBER = #{memberNumber} AND (STATUS_NUMBER = 2)
 	</select>
 	
-	<!-- 구매글 하나 조회 -->
+	<!-- 구매글 상세 -->
 	<select id = "selectDetailTrade" parameterType = "int" resultType = "MyPageTradeListDTO">
-				SELECT 	SP.SELL_POST_TITLE AS title,
-						TD.DEALTYPE_NAME AS dealType,
-						TS.STATUS_NAME AS tradeStatus,
-						SP.PRICE_POINT AS pricePoint,
-						SP.SELL_POST_CREATION_DATE AS addDate,
-						TP.PAYMENT_DATE AS buyDate,
-						TP.COMPLETE_DATE AS confirmDate,
-						SELLER.MEMBER_NUMBER AS sellerMemberNumber,
-						SELLER.MEMBER_ID AS sellerMemberId,
-						BUYER.MEMBER_NUMBER AS buyerMemberNumber,
-						BUYER.MEMBER_ID AS buyerMemberId,
-						SP.SELL_POST_NUMBER AS sellPostNumber,
-						TP.TRADE_NUMBER AS tradePostNumber
-				FROM TBL_SELL_POST SP
-				LEFT JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER  = TP.SELL_POST_NUMBER
-				LEFT JOIN TBL_MEMBER SELLER ON SP.MEMBER_NUMBER  = SELLER.MEMBER_NUMBER
-				LEFT JOIN TBL_MEMBER BUYER ON TP.BUY_MEMBER = BUYER.MEMBER_NUMBER
-				JOIN TBL_DEALTYPE TD ON SP.DEALTYPE_ID = TD.DEALTYPE_ID
-				JOIN TBL_TRADE_STATUS TS ON SP.STATUS_ID = TS.STATUS_ID
-				WHERE SP.SELL_POST_NUMBER = #{sellPostNumber}
-				ORDER BY SP.SELL_POST_CREATION_DATE DESC
+		SELECT 	SP.SELL_POST_TITLE AS title,
+				TD.DEALTYPE_NAME AS dealType,
+				TS.STATUS_NAME AS tradeStatus,
+				SP.PRICE_POINT AS pricePoint,
+				SP.SELL_POST_CREATION_DATE AS addDate,
+				TP.PAYMENT_DATE AS buyDate,
+				TP.COMPLETE_DATE AS confirmDate,
+				SELLER.MEMBER_NUMBER AS sellerMemberNumber,
+				SELLER.MEMBER_ID AS sellerMemberId,
+				BUYER.MEMBER_NUMBER AS buyerMemberNumber,
+				BUYER.MEMBER_ID AS buyerMemberId,
+				SP.SELL_POST_NUMBER AS sellPostNumber,
+				TP.TRADE_NUMBER AS tradePostNumber,
+				SP.SELL_POST_CONTENT AS sellPostContent
+		FROM TBL_SELL_POST SP
+		LEFT JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER  = TP.SELL_POST_NUMBER
+		LEFT JOIN TBL_MEMBER SELLER ON SP.MEMBER_NUMBER  = SELLER.MEMBER_NUMBER
+		LEFT JOIN TBL_MEMBER BUYER ON TP.BUY_MEMBER = BUYER.MEMBER_NUMBER
+		JOIN TBL_DEALTYPE TD ON SP.DEALTYPE_ID = TD.DEALTYPE_ID
+		JOIN TBL_TRADE_STATUS TS ON SP.STATUS_ID = TS.STATUS_ID
+		WHERE SP.SELL_POST_NUMBER = #{sellPostNumber}	
 	</select>
+	
+	<!-- 구매글 포인트 이동 확정 -->
+	<update id = "givePoint" parameterType = "int">
+	UPDATE TBL_MEMBER
+	SET MEMBER_POINT = MEMBER_POINT + 
+	(
+		SELECT SUM(POINT_AMOUNT)
+		FROM TBL_POINT_TRANSACTION TT
+		WHERE TT.SELL_POST_NUMBER = #{sellPostNumber}
+	)
+	WHERE MEMBER_NUMBER = 
+	(
+		SELECT MEMBER_TO
+		FROM TBL_POINT_TRANSACTION tpt 
+		WHERE tpt.SELL_POST_NUMBER = #{sellPostNumber}
+	)
+	</update>
+	
+	<!-- 구매글 포인트 이동 취소 -->
+	<update id = "canclePoint" parameterType = "map">
+	UPDATE TBL_MEMBER
+	SET MEMBER_POINT = MEMBER_POINT + 
+	(
+		SELECT SUM(POINT_AMOUNT)
+		FROM TBL_POINT_TRANSACTION TT
+		WHERE TT.SELL_POST_NUMBER = #{sellPostNumber}
+	)
+	WHERE MEMBER_NUMBER = 
+	(
+		SELECT MEMBER_FROM
+		FROM TBL_POINT_TRANSACTION tpt 
+		WHERE tpt.SELL_POST_NUMBER = #{sellPostNumber}
+	);
+	</update>
 	
 	<!-- 판매 목록 조회 -->
 	<select id="selectSellList" resultType="MyPageTradeListDTO" parameterType = "map">
@@ -218,7 +271,8 @@
 						BUYER.MEMBER_NUMBER AS buyerMemberNumber,
 						BUYER.MEMBER_ID AS buyerMemberId,
 						SP.SELL_POST_NUMBER AS sellPostNumber,
-						TP.TRADE_NUMBER AS tradePostNumber
+						TP.TRADE_NUMBER AS tradePostNumber,
+						SP.SELL_POST_CONTENT AS sellPostContent
 				FROM TBL_SELL_POST SP
 				LEFT JOIN TBL_TRADE_POST TP ON SP.SELL_POST_NUMBER  = TP.SELL_POST_NUMBER
 				LEFT JOIN TBL_MEMBER SELLER ON SP.MEMBER_NUMBER  = SELLER.MEMBER_NUMBER
@@ -261,5 +315,12 @@
 		delete from tbl_member
 		where member_number = #{memberNumber}
 	</delete>
+	
+	<!-- 멤버 포인트 조회 -->
+	<select id = "getMemberPoint" parameterType="int" resultType="int">
+		SELECT MEMBER_POINT
+		FROM TBL_MEMBER
+		WHERE MEMBER_NUMBER = #{memberNumber}
+	</select>
 	
 </mapper>
