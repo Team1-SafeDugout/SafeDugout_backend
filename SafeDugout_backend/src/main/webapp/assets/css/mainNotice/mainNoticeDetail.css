@@ -89,6 +89,19 @@
   background-color: #fff;
 }
 
+.notice-board-content-img {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice-board-content-img > img {
+  width: 100%;
+}
+
 /* 공지사항 내용 버튼 가이드 */
 .notice-board-content .btn-guide {
   display: flex;
