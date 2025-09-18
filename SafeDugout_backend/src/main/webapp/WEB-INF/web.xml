@@ -14,6 +14,11 @@
 		<welcome-file>main.jsp</welcome-file>
 	</welcome-file-list>
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errorPage.jsp</location>
+	</error-page>
+
 	<servlet>
 		<servlet-name>Main</servlet-name>
 		<servlet-class>com.bullPenTalk.app.main.MainFrontController</servlet-class>

@@ -68,9 +68,14 @@ body {
 .term-text-box {
   background-color: white;
   border: 1px solid black;
-  width: 525px;
+  width: 505px;
   height: 500px;
+  padding: 0px 10px;
   overflow-y: scroll;
+}
+
+.term-text-box a {
+  text-decoration: underline;
 }
 
 /* 모달창 버튼 컨테이너*/
