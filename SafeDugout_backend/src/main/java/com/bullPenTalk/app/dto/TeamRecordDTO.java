@@ -27,116 +27,150 @@ public class TeamRecordDTO {
 	private int teamDraw;
 	private int teamLose;
 	private double teamWinRate; // double 수정
-	private double avgBat; // double 수정
-	private double era; // double 수정
-	private int score;
-	private int concede;
-	
-	// get, set
+	private double teamEra; // double 수정
+	private int teamScore;
+	private int teamConcede;
+	private String teamName;
+	private double teamAvgBat;
 
+
+	// get, set
 	public int getTeamNumber() {
 		return teamNumber;
 	}
+
 
 	public void setTeamNumber(int teamNumber) {
 		this.teamNumber = teamNumber;
 	}
 
+
 	public int getSeasonYear() {
 		return seasonYear;
 	}
+
 
 	public void setSeasonYear(int seasonYear) {
 		this.seasonYear = seasonYear;
 	}
 
+
 	public int getTeamRank() {
 		return teamRank;
 	}
+
 
 	public void setTeamRank(int teamRank) {
 		this.teamRank = teamRank;
 	}
 
+
 	public int getGameCount() {
 		return gameCount;
 	}
+
 
 	public void setGameCount(int gameCount) {
 		this.gameCount = gameCount;
 	}
 
+
 	public int getTeamWin() {
 		return teamWin;
 	}
+
 
 	public void setTeamWin(int teamWin) {
 		this.teamWin = teamWin;
 	}
 
+
 	public int getTeamDraw() {
 		return teamDraw;
 	}
+
 
 	public void setTeamDraw(int teamDraw) {
 		this.teamDraw = teamDraw;
 	}
 
+
 	public int getTeamLose() {
 		return teamLose;
 	}
+
 
 	public void setTeamLose(int teamLose) {
 		this.teamLose = teamLose;
 	}
 
+
 	public double getTeamWinRate() {
 		return teamWinRate;
 	}
+
 
 	public void setTeamWinRate(double teamWinRate) {
 		this.teamWinRate = teamWinRate;
 	}
 
-	public double getAvgBat() {
-		return avgBat;
+
+	public double getTeamEra() {
+		return teamEra;
 	}
 
-	public void setAvgBat(double avgBat) {
-		this.avgBat = avgBat;
+
+	public void setTeamEra(double teamEra) {
+		this.teamEra = teamEra;
 	}
 
-	public double getEra() {
-		return era;
+
+	public int getTeamScore() {
+		return teamScore;
 	}
 
-	public void setEra(double era) {
-		this.era = era;
+
+	public void setTeamScore(int score) {
+		this.teamScore = score;
 	}
 
-	public int getScore() {
-		return score;
+
+	public int getTeamConcede() {
+		return teamConcede;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+
+	public void setTeamConcede(int teamConcede) {
+		this.teamConcede = teamConcede;
 	}
 
-	public int getConcede() {
-		return concede;
+
+	public String getTeamName() {
+		return teamName;
 	}
 
-	public void setConcede(int concede) {
-		this.concede = concede;
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
 
+
+	public double getTeamAvgBat() {
+		return teamAvgBat;
+	}
+
+
+	public void setTeamAvgBat(double teamAvgBat) {
+		this.teamAvgBat = teamAvgBat;
+	}
+	
 	// toString
 	@Override
 	public String toString() {
 		return "TeamRecordDTO [teamNumber=" + teamNumber + ", seasonYear=" + seasonYear + ", teamRank=" + teamRank
 				+ ", gameCount=" + gameCount + ", teamWin=" + teamWin + ", teamDraw=" + teamDraw + ", teamLose="
-				+ teamLose + ", teamWinRate=" + teamWinRate + ", avgBat=" + avgBat + ", era=" + era + ", score=" + score
-				+ ", concede=" + concede + "]";
+				+ teamLose + ", teamWinRate=" + teamWinRate + ", teamEra=" + teamEra + ", teamScore=" + teamScore + ", teamConcede="
+				+ teamConcede + ", teamName=" + teamName + ", teamAvgBat=" + teamAvgBat + "]";
 	}
 	
 }

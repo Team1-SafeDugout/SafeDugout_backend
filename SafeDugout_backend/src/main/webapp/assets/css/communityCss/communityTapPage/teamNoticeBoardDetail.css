@@ -1,7 +1,7 @@
 @charset "UTF-8";
-/* teamNoticeBoard.css */
+/* teamNoticeBoard.css (클래스명 변경본) */
 
-.team-notice-board-detail {
+.free-guide-board-detail {
   max-width: 900px;
   margin: 40px auto;
   padding: 30px 40px;
@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-.team-notice-board-detail h2 {
+.free-guide-board-detail h2 {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -21,9 +21,9 @@
   color: black;
 }
 
-.team-notice-board-header {
+.free-guide-board-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; 
   align-items: center;
   margin-bottom: 25px;
   border: 1px solid black;
@@ -34,75 +34,57 @@
   color: black;
 }
 
-.team-notice-board-header p {
-  flex: 1;
-  padding-left: 12px;
+.free-guide-board-header span {
+  margin-right: 12px;
+}
+
+.free-guide-board-header p {
+  margin: 0;
   font-weight: 600;
   color: black;
 }
 
-.team-notice-board-btn {
+.free-guide-board-btn {
   display: flex;
   gap: 8px;
+  margin-bottom: 15px;
 }
 
-.team-notice-board-btn a{
+.free-guide-board-btn a {
   padding: 5px 12px;
   font-size: 13px;
   border: 1px solid black;
   cursor: pointer;
-  min-width: 30px;
-  text-decoration: none;
+  min-width: 40px;
+  background: #e0e0e0;
+  text-align: center;
   color: black;
+  text-decoration: none;
 }
 
-.team-notice-board-btn a:hover{
-  background-color: #4D5061;
+.free-guide-board-btn a:hover {
+  text-decoration: underline;
 }
 
-.team-notice-board-btn button:hover {
-  background-color: #4D5061;
-  color: #fff;
-  border-color: #4D5061;
-}
-
-.team-notice-board-content {
+.free-guide-board-content {
   border: 1px solid #f5f5f5;
   padding: 25px 30px;
   font-size: 14px;
-  line-height: 1;
+  line-height: 1.5;
   color: black;
   margin-bottom: 25px;
   position: relative;
-  min-height: 700px;
+  min-height: 400px;
   background-color: #fff;
 }
 
-
-.team-notice-board-content .btn-guide {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.team-notice-board-content .btn-guide img {
-  width: 36px;
-  height: 36px;
-  margin-right: 12px;
-}
-
-.team-notice-board-content .btn-guide p {
-  font-size: 14px;
-  color: #f5f5f5;
-}
-
 /* 문단 간 간격 */
-.team-notice-board-content p:not(:last-child) {
+.free-guide-board-content p:not(:last-child) {
   margin-bottom: 20px;
 }
 
-/* 날짜 표시 */
-.team-notice-date {
+/* 작성일자 스타일 */
+.free-guide-date {
   text-align: left;
   font-size: 14px;
   color: black;

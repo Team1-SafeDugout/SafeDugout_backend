@@ -32,7 +32,7 @@ public class DeleteControllerOkController {
 	            }
 	        }
 
-	        // 판매글 삭제 (DB에서 첨부파일, 매핑 자동 삭제)
+	        // 게시글 삭제 (DB에서 첨부파일, 매핑 자동 삭제)
 	        teamCommunityDAO.delete(postNumber);
 	        System.out.println("판매글 삭제 완료: " + postNumber);
 

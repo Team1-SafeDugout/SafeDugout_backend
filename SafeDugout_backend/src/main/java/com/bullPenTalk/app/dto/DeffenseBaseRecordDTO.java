@@ -1,33 +1,29 @@
 package com.bullPenTalk.app.dto;
 
 public class DeffenseBaseRecordDTO {
-//	CREATE TABLE TBL_DEFENSE_BASE_RECORD (
-//	TEAM_NUMBER            NUMBER,
-//	SEASON_YEAR            NUMBER,
-//	GAME_COUNT             NUMBER,
-//	ERROR                  NUMBER,
-//	GIDOUT                 NUMBER,
-//	SB_ALLOW               NUMBER,
-//	SB_BLOCK               NUMBER,
-//	SB_SUCCESS             NUMBER,
-//	PICK_OFF               NUMBER,
-//	PICK_OFF_SUCCESS       NUMBER,
-//	CONSTRAINT PK_DEFENSE_BASE_RECORD PRIMARY KEY (TEAM_NUMBER, SEASON_YEAR),
-//	CONSTRAINT FK_DEFENSE_BASE_RECORD FOREIGN KEY (TEAM_NUMBER) REFERENCES TBL_TEAM(TEAM_NUMBER)
-//	);
+	// TEAM_NUMBER            NUMBER,
+	// SEASON_YEAR            NUMBER,
+	// GAME_COUNT             NUMBER,
+	// ERROR                  NUMBER, -- 에러
+	// DP 		               NUMBER, -- 병살
+	// SB                     NUMBER, -- 도루허용
+	// CB	                   NUMBER, -- 도루 저지
+	// SB_SUCCESS             NUMBER, -- 도루 성공
+	// PICK_OFF               NUMBER, -- 견제사(수비)
+	// PICK_OFF_SUCCESS       NUMBER, -- 견제사(주루)
 
-	
 	private int teamNumber;
 	private int seasonYear;
-	private int gameCount; 
-	private int error; 
-	private int gidout;
-	private int SBAllow;
-	private int SBBlock;
-	private int SBSuccess;
+	private int gameCount;
+	private int error;
+	private int dp;
+	private int sb;
+	private int cb;
+	private int sbSuccess;
 	private int pickOff;
 	private int pickOffSuccess;
 	
+	// get, set
 	public int getTeamNumber() {
 		return teamNumber;
 	}
@@ -52,29 +48,29 @@ public class DeffenseBaseRecordDTO {
 	public void setError(int error) {
 		this.error = error;
 	}
-	public int getGidout() {
-		return gidout;
+	public int getDp() {
+		return dp;
 	}
-	public void setGidout(int gidout) {
-		this.gidout = gidout;
+	public void setDp(int dp) {
+		this.dp = dp;
 	}
-	public int getSBAllow() {
-		return SBAllow;
+	public int getSb() {
+		return sb;
 	}
-	public void setSBAllow(int sBAllow) {
-		SBAllow = sBAllow;
+	public void setSb(int sb) {
+		this.sb = sb;
 	}
-	public int getSBBlock() {
-		return SBBlock;
+	public int getCb() {
+		return cb;
 	}
-	public void setSBBlock(int sBBlock) {
-		SBBlock = sBBlock;
+	public void setCb(int cb) {
+		this.cb = cb;
 	}
-	public int getSBSuccess() {
-		return SBSuccess;
+	public int getSbSuccess() {
+		return sbSuccess;
 	}
-	public void setSBSuccess(int sBSuccess) {
-		SBSuccess = sBSuccess;
+	public void setSbSuccess(int sbSuccess) {
+		this.sbSuccess = sbSuccess;
 	}
 	public int getPickOff() {
 		return pickOff;
@@ -88,13 +84,14 @@ public class DeffenseBaseRecordDTO {
 	public void setPickOffSuccess(int pickOffSuccess) {
 		this.pickOffSuccess = pickOffSuccess;
 	}
+	
+	// toString
 	@Override
 	public String toString() {
 		return "DeffenseBaseRecordDTO [teamNumber=" + teamNumber + ", seasonYear=" + seasonYear + ", gameCount="
-				+ gameCount + ", error=" + error + ", gidout=" + gidout + ", SBAllow=" + SBAllow + ", SBBlock="
-				+ SBBlock + ", SBSuccess=" + SBSuccess + ", pickOff=" + pickOff + ", pickOffSuccess=" + pickOffSuccess
-				+ "]";
+				+ gameCount + ", error=" + error + ", dp=" + dp + ", sb=" + sb + ", cb=" + cb + ", sbSuccess="
+				+ sbSuccess + ", pickOff=" + pickOff + ", pickOffSuccess=" + pickOffSuccess + "]";
 	}
 	
-
+	
 }
