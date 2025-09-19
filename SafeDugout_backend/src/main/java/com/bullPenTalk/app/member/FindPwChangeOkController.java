@@ -35,7 +35,7 @@ public class FindPwChangeOkController implements Execute{
 		
 		// 경로, redirect 여부 설정 
 		result.setPath("/app/findPw/findPwChangeResult.jsp");
-		result.setRedirect(false);
+		result.setRedirect(true);
 		
 		return result;
 	}

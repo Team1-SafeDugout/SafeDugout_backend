@@ -58,6 +58,8 @@ public class TeamMainOkController implements Execute {
 
 		// 팀 유튜브 썸네일 목록 조회
 		List<TeamMainDTO> youTubeList = teamMainDAO.selectYouTubeList(teamNumber);
+		// 팀 유튜브 링크의 id값 저장
+//		String youtubeId = 
 		request.setAttribute("youTubeList", youTubeList);
 
 		// 팀 경기 일정 조회
