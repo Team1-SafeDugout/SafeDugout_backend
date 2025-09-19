@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,8 +51,7 @@
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/teamFooter/ssgFooter.css">
   	</c:when>
   </c:choose>
-  <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamPlayerStats.js"></script>
-  <%-- <script defer src="${pageContext.request.contextPath}/assets/js/communityJs/teamInclude.js"></script> --%>
+  <script src="${pageContext.request.contextPath}/assets/js/communityJs/communityTapPage/teamPlayerStats.js"></script>
 </head>
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
@@ -68,65 +67,100 @@
       <div class="team-stats-header">
         <div>번호</div>
         <div>이름</div>
+        <div>팀명</div>
+        <div>ERA</div>
         <div>경기</div>
-        <div>완투</div>
-        <div>완봉</div>
-        <div>선발</div>
         <div>승</div>
         <div>패</div>
         <div>세이브</div>
         <div>홀드</div>
+        <div>승률</div>
         <div>이닝</div>
-        <div>실점</div>
-        <div>자책</div>
-        <div>ERA</div>
         <div>피안타</div>
         <div>피홈런</div>
         <div>볼넷</div>
         <div>사구</div>
         <div>삼진</div>
-        <div>보크</div>
-        <div>폭투</div>
+        <div>실점</div>
+        <div>자책점</div>
+        <div>WHIP</div>
       </div>
       <div class="team-stats-data">
         <!-- 투수 데이터 들어갈 공간 -->
-        
+         <c:forEach var="pitcher" items="${pitcherStatsList}">
+            <div class="player-row">
+                <div><c:out value="${pitcher.playerNumber}"/></div>
+                <div><c:out value="${pitcher.playerName}"/></div>
+                <div><c:out value="${pitcher.teamName}"/></div>
+                <div><c:out value="${pitcher.era}"/></div>
+                <div><c:out value="${pitcher.game}"/></div>
+                <div><c:out value="${pitcher.w}"/></div>
+                <div><c:out value="${pitcher.l}"/></div>
+                <div><c:out value="${pitcher.sv}"/></div>
+                <div><c:out value="${pitcher.hld}"/></div>
+                <div><c:out value="${pitcher.wpct}"/></div>
+                <div><c:out value="${pitcher.ip}"/></div>
+                <div><c:out value="${pitcher.h}"/></div>
+                <div><c:out value="${pitcher.hr}"/></div>
+                <div><c:out value="${pitcher.bb}"/></div>
+                <div><c:out value="${pitcher.hbp}"/></div>
+                <div><c:out value="${pitcher.so}"/></div>
+                <div><c:out value="${pitcher.r}"/></div>
+                <div><c:out value="${pitcher.er}"/></div>
+                <div><c:out value="${pitcher.whip}"/></div>
+            </div>
+        </c:forEach>
       </div>
     </div>
-    <!-- 타자 기록 표 -->
     <!-- 타자 기록 표 -->
     <div class="team-stats-table" id="team-batter-table" style="display:none;">
       <div class="team-stats-header">
         <div>번호</div>
         <div>이름</div>
-        <div>경기</div>
+        <div>팀명</div>
         <div>타율</div>
+        <div>경기</div>   
         <div>타석</div>
         <div>타수</div>
-        <div>타점</div>
+        <div>득점</div>
         <div>안타</div>
-        <div>1루타</div>
         <div>2루타</div>
         <div>3루타</div>
-        <div>HR</div>
-        <div>볼넷</div>
-        <div>고4</div>
-        <div>사구</div>
-        <div>삼진</div>
-        <div>병살</div>
-        <div>희타</div>
-        <div>OPS</div>
-        <div>도루</div>
-        <div>도실</div>
+        <div>홈런</div>
+		<div>루타</div>
+		<div>타점</div>
+		<div>희생번트</div>
+		<div>희생플라이</div>
       </div>
       <div class="team-stats-data">
         <!-- 타자 데이터 들어갈 공간 -->
+        <c:forEach var="batter" items="${batterStatsList}">
+            <div class="player-row">
+                <div><c:out value="${batter.playerNumber}"/></div>
+                <div><c:out value="${batter.playerName}"/></div>
+                <div><c:out value="${batter.teamName}"/></div>
+                <div><c:out value="${batter.avg}"/></div>
+                <div><c:out value="${batter.game}"/></div>
+                <div><c:out value="${batter.pa}"/></div>
+                <div><c:out value="${batter.ab}"/></div>
+                <div><c:out value="${batter.r}"/></div>
+                <div><c:out value="${batter.h}"/></div>
+                <div><c:out value="${batter.doublehit}"/></div>
+                <div><c:out value="${batter.triplehit}"/></div>
+                <div><c:out value="${batter.hr}"/></div>
+                <div><c:out value="${batter.tb}"/></div>
+                <div><c:out value="${batter.rbi}"/></div>
+                <div><c:out value="${batter.sac}"/></div>
+                <div><c:out value="${batter.sf}"/></div>
+            </div>
+        </c:forEach>
       </div>
     </div>
 </main>
 <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
   <script >
     let memberNumber = "${sessionScope.memberNumber}";
+    let teamNumber ="${sessionScope.teamNumber}";
   </script>
 </body>
 </html>

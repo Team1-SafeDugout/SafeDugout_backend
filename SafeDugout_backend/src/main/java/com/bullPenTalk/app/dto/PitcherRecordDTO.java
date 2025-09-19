@@ -1,122 +1,156 @@
 package com.bullPenTalk.app.dto;
 
-public class PitcherRecordDTO { // 선수 투수 기록
-//	CREATE TABLE TBL_PITCHER_RECORD (
-//	PLAYER_NUMBER         NUMBER NOT NULL,
-//	PITCHER_SEASON_YEAR   DATE NOT NULL,
-//	PITCHER_GAMES         NUMBER,
-//	CG                    NUMBER,
-//	SHO                   NUMBER,
-//	GS                    NUMBER,
-//	WINS                  NUMBER,
-//	LOSSES                NUMBER,
-//	SAVES                 NUMBER,
-//	HOLD                  NUMBER,
-//	IP                    NUMBER,
-//	RA                    NUMBER,
-//	ER                    NUMBER,
-//	ERA                   NUMBER,
-//	HIT_ALLOWED           NUMBER,
-//	HR_ALLOWED            NUMBER,
-//	PITCHER_BB            NUMBER,
-//	PITCHER_HBP           NUMBER,
-//	BK                    NUMBER,
-//	CONSTRAINT PK_PITCHER_RECORD PRIMARY KEY (PLAYER_NUMBER, PITCHER_SEASON_YEAR),
-//	CONSTRAINT FK_PITCHER_PLAYER FOREIGN KEY (PLAYER_NUMBER) REFERENCES TBL_PLAYER(PLAYER_NUMBER)
-//	);
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.JsonAdapter;
+import com.bullPenTalk.app.adapter.IPFractionAdapter;
 
-	private int playerNumber; // 선수번호
-	private String pitcherSeasonYear; // 시즌 연도
-	private int pitcherGame; // 경기수
-	private int cg; // 완투
-	private int sho; // 완봉
-	private int gs; // 선발 출장
-	private int wins; // 승
-	private int losses; // 패
-	private int saves; // 세이브
-	private int hold; // 홀드
+public class PitcherRecordDTO { // 선수 투수 기록
+
+	@SerializedName("순위")
+	private int playerNumber; // 번호
+	@SerializedName("선수명")
+	private String playerName; // 선수명
+	@SerializedName("팀명")
+	private String teamName; // 팀명
+	@SerializedName("ERA")
+	@JsonAdapter(IPFractionAdapter.class) // ERA 필드에 어댑터 적용
+	private double era; // 자책점
+	@SerializedName("G")
+	private int game; // 경기수
+	@SerializedName("W")
+	private int w; // 승
+	@SerializedName("L")
+	private int l; // 패
+	@SerializedName("SV")
+	private int sv; // 세이브
+	@SerializedName("HLD")
+	private int hld; // 홀드
+	@SerializedName("승률")
+	@JsonAdapter(IPFractionAdapter.class) // 승률 필드에 어댑터 적용
+	private double wpct; // 승률
+	@SerializedName("IP")
+    @JsonAdapter(IPFractionAdapter.class) // 이닝 필드에 어댑터 적용
 	private double ip; // 이닝
-	private int ra; // 실점
+	@SerializedName("H")
+	private int h; // 피안타
+	@SerializedName("HR")
+	private int hr; // 피홈런
+	@SerializedName("BB")
+	private int bb; // 볼넷
+	@SerializedName("HBP")
+	private int hbp; // 사구
+	@SerializedName("SO")
+	private int so; // 삼진
+	@SerializedName("R")
+	private int r; // 실점
+	@SerializedName("ER")
 	private int er; // 자책점
-	private double era; // 평균자책점
-	private int hitallowed; // 피안타
-	private int hrAllowed; // 피홈런
-	private int pitcherBb; // 볼넷
-	private int pitcherHbp; // 사구
-	private int bk; // 보크
+	@SerializedName("WHIP")
+	@JsonAdapter(IPFractionAdapter.class) // WHIP 필드에 어댑터 적용
+	private double whip; // 이닝당 출루허용률
 	
-	// get, set
+	// get,set
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
-	public String getPitcherSeasonYear() {
-		return pitcherSeasonYear;
+	public String getPlayerName() {
+		return playerName;
 	}
-	public void setPitcherSeasonYear(String pitcherSeasonYear) {
-		this.pitcherSeasonYear = pitcherSeasonYear;
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
-	public int getPitcherGame() {
-		return pitcherGame;
+	public String getTeamName() {
+		return teamName;
 	}
-	public void setPitcherGame(int pitcherGame) {
-		this.pitcherGame = pitcherGame;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
-	public int getCg() {
-		return cg;
+	public double getEra() {
+		return era;
 	}
-	public void setCg(int cg) {
-		this.cg = cg;
+	public void setEra(double era) {
+		this.era = era;
 	}
-	public int getSho() {
-		return sho;
+	public int getGame() {
+		return game;
 	}
-	public void setSho(int sho) {
-		this.sho = sho;
+	public void setGame(int game) {
+		this.game = game;
 	}
-	public int getGs() {
-		return gs;
+	public int getW() {
+		return w;
 	}
-	public void setGs(int gs) {
-		this.gs = gs;
+	public void setW(int w) {
+		this.w = w;
 	}
-	public int getWins() {
-		return wins;
+	public int getL() {
+		return l;
 	}
-	public void setWins(int wins) {
-		this.wins = wins;
+	public void setL(int l) {
+		this.l = l;
 	}
-	public int getLosses() {
-		return losses;
+	public int getSv() {
+		return sv;
 	}
-	public void setLosses(int losses) {
-		this.losses = losses;
+	public void setSv(int sv) {
+		this.sv = sv;
 	}
-	public int getSaves() {
-		return saves;
+	public int getHld() {
+		return hld;
 	}
-	public void setSaves(int saves) {
-		this.saves = saves;
+	public void setHld(int hld) {
+		this.hld = hld;
 	}
-	public int getHold() {
-		return hold;
+	public double getWpct() {
+		return wpct;
 	}
-	public void setHold(int hold) {
-		this.hold = hold;
+	public void setWpct(double wpct) {
+		this.wpct = wpct;
 	}
 	public double getIp() {
 		return ip;
 	}
-	public void setIp(int ip) {
+	public void setIp(double ip) {
 		this.ip = ip;
 	}
-	public int getRa() {
-		return ra;
+	public int getH() {
+		return h;
 	}
-	public void setRa(int ra) {
-		this.ra = ra;
+	public void setH(int h) {
+		this.h = h;
+	}
+	public int getHr() {
+		return hr;
+	}
+	public void setHr(int hr) {
+		this.hr = hr;
+	}
+	public int getBb() {
+		return bb;
+	}
+	public void setBb(int bb) {
+		this.bb = bb;
+	}
+	public int getHbp() {
+		return hbp;
+	}
+	public void setHbp(int hbp) {
+		this.hbp = hbp;
+	}
+	public int getSo() {
+		return so;
+	}
+	public void setSo(int so) {
+		this.so = so;
+	}
+	public int getR() {
+		return r;
+	}
+	public void setR(int r) {
+		this.r = r;
 	}
 	public int getEr() {
 		return er;
@@ -124,52 +158,19 @@ public class PitcherRecordDTO { // 선수 투수 기록
 	public void setEr(int er) {
 		this.er = er;
 	}
-	public double getEra() {
-		return era;
+	public double getWhip() {
+		return whip;
 	}
-	public void setEra(int era) {
-		this.era = era;
-	}
-	public int getHitallowed() {
-		return hitallowed;
-	}
-	public void setHitallowed(int hitallowed) {
-		this.hitallowed = hitallowed;
-	}
-	public int getHrAllowed() {
-		return hrAllowed;
-	}
-	public void setHrAllowed(int hrAllowed) {
-		this.hrAllowed = hrAllowed;
-	}
-	public int getPitcherBb() {
-		return pitcherBb;
-	}
-	public void setPitcherBb(int pitcherBb) {
-		this.pitcherBb = pitcherBb;
-	}
-	public int getPitcherHbp() {
-		return pitcherHbp;
-	}
-	public void setPitcherHbp(int pitcherHbp) {
-		this.pitcherHbp = pitcherHbp;
-	}
-	public int getBk() {
-		return bk;
-	}
-	public void setBk(int bk) {
-		this.bk = bk;
+	public void setWhip(double whip) {
+		this.whip = whip;
 	}
 	
-	// toString
+	//toString
 	@Override
 	public String toString() {
-		return "PitcherRecordDTO [playerNumber=" + playerNumber + ", pitcherSeasonYear=" + pitcherSeasonYear
-				+ ", pitcherGame=" + pitcherGame + ", cg=" + cg + ", sho=" + sho + ", gs=" + gs + ", wins=" + wins
-				+ ", losses=" + losses + ", saves=" + saves + ", hold=" + hold + ", ip=" + ip + ", ra=" + ra + ", er="
-				+ er + ", era=" + era + ", hitallowed=" + hitallowed + ", hrAllowed=" + hrAllowed + ", pitcherBb="
-				+ pitcherBb + ", pitcherHbp=" + pitcherHbp + ", bk=" + bk + "]";
+		return "PitcherRecordDTO [playerNumber=" + playerNumber + ", playerName=" + playerName + ", teamName="
+				+ teamName + ", era=" + era + ", game=" + game + ", w=" + w + ", l=" + l + ", sv=" + sv + ", hld=" + hld
+				+ ", wpct=" + wpct + ", ip=" + String.format("%.1f", ip) + ", h=" + h + ", hr=" + hr + ", bb=" + bb + ", hbp=" + hbp + ", so="
+				+ so + ", r=" + r + ", er=" + er + ", whip=" + whip + "]";
 	}
-	
-
 }
