@@ -33,7 +33,7 @@
       <section class="main-content">
         <h3>포인트 충전 내역</h3>
         <div class="content-box">
-          <div class="post-list">
+          <ul class="post-list">
             <li class="post-list-top">
               <div class="post-list-number">충전 금액</div>
               <div class="post-list-title">충전 후 포인트</div>
@@ -64,7 +64,7 @@
               <div class="post-list-title">10000 포인트</div>
               <div class="post-list-date">2025.09.02</div>
             </li>
-          </div>
+          </ul>
           <div class="pagination">
             <a href="">◁</a>
             <ul id="numberlist-ul">

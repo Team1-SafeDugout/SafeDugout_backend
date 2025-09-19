@@ -10,10 +10,10 @@
 	FROM (
 	    SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
-	        SELECT P.CHARGE_POINT,
+	        SELECT P.Amount,
 	               P.AFTER_CHARGE_POINT,
-	               P.CHARGE_DATE
-	        FROM TBL_POST P
+	               P.PAID_AT
+	        FROM TBL_POINT_PAYMENT P
 	        WHERE P.MEMBER_NUMBER = #{memberNumber}
 	        ORDER BY P.CHARGE_DATE DESC
 	    ) subquery
