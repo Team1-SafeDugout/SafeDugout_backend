@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberQuit/quiInputPassword.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <script defer src = "${pageContext.request.contextPath}/assets/js/myPostList/getPoint.js"></script>
+<%--   <script defer src = "${pageContext.request.contextPath}/assets/js/myPostList/getPoint.js"></script> --%>
+  <script defer src = "${pageContext.request.contextPath}/assets/js/memberWithDrawal/memberPassword.js"></script>
 </head>
 
 <body>
@@ -36,16 +37,20 @@
         <div class="content-box">
           <h3>&nbsp</h3>
           <div class="box-content">
+          
             <span>비밀번호를 입력해주세요.</span>
-            <form action=""><span>* 비밀번호가 일치하지 않습니다.</span><input type="text"></form>
+            <form action="/myPage/InputReason.mp" method="post">
+            	<c:if test="${isCorrect eq '실패'}">
+    				<span>* 비밀번호가 일치하지 않습니다.</span>
+				</c:if>
+            	<input type="text" name = "password" id = "password">
+            	<div class="button-container">
+            		<button type = "submit" class = "button-confirm">확인</button>
+            	</div>
+            </form>
+            
           </div>
-          <div class="button-container">
-            <!-- 확인 버튼 -->
-            <a>
-              <div class="button-confirm">확인
-              </div>
-            </a>
-          </div>
+          <div> </div>
         </div>
       </section>
 

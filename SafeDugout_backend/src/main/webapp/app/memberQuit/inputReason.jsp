@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberQuit/inputReason.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script defer src = "${pageContext.request.contextPath}/assets/js/memberWithDrawal/memberReason.js"></script>
 </head>
 
 <body>
@@ -35,12 +36,12 @@
         <div class="content-box">
           <div class="box-content">
             <span>탈퇴 사유를 입력해주세요.</span>
-            <form action=""><textarea name="quitReason" id=""></textarea></form>
+            <textarea name="quitReason" id=""></textarea>
           </div>
           <div class="button-container">
             <!-- 확인 버튼 -->
             <a>
-              <div class="button-confirm">확인
+              <div class="button-confirm" id = "confirm-button">확인
               </div>
             </a>
           </div>

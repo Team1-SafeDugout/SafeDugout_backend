@@ -111,14 +111,37 @@ public class MyPageDAO {
 	}
 
 	// 여기도 트랜잭션 처리해야 할듯
-	// 구매 취소(거래 상태 변경)
-	public void cancelTradeUpdate(int sellPostNumber) {
-		sqlSession.update("myPage.cancelTradeUpdate", sellPostNumber);
-	}
+	public boolean cancleTrade(int sellPostNumber) {
+		SqlSession cancleSession = MyBatisConfig.getSqlSessionFactory().openSession(false);
+		try {
+			// 구매자에게 환불
+			cancleSession.update("myPage.canclePoint", sellPostNumber);
+			System.out.println("황불완료");
+			
+			// 셀포스트에 있는 status id 1 로변경
+			cancleSession.update("myPage.cancleTradeUpdate", sellPostNumber);
+			System.out.println("tbl sellpost 변경 완료");
+			
+			// trade post 에 있는 디비 삭제
+			cancleSession.delete("myPage.cancleTradeDelete", sellPostNumber);
+			System.out.println("tbl trade 삭제 완료");
 
-	// 구매 취소(거래글 테이블에서 삭제)
-	public void cancelTradeDelete(int sellPostNumber) {
-		sqlSession.delete("myPage.cancelTradeDelete", sellPostNumber);
+			// tbl transactino 에 있는 값 삭제
+			cancleSession.delete("myPage.cancleTradeSaction",sellPostNumber);
+			System.out.println("tbl transaction 삭제 완료");
+			
+
+			
+			// 모두 완료 되면 커밋
+			cancleSession.commit();
+			System.out.println("거래 취소 완료");
+			return true;
+			
+		} catch(Exception e) {
+			System.out.println("거래가 완전히 끝나지 않았습니다");
+			cancleSession.rollback();
+			return false;
+		}
 	}
 
 	// 판매 목록 조회
@@ -142,12 +165,20 @@ public class MyPageDAO {
 	}
 
 	// 회원 탈퇴
-	public void quit(int memberNumber) {
+	public boolean quit(int memberNumber) {
+		System.out.println((int)sqlSession.selectOne("myPage.checkTrade", memberNumber));
+		if((int)sqlSession.selectOne("myPage.checkTrade", memberNumber) > 0) return false;
 		sqlSession.delete("myPage.quit", memberNumber);
+		return true;
 	}
 	
 	// 회원 포인트 조회
 	public int getMemberPoint(int memberNumber) {
 		return sqlSession.selectOne("myPage.getMemberPoint", memberNumber); 
+	}
+	
+	// 회원 비밀번호 조회
+	public String getMemberPw(int memberNumber) {
+		return sqlSession.selectOne("member.findPwWithNumber", memberNumber);
 	}
 }

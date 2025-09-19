@@ -7,10 +7,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원 정보 수정 비밀번호 입력</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberUpdate/updateInputPassword.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/memberQuit/quiInputPassword.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-  <script defer src = "${pageContext.request.contextPath}/assets/js/myPostList/getPoint.js"></script>
+<%--   <script defer src = "${pageContext.request.contextPath}/assets/js/myPostList/getPoint.js"></script> --%>
 </head>
 
 <body>
@@ -36,16 +36,20 @@
         <div class="content-box">
           <h3>&nbsp</h3>
           <div class="box-content">
+            
             <span>비밀번호를 입력해주세요.</span>
-            <form action=""><span>* 비밀번호가 일치하지 않습니다.</span><input type="text"></form>
+            <form action="/myPage/InputInfo.mp" method="post">
+            	<c:if test="${isCorrect eq '실패'}">
+    				<span>* 비밀번호가 일치하지 않습니다.</span>
+				</c:if>
+            	<input type="text" name = "password" id = "password">
+            	<div class="button-container">
+            		<button type = "submit" class = "button-confirm">확인</button>
+            	</div>
+            </form>    
+                   
           </div>
-          <div class="button-container">
-            <!-- 확인 버튼 -->
-            <a>
-              <div class="button-confirm">확인
-              </div>
-            </a>
-          </div>
+          <div></div>
         </div>
       </section>
 

@@ -24,7 +24,7 @@
           <h3>탈퇴 되었습니다.</h3>
           <div class="button-container">
             <!-- 확인 버튼 -->
-            <a>
+            <a href = "/main.ma">
               <div class="button-confirm">확인
               </div>
             </a>
