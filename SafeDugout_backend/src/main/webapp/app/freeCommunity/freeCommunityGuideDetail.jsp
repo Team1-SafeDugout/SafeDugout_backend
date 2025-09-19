@@ -16,15 +16,15 @@
 <body>
   <jsp:include page="${pageContext.request.contextPath}/header.jsp" />
   <main>
-    <!-- 입문자 가이드 디테일 컨테이너 -->
+    <!-- 팀 공지 디테일 컨테이너 -->
     <div class="free-guide-board-detail">
       <h2>공지사항</h2>
-      <!-- 입문자 가이드 디테일 내용 헤더 -->
+      <!-- 팀 공지 디테일 내용 헤더 -->
       <div class="free-guide-board-header">
         <span>제목: </span>
         <p><c:out value="${noticePostDetail.noticePostTitle}" /></p>
       </div>
-      <!-- 입문자 가이드 본문 -->
+      <!-- 팀 공지 본문 -->
       <div class="free-guide-board-content">
         <p><c:out value="${noticePostDetail.noticePostContent}" /></p>
       </div>

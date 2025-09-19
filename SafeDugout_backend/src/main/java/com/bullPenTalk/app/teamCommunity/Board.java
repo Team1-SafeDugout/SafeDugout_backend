@@ -42,7 +42,7 @@ public class Board implements CommunityService {
 			result = detail.detailselect(action, request, response);
 			break;
 		case "noticedetail":
-			
+			result = detail.teamNoticeDetail(request, response);
 			break;
 		case "delete":
 			result = delete.deletePost(request, response);
