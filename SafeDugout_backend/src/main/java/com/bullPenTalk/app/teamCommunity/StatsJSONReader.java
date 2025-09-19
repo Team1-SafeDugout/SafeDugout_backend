@@ -55,17 +55,16 @@ public class StatsJSONReader {
         }
 
         String filePath = "/kbo_data/" + fileName;
+        InputStream inputStream = StatsJSONReader.class.getResourceAsStream(filePath);
 
-        try (InputStream inputStream = StatsJSONReader.class.getResourceAsStream(filePath)) {
-            if (inputStream == null) {
-                logger.severe("파일을 찾을 수 없습니다: " + filePath);
-                throw new IOException("파일을 찾을 수 없습니다: " + filePath);
-            }
-            
-            Gson gson = gsonBuilder.create();
-            try (InputStreamReader reader = new InputStreamReader(inputStream)) {
-                return gson.fromJson(reader, listType);
-            }
+        if (inputStream == null) {
+            logger.severe("파일을 클래스패스에서 찾을 수 없습니다. 빌드 설정을 확인하십시오: " + filePath);
+            throw new IOException("파일을 찾을 수 없습니다: " + filePath + ". 프로젝트 빌드 설정에 파일이 포함되어 있는지 확인하세요.");
+        }
+
+        Gson gson = gsonBuilder.create();
+        try (InputStreamReader reader = new InputStreamReader(inputStream)) {
+            return gson.fromJson(reader, listType);
         }
     }
 }
