@@ -82,9 +82,9 @@
           <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=youtube&action=youtube">더보기</a>
         </div>
         <ul class="thumb-list">
-        <c:forEach var="youTube" items="${youTubeList}">
+        <c:forEach var="youTubeId" items="${youTubeIdList}">
         <li><div class="thumb"><a href="<c:out value="${youTube.postLink}"/>" target="_blank">
-        <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png<%-- <c:out value="${youTube.attachmentPath}"/> --%>"></a></div></li>
+        <img src="https://img.youtube.com/vi/${youTubeId}/0.jpg"></a></div></li>
         </c:forEach>
         </ul>
       </section>

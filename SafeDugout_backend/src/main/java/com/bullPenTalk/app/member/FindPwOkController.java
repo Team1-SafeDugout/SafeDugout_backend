@@ -59,7 +59,7 @@ public class FindPwOkController implements Execute {
 
 		// 이름, 아이디, 이메일, 핸드폰 번호 등록 여부 설정
 		boolean nameRegistered = memberDAO.checkNameRegistered(inputName) == 0 ? false : true;
-		boolean idRegistered = memberDAO.checkIdRegistered(inputName) == 0 ? false : true;
+		boolean idRegistered = memberDAO.checkIdRegistered(inputId) == 0 ? false : true;
 		boolean emailRegistered = memberDAO.checkEmailRegistered(inputEmail) == 0 ? false : true;
 		boolean phoneRegistered = memberDAO.checkPhoneRegistered(inputPhone) == 0 ? false : true;
 
@@ -73,6 +73,8 @@ public class FindPwOkController implements Execute {
 		responseMap.put("idRegistered", idRegistered);
 		responseMap.put("emailRegistered", emailRegistered);
 		responseMap.put("phoneRegistered", phoneRegistered);
+		
+		System.out.println("응답 : " + responseMap);
 
 		out.print(gson.toJson(responseMap));
 		out.flush();

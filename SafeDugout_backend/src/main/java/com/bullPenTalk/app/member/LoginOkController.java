@@ -39,20 +39,23 @@ public class LoginOkController implements Execute{
 		
 		if(memberNumber != -1) {
 			path = "/main.ma";
+			// 비밀번호찾기, 아이디찾기, 회원가입 관련 페이지에서는 이전 경로저장하지 않도록 
 			// 이전 페이지가 있다면 URI 저장
 			String originPage = request.getParameter("originPage");
-			System.out.println(originPage);
-			if(!originPage.equals("")) {
-				try {
-					// URI와 쿼리스트링 조합으로 변환
-					URI originPageURI = new URI(originPage);
-					String query = originPageURI.getQuery();
-					originPage = originPageURI.getPath() + (query != null ? "?" + query : "");
-					path = originPage;
-					System.out.println(path);
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			if(!originPage.contains("/member/") && !originPage.contains("/findPw") && !originPage.contains("/findId")) {
+				System.out.println(originPage);
+				if(!originPage.equals("")) {
+					try {
+						// URI와 쿼리스트링 조합으로 변환
+						URI originPageURI = new URI(originPage);
+						String query = originPageURI.getQuery();
+						originPage = originPageURI.getPath() + (query != null ? "?" + query : "");
+						path = originPage;
+						System.out.println(path);
+					} catch (URISyntaxException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 			session.setAttribute("memberNumber", memberNumber);
