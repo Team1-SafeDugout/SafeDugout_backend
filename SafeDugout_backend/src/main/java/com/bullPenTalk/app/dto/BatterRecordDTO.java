@@ -1,165 +1,146 @@
 package com.bullPenTalk.app.dto;
 
-public class BatterRecordDTO {
-//	CREATE TABLE TBL_BATTER_RECORD (
-//	PLAYER_NUMBER         NUMBER NOT NULL,
-//	BATTER_SEASON_YEAR    DATE NOT NULL,
-//	BATTER_GAMES          NUMBER,
-//	AB                    NUMBER,
-//	PA                    NUMBER,
-//	RBI                   NUMBER,
-//	HITS                  NUMBER,
-//	DOUBLE_HIT            NUMBER,
-//	TRIPLE_HIT            NUMBER,
-//	HOME_RUN              NUMBER,
-//	BATTER_BB             NUMBER,
-//	IBB                   NUMBER,
-//	BATTER_HBP            NUMBER,
-//	SO                    NUMBER,
-//	GDP                   NUMBER,
-//	SRBI                  NUMBER,
-//	OPS                   NUMBER,
-//	SB                    NUMBER,
-//	CONSTRAINT PK_BATTER_RECORD PRIMARY KEY (PLAYER_NUMBER, BATTER_SEASON_YEAR),
-//	CONSTRAINT FK_BATTER_PLAYER FOREIGN KEY (PLAYER_NUMBER) REFERENCES TBL_PLAYER(PLAYER_NUMBER)
-//	);
+import com.google.gson.annotations.SerializedName;
 
+public class BatterRecordDTO {
+	@SerializedName("순위")
+	private int playerNumber; // 번호
+	@SerializedName("선수명")
+	private String plyerName; // 선수 이름
+	@SerializedName("팀명")
+	private String teamName; // 팀명
+	@SerializedName("AVG")
+	private double avg; // 타율
+	@SerializedName("G")
+	private int game; // 경기수
+	@SerializedName("PA")
+	private int pa; // 타석
+	@SerializedName("AB")
+	private int ab; // 타수
+	@SerializedName("R")
+	private int r; // 득점
+	@SerializedName("H")
+	private int h; // 안타
+	@SerializedName("2B")
+	private int doublehit; // 2루타
+	@SerializedName("3B")
+	private int triplehit; // 3루타
+	@SerializedName("HR")
+	private int hr; // 홈런
+	@SerializedName("TB")
+	private int tb; // 루타
+	@SerializedName("RIB")
+	private int rib; // 타점
+	@SerializedName("SAC")
+	private int sac; // 희생번트
+	@SerializedName("SF")
+	private int sf; // 희생플라이
 	
-	private int playerNumber; // 선수 번호
-	private String batterSeasonYear; // 기록 시즌(년도) 
-	private int batterGames; // 경기수
-	private int AB;	// 타수
-	private int PA; // 타석
-	private int RBI; // 타점
-	private int Hits; // 안타
-	private int DoubleHit; // 2루타
-	private int TripleHit; // 3루타
-	private int HomeRun; // 홈런
-	private int batterBB; // 볼넷
-	private int IBB; // 고의4구
-	private int batterHBP; // 사구
-	private int SO; // 삼진
-	private int GDP; // 병살타
-	private int SRBI; // 희생타점
-	private double OPS; // 장타율+출루율
-	private int SB; // 도루
-	
+	// get, set
 	public int getPlayerNumber() {
 		return playerNumber;
 	}
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
-	public String getBatterSeasonYear() {
-		return batterSeasonYear;
+	public String getPlyerName() {
+		return plyerName;
 	}
-	public void setBatterSeasonYear(String batterSeasonYear) {
-		this.batterSeasonYear = batterSeasonYear;
+	public void setPlyerName(String plyerName) {
+		this.plyerName = plyerName;
 	}
-	public int getBatterGames() {
-		return batterGames;
+	public String getTeamName() {
+		return teamName;
 	}
-	public void setBatterGames(int batterGames) {
-		this.batterGames = batterGames;
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
 	}
-	public int getAB() {
-		return AB;
+	public double getAvg() {
+		return avg;
 	}
-	public void setAB(int aB) {
-		AB = aB;
+	public void setAvg(double avg) {
+		this.avg = avg;
 	}
-	public int getPA() {
-		return PA;
+	public int getGame() {
+		return game;
 	}
-	public void setPA(int pA) {
-		PA = pA;
+	public void setGame(int game) {
+		this.game = game;
 	}
-	public int getRBI() {
-		return RBI;
+	public int getPa() {
+		return pa;
 	}
-	public void setRBI(int rBI) {
-		RBI = rBI;
+	public void setPa(int pa) {
+		this.pa = pa;
 	}
-	public int getHits() {
-		return Hits;
+	public int getAb() {
+		return ab;
 	}
-	public void setHits(int hits) {
-		Hits = hits;
+	public void setAb(int ab) {
+		this.ab = ab;
 	}
-	public int getDoubleHit() {
-		return DoubleHit;
+	public int getR() {
+		return r;
 	}
-	public void setDoubleHit(int doubleHit) {
-		DoubleHit = doubleHit;
+	public void setR(int r) {
+		this.r = r;
 	}
-	public int getTripleHit() {
-		return TripleHit;
+	public int getH() {
+		return h;
 	}
-	public void setTripleHit(int tripleHit) {
-		TripleHit = tripleHit;
+	public void setH(int h) {
+		this.h = h;
 	}
-	public int getHomeRun() {
-		return HomeRun;
+	public int getDoublehit() {
+		return doublehit;
 	}
-	public void setHomeRun(int homeRun) {
-		HomeRun = homeRun;
+	public void setDoublehit(int doublehit) {
+		this.doublehit = doublehit;
 	}
-	public int getBatterBB() {
-		return batterBB;
+	public int getTriplehit() {
+		return triplehit;
 	}
-	public void setBatterBB(int batterBB) {
-		this.batterBB = batterBB;
+	public void setTriplehit(int triplehit) {
+		this.triplehit = triplehit;
 	}
-	public int getIBB() {
-		return IBB;
+	public int getHr() {
+		return hr;
 	}
-	public void setIBB(int iBB) {
-		IBB = iBB;
+	public void setHr(int hr) {
+		this.hr = hr;
 	}
-	public int getBatterHBP() {
-		return batterHBP;
+	public int getTb() {
+		return tb;
 	}
-	public void setBatterHBP(int batterHBP) {
-		this.batterHBP = batterHBP;
+	public void setTb(int tb) {
+		this.tb = tb;
 	}
-	public int getSO() {
-		return SO;
+	public int getRib() {
+		return rib;
 	}
-	public void setSO(int sO) {
-		SO = sO;
+	public void setRib(int rib) {
+		this.rib = rib;
 	}
-	public int getGDP() {
-		return GDP;
+	public int getSac() {
+		return sac;
 	}
-	public void setGDP(int gDP) {
-		GDP = gDP;
+	public void setSac(int sac) {
+		this.sac = sac;
 	}
-	public int getSRBI() {
-		return SRBI;
+	public int getSf() {
+		return sf;
 	}
-	public void setSRBI(int sRBI) {
-		SRBI = sRBI;
-	}
-	public double getOPS() {
-		return OPS;
-	}
-	public void setOPS(int oPS) {
-		OPS = oPS;
-	}
-	public int getSB() {
-		return SB;
-	}
-	public void setSB(int sB) {
-		SB = sB;
+	public void setSf(int sf) {
+		this.sf = sf;
 	}
 	
+	// toString
 	@Override
 	public String toString() {
-		return "BatterRecordDTO [playerNumber=" + playerNumber + ", batterSeasonYear=" + batterSeasonYear
-				+ ", batterGames=" + batterGames + ", AB=" + AB + ", PA=" + PA + ", RBI=" + RBI + ", Hits=" + Hits
-				+ ", DoubleHit=" + DoubleHit + ", TripleHit=" + TripleHit + ", HomeRun=" + HomeRun + ", batterBB="
-				+ batterBB + ", IBB=" + IBB + ", batterHBP=" + batterHBP + ", SO=" + SO + ", GDP=" + GDP + ", SRBI="
-				+ SRBI + ", OPS=" + OPS + ", SB=" + SB + "]";
-	}
+		return "BatterRecordDTO [playerNumber=" + playerNumber + ", plyerName=" + plyerName + ", teamName=" + teamName
+				+ ", avg=" + avg + ", game=" + game + ", pa=" + pa + ", ab=" + ab + ", r=" + r + ", h=" + h
+				+ ", doublehit=" + doublehit + ", triplehit=" + triplehit + ", hr=" + hr + ", tb=" + tb + ", rib=" + rib
+				+ ", sac=" + sac + ", sf=" + sf + "]";
+	}	
 
 }
