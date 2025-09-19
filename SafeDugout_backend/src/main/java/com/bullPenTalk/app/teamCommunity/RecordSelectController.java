@@ -37,6 +37,12 @@ public class RecordSelectController {
             return result;
         }
 
+        String seasonYearStr = request.getParameter("seasonYear");
+        int seasonYear = 2025; // 기본값 설정
+        if (seasonYearStr != null && !seasonYearStr.trim().isEmpty()) {
+            seasonYear = Integer.parseInt(seasonYearStr);
+        }
+        
         int teamNumber = Integer.parseInt(teamNumberStr);
 
         TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
@@ -44,6 +50,7 @@ public class RecordSelectController {
         // 팀 번호로 기록 조회
         Map<String, Integer> param = new HashMap<>();
         param.put("teamNumber", teamNumber);
+        param.put("seasonYear", seasonYear);
 
         List<TeamRecordDTO> teamRecords = teamCommunityDAO.selectTeamRecord(param);
         List<TeamPitcherRecordDTO> pitcherRecords = teamCommunityDAO.selectTeamPitcherRecord(param);

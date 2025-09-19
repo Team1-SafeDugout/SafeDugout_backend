@@ -1,299 +1,142 @@
 package com.bullPenTalk.app.dto;
 
 public class TeamBatterRecordDTO {
-//	CREATE TABLE TBL_TEAM_BATTER_RECORD (
-//	TEAM_ID                   NUMBER NOT NULL,
-//	SEASON_YEAR               NUMBER NOT NULL,
-//	TEAM_BATTER_AVG_BAT       NUMBER,
-//	TEAM_BATTER_GAME_COUNT    NUMBER,
-//	TEAM_BATTER_AT_BAT        NUMBER,
-//	TEAM_BATTER_RBI           NUMBER,
-//	TEAM_BATTER_SCORE         NUMBER,
-//	TEAM_BATTER_HITS          NUMBER,
-//	TEAM_BATTER_DOUBLE_HIT    NUMBER,
-//	TEAM_BATTER_TRIPLE_HIT    NUMBER,
-//	TEAM_BATTER_HR            NUMBER,
-//	TEAM_BATTER_BB            NUMBER,
-//	TEAM_BATTER_GIDOUT        NUMBER,
-//	TEAM_BATTER_HBP           NUMBER,
-//	TEAM_BATTER_STRIKEOUT     NUMBER,
-//	TEAM_BATTER_OPS           NUMBER,
-//	TEAM_BATTER_STOLEN_BASE   NUMBER,
-//	CONSTRAINT PK_TEAM_BATTER_RECORD PRIMARY KEY (TEAM_ID, SEASON_YEAR),
-//	CONSTRAINT FK_TEAM_BATTER_RECORD FOREIGN KEY (TEAM_ID) REFERENCES TBL_TEAM(TEAM_NUMBER) ON DELETE CASCADE
-//	);
+    // TEAM_ID                   NUMBER NOT NULL,
+    // SEASON_YEAR               NUMBER NOT NULL,
+    // TEAM_BATTER_GAME_COUNT    NUMBER,
+    // TEAM_BATTER_AVG_BAT       NUMBER,
+    // TEAM_BATTER_PA_BAT        NUMBER,
+    // TEAM_BATTER_AB            NUMBER,
+    // TEAM_BATTER_R             NUMBER,
+    // TEAM_BATTER_HITS          NUMBER,
+    // TEAM_BATTER_DOUBLE_HIT    NUMBER,
+    // TEAM_BATTER_TRIPLE_HIT    NUMBER,
+    // TEAM_BATTER_HR            NUMBER,
+    // TEAM_BATTER_TB            NUMBER,
+    // TEAM_BATTER_RBI           NUMBER,
+    // TEAM_BATTER_SAC           NUMBER,
+    // TEAM_BATTER_SF            NUMBER,
 
-	
-	private int teamId; // 팀번호
-	private int seasonYear; // 시즌 년도
-	private double teamBatterAvgBat; // 평균 타율
-	private int teamBatterGameCount; // 경기수
-	private int teamBatterAtBat; // 타수 
-	private int teamBatterRbi; //타점(Runs Batted In) 주자를 홈으로 불러들인 횟수
-	private int teamBatterScore; // 득점 팀이 득점한 총 점수.
-	private int teamBatterHits; // 안타 개수
-	private int teamBatterDoubleHit; // 2루타(Double Hits) 개수.
-	private int teamBatterTripleHit; // 3루타(Double Hits) 개수.
-	private int teamBatterHr; // 홈헌 횟수
-	private int teamBatterBb; // 볼넷 개수
-	private int teamBatterGidout; // 병살타(Grounded Into Double Play) 개수.
-	private int teamBatterHbp; // 사구(Hit By Pitch) 개수.
-	private int teamBatterStrikeout; // 삼진(Strikeouts) 개수.
-	private double teamBatterOps; // 출루율 + 장타율
-	private int teamBatterStolenBase; // 도루(Stolen Bases) 개수.
+	private int teamId;
+	private int seasonYear;
+	private int teamBatterGameCount;
+	private double teamBatterAvgBat;
+	private int teamBatterPaBat;
+	private int teamBatterAb;
+	private int teamBatterR;
+	private int teamBatterHits;
+	private int teamBatterDoubleHit;
+	private int teamBatterTripleHit;
+	private int teamBatterHr;
+	private int teamBatterTb;
+	private int teamBatterRbi;
+	private int teamBatterSac;
+	private int teamBatterSf;
 	
 	// get, set
 	public int getTeamId() {
 		return teamId;
 	}
-
-
-
-
 	public void setTeamId(int teamId) {
 		this.teamId = teamId;
 	}
-
-
-
-
 	public int getSeasonYear() {
 		return seasonYear;
 	}
-
-
-
-
 	public void setSeasonYear(int seasonYear) {
 		this.seasonYear = seasonYear;
 	}
-
-
-
-
-	public double getTeamBatterAvgBat() {
-		return teamBatterAvgBat;
-	}
-
-
-
-
-	public void setTeamBatterAvgBat(double teamBatterAvgBat) {
-		this.teamBatterAvgBat = teamBatterAvgBat;
-	}
-
-
-
-
 	public int getTeamBatterGameCount() {
 		return teamBatterGameCount;
 	}
-
-
-
-
 	public void setTeamBatterGameCount(int teamBatterGameCount) {
 		this.teamBatterGameCount = teamBatterGameCount;
 	}
-
-
-
-
-	public int getTeamBatterAtBat() {
-		return teamBatterAtBat;
+	public double getTeamBatterAvgBat() {
+		return teamBatterAvgBat;
 	}
-
-
-
-
-	public void setTeamBatterAtBat(int teamBatterAtBat) {
-		this.teamBatterAtBat = teamBatterAtBat;
+	public void setTeamBatterAvgBat(double teamBatterAvgBat) {
+		this.teamBatterAvgBat = teamBatterAvgBat;
 	}
-
-
-
-
-	public int getTeamBatterRbi() {
-		return teamBatterRbi;
+	public int getTeamBatterPaBat() {
+		return teamBatterPaBat;
 	}
-
-
-
-
-	public void setTeamBatterRbi(int teamBatterRbi) {
-		this.teamBatterRbi = teamBatterRbi;
+	public void setTeamBatterPaBat(int teamBatterPaBat) {
+		this.teamBatterPaBat = teamBatterPaBat;
 	}
-
-
-
-
-	public int getTeamBatterScore() {
-		return teamBatterScore;
+	public int getTeamBatterAb() {
+		return teamBatterAb;
 	}
-
-
-
-
-	public void setTeamBatterScore(int teamBatterScore) {
-		this.teamBatterScore = teamBatterScore;
+	public void setTeamBatterAb(int teamBatterAb) {
+		this.teamBatterAb = teamBatterAb;
 	}
-
-
-
-
+	public int getTeamBatterR() {
+		return teamBatterR;
+	}
+	public void setTeamBatterR(int teamBatterR) {
+		this.teamBatterR = teamBatterR;
+	}
 	public int getTeamBatterHits() {
 		return teamBatterHits;
 	}
-
-
-
-
 	public void setTeamBatterHits(int teamBatterHits) {
 		this.teamBatterHits = teamBatterHits;
 	}
-
-
-
-
 	public int getTeamBatterDoubleHit() {
 		return teamBatterDoubleHit;
 	}
-
-
-
-
 	public void setTeamBatterDoubleHit(int teamBatterDoubleHit) {
 		this.teamBatterDoubleHit = teamBatterDoubleHit;
 	}
-
-
-
-
 	public int getTeamBatterTripleHit() {
 		return teamBatterTripleHit;
 	}
-
-
-
-
 	public void setTeamBatterTripleHit(int teamBatterTripleHit) {
 		this.teamBatterTripleHit = teamBatterTripleHit;
 	}
-
-
-
-
 	public int getTeamBatterHr() {
 		return teamBatterHr;
 	}
-
-
-
-
 	public void setTeamBatterHr(int teamBatterHr) {
 		this.teamBatterHr = teamBatterHr;
 	}
-
-
-
-
-	public int getTeamBatterBb() {
-		return teamBatterBb;
+	public int getTeamBatterTb() {
+		return teamBatterTb;
 	}
-
-
-
-
-	public void setTeamBatterBb(int teamBatterBb) {
-		this.teamBatterBb = teamBatterBb;
+	public void setTeamBatterTb(int teamBatterTb) {
+		this.teamBatterTb = teamBatterTb;
 	}
-
-
-
-
-	public int getTeamBatterGidout() {
-		return teamBatterGidout;
+	public int getTeamBatterRbi() {
+		return teamBatterRbi;
 	}
-
-
-
-
-	public void setTeamBatterGidout(int teamBatterGidout) {
-		this.teamBatterGidout = teamBatterGidout;
+	public void setTeamBatterRbi(int teamBatterRbi) {
+		this.teamBatterRbi = teamBatterRbi;
 	}
-
-
-
-
-	public int getTeamBatterHbp() {
-		return teamBatterHbp;
+	public int getTeamBatterSac() {
+		return teamBatterSac;
 	}
-
-
-
-
-	public void setTeamBatterHbp(int teamBatterHbp) {
-		this.teamBatterHbp = teamBatterHbp;
+	public void setTeamBatterSac(int teamBatterSac) {
+		this.teamBatterSac = teamBatterSac;
 	}
-
-
-
-
-	public int getTeamBatterStrikeout() {
-		return teamBatterStrikeout;
+	public int getTeamBatterSf() {
+		return teamBatterSf;
 	}
-
-
-
-
-	public void setTeamBatterStrikeout(int teamBatterStrikeout) {
-		this.teamBatterStrikeout = teamBatterStrikeout;
+	public void setTeamBatterSf(int teamBatterSf) {
+		this.teamBatterSf = teamBatterSf;
 	}
-
-
-
-
-	public double getTeamBatterOps() {
-		return teamBatterOps;
-	}
-
-
-
-
-	public void setTeamBatterOps(double teamBatterOps) {
-		this.teamBatterOps = teamBatterOps;
-	}
-
-
-
-
-	public int getTeamBatterStolenBase() {
-		return teamBatterStolenBase;
-	}
-
-
-
-
-	public void setTeamBatterStolenBase(int teamBatterStolenBase) {
-		this.teamBatterStolenBase = teamBatterStolenBase;
-	}
-
-
-
-
+	
+	// toString
 	@Override
 	public String toString() {
-		return "TeamBatterRecordDTO [teamId=" + teamId + ", seasonYear=" + seasonYear + ", teamBatterAvgBat="
-				+ teamBatterAvgBat + ", teamBatterGameCount=" + teamBatterGameCount + ", teamBatterAtBat="
-				+ teamBatterAtBat + ", teamBatterRbi=" + teamBatterRbi + ", teamBatterScore=" + teamBatterScore
+		return "TeamBatterRecordDTO [teamId=" + teamId + ", seasonYear=" + seasonYear + ", teamBatterGameCount="
+				+ teamBatterGameCount + ", teamBatterAvgBat=" + teamBatterAvgBat + ", teamBatterPaBat="
+				+ teamBatterPaBat + ", teamBatterAb=" + teamBatterAb + ", teamBatterR=" + teamBatterR
 				+ ", teamBatterHits=" + teamBatterHits + ", teamBatterDoubleHit=" + teamBatterDoubleHit
-				+ ", teamBatterTripleHit=" + teamBatterTripleHit + ", teamBatterHr=" + teamBatterHr + ", teamBatterBb="
-				+ teamBatterBb + ", teamBatterGidout=" + teamBatterGidout + ", teamBatterHbp=" + teamBatterHbp
-				+ ", teamBatterStrikeout=" + teamBatterStrikeout + ", teamBatterOps=" + teamBatterOps
-				+ ", teamBatterStolenBase=" + teamBatterStolenBase + "]";
+				+ ", teamBatterTripleHit=" + teamBatterTripleHit + ", teamBatterHr=" + teamBatterHr + ", teamBatterTb="
+				+ teamBatterTb + ", teamBatterRbi=" + teamBatterRbi + ", teamBatterSac=" + teamBatterSac
+				+ ", teamBatterSf=" + teamBatterSf + "]";
+	}
 	
-}
-
-
+	
 }
 

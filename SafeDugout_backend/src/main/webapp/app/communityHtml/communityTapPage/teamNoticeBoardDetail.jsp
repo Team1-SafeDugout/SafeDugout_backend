@@ -8,7 +8,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>공지사항 상세</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamNoticeBoardDetail.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/communityTapPage/teamNoticeBoardDetail.css">
   <c:choose>
   	<c:when test="${sessionScope.teamNumber == 1}">
   		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/communityCss/headerCss/doosanHeader.css">
@@ -56,34 +56,26 @@
 <body>
   <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/headerHtml/teamHeader.jsp" />
   <main>
-    <!-- 공지 디테일 컨테이너 -->
-    <div class="team-notice-board-detail">
-      <!-- 공지사항 헤더 -->
+    <!-- 입문자 가이드 디테일 컨테이너 -->
+    <div class="free-guide-board-detail">
       <h2>공지사항</h2>
-      <!-- 공지사항 본문 헤더 -->
-      <div class="team-notice-board-header">
+      <!-- 입문자 가이드 디테일 내용 헤더 -->
+      <div class="free-guide-board-header">
         <span>제목: </span>
-        <p>[메인공지] : 불펜토크 사이트 이용 안내</p>
+        <p><c:out value="${noticePostDetail.noticePostTitle}" /></p>
       </div>
-      <!-- 공지사항 본문 -->
-      <div class="team-notice-board-content">
-        <p>상품 등록 페이지로 이동합니다.</p>
-        <p>팀 로고 버튼 클릭시 팀 커뮤니티 메인페이지로 이동합니다.</p>
-        <p>마이페이지로 이동합니다.</p>
-        <p>불펜토크 메인페이지로 이동합니다.</p>
-        <p>안녕하세요 불펜토크 이용자 여러분! 원활한 사이트 이용을 위한 안내문입니다.</p>
-        <p>불펜토크 사이트 비회원 이용자께서는 MY 팀 커뮤니티와 중고거래 페이지에서 게시글 및 정보, 상품 열람만 가능하며, ...</p>
-      </div>
-      <!-- 이전 다음글 버튼 -->
-      <div class="team-notice-board-btn">
-        <button type="button">이전글</button>
-        <button type="button">다음글</button>
+      <!-- 입문자 가이드 본문 -->
+      <div class="free-guide-board-content">
+        <p><c:out value="${noticePostDetail.noticePostContent}" /></p>
       </div>
       <!-- 작성일자 -->
-      <div class="team-notice-date">2025.06.23</div>
-      <!-- 목록 돌아가기 -->
-      <div class="team-notice-board-btn">
-        <a  class="team-notice-board-btn" href="./teamNoticeBoard.html">목록</a>
+      <div class="free-guide-date">
+      	<fmt:formatDate value="${noticePostDetail.noticePostDate}" pattern="yyyy-MM-dd" />
+      </div>
+
+      <!-- 목록버튼 -->
+      <div class="free-guide-board-btn">
+        <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">목록</a>
       </div>
     </div>
   </main>

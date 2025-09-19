@@ -96,8 +96,7 @@
 							<c:forEach var="notice" items="${noticePostList}">
 								<li class="team-notice-list-item">
 									<div class="notice-title">
-										<a
-											href="${pageContext.request.contextPath}/freeCommunity/freeCommunityNoticeDetail.fc?noticePostNumber=${notice.noticePostNumber}">
+										<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=noticedetail&postNumber=${notice.noticePostNumber}">
 											<c:out value="${notice.noticePostTitle}" />
 										</a>
 									</div>
