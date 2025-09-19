@@ -1,15 +1,18 @@
 package com.bullPenTalk.app.dto;
 
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.JsonAdapter;
+import com.bullPenTalk.app.adapter.IPFractionAdapter;
 
 public class BatterRecordDTO {
 	@SerializedName("순위")
 	private int playerNumber; // 번호
 	@SerializedName("선수명")
-	private String plyerName; // 선수 이름
+	private String playerName; // 선수 이름
 	@SerializedName("팀명")
 	private String teamName; // 팀명
 	@SerializedName("AVG")
+	@JsonAdapter(IPFractionAdapter.class) // 타율 필드에 어댑터 적용
 	private double avg; // 타율
 	@SerializedName("G")
 	private int game; // 경기수
@@ -29,8 +32,8 @@ public class BatterRecordDTO {
 	private int hr; // 홈런
 	@SerializedName("TB")
 	private int tb; // 루타
-	@SerializedName("RIB")
-	private int rib; // 타점
+	@SerializedName("RBI")
+	private int rbi; // 타점
 	@SerializedName("SAC")
 	private int sac; // 희생번트
 	@SerializedName("SF")
@@ -43,11 +46,11 @@ public class BatterRecordDTO {
 	public void setPlayerNumber(int playerNumber) {
 		this.playerNumber = playerNumber;
 	}
-	public String getPlyerName() {
-		return plyerName;
+	public String getPlayerName() {
+		return playerName;
 	}
-	public void setPlyerName(String plyerName) {
-		this.plyerName = plyerName;
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 	public String getTeamName() {
 		return teamName;
@@ -115,11 +118,11 @@ public class BatterRecordDTO {
 	public void setTb(int tb) {
 		this.tb = tb;
 	}
-	public int getRib() {
-		return rib;
+	public int getRbi() {
+		return rbi;
 	}
-	public void setRib(int rib) {
-		this.rib = rib;
+	public void setRbi(int rbi) {
+		this.rbi = rbi;
 	}
 	public int getSac() {
 		return sac;
@@ -137,10 +140,9 @@ public class BatterRecordDTO {
 	// toString
 	@Override
 	public String toString() {
-		return "BatterRecordDTO [playerNumber=" + playerNumber + ", plyerName=" + plyerName + ", teamName=" + teamName
+		return "BatterRecordDTO [playerNumber=" + playerNumber + ", playerName=" + playerName + ", teamName=" + teamName
 				+ ", avg=" + avg + ", game=" + game + ", pa=" + pa + ", ab=" + ab + ", r=" + r + ", h=" + h
-				+ ", doublehit=" + doublehit + ", triplehit=" + triplehit + ", hr=" + hr + ", tb=" + tb + ", rib=" + rib
+				+ ", doublehit=" + doublehit + ", triplehit=" + triplehit + ", hr=" + hr + ", tb=" + tb + ", rbi=" + rbi
 				+ ", sac=" + sac + ", sf=" + sf + "]";
 	}	
-
 }

@@ -13,6 +13,7 @@ public class PitcherRecordDTO { // 선수 투수 기록
 	@SerializedName("팀명")
 	private String teamName; // 팀명
 	@SerializedName("ERA")
+	@JsonAdapter(IPFractionAdapter.class) // ERA 필드에 어댑터 적용
 	private double era; // 자책점
 	@SerializedName("G")
 	private int game; // 경기수
@@ -25,9 +26,10 @@ public class PitcherRecordDTO { // 선수 투수 기록
 	@SerializedName("HLD")
 	private int hld; // 홀드
 	@SerializedName("승률")
+	@JsonAdapter(IPFractionAdapter.class) // 승률 필드에 어댑터 적용
 	private double wpct; // 승률
 	@SerializedName("IP")
-    @JsonAdapter(IPFractionAdapter.class) // Custom adapter for 'IP' field
+    @JsonAdapter(IPFractionAdapter.class) // 이닝 필드에 어댑터 적용
 	private double ip; // 이닝
 	@SerializedName("H")
 	private int h; // 피안타
@@ -44,6 +46,7 @@ public class PitcherRecordDTO { // 선수 투수 기록
 	@SerializedName("ER")
 	private int er; // 자책점
 	@SerializedName("WHIP")
+	@JsonAdapter(IPFractionAdapter.class) // WHIP 필드에 어댑터 적용
 	private double whip; // 이닝당 출루허용률
 	
 	// get,set
@@ -75,7 +78,7 @@ public class PitcherRecordDTO { // 선수 투수 기록
 		return game;
 	}
 	public void setGame(int game) {
-		this.game = game = game;
+		this.game = game;
 	}
 	public int getW() {
 		return w;

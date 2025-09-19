@@ -76,11 +76,10 @@ public class RecordSelectController {
         result.setPath("/app/communityHtml/communityTapPage/teamPlayerStats.jsp");
 
         try {
-            // URL 파라미터에서 teamNumber와 statsType을 가져옵니다.
+            // URL 파라미터에서 teamNumber를 가져옵니다.
             String teamNumberStr = request.getParameter("teamNumber");
-            String statsType = request.getParameter("statsType");
 
-            // teamNumber와 statsType이 없는 경우, 세션에서 teamNumber를 가져옵니다.
+            // teamNumber가 없는 경우, 세션에서 가져옵니다.
             HttpSession session = request.getSession();
             if (teamNumberStr == null || teamNumberStr.isEmpty()) {
                 Integer sessionTeamNumber = (Integer) session.getAttribute("teamNumber");
@@ -104,16 +103,14 @@ public class RecordSelectController {
                 result.setRedirect(true);
                 return result;
             }
+            
+            // 투수와 타자 기록을 각각 별도의 리스트로 가져와서 request에 담습니다.
+            List<?> pitcherStatsList = StatsJSONReader.readStats(teamNumber, "pitcher");
+            List<?> batterStatsList = StatsJSONReader.readStats(teamNumber, "batter");
 
-            if (statsType == null || statsType.isEmpty()) {
-                statsType = "pitcher"; // 기본값 설정
-            }
-            
-            List<?> statsList = StatsJSONReader.readStats(teamNumber, statsType);
-            
             // JSP로 전달할 데이터를 request 속성에 담습니다.
-            request.setAttribute("playerStatsList", statsList);
-            request.setAttribute("statsType", statsType);
+            request.setAttribute("pitcherStatsList", pitcherStatsList);
+            request.setAttribute("batterStatsList", batterStatsList);
 
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();

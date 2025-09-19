@@ -87,8 +87,7 @@
       </div>
       <div class="team-stats-data">
         <!-- 투수 데이터 들어갈 공간 -->
-         <div class="team-stats-data">
-         <c:forEach var="pitcher" items="${playerStatsList}">
+         <c:forEach var="pitcher" items="${pitcherStatsList}">
             <div class="player-row">
                 <div><c:out value="${pitcher.playerNumber}"/></div>
                 <div><c:out value="${pitcher.playerName}"/></div>
@@ -111,8 +110,6 @@
                 <div><c:out value="${pitcher.whip}"/></div>
             </div>
         </c:forEach>
-      </div>
-        
       </div>
     </div>
     <!-- 타자 기록 표 -->
@@ -137,10 +134,10 @@
       </div>
       <div class="team-stats-data">
         <!-- 타자 데이터 들어갈 공간 -->
-        <c:forEach var="batter" items="${playerStatsList}">
+        <c:forEach var="batter" items="${batterStatsList}">
             <div class="player-row">
                 <div><c:out value="${batter.playerNumber}"/></div>
-                <div><c:out value="${batter.plyerName}"/></div>
+                <div><c:out value="${batter.playerName}"/></div>
                 <div><c:out value="${batter.teamName}"/></div>
                 <div><c:out value="${batter.avg}"/></div>
                 <div><c:out value="${batter.game}"/></div>
@@ -152,7 +149,7 @@
                 <div><c:out value="${batter.triplehit}"/></div>
                 <div><c:out value="${batter.hr}"/></div>
                 <div><c:out value="${batter.tb}"/></div>
-                <div><c:out value="${batter.rib}"/></div>
+                <div><c:out value="${batter.rbi}"/></div>
                 <div><c:out value="${batter.sac}"/></div>
                 <div><c:out value="${batter.sf}"/></div>
             </div>

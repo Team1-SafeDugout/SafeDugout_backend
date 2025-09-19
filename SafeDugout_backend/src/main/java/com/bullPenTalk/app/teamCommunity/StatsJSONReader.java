@@ -43,27 +43,34 @@ public class StatsJSONReader {
 
         String fileName;
         Type listType;
+
+        // GsonBuilder를 메서드 내부에서 생성하여,
+        // 각 호출마다 새로운 Gson 객체를 만듭니다.
         GsonBuilder gsonBuilder = new GsonBuilder();
+        
+        // 투수와 타자 기록 모두에 대해 IPFractionAdapter를 등록합니다.
+        // 이것이 스택 트레이스 오류를 해결하는 핵심입니다.
+        gsonBuilder.registerTypeAdapter(Double.class, new IPFractionAdapter());
 
         if ("batter".equalsIgnoreCase(statsType)) {
             fileName = "kbo_batter_" + teamName + ".json";
             listType = new TypeToken<List<BatterRecordDTO>>() {}.getType();
-        } else { // 기본값은 "pitcher"
+        } else {
             fileName = "kbo_pitcher_" + teamName + ".json";
             listType = new TypeToken<List<PitcherRecordDTO>>() {}.getType();
-            gsonBuilder.registerTypeAdapter(new TypeToken<Double>() {}.getType(), new IPFractionAdapter());
         }
 
         String filePath = "/kbo_data/" + fileName;
         InputStream inputStream = StatsJSONReader.class.getResourceAsStream(filePath);
 
         if (inputStream == null) {
-            logger.severe("파일을 클래스패스에서 찾을 수 없습니다. 빌드 설정을 확인하십시오: " + filePath);
-            throw new IOException("파일을 찾을 수 없습니다: " + filePath + ". 프로젝트 빌드 설정에 파일이 포함되어 있는지 확인하세요.");
+            logger.severe("파일을 클래스패스에서 찾을 수 없습니다: " + filePath);
+            throw new IOException("파일을 찾을 수 없습니다: " + filePath);
         }
 
         Gson gson = gsonBuilder.create();
         try (InputStreamReader reader = new InputStreamReader(inputStream)) {
+            // 이 시점에서 Gson은 등록된 IPFractionAdapter를 사용하여 데이터를 파싱합니다.
             return gson.fromJson(reader, listType);
         }
     }
