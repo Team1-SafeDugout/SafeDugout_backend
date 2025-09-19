@@ -4,18 +4,23 @@
 
 	
 	<!-- 포인트 충전 내역 조회 -->
-	<select id="selectPoint" resultType="pointChargeRecordDTO">
+	<select id="selectPoint" resultType="PointPaymentDTO" parameterType = "int">
 	<![CDATA[
 	SELECT *
 	FROM (
 	    SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
-	        SELECT P.Amount,
-	               P.AFTER_CHARGE_POINT,
-	               P.PAID_AT
+	        SELECT 	P.PAYMENT_ID,
+	        		P.MERCHANT_UID,
+	        		P.MEMBER_NUMBER,
+	        		P.AMOUNT,
+	        		P.STATUS,
+	        		P.PAY_METHOD,
+	               	P.PAID_AT,
+	               	P.CREATED_AT
 	        FROM TBL_POINT_PAYMENT P
 	        WHERE P.MEMBER_NUMBER = #{memberNumber}
-	        ORDER BY P.CHARGE_DATE DESC
+	        ORDER BY P.PAID_AT DESC
 	    ) subquery
 	)
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}

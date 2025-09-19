@@ -40,9 +40,9 @@ public class MyPagePoinChargeListOkController implements Execute{
 		
 		MyPageDAO myPageDAO = new MyPageDAO();
 		total = myPageDAO.getTotalComment(memberNumber);
-		request.setAttribute("commentList", myPageDAO.selectCommentList(pageMap));
+		request.setAttribute("payList", myPageDAO.selectPoint(pageMap));
 		
-		System.out.println(myPageDAO.selectCommentList(pageMap));
+		System.out.println(myPageDAO.selectPoint(pageMap));
 		
 		// 페이징 정보 설정
 		// BoardMapper.xml의 getTotal을 이용하여 전체 게시글 개수 조회

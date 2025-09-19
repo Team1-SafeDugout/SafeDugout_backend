@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.bullPenTalk.app.dto.MemberDTO;
 import com.bullPenTalk.app.dto.MyPageCommentDTO;
 import com.bullPenTalk.app.dto.MyPageTradeListDTO;
-import com.bullPenTalk.app.dto.PointChargeRecordDTO;
+import com.bullPenTalk.app.dto.PointPaymentDTO;
 import com.bullPenTalk.app.dto.PostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
@@ -20,8 +20,8 @@ public class MyPageDAO {
 	}
 
 	// 포인트 충전 내역 조회
-	public List<PointChargeRecordDTO> selectPoint(Map<String, Integer> map) {
-		return sqlSession.selectList("myPage.selectMainlist", map);
+	public List<PointPaymentDTO> selectPoint(Map<String, Integer> map) {
+		return sqlSession.selectList("myPage.selectPoint", map);
 	}
 
 	// 포인트 충전
