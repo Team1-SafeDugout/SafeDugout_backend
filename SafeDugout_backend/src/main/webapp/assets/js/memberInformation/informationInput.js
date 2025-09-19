@@ -8,6 +8,10 @@ const saveButton = document.getElementById("save-button");
 const validateButton = document.getElementById("validate-button");
 const phoneVeriButton = document.getElementById("phoneVeriButton");
 
+
+/* 핸드폰 인증 완료*/
+var phoneChecker = true;
+
 /* 우편번호 수정 버튼*/
 const changePostalCodeButton = document.getElementById("searchPostcodeBtn");
 
@@ -78,6 +82,7 @@ fixButton[1].addEventListener("click", function() {
 	validateButton.style.display = "block";
 	phoneNumber.removeAttribute("readonly");
 	phoneNumber.style.pointerEvents = "auto";
+	phoneChecker = false;
 });
 
 fixButton[2].addEventListener("click", function() {
@@ -142,11 +147,13 @@ validateButton.addEventListener('click',function(){
 
 cofirmButton[1].addEventListener("click", function() {
 	console.log("핸드폰 번호 완료 버튼 클릭됨");
-	fixButton[1].style.display = "block";
-	cofirmButton[1].style.display = "none";
-	phoneNumError.style.display = "none";
-	validateLi.style.display = "none";
-	validateButton.style.display = "none";
+	if(phoneChecker){
+		fixButton[1].style.display = "block";
+		cofirmButton[1].style.display = "none";
+		phoneNumError.style.display = "none";
+		validateLi.style.display = "none";
+		validateButton.style.display = "none";
+	}
 });
 
 
@@ -255,9 +262,8 @@ function checkPhone() {
 // ===== 인증번호 확인 (서버 대신 로컬 비교) =====
 function checkValidateCode() {
 	const codeChecker = code.value.trim();
-	codeMismatchMessage.style.display = 'inline';
 	if (!codeChecker) {
-		return false;
+		return;
 	}
 
 	fetch(`${base}/member/checkSMS.me?verificationCode=${encodeURIComponent(codeChecker)}`, {
@@ -268,14 +274,16 @@ function checkValidateCode() {
 		})
 		.then(msg => {
 			if (msg.includes("성공")) {
-				return true;
+				alert("인증 완료");
+				validateLi.style.display = "none";
+				phoneChecker = true;
 			} else {
-				return false;
+				alert("인증 번호를 확인해 주세요");
+				phoneChecker = false;
 			}
 		})
 		.catch(() => {
 			alert("요청 중 오류가 발생했습니다.");
-			return false;
 		});
 }
 

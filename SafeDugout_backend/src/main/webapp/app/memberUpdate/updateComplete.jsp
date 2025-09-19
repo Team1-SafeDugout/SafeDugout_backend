@@ -37,7 +37,7 @@
           <h3>수정이 완료되었습니다.</h3>
           <div class="button-container">
             <!-- 확인 버튼 -->
-            <a>
+            <a href = "/main.ma">
               <div class="button-confirm">메인으로
               </div>
             </a>

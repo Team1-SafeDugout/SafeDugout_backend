@@ -302,12 +302,13 @@
 		
 	<!-- 회원 정보 수정 -->
 	<update id="updateMember" parameterType="MemberDTO">
-		update tbl_member
-		set m.member_pw = #{memberPw}, m.member_phone = #{memberPhone}, m.member_emain = #{memberEmail},
-		m.member_postal_code = #{memberPostalCode}, a.detailed_address = #{detailedAddress},
-		m.my_team = #{myTeam}
-		from tbl_member m join tbl_address a on m.member_postal_code = a.postal_code
-		where member_number = #{memberNumber}
+		update tbl_member m
+		set m.member_pw = #{memberPw}, 
+			m.member_phone = #{memberPhone}, 
+			m.member_email = #{memberEmail},
+			m.member_postal_code = #{memberPostalCode},
+			m.MEMBER_MY_TEAM = #{memberMyTeam}
+		where m.member_number = #{memberNumber}
 	</update>
 	
 	<!-- 회원 탈퇴 -->

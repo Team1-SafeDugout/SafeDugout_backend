@@ -35,7 +35,7 @@
 
       <section class="main-content">
         <h3>회원 정보 입력</h3>
-        <form action="/myPage/chageInfo.mp" method="post" novalidate onsubmit="return validateForm()">
+        <form action="/myPage/CompleteEdit.mp" method="post" novalidate onsubmit="return validateForm()">
           <div class="main-form-box">
             <ul>
             <!-- 1번쨰 : 이름 -->
@@ -57,7 +57,7 @@
                 <div class="main-input-error-message"> <span>* 비밀번호가 유효하지 않습니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">비밀번호</div>
-                  <input id = "pw" type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" readonly style="pointer-events: none" value = "${memberInfo.memberPw}">
+                  <input name = "pw" id = "pw" type="password" placeholder="영문, 숫자, 특수문자 조합 8자 이상" readonly style="pointer-events: none" value = "${memberInfo.memberPw}">
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
                     <a class = "confirm-button" href="#">완료</a>
@@ -80,7 +80,7 @@
                 <div class="main-input-error-message"> <span>* 필수 입력 값입니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">핸드폰 번호</div>
-                  <input id  = "phoneNumber" type="text" placeholder="핸드폰 번호를 입력하세요" readonly style="pointer-events: none" value ="${memberInfo.memberPhone}">
+                  <input id  = "phoneNumber" name = "phone" type="text" placeholder="핸드폰 번호를 입력하세요" readonly style="pointer-events: none" value ="${memberInfo.memberPhone}">
                   <button id = "validate-button" type="button">인증번호 발송</button>
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
@@ -104,7 +104,7 @@
                 <div class="main-input-error-message"> <span>* 필수 입력 값입니다.</span></div>
                 <div class="main-input-list">
                   <div class="main-input-list-text">이메일</div>
-                  <input id = "email" type="email" placeholder="이메일을 입력하세요" readonly style="pointer-events: none" value="${memberInfo.memberEmail}">
+                  <input name = "email" id = "email" type="email" placeholder="이메일을 입력하세요" readonly style="pointer-events: none" value="${memberInfo.memberEmail}">
                   <div class="main-input-email-at"></div>
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
@@ -117,7 +117,7 @@
               <li>
                 <div class="main-input-list-optional">
                   <div class="main-input-list-text">주소</div>
-                  <input id = "postalCode" type="text" readonly style="pointer-events: none" value="${memberInfo.memberPostalCode}">
+                  <input name = "postal" id = "postalCode" type="text" readonly style="pointer-events: none" value="${memberInfo.memberPostalCode}">
                   <button id = "searchPostcodeBtn" type="button">우편번호</button>
                   <div class="change-btn">
                     <a class = "edit-button" href="#">수정하기</a>
