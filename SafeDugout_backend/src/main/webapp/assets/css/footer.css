@@ -81,8 +81,9 @@
 .term-text-box-footer {
   background-color: white;
   border: 1px solid black;
-  width: 525px;
+  width: 505px;
   height: 500px;
+  padding: 0px 10px;
   overflow-y: scroll;
 }
 
