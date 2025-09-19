@@ -117,6 +117,11 @@ public class MyPageFrontController extends HttpServlet {
 			result = new MyPageInputInfoController().execute(request, response);
 			break;
 			
+		case "/myPage/CompleteEdit.mp":
+			System.out.println("정보 수정 완료 진입 중");
+			result = new MyPageCompleteEditController().execute(request, response);
+			break;
+			
 		case "/myPage/unSubscribe.mp":
 			System.out.println("회원 탈퇴 진입 중");
 			result = new MyPageUnSubcribeController().execute(request, response);
