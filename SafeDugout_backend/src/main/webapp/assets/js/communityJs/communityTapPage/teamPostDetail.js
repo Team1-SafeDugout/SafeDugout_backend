@@ -3,12 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const listBtn = document.querySelector(".list-btn");
   const modifyBtn = document.querySelector(".modify-btn");
   const deleteBtn = document.querySelector(".delete-btn");
-  const submitBtn = document.querySelector(".submit-btn");
-  const commentListEl = document.querySelector("#comment-list");
 
   // 데이터
   const boardNumber  = listBtn?.dataset.boardNumber  ?? window.boardNumber;
-  const memberNumber = listBtn?.dataset.memberNumber ?? window.memberNumber;
+/*  const memberNumber = listBtn?.dataset.memberNumber ?? window.memberNumber;*/
   const contextPath = '${pageContext.request.contextPath}';
 
   console.log("확인 boardNumber :", boardNumber);
@@ -48,175 +46,146 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ====== 댓글 작성 ======
-  submitBtn?.addEventListener("click", async () => {
-    const contentEl = document.querySelector("#content");
-    const content = contentEl?.value.trim();
+  const commentList = document.getElementById("ul-li");
 
-    if (!content) return alert("댓글 내용을 입력해주세요.");
-    if (!boardNumber || !memberNumber) return alert("boardNumber 또는 memberNumber가 없습니다.");
+  const param = new URLSearchParams(window.location.search);
+  const postNumber = param.get("postNumber");
 
-    try {
-      const response = await fetch("/reply/replyWriteOk.re", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          "X-Requested-With": "XMLHttpRequest",
-        },
-        body: JSON.stringify({ boardNumber, memberNumber, replyContent: content }),
-      });
+  const addCommentBtn = document.getElementById("add-comment");
+  const textArea = document.getElementById("comment-content-area");
 
-      const result = await safeJson(response);
-      if (result?.status === "success") {
-        alert("댓글이 작성되었습니다.");
-        if (contentEl) contentEl.value = "";
-        await loadReplies();
-      } else {
-        alert("댓글 작성에 실패했습니다.");
-      }
-    } catch (error) {
-      console.error("댓글 작성 실패:", error);
-      alert("댓글 작성 중 오류가 발생했습니다.");
-    }
+  textArea.addEventListener("input", () => {
+      textArea.style.height = "auto";           // 기존 높이 초기화
+      textArea.style.height = textArea.scrollHeight + "px"; // 내용에 맞춰 높이 조정
   });
+  
+  /*댓글 추가 부분*/
+  	console.log(memberNumber);
+	console.log(postNumber);
+  	
+  	addCommentBtn?.addEventListener("click", async () => {
+  	  const contentEl = document.getElementById("comment-content-area");
+  	  const content = contentEl?.value.trim();
 
-  // ====== 댓글 영역 이벤트 위임 ======
-  if (commentListEl) {
-    commentListEl.addEventListener("click", async (event) => {
-      const target = event.target;
+  	  if (!content) return alert("댓글 내용을 입력해주세요.");
+  	  if (!postNumber || !memberNumber) return alert("boardNumber 또는 memberNumber가 없습니다.");
 
-      // 삭제
-      if (target.matches(".comment-delete")) {
-        const replyNumber = target.dataset.number;
-        if (!replyNumber) return;
+  	  try {
+  	    const response = await fetch("/reply/replyWriteOk.re", {
+  	      method: "POST",
+  	      headers: {
+  	        "Content-Type": "application/json; charset=utf-8",
+  	        "X-Requested-With": "XMLHttpRequest",
+  	      },
+  	      body: JSON.stringify({ postNumber, memberNumber, commentContent: content }),
+  	    });
 
-        if (confirm("댓글을 삭제하시겠습니까?")) {
-          try {
-            const response = await fetch(
-              `/reply/replyDeleteOk.re?replyNumber=${encodeURIComponent(replyNumber)}`,
-              { method: "GET", headers: { "X-Requested-With": "XMLHttpRequest" } }
-            );
-            const result = await safeJson(response);
-            if (result?.status === "success") {
-              alert("댓글이 삭제되었습니다.");
-              await loadReplies();
-            } else {
-              alert("댓글 삭제에 실패했습니다.");
-            }
-          } catch (error) {
-            console.error("댓글 삭제 실패:", error);
-            alert("댓글 삭제 중 오류가 발생했습니다.");
-          }
-        }
-      }
+  	    const result = await safeJson(response);
+  	    if (result?.status === "success") {
+  	      alert("댓글이 작성되었습니다.");
+  	      if (contentEl) contentEl.value = "";
+  	      await loadReplies();
+  	    } else {
+  	      alert("댓글 작성에 실패했습니다.");
+  	    }
+  	  } catch (error) {
+  	    console.error("댓글 작성 실패:", error);
+  	    alert("댓글 작성 중 오류가 발생했습니다.");
+  	  }
+  	});
+  	
+  	
+  	/*댓글 로드 부분*/
+  	async function loadReplies() {
+  		try {
+  		      const res = await fetch(`/reply/replyListOk.re?postNumber=${encodeURIComponent(postNumber)}`, {
+  		        headers: { "Accept": "application/json", "X-Requested-With": "XMLHttpRequest" },
+  		      });
+  		      if (!res.ok) throw new Error("댓글 목록을 불러오는 데 실패했습니다.");
+  		      const replies = await safeJson(res);
+  			  commentList.innerHTML = '';
+  			  replies.forEach(comment => {
+  				addComment(comment.commentContent, comment.memberID, comment.commentDate, comment.commentNumber, comment.memberNumber);
+  			  });	
+  			  
+  		    } catch (error) {
+  		      console.error("댓글 목록 불러오기 실패:", error);
+  		      alert("댓글 목록을 불러오는데 실패했습니다.");
+  		  }
+  	}
+  	
+  	function addComment(targetComment, authorId, date, commentNumber, commentMemberNumber) {
+  	  const newComment = document.createElement("li");
 
-      // 수정 준비
-      if (target.matches(".comment-modify-ready")) {
-        const li = target.closest("li");
-        if (!li) return;
+  	  const commentInfo = document.createElement("div");
 
-        const contentDiv = li.querySelector(".comment-content");
-        const originalContent = contentDiv?.textContent?.trim() ?? "";
+  	  const commentAuthor = document.createElement('span');
+  	  const authorText = document.createTextNode("작성자ID :" + authorId);
+  	  commentAuthor.appendChild(authorText);
 
-        if (contentDiv) {
-          // 취약하게 원문 그대로 (escapeHtml 제거)
-          contentDiv.outerHTML = `<textarea class="modify-content">${originalContent}</textarea>`;
-        }
+  	  const commentDate = document.createElement('span');
+  	  const dateText = document.createTextNode(date);
+  	  commentDate.appendChild(dateText);
 
-        const btnGroup = target.closest(".comment-btn-group");
-        if (btnGroup) {
-          btnGroup.innerHTML =
-            `<button type="button" class="comment-modify" data-number="${target.dataset.number || ""}">수정 완료</button>`;
-        }
-      }
+  	  commentInfo.appendChild(commentAuthor);
+  	  commentInfo.appendChild(commentDate);
 
-      // 수정 완료
-      if (target.matches(".comment-modify")) {
-        const replyNumber = target.dataset.number;
-        if (!replyNumber) return;
+  	  const comment = document.createElement('p');
+  	  const commentText = document.createTextNode(targetComment);
+  	  comment.appendChild(commentText);
 
-        const li = target.closest("li");
-        const newContent = li?.querySelector(".modify-content")?.value.trim();
-        if (!newContent) return alert("댓글 내용을 입력해주세요.");
+  	  const commentBtns = document.createElement("div");
+  	  commentBtns.className = "team-comment-button";
 
-        try {
-          const response = await fetch("/reply/replyUpdateOk.re", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-            body: JSON.stringify({ replyNumber, replyContent: newContent }),
-          });
+  	  const deleteBtn = document.createElement("button");
+  	  deleteBtn.setAttribute("type", "button");
+  	  
+  	  const btnText = document.createTextNode("삭제");
+  	  deleteBtn.appendChild(btnText);
+  	  
 
-          const result = await safeJson(response);
-          if (result?.status === "success") {
-            alert("댓글이 수정되었습니다.");
-            await loadReplies();
-          } else {
-            alert("댓글 수정에 실패했습니다.");
-          }
-        } catch (error) {
-          console.error("댓글 수정 실패:", error);
-          alert("댓글 수정 중 오류가 발생했습니다.");
-        }
-      }
-    });
-  }
+  	  /*댓글을 삭제 후 목록 다시 로드*/
+  	  deleteBtn.addEventListener('click', async function () {
+  	    if (confirm("삭제하시겠습니까?")) {		  
+  		  try {
+  		    const response = await fetch(
+  		      `/reply/replyDeleteOk.re?commentNumber=${encodeURIComponent(commentNumber)}`,
+  		      { method: "GET", headers: { "X-Requested-With": "XMLHttpRequest" } }
+  		    );
+  		    const result = await safeJson(response);
+  		    if (result?.status === "success") {
+  		      alert("댓글이 삭제되었습니다.");
+  		      await loadReplies();
+  		    } else {
+  		      alert("댓글 삭제에 실패했습니다.");
+  		    }
+  		  } catch (error) {
+  		    console.error("댓글 삭제 실패:", error);
+  		    alert("댓글 삭제 중 오류가 발생했습니다.");
+  		  }
+  	    }
+  	  });
 
-  // ====== 댓글 목록 로드 ======
-  async function loadReplies() {
-    if (!boardNumber) return;
-    try {
-      const res = await fetch(`/reply/replyListOk.re?boardNumber=${encodeURIComponent(boardNumber)}`, {
-        headers: { "Accept": "application/json", "X-Requested-With": "XMLHttpRequest" },
-      });
-      if (!res.ok) throw new Error("댓글 목록을 불러오는 데 실패했습니다.");
-      const replies = await safeJson(res);
-      renderReplies(Array.isArray(replies) ? replies : []);
-    } catch (error) {
-      console.error("댓글 목록 불러오기 실패:", error);
-      alert("댓글 목록을 불러오는데 실패했습니다.");
-    }
-  }
+  	  commentBtns.appendChild(deleteBtn);
 
-  // ====== 댓글 렌더링 ======
-  function renderReplies(replies) {
-    if (!commentListEl) return;
+  	  newComment.appendChild(commentInfo);
+  	  newComment.appendChild(comment);
+  	  
+  	  console.log(commentMemberNumber + ", " + memberNumber);
+  	  
+  	  if(commentMemberNumber == memberNumber){
+  		newComment.appendChild(commentBtns);
+  	  } 
+  	  commentList.appendChild(newComment);
+  	}
+  	
+  	async function safeJson(res) {
+  	  const text = await res.text();
+  	  try { return text ? JSON.parse(text) : null; } catch { return null; }
+  	}
+  	
+  	loadReplies();
 
-    commentListEl.innerHTML = "";
-
-    if (!replies.length) {
-      commentListEl.innerHTML = "<li>댓글이 없습니다.</li>";
-      return;
-    }
-
-    const frag = document.createDocumentFragment();
-
-    replies.forEach((reply) => {
-      const isMyComment = String(reply.memberNumber) === String(memberNumber);
-      const li = document.createElement("li");
-
-      // 템플릿 리터럴 유지 (JSP EL 충돌 없음: 클라이언트 템플릿이라 안전)
-      li.innerHTML = `
-        <div class="comment-info">
-          <span class="writer">${reply.memberId ?? ""}</span>
-          <span class="date">${(reply.replyUpdateDate || reply.replyDate) ?? ""}</span>
-        </div>
-        <div class="comment-content-wrap">
-          <div class="comment-content">${reply.replyContent ?? ""}</div>
-          ${isMyComment ? `
-            <div class="comment-btn-group">
-              <button type="button" class="comment-modify-ready" data-number="${reply.replyNumber}">수정</button>
-              <button type="button" class="comment-delete" data-number="${reply.replyNumber}">삭제</button>
-            </div>` : ""}
-        </div>
-      `;
-      frag.appendChild(li);
-    });
-
-    commentListEl.appendChild(frag);
-  }
 
   // ====== 유틸 ======
   async function safeJson(res) {

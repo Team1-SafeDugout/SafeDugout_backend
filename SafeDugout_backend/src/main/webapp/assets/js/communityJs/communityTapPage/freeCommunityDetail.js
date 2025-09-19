@@ -4,7 +4,7 @@ const param = new URLSearchParams(window.location.search);
 const postNumber = param.get("postNumber");
 
 const addCommentBtn = document.getElementById("add-comment");
-const textArea = document.getElementById("comment-content-area")
+const textArea = document.getElementById("comment-content-area");
 
 textArea.addEventListener("input", () => {
     textArea.style.height = "auto";           // 기존 높이 초기화

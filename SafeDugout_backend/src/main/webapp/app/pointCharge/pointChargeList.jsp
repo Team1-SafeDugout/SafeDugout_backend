@@ -10,6 +10,18 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/pointCharge/pointChargeList.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+  <script>
+    let pays = [];
+    <c:forEach var="pay" items="${payList}">
+    pays.push({
+    		Amonut: "${pay.amount}",
+            date: "${pay.paidAt}"
+        });
+    </c:forEach>
+    console.log(pays[0]);
+    const contextPath = "${pageContext.request.contextPath}";
+  </script>
+  <script defer src="${pageContext.request.contextPath}/assets/js/pointCharge/pointChareList.js"></script>  
 </head>
 
 <body>
@@ -33,48 +45,47 @@
       <section class="main-content">
         <h3>포인트 충전 내역</h3>
         <div class="content-box">
-          <div class="post-list">
-            <li class="post-list-top">
-              <div class="post-list-number">충전 금액</div>
-              <div class="post-list-title">충전 후 포인트</div>
-              <div class="post-list-date">충전 날짜</div>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">10000 포인트</div>
-              <div class="post-list-title">10000 포인트</div>
-              <div class="post-list-date">2025.09.06</div>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">10000 포인트</div>
-              <div class="post-list-title">10000 포인트</div>
-              <div class="post-list-date">2025.09.05</div>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">10000 포인트</div>
-              <div class="post-list-title">10000 포인트</div>
-              <div class="post-list-date">2025.09.04</div>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">10000 포인트</div>
-              <div class="post-list-title">10000 포인트</div>
-              <div class="post-list-date">2025.09.03</div>
-            </li>
-            <li class="post-list-row">
-              <div class="post-list-number">10000 포인트</div>
-              <div class="post-list-title">10000 포인트</div>
-              <div class="post-list-date">2025.09.02</div>
-            </li>
+          <div class="post-list-top">
+            <div class="post-list-number">충전 번호</div>
+            <div class="post-list-title">충전 포인트</div>
+            <div class="post-list-date">충전 날짜</div>
           </div>
-          <div class="pagination">
-            <a href="">◁</a>
-            <ul id="numberlist-ul">
-              <li><a href="">1</a></li>
-              <li><a href="">2</a></li>
-              <li><a href="">3</a></li>
-              <li><a href="">4</a></li>
-              <li><a href="">5</a></li>
-            </ul>
-            <a href="">▷</a>
+          <ul class="post-list" id = "ul-li">
+            <c:choose>
+				<c:when test="${empty payList}">
+					<div>
+   						<div colspan="5" align="center">결제 기록이 없습니다.</div>
+   					</div>
+				</c:when>
+			</c:choose>          
+          </ul>
+          <div class="pagination">           
+	        <ul id="numberlist-ul">
+	          
+	          <c:if test="${prev}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/pointCharge.mp?page=${startPage - 1}" class="prev">&lt;</a></li>
+	          </c:if>
+	          <c:set var="realStartPage" value="${startPage < 0 ? 0 : startPage}" />
+	          <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
+	          	<c:choose>
+	          		<c:when test="${!(i == page) }">
+	          			<li><a href="${pageContext.request.contextPath}/myPage/pointCharge.mp?page=${i}">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:when>
+	          		<c:otherwise>
+	          			<li><a href="#" class="active">
+	          				<c:out value="${i}" />
+	          			</a></li>
+	          		</c:otherwise>
+	          	</c:choose>
+	          </c:forEach>
+	          
+	          <c:if test="${next}">
+	          	<li><a href="${pageContext.request.contextPath}/myPage/pointCharge.mp?page=${endPage + 1}" class="next">&gt;</a>
+	          </c:if>
+	          
+	        </ul>            
           </div>
         </div>
       </section>
