@@ -15,6 +15,7 @@ public class TeamPostDTO {
 	private int teamNumber; // 팀 번호
 	private int postType; // 포스트 타입	
 	private List<AttachmentDTO> attachment; // 첨부파일
+	private String postLink;
 	
 	//get, set
 	public int getPostNumber() {
@@ -77,6 +78,12 @@ public class TeamPostDTO {
 	public void setAttachment(List<AttachmentDTO> attachment) {
 		this.attachment = attachment;
 	}
+	public String getPostLink() {
+		return postLink;
+	}
+	public void setPostLink(String postLink) {
+		this.postLink = postLink;
+	}
 
 	// toString
 	@Override
@@ -84,7 +91,7 @@ public class TeamPostDTO {
 		return "TeamPostDTO [postNumber=" + postNumber + ", postTitle=" + postTitle + ", postContent=" + postContent
 				+ ", postDate=" + postDate + ", postUpdate=" + postUpdate + ", memberId=" + memberId + ", memberNumber="
 				+ memberNumber + ", teamNumber=" + teamNumber + ", postType=" + postType + ", attachment=" + attachment
-				+ "]";
+				+ ", postLink=" + postLink + "]";
 	}
 	
 	

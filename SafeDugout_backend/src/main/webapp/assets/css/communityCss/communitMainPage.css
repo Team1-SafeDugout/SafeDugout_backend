@@ -165,6 +165,13 @@ section {
   padding-left: 0;
 }
 
+.team-board-list span:nth-child(3) {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .team-board-list li {
   padding: 6px 8px;
   margin-bottom: 6px;
