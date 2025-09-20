@@ -194,14 +194,14 @@
 					</div>
 					<!-- 먹거리 컨테이너 -->
 					<div class="team-stadium-food-container">
-						<!-- 먹거리 추천 -->
 						<div class="info-table">
-							<h3>먹거리 추천</h3>
+							<h3>먹거리 정보</h3>
 							<table>
 								<thead>
 									<tr>
-										<th>추천음식</th>
+										<th>음식점</th>
 										<th>위치</th>
+										<th>추천음식</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -209,18 +209,6 @@
 										<tr>
 											<td><c:out value="${food.foodName}" /></td>
 											<td><c:out value="${food.foodLocation}" /></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<!-- 먹거리 이용 팁 -->
-						<div class="info-table">
-							<h3>먹거리 이용 팁</h3>
-							<table>
-								<tbody>
-									<c:forEach var="food" items="${foods}">
-										<tr>
 											<td><c:out value="${food.foodTip}" /></td>
 										</tr>
 									</c:forEach>
