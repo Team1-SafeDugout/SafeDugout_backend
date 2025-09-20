@@ -1,10 +1,13 @@
 package com.bullPenTalk.app.main.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bullPenTalk.app.dto.NoticePostDTO;
 import com.bullPenTalk.app.dto.TeamMainDTO;
+import com.bullPenTalk.app.dto.TeamPostDTO;
 import com.bullPenTalk.config.MyBatisConfig;
 
 public class TeamMainDAO {
@@ -37,5 +40,25 @@ public class TeamMainDAO {
 	// 팀 순위 목록 조회
 	public List<TeamMainDTO> selectTeamRank() {
 		return sqlSession.selectList("teamMain.selectTeamRank");
+	}
+	
+	// 팀 커뮤니티 게시글 검색 목록 조회
+	public List<TeamPostDTO> searchPost(Map<String, Object> map) {
+		return sqlSession.selectList("teamMain.searchPost", map);
+	}
+	
+	// 팀 커뮤니티 공지사항 검색 목록 조회
+	public List<NoticePostDTO> searchNotice(Map<String, Object> map) {
+		return sqlSession.selectList("teamMain.searchNotice", map);
+	}
+	
+	// 팀 커뮤니티 게시글 검색 결과 전체 개수 조회
+	public int totalSearchPost(Map<String, Object> map) {
+		return sqlSession.selectOne("teamMain.totalSearchPost", map);
+	}
+	
+	// 팀 커뮤니티 게시글 검색 결과 전체 개수 조회
+	public int totalSearchNotice(Map<String, Object> map) {
+		return sqlSession.selectOne("teamMain.totalSearchNotice", map);
 	}
 }
