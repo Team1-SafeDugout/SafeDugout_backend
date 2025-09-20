@@ -20,6 +20,7 @@
     </c:forEach>
     console.log(pays[0]);
     const contextPath = "${pageContext.request.contextPath}";
+
   </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/pointCharge/pointChareList.js"></script>  
 </head>
