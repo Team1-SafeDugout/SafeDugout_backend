@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.dto.NoticePostDTO;
 import com.bullPenTalk.app.dto.TeamPostDTO;
 import com.bullPenTalk.app.main.dao.TeamMainDAO;
@@ -128,18 +127,21 @@ public class TeamSearchOkController implements Execute{
 		request.setAttribute("noticeEndPage", noticeEndPage);
 		request.setAttribute("noticePrev", noticePrev);
 		request.setAttribute("noticeNext", noticeNext);
+		System.out.println("공지사항 페이지 끝 번호 : " + noticeEndPage);
+		System.out.println("게시글 페이지 끝 번호 : " + postEndPage);
 		
 		// 게시글 검색 목록 조회 
 		List<TeamPostDTO> postList = teamMainDAO.searchPost(postMap);
 		// 공지사항 검색 목록 조회 
 		List<NoticePostDTO> noticeList = teamMainDAO.searchNotice(noticeMap);
 		
-		// request에 검색 목록 저장 
+		// request에 검색 목록, keyword 저장 
 		request.setAttribute("postList", postList);
 		request.setAttribute("noticeList", noticeList);
+		request.setAttribute("keyword", keyword);
 		
 		// 경로 및 리다이렉트 여부 설정 
-		result.setPath("/app/communityHtml/teamSearch.jsp");
+		result.setPath("/app/communityHtml/communityTapPage/teamSearch.jsp");
 		result.setRedirect(false);
 		
 		return result;

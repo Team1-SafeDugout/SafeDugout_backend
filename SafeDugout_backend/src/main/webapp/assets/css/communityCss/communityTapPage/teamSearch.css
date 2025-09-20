@@ -134,6 +134,7 @@ main {
 .team-post-container {
   width: 1200px;
   margin: auto;
+  margin-bottom: 70px;
   padding: 0px 20px;
 }
 
@@ -203,6 +204,15 @@ h4{
   background-color: #c6c7c7;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.team-search-list-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.team-search-list-item a:hover {
+  text-decoration: underline;
 }
 
 .team-search-list-item span {

@@ -90,14 +90,14 @@
 			<ul>
 				<c:if test="${noticePrev}">
 					<li><a
-						href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice&page=${noticeStartPage - 1}">&lt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${noticeStartPage - 1}&postPage=${postPage}">&lt;</a></li>
 					</c:if>
 				<c:set var="noticeRealStartPage" value="${noticeStartPage < 0 ? 0 : noticeStartPage}" />
 				<c:forEach var="i" begin="${noticeRealStartPage}" end="${noticeEndPage}">
 					<c:choose>
 						<c:when test="${i != noticePage}">
 							<li><a
-								href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice&page=${i}">
+								href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${i}&postPage=${postPage}">
 									<c:out value="${i}" />
 							</a></li>
 						</c:when>
@@ -108,7 +108,7 @@
 				</c:forEach>
 				<c:if test="${noticeNext}">
 					<li><a
-						href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice&page=${noticeEndPage + 1}">&gt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${noticeEndPage + 1}&postPage=${postPage}">&gt;</a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -132,10 +132,53 @@
         <c:when test="${not empty postList}">
         <c:forEach var="post" items="${postList}">
         <li class="team-search-list-item">
-          <span class="team-search-type"><c:out value="${post.postType}" /></span>
+        <c:choose>
+        <c:when test="${post.postType == 2}">
+          <span class="team-search-type">게시글</span>
+        </c:when>
+        <c:when test="${post.postType == 3}">
+          <span class="team-search-type">팀 뉴스</span>
+        </c:when>
+        <c:when test="${post.postType == 4}">
+          <span class="team-search-type">팀 유튜브</span>
+        </c:when>
+        <c:when test="${post.postType == 5}">
+          <span class="team-search-type">팀 응원가</span>
+        </c:when>
+        <c:when test="${post.postType == 6}">
+          <span class="team-search-type">선수 응원가</span>
+        </c:when>
+        </c:choose>
           <span class="team-search-num"><c:out value="${post.postNumber}" /></span>
-          <span class="team-search-title"><c:out value="${post.postTitle}" /></span>
+          <span class="team-search-title">
+          <c:choose>
+          <c:when test="${post.postType == 2}">
+          	<a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=detail&postNumber=${post.postNumber}">
+          </c:when>
+          <c:when test="${post.postType == 3}">
+            <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=news&action=newsdetail&postNumber=${post.postNumber}">
+          </c:when>
+          <c:when test="${post.postType == 4}">
+            <a href="${post.postLink}" target="_blank">
+          </c:when>
+          <c:when test="${post.postType == 5}">
+            <a href="${post.postLink}/" target="_blank">
+          </c:when>
+          <c:when test="${post.postType == 6}">
+            <a href="${post.postLink}/" target="_blank">
+          </c:when>
+          </c:choose>
+          	  <c:out value="${post.postTitle}" />
+            </a>
+          </span>
+        <c:choose>
+        <c:when test="${not empty post.memberId}">
           <span class="team-search-writer"><c:out value="${post.memberId}" /></span>
+        </c:when>
+        <c:otherwise>
+          <span class="team-search-writer">-</span>
+        </c:otherwise>
+        </c:choose>
           <span class="team-search-date"><c:out value="${post.postDate}" /></span>
         </li>
         </c:forEach>
@@ -148,7 +191,7 @@
 			<ul>
 				<c:if test="${postPrev}">
 					<li><a
-						href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice&page=${postStartPage - 1}">&lt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${postStartPage - 1}&noticePage=${noticePage}">&lt;</a></li>
 				</c:if>
 
 				<c:set var="postRealStartPage" value="${postStartPage < 0 ? 0 : postStartPage}" />
@@ -156,7 +199,7 @@
 					<c:choose>
 						<c:when test="${i != postPage}">
 							<li><a
-								href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice&page=${i}">
+								href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${i}&noticePage=${noticePage}">
 									<c:out value="${i}" />
 							</a></li>
 						</c:when>
@@ -168,7 +211,7 @@
 
 				<c:if test="${postNext}">
 					<li><a
-						href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice&page=${postEndPage + 1}">&gt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${postEndPage + 1}&noticePage=${noticePage}">&gt;</a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -177,3 +220,29 @@
 <jsp:include page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
 </body>
 </html>
+<script>
+// 검색어 저장
+const keyword = '${keyword}';
+
+// 공지사항 제목, 게시글 제목, 작성자 ID 선택
+const noticeTitle = document.querySelectorAll('.notice-title a');
+const posttitle = document.querySelectorAll('.team-search-title a');
+const memberId = document.querySelectorAll('.team-search-writer');
+
+// 정규표현식 생성
+let regex = new RegExp(keyword, 'gi');
+
+// 반복하며 검색어를 치환
+noticeTitle.forEach(element => {
+  const originalText = element.innerText;
+  element.innerHTML = originalText.replace(regex, `<span style="color: red;">${keyword}</span>`);
+});
+posttitle.forEach(element => {
+  const originalText = element.innerText;
+  element.innerHTML = originalText.replace(regex, `<span style="color: red;">${keyword}</span>`);
+});
+memberId.forEach(element => {
+  const originalText = element.innerText;
+  element.innerHTML = originalText.replace(regex, `<span style="color: red;">${keyword}</span>`);
+});
+</script>
