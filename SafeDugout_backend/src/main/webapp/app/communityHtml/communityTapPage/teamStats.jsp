@@ -243,21 +243,31 @@
 				<h3>역대 순위</h3>
 				<div class="team-stats-history-header">
 					<div>연도</div>
+					<div>순위</div>
 					<div>경기</div>
 					<div>승</div>
 					<div>패</div>
 					<div>무</div>
-					<div>승률</div>
-					<div>순위</div>
+					<div>승률</div>					
 				</div>
-				<div class="team-stats-history-row"></div>
+				<div class="team-stats-history-row">
+					<c:forEach var="record" items="${ranking}">
+						<div class="team-stats-row">
+							<div>${record.rankingYear}</div>
+							<div>${record.finalRank}</div>
+							<div>${record.gamesPlayed}</div>
+							<div>${record.wins}</div>
+							<div>${record.losses}</div>
+							<div>${record.draws}</div>
+							<div>
+								<fmt:formatNumber value="${record.winningPercentage}"
+									pattern="#.###" />
+							</div>
+						</div>
+					</c:forEach>
+				</div>	
 			</aside>
 		</div>
-		<!-- 하단: 우승 년도 -->
-		<section class="team-stats-championships">
-			<h3>우승 년도</h3>
-			<div class="team-logo-list"></div>
-		</section>
 	</main>
 	<jsp:include
 		page="${pageContext.request.contextPath}/app/communityHtml/teamFooter/teamFooter.jsp" />
