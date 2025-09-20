@@ -83,7 +83,7 @@ sendCode.addEventListener("click", function() {
 // ===== 인증번호 확인 (서버 대신 로컬 비교) =====
 authenticate.addEventListener("click", function() {
 	const codeChecker = code.value.trim();
-	codeMismatchMessage.style.display = 'inline';
+	codeMismatchMessage.style.display = 'block';
 	if (!codeChecker) {
 		codeMismatchMessage.textContent = "인증번호를 입력해주세요.";
 		codeMismatchMessage.style.color = "red";
@@ -169,8 +169,8 @@ okBtn.addEventListener('click', function () {
 
 	// 누락값 없고, 인증 확인 되면 서버에 전송 
 	// && codeCheck
-	console.log(nameCheck && idCheck && emailCheck && phoneNumberCheck);
-	if (nameCheck && emailCheck && phoneNumberCheck) {
+	console.log(nameCheck && idCheck && emailCheck && phoneNumberCheck && codeCheck);
+	if (nameCheck && emailCheck && phoneNumberCheck && codeCheck) {
 		fetch(`/member/findPwOk.me`, {
 			method: "POST",
 			headers: {

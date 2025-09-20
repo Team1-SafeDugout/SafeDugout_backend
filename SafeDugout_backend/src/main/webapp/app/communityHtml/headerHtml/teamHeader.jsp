@@ -62,9 +62,9 @@
         <li><a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=notice">공지사항</a></li>
       </ul>
       <div class="nav-search">
-          <form action="" method="get">
-            <input type="text" placeholder="검색">
-            <button>
+          <form action="${pageContext.request.contextPath}/main/teamSearchOk.ma" method="get">
+            <input type="text" placeholder="제목, 작성자 ID 검색" name="keyword">
+            <button type="submit">
               <img src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="검색">
             </button>
           </form>
