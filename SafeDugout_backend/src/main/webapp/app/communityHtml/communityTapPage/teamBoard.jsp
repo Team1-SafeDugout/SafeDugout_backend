@@ -61,7 +61,7 @@
       <div class="team-board-tools-header">
         <h4>게시글</h4>
         <div class="team-board-tools">
-          <!-- 검색 폼 -->
+<%--           <!-- 검색 폼 -->
           <form action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr" method="get">
               <input type="hidden" name="team" value="search">
               <input type="hidden" name="action" value="search"> 
@@ -69,7 +69,7 @@
               <button>
                   <img class="team-board-search" src="${pageContext.request.contextPath}/assets/img/communityImg/freeIconSearch.png" alt="검색">
               </button>
-          </form>
+          </form> --%>
           <!-- 글쓰기 버튼 -->
           <a href="${pageContext.request.contextPath}/community/teamCommunityFrontController.tc?category=board&action=write" class="team-board-write">글쓰기</a>
         </div>
