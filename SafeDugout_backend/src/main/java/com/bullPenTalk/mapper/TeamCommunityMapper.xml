@@ -483,4 +483,23 @@
 	    FROM TBL_POST
 	    WHERE POST_NUMBER = #{postNumber}
 	</select>
+	
+	<!-- 역대 순위 조회 -->
+	<select id="historicalRanking" parameterType="map" resultType="HistoricalRankingDTO">
+		SELECT
+		    ranking_year, 
+		    final_rank,
+		    games_played,
+		    wins,
+		    losses,
+		    draws,  
+		    winning_percentage
+		FROM
+		    TBL_historical_rankings
+		WHERE
+		    team_number = #{teamNumber}
+		ORDER BY
+		    ranking_year DESC
+	</select>
+	
 </mapper>

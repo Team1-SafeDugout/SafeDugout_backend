@@ -1,7 +1,6 @@
 package com.bullPenTalk.app.teamCommunity;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.dto.DeffenseBaseRecordDTO;
+import com.bullPenTalk.app.dto.HistoricalRankingDTO;
 import com.bullPenTalk.app.dto.TeamBatterRecordDTO;
 import com.bullPenTalk.app.dto.TeamPitcherRecordDTO;
 import com.bullPenTalk.app.dto.TeamRecordDTO;
@@ -56,6 +56,7 @@ public class RecordSelectController {
         List<TeamPitcherRecordDTO> pitcherRecords = teamCommunityDAO.selectTeamPitcherRecord(param);
         List<TeamBatterRecordDTO> batterRecords = teamCommunityDAO.selectTeamBatterRecord(param);
         List<DeffenseBaseRecordDTO> defenseRecords = teamCommunityDAO.selectTeamDeffenseRecord(param);
+        List<HistoricalRankingDTO> ranking = teamCommunityDAO.selectRank(teamNumber);
 
         // 조회결과 없으면 메인페이지로 이동
         if (teamRecords.isEmpty() && pitcherRecords.isEmpty() && batterRecords.isEmpty() && defenseRecords.isEmpty()) {
@@ -69,6 +70,7 @@ public class RecordSelectController {
         request.setAttribute("pitcherRecords", pitcherRecords);
         request.setAttribute("batterRecords", batterRecords);
         request.setAttribute("defenseRecords", defenseRecords);
+        request.setAttribute("ranking", ranking);
         request.setAttribute("teamNumber", teamNumber);
         
 		result.setPath("/app/communityHtml/communityTapPage/teamStats.jsp");

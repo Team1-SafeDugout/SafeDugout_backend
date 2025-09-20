@@ -54,31 +54,67 @@ main.team-stats {
 }
 
 /* 역대순위 */
+/* 역대순위 박스 */
 .team-stats-history-ranking {
   flex: 1;
   background: white;
   color: black;
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
+/* 제목 */
 .team-stats-history-ranking h3 {
   padding: 5px 10px;
   border-bottom: 1px solid #F5F5F5;
+  font-size: 19px;
+  background-color: #F5F5F5;
 }
 
-.team-stats-history-header,
-.team-stats-history-row {
+/* 헤더 */
+.team-stats-history-header {
   display: flex;
+  background-color: #F5F5F5;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
 }
 
-.team-stats-history-header div,
-.team-stats-history-row div {
+.team-stats-history-header div {
   flex: 1;
-  text-align: center;
+  text-align: left;
   padding: 6px;
-  border-bottom: 1px solid #F5F5F5;
   font-size: 14px;
 }
+
+/* 스크롤 영역 */
+.team-stats-history-row {
+  display: flex;
+  flex-direction: column;
+  max-height: 420px; /* 스크롤 기준 높이 */
+  overflow-y: auto;
+  scrollbar-gutter: stable; /* 스크롤바 공간 고정 */
+  
+}
+
+/* 각 행 */
+.team-stats-row {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #F5F5F5;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.team-stats-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.team-stats-row div {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+}
+
 
 /* 우승년도 */
 .team-stats-championships {
