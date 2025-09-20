@@ -49,6 +49,7 @@
 		<typeAlias type="com.bullPenTalk.app.dto.NewsPostDTO" alias="NewsPostDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NewsDetailDTO" alias="NewsDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NoticePostDTO" alias="NoticePostDTO"></typeAlias>
+		<typeAlias type="com.bullPenTalk.app.dto.HistoricalRankingDTO" alias= "HistoricalRankingDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.TeamNoticeDetailDTO" alias="TeamNoticeDetailDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.NoticeTypeDTO" alias="NoticeTypeDTO"></typeAlias>
 		<typeAlias type="com.bullPenTalk.app.dto.PitcherRecordDTO" alias="PitcherRecordDTO"></typeAlias>

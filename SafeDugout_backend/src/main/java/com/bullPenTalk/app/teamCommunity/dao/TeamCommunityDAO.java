@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.bullPenTalk.app.dto.BatterRecordDTO;
 import com.bullPenTalk.app.dto.DeffenseBaseRecordDTO;
 import com.bullPenTalk.app.dto.GameScheduleDTO;
+import com.bullPenTalk.app.dto.HistoricalRankingDTO;
 import com.bullPenTalk.app.dto.NewsDetailDTO;
 import com.bullPenTalk.app.dto.NewsPostDTO;
 import com.bullPenTalk.app.dto.PitcherRecordDTO;
@@ -270,4 +271,12 @@ public class TeamCommunityDAO {
         return writerNumber;
     }
 	
+    // 경기장 번호로 먹거리 정보 조회
+    public List<HistoricalRankingDTO> selectRank(int teamNumber) {
+        System.out.println("DAO: selectRank 실행 - stadiumNumber : " + teamNumber);
+        List<HistoricalRankingDTO> ranking = sqlSession.selectList("teamCommunity.historicalRanking", teamNumber);
+        System.out.println("조회 결과: " + ranking);
+        return ranking;
+    }
+    
 }
