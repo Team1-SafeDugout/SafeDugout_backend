@@ -24,6 +24,7 @@ public class SelectMainListOkController implements Execute{
 		MainDAO mainDAO = new MainDAO();
 		Result result = new Result();
 		
+		// 페이지 번호 가져오기
 		String temp = request.getParameter("page");
 		// 페이지 번호 기본값 1로 설정
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); 
@@ -32,6 +33,7 @@ public class SelectMainListOkController implements Execute{
 		// 페이지 버튼 수
 		int pageCount = 5; 
 
+		// 페이지 번호 확인
 		System.out.println("page 값 : " + page);
 		
 		// 페이징 처리
@@ -40,10 +42,12 @@ public class SelectMainListOkController implements Execute{
 		// 끝 행(10, 20, 30, ..)
 		int endRow = startRow + rowCount - 1; 
 		
+		// Map에 시작 행과 끝 행 저장
 		Map<String, Integer> pageMap = new HashMap<>();
 		pageMap.put("startRow", startRow);
 		pageMap.put("endRow", endRow);
 
+		// Map 정보 확인
 		System.out.println("pageMap 정보 : " + pageMap);
 		
 		// 공지사항 목록 조회
@@ -65,18 +69,21 @@ public class SelectMainListOkController implements Execute{
 		// 이전, 다음 버튼 활성화 여부 확인
 		boolean prev = startPage > 1;
 		boolean next = endPage < realEndPage;
+		// request에 각 값 저장
 		request.setAttribute("page", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
 
+		// 페이징정보 확인
 		System.out.println("====페이징정보 확인====");
 		System.out.println("pageMap : " + pageMap);
 		System.out.println("mainNoticeList : " + mainNoticeList);
 		System.out.println("startPage : " + startPage + ", endPage : " + endPage + ", prev : " + prev + ", next : " + next);
 		System.out.println("====================");
 
+		// 경로 및 리다이렉트 여부 설정
 		result.setPath("/app/mainNotice/mainNoticeList.jsp");
 		result.setRedirect(false);
 

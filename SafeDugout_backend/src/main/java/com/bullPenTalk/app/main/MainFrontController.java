@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Result;
-import com.bullPenTalk.app.dto.GuidePostDTO;
-import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.main.dao.MainDAO;
 
 /**
@@ -90,6 +88,10 @@ public class MainFrontController extends HttpServlet {
 			result = new TeamMainOkController().execute(request, response);
 			System.out.println("팀 커뮤니티 메인페이지 처리 완료");
 			System.out.println("팀 번호 : " + session.getAttribute("teamNumber"));
+			break;
+		case "/main/teamSearchOk.ma":
+			System.out.println("팀 커뮤니티 검색 처리 요청");
+			result = new TeamSearchOkController().execute(request, response);
 			break;
 		case "/main/mainAll.ma":
 			System.out.println("전체 커뮤니티 메인 페이지 처리 요청");
