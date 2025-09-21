@@ -26,6 +26,13 @@
       </div>
       <!-- 팀 공지 본문 -->
       <div class="free-guide-board-content">
+      	<c:if test="${not empty noticePostDetail.attachment}">
+      	<c:forEach var="img" items="${noticePostDetail.attachment}">
+      		<div class="notice-board-content-img">
+      		<img src="${pageContext.request.contextPath}${img.getAttachmentPath()}${img.getAttachmentName()}" alt="">
+      		</div>
+      	</c:forEach>
+      	</c:if>
         <p><c:out value="${noticePostDetail.noticePostContent}" /></p>
       </div>
       <!-- 작성일자 -->

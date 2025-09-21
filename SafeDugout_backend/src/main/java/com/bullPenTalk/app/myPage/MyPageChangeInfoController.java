@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
+import com.bullPenTalk.app.myPage.dao.MyPageDAO;
 
 public class MyPageChangeInfoController implements Execute{
 
@@ -16,8 +17,10 @@ public class MyPageChangeInfoController implements Execute{
 			throws ServletException, IOException {
 		Result result = new Result();
 		
-		
-		
+		int memberNumber = Integer.parseInt(request.getSession().getAttribute("memberNumber").toString());
+		MyPageDAO myPageDAO = new MyPageDAO();
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		result.setPath("/app/memberUpdate/updateInputPassword.jsp");
 		result.setRedirect(false);
 		

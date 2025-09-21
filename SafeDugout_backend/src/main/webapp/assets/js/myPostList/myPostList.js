@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function(){
 					break;
 			}
 			console.log("test");
-			addPost(post.number, post.title, post.date, typeName, post.type);
+			addPost(post.number, post.title, post.date, typeName, post.type, post.team);
 		});
 	}
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	<div class="post-list-date">작성 일자</div>
 	<button type="button" class="post-list-delete"></button>
 </li>*/
-function addPost(postNumberParam, postTitleParam, postDateParam,postTypeParam, postTypeNum){
+function addPost(postNumberParam, postTitleParam, postDateParam,postTypeParam, postTypeNum, postTeamNumber){
 	const newPost = document.createElement('li');
 
 	const postNum = document.createElement('div');
@@ -71,7 +71,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam,postTypeParam, p
 	}
 	
 	else if(postTypeNum === "2"){
-		postTitleLink.setAttribute("href", "/freeCommunity/freeCommunityDetailOk.fc?postNumber=" + postNumberParam);
+		postTitleLink.setAttribute("href", "/community/teamCommunityFrontController.tc?category=board&action=detail&postNumber=" + postNumberParam + "&teamNumber=" + postTeamNumber);
 	}
 	
 	postTitleLink.appendChild(postTitleText);

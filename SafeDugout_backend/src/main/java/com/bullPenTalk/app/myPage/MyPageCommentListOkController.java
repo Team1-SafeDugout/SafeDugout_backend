@@ -64,6 +64,9 @@ public class MyPageCommentListOkController implements Execute {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
+
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		
 		result.setPath("/app/mycommentlist/myCommetList.jsp");
 		result.setRedirect(false);

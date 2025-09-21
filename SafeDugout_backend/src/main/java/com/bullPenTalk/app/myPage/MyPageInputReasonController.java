@@ -35,6 +35,8 @@ public class MyPageInputReasonController implements Execute{
 			result.setPath("/myPage/unSubscribe.mp");
 			result.setRedirect(false);
 		}
+		int memberPoint = myPageDao.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		
 		return result;
 	}

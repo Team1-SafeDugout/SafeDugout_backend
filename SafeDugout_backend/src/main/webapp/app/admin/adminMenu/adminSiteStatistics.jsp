@@ -52,14 +52,14 @@
       </div>
 
       <div class="statistics-container">
-        <section class="guests-statistics">
+<%--         <section class="guests-statistics">
           <div class="statistics-name">
             방문자수
           </div>
           <div class = "statistics-chart">
           	<canvas id="visitorChart"></canvas>
           </div>
-        </section>
+        </section> --%>
 
         <section class="trading-statistics">
           <div class="trading-count">

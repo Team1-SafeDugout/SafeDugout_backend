@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* teamNoticeBoard.css (클래스명 변경본) */
+* {
+  box-sizing: border-box;
+}
 
 .free-guide-board-detail {
   max-width: 900px;
