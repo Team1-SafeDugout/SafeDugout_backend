@@ -166,7 +166,6 @@ section {
 }
 
 .team-board-list span:nth-child(3) {
-  display: block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

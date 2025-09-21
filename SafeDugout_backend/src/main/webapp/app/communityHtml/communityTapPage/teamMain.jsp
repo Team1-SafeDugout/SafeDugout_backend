@@ -83,7 +83,7 @@
         </div>
         <ul class="thumb-list">
         <c:forEach var="youTubeId" items="${youTubeIdList}">
-        <li><div class="thumb"><a href="<c:out value="${youTube.postLink}"/>" target="_blank">
+        <li><div class="thumb"><a href="https://www.youtube.com/watch?v=<c:out value="${youTubeId}"/>" target="_blank">
         <img src="https://img.youtube.com/vi/${youTubeId}/0.jpg"></a></div></li>
         </c:forEach>
         </ul>

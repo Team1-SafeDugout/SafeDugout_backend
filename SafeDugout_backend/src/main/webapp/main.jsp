@@ -143,9 +143,9 @@
                 </li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-away"><c:out value="${scheduleRow.homeTeamName}"/></li>
                 <li class="schedule-table-schedulelist-schedule-list schedule-li-time"><c:out value="${scheduleRow.scheduleDate}"/></li>
-                <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
+                <!-- <li class="schedule-table-schedulelist-schedule-list schedule-li-info">
                   <a class="schedule-li-info-link" href="">정보</a>
-                </li>
+                </li> -->
               </div>
               </c:forEach>
             </div>

@@ -70,9 +70,9 @@
           </form>
       </div>
       <div class="nav-right">
-        	<a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">
+        	<%-- <a href="${pageContext.request.contextPath}/trade/SellPostFrontController2.tr">
         	<img src="${pageContext.request.contextPath}/assets/img/communityImg/tradeMainLogo.png" alt="중고거래 로고">
-        	</a>
+        	</a> --%>
         	<c:choose>
         	<c:when test="${empty sessionScope.memberNumber}">
         	<a href="${pageContext.request.contextPath}/member/login.me">로그인</a>
