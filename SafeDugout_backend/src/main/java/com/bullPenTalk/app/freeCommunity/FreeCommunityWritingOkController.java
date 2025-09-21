@@ -28,9 +28,8 @@ public class FreeCommunityWritingOkController implements Execute {
         FreePostDAO freePostDAO = new FreePostDAO();
         AttachmentDAO attachmentDAO = new AttachmentDAO();
 
-        // ------------------------------
-        // 1. 로그인 체크
-        // ------------------------------
+
+        // 로그인 체크
         Integer memberNumber = (Integer) request.getSession().getAttribute("memberNumber");
         if (memberNumber == null) {
             System.out.println("오류 : 로그인된 사용자가 없습니다");
@@ -39,21 +38,19 @@ public class FreeCommunityWritingOkController implements Execute {
             return result;
         }
 
-        // ------------------------------
-        // 2. 업로드 경로 설정
-        // ------------------------------
+
+        // 업로드 경로 설정
         LocalDate today = LocalDate.now();
-        String uploadBasePath = request.getSession().getServletContext().getRealPath("/upload/freeCommunity/");
+        String uploadBasePath = request.getSession().getServletContext().getRealPath("/upload/product/");
         String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
         String uploadPath = uploadBasePath + subPath;
-
+        System.out.println(uploadPath);
+        
         final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) uploadDir.mkdirs();
 
-        // ------------------------------
-        // 3. MultipartRequest 생성
-        // ------------------------------
+        //  MultipartRequest 생성
         MultipartRequest multipartRequest = new MultipartRequest(
                 request,
                 uploadPath,
@@ -62,9 +59,8 @@ public class FreeCommunityWritingOkController implements Execute {
                 new DefaultFileRenamePolicy()
         );
 
-        // ------------------------------
-        // 4. 게시글 정보 세팅
-        // ------------------------------
+
+        // 게시글 정보 세팅
         String postTitle = multipartRequest.getParameter("postTitle");
         String postContent = multipartRequest.getParameter("postContent");
 
@@ -77,11 +73,9 @@ public class FreeCommunityWritingOkController implements Execute {
         // 게시글 저장
         int postNumber = freePostDAO.insert(freePostDTO);
 
-        // ------------------------------
-        // 5. 첨부파일 처리
-        // ------------------------------
-        Enumeration<String> fileNames = multipartRequest.getFileNames();
 
+        //  첨부파일 처리
+        Enumeration<String> fileNames = multipartRequest.getFileNames();
         while (fileNames.hasMoreElements()) {
             String name = fileNames.nextElement();
             String fileSystemName = multipartRequest.getFilesystemName(name);
@@ -90,19 +84,18 @@ public class FreeCommunityWritingOkController implements Execute {
             if (fileSystemName == null) continue;
 
             AttachmentDTO attachmentDTO = new AttachmentDTO();
-            String dbPath = subPath + fileSystemName; // DB에 저장할 경로
 
+            // DB에 저장할 경로 (JSP에서 바로 사용 가능)
+            String dbPath = subPath + fileSystemName; 
             attachmentDTO.setAttachmentPath(dbPath);
             attachmentDTO.setAttachmentName(fileOriginalName);
-            attachmentDTO.setAttachmentTypeId(2); // 자유게시판 = 2 라고 구분 가능
+            attachmentDTO.setAttachmentTypeId(1);
             attachmentDTO.setPostNumber(postNumber);
 
-            attachmentDAO.insert(attachmentDTO);
+            attachmentDAO.insertPostAttachment(attachmentDTO);
         }
 
-        // ------------------------------
-        // 6. 완료 후 목록으로 리다이렉트
-        // ------------------------------
+        // 완료 후 목록으로 리다이렉트
         result.setPath("/freeCommunity/freeCommunityList.fc");
         result.setRedirect(true);
         return result;

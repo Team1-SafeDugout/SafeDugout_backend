@@ -77,10 +77,13 @@
         <div class="team-post-info">
           <div class="team-post-num">글번호:<p><c:out value="${community.postNumber}" /></p></div>
           <div class="team-post-writer">작성자ID:<p><c:out value="${community.memberId}" /></p></div>
-          <div class="team-post-date">작성일자:<p><fmt:formatDate value="${community.postDate}" pattern="yyyy-MM-dd HH:mm:ss" /></p></div>
+          <div class="team-post-date">작성일자:<p><fmt:formatDate value="${community.postDate}" pattern="yyyy-MM-dd" /></p></div>
         </div>
         <!-- 본문 -->
         <article class="team-post-main">
+          <c:if test="${fn:length(community.attachment) > 0}">
+		    <img src="/upload/product/${community.attachment[0].attachmentPath}" alt="게시글 이미지">
+		  </c:if>
           <p><c:out value="${community.postContent}" /></p>
         </article>
 		<div class="free-guide-board-btn">
