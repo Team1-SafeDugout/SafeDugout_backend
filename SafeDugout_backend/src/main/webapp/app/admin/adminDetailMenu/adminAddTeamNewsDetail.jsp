@@ -9,10 +9,11 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminAddTeamNewsDetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
-  <script>
-  
-  </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminDetailMenu/adminAddTeamNewsDetail.js"></script>
+  <script>
+    const isLogin = <%= (session.getAttribute("adminNumber") != null) ? "true" : "false" %>;
+  </script>
+  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script> 
 </head>
 
 <body>

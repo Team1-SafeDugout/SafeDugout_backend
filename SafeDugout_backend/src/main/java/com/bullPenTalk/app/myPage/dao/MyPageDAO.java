@@ -168,6 +168,7 @@ public class MyPageDAO {
 	public boolean quit(int memberNumber) {
 		System.out.println((int)sqlSession.selectOne("myPage.checkTrade", memberNumber));
 		if((int)sqlSession.selectOne("myPage.checkTrade", memberNumber) > 0) return false;
+		sqlSession.delete("myPage.deleteCharge",memberNumber);
 		sqlSession.delete("myPage.quit", memberNumber);
 		return true;
 	}

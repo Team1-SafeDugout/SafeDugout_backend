@@ -90,7 +90,7 @@ function addPost
 		      <span>잔여 포인트 :</span> <span>${pointLeftParam}</span>
 		    </div>
 		    <div class="product-list-buy-date">
-		      <span>구매 일자 :</span> ${buyDateParam}<span>2025-09-04</span>
+		      <span>구매 일자 :</span> <span>${buyDateParam}</span>
 		    </div>
 		    <div class="product-list-button-container">
 		      <!-- 구매 확정 버튼 -->
@@ -261,14 +261,14 @@ function getProductInfo(sellPostNumber){
 				    <span>거래 방식 :</span> <span>배송</span>
 				  </li>
 				  <li class="post-list-row-modal">
-				    <span>거래 희망 지역 :</span> <span>인천</span>
+				    <span>거래 희망 지역 :</span> <span>${data.tradeArea}</span>
 				  </li>
 				  <li class="post-list-row-modal">
-				    <span>판매자 ID :</span> <span>sfeq8474</span>
+				    <span>판매자 ID :</span> <span>${data.sellerMemberId}</span>
 				  </li>
 				  <li class="post-list-row-modal-product-price">
 				    <div class="product-price">
-				      <span>상품 가격 :</span> <span>1000000 포인트</span>
+				      <span>상품 가격 :</span> <span>${data.pricePoint} 포인트</span>
 				    </div>
 				  </li>
 				</ul>

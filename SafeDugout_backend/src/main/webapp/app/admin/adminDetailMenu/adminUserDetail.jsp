@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminDetailMenu/adminUserDetail.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminHeader.css">
+  <script>
+    const isLogin = <%= (session.getAttribute("adminNumber") != null) ? "true" : "false" %>;
+  </script>
+  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script> 
   
   <script>
     let posts = [];
