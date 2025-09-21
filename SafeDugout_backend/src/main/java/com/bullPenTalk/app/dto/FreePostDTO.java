@@ -13,14 +13,14 @@ public class FreePostDTO {
 	private String postUpdate; //게시글 수정
 	private String postContent; //게시글 내용
 	private String postComment; // 게시글 댓글
-	private List<AttachmentDTO> atachment; // 파일
+	private List<AttachmentDTO> attachment; // 파일
 
 	// get, set
-	public List<AttachmentDTO> getAtachment() {
-		return atachment;
+	public List<AttachmentDTO> getAttachment() {
+		return attachment;
 	}
-	public void setAtachment(List<AttachmentDTO> atachment) {
-		this.atachment = atachment;
+	public void setAttachment(List<AttachmentDTO> attachment) {
+		this.attachment = attachment;
 	}
 
 	public String getPostComment() {
@@ -77,7 +77,7 @@ public class FreePostDTO {
 	public String toString() {
 		return "FreePostDTO [postNumber=" + postNumber + ", memberNumber=" + memberNumber + ", memberId=" + memberId
 				+ ", postTitle=" + postTitle + ", postDate=" + postDate + ", postUpdate=" + postUpdate
-				+ ", postContent=" + postContent + ", postComment=" + postComment + ", atachment=" + atachment + "]";
+				+ ", postContent=" + postContent + ", postComment=" + postComment + ", attachment=" + attachment + "]";
 	}
 	
 }

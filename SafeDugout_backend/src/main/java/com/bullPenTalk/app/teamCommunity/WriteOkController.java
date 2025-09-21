@@ -35,25 +35,26 @@ public class WriteOkController {
                 return null;
             }
 
-            // 파일 업로드 환경 설정
+
+            // 업로드 경로 설정
+
             LocalDate today = LocalDate.now();
-            // 파일 업로드 환경 설정
-            // 1. 웹 서버의 실제 경로(절대 경로)를 가져옵니다.
-            String realPath = request.getSession().getServletContext().getRealPath("/");
-            // 2. 파일을 저장할 실제 경로를 만듭니다. (절대 경로)
-            // File.separator를 사용하여 OS에 관계없이 올바른 경로 구분자를 사용합니다.
-            String uploadPath = realPath + "assets" + File.separator + "upload" + File.separator;
+            String uploadBasePath = request.getSession().getServletContext().getRealPath("/upload/product/");
+            String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
+            String uploadPath = uploadBasePath + subPath;
+            System.out.println(uploadPath);
+            
             final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
-
             File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs();
-                System.out.println("업로드 폴더: " + uploadPath);
-            }
+            if (!uploadDir.exists()) uploadDir.mkdirs();
 
-            // MultipartRequest로 데이터 파싱
+            //  MultipartRequest 생성
             MultipartRequest multipartRequest = new MultipartRequest(
-                    request, uploadPath, FILE_SIZE, "utf-8", new DefaultFileRenamePolicy()
+                    request,
+                    uploadPath,
+                    FILE_SIZE,
+                    "utf-8",
+                    new DefaultFileRenamePolicy()
             );
 
             // 필수 파라미터 확인 및 안전하게 int 변환
@@ -90,17 +91,18 @@ public class WriteOkController {
                 String fileSystemName = multipartRequest.getFilesystemName(name);
                 String fileOriginalName = multipartRequest.getOriginalFileName(name);
 
-                if (fileSystemName == null) continue; // 업로드 안된 필드 무시
+                if (fileSystemName == null) continue;
 
                 AttachmentDTO attachmentDTO = new AttachmentDTO();
-                attachmentDTO.setAttachmentPath(uploadPath + fileSystemName);
-                attachmentDTO.setAttachmentName(fileOriginalName);
-                attachmentDTO.setAttachmentTypeId(1); // 이미지
-                attachmentDTO.setPostNumber(postNumber); // 게시글 번호 연결
-                attachmentDAO.insertPostAttachment(attachmentDTO);
 
-                int attachmentNumber = attachmentDTO.getAttachmentNumber();
-                System.out.println("생성된 첨부파일 번호 : " + attachmentNumber);
+                // DB에 저장할 경로 (JSP에서 바로 사용 가능)
+                String dbPath = subPath + fileSystemName; 
+                attachmentDTO.setAttachmentPath(dbPath);
+                attachmentDTO.setAttachmentName(fileOriginalName);
+                attachmentDTO.setAttachmentTypeId(1);
+                attachmentDTO.setPostNumber(postNumber);
+
+                attachmentDAO.insertPostAttachment(attachmentDTO);
             }
 
         } catch (IOException e) {

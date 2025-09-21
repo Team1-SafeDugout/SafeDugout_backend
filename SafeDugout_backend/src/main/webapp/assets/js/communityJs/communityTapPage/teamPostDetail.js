@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!res.ok) throw new Error("삭제 요청 실패");
 
           alert("게시글이 삭제되었습니다.");
-          window.location.href = `${contextPath}/community/teamCommunityFrontController.tc?category=board&action=list`;
+          window.location.href = `${contextPath}/community/teamCommunityFrontController.tc?category=board&action=postlist`;
       } catch (err) {
           console.error("게시글 삭제 실패 :", err);
           alert("게시글 삭제에 실패했습니다.");
