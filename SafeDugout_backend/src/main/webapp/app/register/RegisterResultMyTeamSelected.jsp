@@ -36,11 +36,11 @@
           <!-- 선택된 MY팀 로고 -->
           <div class="main-selected-team-img">
             <!-- 팀 로고 img -->
-            <img src="./../../assets/img/communityImg/SS.png" alt="">
+            <img src="${pageContext.request.contextPath}${imgPath}" alt="">
           </div>
           <!-- 정보 메시지 -->
           <div class="main-info-message">
-            • 선택하신 팀은 삼성 라이온즈 입니다. <br><br>
+            • 선택하신 팀은 ${selectTeam} 입니다. <br><br>
             • 로그인 후 중고거래 상품 등록/수정, 포인트 충전, <br>
             MY팀 커뮤니티 게시글/댓글 작성이 가능합니다.
           </div>

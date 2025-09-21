@@ -40,41 +40,44 @@ public class JoinOkController implements Execute {
 		memberDTO.setMemberPoint(0);
 
 		switch (request.getParameter("memberMyTeam")) {
-		case "삼성 라이온즈":		
+		case "삼성 라이온즈":	
+			request.setAttribute("imgPath", "/assets/img/communityImg/samsung.png");
 			memberDTO.setMemberMyTeam(4);
 			break;
 		case "LG 트윈스":
+			request.setAttribute("imgPath", "/assets/img/communityImg/lg.png");
 			memberDTO.setMemberMyTeam(2);
 			break;
 		case "두산 베어스":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/doosan.png");
 			memberDTO.setMemberMyTeam(1);
 			break;
 		case "NC 다이노스":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/nc.png");
 			memberDTO.setMemberMyTeam(7);
 			break;
 		case "키움 히어로즈":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/kiwoom.png");
 			memberDTO.setMemberMyTeam(10);
 			break;
 		case "KT 위즈":
+			request.setAttribute("imgPath", "/assets/img/communityImg/kt.png");
 			memberDTO.setMemberMyTeam(6);
 			break;
 		case "KIA 타이거즈":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/kia.png");
 			memberDTO.setMemberMyTeam(9);
 			break;
 		case "SSG 랜더스":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/ssg.png");
 			memberDTO.setMemberMyTeam(5);
 			break;
 		case "롯데 자이언츠":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/lotte.png");
 			memberDTO.setMemberMyTeam(8);
 			break;
 		case "한화 이글스":
-			
+			request.setAttribute("imgPath", "/assets/img/communityImg/hanwha.png");
 			memberDTO.setMemberMyTeam(3);
 			break;
 		default:
