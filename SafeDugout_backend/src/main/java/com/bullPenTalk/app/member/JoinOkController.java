@@ -39,9 +39,8 @@ public class JoinOkController implements Execute {
 		
 		memberDTO.setMemberPoint(0);
 
-		switch (request.getParameter("myTeam")) {
-		case "삼성 라이온즈":
-			
+		switch (request.getParameter("memberMyTeam")) {
+		case "삼성 라이온즈":		
 			memberDTO.setMemberMyTeam(4);
 			break;
 		case "LG 트윈스":
