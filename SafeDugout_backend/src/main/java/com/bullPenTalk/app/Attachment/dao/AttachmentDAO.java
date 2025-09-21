@@ -43,11 +43,15 @@ public class AttachmentDAO {
         }
     }
     
-    public void insertPostAttachment(AttachmentDTO attachmentDTO) {
+    public int insertPostAttachment(AttachmentDTO attachmentDTO) {
     	try {
-    		sqlSession.insert("attachment.insertPostAttachment", attachmentDTO);
+    		int result = sqlSession.insert("attachment.insertPostAttachment", attachmentDTO);
+    		System.out.println("게시글 첨부 insert 완료: " + result);
+    		return result;
     	} catch(Exception e) {
+    		System.out.println("게시글 첨부 insert 실패: " + e.getMessage());
     		e.printStackTrace();
+    		return 0;
     	}
     }
     

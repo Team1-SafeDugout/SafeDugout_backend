@@ -40,6 +40,9 @@
         </div>
         <!-- 본문 -->
         <article class="team-post-main">
+          <c:if test="${fn:length(freePostDetail.attachment) > 0}">
+		    <img src="/upload/product/${freePostDetail.attachment[0].attachmentPath}" alt="게시글 이미지">
+		  </c:if>
           <p><c:out value="${freePostDetail.postContent}" /></p>
         </article>
 	      <div class="free-guide-board-btn">

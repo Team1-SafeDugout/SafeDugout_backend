@@ -50,13 +50,13 @@ public class FreeCommunityDetailOkController implements Execute{
 				}
 
 				 //첨부파일 가져오기
-				List<AttachmentDTO> files = attachmentDAO.selectBySellPost(postNumber);
+				List<AttachmentDTO> files = attachmentDAO.selectByPost(postNumber);
 				System.out.println("======파일 확인======");
 				System.out.println(files);
 				System.out.println("===================");
 				
 				//첨부파일 붙이기
-				freepostDTO.setAtachment(files);
+				freepostDTO.setAttachment(files);
 //				
 				//로그인한 사용자 번호 가져오기
 				Integer loginMemberNumber = (Integer) request.getSession().getAttribute("memberNumber");

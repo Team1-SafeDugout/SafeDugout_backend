@@ -24,9 +24,7 @@ public class UpdateOkController {
         TeamCommunityDAO teamCommunityDAO = new TeamCommunityDAO();
         AttachmentDAO attachmentDAO = new AttachmentDAO();
 
-        // ------------------------------
-        // 1. 로그인 체크
-        // ------------------------------
+        // 로그인 체크
         Integer memberNumber = (Integer) request.getSession().getAttribute("memberNumber");
         if (memberNumber == null) {
             System.out.println("오류 : 로그인된 사용자가 없습니다");
@@ -35,21 +33,18 @@ public class UpdateOkController {
             return result;
         }
 
-        // ------------------------------
-        // 2. 업로드 경로 설정
-        // ------------------------------
+        // 업로드 경로 설정
         LocalDate today = LocalDate.now();
-        String uploadBasePath = request.getSession().getServletContext().getRealPath("/upload/teamCommunity/");
+        String uploadBasePath = request.getSession().getServletContext().getRealPath("/upload/product/");
         String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
         String uploadPath = uploadBasePath + subPath;
-
+        System.out.println(uploadPath);
+        
         final int FILE_SIZE = 1024 * 1024 * 5; // 5MB
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) uploadDir.mkdirs();
 
-        // ------------------------------
-        // 3. MultipartRequest 생성
-        // ------------------------------
+        //  MultipartRequest 생성
         MultipartRequest multipartRequest = new MultipartRequest(
                 request,
                 uploadPath,
@@ -58,9 +53,8 @@ public class UpdateOkController {
                 new DefaultFileRenamePolicy()
         );
 
-        // ------------------------------
-        // 4. 게시글 정보 세팅
-        // ------------------------------
+
+        // 게시글 정보 세팅
         String postTitle = multipartRequest.getParameter("postTitle");
         String postContent = multipartRequest.getParameter("postContent");
         String postNumberStr = multipartRequest.getParameter("postNumber");
@@ -88,16 +82,16 @@ public class UpdateOkController {
         teamPostDTO.setPostTitle(postTitle);
         teamPostDTO.setPostContent(postContent);
 
-        // ------------------------------
-        // 5. 게시글 업데이트
-        // ------------------------------
+
+        // 기존 첨부파일 삭제
+        attachmentDAO.deleteByPost(postNumber);
+        System.out.println("기존 게시글 첨부파일을 모두 삭제했습니다. postNumber: " + postNumber);
+        
+        // 게시글 업데이트
         teamCommunityDAO.update(teamPostDTO);
 
-        // ------------------------------
-        // 6. 첨부파일 처리
-        // ------------------------------
+        // 첨부파일 처리
         Enumeration<String> fileNames = multipartRequest.getFileNames();
-
         while (fileNames.hasMoreElements()) {
             String name = fileNames.nextElement();
             String fileSystemName = multipartRequest.getFilesystemName(name);
@@ -106,19 +100,19 @@ public class UpdateOkController {
             if (fileSystemName == null) continue;
 
             AttachmentDTO attachmentDTO = new AttachmentDTO();
-            String dbPath = subPath + fileSystemName;
 
+            // DB에 저장할 경로 (JSP에서 바로 사용 가능)
+            String dbPath = subPath + fileSystemName; 
             attachmentDTO.setAttachmentPath(dbPath);
             attachmentDTO.setAttachmentName(fileOriginalName);
-            attachmentDTO.setAttachmentTypeId(2); 
+            attachmentDTO.setAttachmentTypeId(1);
             attachmentDTO.setPostNumber(postNumber);
 
-            attachmentDAO.insert(attachmentDTO);
+            attachmentDAO.insertPostAttachment(attachmentDTO);
         }
 
-        // ------------------------------
-        // 7. 수정 완료 후 상세보기 페이지 이동
-        // ------------------------------
+        // 수정 완료 후 상세보기 페이지 이동
+
         result.setPath("/community/TeamCommunityFrontController.tc?category=board&action=postList");
         result.setRedirect(true);
         return result;

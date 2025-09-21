@@ -4,18 +4,23 @@
 
 	
 	<!-- 포인트 충전 내역 조회 -->
-	<select id="selectPoint" resultType="pointChargeRecordDTO">
+	<select id="selectPoint" resultType="PointPaymentDTO" parameterType = "int">
 	<![CDATA[
 	SELECT *
 	FROM (
 	    SELECT ROWNUM AS rnum, subquery.*
 	    FROM (
-	        SELECT P.CHARGE_POINT,
-	               P.AFTER_CHARGE_POINT,
-	               P.CHARGE_DATE
-	        FROM TBL_POST P
+	        SELECT 	P.PAYMENT_ID,
+	        		P.MERCHANT_UID,
+	        		P.MEMBER_NUMBER,
+	        		P.AMOUNT,
+	        		P.STATUS,
+	        		P.PAY_METHOD,
+	               	P.PAID_AT,
+	               	P.CREATED_AT
+	        FROM TBL_POINT_PAYMENT P
 	        WHERE P.MEMBER_NUMBER = #{memberNumber}
-	        ORDER BY P.CHARGE_DATE DESC
+	        ORDER BY P.PAID_AT DESC
 	    ) subquery
 	)
 	WHERE rnum BETWEEN #{startRow} AND #{endRow}
@@ -46,7 +51,8 @@
 		               P.POST_UPDATE,
 		               NVL(P.POST_LINK, 'NONE') as postLink,
 		               NVL(P.journalist, 'NONE') as journalist,
-		               P.POST_TYPE
+		               P.POST_TYPE,
+		               P.TEAM_NUMBER
 		        FROM TBL_POST P
 		        WHERE (P.POST_TYPE = 1 OR P.POST_TYPE = 2) AND P.MEMBER_NUMBER = #{memberNumber}
 		        ORDER BY P.POST_DATE DESC
@@ -89,7 +95,9 @@
 		        	   	FROM TBL_MEMBER PM
 		        	   	JOIN TBL_POST PP ON PP.MEMBER_NUMBER = PM.MEMBER_NUMBER 
 		        	   	WHERE P.POST_NUMBER = PP.POST_NUMBER
-		        	   ) as postAuthor
+		        	   ) as postAuthor,
+		        	   P.POST_TYPE,
+		        	   P.TEAM_NUMBER
 		        FROM TBL_COMMENT C
 		        JOIN TBL_MEMBER M ON C.MEMBER_NUMBER = M.MEMBER_NUMBER
 		        JOIN TBL_POST P ON C.POST_NUMBER = P.POST_NUMBER

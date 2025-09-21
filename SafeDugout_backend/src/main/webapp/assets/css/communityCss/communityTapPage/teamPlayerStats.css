@@ -24,9 +24,7 @@ main {
 }
 
 
-/* ===============================
-   선수 기록 영역
-================================ */
+/* 선수 기록 영역 */
 .team-player-stats {
   width: 95%;
   max-width: 1400px;
@@ -49,9 +47,7 @@ main {
   width: 100%;
 }
 
-/* ===============================
-   투수 / 타자 탭 버튼
-================================ */
+/* 투수 / 타자 탭 버튼 */
 .team-stats-switch {
   display: inline-flex;
   border: 1px solid #ccc;
@@ -96,9 +92,7 @@ main {
   border-radius: 2px;
 }
 
-/* ===============================
-   표 헤더 및 데이터 행 정렬 통일
-================================ */
+/*  표 헤더 및 데이터 행 정렬 통일 */
 .team-stats-header,
 .player-row {
   display: flex;
@@ -122,7 +116,7 @@ main {
   border-right: none;
 }
 
-/* 데이터 행 스타일 */
+/* 데이터 행 */
 .team-stats-data .player-row {
   background: #fff;
   font-weight: normal;
