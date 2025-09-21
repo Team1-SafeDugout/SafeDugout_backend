@@ -487,6 +487,7 @@ main {
 .product-box-item-img {
   width: 90%;
   height: 90%;
+  margin: 0px 5%;
 }
 
 /* 중고 거래 상품명 */
