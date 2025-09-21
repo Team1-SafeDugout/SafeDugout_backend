@@ -72,6 +72,9 @@ public class MyPageSellListOkController implements Execute {
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
 		
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
+		
 		result.setPath("/app/sellList/sellList.jsp");
 		result.setRedirect(false);
 		

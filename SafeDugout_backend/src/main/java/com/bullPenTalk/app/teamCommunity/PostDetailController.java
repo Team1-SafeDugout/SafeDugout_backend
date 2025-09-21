@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Result;
 import com.bullPenTalk.app.Attachment.dao.AttachmentDAO;
@@ -23,6 +24,7 @@ public class PostDetailController {
 	// 게시판
 	public Result detailselect(String action, HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
+		HttpSession session = request.getSession();
 
 		String postNumberStr = request.getParameter("postNumber");
 		if (postNumberStr == null || postNumberStr.trim().isEmpty()) {
@@ -33,8 +35,18 @@ public class PostDetailController {
 		}
 
 		int postNumber = Integer.parseInt(postNumberStr);
-
-		Integer teamNumber = (Integer) request.getSession().getAttribute("teamNumber");
+		Integer teamNumber;
+		// 파라미터 값에 팀넘버가 있는지 확인
+		String teamNumberParam = request.getParameter("teamNumber");
+		
+		// 있을 경우 세션에 해당 팀 넘버 값 대입
+		if (teamNumberParam != null) {
+			int paramTeamNumber = Integer.parseInt(teamNumberParam);
+			session.setAttribute("teamNumber", paramTeamNumber);
+		}
+		
+		teamNumber = (Integer) request.getSession().getAttribute("teamNumber");
+		
 		if (teamNumber == null) {
 			System.out.println("teamNumber 세션이 없습니다.");
 			result.setPath("/app/communityHtml/communityTapPage/communityMainPage.jsp");
@@ -52,7 +64,7 @@ public class PostDetailController {
 
 		// DB에서 게시글 가져오기
 		PostDetailDTO postDetailDTO = teamCommunityDAO.postDetail(postDTO);
-
+		System.out.println(postDTO);
 		if (postDetailDTO == null) {
 			System.out.println("존재하지 않는 게시글입니다. " + postNumber);
 			result.setPath("/app/communityHtml/communityTapPage/teamBoard.jsp");

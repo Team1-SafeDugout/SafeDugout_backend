@@ -24,7 +24,6 @@
     const contextPath = "${pageContext.request.contextPath}";
   </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/myPostList/myPostList.js"></script>
-  <script defer src = "${pageContext.request.contextPath}/assets/js/myPostList/getPoint.js"></script>
 </head>
 
 <body>
@@ -68,8 +67,8 @@
             
           </ul>
           <div class="write-post">
-              <a href="">+ 전체 게시글 작성</a>
-              <a href="">+ 팀 게시글 작성</a>
+<!--               <a href="">+ 전체 게시글 작성</a>
+              <a href="">+ 팀 게시글 작성</a> -->
           </div>
           <div class="pagination">           
 	        <ul id="numberlist-ul">
@@ -105,7 +104,7 @@
       <section class="point-box">
         <div class="my-point-text">내 포인트</div>
         <div class="my-point-value" id = "my-point">
-          <span>20000</span><span>P</span>
+          <span>${myPoint}</span><span>P</span>
         </div>
         <a href="${pageContext.request.contextPath}/myPage/pointCharge.mp" class="charge-list-btn">포인트 충전 내역 보기</a>
         <a href="${pageContext.request.contextPath}/trade/sellPostFrontController2.tr?category=buy&action=charging" class="charge-btn">충전</a>

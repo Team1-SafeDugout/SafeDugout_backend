@@ -1,12 +1,14 @@
 package com.bullPenTalk.app.myPage;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bullPenTalk.app.Execute;
 import com.bullPenTalk.app.Result;
@@ -22,6 +24,15 @@ public class MyPagePoinChargeListOkController implements Execute{
 		// 페이지네이션
 		String temp = request.getParameter("page");
 		int memberNumber = Integer.parseInt(request.getSession().getAttribute("memberNumber").toString());
+		
+		HttpSession session = request.getSession();
+		Enumeration<String> attributeNames = session.getAttributeNames();
+
+		while(attributeNames.hasMoreElements()) {
+		    String name = attributeNames.nextElement();
+		    Object value = session.getAttribute(name);
+		    System.out.println("세션 속성: " + name + " = " + value);
+		}
 		
 		int page = (temp == null) ? 1 : Integer.valueOf(temp); // 페이지 번호 기본값 1로 설정하겠다
 		int rowCount = 10; // 한 페이지당 게시글 수
@@ -64,6 +75,10 @@ public class MyPagePoinChargeListOkController implements Execute{
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
+		
+		// 유저 포인트 조회
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		
 		result.setPath("/app/pointCharge/pointChargeList.jsp");
 		result.setRedirect(false);

@@ -34,7 +34,7 @@
             <input type="password" name="adminPw" placeholder="비밀번호" id = "pw" required>
           </div>
           <div class="main-input-fail-message">
-            아이디 또는 비밀번호가 잘못되었습니다.
+            <!-- 아이디 또는 비밀번호가 잘못되었습니다. -->
           </div>
           <div class="main-login-button">
             <button type="submit" id = "login-button"> 로그인 </button>

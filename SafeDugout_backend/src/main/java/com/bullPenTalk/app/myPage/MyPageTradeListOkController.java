@@ -71,6 +71,9 @@ public class MyPageTradeListOkController implements Execute{
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);		
 		
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
+		
 		result.setPath("/app/buyList/buyList.jsp");
 		result.setRedirect(false);
 		

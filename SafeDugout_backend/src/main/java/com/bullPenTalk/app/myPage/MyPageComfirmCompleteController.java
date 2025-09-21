@@ -21,6 +21,9 @@ public class MyPageComfirmCompleteController implements Execute {
 		MyPageTradeListDTO dto = dao.selectDetailTrade(sellPostNumber);
 		
 		request.setAttribute("sellPost", dto);
+		int memberNumber = Integer.parseInt(request.getSession().getAttribute("memberNumber").toString());
+		int memberPoint = dao.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		
 		Result result = new Result();
 		result.setPath("/app/buyList/buyListConfirmComplete.jsp");

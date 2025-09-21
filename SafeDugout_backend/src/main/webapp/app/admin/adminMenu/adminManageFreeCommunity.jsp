@@ -58,7 +58,7 @@
     </section>
     <section class="body-container">
       <div class="body-container-name">
-        전체 커뮤니티 / 뉴비 가이드
+        뉴비 가이드
       </div>
 
       <section class="body-container-list">
@@ -77,7 +77,7 @@
 
           <section class="section-user-postlist">
             <div class="list-background">
-              <div class="list-title"> 뉴비 가이드 </div>
+              <div class="list-title">  </div>
 	             <div class="list-names">
 	                <div>글번호</div>
 	                <div>제목</div>
@@ -126,65 +126,6 @@
 	             </div>
             </div>
           </section>
-
-          <!-- -------------------------------------------------------------여기서부터 유저 게시글-------------------------------------------------------------------- -->
-<%-- 
-          <section class="section-admin-postlist">
-            <div class="list-background">
-              <div class="list-title"> 전체 커뮤니티 글 목록 </div>
-
-              <div class="list-names">
-                <div>글번호</div>
-                <div> 제목 </div>
-                <div>작성일자</div>
-                <div>글종류</div>
-                <div>작성자ID</div>
-                <div></div>
-              </div>
-
-              <div class="list-container">
-                <ul class="list-ul" id="user-post-list">
-				<c:choose>
-					<c:when test="${empty boardList}">
-						<div>
-   							<div colspan="5" align="center">등록된 게시물이 없습니다.</div>
-   						</div>
-					</c:when>
-				</c:choose>
-                </ul>
-              </div>
-
-	          <div class="pagination">
-	            <ul>
-	              
-	              <c:if test="${prev}">
-	              	<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${startPage - 1}" class="prev">&lt;</a></li>
-	              </c:if>
-	              <c:set var="realStartPage2" value="${startPage < 0 ? 0 : startPage}" />
-	              <c:forEach var="i" begin="${realStartPage}" end="${endPage}">
-	              	<c:choose>
-	              		<c:when test="${!(i == page) }">
-	              			<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${i}">
-	              				<c:out value="${i}" />
-	              			</a></li>
-	              		</c:when>
-	              		<c:otherwise>
-	              			<li><a href="#" class="active">
-	              				<c:out value="${i}" />
-	              			</a></li>
-	              		</c:otherwise>
-	              	</c:choose>
-	              </c:forEach>
-	              
-	              <c:if test="${next}">
-	              	<li><a href="${pageContext.request.contextPath}/admin/adminManageFreeCommunityListOk.ad?page=${endPage + 1}" class="next">&gt;</a>
-	              </c:if>
-	              
-	            </ul>
-	          </div>
-            </div>
-          </section> --%>
-          <!-- -------------------------------------------------------------끝-------------------------------------------------------------------- -->
 		</div>          
       </section>
     </section>
