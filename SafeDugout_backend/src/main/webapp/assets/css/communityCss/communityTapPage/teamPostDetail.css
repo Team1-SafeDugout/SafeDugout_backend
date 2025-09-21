@@ -78,6 +78,11 @@ body {
   line-height: 2;
 }
 
+.team-post-main img{
+	max-width: 400px;
+	height: 400px;
+}
+
 /* ------------------- 댓글 영역 ------------------- */
 .team-comment-header h2 {
   font-size: 20px;
