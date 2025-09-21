@@ -51,7 +51,7 @@ public class FreeCommunityNoticeDetailOkController implements Execute{
 				}
 
 				 //첨부파일 가져오기
-				List<AttachmentDTO> files = attachmentDAO.selectBySellPost(noticePostNumber);
+				List<AttachmentDTO> files = attachmentDAO.selectByNoticePost(noticePostNumber);
 				System.out.println("======파일 확인======");
 				System.out.println(files);
 				System.out.println("===================");
