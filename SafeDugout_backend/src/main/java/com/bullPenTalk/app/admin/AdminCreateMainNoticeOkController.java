@@ -2,6 +2,7 @@ package com.bullPenTalk.app.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Enumeration;
 
@@ -21,7 +22,6 @@ import com.bullPenTalk.app.dto.AttachmentDTO;
 import com.bullPenTalk.app.dto.GuidePostDTO;
 import com.bullPenTalk.app.dto.MainNoticePostDTO;
 import com.bullPenTalk.app.dto.TeamNoticeDetailDTO;
-import com.bullPenTalk.app.dto.TeamNoticePostDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -39,6 +39,7 @@ public class AdminCreateMainNoticeOkController implements Execute {
 
 		// 파일 업로드 환경 설정
 		LocalDate today = LocalDate.now();
+
 		final String UPLOAD_PATH = request.getSession().getServletContext().getRealPath("/") + "upload/";
 		String subPath = today.getYear() + "/" + String.format("%02d", today.getMonthValue()) + "/";
 		String uploadPath = UPLOAD_PATH + subPath;
@@ -66,7 +67,7 @@ public class AdminCreateMainNoticeOkController implements Execute {
 		String upDate = date;
 		String content = multipartRequest.getParameter("content");
 		int adminNumber = adminInfo.getAdminNumber();
-
+		
 		switch (boardCategory) {
 		case "main":
 			boardNum = 1;
@@ -106,8 +107,6 @@ public class AdminCreateMainNoticeOkController implements Execute {
 
 			teamPost.setNoticePostTitle(title);
 			teamPost.setNoticePostContent(content);
-			teamPost.setNoticePostDate(date);
-			teamPost.setNoticePostUpdate(upDate);
 			teamPost.setTeamNumber(teamNum);
 			teamPost.setAdminNumber(adminNumber);
 			teamPost.setNoticeTypeId(boardNum);

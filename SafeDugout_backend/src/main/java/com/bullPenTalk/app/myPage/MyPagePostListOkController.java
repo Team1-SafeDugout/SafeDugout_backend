@@ -72,6 +72,8 @@ public class MyPagePostListOkController implements Execute {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		
 		result.setRedirect(false);
 		result.setPath("/app/myPostList/myPostList.jsp");

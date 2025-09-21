@@ -16,10 +16,31 @@ public class CommentDTO {
 	private int postNumber; // 작성한 글 번호
 	private int memberNumber; // 작성자 번호
 	private String postTitle;	// 댓글 작성한 글 제목
-	private String postAuthor;  // 댓글 작성한 글 작가
+	private String postAuthor;  // 댓글 작성한 글 작S가
+	private int postType; // 글 타입
+	private int teamNumber; // 팀
 	
 	
 	
+	@Override
+	public String toString() {
+		return "CommentDTO [commentNumber=" + commentNumber + ", commentContent=" + commentContent + ", commentDate="
+				+ commentDate + ", commentUpdate=" + commentUpdate + ", memberID=" + memberID + ", postNumber="
+				+ postNumber + ", memberNumber=" + memberNumber + ", postTitle=" + postTitle + ", postAuthor="
+				+ postAuthor + ", postType=" + postType + ", teamNumber=" + teamNumber + "]";
+	}
+	public int getTeamNumber() {
+		return teamNumber;
+	}
+	public void setTeamNumber(int teamNumber) {
+		this.teamNumber = teamNumber;
+	}
+	public int getPostType() {
+		return postType;
+	}
+	public void setPostType(int postType) {
+		this.postType = postType;
+	}
 	public String getPostTitle() {
 		return postTitle;
 	}
@@ -74,15 +95,5 @@ public class CommentDTO {
 	public void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
-	@Override
-	public String toString() {
-		return "CommentDTO [commentNumber=" + commentNumber + ", commentContent=" + commentContent + ", commentDate="
-				+ commentDate + ", commentUpdate=" + commentUpdate + ", memberID=" + memberID + ", postNumber="
-				+ postNumber + ", memberNumber=" + memberNumber + ", postTitle=" + postTitle + ", postAuthor="
-				+ postAuthor + "]";
-	}
-	
-	 
-
 	
 }

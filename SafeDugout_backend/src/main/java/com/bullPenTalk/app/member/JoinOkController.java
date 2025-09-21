@@ -39,36 +39,44 @@ public class JoinOkController implements Execute {
 		
 		memberDTO.setMemberPoint(0);
 
-		switch (request.getParameter("memberMyTeam")) {
+		switch (request.getParameter("myTeam")) {
 		case "삼성 라이온즈":
-			memberDTO.setMemberMyTeam(1);
+			
+			memberDTO.setMemberMyTeam(4);
 			break;
 		case "LG 트윈스":
 			memberDTO.setMemberMyTeam(2);
 			break;
 		case "두산 베어스":
-			memberDTO.setMemberMyTeam(3);
+			
+			memberDTO.setMemberMyTeam(1);
 			break;
 		case "NC 다이노스":
-			memberDTO.setMemberMyTeam(4);
+			
+			memberDTO.setMemberMyTeam(7);
 			break;
 		case "키움 히어로즈":
-			memberDTO.setMemberMyTeam(5);
+			
+			memberDTO.setMemberMyTeam(10);
 			break;
 		case "KT 위즈":
 			memberDTO.setMemberMyTeam(6);
 			break;
 		case "KIA 타이거즈":
-			memberDTO.setMemberMyTeam(7);
-			break;
-		case "SSG 랜더스":
-			memberDTO.setMemberMyTeam(8);
-			break;
-		case "롯데 자이언츠":
+			
 			memberDTO.setMemberMyTeam(9);
 			break;
+		case "SSG 랜더스":
+			
+			memberDTO.setMemberMyTeam(5);
+			break;
+		case "롯데 자이언츠":
+			
+			memberDTO.setMemberMyTeam(8);
+			break;
 		case "한화 이글스":
-			memberDTO.setMemberMyTeam(10);
+			
+			memberDTO.setMemberMyTeam(3);
 			break;
 		default:
 			memberDTO.setMemberMyTeam(0);
