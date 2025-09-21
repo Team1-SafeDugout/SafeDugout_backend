@@ -40,7 +40,7 @@
 						action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr"
 						method="get">
 						<input type="hidden" name="category"
-							value="${param.category != null ? param.category : 'allproduct'}">
+							value="allproduct">
 
 						<c:set var="categories"
 							value="list,uniformList,capList,apparelList,accessoriesList,cheeringitemList,baseballgearList" />
