@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	if (typeof comments !== 'undefined') {
 		comments.forEach(comment => {
 			console.log("test");
-			addPost(comment.number, comment.title, comment.author, comment.content, comment.date, comment.commentNumber);
+			addPost(comment.number, comment.title, comment.author, comment.content, comment.date, comment.commentNumber, comment.postType, comment.teamNumber);
 		});
 	}
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
   <div class="comment-list-date">2025.01.01</div>
   <button type="button" class="comment-list-delete">삭제하기</button>
 </li>*/
-function addPost(commentPostNumber, commentTitleParam, commentAuthorParam, commentContentParam, commentDateParam, commentNumber){
+function addPost(commentPostNumber, commentTitleParam, commentAuthorParam, commentContentParam, commentDateParam, commentNumber, postType, teamNumber){
 	const newComment = document.createElement('li');
 
 	const commentTitle = document.createElement('div');
@@ -63,14 +63,18 @@ function addPost(commentPostNumber, commentTitleParam, commentAuthorParam, comme
 	commentDate.style.textOverflow = "eclipse";
 
 	const commentTitleLink = document.createElement('a');
-	commentTitleLink.setAttribute("href", "/freeCommunity/freeCommunityDetailOk.fc?postNumber=" + commentPostNumber);
-/*	if(postTypeNum === "1"){
-		postTitleLink.setAttribute("href", "/freeCommunity/freeCommunityDetailOk.fc?postNumber=" + postNumberParam);
+	
+	console.log(postType);
+	console.log(commentPostNumber);
+	
+	if(postType === "1"){
+		commentTitleLink.setAttribute("href", "/freeCommunity/freeCommunityDetailOk.fc?postNumber=" + commentPostNumber);
 	}
 	
-	else if(postTypeNum === "2"){
-		postTitleLink.setAttribute("href", "/freeCommunity/freeCommunityDetailOk.fc?postNumber=" + postNumberParam);
-	}*/
+	else if(postType === "2"){
+		console.log(teamNumber);
+		commentTitleLink.setAttribute("href", "/community/teamCommunityFrontController.tc?category=board&action=detail&postNumber=" + commentPostNumber + "&teamNumber=" + teamNumber);
+	}
 	
 	commentTitleLink.appendChild(commentTitleText);
 

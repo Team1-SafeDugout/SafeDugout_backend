@@ -39,6 +39,8 @@ public class MyPageInputInfoController implements Execute{
 			result.setPath("/myPage/changeInfo.mp");
 			result.setRedirect(false);
 		}
+		int memberPoint = myPageDao.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
 		
 		return result;
 	}

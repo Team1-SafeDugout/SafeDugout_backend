@@ -76,6 +76,10 @@ public class MyPagePoinChargeListOkController implements Execute{
 		request.setAttribute("prev", prev);
 		request.setAttribute("next", next);
 		
+		// 유저 포인트 조회
+		int memberPoint = myPageDAO.getMemberPoint(memberNumber);
+		request.setAttribute("myPoint", memberPoint);
+		
 		result.setPath("/app/pointCharge/pointChargeList.jsp");
 		result.setRedirect(false);
 		

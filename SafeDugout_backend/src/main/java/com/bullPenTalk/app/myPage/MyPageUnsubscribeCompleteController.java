@@ -42,8 +42,7 @@ public class MyPageUnsubscribeCompleteController implements Execute {
 		} else {
 			result.setPath("/app/memberQuit/quitComplete.jsp");
 			result.setRedirect(true);
-		}
-		
+		}		
 		
 		return result;
 	}
