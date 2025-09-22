@@ -90,7 +90,7 @@ main.team-stats {
 .team-stats-history-row {
   display: flex;
   flex-direction: column;
-  max-height: 420px; /* 스크롤 기준 높이 */
+  max-height: 440px; /* 스크롤 기준 높이 */
   overflow-y: auto;
   scrollbar-gutter: stable; /* 스크롤바 공간 고정 */
   
