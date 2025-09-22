@@ -35,7 +35,7 @@
     <!-- 판매글 상태 판매중으로 되돌리기 -->
 	<update id="updateSellPostStatusAfterCancel" parameterType="map">
 	    UPDATE TBL_SELL_POST s
-	    SET s.STATUS_ID = 1  <!-- 1 = 'selling' -->
+	    SET s.STATUS_ID = 1  
 	    WHERE s.SELL_POST_NUMBER = (
 	        SELECT t.SELL_POST_NUMBER
 	        FROM TBL_TRADE_POST t
