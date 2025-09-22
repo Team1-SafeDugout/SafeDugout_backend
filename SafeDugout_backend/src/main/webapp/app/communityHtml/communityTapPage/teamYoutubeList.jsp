@@ -99,10 +99,10 @@
 				<c:choose>
 					<c:when test="${not empty postList}">
 						<c:forEach var="youtube" items="${postList}">
-							<li class="team-youtube-list-row"><span class="col-num"><c:out
-										value="${youtube.postNumber}" /></span> <a
-								href="${youtube.postLink}" class="col-title"> <span><c:out
-											value="${youtube.postTitle}" /></span>
+							<li class="team-youtube-list-row"><span class="col-num">
+								<c:out value="${youtube.postNumber}" /></span>
+								<a href="${youtube.postLink}" class="col-title" target="_blank">
+								<span><c:out value="${youtube.postTitle}" /></span>
 							</a></li>
 						</c:forEach>
 					</c:when>

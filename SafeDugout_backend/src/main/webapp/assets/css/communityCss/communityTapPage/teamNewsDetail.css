@@ -43,6 +43,7 @@
   font-size: 14px;
   color: black;
   border-bottom: 1px solid #ccc;
+  white-space: pre-wrap;
 }
 
 .team-news-page {

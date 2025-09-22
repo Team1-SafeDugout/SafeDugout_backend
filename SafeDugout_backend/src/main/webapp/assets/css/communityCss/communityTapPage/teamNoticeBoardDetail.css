@@ -79,6 +79,7 @@
   position: relative;
   min-height: 400px;
   background-color: #fff;
+  white-space: pre-wrap;
 }
 
 /* 문단 간 간격 */

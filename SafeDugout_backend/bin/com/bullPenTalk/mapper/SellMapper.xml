@@ -183,6 +183,13 @@
 		WHERE STATUS_ID = 1
 	</select>
 	
+	<select id="getTotalCategory" resultType="int">
+		SELECT COUNT(*)
+		FROM tbl_sell_post
+		WHERE STATUS_ID = 1
+		  AND CATEGORY_ID = #{categoryId}
+	</select>
+	
 	<!-- 팀 카테고리 총 갯수 -->
 	<select id="getTotalByTeamCategory" parameterType="map" resultType="int">
     SELECT COUNT(*)

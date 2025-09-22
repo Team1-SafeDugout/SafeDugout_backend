@@ -66,7 +66,7 @@
       </div>
       <!-- 입문자 가이드 본문 -->
       <div class="free-guide-board-content">
-        <p><c:out value="${noticePostDetail.noticePostContent}" /></p>
+        <p>${noticePostDetail.noticePostContent}"</p>
       </div>
       <!-- 작성일자 -->
       <div class="free-guide-date">
