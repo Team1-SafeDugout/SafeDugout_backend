@@ -167,7 +167,14 @@
               <!-- 중고 거래 이미지 -->
               <div class="product-box-item-imgdiv">
                 <a href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=allproduct&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
+                <c:choose>
+                <c:when test="${empty sellPost.attachmentPath}">
                 <img src="${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png" alt="" class="product-box-item-img">
+                </c:when>
+                <c:otherwise>
+                <img src="${pageContext.request.contextPath}/upload/product/${sellPost.getAttachmentPath()}" alt="" class="product-box-item-img">
+                </c:otherwise>
+                </c:choose>
                 </a>
               </div>
               <!-- 중고 거래 상품명 -->
