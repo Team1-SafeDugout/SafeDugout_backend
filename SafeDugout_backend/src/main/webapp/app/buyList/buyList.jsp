@@ -25,7 +25,8 @@
             buyDate : "${board.buyDate}",
             confirmDate : "${board.confirmDate}",
             postNumber : "${board.sellPostNumber}",
-            seller : "${board.sellerMemberId}"
+            seller : "${board.sellerMemberId}",
+            addDate : "${board.addDate}"
         });
     </c:forEach>
     console.log(posts);
