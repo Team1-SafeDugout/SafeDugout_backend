@@ -53,7 +53,7 @@ function addPost(postNumberParam, postTitleParam, postDateParam,postTypeParam, p
 
 	const postNumText = document.createTextNode(postNumberParam);
 	const postTitleText = document.createTextNode(postTitleParam);
-	const postDateText = document.createTextNode(postDateParam);
+	const postDateText = document.createTextNode(formatDate(postDateParam));
 	const postTypeText = document.createTextNode(postTypeParam);
 	const deleteBtnText = document.createTextNode("삭제하기");
 
@@ -95,4 +95,15 @@ function addPost(postNumberParam, postTitleParam, postDateParam,postTypeParam, p
 	newPost.appendChild(deleteBtn);
 
 	memberPostList.appendChild(newPost);
+}
+
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+
+  return `${yyyy}-${mm}-${dd}`;
 }

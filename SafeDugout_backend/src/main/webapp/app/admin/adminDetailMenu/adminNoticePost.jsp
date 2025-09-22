@@ -22,7 +22,7 @@
       <!-- 상단 버튼 -->
       <section class="section-top-buttons">
         <form action="" method="get">    
-          <button class="post-button" type="button" > 수정 </button>
+          <!-- <button class="post-button" type="button" > 수정 </button> -->
           <button class="post-button" type="button" id="delete-button"> 삭제 </button>
         </form>        
       </section>
