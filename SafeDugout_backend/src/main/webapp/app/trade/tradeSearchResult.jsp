@@ -39,8 +39,7 @@
 					<form
 						action="${pageContext.request.contextPath}/trade/tradeFrontController2.tr"
 						method="get">
-						<input type="hidden" name="category"
-							value="allproduct">
+						<input type="hidden" name="category" value="allproduct">
 
 						<c:set var="categories"
 							value="list,uniformList,capList,apparelList,accessoriesList,cheeringitemList,baseballgearList" />
@@ -86,8 +85,7 @@
 											href="${pageContext.request.contextPath}/trade/productDetailBuyer.tr?category=allproduct&action=detail&sellPostNumber=${sellPost.sellPostNumber}">
 											<c:choose>
 												<c:when test="${not empty sellPost.imagePath}">
-													<img
-														src="${pageContext.request.contextPath}/upload/${sellPost.imagePath}"
+													<img src="/upload/product/${sellPost.imagePath}"
 														alt="${sellPost.sellPostTitle}"
 														onerror="this.src='${pageContext.request.contextPath}/assets/img/communityImg/mainLogo.png'">
 												</c:when>

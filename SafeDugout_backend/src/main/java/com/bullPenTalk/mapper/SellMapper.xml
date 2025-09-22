@@ -214,8 +214,10 @@
 	                   SP.TRADING_AREA,
 	                   SP.SELL_POST_CREATION_DATE,
 	                   SP.CATEGORY_ID,
-	                   SP.TEAM_ID
+	                   SP.TEAM_ID,
+	                   AT.ATTACHMENT_PATH AS IMAGE_PATH
 	            FROM TBL_SELL_POST SP
+	            LEFT JOIN TBL_ATTACHMENT AT ON SP.SELL_POST_NUMBER = AT.SELL_POST_NUMBER
 	            WHERE SP.STATUS_ID = 1
 	              AND SP.SELL_POST_TITLE LIKE '%' || #{keyword} || '%'
 	            ORDER BY SP.SELL_POST_CREATION_DATE DESC
