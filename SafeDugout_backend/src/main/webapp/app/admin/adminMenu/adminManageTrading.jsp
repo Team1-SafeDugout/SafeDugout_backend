@@ -25,6 +25,10 @@
     const contextPath = "${pageContext.request.contextPath}";
   </script>  
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManageTrading.js"></script>
+  <script>
+    const isLogin = <%= (session.getAttribute("adminNumber") != null) ? "true" : "false" %>;
+  </script>
+  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script> 
 </head>
 
 <body>

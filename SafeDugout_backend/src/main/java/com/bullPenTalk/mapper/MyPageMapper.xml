@@ -132,6 +132,7 @@
 				SELECT 	SP.SELL_POST_TITLE AS title,
 						TD.DEALTYPE_NAME AS dealType,
 						TS.STATUS_NAME AS tradeStatus,
+						SP.TRADING_AREA,
 						SP.PRICE_POINT AS pricePoint,
 						SP.SELL_POST_CREATION_DATE AS addDate,
 						TP.PAYMENT_DATE AS buyDate,
@@ -159,7 +160,7 @@
 	<!-- 구매 확정 -->
 	<update id="completeTrade" parameterType="int">
 		update tbl_trade_post 
-		set status_number = 3
+		set status_number = 3, COMPLETE_DATE = SYSDATE
 		where SELL_POST_NUMBER = #{sellPostNumber}
 	</update>
 	
@@ -173,7 +174,7 @@
 	<!-- 구매 확정 transaction -->
 	<update id = "completeTransaction" parameterType = "int">
 		update TBL_POINT_TRANSACTION
-		set TRANSACTION_STATUS = 3
+		set TRANSACTION_STATUS = 3, TRANSACTION_DATE = sysdate
 		WHERE SELL_POST_NUMBER = #{sellPostNumber}
 	</update>
 	
@@ -206,6 +207,7 @@
 		SELECT 	SP.SELL_POST_TITLE AS title,
 				TD.DEALTYPE_NAME AS dealType,
 				TS.STATUS_NAME AS tradeStatus,
+				SP.TRADING_AREA as tradeArea,
 				SP.PRICE_POINT AS pricePoint,
 				SP.SELL_POST_CREATION_DATE AS addDate,
 				TP.PAYMENT_DATE AS buyDate,
@@ -231,14 +233,14 @@
 	UPDATE TBL_MEMBER
 	SET MEMBER_POINT = MEMBER_POINT + 
 	(
-		SELECT SUM(POINT_AMOUNT)
-		FROM TBL_POINT_TRANSACTION TT
+		SELECT PRICE_POINT
+		FROM TBL_SELL_POST TT
 		WHERE TT.SELL_POST_NUMBER = #{sellPostNumber}
 	)
 	WHERE MEMBER_NUMBER = 
 	(
-		SELECT MEMBER_TO
-		FROM TBL_POINT_TRANSACTION tpt 
+		SELECT BUY_MEMBER
+		FROM TBL_TRADE_POST tpt 
 		WHERE tpt.SELL_POST_NUMBER = #{sellPostNumber}
 	)
 	</update>
@@ -248,14 +250,14 @@
 	UPDATE TBL_MEMBER
 	SET MEMBER_POINT = MEMBER_POINT + 
 	(
-		SELECT SUM(POINT_AMOUNT)
-		FROM TBL_POINT_TRANSACTION TT
+		SELECT PRICE_POINT
+		FROM TBL_SELL_POST TT
 		WHERE TT.SELL_POST_NUMBER = #{sellPostNumber}
 	)
 	WHERE MEMBER_NUMBER = 
 	(
-		SELECT MEMBER_FROM
-		FROM TBL_POINT_TRANSACTION tpt 
+		SELECT MEMBER_NUMBER
+		FROM TBL_SELL_POST tpt 
 		WHERE tpt.SELL_POST_NUMBER = #{sellPostNumber}
 	)
 	</update>
@@ -323,6 +325,11 @@
 	<delete id="quit" parameterType="int">
 		delete from tbl_member
 		where member_number = #{memberNumber}
+	</delete>
+	
+	<!-- 탈퇴시 충전 기록 삭제 -->
+	<delete id="deleteCharge" parameterType ="int">
+		DELETE FROM TBL_POINT_PAYMENT WHERE MEMBER_NUMBER = #{memberNumber}
 	</delete>
 	
 	<!-- 탈퇴 시 거래글 확인 -->

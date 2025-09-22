@@ -8,6 +8,7 @@ public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 	private String title;	// 글제목
 	private String dealType; // 거래 방식
 	private String tradeStatus; // 거래 상태
+	private String tradeArea; // 거래 지역
 	
 	private String pricePoint; // 가격
 	
@@ -26,8 +27,17 @@ public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 	
 	private String sellPostContent;
 	
-	private List<AttachmentDTO> attachment;
+	private List<AttachmentDTO> attachment;		
 	
+	
+	public String getTradeArea() {
+		return tradeArea;
+	}
+
+	public void setTradeArea(String tradeArea) {
+		this.tradeArea = tradeArea;
+	}
+
 	public String getSellPostContent() {
 		return sellPostContent;
 	}
@@ -153,11 +163,11 @@ public class MyPageTradeListDTO { // 마이페이지 판매글 리스트
 	@Override
 	public String toString() {
 		return "MyPageTradeListDTO [title=" + title + ", dealType=" + dealType + ", tradeStatus=" + tradeStatus
-				+ ", pricePoint=" + pricePoint + ", addDate=" + addDate + ", buyDate=" + buyDate + ", confirmDate="
-				+ confirmDate + ", sellerMemberNumber=" + sellerMemberNumber + ", sellerMemberId=" + sellerMemberId
-				+ ", buyerMemberNumber=" + buyerMemberNumber + ", buyerMemberId=" + buyerMemberId + ", sellPostNumber="
-				+ sellPostNumber + ", tradePostNumber=" + tradePostNumber + ", sellPostContent=" + sellPostContent
-				+ ", attachment=" + attachment + "]";
+				+ ", tradeArea=" + tradeArea + ", pricePoint=" + pricePoint + ", addDate=" + addDate + ", buyDate="
+				+ buyDate + ", confirmDate=" + confirmDate + ", sellerMemberNumber=" + sellerMemberNumber
+				+ ", sellerMemberId=" + sellerMemberId + ", buyerMemberNumber=" + buyerMemberNumber + ", buyerMemberId="
+				+ buyerMemberId + ", sellPostNumber=" + sellPostNumber + ", tradePostNumber=" + tradePostNumber
+				+ ", sellPostContent=" + sellPostContent + ", attachment=" + attachment + "]";
 	}
 
 	

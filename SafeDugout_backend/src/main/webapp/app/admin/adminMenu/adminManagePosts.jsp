@@ -26,6 +26,10 @@
     <c:set var="currentTab" value="${param.currentTab != null ? param.currentTab : 'all'}"/>
   </script>
   <script defer src="${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminManagePosts.js"></script>
+  <script>
+    const isLogin = <%= (session.getAttribute("adminNumber") != null) ? "true" : "false" %>;
+  </script>
+  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script> 
 </head>
 
 <body>

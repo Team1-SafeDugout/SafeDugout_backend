@@ -21,7 +21,7 @@ public class MyPageOpenModalController implements Execute{
 		Gson gson = new Gson();
 		String json = gson.toJson(dao.selectDetailTrade(sellPostNumber));
 		
-		
+		System.out.println("거래지역" + (dao.selectDetailTrade(sellPostNumber).getTradeArea()));
         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
             response.setContentType("application/json"); // json방식 전달
             response.setCharacterEncoding("UTF-8");
