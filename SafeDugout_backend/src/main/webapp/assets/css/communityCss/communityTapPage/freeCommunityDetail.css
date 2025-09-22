@@ -69,6 +69,7 @@
   border-bottom: 1px solid #F5F5F5;
   margin-bottom: 15px;
   line-height: 2;
+  white-space: pre-wrap;
 }
 
 .free-community-detail > a > button {

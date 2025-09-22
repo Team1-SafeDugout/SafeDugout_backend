@@ -139,7 +139,7 @@ function addPost
 		newPost.innerHTML = `
 		  <div class="product-list-img">
 		    <a href="/post/detail?postNumber=${postNumber}">
-		      <img src="${imgSourceParam}" alt="">
+		      
 		    </a>
 		  </div>
 		  <div class="product-list-info-middle">
@@ -179,7 +179,7 @@ function addPost
 		newPost.innerHTML = `
 		  <div class="product-list-img">
 		    <a href="/post/detail?postNumber=${postNumber}">
-		      <img src="${imgSourceParam}" alt="">
+		      
 		    </a>
 		  </div>
 		  
@@ -220,7 +220,7 @@ function addPost
 		newPost.innerHTML = `
 		  <div class="product-list-img">
 		    <a href="/post/detail?postNumber=${postNumber}">
-		      <img src="${imgSourceParam}" alt="">
+		      
 		    </a>
 		  </div>
 		  

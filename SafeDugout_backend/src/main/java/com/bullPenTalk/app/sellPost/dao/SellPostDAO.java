@@ -67,6 +67,12 @@ public class SellPostDAO {
         return sqlSession.selectOne("sell.getTotalByTeamCategory", param);
     }
 	
+    // 특정 카테고리 게시글 총 갯수 가져오기
+	public int getTotalCategory() {
+		System.out.println("게시글 총 개수 조회 - getTotal 메소드 실행");
+		return sqlSession.selectOne("sell.getTotalCategory");
+	}
+    
 	
 	// 판매글 추가 후 자동으로 생성된 getSellPostNumber 반환 -> 파일 테이블에서도 써야하기 때문에
 	public int insertSellPost(SellPostDTO sellPostDTO) {
