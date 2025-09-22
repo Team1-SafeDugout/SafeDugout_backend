@@ -89,6 +89,10 @@
   background-color: #fff;
 }
 
+.notice-board-content p {
+	white-space: pre-wrap;
+}
+
 .notice-board-content-img {
   width: 70%;
   margin: auto;
