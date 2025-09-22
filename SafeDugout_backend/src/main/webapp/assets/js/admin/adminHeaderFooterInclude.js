@@ -1,26 +1,7 @@
-// const logOutButton = window.getElementById();
-const isLogin = true;
-
 window.addEventListener('DOMContentLoaded', () => {
-  if(window.location.pathname == ""){
-    
-  }
-
-  const headerFileSelection = isLogin ? "${pageContext.request.contextPath}/admin/adminHeader.jsp" : "${pageContext.request.contextPath}/admin/adminHeaderBeforeLogin.jsp";
-
-  // 헤더 불러오기
-  fetch(headerFileSelection)
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('header').innerHTML = data;
-    });
-
-  // 푸터 불러오기
-  fetch('../adminFooter.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer').innerHTML = data;
-    });
+	if (!isLogin) {
+	    window.location.href = "/admin/adminLogin.ad"; // 로그인 페이지로 이동
+	}	
 });
 
 

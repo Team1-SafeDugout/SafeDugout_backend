@@ -144,7 +144,7 @@ public class MyPageFrontController extends HttpServlet {
 			
 		case "/myPage/unsubcribeFail.mp":
 			System.out.println("탈퇴 실패 진입 중");
-			result = new MyPageUnsubscribeCompleteController().execute(request, response);
+			result = new MyPageUnsubscribeFailOkController().execute(request, response);
 			break;
 			
 		case "/myPage/pointCharge.mp":

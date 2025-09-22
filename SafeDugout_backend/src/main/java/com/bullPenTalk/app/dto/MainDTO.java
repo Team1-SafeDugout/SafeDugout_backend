@@ -14,6 +14,7 @@ public class MainDTO {
 	private String sellPostCreationDate; // 판매 게시글 작성 일자
 	private int pricePoint; // 상품 가격 포인트
 	private String attachmentPath; // 첨부파일 경로
+	private String attachmentName; // 첨부파일 이름
 	// 팀 순위 목록
 	private int teamRank; // 팀 순위
 	private String teamName; // 팀 이름
@@ -87,6 +88,12 @@ public class MainDTO {
 	}
 	public void setAttachmentPath(String attachmentPath) {
 		this.attachmentPath = attachmentPath;
+	}
+	public String getAttachmentName() {
+		return attachmentName;
+	}
+	public void setAttachmentName(String attachmentPath) {
+		this.attachmentName = attachmentName;
 	}
 	public int getTeamRank() {
 		return teamRank;
@@ -164,7 +171,7 @@ public class MainDTO {
 				+ ", teamName=" + teamName + ", gameCount=" + gameCount + ", teamWin=" + teamWin + ", teamDraw="
 				+ teamDraw + ", teamLose=" + teamLose + ", teamWinRate=" + teamWinRate + ", teamGB=" + teamGB
 				+ ", noticePostNumber=" + noticePostNumber + ", noticePostTitle=" + noticePostTitle
-				+ ", noticePostDate=" + noticePostDate + "]";
+				+ ", noticePostDate=" + noticePostDate + ", attachmentName=" + attachmentName + "]";
 	}
 
 }

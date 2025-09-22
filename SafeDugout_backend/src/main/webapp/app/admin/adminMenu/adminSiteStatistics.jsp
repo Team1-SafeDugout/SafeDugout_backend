@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin/adminFooter.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- 차트 그리기위한 라이브러리 js 에서 써야 하므로 js보다 위에 배치-->
   <script src = "${pageContext.request.contextPath}/assets/js/admin/adminMenu/adminSiteStatistics.js"></script>  
+  <script>
+    const isLogin = <%= (session.getAttribute("adminNumber") != null) ? "true" : "false" %>;
+  </script>
+  <script src = "${pageContext.request.contextPath}/assets/js/admin/adminHeaderFooterInclude.js"></script>  
 </head>
 
 <body>

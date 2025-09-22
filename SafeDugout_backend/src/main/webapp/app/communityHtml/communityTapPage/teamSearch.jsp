@@ -90,14 +90,14 @@
 			<ul>
 				<c:if test="${noticePrev}">
 					<li><a
-						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${noticeStartPage - 1}&postPage=${postPage}">&lt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${noticeStartPage - 1}&postPage=${postPage}&keyword=${keyword}">&lt;</a></li>
 					</c:if>
 				<c:set var="noticeRealStartPage" value="${noticeStartPage < 0 ? 0 : noticeStartPage}" />
 				<c:forEach var="i" begin="${noticeRealStartPage}" end="${noticeEndPage}">
 					<c:choose>
 						<c:when test="${i != noticePage}">
 							<li><a
-								href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${i}&postPage=${postPage}">
+								href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${i}&postPage=${postPage}&keyword=${keyword}">
 									<c:out value="${i}" />
 							</a></li>
 						</c:when>
@@ -108,7 +108,7 @@
 				</c:forEach>
 				<c:if test="${noticeNext}">
 					<li><a
-						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${noticeEndPage + 1}&postPage=${postPage}">&gt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?noticePage=${noticeEndPage + 1}&postPage=${postPage}&keyword=${keyword}">&gt;</a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -191,7 +191,7 @@
 			<ul>
 				<c:if test="${postPrev}">
 					<li><a
-						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${postStartPage - 1}&noticePage=${noticePage}">&lt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${postStartPage - 1}&noticePage=${noticePage}&keyword=${keyword}">&lt;</a></li>
 				</c:if>
 
 				<c:set var="postRealStartPage" value="${postStartPage < 0 ? 0 : postStartPage}" />
@@ -199,7 +199,7 @@
 					<c:choose>
 						<c:when test="${i != postPage}">
 							<li><a
-								href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${i}&noticePage=${noticePage}">
+								href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${i}&noticePage=${noticePage}&keyword=${keyword}">
 									<c:out value="${i}" />
 							</a></li>
 						</c:when>
@@ -211,7 +211,7 @@
 
 				<c:if test="${postNext}">
 					<li><a
-						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${postEndPage + 1}&noticePage=${noticePage}">&gt;</a></li>
+						href="${pageContext.request.contextPath}/main/teamSearchOk.ma?postPage=${postEndPage + 1}&noticePage=${noticePage}&keyword=${keyword}">&gt;</a></li>
 				</c:if>
 			</ul>
 		</div>

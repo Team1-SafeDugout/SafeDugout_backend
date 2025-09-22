@@ -77,7 +77,7 @@
       <!-- 뉴스 이미지 -->
       <div class="team-news-images">
         <c:forEach var="file" items="${community.attachment}">
-          <img src="${pageContext.request.contextPath}/uploads/${file.attachmentPath}" alt="${file.attachmentName}" />
+          <img src="${pageContext.request.contextPath}${file.attachmentPath}${file.attachmentName}" alt="${file.attachmentName}" />
         </c:forEach>
       </div>
 
