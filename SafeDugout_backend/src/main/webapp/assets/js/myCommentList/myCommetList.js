@@ -43,7 +43,7 @@ function addPost(commentPostNumber, commentTitleParam, commentAuthorParam, comme
 	const commentTitleText = document.createTextNode(commentTitleParam);
 	const commentAuthorText = document.createTextNode(commentAuthorParam);
 	const commentContentText = document.createTextNode(commentContentParam);
-	const commentDateText = document.createTextNode(commentDateParam);
+	const commentDateText = document.createTextNode(formatDate(commentDateParam));
 	const deleteBtnText = document.createTextNode("삭제하기");
 
 	commentTitle.style.overflow = "hidden";
@@ -97,4 +97,14 @@ function addPost(commentPostNumber, commentTitleParam, commentAuthorParam, comme
 	newComment.appendChild(deleteBtn);
 
 	commentPostList.appendChild(newComment);
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+
+  return `${yyyy}-${mm}-${dd}`;
 }
